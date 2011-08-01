@@ -1,0 +1,16 @@
+﻿@model GDNET.ElapsedTimeField.Settings.ElapsedTimeFieldSettings
+@using GDNET.ElapsedTimeField.Settings;
+<fieldset>
+    <label for="@Html.FieldIdFor(m => m.Display)"
+      class="forcheckbox">@T("Display options")</label>
+    <select id="@Html.FieldIdFor(m => m.Display)"
+      name="@Html.FieldNameFor(m => m.Display)">
+        @Html.SelectOption(ElapsedTimeFieldDisplay.FullValue,
+                           Model.Display == ElapsedTimeFieldDisplay.FullValue,
+                           T("Full value").ToString())
+        @Html.SelectOption(ElapsedTimeFieldDisplay.MeaningValueOnly,
+                           Model.Display == ElapsedTimeFieldDisplay.MeaningValueOnly,
+                           T("Meaning value only").ToString())
+    </select>
+    @Html.ValidationMessageFor(m => m.Display)
+</fieldset>
