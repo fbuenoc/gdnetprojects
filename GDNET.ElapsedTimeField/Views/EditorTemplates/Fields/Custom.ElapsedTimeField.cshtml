@@ -1,0 +1,42 @@
+﻿@model GDNET.ElapsedTimeField.ViewModels.ElapsedTimeFieldViewModel
+@{
+    Style.Include("ElapsedTimeField.css");
+}
+<fieldset>
+    <label for="@Html.FieldIdFor(m => Model.Hours)">@Model.Name</label>
+    <span class="Years">Years: </span>
+    <select id="@Html.FieldIdFor(m => m.Years)" name="@Html.FieldNameFor(m => m.Years)">
+        @for (int x = 0; x <= 20; x++)
+        {
+            @Html.SelectOption(x, Model.Years == x, x.ToString())
+        }
+    </select>
+    <span class="Months">Months:</span>
+    <select id="@Html.FieldIdFor(m => m.Months)" name="@Html.FieldNameFor(m => m.Months)">
+        @for (int x = 0; x < 12; x++)
+        {
+            @Html.SelectOption(x, Model.Months == x, x.ToString())
+        }
+    </select>
+    <span class="Days">Days: </span>
+    <select id="@Html.FieldIdFor(m => m.Days)" name="@Html.FieldNameFor(m => m.Days)">
+        @for (int x = 0; x < 30; x++)
+        {
+            @Html.SelectOption(x, Model.Days == x, x.ToString())
+        }
+    </select>
+    <span class="Hours">Hours: </span>
+    <select id="@Html.FieldIdFor(m => m.Hours)" name="@Html.FieldNameFor(m => m.Hours)">
+        @for (int x = 0; x < 24; x++)
+        {
+            @Html.SelectOption(x, Model.Hours == x, x.ToString())
+        }
+    </select>
+    <span class="Minutes">Minutes: </span>
+    <select id="@Html.FieldIdFor(m => m.Minutes)" name="@Html.FieldNameFor(m => m.Minutes)">
+        @for (int x = 5; x < 60; x += 5)
+        {
+            @Html.SelectOption(x, Model.Minutes == x, x.ToString())
+        }
+    </select>
+</fieldset>
