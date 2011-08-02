@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+using GDNET.ElapsedTimeField.Models;
 using GDNET.ElapsedTimeField.ViewModels;
 
 namespace GDNET.ElapsedTimeField
@@ -34,11 +35,20 @@ namespace GDNET.ElapsedTimeField
             return result;
         }
 
-        public static ElapsedTimeFieldViewModel ParseValue(string elapsedTime)
+        /// <summary>
+        /// Parse elapsed time string to object
+        /// </summary>
+        /// <param name="elapsedTime"></param>
+        /// <returns></returns>
+        public static ElapsedTimeInfo ParseValue(string elapsedTime)
         {
-            string[] values = elapsedTime.Split(',', ':');
+            string[] values = new string[] { };
+            if (!string.IsNullOrEmpty(elapsedTime))
+            {
+                values = elapsedTime.Split(',', ':');
+            }
 
-            ElapsedTimeFieldViewModel model = new ElapsedTimeFieldViewModel
+            ElapsedTimeInfo model = new ElapsedTimeInfo
             {
                 Years = Helper.GetValueByKey(values, Constants.Years),
                 Months = Helper.GetValueByKey(values, Constants.Months),
