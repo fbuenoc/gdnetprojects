@@ -1,13 +1,13 @@
 Name: GDNET.ElapsedTimeField
 AntiForgery: enabled
 Author: Huan Hoang
-Website: http://giangduong.net
-Version: 1.0
+Website: http://code.google.com/p/gdnetprojects/
+Version: 1.0.1
 OrchardVersion: 1.0
-Description: New field for Orchard that enable you to create elapsed time for a task like 1y 10m 6d 20h.
+Description: New field for Orchard that enable you to create elapsed time for a task like (1y 10m 6d 20h) or (10d 25m)
 Features:
     GDNET.ElapsedTimeField:
 		Name: Elapsed Time Field
-        Description: Description for feature GDNET.ElapsedTimeField.
+        Description: New field for Orchard that enable you to create elapsed time for a task like (1y 10m 6d 20h) or (10d 25m)
 		Category: Fields
-        Dependencies: Orchard.jQuery, Common, Settings
+        Dependencies: Common, Settings

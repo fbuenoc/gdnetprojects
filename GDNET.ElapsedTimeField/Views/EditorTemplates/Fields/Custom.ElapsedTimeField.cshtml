@@ -3,40 +3,40 @@
     Style.Include("ElapsedTimeField.css");
 }
 <fieldset>
-    <label for="@Html.FieldIdFor(m => Model.Hours)">@Model.Name</label>
+    <label for="@Html.FieldIdFor(m => Model.Data.Hours)">@Model.Name</label>
     <span class="Years">Years: </span>
-    <select id="@Html.FieldIdFor(m => m.Years)" name="@Html.FieldNameFor(m => m.Years)">
+    <select id="@Html.FieldIdFor(m => m.Data.Years)" name="@Html.FieldNameFor(m => m.Data.Years)">
         @for (int x = 0; x <= 20; x++)
         {
-            @Html.SelectOption(x, Model.Years == x, x.ToString())
+            @Html.SelectOption(x, Model.Data.Years == x, x.ToString())
         }
     </select>
     <span class="Months">Months:</span>
-    <select id="@Html.FieldIdFor(m => m.Months)" name="@Html.FieldNameFor(m => m.Months)">
+    <select id="@Html.FieldIdFor(m => m.Data.Months)" name="@Html.FieldNameFor(m => m.Data.Months)">
         @for (int x = 0; x < 12; x++)
         {
-            @Html.SelectOption(x, Model.Months == x, x.ToString())
+            @Html.SelectOption(x, Model.Data.Months == x, x.ToString())
         }
     </select>
     <span class="Days">Days: </span>
-    <select id="@Html.FieldIdFor(m => m.Days)" name="@Html.FieldNameFor(m => m.Days)">
+    <select id="@Html.FieldIdFor(m => m.Data.Days)" name="@Html.FieldNameFor(m => m.Data.Days)">
         @for (int x = 0; x < 30; x++)
         {
-            @Html.SelectOption(x, Model.Days == x, x.ToString())
+            @Html.SelectOption(x, Model.Data.Days == x, x.ToString())
         }
     </select>
     <span class="Hours">Hours: </span>
-    <select id="@Html.FieldIdFor(m => m.Hours)" name="@Html.FieldNameFor(m => m.Hours)">
+    <select id="@Html.FieldIdFor(m => m.Data.Hours)" name="@Html.FieldNameFor(m => m.Data.Hours)">
         @for (int x = 0; x < 24; x++)
         {
-            @Html.SelectOption(x, Model.Hours == x, x.ToString())
+            @Html.SelectOption(x, Model.Data.Hours == x, x.ToString())
         }
     </select>
     <span class="Minutes">Minutes: </span>
-    <select id="@Html.FieldIdFor(m => m.Minutes)" name="@Html.FieldNameFor(m => m.Minutes)">
+    <select id="@Html.FieldIdFor(m => m.Data.Minutes)" name="@Html.FieldNameFor(m => m.Data.Minutes)">
         @for (int x = 5; x < 60; x += 5)
         {
-            @Html.SelectOption(x, Model.Minutes == x, x.ToString())
+            @Html.SelectOption(x, Model.Data.Minutes == x, x.ToString())
         }
     </select>
 </fieldset>

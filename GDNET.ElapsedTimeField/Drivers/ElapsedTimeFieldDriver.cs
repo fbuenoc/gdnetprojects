@@ -11,6 +11,7 @@ using Orchard.Localization;
 
 using GDNET.ElapsedTimeField.Settings;
 using GDNET.ElapsedTimeField.ViewModels;
+using System.Text;
 
 namespace GDNET.ElapsedTimeField.Drivers
 {
@@ -47,28 +48,35 @@ namespace GDNET.ElapsedTimeField.Drivers
         {
             var settings = field.PartFieldDefinition.Settings.GetModel<ElapsedTimeFieldSettings>();
             var value = field.ElapsedTime;
+
             if (settings.Display == ElapsedTimeFieldDisplay.MeaningValueOnly)
             {
                 var viewModel = Helper.ParseValue(field.ElapsedTime);
+                StringBuilder sb = new StringBuilder();
                 if (viewModel.Years > 0)
                 {
-                    value = string.Format("{0}y {1}m {2}d {3}h {4}m", viewModel.Years, viewModel.Months, viewModel.Days, viewModel.Hours, viewModel.Minutes);
+                    sb.AppendFormat("{0}y ", viewModel.Years);
                 }
-                else if (viewModel.Months > 0)
+                if (viewModel.Months > 0)
                 {
-                    value = string.Format("{0}m {1}d {2}h {3}m", viewModel.Months, viewModel.Days, viewModel.Hours, viewModel.Minutes);
+                    sb.AppendFormat("{0}m ", viewModel.Months);
                 }
-                else if (viewModel.Days > 0)
+                if (viewModel.Days > 0)
                 {
-                    value = string.Format("{0}d {1}h {2}m", viewModel.Days, viewModel.Hours, viewModel.Minutes);
+                    sb.AppendFormat("{0}d ", viewModel.Days);
                 }
-                else if (viewModel.Hours > 0)
+                if (viewModel.Hours > 0)
                 {
-                    value = string.Format("{0}h {1}m", viewModel.Hours, viewModel.Minutes);
+                    sb.AppendFormat("{0}h ", viewModel.Hours);
                 }
-                else
+                if (viewModel.Minutes > 0)
                 {
-                    value = string.Format("{0}m", viewModel.Minutes);
+                    sb.AppendFormat("{0}m ", viewModel.Minutes);
+                }
+
+                if (sb.Length > 0)
+                {
+                    value = sb.ToString().Substring(0, sb.Length - 1);
                 }
             }
 
@@ -93,25 +101,10 @@ namespace GDNET.ElapsedTimeField.Drivers
         /// <returns></returns>
         protected override DriverResult Editor(ContentPart part, Fields.ElapsedTimeField field, dynamic shapeHelper)
         {
-            var values = new string[] { };
-            if (!string.IsNullOrEmpty(field.ElapsedTime))
-            {
-                values = field.ElapsedTime.Split(',', ':');
-            }
-            uint years = values.GetValueByKey(Constants.Years);
-            uint months = values.GetValueByKey(Constants.Months);
-            uint days = values.GetValueByKey(Constants.Days);
-            uint hours = values.GetValueByKey(Constants.Hours);
-            uint minutes = values.GetValueByKey(Constants.Minutes);
-
             var viewModel = new ElapsedTimeFieldViewModel
             {
                 Name = field.Name,
-                Years = years,
-                Months = months,
-                Days = days,
-                Hours = hours,
-                Minutes = minutes
+                Data = Helper.ParseValue(field.ElapsedTime)
             };
 
             return ContentShape("Fields_Custom_ElapsedTimeField_Edit",
@@ -136,11 +129,11 @@ namespace GDNET.ElapsedTimeField.Drivers
             {
                 var settings = field.PartFieldDefinition.Settings.GetModel<ElapsedTimeFieldSettings>();
                 field.ElapsedTime = string.Format("{0}:{1}, {2}:{3}, {4}:{5}, {6}:{7}, {8}:{9}",
-                                                  Constants.Years, viewModel.Years.ToString(),
-                                                  Constants.Months, viewModel.Months.ToString(),
-                                                  Constants.Days, viewModel.Days.ToString(),
-                                                  Constants.Hours, viewModel.Hours.ToString(),
-                                                  Constants.Minutes, viewModel.Minutes.ToString());
+                                                  Constants.Years, viewModel.Data.Years.ToString(),
+                                                  Constants.Months, viewModel.Data.Months.ToString(),
+                                                  Constants.Days, viewModel.Data.Days.ToString(),
+                                                  Constants.Hours, viewModel.Data.Hours.ToString(),
+                                                  Constants.Minutes, viewModel.Data.Minutes.ToString());
             }
 
             return Editor(part, field, shapeHelper);
