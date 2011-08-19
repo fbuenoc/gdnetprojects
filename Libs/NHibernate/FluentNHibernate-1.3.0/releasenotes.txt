@@ -1,0 +1,1 @@
+This release was built on 18/08/2011 from source code in github repository. It's compatible with NH 3.2.
