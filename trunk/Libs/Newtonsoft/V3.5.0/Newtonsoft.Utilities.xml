@@ -1,0 +1,1646 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Newtonsoft.Utilities</name>
+    </assembly>
+    <members>
+        <member name="M:Newtonsoft.Utilities.Web.ResponseUtils.FileResponse(System.Byte[],System.String)">
+            <summary>
+            Return the response with a file.
+            </summary>
+            <param name="fileData">The file data.</param>
+            <param name="fileName">Name of the file.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.ResponseUtils.FileResponse(System.IO.Stream,System.String)">
+            <summary>
+            Return the response with a file.
+            </summary>
+            <param name="fileData">The file data.</param>
+            <param name="fileName">Name of the file.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.ResponseUtils.FileResponse(System.Byte[],System.String,System.String)">
+            <summary>
+            Return the response with a file.
+            </summary>
+            <param name="fileData">The file data.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="contentType">The HTTP MIME type of the content.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.ResponseUtils.FileResponse(System.IO.Stream,System.String,System.String)">
+            <summary>
+            Return the response with a file.
+            </summary>
+            <param name="fileData">The file data.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="contentType">The HTTP MIME type of the content.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.ResponseUtils.FileResponse(System.IO.Stream,System.String,System.String,System.Int32)">
+            <summary>
+            Return the response with a file.
+            </summary>
+            <param name="fileData">The file data.</param>
+            <param name="fileName">Name of the file.</param>
+            <param name="contentType">The HTTP MIME type of the content.</param>
+            <param name="bufferSize">Size of the buffer.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.ResponseUtils.PermanentRedirect(System.Web.HttpResponse,System.String)">
+            <summary>
+            Gives a permanent redirect to the browser.
+            </summary>
+            <param name="response">The response.</param>
+            <param name="url">The URL to permanently redirect to.</param>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Web.QueryParameterAttribute">
+            <summary>
+            A <see cref="T:Newtonsoft.Utilities.Web.WebParameterAttribute"/> that's specifically bound to the
+            a parameter in the query string (Request.QueryString collection)
+            </summary>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Web.WebParameterAttribute">
+             <summary>
+             Marks a field or property as being bound to a specific parameter present in the
+             <see cref="T:System.Web.HttpRequest"/>. This attribute is normally only
+             applied to subclasses of <see cref="T:System.Web.UI.Page"/>
+             </summary>
+             <example>
+             Here a simple page class marks field with the attribute, and then
+             calls the static WebParameterAttribute.SetValues() method to
+             automatically load the fields with value from Request.Form or Request.QueryString
+             (depending on what was used to submit the form). Note that since
+             parameter binding in this example is done both on first-request
+             and on postback, this page must always be either linked to supplying
+             data in the querystring, or cross-posted to with the data in the Form.
+             <code><![CDATA[
+             public class BoundParameterDemo : System.Web.UI.Page{
+            		[WebParameter()]
+            		protected string FirstName;
+            
+            		[WebParameter("Last_Name")]
+            		protected string LastName;
+            
+            		[WebParameter(IsRequired=true)]
+            		protected int CustomerID;
+            
+            		private void Page_Load(object sender, System.EventArgs e) {
+            			WebParameterAttribute.SetValues(this, Request);
+            		}
+            	}
+             ]]>
+             </code>
+             </example>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.WebParameterAttribute.#ctor">
+            <summary>
+            Creates a new WebParameterAttribute to load a field from an identically-named
+            parameter in the Form/QueryString collection, if it exists.
+            The parameter has no default value, and is not required
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.WebParameterAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new WebParameterAttribute to load a field from the given parameter name
+            The parameter has no default value, and is not required
+            </summary>
+            <param name="paramName">The key of a parameter in the Form or QueryString collections</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.WebParameterAttribute.GetValue(System.String,System.Web.HttpRequest)">
+            <summary>
+            Retrieves an item either from the Query or POST collections, depending on the
+            mode of the request, or performs custom retrieval in derived classes
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.WebParameterAttribute.SetValues(System.Object,System.Web.HttpRequest,System.Boolean)">
+            <summary>
+            Sets public properties and fields on <c>target</c> that are marked with
+            <see cref="T:Newtonsoft.Utilities.Web.WebParameterAttribute"/> to the corresponding values retrieved from
+            <c>request</c>, or a default value as set on the attribute
+            </summary>
+            <param name="target">The object (typically a <see cref="T:System.Web.UI.Page"/>) being bound</param>
+            <param name="request">The <see cref="T:System.Web.HttpRequest"/> to load the data from.
+            The attribute determines whether data is loaded from request.Form, request.QueryString
+            or other parts of request</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.WebParameterAttribute.SetValue(System.Reflection.MemberInfo,System.Object,System.Web.HttpRequest,System.Boolean)">
+            <summary>
+            Examines a single <c>member</c> (a property or field) for <see cref="T:Newtonsoft.Utilities.Web.WebParameterAttribute"/>.
+            If so marked then the member is set on <c>target</c> with the relevant value
+            retrieved from <c>request</c>, or the default value provided in the attribute
+            </summary>
+            <param name="target">The object (typically a <see cref="T:System.Web.UI.Page"/>) being bound</param>
+            <param name="request">The <see cref="T:System.Web.HttpRequest"/> to load the data from.
+            The attribute determines whether data is loaded from request.Form, request.QueryString
+            or other parts of request</param>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Web.WebParameterAttribute.ParameterName">
+            <summary>
+            The name (key) of the parameter being bound against in the Request
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Web.WebParameterAttribute.DefaultValue">
+            <summary>
+            An optional default value to use if the parameter doesn't exist
+            in the current Request, or null to clear
+            </summary>
+            <remarks>Whilst this is a bit unneccesary for a field, its
+            handy for properties - can save all that <code>if(ViewState["x"]==null)</code>
+            stuff...</remarks>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Web.WebParameterAttribute.IsRequired">
+            <summary>
+            Whether the absence of the parameter, along with the absence
+            of a default, causes an error, rather than the default
+            behaviour which is that the field will just be skipped.
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Web.WebParameterAttribute.IsDefaultUsedForInvalid">
+            <summary>
+            Whether the default value can be used if the value passed to
+            the page is invalid in some way (rejected by the type converter,
+            or causes an error on the field/property set).
+            The default is false.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Web.WebParameterAttribute.OverwriteNonDefaultValue">
+            <summary>
+            Whether the value is retrieved from the parameter
+            on post back.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.QueryParameterAttribute.#ctor">
+            <summary>
+            Creates a new QueryParameterAttribute to load a field from an identically-named
+            parameter in the QueryString collection, if it exists.
+            The parameter has no default value, and is not required
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.QueryParameterAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new QueryParameterAttribute to load a field from the given parameter
+            in the QueryString collection, if it exists.
+            The parameter has no default value, and is not required
+            </summary>
+            <param name="paramName">The key of a parameter in the QueryString collections</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.QueryParameterAttribute.GetValue(System.String,System.Web.HttpRequest)">
+            <summary>
+            Retrieves an item from the QueryString by key
+            </summary>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Text.StringBuffer">
+            <summary>
+            Builds a string. Unlike StringBuilder this class lets you reuse it's internal buffer.
+            </summary>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Web.FormParameterAttribute">
+            <summary>
+            A <see cref="T:Newtonsoft.Utilities.Web.WebParameterAttribute"/> that's specifically bound to the
+            a parameter in the http POST (Request.Form collection)
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.FormParameterAttribute.#ctor">
+            <summary>
+            Creates a new FormParameterAttribute to load a field from an identically-named
+            parameter in the Form collection, if it exists.
+            The parameter has no default value, and is not required
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.FormParameterAttribute.#ctor(System.String)">
+            <summary>
+            Creates a new FormParameterAttribute to load a field from the given parameter
+            in the Form collection, if it exists.
+            The parameter has no default value, and is not required
+            </summary>
+            <param name="paramName">The key of a parameter in the Form collections</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.FormParameterAttribute.GetValue(System.String,System.Web.HttpRequest)">
+            <summary>
+            Retrieves an item from the Form collection by key
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.Reflector.GetMethod``1(System.Linq.Expressions.Expression{System.Action{``0}})">
+            <summary>
+            Gets the method represented by the lambda expression.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="method"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">The <paramref name="method"/> is not a lambda expression or it does not represent a method invocation.</exception>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.Reflector.GetProperty``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Gets the property represented by the lambda expression.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="method"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">The <paramref name="method"/> is not a lambda expression or it does not represent a property access.</exception>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.Reflector.GetField``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}})">
+            <summary>
+            Gets the field represented by the lambda expression.
+            </summary>
+            <exception cref="T:System.ArgumentNullException">The <paramref name="method"/> is null.</exception>
+            <exception cref="T:System.ArgumentException">The <paramref name="method"/> is not a lambda expression or it does not represent a field access.</exception>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.TypeExtensions.GetCollectionItemType(System.Type)">
+            <summary>
+            Gets the type of the typed collection's items.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The type of the typed collection's items.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.FormatUtils.FileSizeToStringKB(System.Int64)">
+            <summary>
+            Converts a number value into a string that represents the number
+            expressed in whole kilobytes. This is a format similar to the
+            Windows Explorer "Size" column.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.FormatUtils.FileSizeToString(System.Int64)">
+            <summary>
+            Converts a numeric value into a string that represents the number
+            expressed as a size value in bytes, kilobytes, megabytes, gigabytes,
+            or terabytes depending on the size. Output is identical to
+            StrFormatByteSize() in shlwapi.dll. This is a format similar to
+            the Windows Explorer file Properties page. For example:
+                 532 becomes  532 bytes
+                1240 becomes 1.21 KB
+              235606 becomes  230 KB
+             5400016 becomes 5.14 MB
+            </summary>
+            <remarks>
+            It was surprisingly difficult to emulate the StrFormatByteSize() function
+            due to a few quirks. First, the function only displays three digits:
+             - displays 2 decimal places for values under 10            (e.g. 2.12 KB)
+             - displays 1 decimal place for values under 100            (e.g. 88.2 KB)
+             - displays 0 decimal places for values under 1000         (e.g. 532 KB)
+             - jumps to the next unit of measure for values over 1000    (e.g. 0.97 MB)
+            The second quirk: insiginificant digits are truncated rather than
+            rounded. The original function likely uses integer math.
+            This implementation was tested to 100 TB.
+            </remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.CurrencyUtils.ConvertToDecimal(System.Object)">
+            <summary>
+            Converts to decimal.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.CurrencyUtils.ConvertToDecimal(System.String)">
+            <summary>
+            Converts to decimal.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.Convert``1(System.Object)">
+            <summary>
+            Converts the value to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <returns>The converted type.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.Convert``1(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts the value to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <param name="culture">The culture to use when converting.</param>
+            <returns>The converted type.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.Convert(System.Object,System.Globalization.CultureInfo,System.Type)">
+            <summary>
+            Converts the value to the specified type.
+            </summary>
+            <param name="initialValue">The value to convert.</param>
+            <param name="culture">The culture to use when converting.</param>
+            <param name="targetType">The type to convert the value to.</param>
+            <returns>The converted type.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.TryConvert``1(System.Object,``0@)">
+            <summary>
+            Converts the value to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <param name="convertedValue">The converted value if the conversion was successful or the default value of <c>T</c> if it failed.</param>
+            <returns>
+            	<c>true</c> if <c>initialValue</c> was converted successfully; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.TryConvert``1(System.Object,System.Globalization.CultureInfo,``0@)">
+            <summary>
+            Converts the value to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <param name="culture">The culture to use when converting.</param>
+            <param name="convertedValue">The converted value if the conversion was successful or the default value of <c>T</c> if it failed.</param>
+            <returns>
+            	<c>true</c> if <c>initialValue</c> was converted successfully; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.TryConvert(System.Object,System.Globalization.CultureInfo,System.Type,System.Object@)">
+            <summary>
+            Converts the value to the specified type.
+            </summary>
+            <param name="initialValue">The value to convert.</param>
+            <param name="culture">The culture to use when converting.</param>
+            <param name="targetType">The type to convert the value to.</param>
+            <param name="convertedValue">The converted value if the conversion was successful or the default value of <c>T</c> if it failed.</param>
+            <returns>
+            	<c>true</c> if <c>initialValue</c> was converted successfully; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.ConvertOrCast``1(System.Object)">
+            <summary>
+            Converts the value to the specified type. If the value is unable to be converted, the
+            value is checked whether it assignable to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert or cast the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <returns>The converted type. If conversion was unsuccessful, the initial value is returned if assignable to the target type</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.ConvertOrCast``1(System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            Converts the value to the specified type. If the value is unable to be converted, the
+            value is checked whether it assignable to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert or cast the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <param name="culture">The culture to use when converting.</param>
+            <returns>The converted type. If conversion was unsuccessful, the initial value is returned if assignable to the target type</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.ConvertOrCast(System.Object,System.Globalization.CultureInfo,System.Type)">
+            <summary>
+            Converts the value to the specified type. If the value is unable to be converted, the
+            value is checked whether it assignable to the specified type.
+            </summary>
+            <param name="initialValue">The value to convert.</param>
+            <param name="culture">The culture to use when converting.</param>
+            <param name="targetType">The type to convert or cast the value to.</param>
+            <returns>
+            The converted type. If conversion was unsuccessful, the initial value
+            is returned if assignable to the target type.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.TryConvertOrCast``1(System.Object,``0@)">
+            <summary>
+            Converts the value to the specified type. If the value is unable to be converted, the
+            value is checked whether it assignable to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <param name="convertedValue">The converted value if the conversion was successful or the default value of <c>T</c> if it failed.</param>
+            <returns>
+            	<c>true</c> if <c>initialValue</c> was converted successfully or is assignable; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.TryConvertOrCast``1(System.Object,System.Globalization.CultureInfo,``0@)">
+            <summary>
+            Converts the value to the specified type. If the value is unable to be converted, the
+            value is checked whether it assignable to the specified type.
+            </summary>
+            <typeparam name="T">The type to convert the value to.</typeparam>
+            <param name="initialValue">The value to convert.</param>
+            <param name="culture">The culture to use when converting.</param>
+            <param name="convertedValue">The converted value if the conversion was successful or the default value of <c>T</c> if it failed.</param>
+            <returns>
+            	<c>true</c> if <c>initialValue</c> was converted successfully or is assignable; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Newtonsoft.Utilities.Miscellaneous.ConvertUtils.TryConvertOrCast(System.Object,System.Globalization.CultureInfo,System.Type,System.Object@)" -->
+        <member name="M:Newtonsoft.Utilities.Text.StringUtils.IsNullOrEmpty(System.Data.SqlTypes.SqlString)">
+            <summary>
+            Determines whether the SqlString is null or empty.
+            </summary>
+            <param name="s">The string.</param>
+            <returns>
+            	<c>true</c> if the SqlString is null or empty; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringUtils.NullEmptyString(System.String)">
+            <summary>
+            Nulls an empty string.
+            </summary>
+            <param name="s">The string.</param>
+            <returns>Null if the string was null, otherwise the string unchanged.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringUtils.CreateStringWriter(System.Int32)">
+            <summary>
+            Creates a StringWriter with the specified capacity.
+            </summary>
+            <param name="capacity">The capacity of the StringWriter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringUtils.GetLength(System.String)">
+            <summary>
+            Gets the length of a string, returning null if the string is null.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringUtils.ToCharAsUnicode(System.Char)">
+            <summary>
+            Returns the specified char's unicode string.
+            </summary>
+            <param name="c">The c.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringUtils.WriteCharAsUnicode(System.IO.TextWriter,System.Char)">
+            <summary>
+            Writes the specified char's unicode string to a TextWriter.
+            </summary>
+            <param name="writer">The writer.</param>
+            <param name="c">The c.</param>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Testing.ClassTester">
+            <summary>
+            For use in unit tests, the ClassTester offers a number of benefits
+                - increased coverage testing all those property setters and getters that normally get ignored
+                - tests that simple properties are wired up correctly
+                - tests the implementation of INotifyPropertyChanged for classes that implement it
+                - testing of constructors including mapping of parameters to properties with the same name
+            For more information, see the help on the TestProperties method and the static TestConstructors method.
+            It is designed to test simple POCO classes only - any complicated properties or constructors
+            should be tested with a manual unit test as normal. It is important to use this tool in 
+            conjunction with code coverage to ensure you are getting the coverage you think you are.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Testing.ClassTester.TestConstructors(System.Type,System.Boolean)">
+            <summary>
+            Tests the constructors of the specified type be generating, where possible, random
+            values and newing up the object. If testMappedProperties is specified as true, the 
+            tester will also check to make sure that the value passed to any constructor parameters
+            is also the value of any properties with the same name (case-insensitive) on the object.
+            If the class has any constructors that require types that have no default value (such as
+            an interface) this method will fail with a TesterException.
+            </summary>
+            <param name="type">The type to test</param>
+            <param name="testMappedProperties">Whether to test properties with the same name as the constructor parameters</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Testing.ClassTester.TestProperties">
+            <summary>
+            Tests set (where the property is settable) and get (where the property is gettable) for
+            all properties on the instance of the object used to construct this ClassTester instance.
+            If the instance implements INotifyPropertyChanged, the tester will also check to ensure that
+            when the property is changed, it fires the appropriate event. Properties are changed by 
+            generating two random values and setting twice.
+            
+            Properties with non default types (such as interfaces) will be skipped. It is important to 
+            utilise this test in conjunction with a code coverage tool to ensure the bits you think are
+            being tested actually are.
+            
+            The tester will try MaxLoopsPerProperty attempts at generating two different random values.
+            If the class can't generate two random values (because it doesn't understand the type) then
+            consider ignoring that problem property and testing it manually.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Testing.ClassTester.MaxLoopsPerProperty">
+            <summary>
+            When trying to create random values, how many attempts should the algorithm
+            have at creating different values before erroring.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.CloseHandle(System.IntPtr)">
+            <summary>
+            Closes an open object handle.
+            </summary>
+            <param name="hObject">A handle to an open object.</param>
+            <returns><c>True</c> when succeeded; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.LogonUser(System.String,System.String,System.String,Newtonsoft.Utilities.Security.LogonType,Newtonsoft.Utilities.Security.LogonProvider,System.IntPtr@)">
+            <summary>
+            Attempts to log a user on to the local computer.
+            </summary>
+            <param name="username">This is the name of the user account to log on to. 
+            If you use the user principal name (UPN) format, user@DNSdomainname, the 
+            domain parameter must be <c>null</c>.</param>
+            <param name="domain">Specifies the name of the domain or server whose 
+            account database contains the lpszUsername account. If this parameter 
+            is <c>null</c>, the user name must be specified in UPN format. If this 
+            parameter is ".", the function validates the account by using only the 
+            local account database.</param>
+            <param name="password">The password</param>
+            <param name="logonType">The logon type</param>
+            <param name="logonProvider">The logon provides</param>
+            <param name="userToken">The out parameter that will contain the user 
+            token when method succeeds.</param>
+            <returns><c>True</c> when succeeded; otherwise <c>false</c>.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.DuplicateToken(System.IntPtr,System.Int32,System.IntPtr@)">
+            <summary>
+            Creates a new access token that duplicates one already in existence.
+            </summary>
+            <param name="token">Handle to an access token.</param>
+            <param name="impersonationLevel">The impersonation level.</param>
+            <param name="duplication">Reference to the token to duplicate.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.ImpersonateLoggedOnUser(System.IntPtr)">
+            <summary>
+            The ImpersonateLoggedOnUser function lets the calling thread impersonate the 
+            security context of a logged-on user. The user is represented by a token handle.
+            </summary>
+            <param name="userToken">Handle to a primary or impersonation access token that represents a logged-on user.</param>
+            <returns>If the function succeeds, the return value is nonzero.</returns>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.Impersonator._disposed">
+            <summary>
+            <c>true</c> if disposed; otherwise, <c>false</c>.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.Impersonator._impersonationContext">
+            <summary>
+            Holds the created impersonation context and will be used
+            for reverting to previous user.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.#ctor(Newtonsoft.Utilities.Security.BuiltinUser)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Newtonsoft.Utilities.Security.Impersonator"/> class and
+            impersonates as a built in service account.
+            </summary>
+            <param name="builtinUser">The built in user to impersonate - either
+            Local Service or Network Service. These users can only be impersonated
+            by code running as System.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Newtonsoft.Utilities.Security.Impersonator"/> class and
+            impersonates with the specified credentials.
+            </summary>
+            <param name="username">his is the name of the user account to log on 
+            to. If you use the user principal name (UPN) format, 
+            user@DNS_domain_name, the lpszDomain parameter must be <c>null</c>.</param>
+            <param name="domain">The name of the domain or server whose account 
+            database contains the lpszUsername account. If this parameter is 
+            <c>null</c>, the user name must be specified in UPN format. If this 
+            parameter is ".", the function validates the account by using only the 
+            local account database.</param>
+            <param name="password">The plaintext password for the user account.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.Finalize">
+            <summary>
+            Releases unmanaged resources and performs other cleanup operations before the
+            <see cref="T:Newtonsoft.Utilities.Security.Impersonator"/> is reclaimed by garbage collection.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.Revert">
+            <summary>
+            Reverts to the previous user.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Security.Impersonator.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or
+            resetting unmanaged resources and will revent to the previous user when
+            the impersonation still exists.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:Newtonsoft.Utilities.Security.Impersonator.Dispose(System.Boolean)" -->
+        <member name="F:Newtonsoft.Utilities.Security.LogonType.Interactive">
+            <summary>
+            This logon type is intended for users who will be interactively using the computer, such as a user being logged on  
+            by a terminal server, remote shell, or similar process.
+            This logon type has the additional expense of caching logon information for disconnected operations;
+            therefore, it is inappropriate for some client/server applications,
+            such as a mail server.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.LogonType.Network">
+            <summary>
+            This logon type is intended for high performance servers to authenticate plaintext passwords.
+            The LogonUser function does not cache credentials for this logon type.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.LogonType.Batch">
+            <summary>
+            This logon type is intended for batch servers, where processes may be executing on behalf of a user without
+            their direct intervention. This type is also for higher performance servers that process many plaintext
+            authentication attempts at a time, such as mail or Web servers.
+            The LogonUser function does not cache credentials for this logon type.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.LogonType.Service">
+            <summary>
+            Indicates a service-type logon. The account provided must have the service privilege enabled.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.LogonType.Unlock">
+            <summary>
+            This logon type is for GINA DLLs that log on users who will be interactively using the computer.
+            This logon type can generate a unique audit record that shows when the workstation was unlocked.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.LogonType.NetworkCleartText">
+            <summary>
+            This logon type preserves the name and password in the authentication package, which allows the server to make
+            connections to other network servers while impersonating the client. A server can accept plaintext credentials
+            from a client, call LogonUser, verify that the user can access the system across the network, and still
+            communicate with other servers.
+            NOTE: Windows NT:  This value is not supported.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.LogonType.NewCredentials">
+            <summary>
+            This logon type allows the caller to clone its current token and specify new credentials for outbound connections.
+            The new logon session has the same local identifier but uses different credentials for other network connections.
+            NOTE: This logon type is supported only by the LOGON32_PROVIDER_WINNT50 logon provider.
+            NOTE: Windows NT:  This value is not supported.
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Security.LogonProvider.Default">
+            <summary>
+            Use the standard logon provider for the system.
+            The default security provider is negotiate, unless you pass NULL for the domain name and the user name
+            is not in UPN format. In this case, the default provider is NTLM.
+            NOTE: Windows 2000/NT:   The default security provider is NTLM.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.CollectionUtils.GroupBy``2(System.Collections.Generic.ICollection{``1},System.Func{``1,``0})">
+            <summary>
+            Group the collection using a function which returns the key.
+            </summary>
+            <param name="source">The source collection to group.</param>
+            <param name="keySelector">The key selector.</param>
+            <returns>A Dictionary with each key relating to a list of objects in a list grouped under it.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.CollectionUtils.AddRange``2(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``1})">
+            <summary>
+            Adds the elements of the specified collection to the specified generic IList.
+            </summary>
+            <param name="initial">The list to add to.</param>
+            <param name="collection">The collection of elements to add.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.CollectionUtils.AddRange``1(System.Collections.Generic.IList{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Adds the elements of the specified collection to the specified generic IList.
+            </summary>
+            <param name="initial">The list to add to.</param>
+            <param name="collection">The collection of elements to add.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.CollectionUtils.CreateArray``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Creates an array from a enumerable source.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable">The enumerable.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.CollectionUtils.CreateGenericList(System.Type)">
+            <summary>
+            Creates a generic list of the given type.
+            </summary>
+            <param name="listItemType">The contents item type of the list.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.CollectionUtils.IsListType(System.Type)">
+            <summary>
+            Determines whether the given type is a list.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>
+            	<c>true</c> if the given tpye is a list; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Xml.XmlUtils.ConvertToXml``1(System.Collections.Generic.IEnumerable{``0},System.String,System.String,System.Collections.Generic.Dictionary{System.String,System.Converter{``0,System.String}})">
+            <summary>
+            Converts the specified collection to an XmlDocument.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="rootName">Name of the root element.</param>
+            <param name="itemName">Name of the item elements.</param>
+            <param name="propertyConverters">The property converters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.EnumerableUtils.Create``1(Newtonsoft.Utilities.Miscellaneous.Creator{``0},System.Int32)">
+            <summary>
+            Creates an enumerable from a creator with the specified count.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="itemCreator">The item creator.</param>
+            <param name="count">The count.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.EnumUtils.Parse``1(System.String)">
+            <summary>
+            Parses the specified enum member name, returning it's value.
+            </summary>
+            <param name="enumMemberName">Name of the enum member.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.EnumUtils.Parse``1(System.String,System.Boolean)">
+            <summary>
+            Parses the specified enum member name, returning it's value.
+            </summary>
+            <param name="enumMemberName">Name of the enum member.</param>
+            <param name="ignoreCase">If set to <c>true</c> ignore case.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.EnumUtils.GetNamesAndValues``1">
+            <summary>
+            Gets a dictionary of the names and values of an Enum type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.EnumUtils.GetNamesAndValues``2">
+            <summary>
+            Gets a dictionary of the names and values of an Enum type.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.EnumUtils.GetNamesAndValues``1(System.Type)">
+            <summary>
+            Gets a dictionary of the names and values of an Enum type.
+            </summary>
+            <param name="enumType">The enum type to get names and values for.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.EnumUtils.GetMaximumValue``1(System.Type)">
+            <summary>
+            Gets the maximum valid value of an Enum type. Flags enums are ORed.
+            </summary>
+            <typeparam name="TEnumType">The type of the returned value. Must be assignable from the enum's underlying value type.</typeparam>
+            <param name="enumType">The enum type to get the maximum value for.</param>
+            <returns></returns>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Miscellaneous.EventUtils">
+            <summary>
+            </summary>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Properties.Resources.EmailBase">
+             <summary>
+               Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;
+            &lt;xsl:stylesheet version=&quot;1.0&quot; xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;&gt;
+              &lt;xsl:template match=&quot;/&quot;&gt;
+                &lt;Email&gt;
+                  &lt;MessageSubject&gt;
+                    &lt;xsl:apply-templates select=&quot;//MessageSubject&quot;/&gt;
+                  &lt;/MessageSubject&gt;
+                  &lt;MessageBody&gt;
+                    &lt;xsl:apply-templates select=&quot;//MessageBody&quot;/&gt;
+                  &lt;/MessageBody&gt;
+                &lt;/Email&gt;
+              &lt;/xsl:template&gt;
+            &lt;/xsl:stylesheet&gt;.
+             </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Database.DatabaseUtils.ConvertToNullableValue``1(System.Object)">
+            <summary>
+            Converts specified value to nullable value.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Database.DatabaseUtils.IsNull(System.Object)">
+            <summary>
+            Determines whether the specified value is null.
+            </summary>
+            <param name="value">The value.</param>
+            <returns>
+            	<c>true</c> if the specified value is null; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.GetKey(System.Int32)">
+            <summary>
+            Returns the key at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The key at the index.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.GetValue(System.Int32)">
+            <summary>
+            Returns the value at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The value at the index.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.IndexOf(`0)">
+            <summary>
+            Get the index of a particular key.
+            </summary>
+            <param name="key">The key to find the index of.</param>
+            <returns>The index of the key, or -1 if not found.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.IndexOf(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Given the key-value pair, find the index.
+            </summary>
+            <param name="kvp">The key-value pair.</param>
+            <returns>The index, or -1 if not found.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Clear">
+            <summary>
+            Clears all entries in the KeyedList.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.ContainsKey(`0)">
+            <summary>
+            Test if the KeyedList contains the key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>True if the key is found.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Contains(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Test if the KeyedList contains the key in the key-value pair.
+            </summary>
+            <param name="kvp">The key-value pair.</param>
+            <returns>True if the key is found.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Add(`0,`1)">
+            <summary>
+            Adds a key-value pair to the KeyedList.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="value">The associated value.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Add(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Adds a key-value pair to the KeyedList.
+            </summary>
+            <param name="kvp">The KeyValuePair instance.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.CopyTo(System.Collections.Generic.KeyValuePair{`0,`1}[],System.Int32)">
+            <summary>
+            Copy the entire key-value pairs to the KeyValuePair array, starting
+            at the specified index of the target array.  The array is populated 
+            as an ordered list.
+            </summary>
+            <param name="kvpa">The KeyValuePair array.</param>
+            <param name="idx">The position to start the copy.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Insert(System.Int32,`0,`1)">
+            <summary>
+            Insert the key-value at the specified index.
+            </summary>
+            <param name="index">The zero-based insert point.</param>
+            <param name="key">The key.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Insert(System.Int32,System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Insert the key-value pair at the specified index location.
+            </summary>
+            <param name="index">The key.</param>
+            <param name="kvp">The value.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Remove(`0)">
+            <summary>
+            Remove the entry.
+            </summary>
+            <param name="key">The key identifying the key-value pair.</param>
+            <returns>True if removed.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.Remove(System.Collections.Generic.KeyValuePair{`0,`1})">
+            <summary>
+            Remove the key in the specified KeyValuePair instance.  The Value
+            property is ignored.
+            </summary>
+            <param name="kvp">The key-value identifying the entry.</param>
+            <returns>True if removed.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.RemoveAt(System.Int32)">
+            <summary>
+            Remove the entry at the specified index.
+            </summary>
+            <param name="index">The index to the entry to be removed.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.TryGetValue(`0,`1@)">
+            <summary>
+            Attempt to get the value, given the key, without throwing an exception if not found.
+            </summary>
+            <param name="key">The key indentifying the entry.</param>
+            <param name="val">The value, if found.</param>
+            <returns>True if found.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+            Returns an ordered System.Collections KeyValuePair objects.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.KeyedList`2.System#Collections#Generic#IEnumerable{System#Collections#Generic#KeyValuePair{K@V}}#GetEnumerator">
+            <summary>
+            Returns an ordered KeyValuePair enumerator.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.IsReadOnly">
+            <summary>
+            Returns false.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.Count">
+            <summary>
+            Returns the number of entries in the KeyedList.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.Item(System.Int32)">
+            <summary>
+            Get/Set the value at the specified index.
+            </summary>
+            <param name="index">The index.</param>
+            <returns>The value.</returns>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.Item(`0)">
+            <summary>
+            Get/Set the value associated with the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <returns>The associated value.</returns>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.Keys">
+            <summary>
+            Get an unordered list of keys.
+            This collection refers back to the keys in the original Dictionary.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.Values">
+            <summary>
+            Get an unordered list of values.
+            This collection refers back to the values in the original Dictionary.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.OrderedKeys">
+            <summary>
+            Get the ordered list of keys.
+            This is a copy of the keys in the original Dictionary.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.OrderedValues">
+            <summary>
+            Get the ordered list of values.
+            This is a copy of the values in the original Dictionary.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Collections.KeyedList`2.ObjectTable">
+            <summary>
+            Gets the Dictionary class backing the KeyedList.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNullOrEmpty(System.String,System.String)">
+            <summary>
+            Validates an argument is not null or empty.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNullOrEmptyOrWhitespace(System.String,System.String)">
+            <summary>
+            Validates an argument is not null or empty or whitespace.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentTypeIsEnum(System.Type,System.String)">
+            <summary>
+            Validates a type argument is an enum.
+            </summary>
+            <param name="type">The type argument.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNullOrEmpty``1(System.Collections.Generic.ICollection{``0},System.String)">
+            <summary>
+            Validates a collection argument is not null or empty.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection">The collection.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNullOrEmpty``1(System.Collections.Generic.ICollection{``0},System.String,System.String)">
+            <summary>
+            Validates a collection argument is not null or empty.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="collection">The collection.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="failureMessage">The failure message.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNullOrEmpty(System.Collections.ICollection,System.String)">
+            <summary>
+            Validates a collection argument is not null or empty.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNullOrEmpty(System.Collections.ICollection,System.String,System.String)">
+            <summary>
+            Validates a collection argument is not null or empty.
+            </summary>
+            <param name="collection">The collection.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="failureMessage">The failure message.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNull(System.Object,System.String)">
+            <summary>
+            Validates an argument is not null.
+            </summary>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNegative``1(System.Int32,System.String)">
+            <summary>
+            Validates an argument is not negative.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotNegative``1(System.Int32,System.String,System.String)">
+            <summary>
+            Validates an argument is not negative.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="failureMessage">The failure message.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotZero``1(``0,System.String)">
+            <summary>
+            Validates an argument is not zero.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentNotZero``1(``0,System.String,System.String)">
+            <summary>
+            Validates an argument is not zero.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="failureMessage">The failure message.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentIsPositive``1(``0,System.String)">
+            <summary>
+            Validates an argument is positive.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentIsPositive``1(``0,System.String,System.String)">
+            <summary>
+            Validates an argument is positive.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="value">The value.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="failureMessage">The failure message.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ObjectNotDisposed(System.Boolean,System.Type)">
+            <summary>
+            Validates an object is not disposed.
+            </summary>
+            <param name="disposed">A flag indicating whether the object is dispoed.</param>
+            <param name="objectType">Type of the object.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.ValidationUtils.ArgumentConditionTrue(System.Boolean,System.String,System.String)">
+            <summary>
+            Validates that an argument condition is true.
+            </summary>
+            <param name="condition">The argument condition.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="failureMessage">The failure message.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.IO.FileUtils.ToValidFileName(System.String)">
+            <summary>
+            Removes invalid file name characters from the specified string.
+            </summary>
+            <param name="s">The filename string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.FormatWith(System.String,System.Object[])">
+            <summary>
+            Replaces each format item in a specified String with the text equivalent
+            of a corresponding object's value.
+            </summary>
+            <param name="format">A composite format string.</param>
+            <param name="args">An Object array containing zero or more objects to format.</param>
+            <returns>A copy of format in which the format items have been replaced by the String equivalent of the corresponding instances of Object in args.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.FormatWith(System.String,System.IFormatProvider,System.Object[])">
+            <summary>
+            Replaces each format item in a specified String with the text equivalent
+            of a corresponding object's value.
+            </summary>
+            <param name="format">A composite format string.</param>
+            <param name="provider">An IFormatProvider that supplies culture-specific formatting information.</param>
+            <param name="args">An Object array containing zero or more objects to format.</param>
+            <returns>A copy of format in which the format items have been replaced by the String equivalent of the corresponding instances of Object in args.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.HasWhiteSpace(System.String)">
+            <summary>
+            Determines whether the string has white space.
+            </summary>
+            <param name="s">The string to test for white space.</param>
+            <returns>
+            	<c>true</c> if the string has white space; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.IsWhiteSpace(System.String)">
+            <summary>
+            Determines whether the string is all white space. Empty string will return false.
+            </summary>
+            <param name="s">The string to test whether it is all white space.</param>
+            <returns>
+            	<c>true</c> if the string is all white space; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.EnsureEndsWith(System.String,System.String)">
+            <summary>
+            Ensures the target string ends with the specified string.
+            </summary>
+            <param name="target">The target.</param>
+            <param name="value">The value.</param>
+            <returns>The target string with the value string at the end.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.Indent(System.String,System.Int32)">
+            <summary>
+            Indents each line of the specified string.
+            </summary>
+            <param name="s">The string to indent.</param>
+            <param name="indentation">The number of characters to indent by.</param>
+            <returns>The indented string.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.Indent(System.String,System.Int32,System.Char)">
+            <summary>
+            Indents each line of the specified string.
+            </summary>
+            <param name="s">The string to indent.</param>
+            <param name="indentation">The number of characters to indent by.</param>
+            <param name="indentChar">The indent character.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.NumberLines(System.String)">
+            <summary>
+            Numbers the lines.
+            </summary>
+            <param name="s">The string to number.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.ReplaceNewLines(System.String,System.String)">
+            <summary>
+            Replaces the new lines in a string with the given replacement characters.
+            </summary>
+            <param name="s">The string to replace new lines in.</param>
+            <param name="replacement">The replacement characters.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.Truncate(System.String,System.Int32)">
+            <summary>
+            Truncates the specified string.
+            </summary>
+            <param name="s">The string to truncate.</param>
+            <param name="maximumLength">The maximum length of the string before it is truncated.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.Truncate(System.String,System.Int32,System.String)">
+            <summary>
+            Truncates the specified string.
+            </summary>
+            <param name="s">The string to truncate.</param>
+            <param name="maximumLength">The maximum length of the string before it is truncated.</param>
+            <param name="suffix">The suffix to place at the end of the truncated string.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Text.StringExtensions.EnsureCarriageReturns(System.String)">
+            <summary>
+            Ensures the carriage returns. See http://cr.yp.to/docs/smtplf.html and 822bis section 2.3.
+            </summary>
+            <param name="value">The value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.UrlUtils.ToQueryString(System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Converts the speicified NameValueCollection to query string text.
+            </summary>
+            <param name="nameValues">The NameValueCollection to convert.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.UrlUtils.ToQueryString(System.Collections.Specialized.NameValueCollection,System.Boolean)">
+            <summary>
+            Converts the speicified NameValueCollection to query string text.
+            </summary>
+            <param name="nameValues">The NameValueCollection to convert.</param>
+            <param name="encodeValues">if set to <c>true</c> the values are encoded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.UrlUtils.FromQueryString(System.String)">
+            <summary>
+            Converts the speicified querystring to a NameValueCollection.
+            </summary>
+            <param name="queryString">The querystring to convert to a NameValueCollection.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.UrlUtils.FromQueryString(System.String,System.Boolean)">
+            <summary>
+            Converts the speicified querystring to a NameValueCollection.
+            </summary>
+            <param name="queryString">The querystring to convert to a NameValueCollection.</param>
+            <param name="decodeValues">if set to <c>true</c> the values are decoded.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.UI.TableUtils.FixColumnSpans(System.Web.UI.WebControls.Table)">
+            <summary>
+            Fixes a table so that the last cell in a row has a span that matches the longest row.
+            </summary>
+            <param name="table">The table to fix.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Web.UI.TableUtils.CalculateRowColumnSpan(System.Web.UI.WebControls.TableRow)">
+            <summary>
+            Calculates the row's column span.
+            </summary>
+            <param name="row">The row.</param>
+            <returns>The row's column span.</returns>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Threading.Worker">
+            <summary>
+            Skeleton for a worker thread. Another thread would typically set up
+            an instance with some work to do, and invoke the Run method (eg with
+            new Thread(new ThreadStart(job.Run)).Start())
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Threading.Worker._stopLock">
+            <summary>
+            Lock covering stopping and stopped
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Threading.Worker._stopping">
+            <summary>
+            Whether or not the worker thread has been asked to stop
+            </summary>
+        </member>
+        <member name="F:Newtonsoft.Utilities.Threading.Worker._stopped">
+            <summary>
+            Whether or not the worker thread has stopped
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Threading.Worker.Start">
+            <summary>
+            Start immediately.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Threading.Worker.Start(System.DateTime)">
+            <summary>
+            Start in the next interval from the sp
+            </summary>
+            <param name="startTime"></param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Threading.Worker.Stop">
+            <summary>
+            Tells the worker thread to stop after completing its current work item.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Threading.Worker.StopWait">
+            <summary>
+            Tells the worker thread to stop after completing its current work item
+            and then waits until it has finished.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Threading.Worker.SetStopped">
+            <summary>
+            Called by the worker thread to indicate when it has stopped.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Threading.Worker.Run">
+            <summary>
+            Main work loop of the class.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Threading.Worker.Stopping">
+            <summary>
+            Returns whether the worker thread has been asked to stop.
+            This continues to return true even after the thread has stopped.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Threading.Worker.Stopped">
+            <summary>
+            Returns whether the worker thread has stopped.
+            </summary>
+        </member>
+        <member name="P:Newtonsoft.Utilities.Threading.Worker.Thread">
+            <summary>
+            Returns the Thread that will do the work.
+            </summary>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Configuration.ConfigUtils.GetAppSetting``1(System.String)">
+            <summary>
+            Gets the value from the applications appSettings. This will error if the appSetting is not defined.
+            </summary>
+            <param name="appSettingName">Name of the appSettings key.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Configuration.ConfigUtils.GetAppSetting``1(System.String,``0)">
+            <summary>
+            Gets the value from the applications appSettings.
+            </summary>
+            <param name="appSettingName">Name of the appSettings key.</param>
+            <param name="defaultValue">The default value returned if the appSetting has not been defined.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Email.EmailController.ExtractEmailDetailsFromTemplate(System.String,System.Xml.Xsl.XsltArgumentList,System.String@,System.String@)">
+            <summary>
+            Transforms the XSL template and extracts the subject and body from the result.
+            </summary>
+            <param name="xslTemplatePath">The XSL template path.</param>
+            <param name="arguments">The arguments passed to the XSL transformation.</param>
+            <param name="subject">The extracted subject.</param>
+            <param name="messageBody">The extracted message body.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Email.EmailController.SendEmail(System.Net.Mail.MailAddress,System.Collections.Generic.IList{System.Net.Mail.MailAddress},System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Collections.Generic.IList{System.Net.Mail.Attachment})">
+            <summary>
+            Sends an email message sychronously (blocks until complete) from the given address
+            to the given address, with the specified subject and message body.
+            </summary>
+            <param name="fromEmailAddress">The sender's return email address.</param>
+            <param name="toEmailAddresses">The receipients email addresses.</param>
+            <param name="xslTemplateFileName">File name of the desired XSL template file.</param>
+            <param name="parameters">Parameters passed to the XSL transformation.</param>
+            <param name="attachments">A collection of attachments to send.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Email.EmailController.SendEmail(System.Net.Mail.MailAddress,System.Collections.Generic.IList{System.Net.Mail.MailAddress},System.String,System.Xml.Xsl.XsltArgumentList,System.Collections.Generic.IList{System.Net.Mail.Attachment})">
+            <summary>
+            Sends an email message sychronously (blocks until complete) from the given address
+            to the given address, with the specified subject and message body.
+            </summary>
+            <param name="fromEmailAddress">The sender's return email address.</param>
+            <param name="toEmailAddresses">The receipients email addresses.</param>
+            <param name="xslTemplatePath">Path to the desired XSL template file.</param>
+            <param name="attachments">A collection of attachments to send.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Email.EmailController.SendEmail(System.Net.Mail.MailAddress,System.Collections.Generic.IList{System.Net.Mail.MailAddress},System.String,System.String,System.Boolean,System.Collections.Generic.IList{System.Net.Mail.Attachment})">
+            <summary>
+            Sends an email message sychronously (blocks until complete) from the given address
+            to the given address, with the specified subject and message body.
+            </summary>
+            <param name="fromEmailAddress">The sender's return email address.</param>
+            <param name="toEmailAddresses">The receipients email addresses.</param>
+            <param name="subject">The email message subject.</param>
+            <param name="messageBody">The email message body.</param>
+            <param name="attachments">A collection of attachments to send.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Collections.EnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},System.Action{``0})">
+            <summary>
+            Performs an action for each item in an enumerable, divided by a seperator action.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="enumerable">The enumerable.</param>
+            <param name="action">The action.</param>
+            <param name="seperatorAction">The seperator action.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Xml.XPathUtils.TrySelectNodeText(System.Xml.XmlNode,System.String,System.String@)">
+            <summary>
+            Gets the text from a selected node.
+            </summary>
+            <param name="node">The node to select from.</param>
+            <param name="xpath">The XPath expression to select a text node.</param>
+            <param name="selectedText">The selected text.</param>
+            <returns>The text from the selected node.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Xml.XPathUtils.TrySelectNodeXml(System.Xml.XmlNode,System.String,System.String@)">
+            <summary>
+            Gets the InnerXml from a selected node.
+            </summary>
+            <param name="node">The node to select from.</param>
+            <param name="xpath">The XPath expression to select a node.</param>
+            <param name="selectedXml">The selected XML.</param>
+            <returns>The InnerXml from the selected node.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Xml.XPathUtils.SelectNodeXml(System.Xml.XmlNode,System.String)">
+            <summary>
+            Gets the InnerXml from a selected node.
+            </summary>
+            <param name="node">The node to select from.</param>
+            <param name="xpath">The XPath expression to select a node.</param>
+            <returns>The InnerXml from the selected node.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Database.SqlUtils.ToValue(System.Data.SqlTypes.SqlInt32)">
+            <summary>
+            Converts SqlType to .NET value.
+            </summary>
+            <param name="sqlValue">The SQL value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Database.SqlUtils.ToValue(System.Data.SqlTypes.SqlInt64)">
+            <summary>
+            Converts SqlType to .NET value.
+            </summary>
+            <param name="sqlValue">The SQL value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Database.SqlUtils.ToValue(System.Data.SqlTypes.SqlString)">
+            <summary>
+            Converts SqlType to .NET value.
+            </summary>
+            <param name="sqlValue">The SQL value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Database.SqlUtils.ToValue(System.Data.SqlTypes.SqlDateTime)">
+            <summary>
+            Converts SqlType to .NET value.
+            </summary>
+            <param name="sqlValue">The SQL value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Database.SqlUtils.ToValue(System.Data.SqlTypes.SqlBoolean)">
+            <summary>
+            Converts SqlType to .NET value.
+            </summary>
+            <param name="sqlValue">The SQL value.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.ReflectionUtils.GetMemberUnderlyingType(System.Reflection.MemberInfo)">
+            <summary>
+            Gets the member's underlying type.
+            </summary>
+            <param name="member">The member.</param>
+            <returns>The underlying type of the member.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.ReflectionUtils.IsIndexedProperty(System.Reflection.MemberInfo)">
+            <summary>
+            Determines whether the member is an indexed property.
+            </summary>
+            <param name="member">The member.</param>
+            <returns>
+            	<c>true</c> if the member is an indexed property; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.ReflectionUtils.IsIndexedProperty(System.Reflection.PropertyInfo)">
+            <summary>
+            Determines whether the property is an indexed property.
+            </summary>
+            <param name="property">The property.</param>
+            <returns>
+            	<c>true</c> if the property is an indexed property; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.ReflectionUtils.GetMemberValue(System.Reflection.MemberInfo,System.Object)">
+            <summary>
+            Gets the member's value on the object.
+            </summary>
+            <param name="member">The member.</param>
+            <param name="target">The target object.</param>
+            <returns>The member's value on the object.</returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.ReflectionUtils.SetMemberValue(System.Reflection.MemberInfo,System.Object,System.Object)">
+            <summary>
+            Sets the member's value on the target object.
+            </summary>
+            <param name="member">The member.</param>
+            <param name="target">The target.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.ReflectionUtils.CanReadMemberValue(System.Reflection.MemberInfo)">
+            <summary>
+            Determines whether the specified MemberInfo can be read.
+            </summary>
+            <param name="member">The MemberInfo to determine whether can be read.</param>
+            <returns>
+            	<c>true</c> if the specified MemberInfo can be read; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Reflection.ReflectionUtils.CanSetMemberValue(System.Reflection.MemberInfo)">
+            <summary>
+            Determines whether the specified MemberInfo can be set.
+            </summary>
+            <param name="member">The MemberInfo to determine whether can be set.</param>
+            <returns>
+            	<c>true</c> if the specified MemberInfo can be set; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="T:Newtonsoft.Utilities.Miscellaneous.DataMapper">
+            <summary>
+            Map data from a source into a target object
+            by copying public property values.
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.DataMapper.Map(System.Collections.IDictionary,System.Object)">
+            <summary>
+            Copies values from the source into the
+            properties of the target.
+            </summary>
+            <param name="source">A name/value dictionary containing the source values.</param>
+            <param name="target">An object with properties to be set from the dictionary.</param>
+            <remarks>
+            The key names in the dictionary must match the property names on the target
+            object. Target properties may not be readonly or indexed.
+            </remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.DataMapper.Map(System.Collections.IDictionary,System.Object,System.String[])">
+            <summary>
+            Copies values from the source into the
+            properties of the target.
+            </summary>
+            <param name="source">A name/value dictionary containing the source values.</param>
+            <param name="target">An object with properties to be set from the dictionary.</param>
+            <param name="ignoreList">A list of property names to ignore. 
+            These properties will not be set on the target object.</param>
+            <remarks>
+            The key names in the dictionary must match the property names on the target
+            object. Target properties may not be readonly or indexed.
+            </remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.DataMapper.Map(System.Collections.IDictionary,System.Object,System.Boolean,System.String[])">
+            <summary>
+            Copies values from the source into the
+            properties of the target.
+            </summary>
+            <param name="source">A name/value dictionary containing the source values.</param>
+            <param name="target">An object with properties to be set from the dictionary.</param>
+            <param name="ignoreList">A list of property names to ignore. 
+            These properties will not be set on the target object.</param>
+            <param name="suppressExceptions">If <see langword="true" />, any exceptions will be supressed.</param>
+            <remarks>
+            The key names in the dictionary must match the property names on the target
+            object. Target properties may not be readonly or indexed.
+            </remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.DataMapper.Map(System.Object,System.Object)">
+            <summary>
+            Copies values from the source into the
+            properties of the target.
+            </summary>
+            <param name="source">An object containing the source values.</param>
+            <param name="target">An object with properties to be set from the dictionary.</param>
+            <remarks>
+            The property names and types of the source object must match the property names and types
+            on the target object. Source properties may not be indexed. 
+            Target properties may not be readonly or indexed.
+            </remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.DataMapper.Map(System.Object,System.Object,System.String[])">
+            <summary>
+            Copies values from the source into the
+            properties of the target.
+            </summary>
+            <param name="source">An object containing the source values.</param>
+            <param name="target">An object with properties to be set from the dictionary.</param>
+            <param name="ignoreList">A list of property names to ignore. 
+            These properties will not be set on the target object.</param>
+            <remarks>
+            The property names and types of the source object must match the property names and types
+            on the target object. Source properties may not be indexed. 
+            Target properties may not be readonly or indexed.
+            </remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.DataMapper.Map(System.Object,System.Object,System.Boolean,System.Reflection.MemberTypes,System.Reflection.BindingFlags,System.String[])">
+            <summary>
+            Copies values from the source into the
+            properties of the target.
+            </summary>
+            <param name="source">An object containing the source values.</param>
+            <param name="target">An object with properties to be set from the dictionary.</param>
+            <param name="ignoreList">A list of property names to ignore. 
+            These properties will not be set on the target object.</param>
+            <param name="memberTypes">The types of members you want to map.</param>
+            <param name="bindAttr">Specifies which members you want to map.</param>
+            <param name="suppressExceptions">If <see langword="true"/>, any exceptions will be supressed.</param>
+            <remarks>
+            <para>
+            The property names and types of the source object must match the property names and types
+            on the target object. Source properties may not be indexed. 
+            Target properties may not be readonly or indexed.
+            </para><para>
+            Properties to copy are determined based on the source object. Any properties
+            on the source object marked with the <see cref="T:System.ComponentModel.BrowsableAttribute"/> equal
+            to false are ignored.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Miscellaneous.DataMapper.SetPropertyValue(System.Object,System.String,System.Object)">
+            <summary>
+            Sets an object's property with the specified value,
+            coercing that value to the appropriate type if possible.
+            </summary>
+            <param name="target">Object containing the property to set.</param>
+            <param name="memberName">Name of the member to set.</param>
+            <param name="value">Value to set into the member.</param>
+        </member>
+        <member name="M:Newtonsoft.Utilities.Email.EmailUtils.ParseEmailAddresses(System.String)">
+            <summary>
+            Parses the comma delimited email addresses.
+            </summary>
+            <param name="emailAddresses">The email addresses.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
