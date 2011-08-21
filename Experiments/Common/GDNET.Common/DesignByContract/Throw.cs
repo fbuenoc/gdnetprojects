@@ -21,6 +21,18 @@ namespace GDNET.Common.DesignByContract
         }
 
         /// <summary>
+        /// Throw an ArgumentException if object to test is null or empty.
+        /// </summary>
+        /// <param name="objTest">The object to be tested</param>
+        public static void ArgumentExceptionIfNullOrEmpty(string objTest, string paramName, string message)
+        {
+            if (string.IsNullOrEmpty(objTest))
+            {
+                throw new ArgumentException(paramName, message);
+            }
+        }
+
+        /// <summary>
         /// Throw a FileNotFoundException if file to test is not found.
         /// </summary>
         /// <param name="fileName">The file to test is exists or not.</param>
