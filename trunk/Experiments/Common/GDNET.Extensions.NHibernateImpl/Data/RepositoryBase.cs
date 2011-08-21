@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using NHibernate;
+using NHibernate.Criterion;
 using NHibernate.Linq;
 
 using GDNET.Common.Data;
@@ -15,16 +16,18 @@ namespace GoogleCode.Core.Data
     /// <summary>
     /// Base Repository for working with NHibernate
     /// </summary>
-    /// <typeparam name="TObject"></typeparam>
+    /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TId"></typeparam>
-    public abstract class RepositoryBase<TObject, TId> : IDisposable, IRepositoryBase<TObject, TId> where TObject : DomainBase<TId>
+    public abstract class RepositoryBase<TEntity, TId> :
+        IDisposable,
+        IRepositoryBase<TEntity, TId> where TEntity : DomainBase<TId>
     {
         protected ISession session = null;
         protected ITransaction transaction = null;
 
         public RepositoryBase(ISession session)
         {
-            Throw.ArgumentNullException(session, "session", "Session must be specified.");
+            Throw.ArgumentNullException(session, "session", "Session must be specified a valid instance.");
             this.session = session;
         }
 
@@ -64,7 +67,7 @@ namespace GoogleCode.Core.Data
 
         #endregion
 
-        #region IRepositoryBase<TObject,TId> Members
+        #region IRepositoryBase<TEntity,TId> Members
 
         /// <summary>
         /// Begins a NHibernate transaction.
@@ -99,22 +102,63 @@ namespace GoogleCode.Core.Data
             this.transaction = null;
         }
 
-        public TObject LoadById(TId id)
+        public TEntity LoadById(TId id)
         {
-            return this.session.Load<TObject>(id);
+            return this.session.Load<TEntity>(id);
         }
 
-        public TObject GetById(TId id)
+        public TEntity GetById(TId id)
         {
-            return this.session.Get<TObject>(id);
+            return this.session.Get<TEntity>(id);
         }
 
-        public IList<TObject> GetAll()
+        public IList<TEntity> GetAll()
         {
-            return this.session.Query<TObject>().ToList();
+            return this.session.Query<TEntity>().ToList();
         }
 
-        public TObject SaveOrUpdate(TObject entity)
+        /// <summary>
+        /// Gets all entities (of TEntity type) from data store.
+        /// </summary>
+        /// <param name="page">Zero base page</param>
+        /// <param name="pageSize">Number of item per each page</param>
+        /// <returns></returns>
+        public IList<TEntity> GetAll(int page, int pageSize)
+        {
+            return this.session.Query<TEntity>().Skip(page * pageSize).Take(pageSize).ToList();
+        }
+
+        /// <summary>
+        /// Retrieves a collection of entities based on the name and value of a property.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
+        /// <param name="property">The name of the property; should be a member of type TEntity.</param>
+        /// <param name="value">The value of the property.</param>
+        public IList<TEntity> FindByProperty(string property, object value)
+        {
+            Throw.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
+
+            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
+            return criteria.List<TEntity>();
+        }
+
+        /// <summary>
+        /// Retrieves a collection of entities based on the name and value of a property.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
+        /// <param name="property">The name of the property; should be a member of type TEntity.</param>
+        /// <param name="value">The value of the property.</param>
+        /// <param name="page">Zero base page</param>
+        /// <param name="pageSize">Number of item per each page</param>
+        public IList<TEntity> FindByProperty(string property, object value, int page, int pageSize)
+        {
+            Throw.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
+
+            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
+            return criteria.SetFirstResult(page * pageSize).SetMaxResults(pageSize).List<TEntity>();
+        }
+
+        public TEntity SaveOrUpdate(TEntity entity)
         {
             Throw.ArgumentNullException(entity, "entity", "Entity must be valid to be saved.");
 
@@ -122,7 +166,7 @@ namespace GoogleCode.Core.Data
             return entity;
         }
 
-        public void Delete(TObject entity)
+        public void Delete(TEntity entity)
         {
             Throw.ArgumentNullException(entity, "entity", "Entity must be valid to be deleted.");
 

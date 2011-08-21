@@ -6,9 +6,9 @@ using System.Text;
 namespace GDNET.Common.Domain
 {
     /// <summary>
-    /// Base object with generic Id
+    /// Base object with generic Id.
     /// </summary>
-    /// <typeparam name="TId"></typeparam>
+    /// <typeparam name="TId">Type of object' Id</typeparam>
     public abstract class DomainBase<TId>
     {
         public virtual TId Id
