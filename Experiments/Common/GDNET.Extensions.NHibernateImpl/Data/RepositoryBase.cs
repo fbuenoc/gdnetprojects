@@ -10,6 +10,7 @@ using NHibernate.Linq;
 using GDNET.Common.Data;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Domain;
+using GDNET.Extensions.NHibernateImpl.Data;
 
 namespace GoogleCode.Core.Data
 {
@@ -20,7 +21,9 @@ namespace GoogleCode.Core.Data
     /// <typeparam name="TId"></typeparam>
     public abstract class RepositoryBase<TEntity, TId> :
         IDisposable,
-        IRepositoryBase<TEntity, TId> where TEntity : DomainBase<TId>
+        IRepositoryBase<TEntity, TId>,
+        INHRepositoryBase<TEntity, TId>
+        where TEntity : DomainBase<TId>
     {
         protected ISession session = null;
         protected ITransaction transaction = null;
@@ -112,20 +115,31 @@ namespace GoogleCode.Core.Data
             return this.session.Get<TEntity>(id);
         }
 
+        /// <summary>
+        /// Gets all entities (of TEntity type) from data store.
+        /// </summary>
+        /// <returns></returns>
         public IList<TEntity> GetAll()
         {
-            return this.session.Query<TEntity>().ToList();
+            return this.GetAll(0, 0);
         }
 
         /// <summary>
-        /// Gets all entities (of TEntity type) from data store.
+        /// Gets all entities (of TEntity type) from data store. We ignore paging condition if page & pageSize are equal 0.
         /// </summary>
         /// <param name="page">Zero base page</param>
         /// <param name="pageSize">Number of item per each page</param>
         /// <returns></returns>
-        public IList<TEntity> GetAll(int page, int pageSize)
+        public IList<TEntity> GetAll(uint page, uint pageSize)
         {
-            return this.session.Query<TEntity>().Skip(page * pageSize).Take(pageSize).ToList();
+            if (page == 0 && pageSize == 0)
+            {
+                return this.session.Query<TEntity>().ToList();
+            }
+            else
+            {
+                return this.session.Query<TEntity>().Skip((int)(page * pageSize)).Take((int)pageSize).ToList();
+            }
         }
 
         /// <summary>
@@ -137,25 +151,29 @@ namespace GoogleCode.Core.Data
         public IList<TEntity> FindByProperty(string property, object value)
         {
             Throw.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
-
-            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
-            return criteria.List<TEntity>();
+            return this.FindByProperty(property, value, 0, 0);
         }
 
         /// <summary>
         /// Retrieves a collection of entities based on the name and value of a property.
+        /// We ignore paging condition if page & pageSize are equal 0.
         /// </summary>
         /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
         /// <param name="property">The name of the property; should be a member of type TEntity.</param>
         /// <param name="value">The value of the property.</param>
         /// <param name="page">Zero base page</param>
         /// <param name="pageSize">Number of item per each page</param>
-        public IList<TEntity> FindByProperty(string property, object value, int page, int pageSize)
+        public IList<TEntity> FindByProperty(string property, object value, uint page, uint pageSize)
         {
             Throw.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
 
             var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
-            return criteria.SetFirstResult(page * pageSize).SetMaxResults(pageSize).List<TEntity>();
+            if (!(page == 0 && pageSize == 0))
+            {
+                criteria = criteria.SetFirstResult((int)(page * pageSize)).SetMaxResults((int)pageSize);
+            }
+
+            return criteria.List<TEntity>();
         }
 
         public TEntity SaveOrUpdate(TEntity entity)
@@ -171,6 +189,43 @@ namespace GoogleCode.Core.Data
             Throw.ArgumentNullException(entity, "entity", "Entity must be valid to be deleted.");
 
             this.session.Delete(entity);
+        }
+
+        #endregion
+
+        #region INHRepositoryBase<TEntity,TId> Members
+
+        /// <summary>
+        /// Retrieves a collection of entities based on the name and value of a property.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
+        /// <param name="property">The name of the property; should be a member of type TEntity.</param>
+        /// <param name="value">The value of the property.</param>
+        public IList<TEntity> FindByProperty(string property, object value, Order orderBy)
+        {
+            return this.FindByProperty(property, value, orderBy, 0, 0);
+        }
+
+        /// <summary>
+        /// Retrieves a collection of entities based on the name and value of a property.
+        /// We ignore paging condition if page & pageSize are equal 0.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
+        /// <param name="property">The name of the property; should be a member of type TEntity.</param>
+        /// <param name="value">The value of the property.</param>
+        /// <param name="page">Zero base page</param>
+        /// <param name="pageSize">Number of item per each page</param>
+        public IList<TEntity> FindByProperty(string property, object value, Order orderBy, uint page, uint pageSize)
+        {
+            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
+            criteria = criteria.AddOrder(orderBy);
+
+            if (!(page == 0 && pageSize == 0))
+            {
+                criteria = criteria.SetFirstResult((int)(page * pageSize)).SetMaxResults((int)pageSize);
+            }
+
+            return criteria.List<TEntity>();
         }
 
         #endregion

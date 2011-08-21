@@ -33,6 +33,18 @@ namespace GDNET.Common.DesignByContract
         }
 
         /// <summary>
+        /// Throw an ArgumentOutOfRangeException if object to test is less than zero.
+        /// </summary>
+        /// <param name="objTest"></param>
+        public static void ArgumentOutOfRangeExceptionIfNegative(decimal objTest, string paramName, string message)
+        {
+            if (objTest < 0)
+            {
+                throw new ArgumentOutOfRangeException(paramName, message);
+            }
+        }
+
+        /// <summary>
         /// Throw a FileNotFoundException if file to test is not found.
         /// </summary>
         /// <param name="fileName">The file to test is exists or not.</param>
