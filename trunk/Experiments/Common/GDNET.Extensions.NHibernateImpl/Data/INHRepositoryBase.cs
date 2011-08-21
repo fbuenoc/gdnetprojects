@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 
 using NHibernate.Criterion;
+using GDNET.Common.Data;
 
 namespace GDNET.Extensions.NHibernateImpl.Data
 {
-    public interface INHRepositoryBase<TEntity, TId>
+    public interface INHRepositoryBase<TEntity, TId> : IRepositoryBase<TEntity, TId>
     {
         /// <summary>
         /// Retrieves a collection of entities based on the name and value of a property.
