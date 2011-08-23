@@ -4,34 +4,31 @@ using System.Linq;
 using System.Text;
 
 using NHibernate;
-
-using NUnit.Framework;
-
-using GoogleCode.Core.Data;
-using GoogleCode.Core.Domain;
-using GoogleCode.Data.Mapping;
-using GDNET.Extensions.NHibernateImpl;
 using NHibernate.Criterion;
+using NUnit.Framework;
 
 namespace GoogleCode.Data.Tests
 {
+    using GDNET.Extensions.NHibernateImpl;
+    using GoogleCode.Core.Data;
+    using GoogleCode.Core.Domain;
+    using GoogleCode.Data.Mapping;
+
     [TestFixture]
     public class LabelRepositoryTests
     {
-        private ISessionFactory sessionFactory = null;
-
         #region TestFixture Methods
 
         [SetUp]
         public void SetUp()
         {
-            this.sessionFactory = SessionFactoryManager.BuildSessionFactory(MappingUtil.GetHbmMapping());
+            NHSessionManager.Initialize(MappingUtil.GetHbmMapping());
         }
 
         [TearDown]
         public void TearDown()
         {
-            this.sessionFactory.Dispose();
+            NHSessionManager.Release();
         }
 
         #endregion
@@ -41,7 +38,7 @@ namespace GoogleCode.Data.Tests
         [Test]
         public void SaveOrUpdateTest()
         {
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -63,7 +60,7 @@ namespace GoogleCode.Data.Tests
         [Test]
         public void SaveOrUpdateTestWithProject()
         {
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
@@ -107,7 +104,7 @@ namespace GoogleCode.Data.Tests
         [Test]
         public void GetAllTest()
         {
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -134,7 +131,7 @@ namespace GoogleCode.Data.Tests
         [Test]
         public void GetAllTest_Paging()
         {
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -167,7 +164,7 @@ namespace GoogleCode.Data.Tests
         [Test]
         public void FindByPropertyTest()
         {
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -194,7 +191,7 @@ namespace GoogleCode.Data.Tests
             Label l1 = new Label { Name = "Label 1" };
             Label l2 = new Label { Name = "Label 2" };
 
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -207,7 +204,7 @@ namespace GoogleCode.Data.Tests
                 }
             }
 
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -231,7 +228,7 @@ namespace GoogleCode.Data.Tests
         [Test]
         public void RollbackTest()
         {
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -257,7 +254,7 @@ namespace GoogleCode.Data.Tests
         {
             int labelId = 0;
             string labelName = string.Empty;
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 Label l1 = new Label { Name = "Label 1" };
                 using (var repository = new LabelRepository(session))
@@ -271,7 +268,7 @@ namespace GoogleCode.Data.Tests
                 }
             }
 
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 using (var repository = new LabelRepository(session))
                 {
@@ -294,7 +291,7 @@ namespace GoogleCode.Data.Tests
         [Test, ExpectedException(typeof(ObjectNotFoundException))]
         public void LoadByIdTest_NotFould()
         {
-            using (var session = this.sessionFactory.OpenSession())
+            using (var session = NHSessionManager.OpenSession())
             {
                 Label l1 = new Label { Name = "Label 1" };
                 using (var repository = new LabelRepository(session))

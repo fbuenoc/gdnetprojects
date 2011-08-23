@@ -67,5 +67,17 @@ namespace GDNET.Common.DesignByContract
                 throw new InvalidOperationException(message);
             }
         }
+
+        /// <summary>
+        /// Throw an InvalidOperationException if object to test is false.
+        /// </summary>
+        /// <param name="objTest">The object to be tested</param>
+        public static void InvalidOperationExceptionIfFalse(bool objTest, string message)
+        {
+            if (!objTest)
+            {
+                throw new InvalidOperationException(message);
+            }
+        }
     }
 }
