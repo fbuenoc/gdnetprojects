@@ -70,6 +70,12 @@ namespace GDNET.Common.Data
         /// <param name="entity"></param>
         /// <returns></returns>
         TEntity SaveOrUpdate(TEntity entity);
+
+        /// <summary>
+        /// Delete entity from data store by its id.
+        /// </summary>
+        /// <param name="id"></param>
+        void Delete(TId id);
         /// <summary>
         /// Delete entity from data store.
         /// </summary>
