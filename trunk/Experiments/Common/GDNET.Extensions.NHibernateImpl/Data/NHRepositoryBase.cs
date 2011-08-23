@@ -179,6 +179,11 @@ namespace GoogleCode.Core.Data
             return entity;
         }
 
+        public void Delete(TId id)
+        {
+            this.Delete(this.session.Load<TEntity>(id));
+        }
+
         public void Delete(TEntity entity)
         {
             Throw.ArgumentNullException(entity, "entity", "Entity must be valid to be deleted.");

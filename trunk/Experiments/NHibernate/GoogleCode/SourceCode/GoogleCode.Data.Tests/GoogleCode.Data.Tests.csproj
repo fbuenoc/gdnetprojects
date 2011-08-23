@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="LabelRepositoryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestHelper.cs" />
+    <Compile Include="TestHelperFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Common\GDNET.Common.csproj">

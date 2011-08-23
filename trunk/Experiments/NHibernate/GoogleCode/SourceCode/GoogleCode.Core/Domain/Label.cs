@@ -13,16 +13,26 @@ namespace GoogleCode.Core.Domain
         /// <summary>
         /// All projects use this label
         /// </summary>
-        public virtual IList<Project> Projects { get; set; }
+        public virtual IList<ProjectLabelLink> Links { get; set; }
 
         public Label()
         {
-            this.Projects = new List<Project>();
+            this.Links = new List<ProjectLabelLink>();
         }
 
-        public virtual void AddProject(Project p)
+        public virtual void AddLink(Project project)
         {
-            this.Projects.Add(p);
+            ProjectLabelLink link = new ProjectLabelLink
+            {
+                CreatedDate = DateTime.Now,
+                Project = project,
+                Label = this,
+            };
+            this.AddLink(link);
+        }
+        public virtual void AddLink(ProjectLabelLink link)
+        {
+            this.Links.Add(link);
         }
     }
 }

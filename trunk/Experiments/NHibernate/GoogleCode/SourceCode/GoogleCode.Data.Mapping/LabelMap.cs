@@ -13,15 +13,19 @@ namespace GoogleCode.Data.Mapping
         public LabelMap()
         {
             base.Property(label => label.Name);
-
-            base.Bag(label => label.Projects, cm =>
+            base.Bag(label => label.Links, cm =>
             {
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Table("ProjectLabelLink");
-                cm.Key(km => km.Column("LabelId"));
-            }, map =>
+                cm.Key(km =>
+                {
+                    km.Column("LabelId");
+                });
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                cm.Inverse(true);
+            }, m =>
             {
-                map.ManyToMany(mmm => mmm.Column("ProjectId"));
+                m.OneToMany();
             });
         }
     }

@@ -52,6 +52,7 @@
     <Compile Include="LabelMap.cs" />
     <Compile Include="MappingBase.cs" />
     <Compile Include="MappingUtil.cs" />
+    <Compile Include="ProjectLabelLinkMap.cs" />
     <Compile Include="ProjectMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

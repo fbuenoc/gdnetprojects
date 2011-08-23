@@ -17,7 +17,7 @@ namespace GoogleCode.Data.Mapping
         public static HbmMapping GetHbmMapping()
         {
             var mapper = new ModelMapper();
-            mapper.AddMappings(new Type[] { typeof(ProjectMap), typeof(LabelMap) });
+            mapper.AddMappings(new Type[] { typeof(ProjectMap), typeof(LabelMap), typeof(ProjectLabelLinkMap) });
 
             return mapper.CompileMappingForAllExplicitlyAddedEntities();
         }

@@ -17,16 +17,21 @@ namespace GoogleCode.Data.Mapping
             base.Property(project => project.LogoUrl);
             base.Property(project => project.Activity);
             base.Property(project => project.Description);
-            base.Property<DateTime>(project => project.LastUpdate);
+            base.Property(project => project.LastUpdate);
 
-            base.Bag(project => project.Labels, cm =>
+            base.Bag(project => project.Links, cm =>
             {
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Table("ProjectLabelLink");
-                cm.Key(km => km.Column("ProjectId"));
-            }, map =>
+                cm.Key(km =>
+                {
+                    km.Column("ProjectId");
+                });
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                cm.Inverse(true);
+            }, m =>
             {
-                map.ManyToMany(mmm => mmm.Column("LabelId"));
+                m.OneToMany();
             });
         }
     }

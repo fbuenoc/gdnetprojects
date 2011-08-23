@@ -49,6 +49,7 @@
     <Compile Include="Data\ILabelRepository.cs" />
     <Compile Include="Domain\Label.cs" />
     <Compile Include="Domain\Project.cs" />
+    <Compile Include="Domain\ProjectLabelLink.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

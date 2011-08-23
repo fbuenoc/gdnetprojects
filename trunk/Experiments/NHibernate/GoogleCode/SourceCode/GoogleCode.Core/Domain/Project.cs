@@ -19,16 +19,16 @@ namespace GoogleCode.Core.Domain
         /// <summary>
         /// All labels attached to this project
         /// </summary>
-        public virtual IList<Label> Labels { get; set; }
+        public virtual IList<ProjectLabelLink> Links { get; set; }
 
         public Project()
         {
-            this.Labels = new List<Label>();
+            this.Links = new List<ProjectLabelLink>();
         }
 
-        public virtual void AddLabel(Label l)
+        public virtual void AddLink(ProjectLabelLink link)
         {
-            this.Labels.Add(l);
+            this.Links.Add(link);
         }
     }
 }

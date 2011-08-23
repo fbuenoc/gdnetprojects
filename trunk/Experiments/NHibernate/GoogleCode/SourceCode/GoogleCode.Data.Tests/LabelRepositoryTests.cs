@@ -70,16 +70,17 @@ namespace GoogleCode.Data.Tests
                     var labelRepository = new LabelRepository(session);
                     var projectRepository = new ProjectRepository(session);
 
-                    Project p1 = TestHelper.NewProject(1);
-                    Project p2 = TestHelper.NewProject(2);
+                    Project p1 = TestHelperFactory.NewProject(1);
+                    Project p2 = TestHelperFactory.NewProject(2);
                     projectRepository.SaveOrUpdate(p1);
                     projectRepository.SaveOrUpdate(p2);
 
-                    Label l1 = TestHelper.NewLabel(1);
-                    l1.AddProject(p1);
-                    l1.AddProject(p2);
-                    Label l2 = TestHelper.NewLabel(2);
-                    l2.AddProject(p1);
+                    Label l1 = TestHelperFactory.NewLabel(1);
+                    l1.AddLink(p1);
+                    l1.AddLink(p2);
+
+                    Label l2 = TestHelperFactory.NewLabel(2);
+                    l2.AddLink(p1);
 
                     labelRepository.SaveOrUpdate(l1);
                     labelRepository.SaveOrUpdate(l2);
