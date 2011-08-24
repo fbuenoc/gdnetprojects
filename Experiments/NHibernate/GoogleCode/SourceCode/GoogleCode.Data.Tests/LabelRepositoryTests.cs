@@ -7,6 +7,8 @@ using NHibernate;
 using NHibernate.Criterion;
 using NUnit.Framework;
 
+using HibernatingRhinos.Profiler.Appender.NHibernate;
+
 namespace GoogleCode.Data.Tests
 {
     using GDNET.Extensions.NHibernateImpl;
@@ -22,7 +24,8 @@ namespace GoogleCode.Data.Tests
         [SetUp]
         public void SetUp()
         {
-            NHSessionManager.Initialize(MappingUtil.GetHbmMapping());
+            NHSessionManager.Initialize(MappingUtil.GetHbmMapping(), TestConstants.DefaultCfgFile);
+            NHibernateProfiler.Initialize();
         }
 
         [TearDown]
@@ -123,6 +126,44 @@ namespace GoogleCode.Data.Tests
 
                     repository.BeginTransaction();
                     repository.Delete(l1);
+                    repository.Commit();
+                }
+            }
+        }
+
+        [Test]
+        public void GetAllTest_With2ndCache()
+        {
+            Label l1 = new Label { Name = "Label 1" };
+            using (var session = NHSessionManager.OpenSession())
+            {
+                using (var repository = new LabelRepository(session))
+                {
+                    var results1 = repository.GetAll();
+
+                    repository.BeginTransaction();
+                    repository.SaveOrUpdate(l1);
+                    repository.Commit();
+                    Console.WriteLine("Saved---");
+
+                    Console.WriteLine("Get all 1---");
+                    var results2 = repository.GetAll();
+                    Assert.AreEqual(results2.Count, results1.Count + 1);
+                    Assert.IsNotNull(results2.First(label => label.Id == l1.Id));
+                }
+            }
+
+            using (var session = NHSessionManager.OpenSession())
+            {
+                using (var repository = new LabelRepository(session))
+                {
+                    Console.WriteLine("Get all 2---");
+                    var results = repository.GetAll();
+                    Console.WriteLine("Get all 3---");
+                    var results3 = repository.GetAll();
+
+                    repository.BeginTransaction();
+                    repository.Delete(l1.Id);
                     repository.Commit();
                 }
             }
