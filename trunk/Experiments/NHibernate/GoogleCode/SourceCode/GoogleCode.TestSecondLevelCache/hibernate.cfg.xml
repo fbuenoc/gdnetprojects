@@ -8,6 +8,7 @@ for your own use before compile tests in VisualStudio.
 <hibernate-configuration  xmlns="urn:nhibernate-configuration-2.2" >
   <session-factory name="NHibernate.Test">
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+    <property name="connection.isolation">ReadCommitted</property>
     <property name="connection.connection_string">
       Server=.\sqlexpress2005;initial catalog=GoogleCode;Integrated Security=SSPI
     </property>
@@ -17,7 +18,7 @@ for your own use before compile tests in VisualStudio.
     <property name="command_timeout">10</property>
     <property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
 
-    <property name="cache.provider_class">NHibernate.Caches.SysCache.SysCacheProvider, NHibernate.Caches.SysCache</property>
+    <property name="cache.provider_class">NHibernate.Caches.Prevalence.PrevalenceCacheProvider,NHibernate.Caches.Prevalence</property>
     <property name="cache.use_second_level_cache">true</property>
   </session-factory>
 </hibernate-configuration>

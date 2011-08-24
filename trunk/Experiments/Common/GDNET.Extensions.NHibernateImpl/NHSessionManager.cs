@@ -14,23 +14,10 @@ namespace GDNET.Extensions.NHibernateImpl
 {
     public static class NHSessionManager
     {
-        /// <summary>
-        /// The file contains configuration information.
-        /// </summary>
-        private const string DefaultCfgFile = "hibernate.cfg.xml";
-
         private static bool _isInitialized = false;
         private static ISessionFactory _sessionFactory = null;
         private static HbmMapping _mappings = null;
         private static string _cfgFile = null;
-
-        /// <summary>
-        /// Provides information to initialize session manager.
-        /// </summary>
-        public static void Initialize(HbmMapping mappings)
-        {
-            Initialize(mappings, DefaultCfgFile);
-        }
 
         /// <summary>
         /// Provides information to initialize session manager.
