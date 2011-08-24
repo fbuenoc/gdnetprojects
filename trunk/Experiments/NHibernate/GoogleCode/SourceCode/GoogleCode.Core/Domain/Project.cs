@@ -26,6 +26,16 @@ namespace GoogleCode.Core.Domain
             this.Links = new List<ProjectLabelLink>();
         }
 
+        public virtual void AddLink(Label label)
+        {
+            this.AddLink(new ProjectLabelLink
+            {
+                Project = this,
+                Label = label,
+                CreatedDate = DateTime.Now
+            });
+        }
+
         public virtual void AddLink(ProjectLabelLink link)
         {
             this.Links.Add(link);
