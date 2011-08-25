@@ -130,11 +130,11 @@ namespace GoogleCode.Core.Data
         {
             if (page == 0 && pageSize == 0)
             {
-                return this.session.Query<TEntity>().ToList();
+                return this.session.Query<TEntity>().Cacheable().ToList();
             }
             else
             {
-                return this.session.Query<TEntity>().Skip((int)(page * pageSize)).Take((int)pageSize).ToList();
+                return this.session.Query<TEntity>().Skip((int)(page * pageSize)).Take((int)pageSize).Cacheable().ToList();
             }
         }
 
@@ -168,7 +168,7 @@ namespace GoogleCode.Core.Data
                 criteria = criteria.SetFirstResult((int)(page * pageSize)).SetMaxResults((int)pageSize);
             }
 
-            return criteria.List<TEntity>();
+            return criteria.SetCacheable(true).List<TEntity>();
         }
 
         public TEntity SaveOrUpdate(TEntity entity)
@@ -225,7 +225,7 @@ namespace GoogleCode.Core.Data
                 criteria = criteria.SetFirstResult((int)(page * pageSize)).SetMaxResults((int)pageSize);
             }
 
-            return criteria.List<TEntity>();
+            return criteria.SetCacheable(true).List<TEntity>();
         }
 
         #endregion

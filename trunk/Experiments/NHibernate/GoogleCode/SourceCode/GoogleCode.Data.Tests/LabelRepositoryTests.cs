@@ -61,7 +61,7 @@ namespace GoogleCode.Data.Tests
         }
 
         [Test]
-        public void SaveOrUpdateTestWithProject()
+        public void SaveOrUpdateTest_WithProject()
         {
             using (var session = NHSessionManager.OpenSession())
             {
