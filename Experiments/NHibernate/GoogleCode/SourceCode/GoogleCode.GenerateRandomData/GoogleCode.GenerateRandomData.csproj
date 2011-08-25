@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F6A0858C-FE66-433C-BE4D-DDACDE338229}</ProjectGuid>
+    <ProjectGuid>{A5C3C00D-ADB1-4555-BF02-EF34BDF79CAC}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GoogleCode.TestSecondLevelCache</RootNamespace>
-    <AssemblyName>GoogleCode.TestSecondLevelCache</AssemblyName>
+    <RootNamespace>GoogleCode.GenerateRandomData</RootNamespace>
+    <AssemblyName>GoogleCode.GenerateRandomData</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
@@ -69,6 +70,10 @@
       <Project>{EF15E047-8C9D-4BB8-9EAB-E00980E4C3A5}</Project>
       <Name>GDNET.Extensions.NHibernateImpl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Common\GDNET.Extensions.QuickGenerate\GDNET.Extensions.QuickGenerate.csproj">
+      <Project>{CF7BBE5D-4A3F-49A4-A938-18F55FD9CEFD}</Project>
+      <Name>GDNET.Extensions.QuickGenerate</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleCode.Core\GoogleCode.Core.csproj">
       <Project>{624D7472-B606-42B0-BCF4-AAD916E59D75}</Project>
       <Name>GoogleCode.Core</Name>
@@ -76,10 +81,6 @@
     <ProjectReference Include="..\GoogleCode.Data.Mapping\GoogleCode.Data.Mapping.csproj">
       <Project>{9B15EB24-D99E-4EA6-993B-A67711FEA721}</Project>
       <Name>GoogleCode.Data.Mapping</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\GoogleCode.Data\GoogleCode.Data.csproj">
-      <Project>{CE40B72E-B022-4AAE-914C-450B194790CB}</Project>
-      <Name>GoogleCode.Data</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -95,7 +96,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)..\..\..\..\..\Libs\NHibernate\NHCH-3.2.0.GA-bin\Prevalence\*.*" "$(TargetDir)" /y/s</PostBuildEvent>
-  </PropertyGroup>
 </Project>
