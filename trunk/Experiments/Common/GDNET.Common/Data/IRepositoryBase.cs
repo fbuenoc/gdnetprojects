@@ -54,6 +54,13 @@ namespace GDNET.Common.Data
         /// <param name="value">The value of the property.</param>
         IList<TEntity> FindByProperty(string property, object value);
         /// <summary>
+        /// Retrieves a collection of entities based on the name and values of a property.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
+        /// <param name="property">The name of the property; should be a member of type TEntity.</param>
+        /// <param name="values">The value of the property.</param>
+        IList<TEntity> FindByProperty(string property, object[] values);
+        /// <summary>
         /// Retrieves a collection of entities based on the name and value of a property.
         /// We ignore paging condition if page & pageSize are equal 0.
         /// </summary>
@@ -70,6 +77,12 @@ namespace GDNET.Common.Data
         /// <param name="entity"></param>
         /// <returns></returns>
         TEntity SaveOrUpdate(TEntity entity);
+        /// <summary>
+        /// Save or update many entities to data store.
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <returns></returns>
+        IList<TEntity> SaveOrUpdate(IList<TEntity> entities);
 
         /// <summary>
         /// Delete entity from data store by its id.
