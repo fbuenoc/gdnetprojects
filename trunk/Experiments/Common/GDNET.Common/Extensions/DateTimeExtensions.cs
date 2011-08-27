@@ -16,7 +16,7 @@ namespace GDNET.Common.Extensions
         /// <returns></returns>
         public static DateTime Parse(this string stringOfDate, DateTime defaultValue)
         {
-            return stringOfDate.Parse(defaultValue, defaultValue);
+            return stringOfDate.Parse(defaultValue, DateTime.MinValue);
         }
 
         /// <summary>
@@ -27,26 +27,20 @@ namespace GDNET.Common.Extensions
         /// <returns></returns>
         public static DateTime Parse(this string stringOfDate, DateTime defaultValue, DateTime minDate)
         {
-            if (defaultValue < minDate)
-            {
-                defaultValue = minDate;
-            }
             DateTime dateValue = defaultValue;
-
             try
             {
                 dateValue = DateTime.Parse(stringOfDate.TrimWithHtmlSpaces().Trim());
-
-                if (dateValue < minDate)
-                {
-                    dateValue = minDate;
-                }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
             }
 
+            if (dateValue < minDate)
+            {
+                dateValue = minDate;
+            }
             return dateValue;
         }
     }

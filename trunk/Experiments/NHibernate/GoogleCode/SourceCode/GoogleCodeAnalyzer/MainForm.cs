@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -16,6 +17,8 @@ using GoogleCode.DataAnalyzer;
 
 using GDNET.Common.Extensions;
 using GDNET.Extensions.NHibernateImpl;
+
+using TVN.LogHelper;
 
 namespace GoogleCodeAnalyzer
 {
@@ -102,6 +105,7 @@ namespace GoogleCodeAnalyzer
                             catch (Exception ex)
                             {
                                 transaction.Rollback();
+                                LogBase.LogError(MethodInfo.GetCurrentMethod(), ex);
                             }
                         }
                     }
