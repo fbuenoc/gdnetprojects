@@ -4,16 +4,18 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Windows.Forms;
 using System.Net;
-using GoogleCode.DataAnalyzer;
-using GDNET.Common.Extensions;
-using GoogleCode.Core.Domain;
-using GDNET.Extensions.NHibernateImpl;
-using GoogleCode.Data;
-using Domain = GoogleCode.Core.Domain;
+using System.Text;
 using System.Threading;
+using System.Windows.Forms;
+
+using GoogleCode.Core.Domain;
+using Domain = GoogleCode.Core.Domain;
+using GoogleCode.Data;
+using GoogleCode.DataAnalyzer;
+
+using GDNET.Common.Extensions;
+using GDNET.Extensions.NHibernateImpl;
 
 namespace GoogleCodeAnalyzer
 {
@@ -33,7 +35,17 @@ namespace GoogleCodeAnalyzer
             // Get stats
             using (WebClient client = new WebClient())
             {
-                var htmlContent = client.DownloadAsString(GoogleCodeHelper.RootUrl, HtmlFile);
+                string htmlContent = string.Empty;
+                try
+                {
+                    htmlContent = client.DownloadAsString(GoogleCodeHelper.RootUrl, HtmlFile);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                    return;
+                }
+
                 if (GoogleCodeHelper.GetStats(htmlContent, out this.from, out this.to, out this.total))
                 {
                     this.pageProjects = this.to;
@@ -59,31 +71,38 @@ namespace GoogleCodeAnalyzer
                 {
                     using (var session = NHSessionManager.OpenSession())
                     {
-                        var projectRepository = new ProjectRepository(session);
-                        var labelRepository = new LabelRepository(session);
-
-                        var dbProjects = projectRepository.FindByProperty(ProjectMeta.Name, GoogleCodeHelper.GetProjectNames(projects));
-                        var dbLabels = labelRepository.FindByProperty(LabelMeta.Name, GoogleCodeHelper.GetProjectLabelNames(projects));
-
                         using (var transaction = session.BeginTransaction())
                         {
-                            var newLabels = GoogleCodeHelper.GetProjectLabels(projects).ToList().FindAll(delegate(Domain.Label item)
+                            try
                             {
-                                return dbLabels.FirstOrDefault(l => l.Name == item.Name) == null;
-                            });
-                            labelRepository.SaveOrUpdate(newLabels);
+                                var projectRepository = new ProjectRepository(session);
+                                var labelRepository = new LabelRepository(session);
 
-                            var newProjects = projects.ToList().FindAll(delegate(Domain.Project item)
+                                var dbProjects = projectRepository.FindByProperty(ProjectMeta.Name, GoogleCodeHelper.GetProjectNames(projects));
+                                var dbLabels = labelRepository.FindByProperty(LabelMeta.Name, GoogleCodeHelper.GetProjectLabelNames(projects));
+
+                                var newLabels = GoogleCodeHelper.GetProjectLabels(projects).ToList().FindAll(delegate(Domain.Label item)
+                                {
+                                    return dbLabels.FirstOrDefault(l => l.Name == item.Name) == null;
+                                });
+                                labelRepository.SaveOrUpdate(newLabels);
+
+                                var newProjects = projects.ToList().FindAll(delegate(Domain.Project item)
+                                {
+                                    return dbProjects.FirstOrDefault(p => p.Name == item.Name) == null;
+                                });
+
+                                // Update label that already in database
+                                GoogleCodeHelper.UpdateLabels(projects, dbLabels);
+
+                                projectRepository.SaveOrUpdate(newProjects);
+
+                                transaction.Commit();
+                            }
+                            catch (Exception ex)
                             {
-                                return dbProjects.FirstOrDefault(p => p.Name == item.Name) == null;
-                            });
-
-                            // Update label that already in database
-                            GoogleCodeHelper.UpdateLabels(projects, dbLabels);
-
-                            projectRepository.SaveOrUpdate(newProjects);
-
-                            transaction.Commit();
+                                transaction.Rollback();
+                            }
                         }
                     }
                 }
@@ -112,6 +131,12 @@ namespace GoogleCodeAnalyzer
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            if (this.bgProjectWorker.IsBusy)
+            {
+                MessageBox.Show("Worker is busy, please wait some seconds.");
+                return;
+            }
+
             this.bgProjectWorker.RunWorkerAsync();
             this.btnStart.Enabled = false;
             this.btnCancel.Enabled = true;
@@ -120,12 +145,6 @@ namespace GoogleCodeAnalyzer
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.bgProjectWorker.CancelAsync();
-
-            while (this.bgProjectWorker.IsBusy)
-            {
-                Thread.Sleep(300);
-            }
-
             this.btnStart.Enabled = true;
             this.btnCancel.Enabled = false;
         }
