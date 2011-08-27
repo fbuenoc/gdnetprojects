@@ -60,6 +60,42 @@ namespace TVN.LogHelper
 
         #endregion
 
+        #region Log methods
+
+        /// <summary>
+        /// Writes an error into log entries.
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="ex"></param>
+        public static void LogError(MethodBase method, Exception ex)
+        {
+            LogBase.CreateLogger(method);
+
+            // Write error
+            lock (_syncLoggers)
+            {
+                _loggers[method.DeclaringType].ErrorFormat("=> {0} encounters an error ({1})", method.Name, ex.ToString());
+            }
+        }
+
+        /// <summary>
+        /// Writes an error into log entries.
+        /// </summary>
+        /// <param name="method"></param>
+        /// <param name="ex"></param>
+        public static void LogFatal(MethodBase method, Exception ex)
+        {
+            LogBase.CreateLogger(method);
+
+            // Write error
+            lock (_syncLoggers)
+            {
+                _loggers[method.DeclaringType].FatalFormat("=> {0} encounters a fatal error ({1})", method.Name, ex.ToString());
+            }
+        }
+
+        #endregion
+
         #region StepIn
 
         /// <summary>
@@ -78,14 +114,7 @@ namespace TVN.LogHelper
         /// <param name="callId">Use to identify place of calling in one method</param>
         public static void StepIn(MethodBase method, UInt32 callId)
         {
-            // Create loger
-            lock (_syncLoggers)
-            {
-                if (!_loggers.ContainsKey(method.DeclaringType))
-                {
-                    _loggers.Add(method.DeclaringType, LogManager.GetLogger(method.DeclaringType));
-                }
-            }
+            CreateLogger(method);
 
             // Set start time
             lock (_syncMethods)
@@ -148,5 +177,19 @@ namespace TVN.LogHelper
         }
 
         #endregion
+
+        /// <summary>
+        /// Creates logger for type that contains this method.
+        /// </summary>
+        private static void CreateLogger(MethodBase method)
+        {
+            lock (_syncLoggers)
+            {
+                if (!_loggers.ContainsKey(method.DeclaringType))
+                {
+                    _loggers.Add(method.DeclaringType, LogManager.GetLogger(method.DeclaringType));
+                }
+            }
+        }
     }
 }
