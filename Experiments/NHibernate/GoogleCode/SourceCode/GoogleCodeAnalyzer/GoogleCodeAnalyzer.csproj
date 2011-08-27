@@ -92,6 +92,10 @@
       <Project>{EF15E047-8C9D-4BB8-9EAB-E00980E4C3A5}</Project>
       <Name>GDNET.Extensions.NHibernateImpl</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Logging\TVN.LogHelper\TVN.LogHelper.csproj">
+      <Project>{6F91CDF5-D15B-42B4-80D5-1875CBD111A2}</Project>
+      <Name>TVN.LogHelper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GoogleCode.Core\GoogleCode.Core.csproj">
       <Project>{624D7472-B606-42B0-BCF4-AAD916E59D75}</Project>
       <Name>GoogleCode.Core</Name>
