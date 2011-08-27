@@ -128,14 +128,12 @@ namespace GoogleCode.Core.Data
         /// <returns></returns>
         public IList<TEntity> GetAll(uint page, uint pageSize)
         {
-            if (page == 0 && pageSize == 0)
+            var query = this.session.Query<TEntity>().Cacheable();
+            if (!(page == 0 && pageSize == 0))
             {
-                return this.session.Query<TEntity>().Cacheable().ToList();
+                query = query.Skip((int)(page * pageSize)).Take((int)pageSize);
             }
-            else
-            {
-                return this.session.Query<TEntity>().Skip((int)(page * pageSize)).Take((int)pageSize).Cacheable().ToList();
-            }
+            return query.ToList();
         }
 
         /// <summary>
@@ -147,6 +145,20 @@ namespace GoogleCode.Core.Data
         public IList<TEntity> FindByProperty(string property, object value)
         {
             return this.FindByProperty(property, value, 0, 0);
+        }
+
+        /// <summary>
+        /// Retrieves a collection of entities based on the name and values of a property.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
+        /// <param name="property">The name of the property; should be a member of type TEntity.</param>
+        /// <param name="values">The value of the property.</param>
+        public IList<TEntity> FindByProperty(string property, object[] values)
+        {
+            Throw.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
+
+            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.In(property, values)).SetCacheable(true);
+            return criteria.List<TEntity>();
         }
 
         /// <summary>
@@ -177,6 +189,22 @@ namespace GoogleCode.Core.Data
 
             this.session.SaveOrUpdate(entity);
             return entity;
+        }
+
+        /// <summary>
+        /// Save or update many entities to data store.
+        /// </summary>
+        /// <param name="entities"></param>
+        /// <returns></returns>
+        public IList<TEntity> SaveOrUpdate(IList<TEntity> entities)
+        {
+            Throw.ArgumentNullException(entities, "entities", "List of entities must be valid to be saved.");
+
+            foreach (var entity in entities)
+            {
+                this.session.SaveOrUpdate(entity);
+            }
+            return entities;
         }
 
         public void Delete(TId id)

@@ -12,6 +12,7 @@ namespace GoogleCode.Data.Mapping
     {
         public LabelMap()
         {
+            base.Cache(c => c.Usage(CacheUsage.ReadWrite));
             base.Property(label => label.Name);
             base.Bag(label => label.Links, cm =>
             {

@@ -7,6 +7,16 @@ using GDNET.Common.Domain;
 
 namespace GoogleCode.Core.Domain
 {
+    public class ProjectMeta
+    {
+        public const string Name = "Name";
+        public const string Homepage = "Homepage";
+        public const string LogoUrl = "LogoUrl";
+        public const string Activity = "Activity";
+        public const string LastUpdate = "LastUpdate";
+        public const string Description = "Description";
+    }
+
     public class Project : DomainBase<long>
     {
         public virtual string Name { get; set; }
@@ -24,6 +34,18 @@ namespace GoogleCode.Core.Domain
         public Project()
         {
             this.Links = new List<ProjectLabelLink>();
+        }
+
+        public virtual void AddLink(Label label)
+        {
+            ProjectLabelLink link = new ProjectLabelLink
+            {
+                CreatedDate = DateTime.Now,
+                Label = label,
+                Project = this
+            };
+
+            this.AddLink(link);
         }
 
         public virtual void AddLink(ProjectLabelLink link)

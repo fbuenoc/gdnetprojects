@@ -7,8 +7,10 @@ using System.Web;
 using System.Web.Security;
 using System.Web.SessionState;
 using System.Xml.Linq;
+
 using GDNET.Extensions.NHibernateImpl;
 using GoogleCode.Data.Mapping;
+using HibernatingRhinos.Profiler.Appender.NHibernate;
 
 namespace GoogleCodeWebApp
 {
@@ -23,6 +25,7 @@ namespace GoogleCodeWebApp
         {
             string cfgFile = base.Server.MapPath(string.Format("~/App_Data/{0}", DefaultCfgFile));
             NHSessionManager.Initialize(MappingUtil.GetHbmMapping(), cfgFile);
+            NHibernateProfiler.Initialize();
         }
 
         protected void Session_Start(object sender, EventArgs e)
