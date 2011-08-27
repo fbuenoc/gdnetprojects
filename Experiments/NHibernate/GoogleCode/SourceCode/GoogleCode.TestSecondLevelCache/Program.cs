@@ -26,6 +26,9 @@ namespace GoogleCode.TestSecondLevelCache
             {
                 using (var repository = new LabelRepository(session))
                 {
+                    var results1 = repository.GetAll();
+                    var results2 = repository.GetAll();
+
                     repository.BeginTransaction();
                     repository.SaveOrUpdate(l1);
                     repository.Commit();
@@ -39,6 +42,8 @@ namespace GoogleCode.TestSecondLevelCache
             {
                 using (var repository = new LabelRepository(session))
                 {
+                    var results1 = repository.GetAll();
+
                     Label l2 = repository.GetById(l1.Id);
 
                     Console.WriteLine("Label: " + l2.Name);

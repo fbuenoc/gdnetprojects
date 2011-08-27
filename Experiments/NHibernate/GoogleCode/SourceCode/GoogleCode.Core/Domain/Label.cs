@@ -7,6 +7,11 @@ using GDNET.Common.Domain;
 
 namespace GoogleCode.Core.Domain
 {
+    public class LabelMeta
+    {
+        public const string Name = "Name";
+    }
+
     public class Label : DomainBase<int>
     {
         public virtual string Name { get; set; }

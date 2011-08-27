@@ -20,13 +20,13 @@ namespace GoogleCodeWebApp
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //using (var session = NHSessionManager.OpenSession())
-            //{
-            //    using (var labelRepository = new LabelRepository(session))
-            //    {
-            //        var results = labelRepository.GetAll();
-            //    }
-            //}
+            using (var session = NHSessionManager.OpenSession())
+            {
+                using (var labelRepository = new LabelRepository(session))
+                {
+                    var results = labelRepository.GetAll();
+                }
+            }
         }
     }
 }

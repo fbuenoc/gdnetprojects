@@ -227,6 +227,33 @@ namespace GoogleCode.Data.Tests
         }
 
         [Test]
+        public void FindByPropertyTest_In()
+        {
+            using (var session = NHSessionManager.OpenSession())
+            {
+                using (var repository = new LabelRepository(session))
+                {
+                    repository.BeginTransaction();
+
+                    Label l1 = new Label { Name = "Label 1" };
+                    Label l2 = new Label { Name = "Label 2" };
+                    repository.SaveOrUpdate(l1);
+                    repository.SaveOrUpdate(l2);
+
+                    repository.Commit();
+
+                    var results = repository.FindByProperty("Name", new string[] { "Label 1", "Label 2" });
+                    Assert.IsTrue(results.Count >= 2);
+
+                    repository.BeginTransaction();
+                    repository.Delete(l1);
+                    repository.Delete(l2);
+                    repository.Commit();
+                }
+            }
+        }
+
+        [Test]
         public void FindByPropertyTestWithOrder()
         {
             Label l1 = new Label { Name = "Label 1" };
