@@ -48,6 +48,9 @@
     <Compile Include="Data\IRepositoryBase.cs" />
     <Compile Include="DesignByContract\Throw.cs" />
     <Compile Include="Domain\DomainBase.cs" />
+    <Compile Include="Extensions\DateTimeExtensions.cs" />
+    <Compile Include="Extensions\StringExtensions.cs" />
+    <Compile Include="Extensions\WebClientExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
