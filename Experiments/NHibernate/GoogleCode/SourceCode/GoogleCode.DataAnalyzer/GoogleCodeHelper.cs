@@ -14,6 +14,9 @@ namespace GoogleCode.DataAnalyzer
         public const string RootUrl = "http://code.google.com/hosting/search?q=&filter=0&start=0";
         public const string ProjectsUrl = "http://code.google.com/hosting/search?q={0}&filter={1}&start={2}";
 
+        /// <summary>
+        /// Parses projects from HTML page content.
+        /// </summary>
         public static bool GetProjects(string htmlContent, out IList<Project> projects)
         {
             bool result = true;
@@ -51,7 +54,6 @@ namespace GoogleCode.DataAnalyzer
                                 string detailContent = deepContentMatches[1].Groups[1].Value;
 
                                 // Get project homepage & logo
-                                //string generalInfoPattern = "<a href=\\\"(.*?)\\\">.*?<img .*? src=\\\"(.*?)\\\" .*?</a>";
                                 string generalInfoPattern = "<a href=\\\"(.*?)\\\">.*?<img(.*?)src=\\\"(.*?)\\\"(.*?)>.*?</a>";
                                 var generalInfoMatches = Regex.Matches(generalContent, generalInfoPattern, RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.IgnoreCase);
 
@@ -65,7 +67,7 @@ namespace GoogleCode.DataAnalyzer
                                 }
 
                                 // Get project details
-                                string projectNamePattern = "<a .*?>(.*?)</a>.*?<br/>.*?<span .*?>.*?Activity: <img .*?>(.*?)-.*?Updated: (.*?)</span><br/>(.*?)<br/>";
+                                string projectNamePattern = "<a .*?>(.*?)</a>.*?<br/>.*?<span .*?>.*?Activity: <img .*?>(.*?)-.*?Updated:(.*?)Stars(.*?)</span><br/>(.*?)<br/>";
                                 var projectNameMatches = Regex.Matches(detailContent, projectNamePattern, RegexOptions.Multiline | RegexOptions.Singleline | RegexOptions.IgnoreCase);
                                 if (projectNameMatches.Count > 0)
                                 {
