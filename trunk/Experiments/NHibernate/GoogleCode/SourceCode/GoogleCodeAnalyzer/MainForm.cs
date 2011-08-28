@@ -26,14 +26,16 @@ namespace GoogleCodeAnalyzer
     {
         private const string HtmlFile = "googlecode.html";
         private int from, to, total;
-        private int start, filter, pageProjects, projectCount;
+        private int start, filter, projectsPerPage, projectCount;
 
         public MainForm()
         {
             InitializeComponent();
         }
 
-        private void bgProcessor_DoWork(object sender, DoWorkEventArgs e)
+        #region ProjectWorker methods
+
+        private void bgProjectWorker_DoWork(object sender, DoWorkEventArgs e)
         {
             // Get stats
             using (WebClient client = new WebClient())
@@ -51,7 +53,9 @@ namespace GoogleCodeAnalyzer
 
                 if (GoogleCodeHelper.GetStats(htmlContent, out this.from, out this.to, out this.total))
                 {
-                    this.pageProjects = this.to;
+                    this.projectsPerPage = this.to;
+                    // Apply page selection
+                    this.start = this.projectsPerPage * Convert.ToInt32(this.nudFromPage.Value);
                 }
                 this.bgProjectWorker.ReportProgress(0);
             }
@@ -111,7 +115,7 @@ namespace GoogleCodeAnalyzer
                     }
                 }
 
-                this.start += this.pageProjects;
+                this.start += this.projectsPerPage;
                 this.bgProjectWorker.ReportProgress(0);
                 if (this.start >= this.total)
                 {
@@ -121,17 +125,19 @@ namespace GoogleCodeAnalyzer
             while (true);
         }
 
-        private void bgProcessor_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        private void bgProjectWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             this.txtTotalProjects.Text = this.total.ToString();
             this.txtCurrentProject.Text = this.start.ToString();
         }
 
-        private void bgProcessor_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void bgProjectWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             this.btnStart.Enabled = true;
             this.btnCancel.Enabled = false;
         }
+
+        #endregion
 
         private void btnStart_Click(object sender, EventArgs e)
         {
