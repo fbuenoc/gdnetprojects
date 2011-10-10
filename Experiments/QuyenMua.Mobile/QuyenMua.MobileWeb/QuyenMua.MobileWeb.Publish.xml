@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="C:\temp\quyenmua.mobile" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="quyenmua.mobile" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/QuyenMua.MobileWeb.dll" publishTime="10/10/2011 00:41:00" />
+    <file relUrl="Content/jQuery.Mobile/images/ajax-loader.png" publishTime="10/08/2011 16:23:45" />
+    <file relUrl="bin/QuyenMua.Presenters.dll" publishTime="10/10/2011 00:40:59" />
+    <file relUrl="bin/GDNET.MvpWeb.pdb" publishTime="10/10/2011 00:40:52" />
+    <file relUrl="Site.Master" publishTime="10/08/2011 16:31:47" />
+    <file relUrl="bin/log4net.dll" publishTime="01/04/2009 00:13:50" />
+    <file relUrl="bin/TVNFramework.InterWeb.Extensions.pdb" publishTime="10/10/2011 00:40:55" />
+    <file relUrl="bin/TVNFramework.Modules.GenericContent.dll" publishTime="10/10/2011 00:40:49" />
+    <file relUrl="bin/GDNET.jQueryMobileControls.dll" publishTime="10/10/2011 00:40:52" />
+    <file relUrl="bin/System.Linq.Dynamic.dll" publishTime="11/14/2010 13:39:56" />
+    <file relUrl="App_Themes/001/main.css" publishTime="10/08/2011 16:09:34" />
+    <file relUrl="bin/TVNFramework.Modules.GenericContent.pdb" publishTime="10/10/2011 00:40:49" />
+    <file relUrl="Views/TransactionList/TransactionList.ascx" publishTime="10/09/2011 23:25:19" />
+    <file relUrl="Content/jQuery/jquery-1.6.4.min.js" publishTime="10/08/2011 16:23:45" />
+    <file relUrl="bin/TVNFramework.Extensions.dll" publishTime="10/10/2011 00:40:45" />
+    <file relUrl="Content/jQuery.Mobile/images/icons-36-white.png" publishTime="10/08/2011 16:23:46" />
+    <file relUrl="bin/DotNetOpenAuth.dll" publishTime="05/02/2011 07:30:01" />
+    <file relUrl="bin/TVNFramework.InterWeb.Extensions.Membership.pdb" publishTime="10/08/2011 16:34:00" />
+    <file relUrl="bin/QuyenMua.Data.pdb" publishTime="10/10/2011 00:40:58" />
+    <file relUrl="bin/QuyenMua.Data.dll" publishTime="10/10/2011 00:40:58" />
+    <file relUrl="Content/jQuery.Mobile/jquery.mobile-1.0b3.min.js" publishTime="10/08/2011 16:23:46" />
+    <file relUrl="Default.aspx" publishTime="10/09/2011 15:31:33" />
+    <file relUrl="bin/TVNFramework.Modules.Transactions.pdb" publishTime="10/10/2011 00:40:57" />
+    <file relUrl="TransactionDetail.aspx" publishTime="10/09/2011 18:29:28" />
+    <file relUrl="Views/TransactionDetail/TransactionDetail.ascx" publishTime="10/10/2011 00:40:06" />
+    <file relUrl="bin/GDNET.Common.pdb" publishTime="10/08/2011 16:34:02" />
+    <file relUrl="bin/QuyenMua.MobileWeb.pdb" publishTime="10/10/2011 00:41:00" />
+    <file relUrl="bin/QuyenMua.Presenters.pdb" publishTime="10/10/2011 00:40:59" />
+    <file relUrl="Content/jQuery.Mobile/jquery.mobile-1.0b3.min.css" publishTime="10/08/2011 16:23:46" />
+    <file relUrl="Content/jQuery.Mobile/images/icon-search-black.png" publishTime="10/08/2011 16:23:45" />
+    <file relUrl="bin/GDNET.MvpWeb.dll" publishTime="10/10/2011 00:40:52" />
+    <file relUrl="bin/TVNFramework.InterWeb.Extensions.Membership.dll" publishTime="10/08/2011 16:34:00" />
+    <file relUrl="bin/GDNET.Common.dll" publishTime="10/08/2011 16:34:02" />
+    <file relUrl="bin/TVNFramework.InterWeb.Extensions.OpenId.pdb" publishTime="10/08/2011 16:33:59" />
+    <file relUrl="bin/TVNFramework.InterWeb.Extensions.dll" publishTime="10/10/2011 00:40:55" />
+    <file relUrl="Web.config" publishTime="10/08/2011 16:34:28" />
+    <file relUrl="Content/jQuery.Mobile/images/icons-18-white.png" publishTime="10/08/2011 16:23:45" />
+    <file relUrl="Content/jQuery.Mobile/images/icons-18-black.png" publishTime="10/08/2011 16:23:45" />
+    <file relUrl="Content/jQuery.Mobile/images/icons-36-black.png" publishTime="10/08/2011 16:23:45" />
+    <file relUrl="bin/TVNFramework.InterWeb.Extensions.OpenId.dll" publishTime="10/08/2011 16:34:00" />
+    <file relUrl="bin/GDNET.jQueryMobileControls.pdb" publishTime="10/10/2011 00:40:52" />
+    <file relUrl="bin/TVNFramework.Extensions.pdb" publishTime="10/10/2011 00:40:44" />
+    <file relUrl="bin/TVNFramework.Modules.Transactions.dll" publishTime="10/10/2011 00:40:57" />
+    <file relUrl="bin/sr/DotNetOpenAuth.resources.dll" publishTime="05/02/2011 07:29:10" />
+  </publishProfile>
+</publishData>
