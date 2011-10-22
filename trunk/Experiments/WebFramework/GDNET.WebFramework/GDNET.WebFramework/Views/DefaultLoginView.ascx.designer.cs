@@ -7,27 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GDNET.WebFramework.Account {
+namespace GDNET.WebFramework.Views {
     
     
-    public partial class Register {
+    public partial class DefaultLoginView {
         
         /// <summary>
-        /// CUW control.
+        /// LV control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CreateUserWizard CUW;
-        
-        /// <summary>
-        /// CUWS control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CreateUserWizardStep CUWS;
+        protected global::System.Web.UI.WebControls.LoginView LV;
     }
 }
