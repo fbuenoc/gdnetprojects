@@ -22,22 +22,22 @@ namespace GDNET.WebFramework {
         protected global::System.Web.UI.WebControls.ContentPlaceHolder H;
         
         /// <summary>
-        /// lv control.
+        /// V control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LoginView lv;
+        protected global::GDNET.WebFramework.Views.DefaultLoginView V;
         
         /// <summary>
-        /// NavigationMenu control.
+        /// M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Menu NavigationMenu;
+        protected global::GDNET.WebFramework.Views.DefaultMenu M;
         
         /// <summary>
         /// MC control.

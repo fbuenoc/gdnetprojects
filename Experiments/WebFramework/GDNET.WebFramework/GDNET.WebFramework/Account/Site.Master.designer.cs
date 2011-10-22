@@ -10,33 +10,42 @@
 namespace GDNET.WebFramework.Account {
     
     
-    public partial class ChangePassword {
+    public partial class Site {
         
         /// <summary>
-        /// litCP control.
+        /// H control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litCP;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder H;
         
         /// <summary>
-        /// litSubTitle control.
+        /// V control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litSubTitle;
+        protected global::GDNET.WebFramework.Account.Views.DefaultLoginView V;
         
         /// <summary>
-        /// CUP control.
+        /// M control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ChangePassword CUP;
+        protected global::GDNET.WebFramework.Account.Views.DefaultMenu M;
+        
+        /// <summary>
+        /// MC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MC;
     }
 }

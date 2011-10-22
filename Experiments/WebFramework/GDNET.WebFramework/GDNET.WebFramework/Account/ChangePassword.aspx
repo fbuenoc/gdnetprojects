@@ -1,14 +1,14 @@
-﻿<%@ Page Title="Change Password" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Change Password" Language="C#" MasterPageFile="~/Account/Site.Master" AutoEventWireup="true"
     CodeBehind="ChangePassword.aspx.cs" Inherits="GDNET.WebFramework.Account.ChangePassword" %>
 
 <asp:Content ID="HC" runat="server" ContentPlaceHolderID="H">
 </asp:Content>
 <asp:Content ID="BC" runat="server" ContentPlaceHolderID="MC">
     <h2>
-        Change Password
+        <asp:Literal runat="server" ID="litCP" Text="Change Password" />
     </h2>
     <p>
-        Use the form below to change your password.
+        <asp:Literal runat="server" ID="litSubTitle" Text="Use the form below to change your password." />
     </p>
     <p>
         New passwords are required to be a minimum of
@@ -21,41 +21,41 @@
             <span class="failureNotification">
                 <asp:Literal ID="FailureText" runat="server"></asp:Literal>
             </span>
-            <asp:ValidationSummary ID="ChangeUserPasswordValidationSummary" runat="server" CssClass="failureNotification"
-                ValidationGroup="ChangeUserPasswordValidationGroup" />
+            <asp:ValidationSummary ID="VSCUP" runat="server" CssClass="failureNotification" ValidationGroup="VGCUP" />
             <div class="accountInfo">
                 <fieldset class="changePassword">
-                    <legend>Account Information</legend>
+                    <legend>
+                        <asp:Literal runat="server" ID="litAccount" Text="Account Information" />
+                    </legend>
                     <p>
-                        <asp:Label ID="CurrentPasswordLabel" runat="server" AssociatedControlID="CurrentPassword">Old Password:</asp:Label>
+                        <asp:Label ID="LCP" runat="server" AssociatedControlID="CurrentPassword">Old Password:</asp:Label>
                         <asp:TextBox ID="CurrentPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
                         <asp:RequiredFieldValidator ID="CurrentPasswordRequired" runat="server" ControlToValidate="CurrentPassword"
                             CssClass="failureNotification" ErrorMessage="Password is required." ToolTip="Old Password is required."
-                            ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
+                            ValidationGroup="VGCUP">*</asp:RequiredFieldValidator>
                     </p>
                     <p>
-                        <asp:Label ID="NewPasswordLabel" runat="server" AssociatedControlID="NewPassword">New Password:</asp:Label>
+                        <asp:Label ID="LNP" runat="server" AssociatedControlID="NewPassword">New Password:</asp:Label>
                         <asp:TextBox ID="NewPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="NewPasswordRequired" runat="server" ControlToValidate="NewPassword"
-                            CssClass="failureNotification" ErrorMessage="New Password is required." ToolTip="New Password is required."
-                            ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
+                        <asp:RequiredFieldValidator ID="RNP" runat="server" ControlToValidate="NewPassword" CssClass="failureNotification"
+                            ErrorMessage="New Password is required." ToolTip="New Password is required." ValidationGroup="VGCUP">*</asp:RequiredFieldValidator>
                     </p>
                     <p>
-                        <asp:Label ID="ConfirmNewPasswordLabel" runat="server" AssociatedControlID="ConfirmNewPassword">Confirm New Password:</asp:Label>
+                        <asp:Label ID="LCNP" runat="server" AssociatedControlID="ConfirmNewPassword">Confirm New Password:</asp:Label>
                         <asp:TextBox ID="ConfirmNewPassword" runat="server" CssClass="passwordEntry" TextMode="Password"></asp:TextBox>
-                        <asp:RequiredFieldValidator ID="ConfirmNewPasswordRequired" runat="server" ControlToValidate="ConfirmNewPassword"
+                        <asp:RequiredFieldValidator ID="RCNP" runat="server" ControlToValidate="ConfirmNewPassword"
                             CssClass="failureNotification" Display="Dynamic" ErrorMessage="Confirm New Password is required."
-                            ToolTip="Confirm New Password is required." ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:RequiredFieldValidator>
+                            ToolTip="Confirm New Password is required." ValidationGroup="VGCUP">*</asp:RequiredFieldValidator>
                         <asp:CompareValidator ID="NewPasswordCompare" runat="server" ControlToCompare="NewPassword"
                             ControlToValidate="ConfirmNewPassword" CssClass="failureNotification" Display="Dynamic"
-                            ErrorMessage="The Confirm New Password must match the New Password entry." ValidationGroup="ChangeUserPasswordValidationGroup">*</asp:CompareValidator>
+                            ErrorMessage="The Confirm New Password must match the New Password entry." ValidationGroup="VGCUP">*</asp:CompareValidator>
                     </p>
                 </fieldset>
                 <p class="submitButton">
                     <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" CommandName="Cancel"
                         Text="Cancel" />
-                    <asp:Button ID="ChangePasswordPushButton" runat="server" CommandName="ChangePassword"
-                        Text="Change Password" ValidationGroup="ChangeUserPasswordValidationGroup" />
+                    <asp:Button ID="ChangePasswordPushButton" runat="server" CommandName="ChangePassword" Text="Change Password"
+                        ValidationGroup="VGCUP" />
                 </p>
             </div>
         </ChangePasswordTemplate>
