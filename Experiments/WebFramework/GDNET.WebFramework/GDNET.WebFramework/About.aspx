@@ -5,9 +5,9 @@
 </asp:Content>
 <asp:Content ID="BC" runat="server" ContentPlaceHolderID="MC">
     <h2>
-        About
+        <gdnet:Literal ID="litHeader" runat="server" Text="About" TextCode="GUI.Account.About.Header" />
     </h2>
     <p>
-        Put content here.
+        <gdnet:Literal ID="litContent" runat="server" Text="Put content here." TextCode="GUI.Account.About.Content" />
     </p>
 </asp:Content>
