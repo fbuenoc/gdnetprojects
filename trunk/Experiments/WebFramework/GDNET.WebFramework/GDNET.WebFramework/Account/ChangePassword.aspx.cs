@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace GDNET.WebFramework.Account
 {
-    public partial class ChangePassword : System.Web.UI.Page
+    public partial class ChangePassword : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

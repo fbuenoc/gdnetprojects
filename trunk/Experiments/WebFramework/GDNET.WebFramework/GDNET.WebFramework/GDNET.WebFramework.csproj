@@ -60,9 +60,10 @@
     <Content Include="Account\Register.aspx" />
     <Content Include="Account\Styles\Site.css" />
     <Content Include="App_Data\hibernate.cfg.xml" />
+    <Content Include="App_Themes\Account\Site.css" />
     <Content Include="Views\DefaultLoginView.ascx" />
     <Content Include="Views\DefaultMenu.ascx" />
-    <Content Include="Styles\Site.css" />
+    <Content Include="App_Themes\01\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Web.config">
@@ -175,6 +176,14 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web.MultilingualControls\GDNET.Web.MultilingualControls.csproj">
+      <Project>{3E0BAA6E-CE54-440D-A1C2-28ECD8F66734}</Project>
+      <Name>GDNET.Web.MultilingualControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
+      <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
+      <Name>GDNET.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDNET.WebFrameworkNH\GDNET.WebFrameworkNH.csproj">
       <Project>{9A4E737C-5A9A-4F53-80A3-82E4C712F85E}</Project>
       <Name>GDNET.WebFrameworkNH</Name>
