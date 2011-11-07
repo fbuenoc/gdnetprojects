@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GDNET.WebFramework.Account {
+namespace WebFramework.Account {
     
     
     public partial class Site {
+        
+        /// <summary>
+        /// T control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder T;
         
         /// <summary>
         /// H control.
@@ -28,7 +37,7 @@ namespace GDNET.WebFramework.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.WebFramework.Account.Views.DefaultLoginView V;
+        protected global::WebFramework.Account.Views.DefaultLoginView V;
         
         /// <summary>
         /// M control.
@@ -37,7 +46,7 @@ namespace GDNET.WebFramework.Account {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.WebFramework.Account.Views.DefaultMenu M;
+        protected global::WebFramework.Account.Views.DefaultMenu M;
         
         /// <summary>
         /// MC control.

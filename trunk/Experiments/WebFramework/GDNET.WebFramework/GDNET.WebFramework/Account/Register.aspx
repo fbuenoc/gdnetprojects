@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Register" Language="C#" MasterPageFile="~/Account/Site.Master" AutoEventWireup="true"
-    CodeBehind="Register.aspx.cs" Inherits="GDNET.WebFramework.Account.Register" %>
+    CodeBehind="Register.aspx.cs" Inherits="WebFramework.Account.Register" %>
 
 <asp:Content ID="HC" runat="server" ContentPlaceHolderID="H">
 </asp:Content>
@@ -59,6 +59,18 @@
                                 <asp:CompareValidator ID="CVCP" runat="server" ControlToCompare="Password" ControlToValidate="ConfirmPassword"
                                     CssClass="failureNotification" Display="Dynamic" ErrorMessage="The Password and Confirmation Password must match."
                                     ValidationGroup="VGCUW">*</asp:CompareValidator>
+                            </p>
+                            <p>
+                                <asp:Label ID="LQ" runat="server" AssociatedControlID="Question" Text="Security question:"></asp:Label>
+                                <asp:TextBox ID="Question" runat="server" CssClass="textEntry" TextMode="SingleLine"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RQ" runat="server" ControlToValidate="Question" ErrorMessage="Security question is required."
+                                    ToolTip="Security question is required." ValidationGroup="VGRP">*</asp:RequiredFieldValidator>
+                            </p>
+                            <p>
+                                <asp:Label ID="LA" runat="server" AssociatedControlID="Answer" Text="Answer:" />
+                                <asp:TextBox ID="Answer" runat="server" CssClass="textEntry" TextMode="SingleLine"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="RA" runat="server" ControlToValidate="Answer" ErrorMessage="Answer is required."
+                                    ToolTip="Answer is required." ValidationGroup="VGRP">*</asp:RequiredFieldValidator>
                             </p>
                         </fieldset>
                         <p class="submitButton">

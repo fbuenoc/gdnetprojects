@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GDNET.WebFramework.Account {
+namespace WebFramework.Account {
     
     
     public partial class ChangePassword {

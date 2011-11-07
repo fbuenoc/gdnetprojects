@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GDNET.WebFramework.Views {
+namespace WebFramework.Views {
     
     
     public partial class DefaultMenu {

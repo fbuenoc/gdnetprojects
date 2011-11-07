@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GDNET.WebFramework.Views
+namespace WebFramework.Views
 {
     public partial class DefaultLoginView : UserControl
     {
