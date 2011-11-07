@@ -10,8 +10,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GDNET.WebFramework</RootNamespace>
-    <AssemblyName>GDNET.WebFramework</AssemblyName>
+    <RootNamespace>WebFramework</RootNamespace>
+    <AssemblyName>WebFramework</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
@@ -54,18 +54,32 @@
     <Content Include="About.aspx" />
     <Content Include="Account\ChangePassword.aspx" />
     <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Detail.aspx" />
+    <Content Include="Account\RecoverPassword.aspx" />
     <Content Include="Account\Views\DefaultLoginView.ascx" />
     <Content Include="Account\Views\DefaultMenu.ascx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="Account\Register.aspx" />
-    <Content Include="Account\Styles\Site.css" />
-    <Content Include="App_Data\hibernate.cfg.xml" />
+    <Content Include="Admin\Translation\Detail.aspx" />
+    <Content Include="Admin\Translation\Index.aspx" />
+    <Content Include="Admin\Translation\Views\TranslationDetail.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Admin\Translation\Views\TranslationList.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="App_Data\Account\PasswordRecoveryMail.txt" />
+    <Content Include="App_Data\hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="App_Themes\Account\Site.css" />
+    <Content Include="App_Themes\Admin\Site.css" />
     <Content Include="Views\DefaultLoginView.ascx" />
     <Content Include="Views\DefaultMenu.ascx" />
     <Content Include="App_Themes\01\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Views\DefaultNotifier.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -97,6 +111,20 @@
     </Compile>
     <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
       <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Detail.aspx.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Detail.aspx.designer.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RecoverPassword.aspx.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RecoverPassword.aspx.designer.cs">
+      <DependentUpon>RecoverPassword.aspx</DependentUpon>
     </Compile>
     <Compile Include="Account\Views\DefaultLoginView.ascx.cs">
       <DependentUpon>DefaultLoginView.ascx</DependentUpon>
@@ -133,6 +161,44 @@
     <Compile Include="Account\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Translation\Detail.aspx.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Translation\Detail.aspx.designer.cs">
+      <DependentUpon>Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Translation\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Translation\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Translation\Views\TranslationDetail.ascx.cs">
+      <DependentUpon>TranslationDetail.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Translation\Views\TranslationDetail.ascx.designer.cs">
+      <DependentUpon>TranslationDetail.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Translation\Views\TranslationList.ascx.cs">
+      <DependentUpon>TranslationList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Translation\Views\TranslationList.ascx.designer.cs">
+      <DependentUpon>TranslationList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ViewUserControlManagementWebBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Views\DefaultLoginView.ascx.cs">
       <DependentUpon>DefaultLoginView.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,8 +231,16 @@
     <Compile Include="Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Views\DefaultNotifier.ascx.cs">
+      <DependentUpon>DefaultNotifier.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\DefaultNotifier.ascx.designer.cs">
+      <DependentUpon>DefaultNotifier.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Themes\01\Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
@@ -174,8 +248,24 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Site.Master" />
+    <Content Include="Admin\Site.Master" />
+    <Content Include="Admin\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Experiments CodePlex\Common\GDNET.Common\GDNET.Common.csproj">
+      <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
+      <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Experiments CodePlex\Common\GDNET.MvpWeb\GDNET.MvpWeb.csproj">
+      <Project>{157643AB-A7B8-4E8B-A96D-889F497D153E}</Project>
+      <Name>GDNET.MvpWeb</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web.Adapters\GDNET.Web.Adapters.csproj">
+      <Project>{7BEE2AE9-790F-44DE-AC9E-D3BDD7CF8BBF}</Project>
+      <Name>GDNET.Web.Adapters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Web.MultilingualControls\GDNET.Web.MultilingualControls.csproj">
       <Project>{3E0BAA6E-CE54-440D-A1C2-28ECD8F66734}</Project>
       <Name>GDNET.Web.MultilingualControls</Name>
@@ -184,9 +274,17 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GDNET.WebFrameworkNH\GDNET.WebFrameworkNH.csproj">
+    <ProjectReference Include="..\GDNET.WebFrameworkNH\WebFrameworkNHibernate.csproj">
       <Project>{9A4E737C-5A9A-4F53-80A3-82E4C712F85E}</Project>
-      <Name>GDNET.WebFrameworkNH</Name>
+      <Name>WebFrameworkNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkDomainDto\WebFrameworkDomainDto.csproj">
+      <Project>{59E1E83A-26AD-4FC8-A655-54838AD80A53}</Project>
+      <Name>WebFrameworkDomainDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkPresenters\WebFrameworkPresenters.csproj">
+      <Project>{B8955135-090D-4C77-8FB0-EE6F911B8DA3}</Project>
+      <Name>WebFrameworkPresenters</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

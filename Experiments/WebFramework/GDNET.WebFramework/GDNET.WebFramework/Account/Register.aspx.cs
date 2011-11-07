@@ -6,7 +6,7 @@ using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace GDNET.WebFramework.Account
+namespace WebFramework.Account
 {
     public partial class Register : Page
     {

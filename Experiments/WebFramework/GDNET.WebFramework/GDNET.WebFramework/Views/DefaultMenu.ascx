@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DefaultMenu.ascx.cs" Inherits="GDNET.WebFramework.Views.DefaultMenu" %>
+﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="DefaultMenu.ascx.cs" Inherits="WebFramework.Views.DefaultMenu" %>
 <asp:Menu ID="MN" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false"
     Orientation="Horizontal">
     <Items>

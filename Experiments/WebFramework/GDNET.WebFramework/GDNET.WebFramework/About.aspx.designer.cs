@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GDNET.WebFramework {
+namespace WebFramework {
     
     
     public partial class About {

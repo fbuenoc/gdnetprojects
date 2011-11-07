@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Change Password" Language="C#" MasterPageFile="~/Account/Site.Master" AutoEventWireup="true"
-    CodeBehind="ChangePassword.aspx.cs" Inherits="GDNET.WebFramework.Account.ChangePassword" %>
+    CodeBehind="ChangePassword.aspx.cs" Inherits="WebFramework.Account.ChangePassword" %>
 
 <asp:Content ID="HC" runat="server" ContentPlaceHolderID="H">
 </asp:Content>
@@ -46,16 +46,14 @@
                         <asp:RequiredFieldValidator ID="RCNP" runat="server" ControlToValidate="ConfirmNewPassword"
                             CssClass="failureNotification" Display="Dynamic" ErrorMessage="Confirm New Password is required."
                             ToolTip="Confirm New Password is required." ValidationGroup="VGCUP">*</asp:RequiredFieldValidator>
-                        <asp:CompareValidator ID="NewPasswordCompare" runat="server" ControlToCompare="NewPassword"
-                            ControlToValidate="ConfirmNewPassword" CssClass="failureNotification" Display="Dynamic"
-                            ErrorMessage="The Confirm New Password must match the New Password entry." ValidationGroup="VGCUP">*</asp:CompareValidator>
+                        <asp:CompareValidator ID="CVNP" runat="server" ControlToCompare="NewPassword" ControlToValidate="ConfirmNewPassword"
+                            CssClass="failureNotification" Display="Dynamic" ErrorMessage="The Confirm New Password must match the New Password entry."
+                            ValidationGroup="VGCUP">*</asp:CompareValidator>
                     </p>
                 </fieldset>
                 <p class="submitButton">
-                    <asp:Button ID="CancelPushButton" runat="server" CausesValidation="False" CommandName="Cancel"
-                        Text="Cancel" />
-                    <asp:Button ID="ChangePasswordPushButton" runat="server" CommandName="ChangePassword" Text="Change Password"
-                        ValidationGroup="VGCUP" />
+                    <asp:Button ID="BC" runat="server" CausesValidation="False" CommandName="Cancel" Text="Cancel" />
+                    <asp:Button ID="BS" runat="server" CommandName="ChangePassword" Text="Change Password" ValidationGroup="VGCUP" />
                 </p>
             </div>
         </ChangePasswordTemplate>

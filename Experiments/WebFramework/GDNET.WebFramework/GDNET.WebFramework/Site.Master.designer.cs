@@ -7,10 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GDNET.WebFramework {
+namespace WebFramework {
     
     
     public partial class SiteMaster {
+        
+        /// <summary>
+        /// T control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder T;
         
         /// <summary>
         /// H control.
@@ -28,7 +37,7 @@ namespace GDNET.WebFramework {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.WebFramework.Views.DefaultLoginView V;
+        protected global::WebFramework.Views.DefaultLoginView V;
         
         /// <summary>
         /// M control.
@@ -37,7 +46,7 @@ namespace GDNET.WebFramework {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.WebFramework.Views.DefaultMenu M;
+        protected global::WebFramework.Views.DefaultMenu M;
         
         /// <summary>
         /// MC control.

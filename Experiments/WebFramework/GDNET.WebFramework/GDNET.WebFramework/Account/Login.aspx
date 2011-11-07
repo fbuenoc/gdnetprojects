@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Log In" Language="C#" MasterPageFile="~/Account/Site.Master" AutoEventWireup="true"
-    CodeBehind="Login.aspx.cs" Inherits="GDNET.WebFramework.Account.Login" %>
+    CodeBehind="Login.aspx.cs" Inherits="WebFramework.Account.Login" %>
 
 <asp:Content ID="HC" runat="server" ContentPlaceHolderID="H">
 </asp:Content>

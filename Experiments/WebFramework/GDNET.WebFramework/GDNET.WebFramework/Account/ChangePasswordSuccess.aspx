@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="Change Password" Language="C#" MasterPageFile="~/Account/Site.Master" AutoEventWireup="true"
-    CodeBehind="ChangePasswordSuccess.aspx.cs" Inherits="GDNET.WebFramework.Account.ChangePasswordSuccess" %>
+    CodeBehind="ChangePasswordSuccess.aspx.cs" Inherits="WebFramework.Account.ChangePasswordSuccess" %>
 
 <asp:Content ID="HC" runat="server" ContentPlaceHolderID="H">
 </asp:Content>

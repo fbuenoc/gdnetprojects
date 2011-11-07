@@ -1,13 +1,14 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="GDNET.WebFramework.Account.Site" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="WebFramework.Account.Site" %>
 
 <%@ Register Src="~/Account/Views/DefaultMenu.ascx" TagName="DefaultMenu" TagPrefix="uc" %>
 <%@ Register Src="~/Account/Views/DefaultLoginView.ascx" TagName="DefaultLoginView" TagPrefix="uc" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder ID="H" runat="server">
-    </asp:ContentPlaceHolder>
+    <title>
+        <asp:ContentPlaceHolder ID="T" runat="server" />
+    </title>
+    <asp:ContentPlaceHolder ID="H" runat="server" />
 </head>
 <body>
     <form runat="server">
