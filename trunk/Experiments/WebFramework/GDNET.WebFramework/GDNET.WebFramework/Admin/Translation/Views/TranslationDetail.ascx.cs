@@ -15,7 +15,7 @@ using WebFrameworkPresenters.Admin.Translation.Views;
 
 namespace WebFramework.Admin.Translation.Views
 {
-    public partial class TranslationDetail : ViewUserControlCrudBase<PresenterTranslationDetail, long>, IViewTranslationDetail
+    public partial class TranslationDetail : ViewUserControlCrudBase, IViewTranslationDetail
     {
         #region Fields
 
@@ -29,10 +29,10 @@ namespace WebFramework.Admin.Translation.Views
 
         public override void InitializeAdapters()
         {
-            base.actionReset = new AdapterButton(this.R);
-            base.actionSubmit = new AdapterButton(this.S);
-            base.actionDelete = new AdapterButton(this.D);
-            base.actionEdit = new AdapterButton(this.E);
+            base.actionReset = new AdapterButton(this.RS);
+            base.actionSubmit = new AdapterButton(this.SM);
+            base.actionDelete = new AdapterButton(this.DL);
+            base.actionEdit = new AdapterLinkButton(this.ED);
             base.actionReturn = new AdapterLinkButton(this.RT);
 
             this.blocTitle = new AdapterLiteral(this.LitBlocTitle);

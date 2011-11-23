@@ -14,17 +14,16 @@ namespace WebFramework.Admin.Translation.Views
 {
     public partial class TranslationList : ViewUserControlManagementWebBase<PresenterTranslationList, long>, IViewTranslationList
     {
-        private IAdapterHyperLink adapNewTranslation;
         private IAdapterDataPager adapPagerTranslation;
 
         #region IViewTranslationList Members
 
-        public IAdapterHyperLink NewTranslation
+        public IAdapterLinkButton NewTranslation
         {
-            get { return this.adapNewTranslation; }
+            get { return base.adapNewElement; }
         }
 
-        public IAdapterListView ListTranslation
+        public IAdapterListView ListViewTranslation
         {
             get { return base.adapListView; }
         }
@@ -38,10 +37,10 @@ namespace WebFramework.Admin.Translation.Views
 
         public override void InitializeAdapters()
         {
-            this.adapNewTranslation = new AdapterHyperLink(this.NT);
-            this.adapPagerTranslation = new AdapterDataPager(this.PGT);
+            //this.adapPagerTranslation = new AdapterDataPager(this.PGT);
 
             base.detailPath = "~/Admin/Translation/Detail.aspx";
+            base.adapNewElement = new AdapterLinkButton(this.NT);
             base.adapListView = new AdapterListView(this.LV);
 
             base.InitializeAdapters();

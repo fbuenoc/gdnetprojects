@@ -1,11 +1,7 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TranslationList.ascx.cs" Inherits="WebFramework.Admin.Translation.Views.TranslationList" %>
-<gnc:HyperLink ID="NT" runat="server" Text="New translation" TextCode="GUI.Admin.Translation.NewTranslation.Text" />
-<div class="clear">
-    <asp:DataPager ID="PGT" runat="server" PagedControlID="LV" PageSize="10" QueryStringField="p">
-        <Fields>
-            <asp:NumericPagerField ButtonType="Link" />
-        </Fields>
-    </asp:DataPager>
+<div class="actionZone">
+    <gnc:LinkButton ID="NT" runat="server" Text="New translation" TextCode="GUI.Admin.Translation.NewTranslation.Text"
+        TooltipCode="GUI.Admin.Translation.NewTranslation.Tooltip" />
 </div>
 <div class="clear">
     <gnc:ListView ID="LV" runat="server" ItemPlaceholderID="PH">
@@ -42,11 +38,4 @@
             </div>
         </ItemTemplate>
     </gnc:ListView>
-</div>
-<div class="clear">
-    <asp:DataPager ID="PGB" runat="server" PagedControlID="LV" PageSize="10">
-        <Fields>
-            <asp:NumericPagerField ButtonType="Link" />
-        </Fields>
-    </asp:DataPager>
 </div>

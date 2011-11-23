@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.UI.WebControls;
 
+using GDNET.Common.Adapters;
 using GDNET.Common.Adapters.Base;
 using GDNET.Common.MVP;
 using GDNET.MvpWeb;
@@ -14,12 +15,14 @@ namespace WebFramework.Common
 {
     public abstract class ViewUserControlManagementWebBase<TPresenter, TElementId> : ViewUserControlManagementBase<TPresenter, TElementId>
     {
+        protected AdapterLinkButton adapNewElement;
         protected AdapterListView adapListView;
 
         public override void InitializeAdapters()
         {
             this.adapListView.ListView.ItemDataBound += new EventHandler<ListViewItemEventArgs>(OnListViewItemDataBound);
             this.adapListView.ListView.ItemCommand += new EventHandler<ListViewCommandEventArgs>(OnListViewItemCommand);
+            this.adapNewElement.Click += new EventHandler(OnAdapNewElementClick);
         }
 
         protected abstract void OnListViewItemDataBound(object sender, ListViewItemEventArgs e);
@@ -36,6 +39,7 @@ namespace WebFramework.Common
                         break;
 
                     case ActionType.Delete:
+                        base.OnCommandDelete(command.CommandArgument);
                         break;
 
                     case ActionType.View:
@@ -44,5 +48,11 @@ namespace WebFramework.Common
                 }
             }
         }
+
+        protected virtual void OnAdapNewElementClick(object sender, EventArgs e)
+        {
+            base.OnCommandNewElement();
+        }
+
     }
 }
