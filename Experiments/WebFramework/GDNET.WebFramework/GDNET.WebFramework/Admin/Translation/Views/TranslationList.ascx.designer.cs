@@ -19,16 +19,7 @@ namespace WebFramework.Admin.Translation.Views {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.Web.MultilingualControls.HyperLink NT;
-        
-        /// <summary>
-        /// PGT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager PGT;
+        protected global::GDNET.Web.MultilingualControls.LinkButton NT;
         
         /// <summary>
         /// LV control.
@@ -38,14 +29,5 @@ namespace WebFramework.Admin.Translation.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::GDNET.Web.MultilingualControls.ListView LV;
-        
-        /// <summary>
-        /// PGB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DataPager PGB;
     }
 }

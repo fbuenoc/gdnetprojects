@@ -5,31 +5,26 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-using GDNET.Web.Common;
 using GDNET.Common.MVP;
 using GDNET.MvpWeb.Utils;
+using GDNET.Web.Common;
+using GDNET.Web.Helpers;
 
 using WebFrameworkPresenters.Admin.Translation;
-using GDNET.Web.Helpers;
 
 namespace WebFramework.Admin.Translation
 {
-    public partial class Detail : PageBase<PresenterTranslationDetail>
+    public partial class Detail : DetailPageBase
     {
-        protected override void OnInit(EventArgs e)
+        public override void PageInit()
         {
-            base.OnInit(e);
-
             base.mode = ViewModeUtils.ParseMode();
             base.presenter = new PresenterTranslationDetail(this.TD, base.mode);
         }
 
-        protected override void OnLoad(EventArgs e)
+        public override void PageLoad()
         {
-            base.OnLoad(e);
-
-            long translationId = QueryStringHelper.ParseInteger(QueryStringConstants.ElementId);
-            base.presenter.CurrentView.ElementId = translationId;
+            base.PageLoad();
             base.presenter.Initlialize(base.IsPostBack);
         }
     }

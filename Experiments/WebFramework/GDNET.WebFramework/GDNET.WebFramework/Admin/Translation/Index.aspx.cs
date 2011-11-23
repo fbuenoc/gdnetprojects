@@ -1,32 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-
-using GDNET.Web.Common;
-using GDNET.Common.MVP;
+﻿using GDNET.Web.Common;
 using GDNET.MvpWeb.Utils;
 
 using WebFrameworkPresenters.Admin.Translation;
 
 namespace WebFramework.Admin.Translation
 {
-    public partial class Index : PageBase<PresenterTranslationList>
+    public partial class Index : PageBase
     {
-        protected override void OnInit(EventArgs e)
+        public override void PageInit()
         {
-            base.OnInit(e);
-
             base.mode = ViewModeUtils.ParseMode();
             base.presenter = new PresenterTranslationList(this.TL, mode);
         }
 
-        protected override void OnLoad(EventArgs e)
+        public override void PageLoad()
         {
-            base.OnLoad(e);
-
             base.presenter.Initlialize(base.IsPostBack);
         }
     }

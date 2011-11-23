@@ -72,8 +72,10 @@
     <Content Include="App_Data\hibernate.cfg.xml">
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="App_Themes\01\Global.css" />
     <Content Include="App_Themes\Account\Site.css" />
-    <Content Include="App_Themes\Admin\Site.css" />
+    <Content Include="App_Themes\Admin\02.Global.css" />
+    <Content Include="App_Themes\Admin\01.Site.css" />
     <Content Include="Views\DefaultLoginView.ascx" />
     <Content Include="Views\DefaultMenu.ascx" />
     <Content Include="App_Themes\01\Site.css" />
@@ -240,7 +242,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Themes\01\Images\" />
     <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>

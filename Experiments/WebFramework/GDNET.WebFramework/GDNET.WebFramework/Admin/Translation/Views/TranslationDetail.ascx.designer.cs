@@ -31,13 +31,13 @@ namespace WebFramework.Admin.Translation.Views {
         protected global::GDNET.Web.MultilingualControls.LinkButton RT;
         
         /// <summary>
-        /// E control.
+        /// ED control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.Web.MultilingualControls.Button E;
+        protected global::GDNET.Web.MultilingualControls.LinkButton ED;
         
         /// <summary>
         /// LitBlocTitle control.
@@ -85,30 +85,30 @@ namespace WebFramework.Admin.Translation.Views {
         protected global::GDNET.Web.MultilingualControls.TextBox IT;
         
         /// <summary>
-        /// R control.
+        /// RS control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.Web.MultilingualControls.Button R;
+        protected global::GDNET.Web.MultilingualControls.Button RS;
         
         /// <summary>
-        /// S control.
+        /// SM control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.Web.MultilingualControls.Button S;
+        protected global::GDNET.Web.MultilingualControls.Button SM;
         
         /// <summary>
-        /// D control.
+        /// DL control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::GDNET.Web.MultilingualControls.Button D;
+        protected global::GDNET.Web.MultilingualControls.Button DL;
     }
 }

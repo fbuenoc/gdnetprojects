@@ -1,9 +1,9 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="TranslationDetail.ascx.cs" Inherits="WebFramework.Admin.Translation.Views.TranslationDetail" %>
 <%@ Register Src="~/Views/DefaultNotifier.ascx" TagName="Notifier" TagPrefix="UC" %>
 <UC:Notifier ID="NF" runat="server" Visible="false" />
-<div>
+<div class="actionZone">
     <gnc:LinkButton ID="RT" runat="server" Text="Return" TextCode="GUI.Common.Action.Return.Text" TooltipCode="GUI.Common.Action.Return.Tooptip" />
-    <gnc:Button ID="E" runat="server" Text="Edit" TextCode="GUI.Common.Action.Edit.Text" TooltipCode="GUI.Common.Action.Edit.Tooltip" />
+    <gnc:LinkButton ID="ED" runat="server" Text="Edit" TextCode="GUI.Common.Action.Edit.Text" TooltipCode="GUI.Common.Action.Edit.Tooltip" />
 </div>
 <fieldset>
     <legend>
@@ -28,8 +28,8 @@
         </div>
     </div>
 </fieldset>
-<div>
-    <gnc:Button ID="R" runat="server" Text="Reset" TextCode="GUI.Common.Action.Reset.Text" TooltipCode="GUI.Common.Action.Reset.Tooltip" />
-    <gnc:Button ID="S" runat="server" Text="Submit" TextCode="GUI.Common.Action.Submit.Text" TooltipCode="GUI.Common.Action.Submit.Tooltip" />
-    <gnc:Button ID="D" runat="server" Text="Delete" TextCode="GUI.Common.Action.Delete.Text" TooltipCode="GUI.Common.Action.Delete.Tooltip" />
+<div class="actionZone">
+    <gnc:Button ID="RS" runat="server" Text="Reset" TextCode="GUI.Common.Action.Reset.Text" TooltipCode="GUI.Common.Action.Reset.Tooltip" />
+    <gnc:Button ID="SM" runat="server" Text="Submit" TextCode="GUI.Common.Action.Submit.Text" TooltipCode="GUI.Common.Action.Submit.Tooltip" />
+    <gnc:Button ID="DL" runat="server" Text="Delete" TextCode="GUI.Common.Action.Delete.Text" TooltipCode="GUI.Common.Action.Delete.Tooltip" />
 </div>
