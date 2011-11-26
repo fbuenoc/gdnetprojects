@@ -10,30 +10,12 @@ namespace WebFrameworkDomain.Common
 {
     public partial class ListValue : EntityFullControlBase<long>
     {
-        private IList<ListValue> children = new List<ListValue>();
+        private IList<ListValue> subValues = new List<ListValue>();
         private IList<Translation> translations = new List<Translation>();
 
         #region Properties
 
-        public virtual string Name
-        {
-            get;
-            set;
-        }
-
-        public virtual string Value
-        {
-            get;
-            set;
-        }
-
-        public virtual int Position
-        {
-            get;
-            set;
-        }
-
-        public virtual string CodeDescription
+        public virtual Translation Description
         {
             get;
             set;
@@ -45,12 +27,36 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
-        /// <summary>
-        /// Children of list
-        /// </summary>
-        public virtual ReadOnlyCollection<ListValue> Children
+        public virtual Application Application
         {
-            get { return new ReadOnlyCollection<ListValue>(this.children); }
+            get;
+            set;
+        }
+
+        public virtual string Name
+        {
+            get;
+            set;
+        }
+
+        public virtual string CustomValue
+        {
+            get;
+            set;
+        }
+
+        public virtual int Position
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// Children
+        /// </summary>
+        public virtual ReadOnlyCollection<ListValue> SubValues
+        {
+            get { return new ReadOnlyCollection<ListValue>(this.subValues); }
         }
 
         /// <summary>
