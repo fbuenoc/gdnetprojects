@@ -2,9 +2,21 @@
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class Translation : EntityFullControlBase<long>
+    public partial class Application : EntityFullControlBase<long>
     {
         #region Properties
+
+        public virtual Translation Name
+        {
+            get;
+            set;
+        }
+
+        public virtual Translation Description
+        {
+            get;
+            set;
+        }
 
         public virtual ListValue Category
         {
@@ -12,19 +24,7 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
-        public virtual Culture Culture
-        {
-            get;
-            set;
-        }
-
-        public virtual string Code
-        {
-            get;
-            set;
-        }
-
-        public virtual string Value
+        public virtual string RootUrl
         {
             get;
             set;
@@ -32,6 +32,6 @@ namespace WebFrameworkDomain.Common
 
         #endregion
 
-        protected Translation() { }
+        protected Application() { }
     }
 }

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-
 using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkDomain.Common
@@ -15,7 +10,7 @@ namespace WebFrameworkDomain.Common
             get { return new ListValueFactory(); }
         }
 
-        public class ListValueFactory
+        public sealed class ListValueFactory
         {
             /// <summary>
             /// Create a category with default values
@@ -23,14 +18,20 @@ namespace WebFrameworkDomain.Common
             /// <returns></returns>
             public ListValue Create()
             {
-                ListValue c = new ListValue
+                ListValue lv = new ListValue
                 {
                     IsActive = true,
                     IsDeletable = true,
                     IsEditable = true,
+                    IsViewable = true,
                 };
 
-                return c;
+                return lv;
+            }
+
+            public ListValue Retrieve(string code)
+            {
+                throw new NotImplementedException();
             }
         }
     }

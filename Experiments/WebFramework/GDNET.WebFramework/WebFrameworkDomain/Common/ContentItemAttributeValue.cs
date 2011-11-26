@@ -2,29 +2,23 @@
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class Translation : EntityFullControlBase<long>
+    public partial class ContentItemAttributeValue : EntityBase<long>
     {
         #region Properties
 
-        public virtual ListValue Category
+        public virtual ContentAttribute ContentAttribute
         {
             get;
             set;
         }
 
-        public virtual Culture Culture
+        public virtual ContentItem ContentItem
         {
             get;
             set;
         }
 
-        public virtual string Code
-        {
-            get;
-            set;
-        }
-
-        public virtual string Value
+        public virtual Translation Value
         {
             get;
             set;
@@ -32,6 +26,6 @@ namespace WebFrameworkDomain.Common
 
         #endregion
 
-        protected Translation() { }
+        protected ContentItemAttributeValue() { }
     }
 }
