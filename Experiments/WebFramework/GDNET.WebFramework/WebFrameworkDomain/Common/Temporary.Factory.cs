@@ -1,5 +1,7 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
+using GDNET.Common.DesignByContract;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
 {
@@ -23,6 +25,18 @@ namespace WebFrameworkDomain.Common
                     IsActive = true,
                     Id = Guid.NewGuid().ToString(),
                 };
+            }
+
+            public Temporary Create(string value, string encodingCodeName)
+            {
+                Throw.ArgumentExceptionIfNullOrEmpty(encodingCodeName, "encodingCodeName", "Encoding code can not be null.");
+
+                var temporary = this.Create();
+
+                temporary.Text = value;
+                temporary.EncodingType = DomainRepositories.ListValue.FindByName(encodingCodeName);
+
+                return temporary;
             }
         }
     }

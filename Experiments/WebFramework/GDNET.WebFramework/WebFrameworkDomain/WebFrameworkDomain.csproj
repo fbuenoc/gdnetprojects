@@ -40,21 +40,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Application.cs" />
+    <Compile Include="Common\Constants\CommonConstants.cs" />
+    <Compile Include="Common\Constants\ListValueConstants.cs" />
+    <Compile Include="Common\ContentType.cs" />
+    <Compile Include="Common\ContentItemAttributeValue.cs" />
+    <Compile Include="Common\ContentItem.cs" />
+    <Compile Include="Common\ContentAttribute.cs" />
+    <Compile Include="Common\Application.Factory.cs" />
+    <Compile Include="Common\ContentAttribute.Factory.cs" />
+    <Compile Include="Common\ContentItem.Factory.cs" />
+    <Compile Include="Common\ContentItemAttributeValue.Factory.cs" />
+    <Compile Include="Common\ContentType.Factory.cs" />
+    <Compile Include="Common\ApplicationMeta.cs" />
+    <Compile Include="Common\ContentItemMeta.cs" />
+    <Compile Include="Common\ContentTypeMeta.cs" />
+    <Compile Include="Common\ContentAttributeMeta.cs" />
+    <Compile Include="Common\ContentItemAttributeValueMeta.cs" />
+    <Compile Include="Common\CultureMeta.cs" />
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
     <Compile Include="Common\ListValue.cs" />
-    <Compile Include="Common\ListViewMeta.cs" />
+    <Compile Include="Common\ListValueMeta.cs" />
     <Compile Include="Common\ListValue.Factory.cs" />
+    <Compile Include="Common\Repositories\IRepositoryContentAttribute.cs" />
+    <Compile Include="Common\Repositories\IRepositoryContentItem.cs" />
+    <Compile Include="Common\Repositories\IRepositoryContentType.cs" />
+    <Compile Include="Common\Repositories\IRepositoryCulture.cs" />
     <Compile Include="Common\TemporaryMeta.cs" />
     <Compile Include="Common\Repositories\IRepositoryTemporary.cs" />
     <Compile Include="Common\Temporary.Factory.cs" />
     <Compile Include="Common\Temporary.cs" />
     <Compile Include="Common\Translation.Factory.cs" />
     <Compile Include="Common\TranslationMeta.cs" />
-    <Compile Include="Common\Repositories\IRepositoryCategory.cs" />
+    <Compile Include="Common\Repositories\IRepositoryListValue.cs" />
     <Compile Include="Common\Repositories\IRepositoryTranslation.cs" />
     <Compile Include="Common\Translation.cs" />
-    <Compile Include="IDomainRepositories.cs" />
+    <Compile Include="DefaultImpl\DomainRepositories.cs" />
+    <Compile Include="Services\IDomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />
