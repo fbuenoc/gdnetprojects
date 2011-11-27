@@ -2,8 +2,7 @@
 
 namespace WebFrameworkDomain.Common.Repositories
 {
-    public interface IRepositoryCategory : IRepositoryBase<ListValue, long>
+    public interface IRepositoryContentAttribute : IRepositoryBase<ContentAttribute, long>
     {
-
     }
 }

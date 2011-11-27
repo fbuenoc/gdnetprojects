@@ -1,5 +1,7 @@
 ﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
+using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
 {
@@ -29,13 +31,50 @@ namespace WebFrameworkDomain.Common
                 return result;
             }
 
+            /// <summary>
+            /// Create a translation with default culture code
+            /// </summary>
+            /// <param name="code"></param>
+            /// <param name="value"></param>
+            /// <returns></returns>
             public Translation Create(string code, string value)
             {
+                return this.Create(code, value, CommonConstants.CultureCodeDefault);
+            }
+
+            /// <summary>
+            /// Create a translation with a culture code
+            /// </summary>
+            /// <param name="code"></param>
+            /// <param name="value"></param>
+            /// <param name="cultureCode"></param>
+            /// <returns></returns>
+            public Translation Create(string code, string value, string cultureCode)
+            {
+                Throw.ArgumentExceptionIfNullOrEmpty(cultureCode, "cultureCode", "Culture can not be null.");
+
+                var culture = DomainRepositories.Culture.FindByCode(cultureCode);
+
+                return this.Create(code, value, culture);
+            }
+
+            /// <summary>
+            /// Create a translation with a Culture
+            /// </summary>
+            /// <param name="code"></param>
+            /// <param name="value"></param>
+            /// <param name="culture"></param>
+            /// <returns></returns>
+            public Translation Create(string code, string value, Culture culture)
+            {
                 Throw.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of translation can not be nullable.");
+                Throw.ArgumentNullException(culture, "culture", "Culture can not be null.");
 
                 var translation = this.Create();
+
                 translation.Code = code;
                 translation.Value = value;
+                translation.Culture = culture;
 
                 return translation;
             }

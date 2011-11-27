@@ -1,5 +1,6 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
+using GDNET.Common.DesignByContract;
 
 namespace WebFrameworkDomain.Common
 {
@@ -25,6 +26,25 @@ namespace WebFrameworkDomain.Common
                     IsEditable = true,
                     IsViewable = true,
                 };
+
+                return lv;
+            }
+
+            public ListValue Create(string name, string description)
+            {
+                return this.Create(name, null, description);
+            }
+
+            public ListValue Create(string name, string customValue, string description)
+            {
+                Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of item can not be null.");
+
+                var lv = this.Create();
+                lv.Name = name;
+                lv.CustomValue = customValue;
+                lv.Description = Translation.Factory.Create(Guid.NewGuid().ToString(), description);
+                lv.Parent = null;
+                lv.Application = null;
 
                 return lv;
             }
