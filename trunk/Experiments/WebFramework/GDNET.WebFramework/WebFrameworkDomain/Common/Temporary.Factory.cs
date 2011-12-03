@@ -27,14 +27,14 @@ namespace WebFrameworkDomain.Common
                 };
             }
 
-            public Temporary Create(string value, string encodingCodeName)
+            public Temporary Create(string value, string encodingTypeName)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(encodingCodeName, "encodingCodeName", "Encoding code can not be null.");
+                Throw.ArgumentExceptionIfNullOrEmpty(encodingTypeName, "encodingTypeName", "Encoding type name can not be null.");
 
                 var temporary = this.Create();
 
                 temporary.Text = value;
-                temporary.EncodingType = DomainRepositories.ListValue.FindByName(encodingCodeName);
+                temporary.EncodingType = DomainRepositories.ListValue.FindByName(encodingTypeName);
 
                 return temporary;
             }

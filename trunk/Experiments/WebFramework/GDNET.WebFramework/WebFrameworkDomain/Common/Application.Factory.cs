@@ -1,6 +1,8 @@
 ﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
 using System;
+using WebFrameworkDomain.DefaultImpl;
+using WebFrameworkDomain.Common.Constants;
 
 namespace WebFrameworkDomain.Common
 {
@@ -26,6 +28,11 @@ namespace WebFrameworkDomain.Common
 
             public Application Create(string rootUrl, string name, string description)
             {
+                return this.Create(rootUrl, name, description, ListValueConstants.ApplicationCategories_Default);
+            }
+
+            public Application Create(string rootUrl, string name, string description, string categoryName)
+            {
                 Throw.ArgumentExceptionIfNullOrEmpty(rootUrl, "rootUrl", "RootUrl can not be nullable.");
 
                 var application = this.Create();
@@ -33,6 +40,7 @@ namespace WebFrameworkDomain.Common
                 application.RootUrl = rootUrl;
                 application.Name = Translation.Factory.Create(Guid.NewGuid().ToString(), name);
                 application.Description = Translation.Factory.Create(Guid.NewGuid().ToString(), description);
+                application.Category = DomainRepositories.ListValue.FindByName(categoryName);
 
                 return application;
             }
