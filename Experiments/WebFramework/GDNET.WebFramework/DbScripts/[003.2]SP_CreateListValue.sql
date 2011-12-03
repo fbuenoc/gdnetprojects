@@ -58,7 +58,7 @@ begin
 			begin transaction
 				declare @DescriptionTranslationId bigint;
 				exec @DescriptionTranslationId = sp_CreateTranslation
-						@CultureCode = 'vi-VN',
+						@CultureCode = 'en-US',
 						@Code = @TranslationDescriptionCode,
 						@Value = @Description;	
 				
