@@ -50,6 +50,7 @@
     <Compile Include="Common\Repositories\RepositoryContentType.cs" />
     <Compile Include="Common\Repositories\RepositoryCulture.cs" />
     <Compile Include="Common\Repositories\RepositoryTemporary.cs" />
+    <Compile Include="Common\Specifications\SpecificationTemporary.cs" />
     <Compile Include="Common\Specifications\SpecificationListValue.cs" />
     <Compile Include="Common\Specifications\SpecificationContentType.cs" />
     <Compile Include="Common\Specifications\SpecificationContentItemAttributeValue.cs" />
@@ -63,6 +64,10 @@
     <ProjectReference Include="..\..\..\..\Experiments CodePlex\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.NHibernateImpl\GDNET.NHibernateImpl.csproj">
       <Project>{8EDA5169-77FC-484B-A34C-AE9B34ADC9EC}</Project>
