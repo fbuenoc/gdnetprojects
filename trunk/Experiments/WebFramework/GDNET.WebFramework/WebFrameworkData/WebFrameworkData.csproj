@@ -8,8 +8,8 @@
     <ProjectGuid>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GDNET.WebFrameworkData</RootNamespace>
-    <AssemblyName>GDNET.WebFrameworkData</AssemblyName>
+    <RootNamespace>WebFrameworkData</RootNamespace>
+    <AssemblyName>WebFrameworkData</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -44,9 +44,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Repositories\RepositoryApplication.cs" />
+    <Compile Include="Common\Repositories\RepositoryContentAttribute.cs" />
+    <Compile Include="Common\Repositories\RepositoryContentItem.cs" />
+    <Compile Include="Common\Repositories\RepositoryContentType.cs" />
+    <Compile Include="Common\Repositories\RepositoryCulture.cs" />
     <Compile Include="Common\Repositories\RepositoryTemporary.cs" />
-    <Compile Include="DataRepositories.cs" />
-    <Compile Include="Common\Repositories\RepositoryCategory.cs" />
+    <Compile Include="Common\Specifications\SpecificationListValue.cs" />
+    <Compile Include="Common\Specifications\SpecificationContentType.cs" />
+    <Compile Include="Common\Specifications\SpecificationContentItemAttributeValue.cs" />
+    <Compile Include="Common\Specifications\SpecificationContentItem.cs" />
+    <Compile Include="Common\Specifications\SpecificationApplication.cs" />
+    <Compile Include="Common\Repositories\RepositoryListValue.cs" />
     <Compile Include="Common\Repositories\RepositoryTranslation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
