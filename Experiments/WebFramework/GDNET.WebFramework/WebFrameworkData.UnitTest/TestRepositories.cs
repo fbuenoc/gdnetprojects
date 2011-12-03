@@ -91,6 +91,7 @@ namespace WebFrameworkData.UnitTest
             if (repositoryTemporary == null)
             {
                 repositoryTemporary = new RepositoryTemporary(NUnitBase.GetCurrentSession());
+                repositoryTemporary.Specification = new SpecificationTemporary();
             }
             return repositoryTemporary;
         }

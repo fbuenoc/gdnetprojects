@@ -68,15 +68,17 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanFindByName()
         {
-            var valueItem = DomainRepositories.ListValue.FindByName(ListValueConstants.EncodingTypes_None);
+            var valueItem = DomainRepositories.ListValue.FindByName(ListValueConstants.EncryptionTypes_None);
             Assert.IsNotNull(valueItem);
-            Assert.AreEqual(ListValueConstants.EncodingTypes_None, valueItem.Name);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes_None, valueItem.Name);
         }
 
         [Test]
         public void CanAddListValue()
         {
             var lv = AssistantTest.CreateListValue("TestLV");
+            DomainRepositories.ListValue.Clear();
+
             var savedLV = DomainRepositories.ListValue.GetById(lv.Id);
 
             Assert.IsNotNull(savedLV);
@@ -84,12 +86,12 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual("TestLV", savedLV.Name);
             Assert.IsEmpty(savedLV.Description.Value);
 
-            DomainRepositories.ListValue.Delete(lv);
+            DomainRepositories.ListValue.Delete(lv.Id);
             DomainRepositories.ListValue.Synchronize();
         }
 
         [Test]
-        public void CanAddListValueWithSubValue()
+        public void CanAddListValueWithSubValues()
         {
             var rootValue = AssistantTest.CreateListValue("TestLV");
             var childValue = AssistantTest.CreateListValue("Child1");
@@ -118,6 +120,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             DomainRepositories.ListValue.Delete(lv);
             DomainRepositories.ListValue.Synchronize();
+            DomainRepositories.ListValue.Clear();
 
             var savedLV = DomainRepositories.ListValue.GetById(lv.Id);
             Assert.IsNull(savedLV);
