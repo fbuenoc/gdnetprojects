@@ -9,7 +9,6 @@ namespace WebFrameworkDomain.Common
     public partial class ListValue : EntityFullControlBase<long>
     {
         private IList<ListValue> subValues = new List<ListValue>();
-        private IList<Translation> translations = new List<Translation>();
 
         #region Properties
 
@@ -57,12 +56,19 @@ namespace WebFrameworkDomain.Common
             get { return new ReadOnlyCollection<ListValue>(this.subValues); }
         }
 
-        /// <summary>
-        /// All translations belong to this category
-        /// </summary>
-        public virtual ReadOnlyCollection<Translation> Translations
+        #endregion
+
+        #region Methods
+
+        public virtual void AddSubValue(ListValue subValue)
         {
-            get { return new ReadOnlyCollection<Translation>(this.translations); }
+            if (this.SubValues.Contains(subValue))
+            {
+                return;
+            }
+
+            subValue.Parent = this;
+            this.subValues.Add(subValue);
         }
 
         #endregion

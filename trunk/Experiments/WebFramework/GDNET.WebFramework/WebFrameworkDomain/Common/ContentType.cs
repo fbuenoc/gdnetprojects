@@ -20,6 +20,12 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual Application Application
+        {
+            get;
+            set;
+        }
+
         public virtual string TypeName
         {
             get;
@@ -34,6 +40,58 @@ namespace WebFrameworkDomain.Common
         public virtual ReadOnlyCollection<ContentAttribute> ContentAttributes
         {
             get { return new ReadOnlyCollection<ContentAttribute>(this.contentAttributes); }
+        }
+
+        #endregion
+
+        #region Methods
+
+        public virtual void AddContentAttribute(ContentAttribute attribute)
+        {
+            if (this.ContentAttributes.Contains(attribute))
+            {
+                return;
+            }
+
+            attribute.ContentType = this;
+            this.contentAttributes.Add(attribute);
+        }
+
+        public virtual void AddContentAttributes(IList<ContentAttribute> listOfAttributes)
+        {
+            foreach (var attribute in listOfAttributes)
+            {
+                this.AddContentAttribute(attribute);
+            }
+        }
+
+        public virtual void AddContentAttributes(params ContentAttribute[] arrayOfAttributes)
+        {
+            foreach (var attribute in arrayOfAttributes)
+            {
+                this.AddContentAttribute(attribute);
+            }
+        }
+
+        public virtual void RemoveContentAttribute(ContentAttribute attribute)
+        {
+            if (this.ContentAttributes.Contains(attribute))
+            {
+                this.contentAttributes.Remove(attribute);
+            }
+        }
+
+        public virtual void RemoveContentAttributes(params ContentAttribute[] arrayOfAttributes)
+        {
+            foreach (var attribute in arrayOfAttributes)
+            {
+                this.RemoveContentAttribute(attribute);
+            }
+        }
+
+        public virtual void RemoveAllContentAttribute(ContentAttribute attribute)
+        {
+            this.contentAttributes.Clear();
         }
 
         #endregion

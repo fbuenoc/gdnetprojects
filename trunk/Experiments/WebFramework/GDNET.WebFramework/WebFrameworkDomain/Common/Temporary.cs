@@ -6,7 +6,7 @@ namespace WebFrameworkDomain.Common
     {
         #region Properties
 
-        public virtual ListValue EncodingType
+        public virtual ListValue EncryptionType
         {
             get;
             set;

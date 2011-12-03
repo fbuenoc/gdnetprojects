@@ -1,7 +1,10 @@
 ﻿using System;
+
 using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
+
 using WebFrameworkDomain.DefaultImpl;
+using WebFrameworkDomain.Common.Constants;
 
 namespace WebFrameworkDomain.Common
 {
@@ -27,6 +30,26 @@ namespace WebFrameworkDomain.Common
                 };
             }
 
+            /// <summary>
+            /// Create Temporary data with default encoding (NONE)
+            /// </summary>
+            /// <param name="value"></param>
+            /// <returns></returns>
+            public Temporary Create(string value)
+            {
+                return this.Create(value, ListValueConstants.EncryptionTypes_None);
+            }
+
+            /// <summary>
+            /// Create Temporary data with base64 encoding
+            /// </summary>
+            /// <param name="value"></param>
+            /// <returns></returns>
+            public Temporary CreateWithBase64(string value)
+            {
+                return this.Create(value, ListValueConstants.EncryptionTypes_Base64);
+            }
+
             public Temporary Create(string value, string encodingTypeName)
             {
                 Throw.ArgumentExceptionIfNullOrEmpty(encodingTypeName, "encodingTypeName", "Encoding type name can not be null.");
@@ -34,7 +57,7 @@ namespace WebFrameworkDomain.Common
                 var temporary = this.Create();
 
                 temporary.Text = value;
-                temporary.EncodingType = DomainRepositories.ListValue.FindByName(encodingTypeName);
+                temporary.EncryptionType = DomainRepositories.ListValue.FindByName(encodingTypeName);
 
                 return temporary;
             }

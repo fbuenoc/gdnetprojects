@@ -37,8 +37,8 @@ namespace WebFrameworkDomain.Common
                 var contentItem = this.Create();
 
                 contentItem.ContentType = type;
-                contentItem.Name = Translation.Factory.Create(Guid.NewGuid().ToString(), name);
-                contentItem.Description = Translation.Factory.Create(Guid.NewGuid().ToString(), description);
+                contentItem.Name = Translation.Factory.Create(name);
+                contentItem.Description = Translation.Factory.Create(description);
                 contentItem.Position = position;
 
                 return contentItem;

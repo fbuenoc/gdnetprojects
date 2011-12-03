@@ -8,6 +8,7 @@ namespace WebFrameworkDomain.Common
     public partial class ContentAttribute : EntityFullControlBase<long>
     {
         private IList<ContentItem> contentItems = new List<ContentItem>();
+        private IList<ContentItemAttributeValue> attributeValues = new List<ContentItemAttributeValue>();
 
         #region Properties
 
@@ -38,6 +39,11 @@ namespace WebFrameworkDomain.Common
         public virtual ReadOnlyCollection<ContentItem> ContentItems
         {
             get { return new ReadOnlyCollection<ContentItem>(this.contentItems); }
+        }
+
+        public virtual ReadOnlyCollection<ContentItemAttributeValue> AttributeValues
+        {
+            get { return new ReadOnlyCollection<ContentItemAttributeValue>(this.attributeValues); }
         }
 
         #endregion

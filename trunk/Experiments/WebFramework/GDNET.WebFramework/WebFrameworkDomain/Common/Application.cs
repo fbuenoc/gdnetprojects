@@ -1,9 +1,14 @@
-﻿using GDNET.Common.Base.Entities;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkDomain.Common
 {
     public partial class Application : EntityFullControlBase<long>
     {
+        private IList<ContentType> contentTypes = new List<ContentType>();
+
         #region Properties
 
         public virtual Translation Name
@@ -28,6 +33,11 @@ namespace WebFrameworkDomain.Common
         {
             get;
             set;
+        }
+
+        public virtual ReadOnlyCollection<ContentType> ContentTypes
+        {
+            get { return new ReadOnlyCollection<ContentType>(this.contentTypes); }
         }
 
         #endregion

@@ -36,7 +36,7 @@ namespace WebFrameworkDomain.Common
 
             public ContentItemAttributeValue Create(ContentAttribute attribute, ContentItem item, string value)
             {
-                var translation = Translation.Factory.Create(Guid.NewGuid().ToString(), value);
+                var translation = Translation.Factory.Create(value);
                 return this.Create(attribute, item, translation);
             }
         }
