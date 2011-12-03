@@ -1,5 +1,6 @@
 ﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
 {
@@ -27,16 +28,20 @@ namespace WebFrameworkDomain.Common
                 };
             }
 
-            public ContentAttribute Create(string code)
+            public ContentAttribute Create(string code, ContentType type, string dataTypeCode)
             {
-                return this.Create(code, 0);
+                return this.Create(code, 0, type, dataTypeCode);
             }
 
-            public ContentAttribute Create(string code, int position)
+            public ContentAttribute Create(string code, int position, ContentType type, string dataTypeName)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be nullable.");
+                Throw.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be null.");
+                Throw.ArgumentExceptionIfNullOrEmpty(dataTypeName, "dataTypeCode", "Code of data type can not be null.");
 
                 var attribute = this.Create();
+
+                attribute.ContentType = type;
+                attribute.DataType = DomainRepositories.ListValue.FindByName(dataTypeName);
                 attribute.Code = code;
                 attribute.Position = position;
 

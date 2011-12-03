@@ -4,6 +4,7 @@ namespace WebFrameworkDomain.Services
 {
     public interface IDomainRepositories
     {
+        IRepositoryApplication GetRepositoryApplication();
         IRepositoryContentAttribute GetRepositoryContentAttribute();
         IRepositoryContentItem GetRepositoryContentItem();
         IRepositoryContentType GetRepositoryContentType();

@@ -6,6 +6,10 @@ namespace WebFrameworkDomain.Common
     {
         public const string ContentAttributeId = "ContentAttributeId";
         public const string ContentItemId = "ContentItemId";
+
+        public const string Value = "Value";
         public const string ValueTranslationId = "ValueTranslationId";
+
+        public const string ContentItemAttributeValue = "ContentItemAttributeValue";
     }
 }

@@ -1,9 +1,16 @@
-﻿using GDNET.Common.Base.Entities;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+using GDNET.Common.Base.Entities;
+
+using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkDomain.Common
 {
     public partial class ContentItem : EntityFullControlBase<long>
     {
+        private IList<ContentItemAttributeValue> attributeValues = new List<ContentItemAttributeValue>();
+
         #region Properties
 
         public virtual ContentType ContentType
@@ -30,8 +37,45 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual ReadOnlyCollection<ContentItemAttributeValue> AttributeValues
+        {
+            get { return new ReadOnlyCollection<ContentItemAttributeValue>(this.attributeValues); }
+        }
+
+        #endregion
+
+        #region Methods
+
+        public virtual void AddAttributeValue(ContentAttribute attribute, string value)
+        {
+            ContentItemAttributeValue attributeValue = ContentItemAttributeValue.Factory.Create(attribute, this, value);
+            this.AddAttributeValue(attributeValue);
+        }
+
+        public virtual void AddAttributeValue(ContentItemAttributeValue attributeValue)
+        {
+            if (!this.attributeValues.Contains(attributeValue))
+            {
+                this.attributeValues.Add(attributeValue);
+            }
+        }
+
+        public virtual void RemoveAttributeValue(ContentItemAttributeValue attributeValue)
+        {
+            if (this.attributeValues.Contains(attributeValue))
+            {
+                this.attributeValues.Remove(attributeValue);
+            }
+        }
+
+        public virtual void RemoveAllAttributeValues()
+        {
+            this.attributeValues.Clear();
+        }
+
         #endregion
 
         protected ContentItem() { }
+
     }
 }

@@ -24,17 +24,19 @@ namespace WebFrameworkDomain.Common
                 };
             }
 
-            public ContentItem Create(string name, string description)
+            public ContentItem Create(string name, string description, ContentType type)
             {
-                return this.Create(name, description);
+                return this.Create(name, description, 0, type);
             }
 
-            public ContentItem Create(string name, string description, int position)
+            public ContentItem Create(string name, string description, int position, ContentType type)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be nullable.");
+                Throw.ArgumentNullException(type, "type", "Type of content item can not be null.");
+                Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be null.");
 
                 var contentItem = this.Create();
 
+                contentItem.ContentType = type;
                 contentItem.Name = Translation.Factory.Create(Guid.NewGuid().ToString(), name);
                 contentItem.Description = Translation.Factory.Create(Guid.NewGuid().ToString(), description);
                 contentItem.Position = position;

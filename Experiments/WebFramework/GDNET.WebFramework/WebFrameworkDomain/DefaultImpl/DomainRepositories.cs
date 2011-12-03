@@ -12,6 +12,11 @@ namespace WebFrameworkDomain.DefaultImpl
             _instance = instance;
         }
 
+        public static IRepositoryApplication Application
+        {
+            get { return _instance.GetRepositoryApplication(); }
+        }
+
         public static IRepositoryContentAttribute ContentAttribute
         {
             get { return _instance.GetRepositoryContentAttribute(); }
@@ -49,6 +54,7 @@ namespace WebFrameworkDomain.DefaultImpl
 
         #region IDataRepositories Members
 
+        public abstract IRepositoryApplication GetRepositoryApplication();
         public abstract IRepositoryContentAttribute GetRepositoryContentAttribute();
         public abstract IRepositoryContentItem GetRepositoryContentItem();
         public abstract IRepositoryContentType GetRepositoryContentType();

@@ -60,9 +60,11 @@
     <Compile Include="Common\CultureMeta.cs" />
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
+    <Compile Include="Extensions\EntityExtensions.cs" />
     <Compile Include="Common\ListValue.cs" />
     <Compile Include="Common\ListValueMeta.cs" />
     <Compile Include="Common\ListValue.Factory.cs" />
+    <Compile Include="Common\Repositories\IRepositoryApplication.cs" />
     <Compile Include="Common\Repositories\IRepositoryContentAttribute.cs" />
     <Compile Include="Common\Repositories\IRepositoryContentItem.cs" />
     <Compile Include="Common\Repositories\IRepositoryContentType.cs" />

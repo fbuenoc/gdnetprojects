@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 using GDNET.Common.Base.Entities;
+using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkDomain.Common
 {
@@ -38,5 +39,6 @@ namespace WebFrameworkDomain.Common
         #endregion
 
         protected ContentType() { }
+
     }
 }

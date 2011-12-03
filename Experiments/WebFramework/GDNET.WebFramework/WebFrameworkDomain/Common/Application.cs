@@ -33,5 +33,6 @@ namespace WebFrameworkDomain.Common
         #endregion
 
         protected Application() { }
+
     }
 }

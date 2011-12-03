@@ -1,9 +1,14 @@
-﻿using GDNET.Common.Base.Entities;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+
+using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkDomain.Common
 {
     public partial class ContentAttribute : EntityFullControlBase<long>
     {
+        private IList<ContentItem> contentItems = new List<ContentItem>();
+
         #region Properties
 
         public virtual ContentType ContentType
@@ -28,6 +33,11 @@ namespace WebFrameworkDomain.Common
         {
             get;
             set;
+        }
+
+        public virtual ReadOnlyCollection<ContentItem> ContentItems
+        {
+            get { return new ReadOnlyCollection<ContentItem>(this.contentItems); }
         }
 
         #endregion
