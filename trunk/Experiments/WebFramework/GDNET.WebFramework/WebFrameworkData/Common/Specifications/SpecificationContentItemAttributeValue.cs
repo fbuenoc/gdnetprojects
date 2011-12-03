@@ -2,7 +2,7 @@
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Extensions;
+using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkData.Common.Specifications
 {
