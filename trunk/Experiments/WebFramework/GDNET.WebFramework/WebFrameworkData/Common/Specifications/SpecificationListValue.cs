@@ -1,5 +1,6 @@
 ﻿using GDNET.Common.Data;
 using GDNET.Common.Base.Entities;
+using GDNET.Extensions;
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;
@@ -22,7 +23,8 @@ namespace WebFrameworkData.Common.Specifications
 
         public override bool OnSaved(ListValue entity)
         {
-            entity.RefreshTranslation(entity.Description, ListValueMeta.Description);
+            // Update translation code
+            entity.RefreshTranslation(entity.Description, ExpressionHelper.GetPropertyName(() => entity.Description));
 
             return base.OnSaved(entity);
         }

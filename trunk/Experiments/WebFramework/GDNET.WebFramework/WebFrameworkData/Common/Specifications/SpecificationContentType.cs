@@ -1,5 +1,6 @@
 ﻿using GDNET.Common.Data;
 using GDNET.Common.Base.Entities;
+using GDNET.Extensions;
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;
@@ -11,20 +12,39 @@ namespace WebFrameworkData.Common.Specifications
     {
         public override bool OnSaving(ContentType entity)
         {
+            this.UpdateContentType(entity);
+
+            return base.OnSaving(entity);
+        }
+
+        public override bool OnUpdating(ContentType entity)
+        {
+            this.UpdateContentType(entity);
+
+            return base.OnUpdating(entity);
+        }
+
+        public override bool OnSaved(ContentType entity)
+        {
+            // Update translation code
+            entity.RefreshTranslation(entity.Name, ExpressionHelper.GetPropertyName(() => entity.Name));
+
+            return base.OnSaved(entity);
+        }
+
+        private void UpdateContentType(ContentType entity)
+        {
             // In case of creating new ContentType, its Name is also saved. But Description.CreatedDate may be not set
             if (entity.Name != null)
             {
                 bool x = (entity.Name.Id < 1) ? DataService.SetCreationInfo(entity.Name) : DataService.SetModificationInfo(entity.Name);
             }
 
-            return base.OnSaving(entity);
-        }
-
-        public override bool OnSaved(ContentType entity)
-        {
-            entity.RefreshTranslation(entity.Name, ContentTypeMeta.Name);
-
-            return base.OnSaved(entity);
+            // For its content attributes
+            foreach (var attribute in entity.ContentAttributes)
+            {
+                bool x = (attribute.Id < 1) ? DataService.SetCreationInfo(attribute) : DataService.SetModificationInfo(attribute);
+            }
         }
     }
 }

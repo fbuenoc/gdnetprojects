@@ -1,5 +1,6 @@
 ﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.Data;
+using GDNET.Extensions;
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;
@@ -33,11 +34,12 @@ namespace WebFrameworkData.Common.Specifications
 
         public override bool OnSaved(ContentItem entity)
         {
-            entity.RefreshTranslation(entity.Name, ContentItemMeta.Name);
-            entity.RefreshTranslation(entity.Description, ContentItemMeta.Description);
+            // Update translations
+            entity.RefreshTranslation(entity.Name, ExpressionHelper.GetPropertyName(() => entity.Name));
+            entity.RefreshTranslation(entity.Description, ExpressionHelper.GetPropertyName(() => entity.Description));
             foreach (var attributeValue in entity.AttributeValues)
             {
-                attributeValue.RefreshTranslation(attributeValue.Value, ContentItemAttributeValueMeta.Value);
+                attributeValue.RefreshTranslation(attributeValue.Value, ExpressionHelper.GetPropertyName(() => attributeValue.Value));
             }
 
             return base.OnSaved(entity);
