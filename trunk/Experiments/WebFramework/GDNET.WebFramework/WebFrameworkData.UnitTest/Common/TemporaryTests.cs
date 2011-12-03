@@ -15,13 +15,13 @@ namespace WebFrameworkData.UnitTest.Common
     [TestFixture]
     public class TemporaryTests : NUnitBase
     {
-        [SetUp]
+        [TestFixtureSetUp]
         public void SetUp()
         {
             base.Init();
         }
 
-        [TearDown]
+        [TestFixtureTearDown]
         public void TearDown()
         {
             base.Clean();
@@ -37,7 +37,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(true, temporary.IsActive);
             Assert.IsNotNull(new Guid(temporary.Id));
 
-            Assert.IsNull(temporary.EncodingType);
+            Assert.IsNull(temporary.EncryptionType);
             Assert.IsNull(temporary.Text);
             VerificationUtils.EmptyCreMod(temporary);
         }
@@ -47,16 +47,36 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddTemporary()
         {
-            var temporary = Temporary.Factory.Create(string.Empty, ListValueConstants.EncodingTypes_None);
+            var temporary = Temporary.Factory.Create("Test");
             DomainRepositories.Temporary.Save(temporary);
+
             DomainRepositories.Temporary.Synchronize();
+            DomainRepositories.Temporary.Clear();
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
-            Assert.IsTrue(string.IsNullOrEmpty(savedTemporary.Id) == false);
             Assert.IsNotNull(new Guid(savedTemporary.Id));
-            Assert.AreEqual(ListValueConstants.EncodingTypes_None, savedTemporary.EncodingType.Name);
+            Assert.AreEqual("Test", savedTemporary.Text);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes_None, savedTemporary.EncryptionType.Name);
+            DomainRepositories.Temporary.DeleteAll();
+        }
+
+        [Test]
+        public void CanAddTemporaryWithEncryptBase64()
+        {
+            var temporary = Temporary.Factory.CreateWithBase64("Test");
+            DomainRepositories.Temporary.Save(temporary);
+
+            DomainRepositories.Temporary.Synchronize();
+            DomainRepositories.Temporary.Clear();
+
+            var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
+
+            Assert.IsNotNull(new Guid(savedTemporary.Id));
+            Assert.AreEqual("Test", savedTemporary.Text);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes_Base64, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.DeleteAll();
         }
     }
 }
+

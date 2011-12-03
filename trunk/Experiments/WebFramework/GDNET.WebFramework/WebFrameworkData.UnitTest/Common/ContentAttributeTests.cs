@@ -47,21 +47,24 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddContentAttribute()
         {
-            var type = AssistantTest.CreateContentType();
-            var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes_Text_InputTextBox);
+            var contentType = AssistantTest.CreateContentType();
+            var attribute = ContentAttribute.Factory.Create("T1", contentType, ListValueConstants.ContentDataTypes_Text_InputTextBox);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.ContentAttribute.Synchronize();
+            DomainRepositories.ContentAttribute.Clear();
 
             var myAttribute = DomainRepositories.ContentAttribute.GetById(attribute.Id);
             Assert.IsNotNull(myAttribute);
             Assert.AreEqual(attribute.Id, myAttribute.Id);
             Assert.AreEqual("T1", myAttribute.Code);
-            Assert.AreEqual(type.TypeName, myAttribute.ContentType.TypeName);
+            Assert.AreEqual(contentType.TypeName, myAttribute.ContentType.TypeName);
             Assert.AreEqual(ListValueConstants.ContentDataTypes_Text_InputTextBox, myAttribute.DataType.Name);
 
-            DomainRepositories.ContentAttribute.Delete(attribute);
-            DomainRepositories.ContentType.Delete(type);
+            DomainRepositories.ContentAttribute.Delete(attribute.Id);
+            DomainRepositories.ContentAttribute.Synchronize();
+
+            DomainRepositories.ContentType.Delete(contentType.Id);
             DomainRepositories.ContentType.Synchronize();
         }
 
@@ -73,14 +76,15 @@ namespace WebFrameworkData.UnitTest.Common
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.ContentAttribute.Synchronize();
+            DomainRepositories.ContentAttribute.Clear();
 
-            DomainRepositories.ContentAttribute.Delete(attribute);
+            DomainRepositories.ContentAttribute.Delete(attribute.Id);
             DomainRepositories.ContentAttribute.Synchronize();
 
             var savedAttribute = DomainRepositories.ContentAttribute.GetById(attribute.Id);
             Assert.IsNull(savedAttribute);
 
-            DomainRepositories.ContentType.Delete(type);
+            DomainRepositories.ContentType.Delete(type.Id);
             DomainRepositories.ContentType.Synchronize();
         }
     }
