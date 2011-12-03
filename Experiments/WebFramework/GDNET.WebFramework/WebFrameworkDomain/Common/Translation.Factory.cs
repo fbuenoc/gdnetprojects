@@ -2,6 +2,7 @@
 using GDNET.Common.DesignByContract;
 using WebFrameworkDomain.Common.Constants;
 using WebFrameworkDomain.DefaultImpl;
+using System;
 
 namespace WebFrameworkDomain.Common
 {
@@ -34,9 +35,14 @@ namespace WebFrameworkDomain.Common
             /// <summary>
             /// Create a translation with default culture code
             /// </summary>
-            /// <param name="code"></param>
-            /// <param name="value"></param>
-            /// <returns></returns>
+            public Translation Create(string value)
+            {
+                return this.Create(Guid.NewGuid().ToString(), value);
+            }
+
+            /// <summary>
+            /// Create a translation with default culture code
+            /// </summary>
             public Translation Create(string code, string value)
             {
                 return this.Create(code, value, CommonConstants.CultureCodeDefault);
@@ -45,10 +51,6 @@ namespace WebFrameworkDomain.Common
             /// <summary>
             /// Create a translation with a culture code
             /// </summary>
-            /// <param name="code"></param>
-            /// <param name="value"></param>
-            /// <param name="cultureCode"></param>
-            /// <returns></returns>
             public Translation Create(string code, string value, string cultureCode)
             {
                 Throw.ArgumentExceptionIfNullOrEmpty(cultureCode, "cultureCode", "Culture can not be null.");
@@ -61,10 +63,6 @@ namespace WebFrameworkDomain.Common
             /// <summary>
             /// Create a translation with a Culture
             /// </summary>
-            /// <param name="code"></param>
-            /// <param name="value"></param>
-            /// <param name="culture"></param>
-            /// <returns></returns>
             public Translation Create(string code, string value, Culture culture)
             {
                 Throw.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of translation can not be nullable.");

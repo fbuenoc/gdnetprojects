@@ -29,12 +29,13 @@ namespace WebFrameworkDomain.Common
                 Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be nullable.");
                 Throw.ArgumentExceptionIfNullOrEmpty(typeName, "typeName", "Type name of content item can not be nullable.");
 
-                var contentItem = this.Create();
+                var contentType = this.Create();
 
-                contentItem.Name = Translation.Factory.Create(Guid.NewGuid().ToString(), name);
-                contentItem.TypeName = typeName;
+                contentType.Name = Translation.Factory.Create(name);
+                contentType.TypeName = typeName;
+                contentType.Application = null;
 
-                return contentItem;
+                return contentType;
             }
         }
     }

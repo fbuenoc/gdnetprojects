@@ -46,18 +46,15 @@ namespace WebFrameworkDomain.Common
 
         #region Methods
 
-        public virtual void AddAttributeValue(ContentAttribute attribute, string value)
-        {
-            ContentItemAttributeValue attributeValue = ContentItemAttributeValue.Factory.Create(attribute, this, value);
-            this.AddAttributeValue(attributeValue);
-        }
-
         public virtual void AddAttributeValue(ContentItemAttributeValue attributeValue)
         {
-            if (!this.attributeValues.Contains(attributeValue))
+            if (this.attributeValues.Contains(attributeValue))
             {
-                this.attributeValues.Add(attributeValue);
+                return;
             }
+
+            attributeValue.ContentItem = this;
+            this.attributeValues.Add(attributeValue);
         }
 
         public virtual void RemoveAttributeValue(ContentItemAttributeValue attributeValue)

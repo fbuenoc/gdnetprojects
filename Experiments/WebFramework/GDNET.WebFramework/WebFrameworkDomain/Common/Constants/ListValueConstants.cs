@@ -4,9 +4,9 @@
     {
         #region ListValue
 
-        public const string EncodingTypes_Root = "LV.EncodingTypes";
-        public const string EncodingTypes_None = "LV.EncodingTypes.None";
-        public const string EncodingTypes_Base64 = "LV.EncodingTypes.Base64";
+        public const string EncryptionTypes_Root = "LV.EncryptionTypes";
+        public const string EncryptionTypes_None = "LV.EncryptionTypes.None";
+        public const string EncryptionTypes_Base64 = "LV.EncryptionTypes.Base64";
 
         public const string ContentDataTypes_Root = "LVH.ContentDataTypes";
         public const string ContentDataTypes_Text_InputTextBox = "LVH.ContentDataTypes.Text.InputTextBox";

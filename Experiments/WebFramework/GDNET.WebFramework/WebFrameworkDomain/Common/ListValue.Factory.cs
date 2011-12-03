@@ -39,14 +39,15 @@ namespace WebFrameworkDomain.Common
             {
                 Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of item can not be null.");
 
-                var lv = this.Create();
-                lv.Name = name;
-                lv.CustomValue = customValue;
-                lv.Description = Translation.Factory.Create(Guid.NewGuid().ToString(), description);
-                lv.Parent = null;
-                lv.Application = null;
+                var listValue = this.Create();
 
-                return lv;
+                listValue.Name = name;
+                listValue.CustomValue = customValue;
+                listValue.Description = Translation.Factory.Create(description);
+                listValue.Parent = null;
+                listValue.Application = null;
+
+                return listValue;
             }
 
             public ListValue Retrieve(string code)

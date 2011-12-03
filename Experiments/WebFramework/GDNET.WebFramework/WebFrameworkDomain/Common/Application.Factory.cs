@@ -38,8 +38,8 @@ namespace WebFrameworkDomain.Common
                 var application = this.Create();
 
                 application.RootUrl = rootUrl;
-                application.Name = Translation.Factory.Create(Guid.NewGuid().ToString(), name);
-                application.Description = Translation.Factory.Create(Guid.NewGuid().ToString(), description);
+                application.Name = Translation.Factory.Create(name);
+                application.Description = Translation.Factory.Create(description);
                 application.Category = DomainRepositories.ListValue.FindByName(categoryName);
 
                 return application;
