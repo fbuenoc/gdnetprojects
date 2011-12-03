@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebFrameworkMapping</RootNamespace>
+    <AssemblyName>WebFrameworkMapping</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\..\Libs\NHibernate\NHibernate-3.2.0.GA-bin\Required_Bins\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\EntityMappingBase.cs" />
+    <Compile Include="Base\EntityCreModMappingBase.cs" />
+    <Compile Include="Common\ApplicationMap.cs" />
+    <Compile Include="Common\ContentItemMap.cs" />
+    <Compile Include="Common\ContentTypeMap.cs" />
+    <Compile Include="Common\ContentAttributeMap.cs" />
+    <Compile Include="Common\ContentItemAttributeValueMap.cs" />
+    <Compile Include="Common\CultureMap.cs" />
+    <Compile Include="Common\ListValueMap.cs" />
+    <Compile Include="Common\TemporaryMap.cs" />
+    <Compile Include="Common\TranslationMap.cs" />
+    <Compile Include="Base\EntityFullControlMappingBase.cs" />
+    <Compile Include="Base\EntityActiveMappingBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Experiments CodePlex\Common\GDNET.Common\GDNET.Common.csproj">
+      <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
+      <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+      <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
+      <Name>WebFrameworkDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
