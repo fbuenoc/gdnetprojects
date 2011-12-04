@@ -6,6 +6,9 @@ using System.Web.Mvc;
 
 using Telerik.Web.Mvc;
 
+using GDNET.Web.Helpers;
+
+using WebFramework.Constants;
 using WebFramework.Modeles.Base;
 using WebFramework.Modeles.Framework.AccountModeles;
 
@@ -26,7 +29,18 @@ namespace WebFramework.Areas.Framework.Controllers
 
         public override ActionResult Details()
         {
-            return base.View();
+            string providerUserKey;
+            QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey);
+
+            try
+            {
+                AccountModel modele = base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
+                return base.View(modele);
+            }
+            catch
+            {
+                return base.RedirectToAction(ActionList);
+            }
         }
 
         public override ActionResult Create()
@@ -41,12 +55,32 @@ namespace WebFramework.Areas.Framework.Controllers
 
         public override ActionResult Delete()
         {
-            return base.View();
+            string providerUserKey;
+            QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey);
+
+            try
+            {
+                AccountModel modele = base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
+                return base.View(modele);
+            }
+            catch
+            {
+                return base.RedirectToAction(ActionList);
+            }
         }
 
+        [HttpPost]
         public override ActionResult Delete(AccountModel model, FormCollection collection)
         {
-            return base.View();
+            bool result = base.membershipService.DeleteUser(model.UserName, true);
+            if (result)
+            {
+                return base.RedirectToAction(ActionList);
+            }
+            else
+            {
+                return base.View(model);
+            }
         }
 
         public override ActionResult Edit(string id)

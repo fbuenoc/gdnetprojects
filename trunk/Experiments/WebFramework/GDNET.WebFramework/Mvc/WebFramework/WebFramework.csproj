@@ -242,6 +242,8 @@
     <Content Include="Areas\Framework\Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
     <Content Include="Areas\Framework\Content\themes\base\jquery-ui.css" />
     <Content Include="Areas\Framework\Views\Account\CreateOrUpdate.aspx" />
+    <Content Include="Areas\Framework\Views\Account\Delete.aspx" />
+    <Content Include="Areas\Framework\Views\Account\Details.aspx" />
     <Content Include="Areas\Framework\Views\Account\List.aspx" />
     <Content Include="Areas\Framework\Views\Role\AddUser.aspx" />
     <Content Include="Areas\Framework\Views\Role\CreateOrUpdate.aspx" />
@@ -535,6 +537,10 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
+      <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
+      <Name>GDNET.Web.Membership</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
       <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
       <Name>GDNET.Web.Mvc</Name>
