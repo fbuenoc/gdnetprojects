@@ -11,22 +11,12 @@ using WebFramework.Models;
 using WebFramework.Models.AccountModeles;
 using WebFramework.Models.AccountServices;
 using WebFramework.Models.Validation;
+using WebFramework.Modeles.Base;
 
 namespace WebFramework.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : MvcControllerBase
     {
-        public IFormsAuthenticationService FormsService { get; set; }
-        public IMembershipService MembershipService { get; set; }
-
-        protected override void Initialize(RequestContext requestContext)
-        {
-            if (FormsService == null) { FormsService = new FormsAuthenticationService(); }
-            if (MembershipService == null) { MembershipService = new AccountMembershipService(); }
-
-            base.Initialize(requestContext);
-        }
-
         // **************************************
         // URL: /Account/LogOn
         // **************************************
@@ -41,9 +31,9 @@ namespace WebFramework.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (MembershipService.ValidateUser(model.UserName, model.Password))
+                if (base.membershipService.ValidateUser(model.UserName, model.Password))
                 {
-                    FormsService.SignIn(model.UserName, model.RememberMe);
+                    base.formsService.SignIn(model.UserName, model.RememberMe);
                     if (Url.IsLocalUrl(returnUrl))
                     {
                         return Redirect(returnUrl);
@@ -69,7 +59,7 @@ namespace WebFramework.Controllers
 
         public ActionResult LogOff()
         {
-            FormsService.SignOut();
+            base.formsService.SignOut();
 
             return RedirectToAction("Index", "Home");
         }
@@ -80,7 +70,7 @@ namespace WebFramework.Controllers
 
         public ActionResult Register()
         {
-            ViewBag.PasswordLength = MembershipService.MinPasswordLength;
+            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
             return View();
         }
 
@@ -90,11 +80,11 @@ namespace WebFramework.Controllers
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
-                MembershipCreateStatus createStatus = MembershipService.CreateUser(model.UserName, model.Password, model.Email);
+                MembershipCreateStatus createStatus = base.membershipService.CreateUser(model.UserName, model.Password, model.Email);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsService.SignIn(model.UserName, false /* createPersistentCookie */);
+                    base.formsService.SignIn(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -104,7 +94,7 @@ namespace WebFramework.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ViewBag.PasswordLength = MembershipService.MinPasswordLength;
+            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
             return View(model);
         }
 
@@ -115,7 +105,7 @@ namespace WebFramework.Controllers
         [Authorize]
         public ActionResult ChangePassword()
         {
-            ViewBag.PasswordLength = MembershipService.MinPasswordLength;
+            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
             return View();
         }
 
@@ -125,7 +115,7 @@ namespace WebFramework.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (MembershipService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword))
+                if (base.membershipService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword))
                 {
                     return RedirectToAction("ChangePasswordSuccess");
                 }
@@ -136,7 +126,7 @@ namespace WebFramework.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            ViewBag.PasswordLength = MembershipService.MinPasswordLength;
+            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
             return View(model);
         }
 

@@ -19,7 +19,7 @@
                     columns.Bound(c => c.CreationDate).Title("Creation date");
                     columns.Bound(c => c.LastLoginDate).Title("Last login date");
                     columns.Bound(c => c.ProviderUserKey).Width(120).Title("Actions")
-                        .ClientTemplate("<a href='/Admin/Account/Delete/<#= ProviderUserKey #>'>Xoá</a> | <a href='/Admin/Account/Details/<#= ProviderUserKey #>'>Chi tiết</a>");
+                        .ClientTemplate("<a href='/Framework/Account/Delete?key=<#= ProviderUserKey #>'>Xoá</a> | <a href='/Framework/Account/Details?key=<#= ProviderUserKey #>'>Chi tiết</a>");
                 })
                 .DataBinding(dataBinding => dataBinding.Ajax().Select("TelerikGetAccounts", 
                                                                        CommonConstants.FrameworkControllerAccount, 
