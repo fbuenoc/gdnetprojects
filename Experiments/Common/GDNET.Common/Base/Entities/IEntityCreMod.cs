@@ -5,7 +5,11 @@ namespace GDNET.Common.Base.Entities
     /// <summary>
     /// Entity with creation/modificaion information
     /// </summary>
-    public interface IEntityCreMod<TId> : IEntity<TId>
+    public interface IEntityCreMod<TId> : IEntityActiveBase<TId>, IEntityCreMod
+    {
+    }
+
+    public interface IEntityCreMod
     {
         /// <summary>
         /// Created by email

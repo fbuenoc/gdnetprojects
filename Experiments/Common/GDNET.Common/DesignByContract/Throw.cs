@@ -79,5 +79,18 @@ namespace GDNET.Common.DesignByContract
                 throw new InvalidOperationException(message);
             }
         }
+
+        /// <summary>
+        /// Throw a NotImplementedException
+        /// </summary>
+        public static void NotImplementedException(string message)
+        {
+            throw new NotImplementedException(message);
+        }
+
+        public static void NotSupportedException(string message)
+        {
+            throw new NotSupportedException(message);
+        }
     }
 }

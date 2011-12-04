@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -12,6 +12,10 @@
     <AssemblyName>GDNET.Common</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,6 +34,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>GDNET.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core">
@@ -45,14 +55,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\Base\ActionType.cs" />
+    <Compile Include="Adapters\Base\IAdapterTooltipBase.cs" />
+    <Compile Include="Adapters\Base\IAdapterCommandBase.cs" />
+    <Compile Include="Adapters\Base\IAdapterTextBase.cs" />
+    <Compile Include="Adapters\Base\IAdapterControlBase.cs" />
+    <Compile Include="Adapters\IAdapterListView.cs" />
+    <Compile Include="Adapters\IAdapterTextBox.cs" />
+    <Compile Include="Adapters\IAdapterLiteral.cs" />
+    <Compile Include="Adapters\IAdapterButton.cs" />
+    <Compile Include="Adapters\IAdapterLinkButton.cs" />
+    <Compile Include="Adapters\IAdapterHyperLink.cs" />
+    <Compile Include="Adapters\IAdapterDataPager.cs" />
+    <Compile Include="Base\Entities\EntityBase.cs" />
+    <Compile Include="Base\Entities\IEntityActiveBase.cs" />
+    <Compile Include="Base\Entities\EntityCreModBase.cs" />
+    <Compile Include="Base\Entities\IEntityViewable.cs" />
+    <Compile Include="Base\Meta\MetaCreModBase.cs" />
+    <Compile Include="Base\Meta\MetaEntityActiveBase.cs" />
+    <Compile Include="Base\Meta\MetaEntityBase.cs" />
+    <Compile Include="Base\Meta\MetaFullControlBase.cs" />
+    <Compile Include="Data\DataService.cs" />
+    <Compile Include="Data\ISpecificationBase.cs" />
+    <Compile Include="Domain\ISerializable.cs" />
+    <Compile Include="Paging\IPaginatedList.cs" />
+    <Compile Include="Paging\PaginatedList.cs" />
+    <Compile Include="Security\FakeIdentity.cs" />
+    <Compile Include="Security\FakePrincipal.cs" />
+    <Compile Include="Security\ISessionService.cs" />
+    <Compile Include="Security\SessionService.cs" />
+    <Compile Include="Base\Entities\EntityActiveBase.cs" />
+    <Compile Include="Base\Entities\EntityFullControlBase.cs" />
+    <Compile Include="Base\Entities\IEntityBase.cs" />
+    <Compile Include="Base\Entities\IEntityCreMod.cs" />
+    <Compile Include="Base\Entities\IEntityDeletable.cs" />
+    <Compile Include="Base\Entities\IEntityEditable.cs" />
+    <Compile Include="Base\Services\IMultilingualService.cs" />
+    <Compile Include="Base\Services\IInterceptorService.cs" />
+    <Compile Include="Base\SimpleEventArgs.cs" />
+    <Compile Include="Data\Accuracy.cs" />
     <Compile Include="Data\IRepositoryBase.cs" />
     <Compile Include="DesignByContract\Throw.cs" />
     <Compile Include="Domain\DomainBase.cs" />
-    <Compile Include="Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Extensions\WebClientExtensions.cs" />
+    <Compile Include="Domain\IValidation.cs" />
+    <Compile Include="Multilingual\IMultilingualTextControl.cs" />
+    <Compile Include="Multilingual\IMultilingualTooltipControl.cs" />
+    <Compile Include="MVP\Views\IViewNotification.cs" />
+    <Compile Include="MVP\Views\IViewCrud.cs" />
+    <Compile Include="MVP\Presenters\IPresenter.cs" />
+    <Compile Include="MVP\Presenters\PresenterBase.cs" />
+    <Compile Include="MVP\Views\IView.cs" />
+    <Compile Include="MVP\Presenters\PresenterCrudBase.cs" />
+    <Compile Include="MVP\ViewMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="GDNET.pfx" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,15 +1,27 @@
 ﻿using System;
 
+using GDNET.Common.DesignByContract;
+
 namespace GDNET.Common.Base.Entities
 {
     /// <summary>
-    /// Entity with with Deletable, Editable, Creation/Modification info
+    /// Entity with with CreMod, Deletable, Editable, Viewable
     /// </summary>
-    public abstract class EntityFullControlBase<TId> : EntityBase<TId>, IEntityDeletable<TId>, IEntityEditable<TId>, IEntityCreMod<TId>
+    public abstract class EntityFullControlBase<TId> : EntityCreModBase<TId>, IEntityDeletable<TId>, IEntityEditable<TId>, IEntityViewable<TId>
     {
+        public EntityFullControlBase() { }
+
+        public EntityFullControlBase(EntityFullControlBase<TId> entity)
+            : base(entity)
+        {
+            this.IsDeletable = entity.IsDeletable;
+            this.IsEditable = entity.IsEditable;
+            this.IsViewable = entity.IsViewable;
+        }
+
         #region IEntityDeletable Members
 
-        public bool IsDeletable
+        public virtual bool IsDeletable
         {
             get;
             set;
@@ -19,7 +31,7 @@ namespace GDNET.Common.Base.Entities
 
         #region IEntityEditable Members
 
-        public bool IsEditable
+        public virtual bool IsEditable
         {
             get;
             set;
@@ -27,27 +39,9 @@ namespace GDNET.Common.Base.Entities
 
         #endregion
 
-        #region IEntityCreMod Members
+        #region IEntityViewable Members
 
-        public string CreatedBy
-        {
-            get;
-            set;
-        }
-
-        public DateTime CreatedAt
-        {
-            get;
-            set;
-        }
-
-        public string LastModifiedBy
-        {
-            get;
-            set;
-        }
-
-        public DateTime? LastModifiedAt
+        public virtual bool IsViewable
         {
             get;
             set;
