@@ -3,7 +3,7 @@
     /// <summary>
     /// Entity with IsEditable property
     /// </summary>
-    public interface IEntityEditable<TId> : IEntity<TId>
+    public interface IEntityEditable<TId> : IEntityActiveBase<TId>
     {
         bool IsEditable
         {
