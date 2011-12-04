@@ -15,7 +15,7 @@ namespace WebFrameworkMapping.Common
 
             base.ManyToOne(e => e.ContentType, m =>
             {
-                m.NotNullable(false);
+                m.NotNullable(true);
                 m.Column(ContentAttributeMeta.ContentTypeId);
                 m.Cascade(Cascade.None);
             });
@@ -25,6 +25,7 @@ namespace WebFrameworkMapping.Common
                 m.Column(ContentAttributeMeta.DataTypeId);
                 m.Cascade(Cascade.None);
             });
+
             base.Bag(e => e.ContentItems, cm =>
             {
                 cm.Access(Accessor.Field);
@@ -37,11 +38,15 @@ namespace WebFrameworkMapping.Common
             {
                 m.ManyToMany();
             });
+
             base.Bag(e => e.AttributeValues, cm =>
             {
                 cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
+                cm.Table(ContentItemAttributeValueMeta.ContentItemAttributeValue);
+                cm.Key(k => k.Column(ContentItemAttributeValueMeta.ContentAttributeId));
                 cm.Cascade(Cascade.None);
+                cm.Inverse(true);
             }, m =>
             {
                 m.OneToMany();

@@ -10,6 +10,8 @@ namespace WebFrameworkMapping.Common
         public ContentTypeMap()
             : base(Generators.Native)
         {
+            base.Property(e => e.TypeName);
+
             base.ManyToOne(e => e.Name, m =>
             {
                 m.NotNullable(true);
@@ -34,7 +36,17 @@ namespace WebFrameworkMapping.Common
                 m.OneToMany();
             });
 
-            base.Property(e => e.TypeName);
+            base.Bag(e => e.ContentAttributes, cm =>
+            {
+                cm.Lazy(CollectionLazy.Lazy);
+                cm.Access(Accessor.Field);
+                cm.Key(k => k.Column(ContentAttributeMeta.ContentTypeId));
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+            }, m =>
+            {
+                m.OneToMany();
+            });
+
         }
     }
 }
