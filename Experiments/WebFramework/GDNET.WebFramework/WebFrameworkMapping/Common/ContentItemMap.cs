@@ -2,6 +2,7 @@
 
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
+using GDNET.Extensions;
 
 namespace WebFrameworkMapping.Common
 {
@@ -31,19 +32,19 @@ namespace WebFrameworkMapping.Common
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
 
-            base.Bag(m => m.AttributeValues, cm =>
+            base.Bag(e => e.AttributeValues, cm =>
             {
                 cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Table(ContentItemAttributeValueMeta.ContentItemAttributeValue);
                 cm.Key(k => k.Column(ContentItemAttributeValueMeta.ContentItemId));
-                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                cm.Cascade(Cascade.All);
                 cm.Inverse(true);
             }, m =>
             {
                 m.ManyToMany(mm =>
                 {
-                    mm.Column(ContentItemAttributeValueMeta.Id);
+                    mm.Column("Id");
                 });
             });
         }
