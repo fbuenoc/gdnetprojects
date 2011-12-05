@@ -27,7 +27,7 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(listOfRoles);
         }
 
-        public override ActionResult Details()
+        public override ActionResult Details(string id)
         {
             string roleName;
             QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName);
@@ -44,7 +44,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(ViewCreateOrUpdate, model);
         }
 
-        [HttpPost]
         public override ActionResult Create(RoleModel model, FormCollection collection)
         {
             try
@@ -58,7 +57,7 @@ namespace WebFramework.Areas.Framework.Controllers
             }
         }
 
-        public override ActionResult Delete()
+        public override ActionResult Delete(string id)
         {
             // Get name of role from query string
             string roleName;
@@ -69,7 +68,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(model);
         }
 
-        [HttpPost]
         public override ActionResult Delete(RoleModel model, FormCollection collection)
         {
             try
@@ -88,7 +86,6 @@ namespace WebFramework.Areas.Framework.Controllers
             throw new NotImplementedException();
         }
 
-        [HttpPost]
         public override ActionResult Edit(RoleModel model, FormCollection collection)
         {
             throw new NotImplementedException();

@@ -213,6 +213,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UploadLocalization.zh-CN.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Framework\Controllers\ApplicationController.cs" />
+    <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Constants\QueryStringConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\AccountController.cs" />
@@ -226,6 +228,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\hibernate.cfg.xml" />
     <Content Include="Areas\Framework\Content\Site.css" />
     <Content Include="Areas\Framework\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Areas\Framework\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -245,6 +248,14 @@
     <Content Include="Areas\Framework\Views\Account\Delete.aspx" />
     <Content Include="Areas\Framework\Views\Account\Details.aspx" />
     <Content Include="Areas\Framework\Views\Account\List.aspx" />
+    <Content Include="Areas\Framework\Views\Application\CreateOrUpdate.aspx" />
+    <Content Include="Areas\Framework\Views\Application\Delete.aspx" />
+    <Content Include="Areas\Framework\Views\Application\Details.aspx" />
+    <Content Include="Areas\Framework\Views\Application\List.aspx" />
+    <Content Include="Areas\Framework\Views\ListValue\CreateOrUpdate.aspx" />
+    <Content Include="Areas\Framework\Views\ListValue\Delete.aspx" />
+    <Content Include="Areas\Framework\Views\ListValue\Details.aspx" />
+    <Content Include="Areas\Framework\Views\ListValue\List.aspx" />
     <Content Include="Areas\Framework\Views\Role\AddUser.aspx" />
     <Content Include="Areas\Framework\Views\Role\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\Role\Delete.aspx" />
@@ -533,10 +544,12 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
+      <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
+      <Name>GDNET.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
       <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
       <Name>GDNET.Web.Membership</Name>
@@ -556,6 +569,10 @@
     <ProjectReference Include="..\..\WebFramework.Modeles\WebFramework.Modeles.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
       <Name>WebFramework.Modeles</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+      <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
+      <Name>WebFrameworkDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

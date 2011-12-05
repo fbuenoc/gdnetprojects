@@ -27,7 +27,7 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View();
         }
 
-        public override ActionResult Details()
+        public override ActionResult Details(string id)
         {
             string providerUserKey;
             QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey);
@@ -53,7 +53,7 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View();
         }
 
-        public override ActionResult Delete()
+        public override ActionResult Delete(string id)
         {
             string providerUserKey;
             QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey);
@@ -69,7 +69,6 @@ namespace WebFramework.Areas.Framework.Controllers
             }
         }
 
-        [HttpPost]
         public override ActionResult Delete(AccountModel model, FormCollection collection)
         {
             bool result = base.membershipService.DeleteUser(model.UserName, true);
@@ -85,12 +84,12 @@ namespace WebFramework.Areas.Framework.Controllers
 
         public override ActionResult Edit(string id)
         {
-            return base.View();
+            throw new NotImplementedException();
         }
 
         public override ActionResult Edit(AccountModel model, FormCollection collection)
         {
-            return base.View();
+            throw new NotImplementedException();
         }
 
         #endregion

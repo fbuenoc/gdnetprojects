@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<RoleModel>" %>
 
-<%@ Import Namespace="WebFramework.Areas.Framework.Controllers" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     Create or update a Role
 </asp:Content>

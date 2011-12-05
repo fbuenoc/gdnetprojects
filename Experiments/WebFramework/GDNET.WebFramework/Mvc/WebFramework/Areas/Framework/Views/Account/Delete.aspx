@@ -20,4 +20,7 @@
         <%= base.Html.HiddenFor(m => m.UserName) %>
         <% base.Html.EndForm(); %>
     </div>
+    <div>
+        <%= base.Html.ActionLink("Return Account management", AccountController.ActionList) %>
+    </div>
 </asp:Content>
