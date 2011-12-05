@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<RoleModel>>" %>
 
-<%@ Import Namespace="WebFramework.Areas.Framework.Controllers" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     Roles
 </asp:Content>
@@ -27,8 +26,6 @@
         %>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return Role index", RoleController.ActionList) %>
-        |
         <%= base.Html.ActionLink("Add new", RoleController.ActionCreate)%>
     </p>
 </asp:Content>

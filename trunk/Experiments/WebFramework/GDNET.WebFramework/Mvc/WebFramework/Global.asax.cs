@@ -5,9 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 
+using WebFrameworkNHibernate;
+
 namespace WebFramework
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : NHibernateHttpApplication
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
