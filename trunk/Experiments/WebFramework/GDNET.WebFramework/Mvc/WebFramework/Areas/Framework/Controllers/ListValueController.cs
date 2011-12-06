@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using WebFramework.Modeles.Base;
 using WebFramework.Modeles.Framework.DomainModels;
 using WebFrameworkDomain.DefaultImpl;
+using GDNET.Web.Helpers;
+using WebFramework.Constants;
+using WebFrameworkDomain.Common;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
@@ -33,12 +36,34 @@ namespace WebFramework.Areas.Framework.Controllers
 
         public override ActionResult Create()
         {
-            throw new NotImplementedException();
+            long parentId;
+            var model = new ListValueModel();
+            if (QueryStringHelper.GetValueAs<long>(QueryStringConstants.Id, out parentId))
+            {
+                model.ParentId = parentId;
+            }
+
+            return base.View(ViewCreateOrUpdate, model);
         }
 
         public override ActionResult Create(ListValueModel model, FormCollection collection)
         {
-            throw new NotImplementedException();
+            var listValue = ListValue.Factory.Create(model.Name, model.Description, model.CustomValue, model.ParentId);
+            bool result = DomainRepositories.ListValue.Save(listValue);
+
+            if (result)
+            {
+                if (model.ParentId > 0)
+                {
+                    return base.RedirectToAction(ActionDetails, new { id = model.ParentId });
+                }
+                else
+                {
+                    return base.RedirectToAction(ActionDetails);
+                }
+            }
+
+            return base.View(ViewCreateOrUpdate, model);
         }
 
         public override ActionResult Delete(string id)

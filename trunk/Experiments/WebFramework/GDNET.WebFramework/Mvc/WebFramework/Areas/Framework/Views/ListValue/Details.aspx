@@ -21,9 +21,9 @@
             Parent:
             <%= base.Model.Parent %>
         </div>
-        <div>
+        <h3>
             Sub Values
-        </div>
+        </h3>
         <div>
             <% base.Html.Telerik().Grid<ListValueModel>(base.Model.SubValues)
                 .Name("SubValues")
@@ -46,5 +46,13 @@
     </div>
     <p>
         <%= base.Html.ActionLink("Return ListValue management", ListValueController.ActionList)%>
+        <% if (base.Model.ParentId != 0)
+           {
+        %>
+        <%= base.Html.ActionLink(base.Model.Parent, ListValueController.ActionDetails, new { id = base.Model.ParentId }) %>
+        <%
+           }
+        %>
+        <%= base.Html.ActionLink("Add new", ApplicationController.ActionCreate, new { id = base.Model.Id }) %>
     </p>
 </asp:Content>

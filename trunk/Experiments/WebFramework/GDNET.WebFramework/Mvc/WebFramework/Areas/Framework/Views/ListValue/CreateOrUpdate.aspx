@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ApplicationModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ListValueModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     Applications
@@ -9,6 +9,10 @@
     </h2>
     <div>
         <% base.Html.BeginForm(); %>
+        <div>
+            Parent value:
+            <%= base.Model.Parent %>
+        </div>
         <div class="editor-label">
             <%= base.Html.LabelFor(m => m.Name) %>
         </div>
@@ -22,17 +26,25 @@
             <%= base.Html.TextBoxFor(m => m.Description)%>
         </div>
         <div class="editor-label">
-            <%= base.Html.LabelFor(m => m.RootUrl)%>
+            <%= base.Html.LabelFor(m => m.CustomValue)%>
         </div>
         <div>
-            <%= base.Html.TextBoxFor(m => m.RootUrl)%>
+            <%= base.Html.TextBoxFor(m => m.CustomValue)%>
         </div>
         <p>
+            <%= base.Html.HiddenFor(m => m.ParentId) %>
             <input type="submit" value="Save & Continue" />
         </p>
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return Application management", RoleController.ActionList)%>
+        <%= base.Html.ActionLink("Return List Value management", RoleController.ActionList)%>
+        <% if (base.Model.ParentId != 0)
+           {
+        %>
+        <%= base.Html.ActionLink(base.Model.Parent, ListValueController.ActionDetails, new { id = base.Model.ParentId }) %>
+        <%
+           }
+        %>
     </p>
 </asp:Content>
