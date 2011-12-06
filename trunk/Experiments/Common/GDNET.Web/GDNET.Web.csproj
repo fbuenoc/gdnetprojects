@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</ProjectGuid>
     <OutputType>Library</OutputType>
@@ -31,6 +31,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>GDNET.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -41,19 +47,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MembershipExtensions\CustomProfile.cs" />
-    <Compile Include="MembershipExtensions\Objects\MembershipObjects.cs">
-      <DependentUpon>MembershipObjects.xsd</DependentUpon>
+    <Compile Include="Common\DetailPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Common\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Common\QueryStringConstants.cs" />
+    <Compile Include="Helpers\ControlHelper.cs" />
+    <Compile Include="Helpers\HttpContextHelper.cs" />
+    <Compile Include="Helpers\QueryStringHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="MembershipExtensions\Objects\MembershipObjects.xsd">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="GDNET.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MembershipExtensions\Objects\GenerateClasses.txt" />
+    <ProjectReference Include="..\GDNET.Common\GDNET.Common.csproj">
+      <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
+      <Name>GDNET.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
