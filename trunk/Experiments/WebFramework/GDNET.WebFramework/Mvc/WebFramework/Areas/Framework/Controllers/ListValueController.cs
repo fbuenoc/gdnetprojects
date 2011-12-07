@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+using GDNET.Web.Helpers;
+
+using WebFramework.Constants;
 using WebFramework.Modeles.Base;
 using WebFramework.Modeles.Framework.DomainModels;
-using WebFrameworkDomain.DefaultImpl;
-using GDNET.Web.Helpers;
-using WebFramework.Constants;
+
 using WebFrameworkDomain.Common;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
@@ -23,81 +25,65 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(rootValues);
         }
 
-        public override ActionResult Details(string id)
+        protected override ListValueModel OnDetailsChecking(string id)
         {
-            var lvModel = this.GetById(id);
-            if (lvModel == default(ListValueModel))
-            {
-                return base.RedirectToAction(ActionList);
-            }
-
-            return base.View(lvModel);
+            return base.GetModelById(id);
         }
 
-        public override ActionResult Create()
+        protected override ListValueModel OnCreateChecking()
         {
-            long parentId;
+            string parentId;
             var model = new ListValueModel();
-            if (QueryStringHelper.GetValueAs<long>(QueryStringConstants.Id, out parentId))
+            if (QueryStringHelper.GetValueAs<string>(QueryStringConstants.Key, out parentId))
             {
-                model.ParentId = parentId;
+                model = base.GetModelById(parentId);
             }
 
-            return base.View(ViewCreateOrUpdate, model);
+            return model;
         }
 
-        public override ActionResult Create(ListValueModel model, FormCollection collection)
+        protected override object OnCreateExecuting(ListValueModel model, FormCollection collection)
         {
             var listValue = ListValue.Factory.Create(model.Name, model.Description, model.CustomValue, model.ParentId);
             bool result = DomainRepositories.ListValue.Save(listValue);
+            return result ? (object)listValue.Id : null;
+        }
 
-            if (result)
+        protected override ListValueModel OnDeleteChecking(string id)
+        {
+            return base.GetModelById(id);
+        }
+
+        protected override bool OnDeleteExecuting(ListValueModel model, FormCollection collection)
+        {
+            return DomainRepositories.ListValue.Delete(model.Id);
+        }
+
+        protected override ListValueModel OnEditChecking(string id)
+        {
+            return base.GetModelById(id);
+        }
+
+        protected override bool OnEditExecuting(ListValueModel model, FormCollection collection)
+        {
+            try
             {
-                if (model.ParentId > 0)
+                var lvEntity = DomainRepositories.ListValue.GetById(model.Id);
+                lvEntity.CustomValue = model.CustomValue;
+                if (lvEntity.Description != null)
                 {
-                    return base.RedirectToAction(ActionDetails, new { id = model.ParentId });
+                    lvEntity.Description.Value = model.Description;
                 }
-                else
-                {
-                    return base.RedirectToAction(ActionDetails);
-                }
+                lvEntity.Position = model.Position;
+
+                return DomainRepositories.ListValue.Update(lvEntity);
             }
-
-            return base.View(ViewCreateOrUpdate, model);
-        }
-
-        public override ActionResult Delete(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override ActionResult Delete(ListValueModel model, FormCollection collection)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override ActionResult Edit(string id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public override ActionResult Edit(ListValueModel model, FormCollection collection)
-        {
-            throw new NotImplementedException();
+            catch
+            {
+                return false;
+            }
         }
 
         #endregion
-
-        private ListValueModel GetById(string id)
-        {
-            int lvId;
-            if (int.TryParse(id, out lvId))
-            {
-                var lvEntity = DomainRepositories.ListValue.GetById(lvId);
-                return new ListValueModel(lvEntity);
-            }
-
-            return default(ListValueModel);
-        }
     }
 }

@@ -27,66 +27,52 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(listOfRoles);
         }
 
-        public override ActionResult Details(string id)
+        protected override RoleModel OnDetailsChecking(string id)
         {
             string roleName;
-            QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName);
-
-            RoleModel roleModel = new RoleModel(roleName);
-            roleModel.GetUsersInRole();
-
-            return base.View(roleModel);
-        }
-
-        public override ActionResult Create()
-        {
-            RoleModel model = new RoleModel();
-            return base.View(ViewCreateOrUpdate, model);
-        }
-
-        public override ActionResult Create(RoleModel model, FormCollection collection)
-        {
-            try
+            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName))
             {
-                Roles.CreateRole(model.Name);
-                return base.RedirectToAction(ActionList);
+                RoleModel roleModel = new RoleModel(roleName);
+                return roleModel.GetUsersInRole();
             }
-            catch
-            {
-                return base.View(ViewCreateOrUpdate, model);
-            }
+
+            return default(RoleModel);
         }
 
-        public override ActionResult Delete(string id)
+        protected override object OnCreateExecuting(RoleModel model, FormCollection collection)
+        {
+            Roles.CreateRole(model.Name);
+            return model.Name;
+        }
+
+        protected override RoleModel OnDeleteChecking(string id)
         {
             // Get name of role from query string
             string roleName;
-            QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName);
-
-            RoleModel model = new RoleModel(roleName);
-
-            return base.View(model);
-        }
-
-        public override ActionResult Delete(RoleModel model, FormCollection collection)
-        {
-            try
+            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName))
             {
-                model.DeleteRole();
-                return base.RedirectToAction(ActionList);
+                RoleModel model = new RoleModel(roleName);
             }
-            catch
-            {
-                return base.View(model);
-            }
+            return default(RoleModel);
         }
 
-        public override ActionResult Edit(string id)
+        protected override bool OnDeleteExecuting(RoleModel model, FormCollection collection)
         {
-            throw new NotImplementedException();
+            return model.DeleteRole();
         }
 
-        public override ActionResult Edit(RoleModel model, FormCollection collection)
+        protected override RoleModel OnEditChecking(string id)
+        {
+            // Get name of role from query string
+            string roleName;
+            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName))
+            {
+                RoleModel model = new RoleModel(roleName);
+            }
+            return default(RoleModel);
+        }
+
+        protected override bool OnEditExecuting(RoleModel model, FormCollection collection)
         {
             throw new NotImplementedException();
         }
@@ -124,5 +110,6 @@ namespace WebFramework.Areas.Framework.Controllers
                 return base.View(model);
             }
         }
+
     }
 }

@@ -214,6 +214,10 @@
       <DependentUpon>UploadLocalization.zh-CN.resx</DependentUpon>
     </Compile>
     <Compile Include="Areas\Framework\Controllers\ApplicationController.cs" />
+    <Compile Include="Areas\Framework\Controllers\ContentAttributeController.cs" />
+    <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
+    <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
+    <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Constants\QueryStringConstants.cs" />
@@ -252,6 +256,18 @@
     <Content Include="Areas\Framework\Views\Application\Delete.aspx" />
     <Content Include="Areas\Framework\Views\Application\Details.aspx" />
     <Content Include="Areas\Framework\Views\Application\List.aspx" />
+    <Content Include="Areas\Framework\Views\ContentAttribute\CreateOrUpdate.aspx" />
+    <Content Include="Areas\Framework\Views\ContentAttribute\Delete.aspx" />
+    <Content Include="Areas\Framework\Views\ContentAttribute\Details.aspx" />
+    <Content Include="Areas\Framework\Views\ContentAttribute\List.aspx" />
+    <Content Include="Areas\Framework\Views\ContentItem\CreateOrUpdate.aspx" />
+    <Content Include="Areas\Framework\Views\ContentItem\Delete.aspx" />
+    <Content Include="Areas\Framework\Views\ContentItem\Details.aspx" />
+    <Content Include="Areas\Framework\Views\ContentItem\List.aspx" />
+    <Content Include="Areas\Framework\Views\ContentType\CreateOrUpdate.aspx" />
+    <Content Include="Areas\Framework\Views\ContentType\Delete.aspx" />
+    <Content Include="Areas\Framework\Views\ContentType\Details.aspx" />
+    <Content Include="Areas\Framework\Views\ContentType\List.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\Delete.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\Details.aspx" />

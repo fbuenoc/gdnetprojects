@@ -1,20 +1,21 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ListValueModel>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ContentAttributeModel>>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    List Value
+    Content Attribute
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        List of Values
+        List of Content Attributes
     </h2>
     <div>
-        <% base.Html.Telerik().Grid<ListValueModel>(base.Model)
-                .Name("ListValues")
+        <% base.Html.Telerik().Grid<ContentAttributeModel>(base.Model)
+                .Name("ContentAttributes")
                 .Columns(columns =>
                 {
-                    columns.Bound(c => c.Name).Title("Value name");
-                    columns.Bound(c => c.Description).Title("Description");
-                    columns.Bound(c => c.Name).Title("Actions").Template(template =>
+                    columns.Bound(c => c.Code).Title("Code");
+                    columns.Bound(c => c.ContentType).Title("Content type");
+                    columns.Bound(c => c.DataType).Title("Data type");
+                    columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
         %>
         <%= base.Html.ActionLink("Details", "Details", new { id = template.Id }) %>

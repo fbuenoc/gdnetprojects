@@ -19,87 +19,56 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(listOfApplications);
         }
 
-        public override ActionResult Details(string id)
+        protected override ApplicationModel OnDetailsChecking(string id)
         {
-            ApplicationModel modele = this.GetById(id);
-            if (modele != default(ApplicationModel))
-            {
-                return base.View(modele);
-            }
-
-            return base.RedirectToAction(ActionList);
+            return base.GetModelById(id);
         }
 
-        public override ActionResult Create()
-        {
-            ApplicationModel modele = new ApplicationModel();
-            return base.View(ViewCreateOrUpdate, modele);
-        }
-
-        public override ActionResult Create(ApplicationModel model, FormCollection collection)
+        protected override object OnCreateExecuting(ApplicationModel model, FormCollection collection)
         {
             var application = Application.Factory.Create(model.RootUrl, model.Name, model.Description);
             var result = DomainRepositories.Application.Save(application);
-
-            if (result)
-            {
-                return base.RedirectToAction(ActionDetails, new { id = application.Id.ToString() });
-            }
-            else
-            {
-                return base.View(ViewCreateOrUpdate, model);
-            }
+            return result ? (object)application.Id : null;
         }
 
-        public override ActionResult Delete(string id)
+        protected override ApplicationModel OnDeleteChecking(string id)
         {
-            ApplicationModel modele = this.GetById(id);
-            if (modele != default(ApplicationModel))
+            return base.GetModelById(id);
+        }
+
+        protected override bool OnDeleteExecuting(ApplicationModel model, FormCollection collection)
+        {
+            return DomainRepositories.Application.Delete(model.Id);
+        }
+
+        protected override ApplicationModel OnEditChecking(string id)
+        {
+            return base.GetModelById(id);
+        }
+
+        protected override bool OnEditExecuting(ApplicationModel model, FormCollection collection)
+        {
+            try
             {
-                return base.View(modele);
+                var appEntity = DomainRepositories.Application.GetById(model.Id);
+                if (appEntity.Description != null)
+                {
+                    appEntity.Description.Value = model.Description;
+                }
+                appEntity.RootUrl = model.RootUrl;
+                if (appEntity.Name != null)
+                {
+                    appEntity.Name.Value = model.Name;
+                }
+
+                return DomainRepositories.Application.Update(appEntity);
             }
-
-            return base.RedirectToAction(ActionList);
-        }
-
-        public override ActionResult Delete(ApplicationModel model, FormCollection collection)
-        {
-            bool result = DomainRepositories.Application.Delete(model.Id);
-            if (result)
+            catch
             {
-                return base.RedirectToAction(ActionList);
+                return false;
             }
-
-            return base.View(model);
-        }
-
-        public override ActionResult Edit(string id)
-        {
-            return base.View(ViewCreateOrUpdate);
-        }
-
-        public override ActionResult Edit(ApplicationModel model, FormCollection collection)
-        {
-            return base.View(ViewCreateOrUpdate);
         }
 
         #endregion
-
-        /// <summary>
-        /// Get application model
-        /// </summary>
-        private ApplicationModel GetById(string id)
-        {
-            int applicationId;
-            ApplicationModel applicationModele = null;
-
-            if (int.TryParse(id, out applicationId))
-            {
-                var appEntity = DomainRepositories.Application.GetById(applicationId);
-                applicationModele = new ApplicationModel(appEntity);
-            }
-
-            return applicationModele;
-        }
     }
 }
