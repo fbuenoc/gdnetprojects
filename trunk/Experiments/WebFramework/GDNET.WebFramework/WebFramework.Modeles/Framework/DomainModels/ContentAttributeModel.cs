@@ -1,15 +1,16 @@
-﻿using WebFrameworkDomain.Common;
+﻿using System;
+using WebFrameworkDomain.Common;
 using WebFramework.Modeles.Framework.Common;
 
 namespace WebFramework.Modeles.Framework.DomainModels
 {
-    public sealed class ContentItemModel : ModelFullControlBase<ContentItem, long>
+    public class ContentAttributeModel : ModelFullControlBase<ContentAttribute, long>
     {
         #region Ctors
 
-        public ContentItemModel() : base() { }
+        public ContentAttributeModel() : base() { }
 
-        public ContentItemModel(ContentItem entity)
+        public ContentAttributeModel(ContentAttribute entity)
             : base(entity)
         {
             if (entity.ContentType != null)
@@ -21,8 +22,16 @@ namespace WebFramework.Modeles.Framework.DomainModels
                 this.ContentTypeId = entity.ContentType.Id;
             }
 
-            this.Name = (entity.Name == null) ? string.Empty : entity.Name.Value;
-            this.Description = (entity.Description == null) ? string.Empty : entity.Description.Value;
+            if (entity.DataType != null)
+            {
+                if (entity.DataType.Description != null)
+                {
+                    this.DataType = entity.DataType.Description.Value;
+                }
+                this.DataTypeId = entity.DataType.Id;
+            }
+
+            this.Code = entity.Code;
             this.Position = entity.Position;
         }
 
@@ -42,13 +51,19 @@ namespace WebFramework.Modeles.Framework.DomainModels
             set;
         }
 
-        public string Name
+        public string DataType
         {
             get;
             set;
         }
 
-        public string Description
+        public long DataTypeId
+        {
+            get;
+            set;
+        }
+
+        public string Code
         {
             get;
             set;
@@ -61,6 +76,5 @@ namespace WebFramework.Modeles.Framework.DomainModels
         }
 
         #endregion
-
     }
 }

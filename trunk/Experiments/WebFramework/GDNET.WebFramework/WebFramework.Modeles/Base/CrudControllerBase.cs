@@ -1,4 +1,5 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
 
 namespace WebFramework.Modeles.Base
 {
@@ -14,14 +15,58 @@ namespace WebFramework.Modeles.Base
 
         #region Methods
 
-        public abstract ActionResult Details(string id);
+        protected abstract TModel OnDetailsChecking(string id);
 
-        public abstract ActionResult Create();
+        public virtual ActionResult Details(string id)
+        {
+            TModel modele = this.OnDetailsChecking(id);
+            if ((modele != null) && !modele.Equals(default(TModel)))
+            {
+                return base.View(modele);
+            }
+
+            return base.RedirectToAction(ActionList);
+        }
+
+        #region Create Methods
+
+        protected virtual TModel OnCreateChecking()
+        {
+            return (TModel)Activator.CreateInstance(typeof(TModel));
+        }
+
+        /// <summary>
+        /// Returns Id of object when succeed or NULL when failed
+        /// </summary>
+        protected abstract object OnCreateExecuting(TModel model, FormCollection collection);
+
+        public virtual ActionResult Create()
+        {
+            TModel model = this.OnCreateChecking();
+            if (model == null || model.Equals(default(TModel)))
+            {
+                return base.RedirectToAction(ActionList);
+            }
+
+            return base.View(ViewCreateOrUpdate, model);
+        }
+
         /// <summary>
         /// With HttpPost action
         /// </summary>
         [HttpPost]
-        public abstract ActionResult Create(TModel model, FormCollection collection);
+        public virtual ActionResult Create(TModel model, FormCollection collection)
+        {
+            var objectId = this.OnCreateExecuting(model, collection);
+            if (objectId == null)
+            {
+                return base.View(ViewCreateOrUpdate, model);
+            }
+
+            return base.RedirectToAction(ActionDetails, new { id = objectId.ToString() });
+        }
+
+        #endregion
 
         #region Delete Methods
 
