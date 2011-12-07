@@ -2,11 +2,11 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-using GDNET.Web.Mvc.Base;
+using GDNET.Common.Base.Entities;
 
 namespace WebFramework.Modeles.Framework.AccountModeles
 {
-    public sealed class AccountRoleModel : ModelBase
+    public sealed class AccountRoleModel : EntityBase<string>
     {
         /// <summary>
         /// The name of role
@@ -30,8 +30,9 @@ namespace WebFramework.Modeles.Framework.AccountModeles
         #region Ctors
 
         public AccountRoleModel()
-            : base(true)
+            : base()
         {
+            base.Id = Guid.NewGuid().ToString();
         }
 
         #endregion

@@ -5,11 +5,11 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Security;
 
-using GDNET.Web.Mvc.Base;
+using GDNET.Common.Base.Entities;
 
 namespace WebFramework.Modeles.Framework.AccountModeles
 {
-    public sealed class RoleModel : ModelBase
+    public sealed class RoleModel : EntityBase<string>
     {
         private List<string> usersInRole = new List<string>();
 
@@ -40,8 +40,9 @@ namespace WebFramework.Modeles.Framework.AccountModeles
         }
 
         public RoleModel(string roleName)
-            : base(roleName)
+            : base()
         {
+            this.Id = Guid.NewGuid().ToString();
             this.Name = roleName;
         }
 
