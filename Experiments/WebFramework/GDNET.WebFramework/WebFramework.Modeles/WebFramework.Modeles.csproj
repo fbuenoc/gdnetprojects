@@ -12,6 +12,7 @@
     <AssemblyName>WebFramework.Modeles</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,8 +50,6 @@
     <Compile Include="AccountModeles\LogOnModel.cs" />
     <Compile Include="AccountModeles\RegisterModel.cs" />
     <Compile Include="AccountServices\AccountMembershipService.cs" />
-    <Compile Include="AccountServices\FormsAuthenticationService.cs" />
-    <Compile Include="AccountServices\IFormsAuthenticationService.cs" />
     <Compile Include="AccountServices\IMembershipService.cs" />
     <Compile Include="Base\CrudControllerBase.cs" />
     <Compile Include="Base\ListCrudControllerBase.cs" />
@@ -58,10 +57,21 @@
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
+    <Compile Include="Framework\Common\ModelActiveBase.cs" />
+    <Compile Include="Framework\Common\ModelFullControlBase.cs" />
+    <Compile Include="Framework\DomainModels\ApplicationModel.cs" />
+    <Compile Include="Framework\DomainModels\ContentTypeModel.cs" />
+    <Compile Include="Framework\DomainModels\ContentItemModel.cs" />
+    <Compile Include="Framework\DomainModels\CultureModel.cs" />
+    <Compile Include="Framework\DomainModels\ListValueModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\AccountValidation.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
+      <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
+      <Name>GDNET.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
       <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
       <Name>GDNET.Web.Membership</Name>
@@ -69,6 +79,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
       <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
       <Name>GDNET.Web.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+      <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
+      <Name>WebFrameworkDomain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

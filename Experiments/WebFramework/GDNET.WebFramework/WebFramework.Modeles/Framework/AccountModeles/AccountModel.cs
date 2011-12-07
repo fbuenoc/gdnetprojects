@@ -4,20 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Web.Security;
 
-using GDNET.Web.Membership.Profiles.Objects;
-using GDNET.Web.Mvc.Base;
+using GDNET.Common.Base.Entities;
+
 using GDNET.Web.Membership.Profiles;
+using GDNET.Web.Membership.Profiles.Objects;
 
 namespace WebFramework.Modeles.Framework.AccountModeles
 {
-    public sealed class AccountModel : ModelBase
+    public sealed class AccountModel : EntityBase<string>
     {
         /// <summary>
         /// User key
         /// </summary>
         public string ProviderUserKey
         {
-            get { return this.User.ProviderUserKey.ToString(); }
+            get { return base.Id; }
         }
 
         /// <summary>
@@ -25,7 +26,8 @@ namespace WebFramework.Modeles.Framework.AccountModeles
         /// </summary>
         public string UserName
         {
-            get { return this.User.UserName; }
+            get;
+            set;
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace WebFramework.Modeles.Framework.AccountModeles
         /// </summary>
         public string Email
         {
-            get { return this.User.Email; }
+            get { return (this.User == null) ? string.Empty : this.User.Email; }
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace WebFramework.Modeles.Framework.AccountModeles
         /// </summary>
         public DateTime CreationDate
         {
-            get { return this.User.CreationDate; }
+            get { return (this.User == null) ? default(DateTime) : this.User.CreationDate; }
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace WebFramework.Modeles.Framework.AccountModeles
         /// </summary>
         public DateTime LastLoginDate
         {
-            get { return this.User.LastLoginDate; }
+            get { return (this.User == null) ? default(DateTime) : this.User.LastLoginDate; }
         }
 
         /// <summary>
@@ -60,7 +62,11 @@ namespace WebFramework.Modeles.Framework.AccountModeles
             get
             {
                 CustomProfile profile = new CustomProfile();
-                profile.Initialize(this.UserName, true);
+                if (!string.IsNullOrEmpty(this.UserName))
+                {
+                    profile.Initialize(this.UserName, true);
+                }
+
                 return profile.BasicInformation;
             }
         }
@@ -71,10 +77,21 @@ namespace WebFramework.Modeles.Framework.AccountModeles
             private set;
         }
 
+        #region Ctors
+
+        public AccountModel()
+            : base()
+        {
+        }
+
         public AccountModel(MembershipUser user)
-            : base(user.ProviderUserKey.ToString())
+            : base()
         {
             this.User = user;
+            this.UserName = user.UserName;
+            this.Id = user.ProviderUserKey.ToString();
         }
+
+        #endregion
     }
 }
