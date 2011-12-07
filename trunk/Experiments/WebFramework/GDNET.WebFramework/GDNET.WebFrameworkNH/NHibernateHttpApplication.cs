@@ -8,41 +8,56 @@ using System.Web.Hosting;
 
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Mapping.ByCode;
 
-namespace GDNET.WebFrameworkNH
+using GDNET.NHibernateImpl.Utils;
+using GDNET.Web.MultilingualControls;
+
+using WebFrameworkMapping.Common;
+
+namespace WebFrameworkNHibernate
 {
     public abstract class NHibernateHttpApplication : HttpApplication
     {
-        private static readonly Configuration _configuration = null;
-        private static readonly ISessionFactory _sessionFactory = null;
+        private static ISessionFactory _sessionFactory = null;
 
-        public static Configuration Configuration
+        static NHibernateHttpApplication()
         {
-            get { return _configuration; }
+            NHibernateHttpApplication.BuildSessionFactory();
         }
+
+        #region Properties
 
         public static ISessionFactory SessionFactory
         {
             get { return _sessionFactory; }
         }
 
-        static NHibernateHttpApplication()
-        {
-            _configuration = new Configuration();
-            _configuration.AddDirectory(new DirectoryInfo(HostingEnvironment.MapPath("~/App_Data/")));
-
-            string nhConfigPath = HostingEnvironment.MapPath("~/App_Data/hibernate.cfg.xml");
-            if (File.Exists(nhConfigPath))
-            {
-                _configuration.Configure(nhConfigPath);
-            }
-
-            _sessionFactory = _configuration.BuildSessionFactory();
-        }
-
         public static ISession GetCurrentSession()
         {
             return _sessionFactory.GetCurrentSession();
         }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Build NHibernate session factory
+        /// </summary>
+        private static void BuildSessionFactory()
+        {
+            var mapper = new ModelMapper();
+            mapper.AddMappings(new Type[] { 
+                typeof(ContentAttributeMap), typeof(ContentItemMap), typeof(ContentItemAttributeValueMap), typeof(ContentTypeMap), 
+                typeof(ApplicationMap), typeof(CultureMap), typeof(ListValueMap), typeof(TemporaryMap), typeof(TranslationMap) 
+            });
+
+            var nhConfigPath = HostingEnvironment.MapPath("~/App_Data/hibernate.cfg.xml");
+            SessionFactoryHelper.BuildSessionFactory(nhConfigPath, mapper, out _sessionFactory);
+        }
+
+        #endregion
+
     }
 }
