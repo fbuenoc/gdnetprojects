@@ -5,15 +5,21 @@ using NHibernate;
 using NHibernate.Context;
 
 using GDNET.Common.Base;
+using GDNET.Common.Base.Services;
+using GDNET.Web.Helpers;
+using GDNET.Web.MultilingualControls;
 
-namespace GDNET.WebFrameworkNH
+using WebFrameworkDomain.Common.Repositories;
+using WebFrameworkServices;
+
+namespace WebFrameworkNHibernate
 {
     /// <summary>
     /// NHibernate session management module
     /// </summary>
     public sealed class NHibernateSessionModule : IHttpModule
     {
-        private ISimpleInterceptor requestInterceptor = null;
+        private IInterceptorService requestInterceptor = null;
 
         #region IHttpModule Members
 
@@ -26,11 +32,9 @@ namespace GDNET.WebFrameworkNH
         {
             this.requestInterceptor = new NHibernateSessionModuleInterceptor();
 
-            // Below is an example of how you can handle LogRequest event and provide 
-            // custom logging implementation for it
-            //context.LogRequest += new EventHandler(OnLogRequest);
             context.BeginRequest += new EventHandler(OnBeginRequest);
             context.EndRequest += new EventHandler(OnEndRequest);
+            context.AuthenticateRequest += new EventHandler(OnAuthenticateRequest);
         }
 
         #endregion
@@ -46,10 +50,21 @@ namespace GDNET.WebFrameworkNH
         {
             if (!this.requestInterceptor.IsPassed())
             {
-                return;
+                //return;
             }
 
-            ManagedWebSessionContext.Bind(HttpContext.Current, NHibernateHttpApplication.SessionFactory.OpenSession());
+            ISession session = NHibernateHttpApplication.SessionFactory.OpenSession();
+            ManagedWebSessionContext.Bind(HttpContext.Current, session);
+
+            // Set data repositories
+            if (HttpContextHelper.TryGetItem<WebRepositories>("DataRepositories") == null)
+            {
+                HttpContextHelper.TrySetItem("DataRepositories", new WebRepositories());
+            }
+
+            // Set multilingual service
+            IRepositoryTranslation repositoryTranslation = HttpContextHelper.TryGetItem<WebRepositories>("DataRepositories").GetRepositoryTranslation();
+            MultilingualServiceHelper.Initialize(new MultilingualService(repositoryTranslation));
         }
 
         /// <summary>
@@ -61,29 +76,37 @@ namespace GDNET.WebFrameworkNH
         {
             if (!this.requestInterceptor.IsPassed())
             {
-                return;
+                //return;
             }
 
             ISession session = ManagedWebSessionContext.Unbind(HttpContext.Current, NHibernateHttpApplication.SessionFactory);
-
-            if (session.Transaction.IsActive)
-            {
-                session.Transaction.Rollback();
-            }
-
             if (session != null)
             {
-                session.Close();
+                if (session.Transaction.IsActive)
+                {
+                    session.Transaction.Rollback();
+                }
+
+                if (session.IsOpen)
+                {
+                    session.Flush();
+                    session.Close();
+                }
             }
         }
 
-        /// <summary>
-        /// Custom logging logic can go here
-        /// </summary>
-        /// <param name="source"></param>
-        /// <param name="e"></param>
-        void OnLogRequest(Object source, EventArgs e)
+        void OnAuthenticateRequest(object sender, EventArgs e)
         {
+            if (!this.requestInterceptor.IsPassed())
+            {
+                //return;
+            }
+
+            // Set web session service
+            if (HttpContextHelper.TryGetItem<WebSessionService>("SessionService") == null)
+            {
+                HttpContextHelper.TrySetItem("SessionService", new WebSessionService());
+            }
         }
 
         #endregion

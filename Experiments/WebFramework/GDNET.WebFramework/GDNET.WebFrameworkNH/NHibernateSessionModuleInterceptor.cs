@@ -2,13 +2,14 @@
 using System.Web;
 
 using GDNET.Common.Base;
+using GDNET.Common.Base.Services;
 
-namespace GDNET.WebFrameworkNH
+namespace WebFrameworkNHibernate
 {
     /// <summary>
     /// NHibernate session management module interceptor, use to check which request is needed to open/close NHibernate session
     /// </summary>
-    public sealed class NHibernateSessionModuleInterceptor : ISimpleInterceptor
+    public sealed class NHibernateSessionModuleInterceptor : IInterceptorService
     {
         #region IInterceptor Members
 
