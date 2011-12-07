@@ -1,6 +1,7 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
 {
@@ -32,10 +33,15 @@ namespace WebFrameworkDomain.Common
 
             public ListValue Create(string name, string description)
             {
-                return this.Create(name, null, description);
+                return this.Create(name, description, null);
             }
 
-            public ListValue Create(string name, string customValue, string description)
+            public ListValue Create(string name, string description, string customValue)
+            {
+                return this.Create(name, description, customValue, 0);
+            }
+
+            public ListValue Create(string name, string description, string customValue, long parentId)
             {
                 Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of item can not be null.");
 
@@ -44,15 +50,10 @@ namespace WebFrameworkDomain.Common
                 listValue.Name = name;
                 listValue.CustomValue = customValue;
                 listValue.Description = Translation.Factory.Create(description);
-                listValue.Parent = null;
+                listValue.Parent = (parentId <= 0) ? null : DomainRepositories.ListValue.GetById(parentId);
                 listValue.Application = null;
 
                 return listValue;
-            }
-
-            public ListValue Retrieve(string code)
-            {
-                throw new NotImplementedException();
             }
         }
     }
