@@ -42,7 +42,7 @@
         <% if (base.Model.ParentId != 0)
            {
         %>
-        <%= base.Html.ActionLink(base.Model.Parent, ListValueController.ActionDetails, new { id = base.Model.ParentId }) %>
+        <%= base.Html.ActionLink("Return " + base.Model.Parent, ListValueController.ActionDetails, new { id = base.Model.ParentId }) %>
         <%
            }
         %>

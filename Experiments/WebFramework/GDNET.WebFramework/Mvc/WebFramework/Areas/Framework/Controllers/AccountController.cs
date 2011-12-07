@@ -27,67 +27,43 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View();
         }
 
-        public override ActionResult Details(string id)
+        protected override AccountModel OnDetailsChecking(string id)
         {
             string providerUserKey;
-            QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey);
+            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey))
+            {
+                return base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
+            }
 
-            try
-            {
-                AccountModel modele = base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
-                return base.View(modele);
-            }
-            catch
-            {
-                return base.RedirectToAction(ActionList);
-            }
+            return default(AccountModel);
         }
 
-        public override ActionResult Create()
-        {
-            return base.View();
-        }
-
-        public override ActionResult Create(AccountModel model, FormCollection collection)
-        {
-            return base.View();
-        }
-
-        public override ActionResult Delete(string id)
-        {
-            string providerUserKey;
-            QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey);
-
-            try
-            {
-                AccountModel modele = base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
-                return base.View(modele);
-            }
-            catch
-            {
-                return base.RedirectToAction(ActionList);
-            }
-        }
-
-        public override ActionResult Delete(AccountModel model, FormCollection collection)
-        {
-            bool result = base.membershipService.DeleteUser(model.UserName, true);
-            if (result)
-            {
-                return base.RedirectToAction(ActionList);
-            }
-            else
-            {
-                return base.View(model);
-            }
-        }
-
-        public override ActionResult Edit(string id)
+        protected override object OnCreateExecuting(AccountModel model, FormCollection collection)
         {
             throw new NotImplementedException();
         }
 
-        public override ActionResult Edit(AccountModel model, FormCollection collection)
+        protected override AccountModel OnDeleteChecking(string id)
+        {
+            string providerUserKey;
+            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey))
+            {
+                return base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
+            }
+            return default(AccountModel);
+        }
+
+        protected override bool OnDeleteExecuting(AccountModel model, FormCollection collection)
+        {
+            return base.membershipService.DeleteUser(model.UserName, true);
+        }
+
+        protected override AccountModel OnEditChecking(string id)
+        {
+            return base.GetModelById(id);
+        }
+
+        protected override bool OnEditExecuting(AccountModel model, FormCollection collection)
         {
             throw new NotImplementedException();
         }
@@ -112,5 +88,6 @@ namespace WebFramework.Areas.Framework.Controllers
 
             return base.View(myGridModel);
         }
+
     }
 }
