@@ -2,10 +2,23 @@
 
 namespace WebFramework.Modeles.Framework.Common
 {
-    public abstract class ModelFullControlBase<TEntity, TId> : ModelActiveBase<TEntity, TId> where TEntity : EntityFullControlBase<TId>
+    public abstract class ModelFullControlBase<TEntity, TId> : EntityFullControlBase<TId> where TEntity : EntityFullControlBase<TId>
     {
-        public ModelFullControlBase() : base() { }
+        protected TEntity Entity
+        {
+            get;
+            private set;
+        }
 
-        public ModelFullControlBase(TEntity entity) : base(entity) { }
+        public ModelFullControlBase()
+            : base()
+        {
+        }
+
+        public ModelFullControlBase(TEntity entity)
+            : base(entity)
+        {
+            this.Entity = entity;
+        }
     }
 }

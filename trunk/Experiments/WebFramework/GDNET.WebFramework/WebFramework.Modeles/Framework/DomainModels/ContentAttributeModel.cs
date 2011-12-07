@@ -1,4 +1,7 @@
 ﻿using System;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
 using WebFrameworkDomain.Common;
 using WebFramework.Modeles.Framework.Common;
 
@@ -57,12 +60,15 @@ namespace WebFramework.Modeles.Framework.DomainModels
             set;
         }
 
+        [DisplayName("Data type")]
         public long DataTypeId
         {
             get;
             set;
         }
 
+        [Required]
+        [DisplayName("Name")]
         public string Code
         {
             get;

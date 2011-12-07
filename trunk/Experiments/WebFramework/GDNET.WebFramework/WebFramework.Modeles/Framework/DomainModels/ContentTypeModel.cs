@@ -1,4 +1,10 @@
-﻿using WebFrameworkDomain.Common;
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+
+using WebFrameworkDomain.Common;
 using WebFramework.Modeles.Framework.Common;
 
 namespace WebFramework.Modeles.Framework.DomainModels
@@ -29,28 +35,47 @@ namespace WebFramework.Modeles.Framework.DomainModels
 
         #region Properties
 
+        [Required]
+        [DisplayName("Name")]
         public string Name
         {
             get;
             set;
         }
 
+        [DisplayName("Type name")]
         public string TypeName
         {
             get;
             set;
         }
 
+        [DisplayName("Application")]
         public string Application
         {
             get;
             set;
         }
 
+        [DisplayName("Application")]
         public long ApplicationId
         {
             get;
             set;
+        }
+
+        public IEnumerable<ContentAttributeModel> Attributes
+        {
+            get
+            {
+                List<ContentAttributeModel> listOfAttributes = new List<ContentAttributeModel>();
+                if (base.Entity != null)
+                {
+                    listOfAttributes.AddRange(base.Entity.ContentAttributes.Select(x => new ContentAttributeModel(x)));
+                }
+
+                return listOfAttributes;
+            }
         }
 
         #endregion
