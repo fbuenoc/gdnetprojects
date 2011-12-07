@@ -28,12 +28,18 @@ namespace WebFrameworkDomain.Common
                 };
             }
 
-            public ContentAttribute Create(string code, ContentType type, string dataTypeCode)
+            public ContentAttribute Create(string code, ContentType type, string dataTypeName)
             {
-                return this.Create(code, 0, type, dataTypeCode);
+                return this.Create(code, type, dataTypeName, 0);
             }
 
-            public ContentAttribute Create(string code, int position, ContentType type, string dataTypeName)
+            public ContentAttribute Create(string code, long contentTypeId, string dataTypeName, int position)
+            {
+                var contentType = DomainRepositories.ContentType.GetById(contentTypeId);
+                return this.Create(code, contentType, dataTypeName, position);
+            }
+
+            public ContentAttribute Create(string code, ContentType type, string dataTypeName, int position)
             {
                 Throw.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be null.");
                 Throw.ArgumentExceptionIfNullOrEmpty(dataTypeName, "dataTypeCode", "Code of data type can not be null.");

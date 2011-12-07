@@ -1,6 +1,9 @@
-﻿using GDNET.Common.Base.Entities;
+﻿using System;
+
+using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
-using System;
+
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
 {
@@ -26,10 +29,16 @@ namespace WebFrameworkDomain.Common
 
             public ContentItem Create(string name, string description, ContentType type)
             {
-                return this.Create(name, description, 0, type);
+                return this.Create(name, description, type, 0);
             }
 
-            public ContentItem Create(string name, string description, int position, ContentType type)
+            public ContentItem Create(string name, string description, long contentTypeId, int position)
+            {
+                var contentType = DomainRepositories.ContentType.GetById(contentTypeId);
+                return this.Create(name, description, contentType, position);
+            }
+
+            public ContentItem Create(string name, string description, ContentType type, int position)
             {
                 Throw.ArgumentNullException(type, "type", "Type of content item can not be null.");
                 Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be null.");

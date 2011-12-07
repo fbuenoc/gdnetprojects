@@ -1,4 +1,5 @@
 ﻿using GDNET.Common.Base.Meta;
+
 namespace WebFrameworkDomain.Common
 {
     public sealed class ListValueMeta : MetaFullControlBase
@@ -8,5 +9,6 @@ namespace WebFrameworkDomain.Common
         public const string ParentId = "ParentId";
 
         public const string Name = "Name";
+        public const string Parent = "Parent";
     }
 }
