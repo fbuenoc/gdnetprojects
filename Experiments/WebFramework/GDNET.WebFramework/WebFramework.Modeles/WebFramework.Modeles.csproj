@@ -60,6 +60,7 @@
     <Compile Include="Framework\Common\ModelActiveBase.cs" />
     <Compile Include="Framework\Common\ModelFullControlBase.cs" />
     <Compile Include="Framework\DomainModels\ApplicationModel.cs" />
+    <Compile Include="Framework\DomainModels\ContentAttributeModel.cs" />
     <Compile Include="Framework\DomainModels\ContentTypeModel.cs" />
     <Compile Include="Framework\DomainModels\ContentItemModel.cs" />
     <Compile Include="Framework\DomainModels\CultureModel.cs" />

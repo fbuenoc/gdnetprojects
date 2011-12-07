@@ -48,9 +48,10 @@ namespace WebFramework.Modeles.Framework.AccountModeles
 
         #endregion
 
-        public void GetUsersInRole()
+        public RoleModel GetUsersInRole()
         {
             this.usersInRole.AddRange(Roles.GetUsersInRole(this.Name));
+            return this;
         }
 
         public bool DeleteRole()
