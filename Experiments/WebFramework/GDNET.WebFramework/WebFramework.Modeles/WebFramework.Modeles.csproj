@@ -59,6 +59,7 @@
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
     <Compile Include="Framework\Common\ModelActiveBase.cs" />
     <Compile Include="Framework\Common\ModelFullControlBase.cs" />
+    <Compile Include="Framework\Common\ModelService.cs" />
     <Compile Include="Framework\DomainModels\ApplicationModel.cs" />
     <Compile Include="Framework\DomainModels\ContentAttributeModel.cs" />
     <Compile Include="Framework\DomainModels\ContentTypeModel.cs" />

@@ -61,17 +61,17 @@ namespace WebFramework.Modeles.Framework.DomainModels
             set;
         }
 
-        public IList<ListValueModel> SubValues
+        public IEnumerable<ListValueModel> SubValues
         {
             get
             {
-                var results = new List<ListValueModel>();
+                List<ListValueModel> listOfSubValues = new List<ListValueModel>();
                 if (base.Entity != null)
                 {
-                    results = base.Entity.SubValues.Select(x => new ListValueModel(x)).ToList();
+                    listOfSubValues.AddRange(base.Entity.SubValues.Select(x => new ListValueModel(x)));
                 }
 
-                return results;
+                return listOfSubValues;
             }
         }
 
