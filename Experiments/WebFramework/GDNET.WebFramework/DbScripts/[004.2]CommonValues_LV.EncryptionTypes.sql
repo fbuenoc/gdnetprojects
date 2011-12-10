@@ -21,3 +21,10 @@ exec sp_CreateListValue
 	@CustomValue = 'Base64',
 	@ParentName = 'LV.EncryptionTypes';
 GO
+
+exec sp_CreateListValue
+	@Name = 'LV.EncryptionTypes.AES',
+	@Description = 'AES',
+	@CustomValue = 'AES',
+	@ParentName = 'LV.EncryptionTypes';
+GO
