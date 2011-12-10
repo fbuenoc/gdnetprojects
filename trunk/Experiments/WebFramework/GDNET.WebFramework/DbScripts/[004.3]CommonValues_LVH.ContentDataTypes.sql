@@ -17,23 +17,23 @@ exec sp_CreateListValue
 GO
 
 exec sp_CreateListValue
-	@Name = 'LVH.ContentDataTypes.Text.InputTextBox',
-	@Description = 'Single row text-box',
-	@CustomValue = 'TextBoxSingleRow',
+	@Name = 'LVH.ContentDataTypes.Text.SimpleTextBox',
+	@Description = 'An input for text with one row only',
+	@CustomValue = '1:01;10:013;11:255;12:32;',
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
 
 exec sp_CreateListValue
-	@Name = 'LVH.ContentDataTypes.Text.PasswordInputTextBox',
+	@Name = 'LVH.ContentDataTypes.Text.PasswordTextBox',
 	@Description = 'Password input text-box',
-	@CustomValue = 'PasswordInputTextBox',
+	@CustomValue = '1:01;10:015;11:255;12:32;',
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Text.TextArea',
-	@Description = 'Textarea input',
-	@CustomValue = 'TextArea',
+	@Description = 'Simple text-area',
+	@CustomValue = '1:02;10:015;11:255;12:32;',
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
 
