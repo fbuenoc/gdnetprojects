@@ -1,6 +1,6 @@
 ﻿using System.Security.Principal;
 
-namespace GDNET.Common.Security
+namespace GDNET.Common.Security.Services
 {
     public interface ISessionService
     {

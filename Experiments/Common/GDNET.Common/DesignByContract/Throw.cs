@@ -32,6 +32,11 @@ namespace GDNET.Common.DesignByContract
             }
         }
 
+        public static void ArgumentOutOfRangeException(string paramName, string message)
+        {
+            throw new ArgumentOutOfRangeException(paramName, message);
+        }
+
         /// <summary>
         /// Throw an ArgumentOutOfRangeException if object to test is less than zero.
         /// </summary>
@@ -40,7 +45,7 @@ namespace GDNET.Common.DesignByContract
         {
             if (objTest < 0)
             {
-                throw new ArgumentOutOfRangeException(paramName, message);
+                Throw.ArgumentOutOfRangeException(paramName, message);
             }
         }
 

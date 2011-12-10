@@ -82,8 +82,9 @@
     <Compile Include="Paging\PaginatedList.cs" />
     <Compile Include="Security\FakeIdentity.cs" />
     <Compile Include="Security\FakePrincipal.cs" />
-    <Compile Include="Security\ISessionService.cs" />
-    <Compile Include="Security\SessionService.cs" />
+    <Compile Include="Security\Services\IEncryptionService.cs" />
+    <Compile Include="Security\Services\ISessionService.cs" />
+    <Compile Include="Security\DefaultImpl\SessionService.cs" />
     <Compile Include="Base\Entities\EntityActiveBase.cs" />
     <Compile Include="Base\Entities\EntityFullControlBase.cs" />
     <Compile Include="Base\Entities\IEntityBase.cs" />
