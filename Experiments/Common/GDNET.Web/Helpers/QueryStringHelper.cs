@@ -70,7 +70,7 @@ namespace GDNET.Web.Helpers
         /// <summary>
         /// Get value from query string and parse to the given type.
         /// </summary>
-        /// <typeparam name="T">Supported type: Enum, int/long, double/float</typeparam>
+        /// <typeparam name="T">Supported type: Enum, int/long, double/float, string</typeparam>
         /// <param name="name"></param>
         /// <param name="expectedResult"></param>
         /// <returns></returns>
@@ -88,6 +88,12 @@ namespace GDNET.Web.Helpers
                     if (typeof(T).BaseType.FullName == typeof(Enum).FullName)
                     {
                         expectedResult = (T)Enum.Parse(typeof(T), rawValue);
+                        result = true;
+                    }
+
+                    if (typeof(T).FullName == typeof(string).FullName)
+                    {
+                        expectedResult = (T)Convert.ChangeType(rawValue, typeof(T));
                         result = true;
                     }
 

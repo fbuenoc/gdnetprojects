@@ -1,1 +1,0 @@
-xsd MembershipObjects.xsd /c /n:GDNET.Web.MembershipExtensions.Objects
