@@ -1,6 +1,8 @@
 ﻿using System.Security.Principal;
 
-namespace GDNET.Common.Security
+using GDNET.Common.Security.Services;
+
+namespace GDNET.Common.Security.DefaultImpl
 {
     public abstract class SessionService : ISessionService
     {

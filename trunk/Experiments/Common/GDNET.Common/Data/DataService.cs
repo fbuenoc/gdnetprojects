@@ -2,6 +2,7 @@
 
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Security;
+using GDNET.Common.Security.DefaultImpl;
 
 namespace GDNET.Common.Data
 {
