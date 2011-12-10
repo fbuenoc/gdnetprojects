@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:annotation>
+		<xs:documentation>Created with EditiX (http://www.editix.com) at Tue Nov 02 14:54:55 ICT 2010</xs:documentation>
+	</xs:annotation>
+	<xs:element name="OpenIdAccountInfo">
+		<xs:complexType>
+			<xs:attribute ref="FullName"/>
+			<xs:attribute ref="EmailAddress"/>
+			<xs:attribute ref="FriendlyIdentifier"/>
+			<xs:attribute ref="ClaimedIdentifier"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="FriendlyIdentifier" type="xs:string"/>
+	<xs:attribute name="ClaimedIdentifier" type="xs:string"/>
+	<xs:attribute name="EmailAddress" type="xs:string"/>
+	<xs:attribute name="FullName" type="xs:string"/>
+	<xs:element name="OpenIdProvider">
+		<xs:complexType>
+			<xs:attribute ref="ProviderIdentifier"/>
+			<xs:attribute ref="ProviderName"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="ProviderName" type="xs:string"/>
+	<xs:attribute name="ProviderIdentifier" type="xs:string"/>
+</xs:schema>
