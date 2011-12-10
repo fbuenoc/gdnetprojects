@@ -1,0 +1,1 @@
+xsd MembershipObjects.xsd /c /n:GDNET.Web.Membership.Profiles.Objects

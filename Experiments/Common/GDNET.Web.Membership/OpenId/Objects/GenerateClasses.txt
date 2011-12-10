@@ -1,0 +1,1 @@
+xsd OpenIdResponseObjects.xsd /c /n:GDNET.Web.Membership.OpenId.Objects
