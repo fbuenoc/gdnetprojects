@@ -5,10 +5,9 @@ using System.Text;
 using System.Web.Mvc;
 
 using NUnit.Framework;
+using WebFrameworkExtensions;
 
-using GDNET.Web.Mvc.Extensions;
-
-namespace GDNET.Web.Mvc.Tests.Extensions
+namespace WebFrameworkExtensions.Tests
 {
     [TestFixture]
     public class HtmlDynamicInputTests
