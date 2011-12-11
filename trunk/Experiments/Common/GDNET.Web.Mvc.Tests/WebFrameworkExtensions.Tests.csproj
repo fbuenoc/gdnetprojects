@@ -8,8 +8,8 @@
     <ProjectGuid>{CBEDD53B-2055-4773-B719-4BA460ECA2C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GDNET.Web.Mvc.Tests</RootNamespace>
-    <AssemblyName>GDNET.Web.Mvc.Tests</AssemblyName>
+    <RootNamespace>WebFrameworkExtensions.Tests</RootNamespace>
+    <AssemblyName>WebFrameworkExtensions.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -49,9 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
-      <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
-      <Name>GDNET.Web.Mvc</Name>
+    <ProjectReference Include="..\..\WebFramework\GDNET.WebFramework\WebFrameworkExtensions\WebFrameworkExtensions.csproj">
+      <Project>{A53B516C-BA01-48BD-8330-63515DE50356}</Project>
+      <Name>WebFrameworkExtensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
