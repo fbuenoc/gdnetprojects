@@ -29,6 +29,12 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual Culture CultureDefault
+        {
+            get;
+            set;
+        }
+
         public virtual string RootUrl
         {
             get;

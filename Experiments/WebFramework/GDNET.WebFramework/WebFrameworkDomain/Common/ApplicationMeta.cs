@@ -7,6 +7,7 @@ namespace WebFrameworkDomain.Common
         public const string NameTranslationId = "NameTranslationId";
         public const string DescriptionTranslationId = "DescriptionTranslationId";
         public const string CategoryId = "CategoryId";
+        public const string CultureDefaultId = "CultureDefaultId";
 
         public const string RootUrl = "RootUrl";
     }

@@ -33,10 +33,11 @@ namespace WebFrameworkDomain.Common
                 return this.Create(code, type, dataTypeName, 0);
             }
 
-            public ContentAttribute Create(string code, long contentTypeId, string dataTypeName, int position)
+            public ContentAttribute Create(string code, long contentTypeId, long dataTypeId, int position)
             {
                 var contentType = DomainRepositories.ContentType.GetById(contentTypeId);
-                return this.Create(code, contentType, dataTypeName, position);
+                var dataType = DomainRepositories.ListValue.GetById(dataTypeId);
+                return this.Create(code, contentType, dataType.Name, position);
             }
 
             public ContentAttribute Create(string code, ContentType type, string dataTypeName, int position)
