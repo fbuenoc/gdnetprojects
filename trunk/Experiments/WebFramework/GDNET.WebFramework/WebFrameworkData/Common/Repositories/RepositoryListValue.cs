@@ -5,7 +5,6 @@ using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Transform;
 
-using GDNET.Extensions;
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;

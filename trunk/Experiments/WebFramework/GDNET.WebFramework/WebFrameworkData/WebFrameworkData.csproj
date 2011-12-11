@@ -69,10 +69,6 @@
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
-      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
-      <Name>GDNET.Extensions</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.NHibernateImpl\GDNET.NHibernateImpl.csproj">
       <Project>{8EDA5169-77FC-484B-A34C-AE9B34ADC9EC}</Project>
       <Name>GDNET.NHibernateImpl</Name>

@@ -1,6 +1,6 @@
-﻿using GDNET.Common.Base.Entities;
+﻿using GDNET.Common.Base;
+using GDNET.Common.Base.Entities;
 using GDNET.Common.Data;
-using GDNET.Extensions;
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;

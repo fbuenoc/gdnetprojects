@@ -5,7 +5,6 @@ using GDNET.Common.Data;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Encryption;
 using GDNET.Common.Security.Services;
-using GDNET.Extensions;
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;
