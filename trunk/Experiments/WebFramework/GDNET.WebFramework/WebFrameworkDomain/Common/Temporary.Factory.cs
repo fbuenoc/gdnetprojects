@@ -50,6 +50,16 @@ namespace WebFrameworkDomain.Common
                 return this.Create(value, ListValueConstants.EncryptionTypes_Base64);
             }
 
+            /// <summary>
+            /// Create Temporary data with AES encryption
+            /// </summary>
+            /// <param name="value"></param>
+            /// <returns></returns>
+            public Temporary CreateWithAES(string value)
+            {
+                return this.Create(value, ListValueConstants.EncryptionTypes_AES);
+            }
+
             public Temporary Create(string value, string encodingTypeName)
             {
                 Throw.ArgumentExceptionIfNullOrEmpty(encodingTypeName, "encodingTypeName", "Encoding type name can not be null.");
