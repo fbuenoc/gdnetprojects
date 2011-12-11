@@ -9,6 +9,7 @@ using WebFrameworkDomain;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
 using WebFrameworkDomain.DefaultImpl;
+
 using WebFrameworkData.UnitTest.Utils;
 
 namespace WebFrameworkData.UnitTest.Common
@@ -62,6 +63,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(name, myApp.Name.Value);
             Assert.AreEqual(desc, myApp.Description.Value);
             Assert.AreEqual(ListValueConstants.ApplicationCategories_Default, myApp.Category.Name);
+            Assert.AreEqual(CommonConstants.CultureCodeDefault, myApp.CultureDefault.CultureCode);
 
             DomainRepositories.Application.Delete(app.Id);
             DomainRepositories.Application.Synchronize();
