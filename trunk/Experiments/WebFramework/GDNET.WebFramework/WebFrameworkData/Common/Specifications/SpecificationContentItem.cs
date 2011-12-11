@@ -35,11 +35,11 @@ namespace WebFrameworkData.Common.Specifications
         public override bool OnSaved(ContentItem entity)
         {
             // Update translations
-            entity.RefreshTranslation(entity.Name, ExpressionHelper.GetPropertyName(() => entity.Name));
-            entity.RefreshTranslation(entity.Description, ExpressionHelper.GetPropertyName(() => entity.Description));
+            entity.RefreshTranslation(entity.Name, ExpressionUtil.GetPropertyName(() => entity.Name));
+            entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
             foreach (var attributeValue in entity.AttributeValues)
             {
-                attributeValue.RefreshTranslation(attributeValue.Value, ExpressionHelper.GetPropertyName(() => attributeValue.Value));
+                attributeValue.RefreshTranslation(attributeValue.Value, ExpressionUtil.GetPropertyName(() => attributeValue.Value));
             }
 
             return base.OnSaved(entity);

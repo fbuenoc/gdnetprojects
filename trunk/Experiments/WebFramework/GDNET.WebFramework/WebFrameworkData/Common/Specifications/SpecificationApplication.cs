@@ -27,8 +27,8 @@ namespace WebFrameworkData.Common.Specifications
 
         public override bool OnSaved(Application entity)
         {
-            entity.RefreshTranslation(entity.Name, ExpressionHelper.GetPropertyName(() => entity.Name));
-            entity.RefreshTranslation(entity.Description, ExpressionHelper.GetPropertyName(() => entity.Description));
+            entity.RefreshTranslation(entity.Name, ExpressionUtil.GetPropertyName(() => entity.Name));
+            entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
 
             return base.OnSaved(entity);
         }

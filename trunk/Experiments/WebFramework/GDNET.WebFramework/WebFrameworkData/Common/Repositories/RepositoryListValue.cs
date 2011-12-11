@@ -33,22 +33,20 @@ namespace WebFrameworkData.Common.Repositories
 
         public IList<ListValue> GetAllValuesByParent(ListValue parent)
         {
-            //try
-            //{
-            //    string hql = "select sv from {0} as lv left join lv.{1} as sv where lv.{2} = '{3}'";
-            //    hql = string.Format(hql, typeof(ListValue).Name,
-            //                             ExpressionHelper.GetPropertyName(() => parent.SubValues),
-            //                             ExpressionHelper.GetPropertyName(() => parent.Id),
-            //                             parent.Id.ToString());
-            //}
-            //catch (Exception ex)
-            //{
-            //}
+            return this.GetAllValuesByParent(parent, false);
+        }
 
+        public IList<ListValue> GetAllValuesByParent(ListValue parent, bool includeParent)
+        {
             List<ListValue> listOfValues = new List<ListValue>();
             if (parent != null)
             {
                 this.GetAllChildren(parent, listOfValues);
+
+                if (includeParent == false)
+                {
+                    listOfValues.Remove(parent);
+                }
             }
 
             return listOfValues;
