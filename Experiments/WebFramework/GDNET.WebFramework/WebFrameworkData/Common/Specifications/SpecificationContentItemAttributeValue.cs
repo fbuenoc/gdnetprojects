@@ -12,7 +12,7 @@ namespace WebFrameworkData.Common.Specifications
         public override bool OnSaved(ContentItemAttributeValue entity)
         {
             // Update translation code
-            entity.RefreshTranslation(entity.Value, ExpressionHelper.GetPropertyName(() => entity.Value));
+            entity.RefreshTranslation(entity.Value, ExpressionUtil.GetPropertyName(() => entity.Value));
 
             return base.OnSaved(entity);
         }
