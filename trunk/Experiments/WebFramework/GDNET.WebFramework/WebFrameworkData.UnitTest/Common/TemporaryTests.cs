@@ -77,6 +77,23 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(ListValueConstants.EncryptionTypes_Base64, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.DeleteAll();
         }
+
+        [Test]
+        public void CanAddTemporaryWithEncryptAES()
+        {
+            var temporary = Temporary.Factory.CreateWithAES("Test");
+            DomainRepositories.Temporary.Save(temporary);
+
+            DomainRepositories.Temporary.Synchronize();
+            DomainRepositories.Temporary.Clear();
+
+            var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
+
+            Assert.IsNotNull(new Guid(savedTemporary.Id));
+            Assert.AreEqual("Test", savedTemporary.Text);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes_AES, savedTemporary.EncryptionType.Name);
+            DomainRepositories.Temporary.DeleteAll();
+        }
     }
 }
 

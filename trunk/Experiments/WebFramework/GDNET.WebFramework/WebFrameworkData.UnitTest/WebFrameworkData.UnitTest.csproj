@@ -61,7 +61,7 @@
     <Compile Include="TestSessionService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Experiments CodePlex\Common\GDNET.Common\GDNET.Common.csproj">
+    <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
