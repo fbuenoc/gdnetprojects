@@ -45,7 +45,6 @@
     <Compile Include="BooleanExtensions.cs" />
     <Compile Include="BooleanHelper.cs" />
     <Compile Include="DateTimeHelper.cs" />
-    <Compile Include="ExpressionHelper.cs" />
     <Compile Include="HtmlRemoval.cs" />
     <Compile Include="HtmlWorker.cs" />
     <Compile Include="NumberFormatter.cs" />
