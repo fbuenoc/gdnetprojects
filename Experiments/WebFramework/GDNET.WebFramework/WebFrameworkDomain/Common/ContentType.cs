@@ -26,6 +26,12 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual string Code
+        {
+            get;
+            set;
+        }
+
         public virtual string TypeName
         {
             get;
