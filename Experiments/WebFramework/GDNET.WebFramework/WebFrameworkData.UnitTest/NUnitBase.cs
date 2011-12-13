@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+
 using NHibernate;
 using NHibernate.Context;
+using NHibernate.Event;
 using NHibernate.Mapping.ByCode;
 
 using GDNET.NHibernateImpl.Utils;
 
+using WebFrameworkData.Common.Listeners;
 using WebFrameworkDomain;
 using WebFrameworkDomain.DefaultImpl;
 using WebFrameworkMapping.Common;
-using System.Diagnostics;
 
 namespace WebFrameworkData.UnitTest
 {
@@ -82,6 +85,7 @@ namespace WebFrameworkData.UnitTest
 
             var nhConfigPath = "App_Data/hibernate.cfg.xml";
 
+            //SessionFactoryHelper.SetListeners(new ISaveOrUpdateEventListener[] { new WebFrameworkSaveEventListener() });
             SessionFactoryHelper.BuildSessionFactory(nhConfigPath, mapper, out _sessionFactory);
         }
 
