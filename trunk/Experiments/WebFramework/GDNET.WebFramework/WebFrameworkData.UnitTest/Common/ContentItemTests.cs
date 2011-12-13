@@ -83,13 +83,18 @@ namespace WebFrameworkData.UnitTest.Common
         }
 
         [Test]
-        public void CanAddContentTypeWithAttribute()
+        public void CanUpdateContentItem()
         {
             var contentAttribute = AssistantTest.CreateContentAttribute();
             var contentItem = ContentItem.Factory.Create("T1", "Test 1", contentAttribute.ContentType);
 
-            ContentItemAttributeValue attributeValue = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V1");
-            contentItem.AddAttributeValue(attributeValue);
+            DomainRepositories.ContentItem.Save(contentItem);
+            DomainRepositories.ContentItem.Synchronize();
+
+            ContentItemAttributeValue attributeValue1 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V1");
+            ContentItemAttributeValue attributeValue2 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V2");
+            contentItem.AddAttributeValue(attributeValue1);
+            contentItem.AddAttributeValue(attributeValue2);
 
             DomainRepositories.ContentItem.Save(contentItem);
             DomainRepositories.ContentItem.Synchronize();
@@ -98,8 +103,41 @@ namespace WebFrameworkData.UnitTest.Common
             var savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNotNull(savedItem);
             Assert.AreEqual(contentItem.Name.Value, savedItem.Name.Value);
-            Assert.AreEqual(1, savedItem.AttributeValues.Count);
+            Assert.AreEqual(2, savedItem.AttributeValues.Count);
             Assert.AreEqual("V1", savedItem.AttributeValues[0].Value.Value);
+            Assert.AreEqual("V2", savedItem.AttributeValues[1].Value.Value);
+
+            DomainRepositories.ContentItem.Delete(contentItem.Id);
+            DomainRepositories.ContentItem.Synchronize();
+
+            savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
+            Assert.IsNull(savedItem);
+
+            DomainRepositories.ContentType.Delete(contentAttribute.ContentType.Id);
+            DomainRepositories.ContentType.Synchronize();
+        }
+
+        [Test]
+        public void CanAddContentItemWithAttributeValue()
+        {
+            var contentAttribute = AssistantTest.CreateContentAttribute();
+            var contentItem = ContentItem.Factory.Create("T1", "Test 1", contentAttribute.ContentType);
+
+            ContentItemAttributeValue attributeValue1 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V1");
+            ContentItemAttributeValue attributeValue2 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V2");
+            contentItem.AddAttributeValue(attributeValue1);
+            contentItem.AddAttributeValue(attributeValue2);
+
+            DomainRepositories.ContentItem.Save(contentItem);
+            DomainRepositories.ContentItem.Synchronize();
+            DomainRepositories.ContentItem.Clear();
+
+            var savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
+            Assert.IsNotNull(savedItem);
+            Assert.AreEqual(contentItem.Name.Value, savedItem.Name.Value);
+            Assert.AreEqual(2, savedItem.AttributeValues.Count);
+            Assert.AreEqual("V1", savedItem.AttributeValues[0].Value.Value);
+            Assert.AreEqual("V2", savedItem.AttributeValues[1].Value.Value);
 
             DomainRepositories.ContentItem.Delete(contentItem.Id);
             DomainRepositories.ContentItem.Synchronize();

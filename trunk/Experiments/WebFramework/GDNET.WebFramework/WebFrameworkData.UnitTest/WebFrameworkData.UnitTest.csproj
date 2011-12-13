@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Business\ArticleTests.cs" />
     <Compile Include="Common\ContentTypeTests.cs" />
     <Compile Include="Common\ContentItemTests.cs" />
     <Compile Include="Common\ContentAttributeTests.cs" />
