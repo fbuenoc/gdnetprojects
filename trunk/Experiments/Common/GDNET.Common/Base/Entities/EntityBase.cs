@@ -12,7 +12,7 @@ namespace GDNET.Common.Base.Entities
 
         public EntityBase(IEntityBase<TId> entity)
         {
-            Throw.ArgumentNullException(entity, "entity", "Invalid entity.");
+            ThrowException.ArgumentNullException(entity, "entity", "Invalid entity.");
 
             this.Id = entity.Id;
         }

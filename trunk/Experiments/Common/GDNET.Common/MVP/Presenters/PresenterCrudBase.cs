@@ -78,7 +78,7 @@ namespace GDNET.Common.MVP
                     default:
                         if (this.View.Mode != ViewMode.None)
                         {
-                            Throw.NotImplementedException(string.Format("The mode: {0} is not handled.", this.View.Mode.ToString()));
+                            ThrowException.NotImplementedException(string.Format("The mode: {0} is not handled.", this.View.Mode.ToString()));
                         }
                         break;
                 }
@@ -138,25 +138,25 @@ namespace GDNET.Common.MVP
 
         public virtual bool Create()
         {
-            Throw.NotImplementedException("Not implemented");
+            ThrowException.NotImplementedException("Not implemented");
             return false;
         }
 
         public virtual bool Delete()
         {
-            Throw.NotImplementedException("Not implemented");
+            ThrowException.NotImplementedException("Not implemented");
             return false;
         }
 
         public virtual bool Modify()
         {
-            Throw.NotImplementedException("Not implemented");
+            ThrowException.NotImplementedException("Not implemented");
             return false;
         }
 
         public virtual bool Review()
         {
-            Throw.NotImplementedException("Not implemented");
+            ThrowException.NotImplementedException("Not implemented");
             return false;
         }
 

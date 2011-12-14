@@ -71,6 +71,7 @@
     <Compile Include="Base\Entities\IEntityActiveBase.cs" />
     <Compile Include="Base\Entities\EntityCreModBase.cs" />
     <Compile Include="Base\Entities\IEntityViewable.cs" />
+    <Compile Include="Base\ExpressionUtil.cs" />
     <Compile Include="Base\Meta\MetaCreModBase.cs" />
     <Compile Include="Base\Meta\MetaEntityActiveBase.cs" />
     <Compile Include="Base\Meta\MetaEntityBase.cs" />
@@ -96,8 +97,7 @@
     <Compile Include="Base\SimpleEventArgs.cs" />
     <Compile Include="Data\Accuracy.cs" />
     <Compile Include="Data\IRepositoryBase.cs" />
-    <Compile Include="DesignByContract\Throw.cs" />
-    <Compile Include="Domain\DomainBase.cs" />
+    <Compile Include="DesignByContract\ThrowException.cs" />
     <Compile Include="Domain\IValidation.cs" />
     <Compile Include="Multilingual\IMultilingualTextControl.cs" />
     <Compile Include="Multilingual\IMultilingualTooltipControl.cs" />
