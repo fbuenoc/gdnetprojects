@@ -11,6 +11,7 @@ namespace WebFrameworkMapping.Common
             : base(Generators.Native)
         {
             base.Property(e => e.TypeName);
+            base.Property(e => e.Code);
 
             base.ManyToOne(e => e.Name, m =>
             {
@@ -42,6 +43,7 @@ namespace WebFrameworkMapping.Common
                 cm.Access(Accessor.Field);
                 cm.Key(k => k.Column(ContentAttributeMeta.ContentTypeId));
                 cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                cm.Inverse(true);
             }, m =>
             {
                 m.OneToMany();
