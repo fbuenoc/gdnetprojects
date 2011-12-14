@@ -42,18 +42,21 @@ namespace WebFramework.Modeles.Framework.DomainModels
 
         #region Properties
 
+        [DisplayName("Content type")]
         public string ContentType
         {
             get;
             set;
         }
 
+        [DisplayName("Content type")]
         public long ContentTypeId
         {
             get;
             set;
         }
 
+        [DisplayName("Data type")]
         public string DataType
         {
             get;
@@ -68,13 +71,14 @@ namespace WebFramework.Modeles.Framework.DomainModels
         }
 
         [Required]
-        [DisplayName("Name")]
+        [DisplayName("Code - no space")]
         public string Code
         {
             get;
             set;
         }
 
+        [DisplayName("Position")]
         public int Position
         {
             get;

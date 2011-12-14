@@ -36,14 +36,21 @@ namespace WebFramework.Modeles.Framework.DomainModels
         #region Properties
 
         [Required]
-        [DisplayName("Name")]
+        [DisplayName("Name of content type")]
         public string Name
         {
             get;
             set;
         }
 
-        [DisplayName("Type name")]
+        [DisplayName("Code of content type")]
+        public string Code
+        {
+            get;
+            set;
+        }
+
+        [DisplayName("Technical type name")]
         public string TypeName
         {
             get;
@@ -57,7 +64,7 @@ namespace WebFramework.Modeles.Framework.DomainModels
             set;
         }
 
-        [DisplayName("Application")]
+        [DisplayName("Application ID")]
         public long ApplicationId
         {
             get;
