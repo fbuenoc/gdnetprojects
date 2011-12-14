@@ -9,12 +9,5 @@ namespace WebFrameworkData.Common.Specifications
 {
     public class SpecificationContentItemAttributeValue : NHSpecificationBase<ContentItemAttributeValue, long>
     {
-        public override bool OnSaved(ContentItemAttributeValue entity)
-        {
-            // Update translation code
-            entity.RefreshTranslation(entity.Value, ExpressionUtil.GetPropertyName(() => entity.Value));
-
-            return base.OnSaved(entity);
-        }
     }
 }

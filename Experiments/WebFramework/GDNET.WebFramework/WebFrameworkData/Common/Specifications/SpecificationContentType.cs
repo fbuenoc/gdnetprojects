@@ -13,23 +13,13 @@ namespace WebFrameworkData.Common.Specifications
         public override bool OnSaving(ContentType entity)
         {
             this.UpdateContentType(entity);
-
             return base.OnSaving(entity);
         }
 
         public override bool OnUpdating(ContentType entity)
         {
             this.UpdateContentType(entity);
-
             return base.OnUpdating(entity);
-        }
-
-        public override bool OnSaved(ContentType entity)
-        {
-            // Update translation code
-            entity.RefreshTranslation(entity.Name, ExpressionUtil.GetPropertyName(() => entity.Name));
-
-            return base.OnSaved(entity);
         }
 
         private void UpdateContentType(ContentType entity)

@@ -4,7 +4,6 @@ using GDNET.Common.Base.Entities;
 using GDNET.NHibernateImpl.Data;
 
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkData.Common.Specifications
 {
@@ -19,14 +18,6 @@ namespace WebFrameworkData.Common.Specifications
             }
 
             return base.OnSaving(entity);
-        }
-
-        public override bool OnSaved(ListValue entity)
-        {
-            // Update translation code
-            entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
-
-            return base.OnSaved(entity);
         }
     }
 }

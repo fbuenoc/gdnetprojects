@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Events\WebFrameworkSaveEventListener.cs" />
     <Compile Include="Common\Repositories\RepositoryApplication.cs" />
     <Compile Include="Common\Repositories\RepositoryContentAttribute.cs" />
     <Compile Include="Common\Repositories\RepositoryContentItem.cs" />

@@ -14,5 +14,11 @@ namespace WebFrameworkData.Common.Repositories
             : base(session)
         {
         }
+
+        public ContentType FindByTypeName(string typeName)
+        {
+            var results = this.FindByProperty(ContentTypeMeta.TypeName, typeName);
+            return (results.Count == 0) ? null : results[0];
+        }
     }
 }
