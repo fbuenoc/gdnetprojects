@@ -12,6 +12,18 @@ namespace WebFrameworkData.Common.Specifications
     {
         public override bool OnSaving(ContentItem entity)
         {
+            this.UpdateContentItem(entity);
+            return base.OnSaving(entity);
+        }
+
+        public override bool OnUpdating(ContentItem entity)
+        {
+            this.UpdateContentItem(entity);
+            return base.OnUpdating(entity);
+        }
+
+        private void UpdateContentItem(ContentItem entity)
+        {
             // In case of creating new ContentItem, its Name is also saved. But Name.CreatedDate may be not set
             if (entity.Name != null)
             {
@@ -21,6 +33,7 @@ namespace WebFrameworkData.Common.Specifications
             {
                 var x = (entity.Description.Id < 1) ? DataService.SetCreationInfo(entity.Description) : DataService.SetModificationInfo(entity.Description);
             }
+
             foreach (var attributeValue in entity.AttributeValues)
             {
                 if (attributeValue.Value != null)
@@ -28,21 +41,6 @@ namespace WebFrameworkData.Common.Specifications
                     var x = (attributeValue.Value.Id < 1) ? DataService.SetCreationInfo(attributeValue.Value) : DataService.SetModificationInfo(attributeValue.Value);
                 }
             }
-
-            return base.OnSaving(entity);
-        }
-
-        public override bool OnSaved(ContentItem entity)
-        {
-            // Update translations
-            entity.RefreshTranslation(entity.Name, ExpressionUtil.GetPropertyName(() => entity.Name));
-            entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
-            foreach (var attributeValue in entity.AttributeValues)
-            {
-                attributeValue.RefreshTranslation(attributeValue.Value, ExpressionUtil.GetPropertyName(() => attributeValue.Value));
-            }
-
-            return base.OnSaved(entity);
         }
     }
 }
