@@ -41,9 +41,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Application.cs" />
-    <Compile Include="Common\Business\Article.cs" />
-    <Compile Include="Common\Business\ContentAttributeBase.cs" />
-    <Compile Include="Common\Business\ContentTypeBase.cs" />
     <Compile Include="Common\Constants\CommonConstants.cs" />
     <Compile Include="Common\Constants\ListValueConstants.cs" />
     <Compile Include="Common\ContentType.cs" />
@@ -92,10 +89,6 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
-      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
-      <Name>GDNET.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
