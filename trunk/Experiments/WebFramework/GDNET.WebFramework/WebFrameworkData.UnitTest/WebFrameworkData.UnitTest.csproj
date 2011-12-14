@@ -47,7 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Business\ArticleTests.cs" />
+    <Compile Include="Business\ArticleTests.cs" />
     <Compile Include="Common\ContentTypeTests.cs" />
     <Compile Include="Common\ContentItemTests.cs" />
     <Compile Include="Common\ContentAttributeTests.cs" />
@@ -69,6 +69,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.NHibernateImpl\GDNET.NHibernateImpl.csproj">
       <Project>{8EDA5169-77FC-484B-A34C-AE9B34ADC9EC}</Project>
       <Name>GDNET.NHibernateImpl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkBusiness\WebFrameworkBusiness.csproj">
+      <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
+      <Name>WebFrameworkBusiness</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFrameworkData\WebFrameworkData.csproj">
       <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>

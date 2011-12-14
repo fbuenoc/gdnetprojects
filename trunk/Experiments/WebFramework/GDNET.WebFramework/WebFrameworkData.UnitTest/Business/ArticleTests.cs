@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using NUnit.Framework;
-using WebFrameworkDomain.Common.Business;
+using WebFrameworkBusiness;
 
-namespace WebFrameworkData.UnitTest.Common.Business
+namespace WebFrameworkData.UnitTest.Business
 {
     [TestFixture]
     public class ArticleTests : NUnitBase
@@ -34,6 +34,9 @@ namespace WebFrameworkData.UnitTest.Common.Business
 
             bool result = myAtc.Save();
             Assert.IsTrue(result);
+
+            Article savedAtc = new Article();
+            savedAtc.LoadItemById(myAtc.Id);
         }
     }
 }
