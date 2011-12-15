@@ -36,16 +36,20 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
-    <Compile Include="Base\ContentTypeBase.cs" />
+    <Compile Include="Base\ContentItemBase.Data.cs" />
+    <Compile Include="Base\ContentItemBase.Logic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\GDNET.Common.Encryption\GDNET.Common.Encryption.csproj">
+      <Project>{7A184704-26D6-407D-A069-D692530F00E7}</Project>
+      <Name>GDNET.Common.Encryption</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>

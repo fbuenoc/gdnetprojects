@@ -45,7 +45,7 @@ namespace WebFrameworkDomain.Common
             /// </summary>
             public Translation Create(string code, string value)
             {
-                return this.Create(code, value, CommonConstants.CultureCodeDefault);
+                return this.Create(code, value, string.Empty);
             }
 
             /// <summary>
@@ -53,10 +53,7 @@ namespace WebFrameworkDomain.Common
             /// </summary>
             public Translation Create(string code, string value, string cultureCode)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(cultureCode, "cultureCode", "Culture can not be null.");
-
-                var culture = DomainRepositories.Culture.FindByCode(cultureCode);
-
+                Culture culture = string.IsNullOrEmpty(cultureCode) ? null : DomainRepositories.Culture.FindByCode(cultureCode);
                 return this.Create(code, value, culture);
             }
 
@@ -65,8 +62,8 @@ namespace WebFrameworkDomain.Common
             /// </summary>
             public Translation Create(string code, string value, Culture culture)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of translation can not be nullable.");
-                Throw.ArgumentNullException(culture, "culture", "Culture can not be null.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of translation can not be nullable.");
+                ThrowException.ArgumentNullException(culture, "culture", "Culture can not be null.");
 
                 var translation = this.Create();
 

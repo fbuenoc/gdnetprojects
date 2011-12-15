@@ -62,7 +62,7 @@ namespace WebFrameworkDomain.Common
 
             public Temporary Create(string value, string encodingTypeName)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(encodingTypeName, "encodingTypeName", "Encoding type name can not be null.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(encodingTypeName, "encodingTypeName", "Encoding type name can not be null.");
 
                 var temporary = this.Create();
 

@@ -42,7 +42,7 @@ namespace WebFrameworkData.Common.Specifications
 
         private EncryptionOption GetEncryptionOption(ListValue encryptionType)
         {
-            Throw.ArgumentNullException(encryptionType, "encryptionType", "Encryption type is invalid.");
+            ThrowException.ArgumentNullException(encryptionType, "encryptionType", "Encryption type is invalid.");
             EncryptionOption option = EncryptionOption.None;
 
             if (encryptionType != null)
@@ -63,7 +63,7 @@ namespace WebFrameworkData.Common.Specifications
                         break;
 
                     default:
-                        Throw.NotSupportedException(string.Format("The encryption type: '{0}' is not supported.", encryptionType.Name));
+                        ThrowException.NotSupportedException(string.Format("The encryption type: '{0}' is not supported.", encryptionType.Name));
                         break;
                 }
             }

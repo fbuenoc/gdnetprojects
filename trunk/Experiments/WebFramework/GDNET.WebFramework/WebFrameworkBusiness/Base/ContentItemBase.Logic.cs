@@ -3,87 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 
 using GDNET.Common.DesignByContract;
+using GDNET.Common.Encryption;
+using GDNET.Common.Security.Services;
 using GDNET.Extensions;
+
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkBusiness.Base
 {
-    public abstract class ContentTypeBase
+    public abstract partial class ContentItemBase
     {
-        private const string PropertyName = "Name";
-        private const string PropertyDescription = "Description";
+        private readonly IEncryptionService encryptor = new EncryptionService();
 
-        private Dictionary<string, Type> properties = new Dictionary<string, Type>();
-        private Dictionary<string, object> propertiesValues = new Dictionary<string, object>();
-
-        #region Properties
-
-        public string TypeName
+        private string EncryptData(string plainText)
         {
-            get { return this.GetType().AssemblyQualifiedName; }
+            var encryptionOption = (EncryptionOption)this.propertiesValues.First(x => x.Key == PropertyEncryptionOption).Value;
+            return this.encryptor.Encrypt(plainText, encryptionOption);
         }
 
-        public long Id
+        private string DecryptData(string encryptedText)
         {
-            get;
-            private set;
-        }
-
-        public virtual string Name
-        {
-            get { return this.GetValue<string>(PropertyName); }
-            set { this.SetValue<string>(PropertyName, value); }
-        }
-
-        public virtual string Description
-        {
-            get { return this.GetValue<string>(PropertyDescription); }
-            set { this.SetValue<string>(PropertyDescription, value); }
-        }
-
-        #endregion
-
-        public ContentTypeBase()
-        {
-            this.RegisterProperty(PropertyName, typeof(string));
-            this.RegisterProperty(PropertyDescription, typeof(string));
-        }
-
-        #region Methods
-
-        protected T GetValue<T>(string propertyName)
-        {
-            return this.propertiesValues.ContainsKey(propertyName) ? (T)this.propertiesValues[propertyName] : default(T);
-        }
-
-        protected void SetValue<T>(string propertyName, T propertyValue)
-        {
-            string msg1 = string.Format("Property '{0}' is not registered.", propertyName);
-            Throw.InvalidOperationExceptionIfFalse(this.properties.ContainsKey(propertyName), msg1);
-
-            string msg2 = string.Format("Type of property '{0}' must be '{1}'.", propertyName, this.properties[propertyName].FullName);
-            Throw.InvalidOperationExceptionIfFalse(this.properties[propertyName].Equals(typeof(T)), msg2);
-
-            this.PerformSetValue(propertyName, propertyValue);
-        }
-
-        protected void RegisterProperty(string propertyName, Type dataType)
-        {
-            this.properties.Add(propertyName, dataType);
-        }
-
-        private void PerformSetValue(string propertyName, object propertyValue)
-        {
-            if (this.propertiesValues.ContainsKey(propertyName))
-            {
-                this.propertiesValues[propertyName] = propertyValue;
-            }
-            else
-            {
-                this.propertiesValues.Add(propertyName, propertyValue);
-            }
+            var encryptionOption = (EncryptionOption)this.propertiesValues.First(x => x.Key == PropertyEncryptionOption).Value;
+            return this.encryptor.Decrypt(encryptedText, encryptionOption);
         }
 
         /// <summary>
@@ -120,8 +63,6 @@ namespace WebFrameworkBusiness.Base
             return true;
         }
 
-        #endregion
-
         #region Public Methods
 
         public bool LoadItemById(long id)
@@ -129,7 +70,13 @@ namespace WebFrameworkBusiness.Base
             var contentItem = DomainRepositories.ContentItem.GetById(id);
             if (contentItem != null)
             {
-                foreach (var kvp in this.properties)
+                // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
+                var encryptionAttribute = contentItem.AttributeValues.First(x => x.ContentAttribute.Code == PropertyEncryptionOption);
+                var encryptionOption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
+                this.SetValue<EncryptionOption>(PropertyEncryptionOption, encryptionOption);
+
+                // Now we load other properties
+                foreach (var kvp in this.properties.Where(x => x.Key != PropertyEncryptionOption))
                 {
                     switch (kvp.Key)
                     {
@@ -143,17 +90,23 @@ namespace WebFrameworkBusiness.Base
                             var attributeValue = contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
                             if (attributeValue != null)
                             {
-                                object objet = attributeValue.Value.Value.ConvertFromString(kvp.Value);
-                                this.PerformSetValue(kvp.Key, objet);
+                                var decryptedValue = this.DecryptData(attributeValue.Value.Value);
+                                this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
                             }
                             break;
                     }
                 }
 
+                this.Id = contentItem.Id;
                 return true;
             }
 
             return false;
+        }
+
+        public bool Delete()
+        {
+            return DomainRepositories.ContentItem.Delete(this.Id);
         }
 
         public bool Save()
@@ -176,10 +129,16 @@ namespace WebFrameworkBusiness.Base
                 var contentAttribute = contentType.ContentAttributes.FirstOrDefault(x => (x.Code == kvp.Key));
                 if (contentAttribute == null)
                 {
-                    Throw.InvalidOperationException(string.Format("Property '{0}' is not found, you must re-config this content type", kvp.Key));
+                    ThrowException.InvalidOperationException(string.Format("Property '{0}' is not found, you must re-config this content type", kvp.Key));
                 }
 
-                var attributeValue = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, kvp.Value.ConvertToString(this.properties[kvp.Key]));
+                string value = kvp.Value.ConvertToString(this.properties[kvp.Key]);
+                if (kvp.Key != PropertyEncryptionOption)
+                {
+                    value = this.EncryptData(value);
+                }
+
+                var attributeValue = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, value);
                 contentItem.AddAttributeValue(attributeValue);
             }
 

@@ -43,7 +43,7 @@ namespace WebFrameworkDomain.Common
 
             public ListValue Create(string name, string description, string customValue, long parentId)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of item can not be null.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of item can not be null.");
 
                 var listValue = this.Create();
 

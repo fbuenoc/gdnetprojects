@@ -1,10 +1,11 @@
 ﻿using System;
 
+using GDNET.Common.Security.Services;
 using WebFrameworkBusiness.Base;
 
 namespace WebFrameworkBusiness
 {
-    public sealed class Article : ContentTypeBase
+    public sealed class Article : ContentItemBase
     {
         private const string PropertySourceName = "SourceName";
         private const string PropertySourceUrl = "SourceUrl";
@@ -33,7 +34,7 @@ namespace WebFrameworkBusiness
         #endregion
 
         public Article()
-            : base()
+            : base(EncryptionOption.Base64)
         {
             base.RegisterProperty(PropertySourceName, typeof(string));
             base.RegisterProperty(PropertySourceUrl, typeof(string));
