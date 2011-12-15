@@ -3,7 +3,7 @@
 ----------------------------
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes',
-	@Description = 'WebFramework data types',
+	@Description = 'WebFramework Data Types',
 	@CustomValue = NULL,
 	@ParentName = NULL;
 GO
@@ -18,28 +18,28 @@ GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Text.SimpleTextBox',
-	@Description = 'An input for text with one row only',
+	@Description = 'Text => Simple text-box',
 	@CustomValue = '1:01;10:013;11:255;12:32;',
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Text.PasswordTextBox',
-	@Description = 'Password input text-box',
+	@Description = 'Text => Password text-box',
 	@CustomValue = '1:01;10:015;11:255;12:32;',
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Text.TextArea',
-	@Description = 'Simple text-area',
+	@Description = 'Text => Simple textarea',
 	@CustomValue = '1:02;10:015;11:255;12:32;',
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Text.HtmlEditor',
-	@Description = 'Html editor',
+	@Description = 'Text => HTML editor',
 	@CustomValue = 'HtmlEditor',
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
@@ -54,50 +54,57 @@ GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Number.Integer',
-	@Description = 'Integer',
+	@Description = 'Number => Integer',
 	@CustomValue = 'Integer',
 	@ParentName = 'LVH.ContentDataTypes.Number';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Number.UnsignedInteger',
-	@Description = 'Unsigned integer',
+	@Description = 'Number => Unsigned integer',
 	@CustomValue = 'UnsignedInteger',
+	@ParentName = 'LVH.ContentDataTypes.Number';
+GO
+
+exec sp_CreateListValue
+	@Name = 'LVH.ContentDataTypes.Number.Percentage',
+	@Description = 'Number => Percentage',
+	@CustomValue = 'Percentage',
 	@ParentName = 'LVH.ContentDataTypes.Number';
 GO
 
 -- DateTime
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime',
-	@Description = 'Date and time',
+	@Description = 'Number => Date and time',
 	@CustomValue = NULL,
 	@ParentName = 'LVH.ContentDataTypes';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.Year',
-	@Description = 'Year',
+	@Description = 'Number => Year',
 	@CustomValue = 'Year',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.Month',
-	@Description = 'Month',
+	@Description = 'Number => Month',
 	@CustomValue = 'Month',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.Day',
-	@Description = 'Day',
+	@Description = 'Number => Day',
 	@CustomValue = 'Day',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.FullDateTime',
-	@Description = 'Day, month and year',
+	@Description = 'Number => Day/month/year',
 	@CustomValue = 'FullDateTime',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
@@ -105,35 +112,35 @@ GO
 -- File
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.File',
-	@Description = 'From file',
+	@Description = 'File',
 	@CustomValue = NULL,
 	@ParentName = 'LVH.ContentDataTypes';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.File.ImageFile',
-	@Description = 'Image file',
+	@Description = 'File => Image',
 	@CustomValue = 'ImageFile',
 	@ParentName = 'LVH.ContentDataTypes.File';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.File.DocumentFile',
-	@Description = 'Document file',
+	@Description = 'File => Document',
 	@CustomValue = 'DocumentFile',
 	@ParentName = 'LVH.ContentDataTypes.File';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.File.ArchiveFile',
-	@Description = 'Archive file',
+	@Description = 'File => Archive',
 	@CustomValue = 'ArchiveFile',
 	@ParentName = 'LVH.ContentDataTypes.File';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.File.VideoFile',
-	@Description = 'Video file',
+	@Description = 'File => Video',
 	@CustomValue = 'VideoFile',
 	@ParentName = 'LVH.ContentDataTypes.File';
 GO
