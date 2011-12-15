@@ -127,5 +127,10 @@ namespace GDNET.Extensions
             }
             return localResult;
         }
+
+        public static bool In(this string text, params string[] contaimers)
+        {
+            return contaimers.Contains(text);
+        }
     }
 }

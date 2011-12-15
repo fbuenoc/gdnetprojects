@@ -9,7 +9,6 @@
         TId Id
         {
             get;
-            set;
         }
     }
 
