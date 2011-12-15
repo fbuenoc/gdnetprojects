@@ -30,13 +30,21 @@ namespace WebFrameworkData.UnitTest.Business
             myAtc.Description = "This is A One";
             myAtc.SourceName = "Yahoo";
             myAtc.SourceUrl = "http://vn.yahoo.com";
-            myAtc.PublishedDate = DateTime.Today;
+            myAtc.PublishedDate = DateTime.Now;
 
             bool result = myAtc.Save();
             Assert.IsTrue(result);
 
             Article savedAtc = new Article();
             savedAtc.LoadItemById(myAtc.Id);
+
+            Assert.AreEqual(myAtc.Name, savedAtc.Name);
+            Assert.AreEqual(myAtc.Description, savedAtc.Description);
+            Assert.AreEqual(myAtc.SourceName, savedAtc.SourceName);
+            Assert.AreEqual(myAtc.SourceUrl, savedAtc.SourceUrl);
+            Assert.AreEqual(myAtc.PublishedDate, savedAtc.PublishedDate);
+
+            savedAtc.Delete();
         }
     }
 }

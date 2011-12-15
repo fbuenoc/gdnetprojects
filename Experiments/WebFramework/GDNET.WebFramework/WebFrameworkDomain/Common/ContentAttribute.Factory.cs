@@ -42,8 +42,8 @@ namespace WebFrameworkDomain.Common
 
             public ContentAttribute Create(string code, ContentType type, string dataTypeName, int position)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be null.");
-                Throw.ArgumentExceptionIfNullOrEmpty(dataTypeName, "dataTypeCode", "Code of data type can not be null.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be null.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(dataTypeName, "dataTypeCode", "Code of data type can not be null.");
 
                 var attribute = this.Create();
 

@@ -21,9 +21,9 @@ namespace WebFrameworkDomain.Common
 
             public ContentItemAttributeValue Create(ContentAttribute attribute, ContentItem item, Translation value)
             {
-                Throw.ArgumentNullException(attribute, "attribute", "Content attribute can not be nullable.");
-                Throw.ArgumentNullException(item, "item", "Content item can not be nullable.");
-                Throw.ArgumentNullException(value, "value", "Value can not be nullable.");
+                ThrowException.ArgumentNullException(attribute, "attribute", "Content attribute can not be nullable.");
+                ThrowException.ArgumentNullException(item, "item", "Content item can not be nullable.");
+                ThrowException.ArgumentNullException(value, "value", "Value can not be nullable.");
 
                 var itemAttributeValue = this.Create();
 

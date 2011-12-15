@@ -42,9 +42,9 @@ namespace WebFrameworkDomain.Extensions
 
         public static void RefreshTranslation(this IEntitySignature entity, Translation translation, string propertyName)
         {
-            Throw.ArgumentNullException(entity, "entity", "Entity name can not be null.");
-            Throw.ArgumentNullException(translation, "translation", "Translation can not be null.");
-            Throw.ArgumentExceptionIfNullOrEmpty(propertyName, "propertyName", "The property name can not be null.");
+            ThrowException.ArgumentNullException(entity, "entity", "Entity name can not be null.");
+            ThrowException.ArgumentNullException(translation, "translation", "Translation can not be null.");
+            ThrowException.ArgumentExceptionIfNullOrEmpty(propertyName, "propertyName", "The property name can not be null.");
 
             translation.Code = string.Format("{0}_{1}", entity.Signature, propertyName);
         }

@@ -33,7 +33,7 @@ namespace WebFrameworkDomain.Common
 
             public Application Create(string rootUrl, string name, string description, string categoryName)
             {
-                Throw.ArgumentExceptionIfNullOrEmpty(rootUrl, "rootUrl", "RootUrl can not be nullable.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(rootUrl, "rootUrl", "RootUrl can not be nullable.");
 
                 var application = this.Create();
 

@@ -40,8 +40,8 @@ namespace WebFrameworkDomain.Common
 
             public ContentItem Create(string name, string description, ContentType type, int position)
             {
-                Throw.ArgumentNullException(type, "type", "Type of content item can not be null.");
-                Throw.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be null.");
+                ThrowException.ArgumentNullException(type, "type", "Type of content item can not be null.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be null.");
 
                 var contentItem = this.Create();
 

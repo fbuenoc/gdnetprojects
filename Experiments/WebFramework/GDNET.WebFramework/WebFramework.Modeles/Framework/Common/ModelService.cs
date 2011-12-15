@@ -57,7 +57,7 @@ namespace WebFramework.Modeles.Framework.Common
                 }
                 else
                 {
-                    Throw.NotImplementedException(string.Format("Not implemented for type: '{0}'.", typeof(TModel).FullName));
+                    ThrowException.NotImplementedException(string.Format("Not implemented for type: '{0}'.", typeof(TModel).FullName));
                 }
             }
 
