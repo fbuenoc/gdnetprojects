@@ -22,7 +22,7 @@ namespace GDNET.Common.Base.Entities
         public virtual TId Id
         {
             get;
-            set;
+            protected set;
         }
 
         /// <summary>
