@@ -3,13 +3,14 @@ using System.Collections.ObjectModel;
 
 using GDNET.Common.Base.Entities;
 
-using WebFrameworkDomain.Extensions;
+using GDNET.Common.DesignByContract;
 
 namespace WebFrameworkDomain.Common
 {
     public partial class ContentItem : EntityFullControlBase<long>
     {
         private IList<ContentItemAttributeValue> attributeValues = new List<ContentItemAttributeValue>();
+        private IList<ContentItem> relationItems = new List<ContentItem>();
 
         #region Properties
 
@@ -42,6 +43,11 @@ namespace WebFrameworkDomain.Common
             get { return new ReadOnlyCollection<ContentItemAttributeValue>(this.attributeValues); }
         }
 
+        public virtual ReadOnlyCollection<ContentItem> RelationItems
+        {
+            get { return new ReadOnlyCollection<ContentItem>(this.relationItems); }
+        }
+
         #endregion
 
         #region Methods
@@ -68,6 +74,32 @@ namespace WebFrameworkDomain.Common
         public virtual void RemoveAllAttributeValues()
         {
             this.attributeValues.Clear();
+        }
+
+        public virtual void AddRelationItem(ContentItem item)
+        {
+            if (item == this)
+            {
+                ThrowException.InvalidOperationException("Can not add an item to be its sub items.");
+            }
+
+            if (!this.relationItems.Contains(item))
+            {
+                this.relationItems.Add(item);
+            }
+        }
+
+        public virtual void RemoveRelationItem(ContentItem item)
+        {
+            if (this.relationItems.Contains(item))
+            {
+                this.relationItems.Remove(item);
+            }
+        }
+
+        public virtual void RemoveRelationItems()
+        {
+            this.relationItems.Clear();
         }
 
         #endregion

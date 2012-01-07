@@ -18,7 +18,6 @@ namespace WebFrameworkDomain.Common
             /// <summary>
             /// Create a translation with default values
             /// </summary>
-            /// <returns></returns>
             public Translation Create()
             {
                 var result = new Translation
@@ -26,6 +25,7 @@ namespace WebFrameworkDomain.Common
                     IsActive = true,
                     IsDeletable = true,
                     IsEditable = true,
+                    IsGeneric = false,
                     IsViewable = true,
                 };
 
@@ -45,7 +45,7 @@ namespace WebFrameworkDomain.Common
             /// </summary>
             public Translation Create(string code, string value)
             {
-                return this.Create(code, value, string.Empty);
+                return this.Create(code, value, CommonConstants.CultureCodeDefault);
             }
 
             /// <summary>
@@ -53,7 +53,8 @@ namespace WebFrameworkDomain.Common
             /// </summary>
             public Translation Create(string code, string value, string cultureCode)
             {
-                Culture culture = string.IsNullOrEmpty(cultureCode) ? null : DomainRepositories.Culture.FindByCode(cultureCode);
+                ThrowException.ArgumentExceptionIfNullOrEmpty(cultureCode, "cultureCode", "Code culture of translation can not be nullable.");
+                Culture culture = DomainRepositories.Culture.FindByCode(cultureCode);
                 return this.Create(code, value, culture);
             }
 
@@ -62,14 +63,21 @@ namespace WebFrameworkDomain.Common
             /// </summary>
             public Translation Create(string code, string value, Culture culture)
             {
+                return this.Create(code, value, culture, false);
+            }
+
+            /// <summary>
+            /// Create a translation with a Culture
+            /// </summary>
+            public Translation Create(string code, string value, Culture culture, bool isGeneric)
+            {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of translation can not be nullable.");
-                ThrowException.ArgumentNullException(culture, "culture", "Culture can not be null.");
 
                 var translation = this.Create();
-
                 translation.Code = code;
                 translation.Value = value;
                 translation.Culture = culture;
+                translation.IsGeneric = isGeneric;
 
                 return translation;
             }

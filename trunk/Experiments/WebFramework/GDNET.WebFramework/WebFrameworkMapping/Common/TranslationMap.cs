@@ -15,6 +15,7 @@ namespace WebFrameworkMapping.Common
             {
                 m.Lazy(true);
             });
+            base.Property(e => e.IsGeneric);
 
             base.ManyToOne(e => e.Category, m =>
             {

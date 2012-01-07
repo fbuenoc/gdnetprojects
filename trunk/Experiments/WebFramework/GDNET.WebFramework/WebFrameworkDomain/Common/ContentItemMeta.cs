@@ -7,5 +7,9 @@ namespace WebFrameworkDomain.Common
         public const string ContentTypeId = "ContentTypeId";
         public const string NameTranslationId = "NameTranslationId";
         public const string DescriptionTranslationId = "DescriptionTranslationId";
+
+        public const string ContentItemId = "ContentItemId";
+        public const string RelationContentItemId = "RelationContentItemId";
+        public const string ContentItemRelation = "ContentItemRelation";
     }
 }

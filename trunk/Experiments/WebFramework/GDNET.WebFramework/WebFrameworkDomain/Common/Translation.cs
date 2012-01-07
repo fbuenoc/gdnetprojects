@@ -18,6 +18,12 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual bool IsGeneric
+        {
+            get;
+            set;
+        }
+
         public virtual string Code
         {
             get;

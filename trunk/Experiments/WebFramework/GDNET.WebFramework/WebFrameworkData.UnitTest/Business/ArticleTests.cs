@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using NUnit.Framework;
 using WebFrameworkBusiness;
+using WebFrameworkDomain.Common;
 
 namespace WebFrameworkData.UnitTest.Business
 {
@@ -26,8 +27,8 @@ namespace WebFrameworkData.UnitTest.Business
         public void CanCreateNewArticle()
         {
             Article myAtc = new Article();
-            myAtc.Name = "A1";
-            myAtc.Description = "This is A One";
+            myAtc.Name = Translation.Factory.Create("A1");
+            myAtc.Description = Translation.Factory.Create("This is A One");
             myAtc.SourceName = "Yahoo";
             myAtc.SourceUrl = "http://vn.yahoo.com";
             myAtc.PublishedDate = DateTime.Now;

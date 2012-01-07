@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Encryption;
 using GDNET.Common.Security.Services;
 using GDNET.Extensions;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
 using WebFrameworkDomain.DefaultImpl;
@@ -34,11 +32,11 @@ namespace WebFrameworkBusiness.Base
         /// </summary>
         private bool EnsureContentType(out ContentType contentType)
         {
-            contentType = DomainRepositories.ContentType.FindByTypeName(this.TypeName);
+            contentType = DomainRepositories.ContentType.FindByTypeName(this.QualifiedTypeName);
 
             if (contentType == null)
             {
-                contentType = ContentType.Factory.Create(this.GetType().Name, this.TypeName);
+                contentType = ContentType.Factory.Create(this.GetType().Name, this.QualifiedTypeName);
                 if (!DomainRepositories.ContentType.Save(contentType))
                 {
                     return false;
@@ -63,11 +61,61 @@ namespace WebFrameworkBusiness.Base
             return true;
         }
 
+        /// <summary>
+        /// Get value of property by name, return default of Type if it was not setted
+        /// </summary>
+        protected T GetValue<T>(string propertyName)
+        {
+            return this.propertiesValues.ContainsKey(propertyName) ? (T)this.propertiesValues[propertyName] : default(T);
+        }
+
+        /// <summary>
+        /// Set value for a Property, throw exception if property is not registered or invalid type of data
+        /// </summary>
+        protected void SetValue<T>(string propertyName, T propertyValue)
+        {
+            if (this.properties.ContainsKey(propertyName) && this.properties[propertyName].Equals(typeof(T)))
+            {
+                this.PerformSetValue(propertyName, propertyValue);
+            }
+            else
+            {
+                string msg1 = string.Format("Property '{0}' is not registered.", propertyName);
+                ThrowException.InvalidOperationExceptionIfFalse(this.properties.ContainsKey(propertyName), msg1);
+
+                string msg2 = string.Format("Type of property '{0}' must be '{1}'.", propertyName, this.properties[propertyName].FullName);
+                ThrowException.InvalidOperationExceptionIfFalse(this.properties[propertyName].Equals(typeof(T)), msg2);
+            }
+        }
+
+        /// <summary>
+        /// Register a property with its data type
+        /// </summary>
+        protected void RegisterProperty(string propertyName, Type dataType)
+        {
+            this.properties.Add(propertyName, dataType);
+        }
+
+        /// <summary>
+        /// Force set value for property, carefully when call this method
+        /// </summary>
+        private void PerformSetValue(string propertyName, object propertyValue)
+        {
+            if (this.propertiesValues.ContainsKey(propertyName))
+            {
+                this.propertiesValues[propertyName] = propertyValue;
+            }
+            else
+            {
+                this.propertiesValues.Add(propertyName, propertyValue);
+            }
+        }
+
         #region Public Methods
 
         public bool LoadItemById(long id)
         {
-            var contentItem = DomainRepositories.ContentItem.GetById(id);
+            ContentItem contentItem = DomainRepositories.ContentItem.GetById(id);
             if (contentItem != null)
             {
                 // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
@@ -78,22 +126,11 @@ namespace WebFrameworkBusiness.Base
                 // Now we load other properties
                 foreach (var kvp in this.properties.Where(x => x.Key != PropertyEncryptionOption))
                 {
-                    switch (kvp.Key)
+                    var attributeValue = contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
+                    if (attributeValue != null)
                     {
-                        case PropertyName:
-                            this.SetValue<string>(kvp.Key, contentItem.Name.Value);
-                            break;
-                        case PropertyDescription:
-                            this.SetValue<string>(kvp.Key, contentItem.Description.Value);
-                            break;
-                        default:
-                            var attributeValue = contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
-                            if (attributeValue != null)
-                            {
-                                var decryptedValue = this.DecryptData(attributeValue.Value.Value);
-                                this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
-                            }
-                            break;
+                        var decryptedValue = this.DecryptData(attributeValue.Value.Value);
+                        this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
                     }
                 }
 
@@ -112,19 +149,24 @@ namespace WebFrameworkBusiness.Base
         public bool Save()
         {
             ContentType contentType = null;
-            if (this.EnsureContentType(out contentType) == false)
+            ContentItem contentItem = null;
+
+            if (this.EnsureContentType(out contentType))
             {
-                return false;
+                contentItem = ContentItem.Factory.Create(this.GetValue<string>(PropertyName), this.GetValue<string>(PropertyDescription), contentType, this.GetValue<int>(PropertyPosition));
+            }
+            else
+            {
+                ThrowException.InvalidOperationException(string.Format("Can not setup for type '{0}'", this.QualifiedTypeName));
             }
 
             // Save values
-            var contentItem = ContentItem.Factory.Create(this.Name, this.Description, contentType);
             if (!DomainRepositories.ContentItem.Save(contentItem))
             {
                 return false;
             }
 
-            foreach (var kvp in this.propertiesValues.Where(k => !k.Key.In(PropertyName, PropertyDescription)))
+            foreach (var kvp in this.propertiesValues)
             {
                 var contentAttribute = contentType.ContentAttributes.FirstOrDefault(x => (x.Code == kvp.Key));
                 if (contentAttribute == null)

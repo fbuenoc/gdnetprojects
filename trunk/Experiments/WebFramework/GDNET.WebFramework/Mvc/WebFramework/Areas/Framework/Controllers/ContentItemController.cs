@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
+using GDNET.Web.Helpers;
+
+using WebFramework.Constants;
 using WebFramework.Modeles.Base;
+using WebFramework.Modeles.Framework.Common;
 using WebFramework.Modeles.Framework.DomainModels;
 
-using WebFrameworkDomain.DefaultImpl;
 using WebFrameworkDomain.Common;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
@@ -22,6 +26,24 @@ namespace WebFramework.Areas.Framework.Controllers
         protected override ContentItemModel OnDetailsChecking(string id)
         {
             return base.GetModelById(id);
+        }
+
+        protected override ContentItemModel OnCreateChecking()
+        {
+            ContentItemModel model = base.OnCreateChecking();
+            // When create new Content Item, we have to look which Content Type contains this one
+            string contentTypeId;
+            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out contentTypeId))
+            {
+                var contentTypeModel = ModelService.GetModelById<ContentTypeModel>(contentTypeId);
+                if (contentTypeModel != null)
+                {
+                    model.ContentType = contentTypeModel.Name;
+                    model.ContentTypeId = contentTypeModel.Id;
+                }
+            }
+
+            return model;
         }
 
         protected override object OnCreateExecuting(ContentItemModel model, FormCollection collection)

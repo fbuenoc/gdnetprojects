@@ -1,5 +1,6 @@
 ﻿using System;
 
+using GDNET.Common.Base.Types;
 using GDNET.Common.Security.Services;
 using WebFrameworkBusiness.Base;
 
@@ -7,11 +8,18 @@ namespace WebFrameworkBusiness
 {
     public sealed class Article : ContentItemBase
     {
+        private const string PropertyAuthor = "Author";
+        private const string PropertyPublishedDate = "PublishedDate";
         private const string PropertySourceName = "SourceName";
         private const string PropertySourceUrl = "SourceUrl";
-        private const string PropertyPublishedDate = "PublishedDate";
 
         #region Properties
+
+        public Contact Author
+        {
+            get { return this.GetValue<Contact>(PropertyAuthor); }
+            set { this.SetValue<Contact>(PropertyAuthor, value); }
+        }
 
         public string SourceName
         {
@@ -34,8 +42,9 @@ namespace WebFrameworkBusiness
         #endregion
 
         public Article()
-            : base(EncryptionOption.Base64)
+            : base("N", "D", EncryptionOption.Base64)
         {
+            base.RegisterProperty(PropertyAuthor, typeof(Contact));
             base.RegisterProperty(PropertySourceName, typeof(string));
             base.RegisterProperty(PropertySourceUrl, typeof(string));
             base.RegisterProperty(PropertyPublishedDate, typeof(DateTime));

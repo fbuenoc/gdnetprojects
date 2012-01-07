@@ -16,6 +16,12 @@
             <%= base.Html.TextBoxFor(m => m.Name)%>
         </div>
         <div class="editor-label">
+            <%= base.Html.LabelFor(m => m.Code)%>
+        </div>
+        <div>
+            <%= base.Html.TextBoxFor(m => m.Code)%>
+        </div>
+        <div class="editor-label">
             <%= base.Html.LabelFor(m => m.TypeName)%>
         </div>
         <div>

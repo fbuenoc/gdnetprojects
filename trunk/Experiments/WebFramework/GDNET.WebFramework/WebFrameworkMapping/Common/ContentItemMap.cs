@@ -1,8 +1,8 @@
 ﻿using NHibernate.Mapping.ByCode;
 
+using GDNET.Extensions;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
-using GDNET.Extensions;
 
 namespace WebFrameworkMapping.Common
 {
@@ -32,21 +32,33 @@ namespace WebFrameworkMapping.Common
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
 
+            base.Bag(e => e.RelationItems, cm =>
+            {
+                cm.Access(Accessor.Field);
+                cm.Lazy(CollectionLazy.Lazy);
+                cm.Table(ContentItemMeta.ContentItemRelation);
+                cm.Key(k => k.Column(ContentItemMeta.ContentItemId));
+                cm.Cascade(Cascade.None);
+            }, m =>
+            {
+                m.ManyToMany(mm =>
+                {
+                    mm.Column(ContentItemMeta.RelationContentItemId);
+                });
+            });
+
             base.Bag(e => e.AttributeValues, cm =>
             {
                 cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Table(ContentItemAttributeValueMeta.ContentItemAttributeValue);
                 cm.Key(k => k.Column(ContentItemAttributeValueMeta.ContentItemId));
                 cm.Cascade(Cascade.All);
                 cm.Inverse(true);
             }, m =>
             {
-                m.ManyToMany(mm =>
-                {
-                    mm.Column("Id");
-                });
+                m.OneToMany();
             });
         }
     }
 }
+
