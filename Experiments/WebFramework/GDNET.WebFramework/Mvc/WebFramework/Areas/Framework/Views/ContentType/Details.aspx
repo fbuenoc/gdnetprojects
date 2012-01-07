@@ -43,6 +43,7 @@
     </div>
     <p>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionList)%>
-        <%= base.Html.ActionLink("Add new Attribute", ContentTypeController.ActionCreate, ControllerConstants.FrameworkContentAttributeController, new { key = base.Model.Id }, new { })%>
+        <%= base.Html.ActionLink("Add new Attribute", ContentAttributeController.ActionCreate, ControllerConstants.FrameworkContentAttributeController, new { key = base.Model.Id }, new { })%>
+        <%= base.Html.ActionLink("Add new Content Item", ContentItemController.ActionCreate, ControllerConstants.FrameworkContentItemController, new { key = base.Model.Id }, new { })%>
     </p>
 </asp:Content>

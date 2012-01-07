@@ -176,7 +176,7 @@ namespace WebFrameworkData.UnitTest.Common
             contentItem.AddRelationItem(relationItem2);
 
             DomainRepositories.ContentItem.Synchronize();
-            DomainRepositories.ContentItem.Clear();
+            //DomainRepositories.ContentItem.Clear();
 
             var savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNotNull(savedItem);

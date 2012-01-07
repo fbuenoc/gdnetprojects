@@ -24,7 +24,7 @@ namespace WebFrameworkExtensions
             {
                 inputParameters = inputParameters.Trim();
             }
-            Throw.ArgumentExceptionIfNullOrEmpty(inputParameters, "inputParameters", "Parameters are invalid.");
+            ThrowException.ArgumentExceptionIfNullOrEmpty(inputParameters, "inputParameters", "Parameters are invalid.");
 
             string tagKey = string.Empty;
             StringBuilder builder = new StringBuilder();

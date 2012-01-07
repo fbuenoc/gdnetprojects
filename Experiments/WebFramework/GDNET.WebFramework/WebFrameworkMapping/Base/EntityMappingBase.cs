@@ -2,6 +2,7 @@
 using NHibernate.Mapping.ByCode.Conformist;
 
 using GDNET.Common.Base.Entities;
+using GDNET.Common.Base.Meta;
 
 namespace WebFrameworkMapping.Base
 {
@@ -13,7 +14,8 @@ namespace WebFrameworkMapping.Base
             base.Id<TId>(e => e.Id, m =>
             {
                 m.Generator(generator);
-                m.Column("Id");
+                m.Column(MetaEntityBase.Id);
+                m.Access(Accessor.Property);
             });
         }
     }

@@ -1,8 +1,6 @@
-﻿using GDNET.Common.Base.Entities;
-using GDNET.Common.DesignByContract;
-using System;
-using WebFrameworkDomain.DefaultImpl;
+﻿using GDNET.Common.DesignByContract;
 using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
 {

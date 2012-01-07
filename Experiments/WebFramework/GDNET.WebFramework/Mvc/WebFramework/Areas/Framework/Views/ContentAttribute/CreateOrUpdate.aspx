@@ -23,7 +23,7 @@
             <%= base.Html.LabelFor(m => m.DataTypeId)%>
         </div>
         <div>
-            <%= base.Html.TextBoxFor(m => m.DataTypeId)%>
+            <%= base.Html.DropDownListLV("LVH.ContentDataTypes", ExpressionUtil.GetPropertyName(() => this.Model.DataTypeId) , base.Model.DataTypeId)%>
         </div>
         <p>
             <%= base.Html.HiddenFor(m => m.ContentTypeId) %>

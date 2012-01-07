@@ -43,6 +43,7 @@
     <Compile Include="Article.cs" />
     <Compile Include="Base\ContentItemBase.Data.cs" />
     <Compile Include="Base\ContentItemBase.Logic.cs" />
+    <Compile Include="Comment.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

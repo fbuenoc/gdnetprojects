@@ -1,102 +1,63 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
-using GDNET.Common.DesignByContract;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
-using WebFrameworkDomain.DefaultImpl;
 using GDNET.Common.Security.Services;
+
+using WebFrameworkDomain.Common;
 
 namespace WebFrameworkBusiness.Base
 {
-    public abstract partial class ContentItemBase
+    public abstract partial class ContentItemBase : ContentItem
     {
+        private const string PropertyEncryptionOption = "EncryptionOption";
         private const string PropertyName = "Name";
         private const string PropertyDescription = "Description";
-        private const string PropertyEncryptionOption = "EncryptionOption";
+        private const string PropertyPosition = "Position";
 
         private Dictionary<string, Type> properties = new Dictionary<string, Type>();
         private Dictionary<string, object> propertiesValues = new Dictionary<string, object>();
 
         #region Properties
 
-        public string TypeName
+        public string QualifiedTypeName
         {
-            get { return this.GetType().AssemblyQualifiedName; }
-        }
-
-        public long Id
-        {
-            get;
-            private set;
-        }
-
-        public virtual string Name
-        {
-            get { return this.GetValue<string>(PropertyName); }
-            set { this.SetValue<string>(PropertyName, value); }
-        }
-
-        public virtual string Description
-        {
-            get { return this.GetValue<string>(PropertyDescription); }
-            set { this.SetValue<string>(PropertyDescription, value); }
+            get
+            {
+                int firstIndex = this.GetType().AssemblyQualifiedName.IndexOf(",") + 1;
+                return this.GetType().AssemblyQualifiedName.Substring(0, this.GetType().AssemblyQualifiedName.IndexOf(",", firstIndex));
+            }
         }
 
         #endregion
 
         #region Ctors
 
-        public ContentItemBase()
-            : this(EncryptionOption.None)
+        public ContentItemBase(string name, string description)
+            : this(name, description, int.MinValue)
         {
         }
 
-        public ContentItemBase(EncryptionOption encryption)
+        public ContentItemBase(string name, string description, int position)
+            : this(name, description, position, EncryptionOption.None)
+        {
+        }
+
+        public ContentItemBase(string name, string description, EncryptionOption encryption)
+            : this(name, description, int.MinValue, encryption)
+        {
+        }
+
+        public ContentItemBase(string name, string description, int position, EncryptionOption encryption)
         {
             this.RegisterProperty(PropertyName, typeof(string));
             this.RegisterProperty(PropertyDescription, typeof(string));
+            this.RegisterProperty(PropertyPosition, typeof(int));
             this.RegisterProperty(PropertyEncryptionOption, typeof(EncryptionOption));
 
+            this.SetValue<string>(PropertyName, name);
+            this.SetValue<string>(PropertyDescription, description);
+            this.SetValue<int>(PropertyPosition, position);
             this.SetValue<EncryptionOption>(PropertyEncryptionOption, encryption);
-        }
-
-        #endregion
-
-        #region Methods
-
-        protected T GetValue<T>(string propertyName)
-        {
-            return this.propertiesValues.ContainsKey(propertyName) ? (T)this.propertiesValues[propertyName] : default(T);
-        }
-
-        protected void SetValue<T>(string propertyName, T propertyValue)
-        {
-            string msg1 = string.Format("Property '{0}' is not registered.", propertyName);
-            ThrowException.InvalidOperationExceptionIfFalse(this.properties.ContainsKey(propertyName), msg1);
-
-            string msg2 = string.Format("Type of property '{0}' must be '{1}'.", propertyName, this.properties[propertyName].FullName);
-            ThrowException.InvalidOperationExceptionIfFalse(this.properties[propertyName].Equals(typeof(T)), msg2);
-
-            this.PerformSetValue(propertyName, propertyValue);
-        }
-
-        protected void RegisterProperty(string propertyName, Type dataType)
-        {
-            this.properties.Add(propertyName, dataType);
-        }
-
-        private void PerformSetValue(string propertyName, object propertyValue)
-        {
-            if (this.propertiesValues.ContainsKey(propertyName))
-            {
-                this.propertiesValues[propertyName] = propertyValue;
-            }
-            else
-            {
-                this.propertiesValues.Add(propertyName, propertyValue);
-            }
         }
 
         #endregion

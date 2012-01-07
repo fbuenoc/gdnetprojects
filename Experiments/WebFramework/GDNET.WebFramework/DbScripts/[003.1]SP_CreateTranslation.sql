@@ -14,6 +14,7 @@ create proc sp_CreateTranslation
 	@IsActive bit = 1,
 	@IsEditable bit = 1,
 	@IsDeletable bit = 1,
+	@IsGeneric bit = 1,
 	@IsViewable bit = 1,
 	@CreatedBy varchar(255) = 'webframework@gmail.com',
 	@CreatedAt datetime = NULL
@@ -53,6 +54,7 @@ begin
 				   ,[IsActive]
 				   ,[IsEditable]
 				   ,[IsDeletable]
+				   ,[IsGeneric]
 				   ,[IsViewable]
 				   ,[CreatedBy]
 				   ,[CreatedAt]
@@ -67,6 +69,7 @@ begin
 				   ,@IsActive
 				   ,@IsEditable
 				   ,@IsDeletable
+				   ,@IsGeneric
 				   ,@IsViewable
 				   ,@CreatedBy
 				   ,@CreatedAt

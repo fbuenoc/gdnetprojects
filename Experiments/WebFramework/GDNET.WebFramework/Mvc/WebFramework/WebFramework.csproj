@@ -560,7 +560,9 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\ContentTypes\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
@@ -569,10 +571,6 @@
     <ProjectReference Include="..\..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
       <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
       <Name>GDNET.Web.Membership</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
-      <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
-      <Name>GDNET.Web.Mvc</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
@@ -812,4 +810,7 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(SolutionDir)Build" "$(TargetDir)" /y /s</PostBuildEvent>
+  </PropertyGroup>
 </Project>

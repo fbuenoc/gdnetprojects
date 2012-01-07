@@ -1,11 +1,11 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ListValueModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    List Value
+    Content Item
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Details of List Value:
+        Details of Content Item:
         <%= base.Model.Name %>
     </h2>
     <div>
@@ -18,42 +18,15 @@
             <%= base.Model.CreatedBy %>
         </div>
         <div>
-            Parent:
-            <%= base.Model.Parent %>
+            Description:
+            <%= base.Model.Description %>
         </div>
         <h3>
-            Sub Values
+            Attributes
         </h3>
-        <div>
-            <% base.Html.Telerik().Grid<ListValueModel>(base.Model.SubValues)
-                .Name("SubValues")
-                .Columns(columns =>
-                {
-                    columns.Bound(c => c.Name).Title("Value name");
-                    columns.Bound(c => c.Description).Title("Description");
-                    columns.Bound(c => c.Name).Title("Actions").Template(template =>
-                    {
-            %>
-            <%= base.Html.ActionLink("Details", "Details", new { id = template.Id }) %>
-            <%= base.Html.ActionLink("Edit", "Edit", new { id = template.Id })%>
-            <%= base.Html.ActionLink("Delete", "Delete", new { id = template.Id }) %>
-            <%
-                    });
-                })
-                .Pageable()
-                .Render();
-            %>
-        </div>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return ListValue management", ListValueController.ActionList)%>
-        <% if (base.Model.ParentId != 0)
-           {
-        %>
-        <%= base.Html.ActionLink("Return " + base.Model.Parent, ListValueController.ActionDetails, new { id = base.Model.ParentId }) %>
-        <%
-           }
-        %>
-        <%= base.Html.ActionLink("Add new", ListValueController.ActionCreate, new { key = base.Model.Id }) %>
+        <%= base.Html.ActionLink("Return Content Item management", ContentItemController.ActionList)%>
+        <%= base.Html.ActionLink("Create other Content Item", ContentItemController.ActionCreate, ControllerConstants.FrameworkContentItemController, new { key = base.Model.ContentTypeId }, new { })%>
     </p>
 </asp:Content>

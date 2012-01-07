@@ -3,6 +3,7 @@ using System.Web;
 
 using GDNET.Common.Base;
 using GDNET.Common.Security;
+using GDNET.Common.Security.DefaultImpl;
 
 namespace WebFrameworkNHibernate
 {

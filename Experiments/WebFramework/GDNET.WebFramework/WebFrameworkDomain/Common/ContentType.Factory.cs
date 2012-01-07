@@ -37,7 +37,7 @@ namespace WebFrameworkDomain.Common
             public ContentType Create(string name, string typeName, string code)
             {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content type can not be nullable.");
-                ThrowException.ArgumentExceptionIfNullOrEmpty(code, "name", "Code of content type can not be nullable.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of content type can not be nullable.");
 
                 var contentType = this.Create();
 
