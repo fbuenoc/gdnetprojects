@@ -1,9 +1,11 @@
-﻿using System.Security.Principal;
+﻿using System;
+using System.Security.Principal;
 
 using GDNET.Common.Security.Services;
 
 namespace GDNET.Common.Security.DefaultImpl
 {
+    [Serializable]
     public abstract class SessionService : ISessionService
     {
         public static SessionService Instance

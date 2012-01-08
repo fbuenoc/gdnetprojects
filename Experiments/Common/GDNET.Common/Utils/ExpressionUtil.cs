@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace GDNET.Common.Base
+namespace GDNET.Common.Utils
 {
     public static class ExpressionUtil
     {

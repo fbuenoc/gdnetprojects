@@ -1,17 +1,15 @@
 ﻿using System;
-using GDNET.Common.DesignByContract;
 
 namespace GDNET.Common.Base.Entities
 {
     /// <summary>
     /// Entity with with CreMod
     /// </summary>
-    /// <typeparam name="TId"></typeparam>
-    public abstract class EntityCreModBase<TId> : EntityActiveBase<TId>, IEntityCreMod<TId>
+    public abstract class EntityWithModificationBase<TId> : EntityWithActiveBase<TId>, IEntityWithModification<TId>
     {
-        public EntityCreModBase() { }
+        public EntityWithModificationBase() { }
 
-        public EntityCreModBase(EntityCreModBase<TId> entity)
+        public EntityWithModificationBase(EntityWithModificationBase<TId> entity)
             : base(entity)
         {
             this.CreatedAt = entity.CreatedAt;

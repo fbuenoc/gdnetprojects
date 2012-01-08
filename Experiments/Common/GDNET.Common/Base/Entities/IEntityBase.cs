@@ -3,18 +3,9 @@
     /// <summary>
     /// Entity with Id, IsActive property
     /// </summary>
-    /// <typeparam name="TId"></typeparam>
-    public interface IEntityBase<TId> : IEntitySignature
+    public interface IEntityBase<TId> : ISignature
     {
         TId Id
-        {
-            get;
-        }
-    }
-
-    public interface IEntitySignature
-    {
-        string Signature
         {
             get;
         }
