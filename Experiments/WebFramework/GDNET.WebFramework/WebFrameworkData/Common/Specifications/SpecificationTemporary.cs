@@ -1,8 +1,4 @@
-﻿using System;
-
-using GDNET.Common.Base.Entities;
-using GDNET.Common.Data;
-using GDNET.Common.DesignByContract;
+﻿using GDNET.Common.DesignByContract;
 using GDNET.Common.Encryption;
 using GDNET.Common.Security.Services;
 using GDNET.NHibernateImpl.Data;

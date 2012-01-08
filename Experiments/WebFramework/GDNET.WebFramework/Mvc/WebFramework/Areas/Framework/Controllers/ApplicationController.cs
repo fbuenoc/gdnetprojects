@@ -1,11 +1,9 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
-
 using WebFramework.Modeles.Base;
 using WebFramework.Modeles.Framework.DomainModels;
+using WebFrameworkDomain.Common;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {

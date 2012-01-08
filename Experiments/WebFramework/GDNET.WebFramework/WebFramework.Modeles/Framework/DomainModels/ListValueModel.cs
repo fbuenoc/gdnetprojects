@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-
-using GDNET.Common.Base.Entities;
-using GDNET.Common.DesignByContract;
-
 using WebFramework.Modeles.Framework.Common;
-
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFramework.Modeles.Framework.DomainModels
 {
@@ -77,6 +70,22 @@ namespace WebFramework.Modeles.Framework.DomainModels
 
         #endregion
 
+        #region Methods
+
+        public void UpdateParent(ListValue parent)
+        {
+            this.Parent = parent.Name;
+            this.ParentId = parent.Id;
+        }
+
+        public void UpdateParent(ListValueModel parentModel)
+        {
+            this.Parent = parentModel.Name;
+            this.ParentId = parentModel.Id;
+        }
+
+        #endregion
+
         #region Ctors
 
         public ListValueModel()
@@ -97,8 +106,7 @@ namespace WebFramework.Modeles.Framework.DomainModels
             }
             if (base.Entity.Parent != null)
             {
-                this.Parent = base.Entity.Parent.Name;
-                this.ParentId = base.Entity.Parent.Id;
+                this.UpdateParent(base.Entity.Parent);
             }
         }
 

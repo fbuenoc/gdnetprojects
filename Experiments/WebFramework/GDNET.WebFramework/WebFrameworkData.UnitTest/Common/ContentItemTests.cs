@@ -1,15 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using NUnit.Framework;
-
-using WebFrameworkDomain;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
-using WebFrameworkDomain.DefaultImpl;
+﻿using NUnit.Framework;
 using WebFrameworkData.UnitTest.Utils;
+using WebFrameworkDomain.Common;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkData.UnitTest.Common
 {

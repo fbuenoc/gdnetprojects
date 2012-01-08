@@ -1,7 +1,5 @@
-﻿using System;
+﻿using GDNET.NHibernateImpl.Data;
 using NHibernate;
-
-using GDNET.NHibernateImpl.Data;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
 

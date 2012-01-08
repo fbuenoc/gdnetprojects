@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 
 using GDNET.Web.Helpers;
@@ -36,7 +33,8 @@ namespace WebFramework.Areas.Framework.Controllers
             var model = new ListValueModel();
             if (QueryStringHelper.GetValueAs<string>(QueryStringConstants.Key, out parentId))
             {
-                model = base.GetModelById(parentId);
+                var parentModel = base.GetModelById(parentId);
+                model.UpdateParent(parentModel);
             }
 
             return model;
