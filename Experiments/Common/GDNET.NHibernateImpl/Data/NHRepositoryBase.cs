@@ -27,7 +27,7 @@ namespace GDNET.NHibernateImpl.Data
 
         public NHRepositoryBase(ISession session)
         {
-            Throw.ArgumentNullException(session, "session", "Session must be specified a valid instance.");
+            ThrowException.ArgumentNullException(session, "session", "Session must be specified a valid instance.");
             this.session = session;
         }
 
@@ -91,7 +91,7 @@ namespace GDNET.NHibernateImpl.Data
         /// </summary>
         public void Commit()
         {
-            Throw.InvalidOperationExceptionIfNull(this.transaction, "You must begin transaction before calling Commit.");
+            ThrowException.InvalidOperationExceptionIfNull(this.transaction, "You must begin transaction before calling Commit.");
 
             this.transaction.Commit();
             this.transaction = null;
@@ -102,7 +102,7 @@ namespace GDNET.NHibernateImpl.Data
         /// </summary>
         public void Synchronize()
         {
-            Throw.InvalidOperationExceptionIfNull(this.session, "Session must be valid before synchronizing.");
+            ThrowException.InvalidOperationExceptionIfNull(this.session, "Session must be valid before synchronizing.");
 
             this.session.Flush();
         }
@@ -112,7 +112,7 @@ namespace GDNET.NHibernateImpl.Data
         /// </summary>
         public void Clear()
         {
-            Throw.InvalidOperationExceptionIfNull(this.session, "Session must be valid before clearing.");
+            ThrowException.InvalidOperationExceptionIfNull(this.session, "Session must be valid before clearing.");
 
             this.session.Clear();
         }
@@ -122,7 +122,7 @@ namespace GDNET.NHibernateImpl.Data
         /// </summary>
         public void Rollback()
         {
-            Throw.InvalidOperationExceptionIfNull(this.transaction, "You must begin transaction before calling Rollback.");
+            ThrowException.InvalidOperationExceptionIfNull(this.transaction, "You must begin transaction before calling Rollback.");
 
             this.transaction.Rollback();
             this.transaction = null;
@@ -138,7 +138,7 @@ namespace GDNET.NHibernateImpl.Data
             if (this.Specification != null)
             {
                 string message = string.Format("Can not get value for item '{0}' of type '{1}'", id.ToString(), typeof(TEntity).Name);
-                Throw.InvalidOperationExceptionIfFalse(this.Specification.OnGetting(id), message);
+                ThrowException.InvalidOperationExceptionIfFalse(this.Specification.OnGetting(id), message);
             }
 
             TEntity result = this.session.Get<TEntity>(id);
@@ -146,7 +146,7 @@ namespace GDNET.NHibernateImpl.Data
             if (this.Specification != null)
             {
                 string message = string.Format("Can not get value for item '{0}' of type '{1}'", id.ToString(), typeof(TEntity).Name);
-                Throw.InvalidOperationExceptionIfFalse(this.Specification.OnGotten(result), message);
+                ThrowException.InvalidOperationExceptionIfFalse(this.Specification.OnGotten(result), message);
             }
 
             return result;
@@ -214,7 +214,7 @@ namespace GDNET.NHibernateImpl.Data
         /// <param name="values">The value of the property.</param>
         public IList<TEntity> FindByProperty(string property, object[] values)
         {
-            Throw.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
+            ThrowException.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
 
             var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.In(property, values)).SetCacheable(true);
             return criteria.List<TEntity>();
@@ -231,7 +231,7 @@ namespace GDNET.NHibernateImpl.Data
         /// <param name="pageSize">Number of item per each page</param>
         public IList<TEntity> FindByProperty(string property, object value, int page, int pageSize)
         {
-            Throw.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
+            ThrowException.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
 
             var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
             if (!(page == 0 && pageSize == 0))
@@ -305,7 +305,7 @@ namespace GDNET.NHibernateImpl.Data
 
         public virtual bool Save(TEntity entity)
         {
-            Throw.ArgumentNullException(entity, "entity", "Entity must be valid to be saved.");
+            ThrowException.ArgumentNullException(entity, "entity", "Entity must be valid to be saved.");
 
             if ((this.Specification != null) && !this.Specification.OnSaving(entity))
             {
@@ -313,9 +313,9 @@ namespace GDNET.NHibernateImpl.Data
             }
 
             // Saving entity
-            if (entity is IEntityCreMod)
+            if (entity is IModification)
             {
-                DataService.SetCreationInfo((IEntityCreMod)entity);
+                DataService.SetCreationInfo((IModification)entity);
             }
             this.session.SaveOrUpdate(entity);
 
@@ -334,7 +334,7 @@ namespace GDNET.NHibernateImpl.Data
         /// <returns></returns>
         public virtual bool Save(IList<TEntity> entities)
         {
-            Throw.ArgumentNullException(entities, "entities", "List of entities must be valid to be saved.");
+            ThrowException.ArgumentNullException(entities, "entities", "List of entities must be valid to be saved.");
 
             foreach (var e in entities)
             {
@@ -349,16 +349,16 @@ namespace GDNET.NHibernateImpl.Data
 
         public virtual bool Update(TEntity entity)
         {
-            Throw.ArgumentNullException(entity, "entity", "Entity must be valid to be updated.");
+            ThrowException.ArgumentNullException(entity, "entity", "Entity must be valid to be updated.");
 
             if ((this.Specification != null) && !this.Specification.OnUpdating(entity))
             {
                 return false;
             }
 
-            if (entity is IEntityCreMod)
+            if (entity is IModification)
             {
-                DataService.SetModificationInfo((IEntityCreMod)entity);
+                DataService.SetModificationInfo((IModification)entity);
             }
             this.session.SaveOrUpdate(entity);
 
@@ -377,7 +377,7 @@ namespace GDNET.NHibernateImpl.Data
         /// <returns></returns>
         public virtual bool Update(IList<TEntity> entities)
         {
-            Throw.ArgumentNullException(entities, "entities", "List of entities must be valid to be updated.");
+            ThrowException.ArgumentNullException(entities, "entities", "List of entities must be valid to be updated.");
 
             foreach (var e in entities)
             {
@@ -397,7 +397,7 @@ namespace GDNET.NHibernateImpl.Data
 
         public virtual bool Delete(TEntity entity)
         {
-            Throw.ArgumentNullException(entity, "entity", "Entity must be valid to be deleted.");
+            ThrowException.ArgumentNullException(entity, "entity", "Entity must be valid to be deleted.");
 
             if ((this.Specification != null) && !this.Specification.OnDeleting(entity))
             {

@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Data\NHRepositoryBase.cs" />
     <Compile Include="Data\NHSpecificationBase.cs" />
+    <Compile Include="Listeners\NhSaveEventListenerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\SessionFactoryHelper.cs" />
   </ItemGroup>
