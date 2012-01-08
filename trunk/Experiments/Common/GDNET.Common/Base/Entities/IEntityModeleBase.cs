@@ -1,11 +1,11 @@
 ﻿namespace GDNET.Common.Base.Entities
 {
     /// <summary>
-    /// Entity with IsViewable property
+    /// Entity model with Id, IsActive property
     /// </summary>
-    public interface IEntityViewable<TId> : IEntityActiveBase<TId>
+    public interface IEntityModeleBase<TId> : IEntityBase<TId>
     {
-        bool IsViewable
+        new TId Id
         {
             get;
             set;

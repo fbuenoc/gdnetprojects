@@ -1,15 +1,8 @@
 ﻿using System;
 
-namespace GDNET.Common.Base.Entities
+namespace GDNET.Common.Base
 {
-    /// <summary>
-    /// Entity with creation/modificaion information
-    /// </summary>
-    public interface IEntityCreMod<TId> : IEntityActiveBase<TId>, IEntityCreMod
-    {
-    }
-
-    public interface IEntityCreMod
+    public interface IModification
     {
         /// <summary>
         /// Created by email

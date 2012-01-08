@@ -1,17 +1,13 @@
-﻿using System;
-
-using GDNET.Common.DesignByContract;
-
-namespace GDNET.Common.Base.Entities
+﻿namespace GDNET.Common.Base.Entities
 {
     /// <summary>
     /// Entity with with CreMod, Deletable, Editable, Viewable
     /// </summary>
-    public abstract class EntityFullControlBase<TId> : EntityCreModBase<TId>, IEntityDeletable<TId>, IEntityEditable<TId>, IEntityViewable<TId>
+    public abstract class EntityWithFullInfoBase<TId> : EntityWithModificationBase<TId>, IDeletable, IEditable, IViewable
     {
-        public EntityFullControlBase() { }
+        public EntityWithFullInfoBase() { }
 
-        public EntityFullControlBase(EntityFullControlBase<TId> entity)
+        public EntityWithFullInfoBase(EntityWithFullInfoBase<TId> entity)
             : base(entity)
         {
             this.IsDeletable = entity.IsDeletable;
