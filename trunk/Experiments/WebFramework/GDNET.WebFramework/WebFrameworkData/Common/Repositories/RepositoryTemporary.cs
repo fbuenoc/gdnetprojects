@@ -1,6 +1,5 @@
-﻿using NHibernate;
-
-using GDNET.NHibernateImpl.Data;
+﻿using GDNET.NHibernateImpl.Data;
+using NHibernate;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
 

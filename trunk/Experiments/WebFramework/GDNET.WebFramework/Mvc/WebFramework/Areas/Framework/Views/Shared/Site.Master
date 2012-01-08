@@ -38,6 +38,10 @@
         </div>
     </div>
     <!-- other content -->
-    <%= base.Html.Telerik().ScriptRegistrar() %>
+    <%= base.Html.Telerik().ScriptRegistrar().Scripts(a => { 
+            a.Add("MicrosoftAjax.js");
+            a.Add("MicrosoftMvcAjax.js");    
+        }
+    )%>
 </body>
 </html>

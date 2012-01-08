@@ -1,6 +1,6 @@
-﻿using WebFrameworkDomain.Common;
+﻿using NHibernate.Mapping.ByCode;
+using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
-using NHibernate.Mapping.ByCode;
 
 namespace WebFrameworkMapping.Common
 {

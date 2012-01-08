@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-
+﻿using System.Collections.Generic;
+using GDNET.NHibernateImpl.Data;
 using NHibernate;
 using NHibernate.Criterion;
-using NHibernate.Transform;
-
-using GDNET.NHibernateImpl.Data;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
 

@@ -34,13 +34,17 @@
                     columns.Bound(c => c.Name).Title("Actions").Template(template =>
                     {
             %>
-            <%= base.Html.ActionLink("Details", "Details", new { id = template.Id }) %>
+            <%= base.Html.ActionLink("Details", "Details", new { id = template.Id })%>
             <%= base.Html.ActionLink("Edit", "Edit", new { id = template.Id })%>
-            <%= base.Html.ActionLink("Delete", "Delete", new { id = template.Id }) %>
+            <%= base.Html.ActionLink("Delete", "Delete", new { id = template.Id })%>
             <%
                     });
                 })
                 .Pageable()
+                .Sortable(x =>
+                {
+                    x.Enabled(true).SortMode(GridSortMode.MultipleColumn).OrderBy(y => y.Add(m => m.Description));
+                })
                 .Render();
             %>
         </div>

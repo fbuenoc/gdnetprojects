@@ -1,10 +1,6 @@
-﻿using System;
-
-using WebFrameworkData;
-using WebFrameworkData.Common.Repositories;
+﻿using WebFrameworkData.Common.Repositories;
 using WebFrameworkData.Common.Specifications;
 
-using WebFrameworkDomain;
 using WebFrameworkDomain.Common.Repositories;
 using WebFrameworkDomain.DefaultImpl;
 

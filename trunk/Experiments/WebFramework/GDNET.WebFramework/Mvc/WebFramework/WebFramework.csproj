@@ -217,6 +217,7 @@
     <Compile Include="Areas\Framework\Controllers\ContentAttributeController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
+    <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
     <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
@@ -268,6 +269,7 @@
     <Content Include="Areas\Framework\Views\ContentType\Delete.aspx" />
     <Content Include="Areas\Framework\Views\ContentType\Details.aspx" />
     <Content Include="Areas\Framework\Views\ContentType\List.aspx" />
+    <Content Include="Areas\Framework\Views\Home\Index.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\Delete.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\Details.aspx" />
