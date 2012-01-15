@@ -1,57 +1,42 @@
-﻿using System;
-
-using GDNET.Common.Security.Services;
+﻿using GDNET.Common.Security.Services;
 using WebFrameworkBusiness.Base;
 
 namespace WebFrameworkBusiness
 {
-    public sealed class Comment : ContentItemBase
+    public sealed class Comment : BusinessItemBase
     {
-        private const string PropertyTitle = "Title";
-        private const string PropertyBody = "Body";
-        private const string PropertyVerified = "Verified";
-        private const string PropertyFullName = "FullName";
-        private const string PropertyEmail = "Email";
-
         public string Title
         {
-            get { return base.GetValue<string>(PropertyTitle); }
-            set { base.SetValue(PropertyTitle, value); }
+            get { return base.GetValue<string>(() => this.Title); }
+            set { base.SetValue(() => this.Title, value); }
         }
 
         public string Body
         {
-            get { return base.GetValue<string>(PropertyBody); }
-            set { base.SetValue(PropertyBody, value); }
+            get { return base.GetValue<string>(() => this.Body); }
+            set { base.SetValue(() => this.Body, value); }
         }
 
         public string FullName
         {
-            get { return base.GetValue<string>(PropertyFullName); }
-            set { base.SetValue(PropertyFullName, value); }
+            get { return base.GetValue<string>(() => this.FullName); }
+            set { base.SetValue(() => this.FullName, value); }
         }
 
         public string Email
         {
-            get { return base.GetValue<string>(PropertyEmail); }
-            set { base.SetValue(PropertyEmail, value); }
+            get { return base.GetValue<string>(() => this.Email); }
+            set { base.SetValue(() => this.Email, value); }
         }
 
         public Comment()
-            : this(null, null)
+            : this(EncryptionOption.None)
         {
         }
 
-        public Comment(string title, string body)
-            : base("N", "D")
+        public Comment(EncryptionOption encryption)
+            : base(encryption)
         {
-            base.RegisterProperty(PropertyTitle, typeof(string));
-            base.RegisterProperty(PropertyBody, typeof(string));
-            base.RegisterProperty(PropertyFullName, typeof(string));
-            base.RegisterProperty(PropertyEmail, typeof(DateTime));
-
-            this.Title = title;
-            this.Body = body;
         }
     }
 }

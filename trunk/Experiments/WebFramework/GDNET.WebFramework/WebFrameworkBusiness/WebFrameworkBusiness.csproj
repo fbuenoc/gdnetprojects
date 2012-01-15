@@ -41,15 +41,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Article.cs" />
-    <Compile Include="Base\ContentItemBase.Data.cs" />
-    <Compile Include="Base\ContentItemBase.Logic.cs" />
-    <Compile Include="Comment.cs" />
+    <Compile Include="Base\BusinessItemBase.cs" />
+    <Compile Include="Base\BusinessItemBase.Logic.cs" />
+    <Compile Include="Comment.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common.Encryption\GDNET.Common.Encryption.csproj">
       <Project>{7A184704-26D6-407D-A069-D692530F00E7}</Project>
       <Name>GDNET.Common.Encryption</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Common.Types\GDNET.Common.Types.csproj">
+      <Project>{B1D31295-36B4-41DE-B14E-3DB21CA95226}</Project>
+      <Name>GDNET.Common.Types</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
