@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-using WebFrameworkData.Common.Repositories;
+﻿using WebFrameworkData.Common.Repositories;
 using WebFrameworkData.Common.Specifications;
 
-using WebFrameworkDomain;
 using WebFrameworkDomain.Common.Repositories;
 using WebFrameworkDomain.DefaultImpl;
 

@@ -56,6 +56,31 @@ namespace WebFrameworkData.UnitTest.Common
         }
 
         [Test]
+        public void CanAddRelationContentItems()
+        {
+            var type = AssistantTest.CreateContentType();
+            var item1 = AssistantTest.CreateContentItem("T1", "Test 1", type);
+            var item2 = AssistantTest.CreateContentItem("T2", "Test 2", type);
+            var item3 = AssistantTest.CreateContentItem("T3", "Test 3", type);
+            item1.AddRelationItem(item2);
+            item1.AddRelationItem(item3);
+
+            DomainRepositories.ContentItem.Synchronize();
+
+            var myItem = DomainRepositories.ContentItem.GetById(item1.Id);
+            Assert.AreEqual(2, myItem.RelationItems.Count);
+            Assert.AreEqual(item2.Id, myItem.RelationItems[0].Id);
+            Assert.AreEqual(item3.Id, myItem.RelationItems[1].Id);
+
+            DomainRepositories.ContentItem.Delete(item3);
+            DomainRepositories.ContentItem.Delete(item2);
+            DomainRepositories.ContentItem.Delete(item1);
+            DomainRepositories.ContentType.Delete(type);
+
+            DomainRepositories.ContentType.Synchronize();
+        }
+
+        [Test]
         public void CanDeleteContentItem()
         {
             var type = AssistantTest.CreateContentType();
