@@ -1,53 +1,43 @@
 ﻿using System;
-
-using GDNET.Common.Base.Types;
 using GDNET.Common.Security.Services;
+using GDNET.Common.Types;
 using WebFrameworkBusiness.Base;
 
 namespace WebFrameworkBusiness
 {
-    public sealed class Article : ContentItemBase
+    public sealed class Article : BusinessItemBase
     {
-        private const string PropertyAuthor = "Author";
-        private const string PropertyPublishedDate = "PublishedDate";
-        private const string PropertySourceName = "SourceName";
-        private const string PropertySourceUrl = "SourceUrl";
-
         #region Properties
 
         public Contact Author
         {
-            get { return this.GetValue<Contact>(PropertyAuthor); }
-            set { this.SetValue<Contact>(PropertyAuthor, value); }
+            get { return this.GetValue<Contact>(() => this.Author); }
+            set { this.SetValue<Contact>(() => this.Author, value); }
         }
 
         public string SourceName
         {
-            get { return this.GetValue<string>(PropertySourceName); }
-            set { this.SetValue<string>(PropertySourceName, value); }
+            get { return this.GetValue<string>(() => this.SourceName); }
+            set { this.SetValue<string>(() => this.SourceName, value); }
         }
 
         public string SourceUrl
         {
-            get { return this.GetValue<string>(PropertySourceUrl); }
-            set { this.SetValue<string>(PropertySourceUrl, value); }
+            get { return this.GetValue<string>(() => this.SourceUrl); }
+            set { this.SetValue<string>(() => this.SourceUrl, value); }
         }
 
         public DateTime PublishedDate
         {
-            get { return this.GetValue<DateTime>(PropertyPublishedDate); }
-            set { this.SetValue<DateTime>(PropertyPublishedDate, value); }
+            get { return this.GetValue<DateTime>(() => this.PublishedDate); }
+            set { this.SetValue<DateTime>(() => this.PublishedDate, value); }
         }
 
         #endregion
 
         public Article()
-            : base("N", "D", EncryptionOption.Base64)
+            : base(EncryptionOption.Base64)
         {
-            base.RegisterProperty(PropertyAuthor, typeof(Contact));
-            base.RegisterProperty(PropertySourceName, typeof(string));
-            base.RegisterProperty(PropertySourceUrl, typeof(string));
-            base.RegisterProperty(PropertyPublishedDate, typeof(DateTime));
         }
 
     }

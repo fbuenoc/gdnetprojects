@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Encryption;
 using GDNET.Common.Security.Services;
+using GDNET.Common.Utils;
 using GDNET.Extensions;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
@@ -11,20 +13,18 @@ using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkBusiness.Base
 {
-    public abstract partial class ContentItemBase
+    public abstract partial class BusinessItemBase
     {
         private readonly IEncryptionService encryptor = new EncryptionService();
 
         private string EncryptData(string plainText)
         {
-            var encryptionOption = (EncryptionOption)this.propertiesValues.First(x => x.Key == PropertyEncryptionOption).Value;
-            return this.encryptor.Encrypt(plainText, encryptionOption);
+            return this.encryptor.Encrypt(plainText, this.Encryption);
         }
 
         private string DecryptData(string encryptedText)
         {
-            var encryptionOption = (EncryptionOption)this.propertiesValues.First(x => x.Key == PropertyEncryptionOption).Value;
-            return this.encryptor.Decrypt(encryptedText, encryptionOption);
+            return this.encryptor.Decrypt(encryptedText, this.Encryption);
         }
 
         /// <summary>
@@ -69,12 +69,22 @@ namespace WebFrameworkBusiness.Base
             return this.propertiesValues.ContainsKey(propertyName) ? (T)this.propertiesValues[propertyName] : default(T);
         }
 
+        protected T GetValue<T>(Expression<Func<object>> expression)
+        {
+            return this.GetValue<T>(ExpressionUtil.GetPropertyName(expression));
+        }
+
         /// <summary>
         /// Set value for a Property, throw exception if property is not registered or invalid type of data
         /// </summary>
         protected void SetValue<T>(string propertyName, T propertyValue)
         {
-            if (this.properties.ContainsKey(propertyName) && this.properties[propertyName].Equals(typeof(T)))
+            if (!this.properties.ContainsKey(propertyName))
+            {
+                this.RegisterProperty(propertyName, typeof(T));
+            }
+
+            if (this.properties[propertyName].Equals(typeof(T)))
             {
                 this.PerformSetValue(propertyName, propertyValue);
             }
@@ -88,12 +98,24 @@ namespace WebFrameworkBusiness.Base
             }
         }
 
+        protected void SetValue<T>(Expression<Func<object>> expression, T propertyValue)
+        {
+            this.SetValue<T>(ExpressionUtil.GetPropertyName(expression), propertyValue);
+        }
+
         /// <summary>
         /// Register a property with its data type
         /// </summary>
         protected void RegisterProperty(string propertyName, Type dataType)
         {
-            this.properties.Add(propertyName, dataType);
+            if (!this.properties.ContainsKey(propertyName))
+            {
+                this.properties.Add(propertyName, dataType);
+            }
+            else
+            {
+                this.properties[propertyName] = dataType;
+            }
         }
 
         /// <summary>
@@ -115,18 +137,17 @@ namespace WebFrameworkBusiness.Base
 
         public bool LoadItemById(long id)
         {
-            ContentItem contentItem = DomainRepositories.ContentItem.GetById(id);
-            if (contentItem != null)
+            this.contentItem = DomainRepositories.ContentItem.GetById(id);
+            if (this.contentItem != null)
             {
                 // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
-                var encryptionAttribute = contentItem.AttributeValues.First(x => x.ContentAttribute.Code == PropertyEncryptionOption);
-                var encryptionOption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
-                this.SetValue<EncryptionOption>(PropertyEncryptionOption, encryptionOption);
+                var encryptionAttribute = this.contentItem.AttributeValues.First(x => x.ContentAttribute.Code == ExpressionUtil.GetPropertyName(() => this.Encryption));
+                this.Encryption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
 
                 // Now we load other properties
-                foreach (var kvp in this.properties.Where(x => x.Key != PropertyEncryptionOption))
+                foreach (var kvp in this.properties.Where(x => x.Key != ExpressionUtil.GetPropertyName(() => this.Encryption)))
                 {
-                    var attributeValue = contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
+                    var attributeValue = this.contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
                     if (attributeValue != null)
                     {
                         var decryptedValue = this.DecryptData(attributeValue.Value.Value);
@@ -134,7 +155,7 @@ namespace WebFrameworkBusiness.Base
                     }
                 }
 
-                this.Id = contentItem.Id;
+                this.UpdateEntityInfo();
                 return true;
             }
 
@@ -149,11 +170,9 @@ namespace WebFrameworkBusiness.Base
         public bool Save()
         {
             ContentType contentType = null;
-            ContentItem contentItem = null;
-
             if (this.EnsureContentType(out contentType))
             {
-                contentItem = ContentItem.Factory.Create(this.GetValue<string>(PropertyName), this.GetValue<string>(PropertyDescription), contentType, this.GetValue<int>(PropertyPosition));
+                this.contentItem = ContentItem.Factory.Create(this.Name, this.Description, contentType, this.Position);
             }
             else
             {
@@ -161,7 +180,7 @@ namespace WebFrameworkBusiness.Base
             }
 
             // Save values
-            if (!DomainRepositories.ContentItem.Save(contentItem))
+            if (!DomainRepositories.ContentItem.Save(this.contentItem))
             {
                 return false;
             }
@@ -175,7 +194,7 @@ namespace WebFrameworkBusiness.Base
                 }
 
                 string value = kvp.Value.ConvertToString(this.properties[kvp.Key]);
-                if (kvp.Key != PropertyEncryptionOption)
+                if (kvp.Key != ExpressionUtil.GetPropertyName(() => this.Encryption))
                 {
                     value = this.EncryptData(value);
                 }
@@ -184,15 +203,28 @@ namespace WebFrameworkBusiness.Base
                 contentItem.AddAttributeValue(attributeValue);
             }
 
-            if (!DomainRepositories.ContentItem.Update(contentItem))
+            if (!DomainRepositories.ContentItem.Update(this.contentItem))
             {
                 return false;
             }
 
             DomainRepositories.ContentItem.Synchronize();
-            this.Id = contentItem.Id;
+            this.UpdateEntityInfo();
 
             return true;
+        }
+
+        private void UpdateEntityInfo()
+        {
+            this.Id = this.contentItem.Id;
+            this.CreatedAt = this.contentItem.CreatedAt;
+            this.CreatedBy = this.contentItem.CreatedBy;
+            this.IsActive = this.contentItem.IsActive;
+            this.IsDeletable = this.contentItem.IsDeletable;
+            this.IsEditable = this.contentItem.IsEditable;
+            this.IsViewable = this.contentItem.IsViewable;
+            this.LastModifiedAt = this.contentItem.LastModifiedAt;
+            this.LastModifiedBy = this.contentItem.LastModifiedBy;
         }
 
         #endregion
