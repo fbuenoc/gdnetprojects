@@ -1,7 +1,6 @@
 ﻿using GDNET.Common.Base;
-using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
-
+using GDNET.Common.Utils;
 using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Extensions
@@ -40,7 +39,7 @@ namespace WebFrameworkDomain.Extensions
             entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
         }
 
-        public static void RefreshTranslation(this IEntitySignature entity, Translation translation, string propertyName)
+        public static void RefreshTranslation(this ISignature entity, Translation translation, string propertyName)
         {
             ThrowException.ArgumentNullException(entity, "entity", "Entity name can not be null.");
             ThrowException.ArgumentNullException(translation, "translation", "Translation can not be null.");

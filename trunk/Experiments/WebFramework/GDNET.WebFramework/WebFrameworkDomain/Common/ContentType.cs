@@ -7,7 +7,7 @@ using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class ContentType : EntityFullControlBase<long>
+    public partial class ContentType : EntityWithFullInfoBase<long>
     {
         private IList<ContentItem> contentItems = new List<ContentItem>();
         private IList<ContentAttribute> contentAttributes = new List<ContentAttribute>();
