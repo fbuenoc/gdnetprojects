@@ -79,9 +79,6 @@
     <Compile Include="Base\Meta\MetaEntityActiveBase.cs" />
     <Compile Include="Base\Meta\MetaEntityBase.cs" />
     <Compile Include="Base\Meta\MetaFullControlBase.cs" />
-    <Compile Include="Base\Types\Contact.cs" />
-    <Compile Include="Base\Types\Email.cs" />
-    <Compile Include="Base\Types\Name.cs" />
     <Compile Include="Data\DataService.cs" />
     <Compile Include="Data\ISpecificationBase.cs" />
     <Compile Include="Domain\ISerializable.cs" />
@@ -115,6 +112,7 @@
     <Compile Include="MVP\Presenters\PresenterCrudBase.cs" />
     <Compile Include="MVP\ViewMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ReflectionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GDNET.pfx" />
