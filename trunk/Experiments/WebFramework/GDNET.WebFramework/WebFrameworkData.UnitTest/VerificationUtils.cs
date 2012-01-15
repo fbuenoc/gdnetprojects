@@ -1,15 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using GDNET.Common.Base;
 using NUnit.Framework;
-using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkData.UnitTest
 {
     public static class VerificationUtils
     {
-        public static void EmptyCreMod(IEntityCreMod entity)
+        public static void EmptyCreMod(IModification entity)
         {
             Assert.IsTrue(string.IsNullOrEmpty(entity.CreatedBy));
             Assert.IsTrue(string.IsNullOrEmpty(entity.LastModifiedBy));
