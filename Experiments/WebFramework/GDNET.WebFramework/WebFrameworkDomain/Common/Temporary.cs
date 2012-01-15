@@ -2,7 +2,7 @@
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class Temporary : EntityCreModBase<string>
+    public partial class Temporary : EntityWithModificationBase<string>
     {
         #region Properties
 

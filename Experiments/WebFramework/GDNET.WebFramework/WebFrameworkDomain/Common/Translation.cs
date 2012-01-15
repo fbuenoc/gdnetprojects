@@ -2,7 +2,7 @@
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class Translation : EntityFullControlBase<long>
+    public partial class Translation : EntityWithFullInfoBase<long>
     {
         #region Properties
 

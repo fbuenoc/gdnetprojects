@@ -5,7 +5,7 @@ using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class ContentAttribute : EntityFullControlBase<long>
+    public partial class ContentAttribute : EntityWithFullInfoBase<long>
     {
         private IList<ContentItem> contentItems = new List<ContentItem>();
         private IList<ContentItemAttributeValue> attributeValues = new List<ContentItemAttributeValue>();

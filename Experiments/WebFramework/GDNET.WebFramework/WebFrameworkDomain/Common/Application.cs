@@ -5,7 +5,7 @@ using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class Application : EntityFullControlBase<long>
+    public partial class Application : EntityWithFullInfoBase<long>
     {
         private IList<ContentType> contentTypes = new List<ContentType>();
 

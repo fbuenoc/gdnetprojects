@@ -1,13 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using GDNET.Common.Base.Entities;
-
 using GDNET.Common.DesignByContract;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class ContentItem : EntityFullControlBase<long>
+    public partial class ContentItem : EntityWithFullInfoBase<long>
     {
         private IList<ContentItemAttributeValue> attributeValues = new List<ContentItemAttributeValue>();
         private IList<ContentItem> relationItems = new List<ContentItem>();

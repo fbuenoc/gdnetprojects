@@ -6,7 +6,7 @@ using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class ListValue : EntityFullControlBase<long>
+    public partial class ListValue : EntityWithFullInfoBase<long>
     {
         private IList<ListValue> subValues = new List<ListValue>();
 
