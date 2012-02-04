@@ -74,7 +74,6 @@
     <Compile Include="Base\Entities\IEntityWithActiveBase.cs" />
     <Compile Include="Base\Entities\EntityWithModificationBase.cs" />
     <Compile Include="Base\IViewable.cs" />
-    <Compile Include="Utils\ExpressionUtil.cs" />
     <Compile Include="Base\Meta\MetaCreModBase.cs" />
     <Compile Include="Base\Meta\MetaEntityActiveBase.cs" />
     <Compile Include="Base\Meta\MetaEntityBase.cs" />
@@ -112,7 +111,6 @@
     <Compile Include="MVP\Presenters\PresenterCrudBase.cs" />
     <Compile Include="MVP\ViewMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\ReflectionUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GDNET.pfx" />
