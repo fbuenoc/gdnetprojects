@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
 using System.Web;
+using GDNET.Common.DesignByContract;
 
 namespace GDNET.Web.Helpers
 {
-    public sealed class QueryStringHelper
+    public static class QueryStringAssistant
     {
         public static long? ParseInteger(string parameterName)
         {
@@ -16,13 +13,10 @@ namespace GDNET.Web.Helpers
             string parameterValue = HttpContext.Current.Request.QueryString[parameterName];
             if (!string.IsNullOrEmpty(parameterValue))
             {
-                try
+                Int64 x;
+                if (Int64.TryParse(parameterName, out x))
                 {
-                    result = Convert.ToInt64(parameterValue);
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine(ex.ToString());
+                    result = x;
                 }
             }
 
@@ -38,7 +32,7 @@ namespace GDNET.Web.Helpers
         public static string GetValueAsString(string name)
         {
             string expectedResult = string.Empty;
-            GetValueAsString(name, out expectedResult);
+            QueryStringAssistant.GetValueAsString(name, out expectedResult);
 
             return expectedResult;
         }
@@ -77,7 +71,7 @@ namespace GDNET.Web.Helpers
         public static bool GetValueAs<T>(string name, out T expectedResult)
         {
             expectedResult = default(T);
-            bool result = false;
+            bool? result = null;
 
             foreach (object key in HttpContext.Current.Request.QueryString.Keys)
             {
@@ -90,21 +84,18 @@ namespace GDNET.Web.Helpers
                         expectedResult = (T)Enum.Parse(typeof(T), rawValue);
                         result = true;
                     }
-
-                    if (typeof(T).FullName == typeof(string).FullName)
+                    else if (typeof(T).FullName == typeof(string).FullName)
                     {
                         expectedResult = (T)Convert.ChangeType(rawValue, typeof(T));
                         result = true;
                     }
-
-                    if ((typeof(T).FullName == typeof(int).FullName) || (typeof(T).FullName == typeof(long).FullName))
+                    else if ((typeof(T).FullName == typeof(int).FullName) || (typeof(T).FullName == typeof(long).FullName))
                     {
                         long tempResult;
                         result = long.TryParse(rawValue, out tempResult);
                         expectedResult = (T)Convert.ChangeType(tempResult, typeof(T));
                     }
-
-                    if ((typeof(T).FullName == typeof(double).FullName) || (typeof(T).FullName == typeof(float).FullName))
+                    else if ((typeof(T).FullName == typeof(double).FullName) || (typeof(T).FullName == typeof(float).FullName))
                     {
                         double tempResult;
                         result = double.TryParse(rawValue, out tempResult);
@@ -115,7 +106,12 @@ namespace GDNET.Web.Helpers
                 }
             }
 
-            return result;
+            if (!result.HasValue)
+            {
+                ThrowException.NotSupportedException(string.Format("Not supported for type: {0}", typeof(T).FullName));
+            }
+
+            return result.Value;
         }
 
         /// <summary>
@@ -134,17 +130,10 @@ namespace GDNET.Web.Helpers
                 if (key.ToString().Equals(name))
                 {
                     string rawValue = HttpContext.Current.Request.QueryString[name];
-                    try
+                    if (typeof(T).BaseType.FullName == typeof(Enum).FullName)
                     {
-                        if (typeof(T).BaseType.FullName == typeof(Enum).FullName)
-                        {
-                            expectedResult = (T)Enum.Parse(typeof(T), rawValue);
-                            localResult = true;
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Debug.WriteLine(ex);
+                        expectedResult = (T)Enum.Parse(typeof(T), rawValue);
+                        localResult = true;
                     }
                     break;
                 }
