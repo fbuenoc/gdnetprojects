@@ -1,6 +1,6 @@
 ﻿namespace GDNET.Common.Domain
 {
-    public interface ISrerializable
+    public interface ISerializable
     {
         /// <summary>
         /// Serialize object to string
