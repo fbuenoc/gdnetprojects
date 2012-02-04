@@ -14,7 +14,7 @@ namespace GDNET.Web.Common
         {
             if (!base.IsPostBack)
             {
-                long? elementId = QueryStringHelper.ParseInteger(QueryStringConstants.ElementId);
+                long? elementId = QueryStringAssistant.ParseInteger(QueryStringConstants.ElementId);
                 if (elementId.HasValue)
                 {
                     this.Presenter.View.ElementId = elementId.Value;

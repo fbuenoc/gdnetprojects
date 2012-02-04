@@ -54,9 +54,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Common\QueryStringConstants.cs" />
-    <Compile Include="Helpers\ControlHelper.cs" />
-    <Compile Include="Helpers\HttpContextHelper.cs" />
-    <Compile Include="Helpers\QueryStringHelper.cs" />
+    <Compile Include="Helpers\ControlAssistant.cs" />
+    <Compile Include="Helpers\HttpContextAssistant.cs" />
+    <Compile Include="Helpers\QueryStringAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 using System.Web.UI;
 
 namespace GDNET.Web.Helpers
@@ -8,7 +6,7 @@ namespace GDNET.Web.Helpers
     /// <summary>
     /// Provides helper methods for <typeparamref name="Control"/>
     /// </summary>
-    public static class ControlHelper
+    public static class ControlAssistant
     {
         /// <summary>
         /// Find first sub control by given type. Returns default of <typeparamref name="T"/> if no control found.
