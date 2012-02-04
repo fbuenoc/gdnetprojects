@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace GDNET.Extensions
 {
-    public static class NumberFormatter
+    public static class NumberAssistant
     {
         /// <summary>
         /// Format a decimal number

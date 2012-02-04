@@ -2,7 +2,7 @@
 
 namespace GDNET.Extensions
 {
-    public static class EnumExtensions
+    public static class EnumAssistant
     {
         public static T ParseEnum<T>(this string value)
         {

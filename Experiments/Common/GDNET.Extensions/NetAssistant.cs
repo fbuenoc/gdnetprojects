@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Text;
 using System.Threading;
 
 namespace GDNET.Extensions
 {
-    public static class NetWorker
+    public static class NetAssistant
     {
         /// <summary>
         /// Download HTML content from a given URL, and retry 3 times if connection is failed.

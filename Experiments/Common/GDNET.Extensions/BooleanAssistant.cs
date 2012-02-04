@@ -3,7 +3,7 @@
     /// <summary>
     /// Provides extension methods for boolean
     /// </summary>
-    public static class BooleanHelper
+    public static class BooleanAssistant
     {
         public static string ToStringYesNo(this bool value)
         {
