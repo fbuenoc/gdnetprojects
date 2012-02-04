@@ -1,21 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 
 namespace GDNET.Extensions
 {
-    /// <summary>
-    /// Methods to remove HTML from strings.
-    /// Visit http://dotnetperls.com/remove-html-tags for details.
-    /// </summary>
-    public static class HtmlRemoval
+    public static class HtmlAssistant
     {
+        private static readonly Regex httpLinkRegex = new Regex("(http://[^ ]+)");
+        private static readonly Regex httpsLinkRegex = new Regex("(https://[^ ]+)");
+
         /// <summary>
         /// Compiled regular expression for performance.
         /// </summary>
         private static Regex htmlRegex = new Regex("<.*?>", RegexOptions.Compiled);
+
+        /// <summary>
+        /// Auto create links for plain text
+        /// </summary>
+        /// <param name="plainText"></param>
+        /// <returns></returns>
+        public static string MakeClickable(string plainText)
+        {
+            string textClickable = string.Empty;
+            if (!string.IsNullOrEmpty(plainText))
+            {
+                textClickable = httpLinkRegex.Replace(plainText, "<a href='$1'>$1</a>");
+                textClickable = httpsLinkRegex.Replace(textClickable, "<a href='$1'>$1</a>");
+            }
+            return textClickable;
+        }
+
+        ///
+        /// Methods to remove HTML from strings.
+        /// Visit http://dotnetperls.com/remove-html-tags for details.
+        ///
 
         /// <summary>
         /// Remove HTML from string with Regex.
