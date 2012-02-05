@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Security.Services;
-using GDNET.Common.Utils;
+using GDNET.Extensions;
 using WebFrameworkDomain.Common;
 
 namespace WebFrameworkBusiness.Base
 {
-    public abstract partial class BusinessItemBase : EntityWithFullInfoBase<long>
+    public abstract partial class BusinessEntityBase : EntityWithFullInfoBase<long>
     {
         private Dictionary<string, Type> properties = new Dictionary<string, Type>();
         private Dictionary<string, object> propertiesValues = new Dictionary<string, object>();
@@ -53,14 +53,14 @@ namespace WebFrameworkBusiness.Base
 
         #region Ctors
 
-        public BusinessItemBase()
+        public BusinessEntityBase()
             : this(EncryptionOption.None)
         {
         }
 
-        public BusinessItemBase(EncryptionOption encryption)
+        public BusinessEntityBase(EncryptionOption encryption)
         {
-            foreach (var kvp in ReflectionUtil.GetProperties(this.GetType()))
+            foreach (var kvp in ReflectionAssistant.GetProperties(this.GetType()))
             {
                 this.RegisterProperty(kvp.Key, kvp.Value);
             }

@@ -4,8 +4,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Encryption;
+using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
-using GDNET.Common.Utils;
 using GDNET.Extensions;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
@@ -13,7 +13,7 @@ using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkBusiness.Base
 {
-    public abstract partial class BusinessItemBase
+    public abstract partial class BusinessEntityBase
     {
         private readonly IEncryptionService encryptor = new EncryptionService();
 
@@ -71,7 +71,7 @@ namespace WebFrameworkBusiness.Base
 
         protected T GetValue<T>(Expression<Func<object>> expression)
         {
-            return this.GetValue<T>(ExpressionUtil.GetPropertyName(expression));
+            return this.GetValue<T>(ExpressionAssistant.GetPropertyName(expression));
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace WebFrameworkBusiness.Base
 
         protected void SetValue<T>(Expression<Func<object>> expression, T propertyValue)
         {
-            this.SetValue<T>(ExpressionUtil.GetPropertyName(expression), propertyValue);
+            this.SetValue<T>(ExpressionAssistant.GetPropertyName(expression), propertyValue);
         }
 
         /// <summary>
@@ -141,11 +141,11 @@ namespace WebFrameworkBusiness.Base
             if (this.contentItem != null)
             {
                 // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
-                var encryptionAttribute = this.contentItem.AttributeValues.First(x => x.ContentAttribute.Code == ExpressionUtil.GetPropertyName(() => this.Encryption));
+                var encryptionAttribute = this.contentItem.AttributeValues.First(x => x.ContentAttribute.Code == ExpressionAssistant.GetPropertyName(() => this.Encryption));
                 this.Encryption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
 
                 // Now we load other properties
-                foreach (var kvp in this.properties.Where(x => x.Key != ExpressionUtil.GetPropertyName(() => this.Encryption)))
+                foreach (var kvp in this.properties.Where(x => x.Key != ExpressionAssistant.GetPropertyName(() => this.Encryption)))
                 {
                     var attributeValue = this.contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
                     if (attributeValue != null)
@@ -194,7 +194,7 @@ namespace WebFrameworkBusiness.Base
                 }
 
                 string value = kvp.Value.ConvertToString(this.properties[kvp.Key]);
-                if (kvp.Key != ExpressionUtil.GetPropertyName(() => this.Encryption))
+                if (kvp.Key != ExpressionAssistant.GetPropertyName(() => this.Encryption))
                 {
                     value = this.EncryptData(value);
                 }

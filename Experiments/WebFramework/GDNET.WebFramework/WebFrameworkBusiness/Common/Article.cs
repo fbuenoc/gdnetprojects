@@ -3,9 +3,9 @@ using GDNET.Common.Security.Services;
 using GDNET.Common.Types;
 using WebFrameworkBusiness.Base;
 
-namespace WebFrameworkBusiness
+namespace WebFrameworkBusiness.Common
 {
-    public sealed class Article : BusinessItemBase
+    public sealed partial class Article : BusinessEntityBase
     {
         #region Properties
 
@@ -15,16 +15,10 @@ namespace WebFrameworkBusiness
             set { this.SetValue<Contact>(() => this.Author, value); }
         }
 
-        public string SourceName
+        public Website SourceInfo
         {
-            get { return this.GetValue<string>(() => this.SourceName); }
-            set { this.SetValue<string>(() => this.SourceName, value); }
-        }
-
-        public string SourceUrl
-        {
-            get { return this.GetValue<string>(() => this.SourceUrl); }
-            set { this.SetValue<string>(() => this.SourceUrl, value); }
+            get { return this.GetValue<Website>(() => this.SourceInfo); }
+            set { this.SetValue<Website>(() => this.SourceInfo, value); }
         }
 
         public DateTime PublishedDate
@@ -33,9 +27,15 @@ namespace WebFrameworkBusiness
             set { this.SetValue<DateTime>(() => this.PublishedDate, value); }
         }
 
+        public string MainContent
+        {
+            get { return this.GetValue<string>(() => this.MainContent); }
+            set { this.SetValue<string>(() => this.MainContent, value); }
+        }
+
         #endregion
 
-        public Article()
+        protected Article()
             : base(EncryptionOption.Base64)
         {
         }

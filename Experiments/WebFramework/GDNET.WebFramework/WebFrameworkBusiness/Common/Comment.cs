@@ -1,9 +1,10 @@
 ﻿using GDNET.Common.Security.Services;
+using GDNET.Common.Types;
 using WebFrameworkBusiness.Base;
 
-namespace WebFrameworkBusiness
+namespace WebFrameworkBusiness.Common
 {
-    public sealed class Comment : BusinessItemBase
+    public sealed partial class Comment : BusinessEntityBase
     {
         public string Title
         {
@@ -17,24 +18,24 @@ namespace WebFrameworkBusiness
             set { base.SetValue(() => this.Body, value); }
         }
 
-        public string FullName
+        public Contact FullName
         {
-            get { return base.GetValue<string>(() => this.FullName); }
+            get { return base.GetValue<Contact>(() => this.FullName); }
             set { base.SetValue(() => this.FullName, value); }
         }
 
-        public string Email
+        public Email Email
         {
-            get { return base.GetValue<string>(() => this.Email); }
+            get { return base.GetValue<Email>(() => this.Email); }
             set { base.SetValue(() => this.Email, value); }
         }
 
-        public Comment()
+        protected Comment()
             : this(EncryptionOption.None)
         {
         }
 
-        public Comment(EncryptionOption encryption)
+        protected Comment(EncryptionOption encryption)
             : base(encryption)
         {
         }
