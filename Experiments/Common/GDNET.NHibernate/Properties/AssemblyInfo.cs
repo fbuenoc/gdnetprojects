@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("GDNET.NHibernateImpl")]
+[assembly: AssemblyTitle("GDNET.NHibernate")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TVN")]
-[assembly: AssemblyProduct("GDNET.NHibernateImpl")]
-[assembly: AssemblyCopyright("Copyright © TVN 2011")]
+[assembly: AssemblyProduct("GDNET.NHibernate")]
+[assembly: AssemblyCopyright("Copyright © TVN 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("80573c39-3876-437e-8562-a351e05d9afc")]
+[assembly: Guid("7872a3d3-245c-494a-a109-9b04b4c1c8ec")]
 
 // Version information for an assembly consists of the following four values:
 //
