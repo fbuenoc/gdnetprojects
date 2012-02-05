@@ -13,8 +13,6 @@ namespace WebFrameworkNHibernate
             base.Initialize(this);
         }
 
-
-
         public override IRepositoryApplication GetRepositoryApplication()
         {
             IRepositoryApplication repositoryApplication = new RepositoryApplication(NHibernateHttpApplication.GetCurrentSession());

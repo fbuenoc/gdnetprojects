@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="WebRepositories.cs" />
-    <Compile Include="NHibernateSessionModuleInterceptor.cs" />
     <Compile Include="NHibernateHttpApplication.cs" />
     <Compile Include="NHibernateSessionModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
