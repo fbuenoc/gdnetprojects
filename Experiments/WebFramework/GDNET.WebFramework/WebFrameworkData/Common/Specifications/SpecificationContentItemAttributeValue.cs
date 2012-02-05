@@ -1,10 +1,9 @@
-﻿using GDNET.NHibernateImpl.Data;
-
+﻿using GDNET.NHibernate.Specifications;
 using WebFrameworkDomain.Common;
 
 namespace WebFrameworkData.Common.Specifications
 {
-    public class SpecificationContentItemAttributeValue : NHSpecificationBase<ContentItemAttributeValue, long>
+    public class SpecificationContentItemAttributeValue : AbstractSpecification<ContentItemAttributeValue, long>
     {
     }
 }

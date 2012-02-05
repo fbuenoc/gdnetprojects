@@ -1,11 +1,11 @@
-﻿using GDNET.NHibernateImpl.Data;
+﻿using GDNET.NHibernate.Repositories;
 using NHibernate;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryTranslation : NHRepositoryBase<Translation, long>, IRepositoryTranslation
+    public class RepositoryTranslation : AbstractRepository<Translation, long>, IRepositoryTranslation
     {
         public RepositoryTranslation(ISession session)
             : base(session)
