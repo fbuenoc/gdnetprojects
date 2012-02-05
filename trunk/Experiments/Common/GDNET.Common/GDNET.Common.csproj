@@ -81,6 +81,7 @@
     <Compile Include="Data\DataService.cs" />
     <Compile Include="Data\ISpecificationBase.cs" />
     <Compile Include="Domain\ISerializable.cs" />
+    <Compile Include="Helpers\ExpressionAssistant.cs" />
     <Compile Include="Paging\IPaginatedList.cs" />
     <Compile Include="Paging\PaginatedList.cs" />
     <Compile Include="Security\FakeIdentity.cs" />
