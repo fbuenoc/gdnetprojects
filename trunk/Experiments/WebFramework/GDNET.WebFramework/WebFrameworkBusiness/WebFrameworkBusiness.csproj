@@ -40,13 +40,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Article.cs" />
-    <Compile Include="Base\BusinessItemBase.cs" />
-    <Compile Include="Base\BusinessItemBase.Logic.cs" />
-    <Compile Include="Comment.cs">
+    <Compile Include="Administration\Account.cs" />
+    <Compile Include="Common\Article.cs" />
+    <Compile Include="Base\BusinessEntityBase.cs" />
+    <Compile Include="Base\BusinessEntityBase.Logic.cs" />
+    <Compile Include="Common\Comment.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Common\Article.Factory.cs" />
+    <Compile Include="Common\Comment.Factory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\BusinessEntityService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common.Encryption\GDNET.Common.Encryption.csproj">
