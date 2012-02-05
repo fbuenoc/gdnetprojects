@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GDNET.NHibernateImpl.Data;
+using GDNET.NHibernate.Repositories;
 using NHibernate;
 using NHibernate.Criterion;
 using WebFrameworkDomain.Common;
@@ -7,7 +7,7 @@ using WebFrameworkDomain.Common.Repositories;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryListValue : NHRepositoryBase<ListValue, long>, IRepositoryListValue
+    public class RepositoryListValue : AbstractRepository<ListValue, long>, IRepositoryListValue
     {
         public RepositoryListValue(ISession session)
             : base(session)

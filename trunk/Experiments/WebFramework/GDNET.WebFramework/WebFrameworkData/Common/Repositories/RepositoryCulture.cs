@@ -1,11 +1,11 @@
-﻿using GDNET.NHibernateImpl.Data;
+﻿using GDNET.NHibernate.Repositories;
 using NHibernate;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryCulture : NHRepositoryBase<Culture, int>, IRepositoryCulture
+    public class RepositoryCulture : AbstractRepository<Culture, int>, IRepositoryCulture
     {
         public RepositoryCulture(ISession session)
             : base(session)

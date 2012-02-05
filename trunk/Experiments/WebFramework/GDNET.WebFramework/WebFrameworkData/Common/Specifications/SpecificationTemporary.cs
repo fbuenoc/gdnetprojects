@@ -1,14 +1,13 @@
 ﻿using GDNET.Common.DesignByContract;
 using GDNET.Common.Encryption;
 using GDNET.Common.Security.Services;
-using GDNET.NHibernateImpl.Data;
-
+using GDNET.NHibernate.Specifications;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
 
 namespace WebFrameworkData.Common.Specifications
 {
-    public class SpecificationTemporary : NHSpecificationBase<Temporary, string>
+    public class SpecificationTemporary : AbstractSpecification<Temporary, string>
     {
         private readonly IEncryptionService encryptor = new EncryptionService();
 

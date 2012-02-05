@@ -1,11 +1,10 @@
 ﻿using GDNET.Common.Data;
-using GDNET.NHibernateImpl.Data;
-
+using GDNET.NHibernate.Specifications;
 using WebFrameworkDomain.Common;
 
 namespace WebFrameworkData.Common.Specifications
 {
-    public class SpecificationContentType : NHSpecificationBase<ContentType, long>
+    public class SpecificationContentType : AbstractSpecification<ContentType, long>
     {
         public override bool OnSaving(ContentType entity)
         {
