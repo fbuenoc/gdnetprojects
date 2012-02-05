@@ -1,10 +1,10 @@
-﻿using System;
-using System.Diagnostics;
-using GDNET.NHibernateImpl.Utils;
+﻿using System.Diagnostics;
+using GDNET.Extensions;
+using GDNET.NHibernate;
 using NHibernate;
 using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.DefaultImpl;
-using WebFrameworkMapping.Common;
+using WebFrameworkMapping.Base;
 
 namespace WebFrameworkData.UnitTest
 {
@@ -63,19 +63,17 @@ namespace WebFrameworkData.UnitTest
                 return;
             }
 
+            var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(INHibernateMapping), typeof(INHibernateMapping).Assembly);
             var mapper = new ModelMapper();
-            mapper.AddMappings(new Type[] { 
-                typeof(ContentAttributeMap), typeof(ContentItemMap), typeof(ContentItemAttributeValueMap), typeof(ContentTypeMap), 
-                typeof(ApplicationMap), typeof(CultureMap), typeof(ListValueMap), typeof(TemporaryMap), typeof(TranslationMap) 
-            });
+            mapper.AddMappings(listeMappingTypes);
+
+            var nhConfigPath = "App_Data/hibernate.cfg.xml";
+            _sessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
 
             var hbmMapping = mapper.CompileMappingForAllExplicitlyAddedEntities().AsString();
             Debug.WriteLine(hbmMapping);
 
-            var nhConfigPath = "App_Data/hibernate.cfg.xml";
-
-            //SessionFactoryHelper.SetListeners(new ISaveOrUpdateEventListener[] { new WebFrameworkSaveEventListener() });
-            SessionFactoryHelper.BuildSessionFactory(nhConfigPath, mapper, out _sessionFactory);
+            _sessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
         }
 
         public static ISession GetCurrentSession()

@@ -45,6 +45,7 @@ namespace WebFrameworkData.UnitTest.Common
             var myItem = DomainRepositories.ContentItem.GetById(item.Id);
             Assert.IsNotNull(myItem);
             Assert.AreEqual(item.Id, myItem.Id);
+            Assert.AreEqual(0, myItem.Views);
             Assert.AreEqual("T1", myItem.Name.Value);
             Assert.AreEqual("Test 1", myItem.Description.Value);
             Assert.AreEqual(type.TypeName, myItem.ContentType.TypeName);

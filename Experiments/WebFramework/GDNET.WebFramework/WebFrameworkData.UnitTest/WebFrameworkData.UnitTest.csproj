@@ -62,13 +62,21 @@
     <Compile Include="TestSessionService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\GDNET.Common.Types\GDNET.Common.Types.csproj">
+      <Project>{B1D31295-36B4-41DE-B14E-3DB21CA95226}</Project>
+      <Name>GDNET.Common.Types</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\GDNET.NHibernateImpl\GDNET.NHibernateImpl.csproj">
-      <Project>{8EDA5169-77FC-484B-A34C-AE9B34ADC9EC}</Project>
-      <Name>GDNET.NHibernateImpl</Name>
+    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.NHibernate\GDNET.NHibernate.csproj">
+      <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
+      <Name>GDNET.NHibernate</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFrameworkBusiness\WebFrameworkBusiness.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
