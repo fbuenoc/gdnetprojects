@@ -1,6 +1,6 @@
 ﻿using GDNET.Common.Base;
 using GDNET.Common.DesignByContract;
-using GDNET.Common.Utils;
+using GDNET.Common.Helpers;
 using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Extensions
@@ -9,34 +9,34 @@ namespace WebFrameworkDomain.Extensions
     {
         public static void RefreshTranslation(this Application entity)
         {
-            entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
-            entity.RefreshTranslation(entity.Name, ExpressionUtil.GetPropertyName(() => entity.Name));
+            entity.RefreshTranslation(entity.Description, ExpressionAssistant.GetPropertyName(() => entity.Description));
+            entity.RefreshTranslation(entity.Name, ExpressionAssistant.GetPropertyName(() => entity.Name));
         }
 
         public static void RefreshTranslation(this ContentItem entity)
         {
-            entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
-            entity.RefreshTranslation(entity.Name, ExpressionUtil.GetPropertyName(() => entity.Name));
+            entity.RefreshTranslation(entity.Description, ExpressionAssistant.GetPropertyName(() => entity.Description));
+            entity.RefreshTranslation(entity.Name, ExpressionAssistant.GetPropertyName(() => entity.Name));
 
             foreach (var attributeValue in entity.AttributeValues)
             {
-                attributeValue.RefreshTranslation(attributeValue.Value, ExpressionUtil.GetPropertyName(() => attributeValue.Value));
+                attributeValue.RefreshTranslation(attributeValue.Value, ExpressionAssistant.GetPropertyName(() => attributeValue.Value));
             }
         }
 
         public static void RefreshTranslation(this ContentItemAttributeValue entity)
         {
-            entity.RefreshTranslation(entity.Value, ExpressionUtil.GetPropertyName(() => entity.Value));
+            entity.RefreshTranslation(entity.Value, ExpressionAssistant.GetPropertyName(() => entity.Value));
         }
 
         public static void RefreshTranslation(this ContentType entity)
         {
-            entity.RefreshTranslation(entity.Name, ExpressionUtil.GetPropertyName(() => entity.Name));
+            entity.RefreshTranslation(entity.Name, ExpressionAssistant.GetPropertyName(() => entity.Name));
         }
 
         public static void RefreshTranslation(this ListValue entity)
         {
-            entity.RefreshTranslation(entity.Description, ExpressionUtil.GetPropertyName(() => entity.Description));
+            entity.RefreshTranslation(entity.Description, ExpressionAssistant.GetPropertyName(() => entity.Description));
         }
 
         public static void RefreshTranslation(this ISignature entity, Translation translation, string propertyName)

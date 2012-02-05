@@ -36,6 +36,12 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual long Views
+        {
+            get;
+            set;
+        }
+
         public virtual ReadOnlyCollection<ContentItemAttributeValue> AttributeValues
         {
             get { return new ReadOnlyCollection<ContentItemAttributeValue>(this.attributeValues); }
@@ -52,13 +58,11 @@ namespace WebFrameworkDomain.Common
 
         public virtual void AddAttributeValue(ContentItemAttributeValue attributeValue)
         {
-            if (this.attributeValues.Contains(attributeValue))
+            if (!this.attributeValues.Contains(attributeValue))
             {
-                return;
+                attributeValue.ContentItem = this;
+                this.attributeValues.Add(attributeValue);
             }
-
-            attributeValue.ContentItem = this;
-            this.attributeValues.Add(attributeValue);
         }
 
         public virtual void RemoveAttributeValue(ContentItemAttributeValue attributeValue)
