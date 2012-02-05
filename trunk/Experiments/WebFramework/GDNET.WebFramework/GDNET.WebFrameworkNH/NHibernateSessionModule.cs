@@ -15,8 +15,6 @@ namespace WebFrameworkNHibernate
     /// </summary>
     public sealed class NHibernateSessionModule : IHttpModule
     {
-        private IInterceptorService requestInterceptor = null;
-
         #region IHttpModule Members
 
         public void Dispose()
@@ -26,8 +24,6 @@ namespace WebFrameworkNHibernate
 
         public void Init(HttpApplication context)
         {
-            this.requestInterceptor = new NHibernateSessionModuleInterceptor();
-
             context.BeginRequest += new EventHandler(OnBeginRequest);
             context.EndRequest += new EventHandler(OnEndRequest);
             context.AuthenticateRequest += new EventHandler(OnAuthenticateRequest);
@@ -44,22 +40,17 @@ namespace WebFrameworkNHibernate
         /// <param name="e"></param>
         void OnBeginRequest(object sender, EventArgs e)
         {
-            if (!this.requestInterceptor.IsPassed())
-            {
-                //return;
-            }
-
             ISession session = NHibernateHttpApplication.SessionFactory.OpenSession();
             ManagedWebSessionContext.Bind(HttpContext.Current, session);
 
             // Set data repositories
-            if (HttpContextHelper.TryGetItem<WebRepositories>("DataRepositories") == null)
+            if (HttpContextAssistant.TryGetItem<WebRepositories>("DataRepositories") == null)
             {
-                HttpContextHelper.TrySetItem("DataRepositories", new WebRepositories());
+                HttpContextAssistant.TrySetItem("DataRepositories", new WebRepositories());
             }
 
             // Set multilingual service
-            IRepositoryTranslation repositoryTranslation = HttpContextHelper.TryGetItem<WebRepositories>("DataRepositories").GetRepositoryTranslation();
+            IRepositoryTranslation repositoryTranslation = HttpContextAssistant.TryGetItem<WebRepositories>("DataRepositories").GetRepositoryTranslation();
             MultilingualServiceHelper.Initialize(new MultilingualService(repositoryTranslation));
         }
 
@@ -70,11 +61,6 @@ namespace WebFrameworkNHibernate
         /// <param name="e"></param>
         void OnEndRequest(object sender, EventArgs e)
         {
-            if (!this.requestInterceptor.IsPassed())
-            {
-                //return;
-            }
-
             ISession session = ManagedWebSessionContext.Unbind(HttpContext.Current, NHibernateHttpApplication.SessionFactory);
             if (session != null)
             {
@@ -93,15 +79,10 @@ namespace WebFrameworkNHibernate
 
         void OnAuthenticateRequest(object sender, EventArgs e)
         {
-            if (!this.requestInterceptor.IsPassed())
-            {
-                //return;
-            }
-
             // Set web session service
-            if (HttpContextHelper.TryGetItem<WebSessionService>("SessionService") == null)
+            if (HttpContextAssistant.TryGetItem<WebSessionService>("SessionService") == null)
             {
-                HttpContextHelper.TrySetItem("SessionService", new WebSessionService());
+                HttpContextAssistant.TrySetItem("SessionService", new WebSessionService());
             }
         }
 
