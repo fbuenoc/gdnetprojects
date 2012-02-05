@@ -46,7 +46,6 @@
     <Compile Include="BooleanAssistant.cs" />
     <Compile Include="DateTimeAssistant.cs" />
     <Compile Include="EnumAssistant.cs" />
-    <Compile Include="ExpressionAssistant.cs" />
     <Compile Include="HtmlAssistant.cs" />
     <Compile Include="NumberAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
