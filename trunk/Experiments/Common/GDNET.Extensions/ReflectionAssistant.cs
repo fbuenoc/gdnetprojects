@@ -17,7 +17,17 @@ namespace GDNET.Extensions
             return infos;
         }
 
-        public static IList<Type> GetTypesImplementedInterface(Type interfaceType, Assembly assembly)
+        public static IList<Type> GetTypesImplementedInterface(Type interfaceType)
+        {
+            List<Type> listOfTypes = new List<Type>();
+            if (interfaceType != null)
+            {
+                listOfTypes.AddRange(interfaceType.Assembly.GetTypes().Where(x => x.GetInterface(interfaceType.Name) != null));
+            }
+            return listOfTypes;
+        }
+
+        public static IList<Type> GetTypesImplementedInterfaceOnAssembly(Type interfaceType, Assembly assembly)
         {
             List<Type> listOfTypes = new List<Type>();
             if ((interfaceType != null) && (assembly != null))
