@@ -79,6 +79,7 @@
     <Compile Include="Base\Meta\MetaEntityBase.cs" />
     <Compile Include="Base\Meta\MetaFullControlBase.cs" />
     <Compile Include="Data\DataService.cs" />
+    <Compile Include="Data\IRepositoryAssistant.cs" />
     <Compile Include="Data\ISpecificationBase.cs" />
     <Compile Include="Domain\ISerializable.cs" />
     <Compile Include="Helpers\ExpressionAssistant.cs" />

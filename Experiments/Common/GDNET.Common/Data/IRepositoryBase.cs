@@ -12,28 +12,6 @@ namespace GDNET.Common.Data
         }
 
         /// <summary>
-        /// Begins a transaction.
-        /// </summary>
-        void BeginTransaction();
-        /// <summary>
-        /// Commits a transaction.
-        /// </summary>
-        void Commit();
-        /// <summary>
-        /// Rolls back a transaction.
-        /// </summary>
-        void Rollback();
-
-        /// <summary>
-        /// Synchronize information with data source
-        /// </summary>
-        void Synchronize();
-        /// <summary>
-        /// Clear session cache
-        /// </summary>
-        void Clear();
-
-        /// <summary>
         /// Try to load an entity, it's not query to data store if we don't access file other than its id.
         /// </summary>
         /// <param name="id"></param>
