@@ -32,7 +32,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(true, attribute.IsDeletable);
             Assert.AreEqual(true, attribute.IsEditable);
             Assert.AreEqual(true, attribute.IsViewable);
-            VerificationUtils.EmptyCreMod(attribute);
+            VerificationAssistant.EmptyCreMod(attribute);
         }
 
         #endregion
@@ -44,8 +44,8 @@ namespace WebFrameworkData.UnitTest.Common
             var attribute = ContentAttribute.Factory.Create("T1", contentType, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
 
             DomainRepositories.ContentAttribute.Save(attribute);
-            DomainRepositories.ContentAttribute.Synchronize();
-            DomainRepositories.ContentAttribute.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var myAttribute = DomainRepositories.ContentAttribute.GetById(attribute.Id);
             Assert.IsNotNull(myAttribute);
@@ -55,10 +55,10 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(ListValueConstants.ContentDataTypes_Text_SimpleTextBox, myAttribute.DataType.Name);
 
             DomainRepositories.ContentAttribute.Delete(attribute.Id);
-            DomainRepositories.ContentAttribute.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
-            DomainRepositories.ContentType.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -68,17 +68,17 @@ namespace WebFrameworkData.UnitTest.Common
             var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
 
             DomainRepositories.ContentAttribute.Save(attribute);
-            DomainRepositories.ContentAttribute.Synchronize();
-            DomainRepositories.ContentAttribute.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             DomainRepositories.ContentAttribute.Delete(attribute.Id);
-            DomainRepositories.ContentAttribute.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             var savedAttribute = DomainRepositories.ContentAttribute.GetById(attribute.Id);
             Assert.IsNull(savedAttribute);
 
             DomainRepositories.ContentType.Delete(type.Id);
-            DomainRepositories.ContentType.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-
+using WebFrameworkData.UnitTest.Utils;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
 using WebFrameworkDomain.DefaultImpl;
@@ -33,7 +33,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(true, app.IsDeletable);
             Assert.AreEqual(true, app.IsEditable);
             Assert.AreEqual(true, app.IsViewable);
-            VerificationUtils.EmptyCreMod(app);
+            VerificationAssistant.EmptyCreMod(app);
         }
 
         #endregion
@@ -47,7 +47,7 @@ namespace WebFrameworkData.UnitTest.Common
             var app = Application.Factory.Create(rootUrl, name, desc);
 
             DomainRepositories.Application.Save(app);
-            DomainRepositories.Application.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             var myApp = DomainRepositories.Application.GetById(app.Id);
             Assert.IsNotNull(myApp);
@@ -59,7 +59,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(CommonConstants.CultureCodeDefault, myApp.CultureDefault.CultureCode);
 
             DomainRepositories.Application.Delete(app.Id);
-            DomainRepositories.Application.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             var myApp2 = DomainRepositories.Application.GetById(app.Id);
             Assert.IsNull(myApp2);

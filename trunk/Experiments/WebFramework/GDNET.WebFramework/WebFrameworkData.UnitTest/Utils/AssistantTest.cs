@@ -17,7 +17,7 @@ namespace WebFrameworkData.UnitTest.Utils
             var type = ContentType.Factory.Create(name, typeName);
 
             DomainRepositories.ContentType.Save(type);
-            DomainRepositories.ContentType.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             return type;
         }
@@ -28,7 +28,7 @@ namespace WebFrameworkData.UnitTest.Utils
             var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
 
             DomainRepositories.ContentAttribute.Save(attribute);
-            DomainRepositories.ContentAttribute.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             return attribute;
         }
@@ -38,7 +38,7 @@ namespace WebFrameworkData.UnitTest.Utils
             var item = ContentItem.Factory.Create(name, description, type);
 
             DomainRepositories.ContentItem.Save(item);
-            DomainRepositories.ContentItem.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             return item;
         }
@@ -47,7 +47,7 @@ namespace WebFrameworkData.UnitTest.Utils
         {
             var lv = ListValue.Factory.Create(name, string.Empty);
             DomainRepositories.ListValue.Save(lv);
-            DomainRepositories.ListValue.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             return lv;
         }

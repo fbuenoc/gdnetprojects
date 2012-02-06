@@ -57,8 +57,9 @@
     <Compile Include="NUnitBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRepositories.cs" />
+    <Compile Include="TestSessionStrategy.cs" />
     <Compile Include="Utils\AssistantTest.cs" />
-    <Compile Include="VerificationUtils.cs" />
+    <Compile Include="Utils\VerificationAssistant.cs" />
     <Compile Include="TestSessionService.cs" />
   </ItemGroup>
   <ItemGroup>
