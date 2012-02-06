@@ -58,6 +58,7 @@
     <Compile Include="Helpers\HttpContextAssistant.cs" />
     <Compile Include="Helpers\QueryStringAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebSessionService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="GDNET.pfx" />
