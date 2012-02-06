@@ -31,7 +31,7 @@ namespace WebFramework.Areas.Framework.Controllers
         {
             string parentId;
             var model = new ListValueModel();
-            if (QueryStringHelper.GetValueAs<string>(QueryStringConstants.Key, out parentId))
+            if (QueryStringAssistant.GetValueAs<string>(QueryStringConstants.Key, out parentId))
             {
                 var parentModel = base.GetModelById(parentId);
                 model.UpdateParent(parentModel);

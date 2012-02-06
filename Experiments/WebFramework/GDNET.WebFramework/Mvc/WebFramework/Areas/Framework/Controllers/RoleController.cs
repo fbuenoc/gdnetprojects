@@ -29,7 +29,7 @@ namespace WebFramework.Areas.Framework.Controllers
         protected override RoleModel OnDetailsChecking(string id)
         {
             string roleName;
-            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName))
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Role, out roleName))
             {
                 RoleModel roleModel = new RoleModel(roleName);
                 return roleModel.GetUsersInRole();
@@ -48,7 +48,7 @@ namespace WebFramework.Areas.Framework.Controllers
         {
             // Get name of role from query string
             string roleName;
-            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName))
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Role, out roleName))
             {
                 RoleModel model = new RoleModel(roleName);
             }
@@ -64,7 +64,7 @@ namespace WebFramework.Areas.Framework.Controllers
         {
             // Get name of role from query string
             string roleName;
-            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName))
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Role, out roleName))
             {
                 RoleModel model = new RoleModel(roleName);
             }
@@ -85,7 +85,7 @@ namespace WebFramework.Areas.Framework.Controllers
         {
             // Get name of role from query string
             string roleName = string.Empty;
-            QueryStringHelper.GetValueAsString(QueryStringConstants.Role, out roleName);
+            QueryStringAssistant.GetValueAsString(QueryStringConstants.Role, out roleName);
 
             AccountRoleModel model = new AccountRoleModel();
             model.RoleName = roleName;
