@@ -43,8 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\EntityMappingBase.cs" />
-    <Compile Include="Base\EntityCreModMappingBase.cs" />
+    <Compile Include="Base\AbstractEntityMapping.cs" />
+    <Compile Include="Base\AbstractEntityCreModMapping.cs" />
+    <Compile Include="Base\INHibernateMapping.cs" />
     <Compile Include="Common\ApplicationMap.cs" />
     <Compile Include="Common\ContentItemMap.cs" />
     <Compile Include="Common\ContentTypeMap.cs" />
@@ -54,8 +55,8 @@
     <Compile Include="Common\ListValueMap.cs" />
     <Compile Include="Common\TemporaryMap.cs" />
     <Compile Include="Common\TranslationMap.cs" />
-    <Compile Include="Base\EntityFullControlMappingBase.cs" />
-    <Compile Include="Base\EntityActiveMappingBase.cs" />
+    <Compile Include="Base\AbstractEntityFullControlMapping.cs" />
+    <Compile Include="Base\AbstractEntityActiveMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +67,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
       <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
       <Name>GDNET.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkBusiness\WebFrameworkBusiness.csproj">
+      <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
+      <Name>WebFrameworkBusiness</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>

@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class TemporaryMap : EntityCreModMappingBase<Temporary, string>
+    public class TemporaryMap : EntityCreModMappingBase<Temporary, string>, INHibernateMapping
     {
         public TemporaryMap()
             : base(Generators.Assigned)

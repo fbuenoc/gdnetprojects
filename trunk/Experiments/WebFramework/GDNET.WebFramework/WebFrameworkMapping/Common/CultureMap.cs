@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class CultureMap : EntityActiveMappingBase<Culture, int>
+    public class CultureMap : EntityActiveMappingBase<Culture, int>, INHibernateMapping
     {
         public CultureMap()
             : base(Generators.Native)

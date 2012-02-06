@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class ContentItemAttributeValueMap : EntityMappingBase<ContentItemAttributeValue, long>
+    public class ContentItemAttributeValueMap : EntityMappingBase<ContentItemAttributeValue, long>, INHibernateMapping
     {
         public ContentItemAttributeValueMap()
             : base(Generators.Native)

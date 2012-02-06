@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class ApplicationMap : EntityFullControlMappingBase<Application, long>
+    public class ApplicationMap : EntityFullControlMappingBase<Application, long>, INHibernateMapping
     {
         public ApplicationMap()
             : base(Generators.Native)
