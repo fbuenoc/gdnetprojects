@@ -31,7 +31,7 @@ namespace WebFramework.Areas.Framework.Controllers
             ContentItemModel model = base.OnCreateChecking();
             // When create new Content Item, we have to look which Content Type contains this one
             string contentTypeId;
-            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out contentTypeId))
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Key, out contentTypeId))
             {
                 var contentTypeModel = ModelService.GetModelById<ContentTypeModel>(contentTypeId);
                 if (contentTypeModel != null)

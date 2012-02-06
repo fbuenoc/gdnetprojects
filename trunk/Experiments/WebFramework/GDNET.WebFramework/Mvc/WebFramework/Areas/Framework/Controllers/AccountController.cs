@@ -24,7 +24,7 @@ namespace WebFramework.Areas.Framework.Controllers
         protected override AccountModel OnDetailsChecking(string id)
         {
             string providerUserKey;
-            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey))
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Key, out providerUserKey))
             {
                 return base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
             }
@@ -40,7 +40,7 @@ namespace WebFramework.Areas.Framework.Controllers
         protected override AccountModel OnDeleteChecking(string id)
         {
             string providerUserKey;
-            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out providerUserKey))
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Key, out providerUserKey))
             {
                 return base.membershipService.GetUserByKey(new Guid(providerUserKey), false);
             }

@@ -511,7 +511,9 @@
     <Content Include="Scripts\2011.3.1115\telerik.treeview.min.js" />
     <Content Include="Scripts\2011.3.1115\telerik.upload.min.js" />
     <Content Include="Scripts\2011.3.1115\telerik.window.min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -564,11 +566,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\..\Common\GDNET.NHibernate\GDNET.NHibernate.csproj">
+      <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
+      <Name>GDNET.NHibernate</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
       <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
@@ -586,9 +593,17 @@
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
       <Name>WebFramework.Modeles</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\WebFrameworkData\WebFrameworkData.csproj">
+      <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>
+      <Name>WebFrameworkData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WebFrameworkDomain\WebFrameworkDomain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFrameworkDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\WebFrameworkMapping\WebFrameworkMapping.csproj">
+      <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
+      <Name>WebFrameworkMapping</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

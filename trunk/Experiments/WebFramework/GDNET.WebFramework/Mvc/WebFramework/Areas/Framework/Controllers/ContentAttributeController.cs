@@ -32,7 +32,7 @@ namespace WebFramework.Areas.Framework.Controllers
 
             // Get the content type from query string then passing value to attribute model
             string contentTypeId;
-            if (QueryStringHelper.GetValueAsString(QueryStringConstants.Key, out contentTypeId))
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Key, out contentTypeId))
             {
                 var contentTypeModel = ModelService.GetModelById<ContentTypeModel>(contentTypeId);
                 if (contentTypeModel != null)
