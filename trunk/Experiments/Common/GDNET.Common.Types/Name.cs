@@ -2,13 +2,13 @@
 using System.Text;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Domain;
-using GDNET.Common.Utils;
+using GDNET.Common.Helpers;
 using GDNET.Extensions;
 
 namespace GDNET.Common.Types
 {
     [Serializable]
-    public class Name : ISerializable
+    public partial class Name : ISerializable
     {
         public string FirstName
         {
@@ -50,21 +50,21 @@ namespace GDNET.Common.Types
                 }
 
                 var pValues = propertyValues.Split(':');
-                if (pValues[0] == ExpressionUtil.GetPropertyName(() => this.LastName))
+                if (pValues[0] == ExpressionAssistant.GetPropertyName(() => this.LastName))
                 {
-                    this.LastName = Base64String.Decrypt(pValues[1]);
+                    this.LastName = Base64Assistant.Decrypt(pValues[1]);
                 }
-                else if (pValues[0] == ExpressionUtil.GetPropertyName(() => this.MiddleName))
+                else if (pValues[0] == ExpressionAssistant.GetPropertyName(() => this.MiddleName))
                 {
-                    this.MiddleName = Base64String.Decrypt(pValues[1]);
+                    this.MiddleName = Base64Assistant.Decrypt(pValues[1]);
                 }
-                else if (pValues[0] == ExpressionUtil.GetPropertyName(() => this.FirstName))
+                else if (pValues[0] == ExpressionAssistant.GetPropertyName(() => this.FirstName))
                 {
-                    this.FirstName = Base64String.Decrypt(pValues[1]);
+                    this.FirstName = Base64Assistant.Decrypt(pValues[1]);
                 }
-                else if (pValues[0] == ExpressionUtil.GetPropertyName(() => this.DisplayName))
+                else if (pValues[0] == ExpressionAssistant.GetPropertyName(() => this.DisplayName))
                 {
-                    this.DisplayName = Base64String.Decrypt(pValues[1]);
+                    this.DisplayName = Base64Assistant.Decrypt(pValues[1]);
                 }
                 else
                 {
@@ -80,19 +80,19 @@ namespace GDNET.Common.Types
             StringBuilder sb = new StringBuilder();
             if (this.LastName != null)
             {
-                sb.AppendFormat("{0}:{1};", ExpressionUtil.GetPropertyName(() => this.LastName), Base64String.Encrypt(this.LastName));
+                sb.AppendFormat("{0}:{1};", ExpressionAssistant.GetPropertyName(() => this.LastName), Base64Assistant.Encrypt(this.LastName));
             }
             if (this.MiddleName != null)
             {
-                sb.AppendFormat("{0}:{1};", ExpressionUtil.GetPropertyName(() => this.MiddleName), Base64String.Encrypt(this.MiddleName));
+                sb.AppendFormat("{0}:{1};", ExpressionAssistant.GetPropertyName(() => this.MiddleName), Base64Assistant.Encrypt(this.MiddleName));
             }
             if (this.FirstName != null)
             {
-                sb.AppendFormat("{0}:{1};", ExpressionUtil.GetPropertyName(() => this.FirstName), Base64String.Encrypt(this.FirstName));
+                sb.AppendFormat("{0}:{1};", ExpressionAssistant.GetPropertyName(() => this.FirstName), Base64Assistant.Encrypt(this.FirstName));
             }
             if (this.DisplayName != null)
             {
-                sb.AppendFormat("{0}:{1};", ExpressionUtil.GetPropertyName(() => this.DisplayName), Base64String.Encrypt(this.DisplayName));
+                sb.AppendFormat("{0}:{1};", ExpressionAssistant.GetPropertyName(() => this.DisplayName), Base64Assistant.Encrypt(this.DisplayName));
             }
 
             return sb.ToString();
