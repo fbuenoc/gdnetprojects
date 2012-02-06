@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using GDNET.Common.Base;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Data;
 using GDNET.Common.DesignByContract;
-using NHibernate;
+using GDNET.NHibernate.SessionManagers;
 using NHibernate.Criterion;
 using NHibernate.Linq;
 
@@ -16,16 +15,19 @@ namespace GDNET.NHibernate.Repositories
     /// </summary>
     /// <typeparam name="TEntity"></typeparam>
     /// <typeparam name="TId"></typeparam>
-    public abstract class AbstractRepository<TEntity, TId> : IDisposable, IRepositoryBase<TEntity, TId> where TEntity : EntityBase<TId>
+    public abstract class AbstractRepository<TEntity, TId> : IRepositoryBase<TEntity, TId> where TEntity : EntityBase<TId>
     {
-        protected ISession session = null;
-        protected ITransaction transaction = null;
+        protected ISessionStrategy sessionStrategy = null;
 
-        public AbstractRepository(ISession session)
+        #region Ctors
+
+        public AbstractRepository(ISessionStrategy sessionStrategy)
         {
-            ThrowException.ArgumentNullException(session, "session", "Session must be specified a valid instance.");
-            this.session = session;
+            ThrowException.ArgumentNullException(sessionStrategy, "sessionStrategy", "Session strategy must be specified a valid instance.");
+            this.sessionStrategy = sessionStrategy;
         }
+
+        #endregion
 
         public ISpecificationBase<TEntity, TId> Specification
         {
@@ -33,100 +35,11 @@ namespace GDNET.NHibernate.Repositories
             set;
         }
 
-        #region IDisposable Members
-
-        /// <summary>
-        /// Disposes of this instance of the Repository.
-        /// </summary>
-        /// <param name="isDisposing">Flag that tells the .NET runtime if this class is disposing.</param>
-        /// <remarks>This method kills the existing NHibernate session, transaction, and interceptor.</remarks>
-        protected virtual void Dispose(bool isDisposing)
-        {
-            if (isDisposing)
-            {
-                if (this.transaction != null)
-                {
-                    this.transaction.Dispose();
-                    this.transaction = null;
-                }
-
-                if (this.session != null)
-                {
-                    this.session.Dispose();
-                    this.session = null;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Disposes of this instance of the Repository.
-        /// </summary>
-        public void Dispose()
-        {
-            this.Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
-        #endregion
-
         #region IRepositoryBase<TEntity,TId> Members
-
-        /// <summary>
-        /// Begins a NHibernate transaction.
-        /// </summary>
-        public void BeginTransaction()
-        {
-            if (this.transaction == null)
-            {
-                this.transaction = this.session.BeginTransaction();
-            }
-        }
-
-        /// <summary>
-        /// Commits an NHibernate transaction.
-        /// </summary>
-        public void Commit()
-        {
-            ThrowException.InvalidOperationExceptionIfNull(this.transaction, "You must begin transaction before calling Commit.");
-
-            this.transaction.Commit();
-            this.transaction = null;
-        }
-
-        /// <summary>
-        /// Synchronize information with data source
-        /// </summary>
-        public void Synchronize()
-        {
-            ThrowException.InvalidOperationExceptionIfNull(this.session, "Session must be valid before synchronizing.");
-
-            this.session.Flush();
-        }
-
-        /// <summary>
-        /// Clear session cache
-        /// </summary>
-        public void Clear()
-        {
-            ThrowException.InvalidOperationExceptionIfNull(this.session, "Session must be valid before clearing.");
-
-            this.session.Clear();
-        }
-
-        /// <summary>
-        /// Rolls back an NHibernate transaction.
-        /// </summary>
-        public void Rollback()
-        {
-            ThrowException.InvalidOperationExceptionIfNull(this.transaction, "You must begin transaction before calling Rollback.");
-
-            this.transaction.Rollback();
-            this.transaction = null;
-        }
 
         public TEntity LoadById(TId id)
         {
-            return this.session.Load<TEntity>(id);
+            return this.sessionStrategy.Session.Load<TEntity>(id);
         }
 
         public TEntity GetById(TId id)
@@ -137,7 +50,7 @@ namespace GDNET.NHibernate.Repositories
                 ThrowException.InvalidOperationExceptionIfFalse(this.Specification.OnGetting(id), message);
             }
 
-            TEntity result = this.session.Get<TEntity>(id);
+            TEntity result = this.sessionStrategy.Session.Get<TEntity>(id);
 
             if (this.Specification != null)
             {
@@ -167,7 +80,7 @@ namespace GDNET.NHibernate.Repositories
         /// <returns></returns>
         public IList<TEntity> GetAll(int page, int pageSize)
         {
-            var query = this.session.Query<TEntity>().Cacheable();
+            var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
             if (!(page == 0 && pageSize == 0))
             {
                 query = query.Skip(page * pageSize).Take(pageSize);
@@ -177,7 +90,7 @@ namespace GDNET.NHibernate.Repositories
 
         public IList<TEntity> GetAll(int page, int pageSize, out int totalRows)
         {
-            var query = this.session.Query<TEntity>().Cacheable();
+            var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
             totalRows = query.Count();
 
             if (!(page == 0 && pageSize == 0))
@@ -212,7 +125,7 @@ namespace GDNET.NHibernate.Repositories
         {
             ThrowException.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
 
-            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.In(property, values)).SetCacheable(true);
+            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.In(property, values)).SetCacheable(true);
             return criteria.List<TEntity>();
         }
 
@@ -229,7 +142,7 @@ namespace GDNET.NHibernate.Repositories
         {
             ThrowException.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
 
-            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
+            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
             if (!(page == 0 && pageSize == 0))
             {
                 criteria = criteria.SetFirstResult(page * pageSize).SetMaxResults(pageSize);
@@ -286,7 +199,7 @@ namespace GDNET.NHibernate.Repositories
         public IList<TEntity> FindByProperty(string property, object value, string orderByProperty, bool isAsc, int page, int pageSize)
         {
             var orderBy = new Order(orderByProperty, isAsc);
-            var criteria = this.session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
+            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
             criteria = criteria.AddOrder(orderBy);
 
             if ((page != 0) || (pageSize != 0))
@@ -313,7 +226,7 @@ namespace GDNET.NHibernate.Repositories
             {
                 DataService.SetCreationInfo((IModification)entity);
             }
-            this.session.SaveOrUpdate(entity);
+            this.sessionStrategy.Session.SaveOrUpdate(entity);
 
             if ((this.Specification != null) && !this.Specification.OnSaved(entity))
             {
@@ -356,7 +269,7 @@ namespace GDNET.NHibernate.Repositories
             {
                 DataService.SetModificationInfo((IModification)entity);
             }
-            this.session.SaveOrUpdate(entity);
+            this.sessionStrategy.Session.SaveOrUpdate(entity);
 
             if ((this.Specification != null) && !this.Specification.OnUpdated(entity))
             {
@@ -388,7 +301,7 @@ namespace GDNET.NHibernate.Repositories
 
         public virtual bool Delete(TId id)
         {
-            return this.Delete(this.session.Load<TEntity>(id));
+            return this.Delete(this.sessionStrategy.Session.Load<TEntity>(id));
         }
 
         public virtual bool Delete(TEntity entity)
@@ -400,7 +313,7 @@ namespace GDNET.NHibernate.Repositories
                 return false;
             }
 
-            this.session.Delete(entity);
+            this.sessionStrategy.Session.Delete(entity);
 
             if ((this.Specification != null) && !this.Specification.OnDeleted(entity))
             {
@@ -413,7 +326,7 @@ namespace GDNET.NHibernate.Repositories
         public int DeleteAll()
         {
             string hql = "delete " + typeof(TEntity).Name;
-            return this.session.CreateQuery(hql).ExecuteUpdate();
+            return this.sessionStrategy.Session.CreateQuery(hql).ExecuteUpdate();
         }
 
         #endregion
