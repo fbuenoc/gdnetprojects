@@ -1,7 +1,6 @@
 ﻿using System;
-
 using NUnit.Framework;
-
+using WebFrameworkData.UnitTest.Utils;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Constants;
 using WebFrameworkDomain.DefaultImpl;
@@ -35,7 +34,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             Assert.IsNull(temporary.EncryptionType);
             Assert.IsNull(temporary.Text);
-            VerificationUtils.EmptyCreMod(temporary);
+            VerificationAssistant.EmptyCreMod(temporary);
         }
 
         #endregion
@@ -46,8 +45,8 @@ namespace WebFrameworkData.UnitTest.Common
             var temporary = Temporary.Factory.Create("Test");
             DomainRepositories.Temporary.Save(temporary);
 
-            DomainRepositories.Temporary.Synchronize();
-            DomainRepositories.Temporary.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
@@ -63,8 +62,8 @@ namespace WebFrameworkData.UnitTest.Common
             var temporary = Temporary.Factory.CreateWithBase64("Test");
             DomainRepositories.Temporary.Save(temporary);
 
-            DomainRepositories.Temporary.Synchronize();
-            DomainRepositories.Temporary.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
@@ -80,8 +79,8 @@ namespace WebFrameworkData.UnitTest.Common
             var temporary = Temporary.Factory.CreateWithAES("Test");
             DomainRepositories.Temporary.Save(temporary);
 
-            DomainRepositories.Temporary.Synchronize();
-            DomainRepositories.Temporary.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 

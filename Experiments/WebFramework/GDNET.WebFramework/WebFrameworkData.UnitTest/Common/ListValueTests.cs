@@ -33,7 +33,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(true, lv.IsDeletable);
             Assert.AreEqual(true, lv.IsEditable);
             Assert.AreEqual(true, lv.IsViewable);
-            VerificationUtils.EmptyCreMod(lv);
+            VerificationAssistant.EmptyCreMod(lv);
         }
 
         [Test]
@@ -43,7 +43,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             Assert.AreEqual("TestLV", lv.Name);
             Assert.AreEqual("D1", lv.Description.Value);
-            VerificationUtils.EmptyCreMod(lv);
+            VerificationAssistant.EmptyCreMod(lv);
         }
 
         [Test]
@@ -54,7 +54,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual("TestLV", lv.Name);
             Assert.AreEqual("D1", lv.Description.Value);
             Assert.AreEqual("V1", lv.CustomValue);
-            VerificationUtils.EmptyCreMod(lv);
+            VerificationAssistant.EmptyCreMod(lv);
         }
 
         #endregion
@@ -71,7 +71,7 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanAddListValue()
         {
             var lv = AssistantTest.CreateListValue("TestLV");
-            DomainRepositories.ListValue.Clear();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedLV = DomainRepositories.ListValue.GetById(lv.Id);
 
@@ -81,7 +81,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.IsEmpty(savedLV.Description.Value);
 
             DomainRepositories.ListValue.Delete(lv.Id);
-            DomainRepositories.ListValue.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -91,8 +91,8 @@ namespace WebFrameworkData.UnitTest.Common
             var childValue = AssistantTest.CreateListValue("Child1");
 
             rootValue.AddSubValue(childValue);
-            DomainRepositories.ListValue.Synchronize();
-            DomainRepositories.ListValue.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedLV = DomainRepositories.ListValue.GetById(rootValue.Id);
 
@@ -101,7 +101,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual("Child1", savedLV.SubValues[0].Name);
 
             DomainRepositories.ListValue.Delete(rootValue.Id);
-            DomainRepositories.ListValue.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             var savedChildLV = DomainRepositories.ListValue.GetById(childValue.Id);
             Assert.IsNull(savedChildLV);
@@ -118,8 +118,8 @@ namespace WebFrameworkData.UnitTest.Common
 
             rootValue1.AddSubValue(childValue1);
             rootValue2.AddSubValue(childValue2);
-            DomainRepositories.ListValue.Synchronize();
-            DomainRepositories.ListValue.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var rootValues = DomainRepositories.ListValue.GetAllRootValues();
             rootValues = rootValues.Where(x => x.Name == rootValue1.Name || x.Name == rootValue2.Name).ToList();
@@ -130,7 +130,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             DomainRepositories.ListValue.Delete(rootValue1.Id);
             DomainRepositories.ListValue.Delete(rootValue2.Id);
-            DomainRepositories.ListValue.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -143,8 +143,8 @@ namespace WebFrameworkData.UnitTest.Common
 
             rootValue1.AddSubValue(childValue1);
             childValue1.AddSubValue(childValue2);
-            DomainRepositories.ListValue.Synchronize();
-            DomainRepositories.ListValue.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var listOfValues = DomainRepositories.ListValue.GetAllValuesByParent(rootValue1);
 
@@ -153,7 +153,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(childValue2.Name, listOfValues[1].Name);
 
             DomainRepositories.ListValue.Delete(rootValue1.Id);
-            DomainRepositories.ListValue.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -166,8 +166,8 @@ namespace WebFrameworkData.UnitTest.Common
 
             rootValue1.AddSubValue(childValue1);
             childValue1.AddSubValue(childValue2);
-            DomainRepositories.ListValue.Synchronize();
-            DomainRepositories.ListValue.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var listOfValues = DomainRepositories.ListValue.GetAllValuesByParent(rootValue1, true);
 
@@ -177,7 +177,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(childValue2.Name, listOfValues[2].Name);
 
             DomainRepositories.ListValue.Delete(rootValue1.Id);
-            DomainRepositories.ListValue.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -190,8 +190,8 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(lv.Name, subLV.Parent.Name);
 
             DomainRepositories.ListValue.Delete(lv);
-            DomainRepositories.ListValue.Synchronize();
-            DomainRepositories.ListValue.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedLV = DomainRepositories.ListValue.GetById(lv.Id);
             Assert.IsNull(savedLV);
@@ -203,8 +203,8 @@ namespace WebFrameworkData.UnitTest.Common
             var lv = AssistantTest.CreateListValue("TestLV");
 
             DomainRepositories.ListValue.Delete(lv);
-            DomainRepositories.ListValue.Synchronize();
-            DomainRepositories.ListValue.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedLV = DomainRepositories.ListValue.GetById(lv.Id);
             Assert.IsNull(savedLV);

@@ -1,6 +1,7 @@
-﻿using WebFrameworkData.Common.Repositories;
+﻿using GDNET.Common.Data;
+using GDNET.NHibernate.SessionManagers;
+using WebFrameworkData.Common.Repositories;
 using WebFrameworkData.Common.Specifications;
-
 using WebFrameworkDomain.Common.Repositories;
 using WebFrameworkDomain.DefaultImpl;
 
@@ -16,9 +17,11 @@ namespace WebFrameworkData.UnitTest
         private IRepositoryListValue repositoryListValue = null;
         private IRepositoryTemporary repositoryTemporary = null;
         private IRepositoryTranslation repositoryTranslation = null;
+        private ISessionStrategy sessionStrategy = null;
 
-        public TestRepositories()
+        public TestRepositories(ISessionStrategy sessionStrategy)
         {
+            this.sessionStrategy = sessionStrategy;
             base.Initialize(this);
         }
 
@@ -26,7 +29,7 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryApplication == null)
             {
-                repositoryApplication = new RepositoryApplication(NUnitBase.GetCurrentSession());
+                repositoryApplication = new RepositoryApplication(this.sessionStrategy);
                 repositoryApplication.Specification = new SpecificationApplication();
             }
             return repositoryApplication;
@@ -36,7 +39,7 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryContentAttribute == null)
             {
-                repositoryContentAttribute = new RepositoryContentAttribute(NUnitBase.GetCurrentSession());
+                repositoryContentAttribute = new RepositoryContentAttribute(this.sessionStrategy);
             }
             return repositoryContentAttribute;
         }
@@ -45,7 +48,7 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryContentItem == null)
             {
-                repositoryContentItem = new RepositoryContentItem(NUnitBase.GetCurrentSession());
+                repositoryContentItem = new RepositoryContentItem(this.sessionStrategy);
                 repositoryContentItem.Specification = new SpecificationContentItem();
             }
             return repositoryContentItem;
@@ -55,7 +58,7 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryContentType == null)
             {
-                repositoryContentType = new RepositoryContentType(NUnitBase.GetCurrentSession());
+                repositoryContentType = new RepositoryContentType(this.sessionStrategy);
                 repositoryContentType.Specification = new SpecificationContentType();
             }
             return repositoryContentType;
@@ -65,7 +68,7 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryCulture == null)
             {
-                repositoryCulture = new RepositoryCulture(NUnitBase.GetCurrentSession());
+                repositoryCulture = new RepositoryCulture(this.sessionStrategy);
             }
             return repositoryCulture;
         }
@@ -74,7 +77,7 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryListValue == null)
             {
-                repositoryListValue = new RepositoryListValue(NUnitBase.GetCurrentSession());
+                repositoryListValue = new RepositoryListValue(this.sessionStrategy);
                 repositoryListValue.Specification = new SpecificationListValue();
             }
             return repositoryListValue;
@@ -84,7 +87,7 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryTemporary == null)
             {
-                repositoryTemporary = new RepositoryTemporary(NUnitBase.GetCurrentSession());
+                repositoryTemporary = new RepositoryTemporary(this.sessionStrategy);
                 repositoryTemporary.Specification = new SpecificationTemporary();
             }
             return repositoryTemporary;
@@ -94,10 +97,14 @@ namespace WebFrameworkData.UnitTest
         {
             if (repositoryTranslation == null)
             {
-                repositoryTranslation = new RepositoryTranslation(NUnitBase.GetCurrentSession());
+                repositoryTranslation = new RepositoryTranslation(this.sessionStrategy);
             }
             return repositoryTranslation;
         }
 
+        public override IRepositoryAssistant GetRepositoryAssistant()
+        {
+            return (IRepositoryAssistant)this.sessionStrategy;
+        }
     }
 }

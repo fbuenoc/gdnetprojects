@@ -32,7 +32,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(true, ct.IsDeletable);
             Assert.AreEqual(true, ct.IsEditable);
             Assert.AreEqual(true, ct.IsViewable);
-            VerificationUtils.EmptyCreMod(ct);
+            VerificationAssistant.EmptyCreMod(ct);
         }
 
         #endregion
@@ -45,8 +45,8 @@ namespace WebFrameworkData.UnitTest.Common
             var contentType = AssistantTest.CreateContentType();
 
             DomainRepositories.ContentType.Save(contentType);
-            DomainRepositories.ContentType.Synchronize();
-            DomainRepositories.ContentType.Clear();
+            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedCT = DomainRepositories.ContentType.GetById(contentType.Id);
 
@@ -56,7 +56,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(typeName, savedCT.TypeName);
 
             DomainRepositories.ContentType.Delete(contentType.Id);
-            DomainRepositories.ContentType.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace WebFrameworkData.UnitTest.Common
             var contentType = AssistantTest.CreateContentType();
             var contentItem = AssistantTest.CreateContentItem("I1", "Item 1", contentType);
 
-            DomainRepositories.ContentType.Clear();
+            DomainRepositories.RepositoryAssistant.Clear();
             var savedType = DomainRepositories.ContentType.GetById(contentType.Id);
 
             Assert.IsNotNull(savedType);
@@ -74,10 +74,10 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual("Item 1", savedType.ContentItems[0].Description.Value);
 
             DomainRepositories.ContentItem.Delete(contentItem.Id);
-            DomainRepositories.ContentItem.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
-            DomainRepositories.ContentType.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -91,10 +91,10 @@ namespace WebFrameworkData.UnitTest.Common
             contentType.AddContentAttribute(attribute2);
 
             DomainRepositories.ContentType.Update(contentType);
-            DomainRepositories.ContentType.Clear();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
-            DomainRepositories.ContentType.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             Assert.IsNull(DomainRepositories.ContentType.GetById(contentType.Id));
             Assert.IsNull(DomainRepositories.ContentAttribute.GetById(attribute1.Id));
@@ -106,10 +106,10 @@ namespace WebFrameworkData.UnitTest.Common
         {
             var contentType = AssistantTest.CreateContentType();
 
-            DomainRepositories.ContentType.Clear();
+            DomainRepositories.RepositoryAssistant.Clear();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
-            DomainRepositories.ContentType.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
 
             var savedCT = DomainRepositories.ContentType.GetById(contentType.Id);
             Assert.IsNull(savedCT);

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using GDNET.Extensions;
 using GDNET.NHibernate;
+using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.DefaultImpl;
@@ -14,14 +15,19 @@ namespace WebFrameworkData.UnitTest
         private static DomainRepositories _testRepositories = null;
         private static ISession _currentSession = null;
         private static TestSessionService _sessionService = null;
+        private static ISessionStrategy _sessionStrategy = null;
 
         public void Init()
         {
             NUnitBase.BuildSessionFactory();
 
+            if (_sessionStrategy == null)
+            {
+                _sessionStrategy = new TestSessionStrategy(NUnitBase.GetCurrentSession());
+            }
             if (_testRepositories == null)
             {
-                _testRepositories = new TestRepositories();
+                _testRepositories = new TestRepositories(_sessionStrategy);
             }
             if (_sessionService == null)
             {

@@ -2,9 +2,9 @@
 using GDNET.Common.Base;
 using NUnit.Framework;
 
-namespace WebFrameworkData.UnitTest
+namespace WebFrameworkData.UnitTest.Utils
 {
-    public static class VerificationUtils
+    public static class VerificationAssistant
     {
         public static void EmptyCreMod(IModification entity)
         {
