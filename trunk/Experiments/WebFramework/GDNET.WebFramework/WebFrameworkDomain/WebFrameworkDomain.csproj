@@ -63,6 +63,7 @@
     <Compile Include="Common\DynamicInput\AttributeInfo.cs" />
     <Compile Include="Common\DynamicInput\AttributeKey.cs" />
     <Compile Include="Common\DynamicInput\AttributeValue.cs" />
+    <Compile Include="DefaultImpl\RepositoryAssistant.cs" />
     <Compile Include="Extensions\EntityExtensions.cs" />
     <Compile Include="Common\ListValue.cs" />
     <Compile Include="Common\ListValueMeta.cs" />
@@ -82,7 +83,6 @@
     <Compile Include="Common\Repositories\IRepositoryTranslation.cs" />
     <Compile Include="Common\Translation.cs" />
     <Compile Include="DefaultImpl\DomainRepositories.cs" />
-    <Compile Include="Services\IDomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

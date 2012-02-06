@@ -1,13 +1,13 @@
-﻿using WebFrameworkDomain.Common.Repositories;
-using WebFrameworkDomain.Services;
+﻿using GDNET.Common.Data;
+using WebFrameworkDomain.Common.Repositories;
 
 namespace WebFrameworkDomain.DefaultImpl
 {
-    public abstract class DomainRepositories : IDomainRepositories
+    public abstract class DomainRepositories
     {
-        private static IDomainRepositories _instance;
+        private static DomainRepositories _instance;
 
-        protected void Initialize(IDomainRepositories instance)
+        protected void Initialize(DomainRepositories instance)
         {
             _instance = instance;
         }
@@ -52,7 +52,12 @@ namespace WebFrameworkDomain.DefaultImpl
             get { return _instance.GetRepositoryTranslation(); }
         }
 
-        #region IDataRepositories Members
+        public static IRepositoryAssistant RepositoryAssistant
+        {
+            get { return _instance.GetRepositoryAssistant(); }
+        }
+
+        #region Abstract methods
 
         public abstract IRepositoryApplication GetRepositoryApplication();
         public abstract IRepositoryContentAttribute GetRepositoryContentAttribute();
@@ -62,6 +67,7 @@ namespace WebFrameworkDomain.DefaultImpl
         public abstract IRepositoryListValue GetRepositoryListValue();
         public abstract IRepositoryTemporary GetRepositoryTemporary();
         public abstract IRepositoryTranslation GetRepositoryTranslation();
+        public abstract IRepositoryAssistant GetRepositoryAssistant();
 
         #endregion
 
