@@ -1,8 +1,7 @@
-﻿using NHibernate.Mapping.ByCode;
-using NHibernate.Mapping.ByCode.Conformist;
-
-using GDNET.Common.Base.Entities;
+﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.Base.Meta;
+using NHibernate.Mapping.ByCode;
+using NHibernate.Mapping.ByCode.Conformist;
 
 namespace WebFrameworkMapping.Base
 {

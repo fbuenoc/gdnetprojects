@@ -1,17 +1,16 @@
 ﻿using NHibernate.Mapping.ByCode;
-
-using GDNET.Extensions;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class ContentItemMap : EntityFullControlMappingBase<ContentItem, long>
+    public class ContentItemMap : EntityFullControlMappingBase<ContentItem, long>, INHibernateMapping
     {
         public ContentItemMap()
             : base(Generators.Native)
         {
             base.Property(e => e.Position);
+            base.Property(e => e.Views);
 
             base.ManyToOne(e => e.ContentType, m =>
             {

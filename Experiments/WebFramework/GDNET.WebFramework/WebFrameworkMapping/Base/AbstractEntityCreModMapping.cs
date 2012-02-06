@@ -1,11 +1,9 @@
-﻿using NHibernate.Mapping.ByCode;
-using NHibernate.Mapping.ByCode.Conformist;
-
-using GDNET.Common.Base.Entities;
+﻿using GDNET.Common.Base.Entities;
+using NHibernate.Mapping.ByCode;
 
 namespace WebFrameworkMapping.Base
 {
-    public abstract class EntityCreModMappingBase<TObject, TId> : EntityActiveMappingBase<TObject, TId> where TObject : EntityActiveBase<TId>, IEntityCreMod<TId>
+    public abstract class EntityCreModMappingBase<TObject, TId> : EntityActiveMappingBase<TObject, TId> where TObject : EntityWithActiveBase<TId>, IEntityWithModification<TId>
     {
         public EntityCreModMappingBase(IGeneratorDef generator)
             : base(generator)
