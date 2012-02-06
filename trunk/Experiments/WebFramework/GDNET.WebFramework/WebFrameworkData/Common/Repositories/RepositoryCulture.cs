@@ -1,5 +1,5 @@
 ﻿using GDNET.NHibernate.Repositories;
-using NHibernate;
+using GDNET.NHibernate.SessionManagers;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
 
@@ -7,8 +7,8 @@ namespace WebFrameworkData.Common.Repositories
 {
     public class RepositoryCulture : AbstractRepository<Culture, int>, IRepositoryCulture
     {
-        public RepositoryCulture(ISession session)
-            : base(session)
+        public RepositoryCulture(ISessionStrategy sessionStrategy)
+            : base(sessionStrategy)
         {
         }
 

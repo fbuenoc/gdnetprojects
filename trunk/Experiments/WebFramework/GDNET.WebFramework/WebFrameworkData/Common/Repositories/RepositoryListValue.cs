@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using GDNET.NHibernate.Repositories;
-using NHibernate;
+using GDNET.NHibernate.SessionManagers;
 using NHibernate.Criterion;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
@@ -9,8 +9,8 @@ namespace WebFrameworkData.Common.Repositories
 {
     public class RepositoryListValue : AbstractRepository<ListValue, long>, IRepositoryListValue
     {
-        public RepositoryListValue(ISession session)
-            : base(session)
+        public RepositoryListValue(ISessionStrategy sessionStrategy)
+            : base(sessionStrategy)
         {
         }
 
@@ -22,7 +22,7 @@ namespace WebFrameworkData.Common.Repositories
 
         public IList<ListValue> GetAllRootValues()
         {
-            var criteria = base.session.CreateCriteria(typeof(ListValue)).Add(Expression.IsNull(ListValueMeta.Parent));
+            var criteria = base.sessionStrategy.Session.CreateCriteria(typeof(ListValue)).Add(Expression.IsNull(ListValueMeta.Parent));
             return criteria.List<ListValue>();
         }
 

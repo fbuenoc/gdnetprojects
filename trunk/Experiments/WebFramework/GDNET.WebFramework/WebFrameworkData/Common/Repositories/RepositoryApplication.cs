@@ -1,5 +1,5 @@
 ﻿using GDNET.NHibernate.Repositories;
-using NHibernate;
+using GDNET.NHibernate.SessionManagers;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Common.Repositories;
 
@@ -7,8 +7,8 @@ namespace WebFrameworkData.Common.Repositories
 {
     public class RepositoryApplication : AbstractRepository<Application, long>, IRepositoryApplication
     {
-        public RepositoryApplication(ISession session)
-            : base(session)
+        public RepositoryApplication(ISessionStrategy sessionStrategy)
+            : base(sessionStrategy)
         {
         }
 
