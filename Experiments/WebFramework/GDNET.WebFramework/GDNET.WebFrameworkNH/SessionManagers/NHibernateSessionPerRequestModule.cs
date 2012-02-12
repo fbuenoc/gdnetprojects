@@ -3,7 +3,6 @@ using System.Web;
 using GDNET.NHibernate.SessionManagers;
 using GDNET.Web;
 using GDNET.Web.Helpers;
-using GDNET.Web.NHibernate;
 using NHibernate;
 using NHibernate.Context;
 
@@ -38,7 +37,8 @@ namespace WebFrameworkNHibernate.SessionManagers
             // Set data repositories
             if (HttpContextAssistant.TryGetItem<WebRepositories>("DataRepositories") == null)
             {
-                HttpContextAssistant.TrySetItem("DataRepositories", new WebRepositories());
+                ISessionStrategy sessionStrategy = new WebSessionStrategy(session);
+                HttpContextAssistant.TrySetItem("DataRepositories", new WebRepositories(sessionStrategy));
             }
         }
 

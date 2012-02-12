@@ -45,9 +45,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SessionManagers\AppStaticSessionManager.cs" />
+    <Compile Include="SessionManagers\AbstractSessionManager.cs" />
     <Compile Include="SessionManagers\NHibernateSessionPerConversationModule.cs" />
     <Compile Include="SessionManagers\NHibernateSessionPerRequestModule.cs" />
-    <Compile Include="StaticSessionManager.cs" />
+    <Compile Include="SessionManagers\StaticSessionManager.cs" />
+    <Compile Include="SessionManagers\WebSessionStrategy.cs" />
     <Compile Include="WebRepositories.cs" />
   </ItemGroup>
   <ItemGroup>
