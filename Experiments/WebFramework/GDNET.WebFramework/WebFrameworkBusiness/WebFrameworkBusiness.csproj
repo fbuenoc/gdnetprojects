@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administration\Account.cs" />
+    <Compile Include="Base\IBusinessEntity.cs" />
     <Compile Include="Common\Article.cs" />
     <Compile Include="Base\BusinessEntityBase.cs" />
     <Compile Include="Base\BusinessEntityBase.Logic.cs" />

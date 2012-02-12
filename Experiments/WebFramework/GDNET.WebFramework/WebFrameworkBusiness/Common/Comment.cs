@@ -4,7 +4,7 @@ using WebFrameworkBusiness.Base;
 
 namespace WebFrameworkBusiness.Common
 {
-    public sealed partial class Comment : BusinessEntityBase
+    public sealed partial class Comment : BusinessEntityBase, IBusinessEntity
     {
         public string Title
         {
