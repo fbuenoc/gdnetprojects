@@ -1,4 +1,5 @@
-﻿using GDNET.NHibernate.SessionManagers;
+﻿using GDNET.Common.Data;
+using GDNET.NHibernate.SessionManagers;
 using WebFrameworkData.Common.Repositories;
 using WebFrameworkData.Common.Specifications;
 using WebFrameworkDomain.Common.Repositories;
@@ -8,14 +9,17 @@ namespace WebFrameworkNHibernate
 {
     public sealed class WebRepositories : DomainRepositories
     {
-        public WebRepositories()
+        private ISessionStrategy sessionStrategy;
+
+        public WebRepositories(ISessionStrategy sessionStrategy)
         {
+            this.sessionStrategy = sessionStrategy;
             base.Initialize(this);
         }
 
         public override IRepositoryApplication GetRepositoryApplication()
         {
-            IRepositoryApplication repositoryApplication = new RepositoryApplication(SessionManager.Instance.GetCurrentSession());
+            IRepositoryApplication repositoryApplication = new RepositoryApplication(this.sessionStrategy);
             repositoryApplication.Specification = new SpecificationApplication();
 
             return repositoryApplication;
@@ -23,12 +27,12 @@ namespace WebFrameworkNHibernate
 
         public override IRepositoryContentAttribute GetRepositoryContentAttribute()
         {
-            return new RepositoryContentAttribute(SessionManager.Instance.GetCurrentSession());
+            return new RepositoryContentAttribute(this.sessionStrategy);
         }
 
         public override IRepositoryContentItem GetRepositoryContentItem()
         {
-            IRepositoryContentItem repositoryContentItem = new RepositoryContentItem(SessionManager.Instance.GetCurrentSession());
+            IRepositoryContentItem repositoryContentItem = new RepositoryContentItem(this.sessionStrategy);
             repositoryContentItem.Specification = new SpecificationContentItem();
 
             return repositoryContentItem;
@@ -36,7 +40,7 @@ namespace WebFrameworkNHibernate
 
         public override IRepositoryContentType GetRepositoryContentType()
         {
-            IRepositoryContentType repositoryContentType = new RepositoryContentType(SessionManager.Instance.GetCurrentSession());
+            IRepositoryContentType repositoryContentType = new RepositoryContentType(this.sessionStrategy);
             repositoryContentType.Specification = new SpecificationContentType();
 
             return repositoryContentType;
@@ -44,24 +48,29 @@ namespace WebFrameworkNHibernate
 
         public override IRepositoryCulture GetRepositoryCulture()
         {
-            return new RepositoryCulture(SessionManager.Instance.GetCurrentSession());
+            return new RepositoryCulture(this.sessionStrategy);
         }
 
         public override IRepositoryListValue GetRepositoryListValue()
         {
-            IRepositoryListValue repositoryListValue = new RepositoryListValue(SessionManager.Instance.GetCurrentSession());
+            IRepositoryListValue repositoryListValue = new RepositoryListValue(this.sessionStrategy);
             repositoryListValue.Specification = new SpecificationListValue();
             return repositoryListValue;
         }
 
         public override IRepositoryTemporary GetRepositoryTemporary()
         {
-            return new RepositoryTemporary(SessionManager.Instance.GetCurrentSession());
+            return new RepositoryTemporary(this.sessionStrategy);
         }
 
         public override IRepositoryTranslation GetRepositoryTranslation()
         {
-            return new RepositoryTranslation(SessionManager.Instance.GetCurrentSession());
+            return new RepositoryTranslation(this.sessionStrategy);
+        }
+
+        public override IRepositoryAssistant GetRepositoryAssistant()
+        {
+            return (IRepositoryAssistant)this.sessionStrategy;
         }
     }
 }
