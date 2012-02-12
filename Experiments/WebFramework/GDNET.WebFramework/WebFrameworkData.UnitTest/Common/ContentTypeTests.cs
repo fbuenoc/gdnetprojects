@@ -85,8 +85,8 @@ namespace WebFrameworkData.UnitTest.Common
         {
             var contentType = AssistantTest.CreateContentType();
 
-            var attribute1 = ContentAttribute.Factory.Create("A1", contentType, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
-            var attribute2 = ContentAttribute.Factory.Create("A2", contentType, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
+            var attribute1 = ContentAttribute.Factory.Create("A1", contentType, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var attribute2 = ContentAttribute.Factory.Create("A2", contentType, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
             contentType.AddContentAttribute(attribute1);
             contentType.AddContentAttribute(attribute2);
 

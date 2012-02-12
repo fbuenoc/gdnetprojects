@@ -52,7 +52,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             Assert.IsNotNull(new Guid(savedTemporary.Id));
             Assert.AreEqual("Test", savedTemporary.Text);
-            Assert.AreEqual(ListValueConstants.EncryptionTypes_None, savedTemporary.EncryptionType.Name);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes.None, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.Delete(savedTemporary.Id);
         }
 
@@ -69,7 +69,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             Assert.IsNotNull(new Guid(savedTemporary.Id));
             Assert.AreEqual("Test", savedTemporary.Text);
-            Assert.AreEqual(ListValueConstants.EncryptionTypes_Base64, savedTemporary.EncryptionType.Name);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes.Base64, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.Delete(savedTemporary.Id);
         }
 
@@ -86,7 +86,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             Assert.IsNotNull(new Guid(savedTemporary.Id));
             Assert.AreEqual("Test", savedTemporary.Text);
-            Assert.AreEqual(ListValueConstants.EncryptionTypes_AES, savedTemporary.EncryptionType.Name);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes.AES, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.Delete(savedTemporary.Id);
         }
     }
