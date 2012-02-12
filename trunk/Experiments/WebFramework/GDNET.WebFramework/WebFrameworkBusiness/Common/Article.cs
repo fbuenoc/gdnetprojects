@@ -5,7 +5,7 @@ using WebFrameworkBusiness.Base;
 
 namespace WebFrameworkBusiness.Common
 {
-    public sealed partial class Article : BusinessEntityBase
+    public sealed partial class Article : BusinessEntityBase, IBusinessEntity
     {
         #region Properties
 

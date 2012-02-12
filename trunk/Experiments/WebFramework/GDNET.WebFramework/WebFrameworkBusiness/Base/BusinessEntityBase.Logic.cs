@@ -55,7 +55,7 @@ namespace WebFrameworkBusiness.Base
                     return false;
                 }
 
-                DomainRepositories.ContentType.Synchronize();
+                DomainRepositories.RepositoryAssistant.Flush();
             }
 
             return true;
@@ -208,7 +208,7 @@ namespace WebFrameworkBusiness.Base
                 return false;
             }
 
-            DomainRepositories.ContentItem.Synchronize();
+            DomainRepositories.RepositoryAssistant.Flush();
             this.UpdateEntityInfo();
 
             return true;
