@@ -25,7 +25,7 @@ namespace WebFrameworkData.UnitTest.Utils
         public static ContentAttribute CreateContentAttribute()
         {
             var type = CreateContentType();
-            var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
+            var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.Flush();

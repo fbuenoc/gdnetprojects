@@ -62,9 +62,9 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanFindByName()
         {
-            var valueItem = DomainRepositories.ListValue.FindByName(ListValueConstants.EncryptionTypes_None);
+            var valueItem = DomainRepositories.ListValue.FindByName(ListValueConstants.EncryptionTypes.None);
             Assert.IsNotNull(valueItem);
-            Assert.AreEqual(ListValueConstants.EncryptionTypes_None, valueItem.Name);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes.None, valueItem.Name);
         }
 
         [Test]

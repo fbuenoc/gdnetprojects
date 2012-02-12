@@ -41,7 +41,7 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanAddContentAttribute()
         {
             var contentType = AssistantTest.CreateContentType();
-            var attribute = ContentAttribute.Factory.Create("T1", contentType, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
+            var attribute = ContentAttribute.Factory.Create("T1", contentType, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.Flush();
@@ -52,7 +52,7 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(attribute.Id, myAttribute.Id);
             Assert.AreEqual("T1", myAttribute.Code);
             Assert.AreEqual(contentType.TypeName, myAttribute.ContentType.TypeName);
-            Assert.AreEqual(ListValueConstants.ContentDataTypes_Text_SimpleTextBox, myAttribute.DataType.Name);
+            Assert.AreEqual(ListValueConstants.ContentDataTypes.TextSimpleTextBox, myAttribute.DataType.Name);
 
             DomainRepositories.ContentAttribute.Delete(attribute.Id);
             DomainRepositories.RepositoryAssistant.Flush();
@@ -65,7 +65,7 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanDeleteContentAttribute()
         {
             var type = AssistantTest.CreateContentType();
-            var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
+            var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.Flush();
