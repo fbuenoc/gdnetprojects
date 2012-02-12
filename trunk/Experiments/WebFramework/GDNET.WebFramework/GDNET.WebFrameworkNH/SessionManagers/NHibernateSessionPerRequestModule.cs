@@ -29,22 +29,22 @@ namespace WebFrameworkNHibernate.SessionManagers
 
         private void Application_BeginRequest(object sender, EventArgs e)
         {
-            ISession session = StaticSessionManager.Instance.OpenSession();
+            ISession session = WebStaticSessionManager.Instance.OpenSession();
             session.BeginTransaction();
 
             CurrentSessionContext.Bind(session);
 
             // Set data repositories
-            if (HttpContextAssistant.TryGetItem<WebRepositories>("DataRepositories") == null)
+            if (HttpContextAssistant.TryGetItem<DataRepositories>("DataRepositories") == null)
             {
                 ISessionStrategy sessionStrategy = new WebSessionStrategy(session);
-                HttpContextAssistant.TrySetItem("DataRepositories", new WebRepositories(sessionStrategy));
+                HttpContextAssistant.TrySetItem("DataRepositories", new DataRepositories(sessionStrategy));
             }
         }
 
         private void Application_EndRequest(object sender, EventArgs e)
         {
-            ISession session = CurrentSessionContext.Unbind(StaticSessionManager.Instance.SessionFactory);
+            ISession session = CurrentSessionContext.Unbind(WebStaticSessionManager.Instance.SessionFactory);
             if (session != null)
             {
                 try

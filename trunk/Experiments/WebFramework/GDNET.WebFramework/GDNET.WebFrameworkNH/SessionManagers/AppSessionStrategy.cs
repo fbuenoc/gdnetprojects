@@ -3,9 +3,9 @@ using NHibernate;
 
 namespace WebFrameworkNHibernate.SessionManagers
 {
-    public sealed class WebSessionStrategy : AbstractSessionStrategy
+    public sealed class AppSessionStrategy : AbstractSessionStrategy
     {
-        public WebSessionStrategy(ISession session)
+        public AppSessionStrategy(ISession session)
             : base(session)
         {
         }
