@@ -6,23 +6,23 @@ using NHibernate;
 
 namespace WebFrameworkNHibernate.SessionManagers
 {
-    public sealed class StaticSessionManager : AbstractSessionManager
+    public sealed class WebStaticSessionManager : AbstractSessionManager
     {
         #region Singleton
 
         private static class NestedSessionManager
         {
-            public static readonly StaticSessionManager SessionManager = new StaticSessionManager();
+            public static readonly WebStaticSessionManager SessionManager = new WebStaticSessionManager();
         }
 
-        public static SessionManager Instance
+        public new static SessionManager Instance
         {
             get { return NestedSessionManager.SessionManager; }
         }
 
         #endregion
 
-        static StaticSessionManager()
+        static WebStaticSessionManager()
         {
             if (_sessionFactory == null)
             {

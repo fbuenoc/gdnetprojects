@@ -7,11 +7,11 @@ using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkNHibernate
 {
-    public sealed class WebRepositories : DomainRepositories
+    public class DataRepositories : DomainRepositories
     {
         private ISessionStrategy sessionStrategy;
 
-        public WebRepositories(ISessionStrategy sessionStrategy)
+        public DataRepositories(ISessionStrategy sessionStrategy)
         {
             this.sessionStrategy = sessionStrategy;
             base.Initialize(this);
