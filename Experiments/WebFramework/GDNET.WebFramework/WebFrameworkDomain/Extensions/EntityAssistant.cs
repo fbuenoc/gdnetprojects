@@ -1,12 +1,57 @@
-﻿using GDNET.Common.Base;
+﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Helpers;
 using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Extensions
 {
-    public static class EntityExtensions
+    public static class EntityAssistant
     {
+        #region IEntityWithModification
+
+        /// <summary>
+        /// If the entity is in-active, it's also can not be viewable.
+        /// </summary>
+        public static void ChangeActive(this IEntityWithModification entity, bool isActive)
+        {
+            entity.IsActive = isActive;
+            if (!isActive)
+            {
+                entity.IsViewable = false;
+            }
+        }
+
+        /// <summary>
+        /// If the entity is viewable, it's also be active.
+        /// </summary>
+        public static void ChangeViable(this IEntityWithModification entity, bool isViewable)
+        {
+            entity.IsViewable = isViewable;
+            if (isViewable)
+            {
+                entity.IsActive = true;
+            }
+        }
+
+        /// <summary>
+        /// If the entity is not editable, it's also can not be deleable.
+        /// </summary>
+        public static void ChangeEditable(this IEntityWithModification entity, bool isEditable)
+        {
+            entity.IsEditable = isEditable;
+            if (!isEditable)
+            {
+                entity.IsDeletable = false;
+            }
+        }
+
+        public static void ChangeDeletable(this IEntityWithModification entity, bool isDeletable)
+        {
+            entity.IsDeletable = isDeletable;
+        }
+
+        #endregion
+
         public static void RefreshTranslation(this Application entity)
         {
             entity.RefreshTranslation(entity.Description, ExpressionAssistant.GetPropertyName(() => entity.Description));
@@ -39,7 +84,7 @@ namespace WebFrameworkDomain.Extensions
             entity.RefreshTranslation(entity.Description, ExpressionAssistant.GetPropertyName(() => entity.Description));
         }
 
-        public static void RefreshTranslation(this ISignature entity, Translation translation, string propertyName)
+        public static void RefreshTranslation(this IEntityBase entity, Translation translation, string propertyName)
         {
             ThrowException.ArgumentNullException(entity, "entity", "Entity name can not be null.");
             ThrowException.ArgumentNullException(translation, "translation", "Translation can not be null.");

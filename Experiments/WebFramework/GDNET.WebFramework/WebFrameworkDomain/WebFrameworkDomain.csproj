@@ -40,9 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\IEntityWithLifeCycle.cs" />
     <Compile Include="Common\Application.cs" />
-    <Compile Include="Common\Constants\CommonConstants.cs" />
-    <Compile Include="Common\Constants\ListValueConstants.cs" />
+    <Compile Include="Common\StatutLifeCycle.Factory.cs" />
+    <Compile Include="Common\StatutLog.Factory.cs" />
+    <Compile Include="Common\StatutLifeCycle.cs" />
+    <Compile Include="Common\StatutLog.cs" />
+    <Compile Include="Constants\CommonConstants.cs" />
+    <Compile Include="Constants\ListValueConstants.cs" />
     <Compile Include="Common\ContentType.cs" />
     <Compile Include="Common\ContentItemAttributeValue.cs" />
     <Compile Include="Common\ContentItem.cs" />
@@ -60,36 +65,43 @@
     <Compile Include="Common\CultureMeta.cs" />
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
-    <Compile Include="Common\DynamicInput\AttributeInfo.cs" />
-    <Compile Include="Common\DynamicInput\AttributeKey.cs" />
-    <Compile Include="Common\DynamicInput\AttributeValue.cs" />
+    <Compile Include="DynamicInput\AttributeInfo.cs" />
+    <Compile Include="DynamicInput\AttributeKey.cs" />
+    <Compile Include="DynamicInput\AttributeValue.cs" />
     <Compile Include="DefaultImpl\RepositoryAssistant.cs" />
-    <Compile Include="Extensions\EntityExtensions.cs" />
+    <Compile Include="Extensions\EntityAssistant.cs" />
     <Compile Include="Common\ListValue.cs" />
     <Compile Include="Common\ListValueMeta.cs" />
     <Compile Include="Common\ListValue.Factory.cs" />
-    <Compile Include="Common\Repositories\IRepositoryApplication.cs" />
-    <Compile Include="Common\Repositories\IRepositoryContentAttribute.cs" />
-    <Compile Include="Common\Repositories\IRepositoryContentItem.cs" />
-    <Compile Include="Common\Repositories\IRepositoryContentType.cs" />
-    <Compile Include="Common\Repositories\IRepositoryCulture.cs" />
+    <Compile Include="Extensions\EntityLifeCycleAssistant.cs" />
+    <Compile Include="Repositories\Common\IRepositoryApplication.cs" />
+    <Compile Include="Repositories\Common\IRepositoryContentAttribute.cs" />
+    <Compile Include="Repositories\Common\IRepositoryContentItem.cs" />
+    <Compile Include="Repositories\Common\IRepositoryContentType.cs" />
+    <Compile Include="Repositories\Common\IRepositoryCulture.cs" />
     <Compile Include="Common\TemporaryMeta.cs" />
-    <Compile Include="Common\Repositories\IRepositoryTemporary.cs" />
+    <Compile Include="Repositories\Common\IRepositoryTemporary.cs" />
     <Compile Include="Common\Temporary.Factory.cs" />
     <Compile Include="Common\Temporary.cs" />
     <Compile Include="Common\Translation.Factory.cs" />
     <Compile Include="Common\TranslationMeta.cs" />
-    <Compile Include="Common\Repositories\IRepositoryListValue.cs" />
-    <Compile Include="Common\Repositories\IRepositoryTranslation.cs" />
+    <Compile Include="Repositories\Common\IRepositoryListValue.cs" />
+    <Compile Include="Repositories\Common\IRepositoryTranslation.cs" />
     <Compile Include="Common\Translation.cs" />
     <Compile Include="DefaultImpl\DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StatutCycle\StatutLifeCycle.cs" />
+    <Compile Include="StatutCycle\StatutLog.Factory.cs" />
+    <Compile Include="StatutCycle\StatutLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\StatutCycle\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

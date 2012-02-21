@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using GDNET.Common.Base.Entities;
+using WebFrameworkDomain.Base;
+using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class ListValue : EntityWithFullInfoBase<long>
+    public partial class ListValue : EntityWithModificationBase<long>, IEntityWithLifeCycle
     {
         private IList<ListValue> subValues = new List<ListValue>();
 
@@ -73,6 +73,27 @@ namespace WebFrameworkDomain.Common
 
         #endregion
 
-        protected ListValue() { }
+        #region IEntityLifeCycle
+
+        public virtual StatutLifeCycle LifeCycle
+        {
+            get;
+            private set;
+        }
+
+        public void ApplyDefaultSettings()
+        {
+            EntityAssistant.ChangeActive(this, true);
+            EntityAssistant.ChangeDeletable(this, true);
+            EntityAssistant.ChangeEditable(this, true);
+        }
+
+        #endregion
+
+        protected ListValue()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
     }
 }

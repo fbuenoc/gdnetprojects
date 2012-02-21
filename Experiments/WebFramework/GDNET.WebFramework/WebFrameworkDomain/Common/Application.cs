@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using GDNET.Common.Base.Entities;
+using WebFrameworkDomain.Base;
+using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class Application : EntityWithFullInfoBase<long>
+    public partial class Application : EntityWithModificationBase<long>, IEntityWithLifeCycle
     {
         private IList<ContentType> contentTypes = new List<ContentType>();
 
@@ -48,7 +49,27 @@ namespace WebFrameworkDomain.Common
 
         #endregion
 
-        protected Application() { }
+        #region IEntityLifeCycle
 
+        public virtual StatutLifeCycle LifeCycle
+        {
+            get;
+            private set;
+        }
+
+        public void ApplyDefaultSettings()
+        {
+            EntityAssistant.ChangeActive(this, false);
+            EntityAssistant.ChangeDeletable(this, true);
+            EntityAssistant.ChangeEditable(this, true);
+        }
+
+        #endregion
+
+        protected Application()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
     }
 }

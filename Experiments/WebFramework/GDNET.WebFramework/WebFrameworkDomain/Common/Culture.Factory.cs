@@ -1,6 +1,4 @@
-﻿using GDNET.Common.Base.Entities;
-
-namespace WebFrameworkDomain.Common
+﻿namespace WebFrameworkDomain.Common
 {
     public partial class Culture
     {
@@ -11,12 +9,13 @@ namespace WebFrameworkDomain.Common
 
         public class CultureFactory
         {
-            public Culture Create()
+            public Culture Create(string code)
             {
                 return new Culture
                 {
-                    IsActive = false,
+                    IsActive = true,
                     IsDefault = false,
+                    CultureCode = code
                 };
             }
         }

@@ -1,5 +1,4 @@
 ﻿using GDNET.Common.DesignByContract;
-
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
@@ -13,17 +12,6 @@ namespace WebFrameworkDomain.Common
 
         public class ContentItemFactory
         {
-            public ContentItem Create()
-            {
-                return new ContentItem
-                {
-                    IsActive = true,
-                    IsEditable = true,
-                    IsDeletable = true,
-                    IsViewable = true,
-                };
-            }
-
             public ContentItem Create(string name, string description, ContentType type)
             {
                 return this.Create(name, description, type, 0);
@@ -40,12 +28,14 @@ namespace WebFrameworkDomain.Common
                 ThrowException.ArgumentNullException(type, "type", "Type of content item can not be null.");
                 ThrowException.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be null.");
 
-                var contentItem = this.Create();
+                var contentItem = new ContentItem
+                {
+                    ContentType = type,
+                    Position = position
+                };
 
-                contentItem.ContentType = type;
                 contentItem.Name = Translation.Factory.Create(name);
                 contentItem.Description = Translation.Factory.Create(description);
-                contentItem.Position = position;
 
                 return contentItem;
             }

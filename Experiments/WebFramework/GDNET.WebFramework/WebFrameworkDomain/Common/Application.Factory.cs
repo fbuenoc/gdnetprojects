@@ -1,5 +1,5 @@
 ﻿using GDNET.Common.DesignByContract;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
@@ -13,36 +13,28 @@ namespace WebFrameworkDomain.Common
 
         public class ApplicationFactory
         {
-            public Application Create()
+            public Application Create(string name, string description, string rootUrl)
             {
-                return new Application
-                {
-                    IsActive = false,
-                    IsDeletable = true,
-                    IsEditable = true,
-                    IsViewable = true,
-                };
+                return this.Create(name, description, rootUrl, ListValueConstants.ApplicationCategories.Default);
             }
 
-            public Application Create(string rootUrl, string name, string description)
-            {
-                return this.Create(rootUrl, name, description, ListValueConstants.ApplicationCategories_Default);
-            }
-
-            public Application Create(string rootUrl, string name, string description, string categoryName)
+            public Application Create(string name, string description, string rootUrl, string categoryCode)
             {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(rootUrl, "rootUrl", "RootUrl can not be nullable.");
 
-                var application = this.Create();
+                Application application = new Application
+                {
+                    RootUrl = rootUrl,
+                };
 
-                application.RootUrl = rootUrl;
                 application.Name = Translation.Factory.Create(name);
                 application.Description = Translation.Factory.Create(description);
-                application.Category = DomainRepositories.ListValue.FindByName(categoryName);
+                application.Category = DomainRepositories.ListValue.FindByName(categoryCode);
                 application.CultureDefault = DomainRepositories.Culture.FindByCode(CommonConstants.CultureCodeDefault);
 
                 return application;
             }
+
         }
     }
 }

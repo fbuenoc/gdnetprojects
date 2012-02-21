@@ -1,5 +1,4 @@
 ﻿using System;
-using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
 
 namespace WebFrameworkDomain.Common
@@ -13,17 +12,6 @@ namespace WebFrameworkDomain.Common
 
         public sealed class ContentTypeFactory
         {
-            public ContentType Create()
-            {
-                return new ContentType
-                {
-                    IsActive = true,
-                    IsEditable = true,
-                    IsDeletable = true,
-                    IsViewable = true,
-                };
-            }
-
             public ContentType Create(string name)
             {
                 return this.Create(name, string.Empty);
@@ -39,12 +27,11 @@ namespace WebFrameworkDomain.Common
                 ThrowException.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content type can not be nullable.");
                 ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of content type can not be nullable.");
 
-                var contentType = this.Create();
-
-                contentType.Name = Translation.Factory.Create(name);
-                contentType.TypeName = typeName;
-                contentType.Code = code;
-                contentType.Application = null;
+                var contentType = new ContentType
+                {
+                    TypeName = typeName,
+                    Code = code,
+                };
 
                 return contentType;
             }

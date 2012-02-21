@@ -12,47 +12,35 @@ namespace WebFrameworkDomain.Common
 
         public class ContentAttributeFactory
         {
-            /// <summary>
-            /// Create new content attribute with all flags are on.
-            /// </summary>
-            /// <returns></returns>
-            public ContentAttribute Create()
+            public ContentAttribute Create(string code, long contentTypeId, string dataTypeName)
             {
-                return new ContentAttribute
-                {
-                    IsActive = true,
-                    IsDeletable = true,
-                    IsEditable = true,
-                    IsViewable = true,
-                };
+                return this.Create(code, contentTypeId, dataTypeName, 0);
             }
 
-            public ContentAttribute Create(string code, ContentType type, string dataTypeName)
-            {
-                return this.Create(code, type, dataTypeName, 0);
-            }
-
-            public ContentAttribute Create(string code, long contentTypeId, long dataTypeId, int position)
+            public ContentAttribute Create(string code, long contentTypeId, string dataTypeName, int position)
             {
                 var contentType = DomainRepositories.ContentType.GetById(contentTypeId);
-                var dataType = DomainRepositories.ListValue.GetById(dataTypeId);
-                return this.Create(code, contentType, dataType.Name, position);
+                var dataType = DomainRepositories.ListValue.FindByName(dataTypeName);
+                return this.Create(code, contentType, dataType, position);
             }
 
-            public ContentAttribute Create(string code, ContentType type, string dataTypeName, int position)
+            public ContentAttribute Create(string code, ContentType type, ListValue dataType, int position)
             {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be null.");
-                ThrowException.ArgumentExceptionIfNullOrEmpty(dataTypeName, "dataTypeCode", "Code of data type can not be null.");
+                ThrowException.ArgumentNullException(dataType, "dataType", "Data type can not be null.");
 
-                var attribute = this.Create();
+                var attribute = new ContentAttribute
+                {
+                    Code = code,
+                    Position = position
+                };
 
                 attribute.ContentType = type;
-                attribute.DataType = DomainRepositories.ListValue.FindByName(dataTypeName);
-                attribute.Code = code;
-                attribute.Position = position;
+                attribute.DataType = dataType;
 
                 return attribute;
             }
+
         }
     }
 }
