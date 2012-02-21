@@ -1,11 +1,11 @@
 ﻿namespace GDNET.Common.Domain
 {
-    public interface ISerializable
+    public interface IObjectValidation
     {
         /// <summary>
-        /// Serialize object to string
+        /// Self validate object
         /// </summary>
         /// <returns></returns>
-        string Serialize();
+        bool IsValid();
     }
 }

@@ -1,11 +1,33 @@
-﻿using System;
-
-namespace GDNET.Common.Base.Entities
+﻿namespace GDNET.Common.Base.Entities
 {
-    /// <summary>
-    /// Entity with creation/modificaion information
-    /// </summary>
-    public interface IEntityWithModification<TId> : IEntityWithActiveBase<TId>, IModification
+    public interface IEntityWithModification
+    {
+        bool IsActive
+        {
+            get;
+            set;
+        }
+
+        bool IsDeletable
+        {
+            get;
+            set;
+        }
+
+        bool IsEditable
+        {
+            get;
+            set;
+        }
+
+        bool IsViewable
+        {
+            get;
+            set;
+        }
+    }
+
+    public interface IEntityWithModification<TId> : IEntityBase<TId>, IEntityWithModification
     {
     }
 }
