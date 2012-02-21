@@ -5,9 +5,9 @@ using NHibernate.Mapping.ByCode.Conformist;
 
 namespace WebFrameworkMapping.Base
 {
-    public abstract class EntityMappingBase<TObject, TId> : ClassMapping<TObject> where TObject : EntityBase<TId>
+    public abstract class AbstractEntityMapping<TObject, TId> : ClassMapping<TObject> where TObject : EntityBase<TId>
     {
-        public EntityMappingBase(IGeneratorDef generator)
+        public AbstractEntityMapping(IGeneratorDef generator)
         {
             base.Lazy(true);
             base.Id<TId>(e => e.Id, m =>

@@ -4,7 +4,7 @@ using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class CultureMap : EntityActiveMappingBase<Culture, int>, INHibernateMapping
+    public class CultureMap : AbstractEntityMapping<Culture, int>, INHibernateMapping
     {
         public CultureMap()
             : base(Generators.Native)
