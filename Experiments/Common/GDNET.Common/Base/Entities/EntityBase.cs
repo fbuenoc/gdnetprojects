@@ -8,7 +8,10 @@ namespace GDNET.Common.Base.Entities
     /// <typeparam name="TId"></typeparam>
     public abstract class EntityBase<TId> : IEntityBase<TId>
     {
-        public EntityBase() { }
+        public EntityBase()
+        {
+            this.Id = default(TId);
+        }
 
         public EntityBase(IEntityBase<TId> entity)
         {

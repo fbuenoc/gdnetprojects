@@ -1,9 +1,17 @@
 ﻿namespace GDNET.Common.Base.Entities
 {
+    public interface IEntityBase
+    {
+        string Signature
+        {
+            get;
+        }
+    }
+
     /// <summary>
-    /// Entity with Id, IsActive property
+    /// Entity with Id
     /// </summary>
-    public interface IEntityBase<TId> : ISignature
+    public interface IEntityBase<TId> : IEntityBase
     {
         TId Id
         {

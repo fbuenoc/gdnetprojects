@@ -18,7 +18,7 @@ namespace GDNET.Common.Security
 
         public string Name
         {
-            get { return "WebFramework"; }
+            get { return "GDNET"; }
         }
     }
 }
