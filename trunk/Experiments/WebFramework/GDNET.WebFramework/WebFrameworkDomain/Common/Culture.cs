@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using GDNET.Common.Base.Entities;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class Culture : EntityWithActiveBase<int>
+    public partial class Culture : EntityBase<int>
     {
         private IList<Translation> translations = new List<Translation>();
 
@@ -18,6 +17,12 @@ namespace WebFrameworkDomain.Common
         }
 
         public virtual bool IsDefault
+        {
+            get;
+            set;
+        }
+
+        public virtual bool IsActive
         {
             get;
             set;

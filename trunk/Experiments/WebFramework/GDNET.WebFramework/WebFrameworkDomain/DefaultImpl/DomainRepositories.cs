@@ -1,5 +1,5 @@
 ﻿using GDNET.Common.Data;
-using WebFrameworkDomain.Common.Repositories;
+using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkDomain.DefaultImpl
 {

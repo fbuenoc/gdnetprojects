@@ -1,0 +1,32 @@
+﻿using System;
+
+namespace WebFrameworkDomain.Common
+{
+    public partial class StatutLog
+    {
+        public static StatutLogFactory Factory
+        {
+            get { return new StatutLogFactory(); }
+        }
+
+        public class StatutLogFactory
+        {
+            public StatutLog Create(string createdBy, ListValue statut)
+            {
+                return this.Create(createdBy, string.Empty, DateTime.Now, statut);
+            }
+
+            public StatutLog Create(string createdBy, string description, DateTime date, ListValue statut)
+            {
+                return new StatutLog
+                {
+                    Id = Guid.NewGuid(),
+                    CreatedAt = date,
+                    CreatedBy = createdBy,
+                    Statut = statut,
+                    Description = description,
+                };
+            }
+        }
+    }
+}

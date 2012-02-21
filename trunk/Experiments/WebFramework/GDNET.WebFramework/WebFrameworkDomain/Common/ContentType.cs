@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-
 using GDNET.Common.Base.Entities;
+using WebFrameworkDomain.Base;
 using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class ContentType : EntityWithFullInfoBase<long>
+    public partial class ContentType : EntityWithModificationBase<long>, IEntityWithLifeCycle
     {
         private IList<ContentItem> contentItems = new List<ContentItem>();
         private IList<ContentAttribute> contentAttributes = new List<ContentAttribute>();
@@ -102,7 +101,28 @@ namespace WebFrameworkDomain.Common
 
         #endregion
 
-        protected ContentType() { }
+        #region IEntityLifeCycle
+
+        public virtual StatutLifeCycle LifeCycle
+        {
+            get;
+            private set;
+        }
+
+        public void ApplyDefaultSettings()
+        {
+            EntityAssistant.ChangeActive(this, true);
+            EntityAssistant.ChangeDeletable(this, true);
+            EntityAssistant.ChangeEditable(this, true);
+        }
+
+        #endregion
+
+        protected ContentType()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
 
     }
 }

@@ -11,9 +11,10 @@ namespace WebFrameworkDomain.Common
 
         public class ContentItemAttributeValueFactory
         {
-            public ContentItemAttributeValue Create()
+            public ContentItemAttributeValue Create(ContentAttribute attribute, ContentItem item, string value)
             {
-                return new ContentItemAttributeValue { };
+                var translation = Translation.Factory.Create(value);
+                return this.Create(attribute, item, translation);
             }
 
             public ContentItemAttributeValue Create(ContentAttribute attribute, ContentItem item, Translation value)
@@ -22,7 +23,7 @@ namespace WebFrameworkDomain.Common
                 ThrowException.ArgumentNullException(item, "item", "Content item can not be nullable.");
                 ThrowException.ArgumentNullException(value, "value", "Value can not be nullable.");
 
-                var itemAttributeValue = this.Create();
+                var itemAttributeValue = new ContentItemAttributeValue { };
 
                 itemAttributeValue.ContentAttribute = attribute;
                 itemAttributeValue.ContentItem = item;
@@ -31,11 +32,6 @@ namespace WebFrameworkDomain.Common
                 return itemAttributeValue;
             }
 
-            public ContentItemAttributeValue Create(ContentAttribute attribute, ContentItem item, string value)
-            {
-                var translation = Translation.Factory.Create(value);
-                return this.Create(attribute, item, translation);
-            }
         }
     }
 }

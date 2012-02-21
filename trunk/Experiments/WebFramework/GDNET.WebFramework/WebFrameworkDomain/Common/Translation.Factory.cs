@@ -1,8 +1,7 @@
-﻿using GDNET.Common.Base.Entities;
+﻿using System;
 using GDNET.Common.DesignByContract;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
-using System;
 
 namespace WebFrameworkDomain.Common
 {
@@ -15,23 +14,6 @@ namespace WebFrameworkDomain.Common
 
         public class TranslationFactory
         {
-            /// <summary>
-            /// Create a translation with default values
-            /// </summary>
-            public Translation Create()
-            {
-                var result = new Translation
-                {
-                    IsActive = true,
-                    IsDeletable = true,
-                    IsEditable = true,
-                    IsGeneric = false,
-                    IsViewable = true,
-                };
-
-                return result;
-            }
-
             /// <summary>
             /// Create a translation with default culture code
             /// </summary>
@@ -63,21 +45,14 @@ namespace WebFrameworkDomain.Common
             /// </summary>
             public Translation Create(string code, string value, Culture culture)
             {
-                return this.Create(code, value, culture, false);
-            }
-
-            /// <summary>
-            /// Create a translation with a Culture
-            /// </summary>
-            public Translation Create(string code, string value, Culture culture, bool isGeneric)
-            {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of translation can not be nullable.");
 
-                var translation = this.Create();
-                translation.Code = code;
-                translation.Value = value;
-                translation.Culture = culture;
-                translation.IsGeneric = isGeneric;
+                var translation = new Translation
+                {
+                    Code = code,
+                    Value = value,
+                    Culture = culture
+                };
 
                 return translation;
             }

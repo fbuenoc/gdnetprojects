@@ -2,10 +2,12 @@
 using System.Collections.ObjectModel;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
+using WebFrameworkDomain.Base;
+using WebFrameworkDomain.Extensions;
 
 namespace WebFrameworkDomain.Common
 {
-    public partial class ContentItem : EntityWithFullInfoBase<long>
+    public partial class ContentItem : EntityWithModificationBase<long>, IEntityWithLifeCycle
     {
         private IList<ContentItemAttributeValue> attributeValues = new List<ContentItemAttributeValue>();
         private IList<ContentItem> relationItems = new List<ContentItem>();
@@ -58,7 +60,7 @@ namespace WebFrameworkDomain.Common
 
         public virtual void AddAttributeValue(ContentItemAttributeValue attributeValue)
         {
-            if (!this.attributeValues.Contains(attributeValue))
+            if (this.attributeValues.Contains(attributeValue))
             {
                 attributeValue.ContentItem = this;
                 this.attributeValues.Add(attributeValue);
@@ -106,7 +108,28 @@ namespace WebFrameworkDomain.Common
 
         #endregion
 
-        protected ContentItem() { }
+        #region IEntityLifeCycle
+
+        public virtual StatutLifeCycle LifeCycle
+        {
+            get;
+            private set;
+        }
+
+        public void ApplyDefaultSettings()
+        {
+            EntityAssistant.ChangeActive(this, true);
+            EntityAssistant.ChangeDeletable(this, true);
+            EntityAssistant.ChangeEditable(this, true);
+        }
+
+        #endregion
+
+        protected ContentItem()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
 
     }
 }
