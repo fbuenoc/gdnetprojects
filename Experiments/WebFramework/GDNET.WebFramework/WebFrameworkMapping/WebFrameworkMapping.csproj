@@ -44,7 +44,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\AbstractEntityMapping.cs" />
-    <Compile Include="Base\AbstractEntityCreModMapping.cs" />
     <Compile Include="Base\INHibernateMapping.cs" />
     <Compile Include="Common\ApplicationMap.cs" />
     <Compile Include="Common\ContentItemMap.cs" />
@@ -55,8 +54,7 @@
     <Compile Include="Common\ListValueMap.cs" />
     <Compile Include="Common\TemporaryMap.cs" />
     <Compile Include="Common\TranslationMap.cs" />
-    <Compile Include="Base\AbstractEntityFullControlMapping.cs" />
-    <Compile Include="Base\AbstractEntityActiveMapping.cs" />
+    <Compile Include="Base\AbstractEntityMappingWithModification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

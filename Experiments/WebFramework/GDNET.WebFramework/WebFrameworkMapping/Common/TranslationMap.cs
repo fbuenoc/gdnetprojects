@@ -4,7 +4,7 @@ using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class TranslationMap : EntityFullControlMappingBase<Translation, long>, INHibernateMapping
+    public class TranslationMap : AbstractEntityMappingWithModification<Translation, long>, INHibernateMapping
     {
         public TranslationMap()
             : base(Generators.Native)
@@ -14,7 +14,6 @@ namespace WebFrameworkMapping.Common
             {
                 m.Lazy(true);
             });
-            base.Property(e => e.IsGeneric);
 
             base.ManyToOne(e => e.Category, m =>
             {

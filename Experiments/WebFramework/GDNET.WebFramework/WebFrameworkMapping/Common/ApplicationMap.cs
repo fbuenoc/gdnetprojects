@@ -4,11 +4,13 @@ using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class ApplicationMap : EntityFullControlMappingBase<Application, long>, INHibernateMapping
+    public class ApplicationMap : AbstractEntityMappingWithModification<Application, long>, INHibernateMapping
     {
         public ApplicationMap()
             : base(Generators.Native)
         {
+            base.Property(e => e.RootUrl);
+
             base.ManyToOne(e => e.Name, m =>
             {
                 m.Lazy(LazyRelation.NoLazy);
@@ -35,8 +37,6 @@ namespace WebFrameworkMapping.Common
                 m.Cascade(Cascade.None);
                 m.Column(ApplicationMeta.CultureDefaultId);
             });
-
-            base.Property(e => e.RootUrl);
         }
     }
 }

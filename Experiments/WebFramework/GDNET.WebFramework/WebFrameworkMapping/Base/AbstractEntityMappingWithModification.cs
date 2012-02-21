@@ -3,11 +3,13 @@ using NHibernate.Mapping.ByCode;
 
 namespace WebFrameworkMapping.Base
 {
-    public abstract class EntityFullControlMappingBase<TObject, TId> : EntityCreModMappingBase<TObject, TId> where TObject : EntityWithFullInfoBase<TId>
+    public abstract class AbstractEntityMappingWithModification<TObject, TId> : AbstractEntityMapping<TObject, TId>
+        where TObject : EntityWithModificationBase<TId>
     {
-        public EntityFullControlMappingBase(IGeneratorDef generator)
+        public AbstractEntityMappingWithModification(IGeneratorDef generator)
             : base(generator)
         {
+            base.Property(e => e.IsActive);
             base.Property(e => e.IsDeletable);
             base.Property(e => e.IsEditable);
             base.Property(e => e.IsViewable);

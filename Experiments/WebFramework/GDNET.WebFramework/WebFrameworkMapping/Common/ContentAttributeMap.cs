@@ -4,7 +4,7 @@ using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class ContentAttributeMap : EntityFullControlMappingBase<ContentAttribute, long>, INHibernateMapping
+    public class ContentAttributeMap : AbstractEntityMappingWithModification<ContentAttribute, long>, INHibernateMapping
     {
         public ContentAttributeMap()
             : base(Generators.Native)

@@ -4,7 +4,7 @@ using WebFrameworkMapping.Base;
 
 namespace WebFrameworkMapping.Common
 {
-    public class ListValueMap : EntityFullControlMappingBase<ListValue, long>, INHibernateMapping
+    public class ListValueMap : AbstractEntityMappingWithModification<ListValue, long>, INHibernateMapping
     {
         public ListValueMap()
             : base(Generators.Native)
