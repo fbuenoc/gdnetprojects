@@ -20,22 +20,6 @@ namespace WebFrameworkData.UnitTest.Common
             base.Clean();
         }
 
-        #region Factory Tests
-
-        [Test]
-        public void FactoryCreateTest()
-        {
-            var item = ContentItem.Factory.Create();
-
-            Assert.AreEqual(true, item.IsActive);
-            Assert.AreEqual(true, item.IsDeletable);
-            Assert.AreEqual(true, item.IsEditable);
-            Assert.AreEqual(true, item.IsViewable);
-            VerificationAssistant.EmptyCreMod(item);
-        }
-
-        #endregion
-
         [Test]
         public void CanAddContentItem()
         {
@@ -194,7 +178,6 @@ namespace WebFrameworkData.UnitTest.Common
             contentItem.AddRelationItem(relationItem2);
 
             DomainRepositories.RepositoryAssistant.Flush();
-            //DomainRepositories.ContentItem.Clear();
 
             var savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNotNull(savedItem);

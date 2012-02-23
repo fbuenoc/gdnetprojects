@@ -1,9 +1,8 @@
 ﻿using NUnit.Framework;
-using WebFrameworkData.UnitTest.Utils;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
-
+using System;
 
 namespace WebFrameworkData.UnitTest.Common
 {
@@ -27,13 +26,12 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void FactoryCreateTest()
         {
-            var app = Application.Factory.Create("http://google.com", "Google", "The Google site");
+            var app = Application.Factory.Create("Google", "The Google site", "http://google.com");
 
             Assert.AreEqual(false, app.IsActive);
             Assert.AreEqual(true, app.IsDeletable);
             Assert.AreEqual(true, app.IsEditable);
-            Assert.AreEqual(true, app.IsViewable);
-            VerificationAssistant.EmptyCreMod(app);
+            Assert.AreEqual(false, app.IsViewable);
         }
 
         #endregion
@@ -41,10 +39,10 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddApplication()
         {
-            var rootUrl = "http://yahoo.com";
+            var rootUrl = "http://" + Guid.NewGuid().ToString() + ".com";
             var name = "Yahoo";
             var desc = "The Yahoo";
-            var app = Application.Factory.Create(rootUrl, name, desc);
+            var app = Application.Factory.Create(name, desc, rootUrl);
 
             DomainRepositories.Application.Save(app);
             DomainRepositories.RepositoryAssistant.Flush();

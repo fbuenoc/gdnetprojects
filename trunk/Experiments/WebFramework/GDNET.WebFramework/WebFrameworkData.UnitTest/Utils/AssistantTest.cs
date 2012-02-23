@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+﻿using WebFrameworkDomain.Common;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkData.UnitTest.Utils
@@ -25,7 +21,8 @@ namespace WebFrameworkData.UnitTest.Utils
         public static ContentAttribute CreateContentAttribute()
         {
             var type = CreateContentType();
-            var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var attribute = ContentAttribute.Factory.Create("T1", type, listValue, 1);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.Flush();

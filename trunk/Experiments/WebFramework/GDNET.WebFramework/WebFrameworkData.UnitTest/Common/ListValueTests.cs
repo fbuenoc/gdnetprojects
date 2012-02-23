@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using WebFrameworkData.UnitTest.Utils;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkData.UnitTest.Common
@@ -25,25 +25,12 @@ namespace WebFrameworkData.UnitTest.Common
         #region Factory Tests
 
         [Test]
-        public void FactoryCreateTest()
-        {
-            var lv = ListValue.Factory.Create();
-
-            Assert.AreEqual(true, lv.IsActive);
-            Assert.AreEqual(true, lv.IsDeletable);
-            Assert.AreEqual(true, lv.IsEditable);
-            Assert.AreEqual(true, lv.IsViewable);
-            VerificationAssistant.EmptyCreMod(lv);
-        }
-
-        [Test]
         public void FactoryCreateTest_With2Params()
         {
             var lv = ListValue.Factory.Create("TestLV", "D1");
 
             Assert.AreEqual("TestLV", lv.Name);
             Assert.AreEqual("D1", lv.Description.Value);
-            VerificationAssistant.EmptyCreMod(lv);
         }
 
         [Test]
@@ -54,7 +41,6 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual("TestLV", lv.Name);
             Assert.AreEqual("D1", lv.Description.Value);
             Assert.AreEqual("V1", lv.CustomValue);
-            VerificationAssistant.EmptyCreMod(lv);
         }
 
         #endregion

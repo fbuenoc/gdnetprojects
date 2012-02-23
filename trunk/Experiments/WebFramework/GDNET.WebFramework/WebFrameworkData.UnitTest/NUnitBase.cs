@@ -78,8 +78,6 @@ namespace WebFrameworkData.UnitTest
 
             var hbmMapping = mapper.CompileMappingForAllExplicitlyAddedEntities().AsString();
             Debug.WriteLine(hbmMapping);
-
-            _sessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
         }
 
         public static ISession GetCurrentSession()
@@ -88,6 +86,7 @@ namespace WebFrameworkData.UnitTest
             {
                 _currentSession = _sessionFactory.OpenSession();
             }
+
             return _currentSession;
         }
     }

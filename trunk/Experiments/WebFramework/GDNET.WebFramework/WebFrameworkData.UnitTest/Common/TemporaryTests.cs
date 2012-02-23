@@ -1,8 +1,6 @@
-﻿using System;
-using NUnit.Framework;
-using WebFrameworkData.UnitTest.Utils;
+﻿using NUnit.Framework;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkData.UnitTest.Common
@@ -27,14 +25,11 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void FactoryCreateTest()
         {
-            var temporary = Temporary.Factory.Create();
+            var temporary = Temporary.Factory.Create("T1");
 
-            Assert.AreEqual(true, temporary.IsActive);
-            Assert.IsNotNull(new Guid(temporary.Id));
-
+            Assert.IsNotNull(temporary.Id.ToString());
             Assert.IsNull(temporary.EncryptionType);
             Assert.IsNull(temporary.Text);
-            VerificationAssistant.EmptyCreMod(temporary);
         }
 
         #endregion
@@ -50,7 +45,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
-            Assert.IsNotNull(new Guid(savedTemporary.Id));
+            Assert.IsNotNull(savedTemporary.Id.ToString());
             Assert.AreEqual("Test", savedTemporary.Text);
             Assert.AreEqual(ListValueConstants.EncryptionTypes.None, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.Delete(savedTemporary.Id);
@@ -67,7 +62,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
-            Assert.IsNotNull(new Guid(savedTemporary.Id));
+            Assert.IsNotNull(savedTemporary.Id.ToString());
             Assert.AreEqual("Test", savedTemporary.Text);
             Assert.AreEqual(ListValueConstants.EncryptionTypes.Base64, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.Delete(savedTemporary.Id);
@@ -84,7 +79,7 @@ namespace WebFrameworkData.UnitTest.Common
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
-            Assert.IsNotNull(new Guid(savedTemporary.Id));
+            Assert.IsNotNull(savedTemporary.Id.ToString());
             Assert.AreEqual("Test", savedTemporary.Text);
             Assert.AreEqual(ListValueConstants.EncryptionTypes.AES, savedTemporary.EncryptionType.Name);
             DomainRepositories.Temporary.Delete(savedTemporary.Id);
