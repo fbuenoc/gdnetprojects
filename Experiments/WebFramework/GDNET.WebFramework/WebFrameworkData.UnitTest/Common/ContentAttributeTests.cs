@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using WebFrameworkData.UnitTest.Utils;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkData.UnitTest.Common
@@ -21,27 +21,12 @@ namespace WebFrameworkData.UnitTest.Common
             base.Clean();
         }
 
-        #region Factory Tests
-
-        [Test]
-        public void FactoryCreateTest()
-        {
-            var attribute = ContentAttribute.Factory.Create();
-
-            Assert.AreEqual(true, attribute.IsActive);
-            Assert.AreEqual(true, attribute.IsDeletable);
-            Assert.AreEqual(true, attribute.IsEditable);
-            Assert.AreEqual(true, attribute.IsViewable);
-            VerificationAssistant.EmptyCreMod(attribute);
-        }
-
-        #endregion
-
         [Test]
         public void CanAddContentAttribute()
         {
             var contentType = AssistantTest.CreateContentType();
-            var attribute = ContentAttribute.Factory.Create("T1", contentType, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var attribute = ContentAttribute.Factory.Create("T1", contentType, listValue, 0);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.Flush();
@@ -65,7 +50,8 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanDeleteContentAttribute()
         {
             var type = AssistantTest.CreateContentType();
-            var attribute = ContentAttribute.Factory.Create("T1", type, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var attribute = ContentAttribute.Factory.Create("T1", type, listValue, 0);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.Flush();

@@ -52,6 +52,7 @@
     <Compile Include="Common\ContentItemTests.cs" />
     <Compile Include="Common\ContentAttributeTests.cs" />
     <Compile Include="Common\ApplicationTests.cs" />
+    <Compile Include="Common\TranslationTests.cs" />
     <Compile Include="Common\ListValueTests.cs" />
     <Compile Include="Common\TemporaryTests.cs" />
     <Compile Include="NUnitBase.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="TestRepositories.cs" />
     <Compile Include="TestSessionStrategy.cs" />
     <Compile Include="Utils\AssistantTest.cs" />
-    <Compile Include="Utils\VerificationAssistant.cs" />
     <Compile Include="TestSessionService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using WebFrameworkData.UnitTest.Utils;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkData.UnitTest.Common
@@ -20,22 +20,6 @@ namespace WebFrameworkData.UnitTest.Common
         {
             base.Clean();
         }
-
-        #region Factory Tests
-
-        [Test]
-        public void FactoryCreateTest()
-        {
-            var ct = ContentType.Factory.Create();
-
-            Assert.AreEqual(true, ct.IsActive);
-            Assert.AreEqual(true, ct.IsDeletable);
-            Assert.AreEqual(true, ct.IsEditable);
-            Assert.AreEqual(true, ct.IsViewable);
-            VerificationAssistant.EmptyCreMod(ct);
-        }
-
-        #endregion
 
         [Test]
         public void CanAddContentType()
@@ -84,9 +68,9 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanAddContentTypeWithContentAttributes()
         {
             var contentType = AssistantTest.CreateContentType();
-
-            var attribute1 = ContentAttribute.Factory.Create("A1", contentType, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
-            var attribute2 = ContentAttribute.Factory.Create("A2", contentType, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+            var attribute1 = ContentAttribute.Factory.Create("A1", contentType, listValue, 0);
+            var attribute2 = ContentAttribute.Factory.Create("A2", contentType, listValue, 1);
             contentType.AddContentAttribute(attribute1);
             contentType.AddContentAttribute(attribute2);
 

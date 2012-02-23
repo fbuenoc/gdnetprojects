@@ -2,8 +2,8 @@
 using GDNET.NHibernate.SessionManagers;
 using WebFrameworkData.Common.Repositories;
 using WebFrameworkData.Common.Specifications;
-using WebFrameworkDomain.Common.Repositories;
 using WebFrameworkDomain.DefaultImpl;
+using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.UnitTest
 {
