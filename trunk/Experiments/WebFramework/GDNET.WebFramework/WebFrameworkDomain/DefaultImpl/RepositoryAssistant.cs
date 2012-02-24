@@ -9,5 +9,6 @@ namespace WebFrameworkDomain.DefaultImpl
         public abstract void Rollback();
         public abstract void Flush();
         public abstract void Clear();
+        public abstract void FlushAndClear();
     }
 }

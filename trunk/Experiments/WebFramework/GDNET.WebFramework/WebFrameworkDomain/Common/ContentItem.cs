@@ -60,7 +60,7 @@ namespace WebFrameworkDomain.Common
 
         public virtual void AddAttributeValue(ContentItemAttributeValue attributeValue)
         {
-            if (this.attributeValues.Contains(attributeValue))
+            if (!this.attributeValues.Contains(attributeValue))
             {
                 attributeValue.ContentItem = this;
                 this.attributeValues.Add(attributeValue);

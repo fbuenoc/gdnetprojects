@@ -42,8 +42,6 @@
   <ItemGroup>
     <Compile Include="Base\IEntityWithLifeCycle.cs" />
     <Compile Include="Common\Application.cs" />
-    <Compile Include="Common\StatutLifeCycleMeta.cs" />
-    <Compile Include="Common\StatutLogMeta.cs" />
     <Compile Include="Common\StatutLifeCycle.Factory.cs" />
     <Compile Include="Common\StatutLog.Factory.cs" />
     <Compile Include="Common\StatutLifeCycle.cs" />
@@ -59,12 +57,6 @@
     <Compile Include="Common\ContentItem.Factory.cs" />
     <Compile Include="Common\ContentItemAttributeValue.Factory.cs" />
     <Compile Include="Common\ContentType.Factory.cs" />
-    <Compile Include="Common\ApplicationMeta.cs" />
-    <Compile Include="Common\ContentItemMeta.cs" />
-    <Compile Include="Common\ContentTypeMeta.cs" />
-    <Compile Include="Common\ContentAttributeMeta.cs" />
-    <Compile Include="Common\ContentItemAttributeValueMeta.cs" />
-    <Compile Include="Common\CultureMeta.cs" />
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
     <Compile Include="DynamicInput\AttributeInfo.cs" />
@@ -73,7 +65,6 @@
     <Compile Include="DefaultImpl\RepositoryAssistant.cs" />
     <Compile Include="Extensions\EntityAssistant.cs" />
     <Compile Include="Common\ListValue.cs" />
-    <Compile Include="Common\ListValueMeta.cs" />
     <Compile Include="Common\ListValue.Factory.cs" />
     <Compile Include="Extensions\EntityLifeCycleAssistant.cs" />
     <Compile Include="Repositories\Common\IRepositoryApplication.cs" />
@@ -81,12 +72,10 @@
     <Compile Include="Repositories\Common\IRepositoryContentItem.cs" />
     <Compile Include="Repositories\Common\IRepositoryContentType.cs" />
     <Compile Include="Repositories\Common\IRepositoryCulture.cs" />
-    <Compile Include="Common\TemporaryMeta.cs" />
     <Compile Include="Repositories\Common\IRepositoryTemporary.cs" />
     <Compile Include="Common\Temporary.Factory.cs" />
     <Compile Include="Common\Temporary.cs" />
     <Compile Include="Common\Translation.Factory.cs" />
-    <Compile Include="Common\TranslationMeta.cs" />
     <Compile Include="Repositories\Common\IRepositoryListValue.cs" />
     <Compile Include="Repositories\Common\IRepositoryTranslation.cs" />
     <Compile Include="Common\Translation.cs" />
