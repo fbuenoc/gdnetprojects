@@ -1,6 +1,7 @@
 ﻿using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 using WebFrameworkDomain.Common;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
@@ -16,7 +17,7 @@ namespace WebFrameworkData.Common.Repositories
 
         public Application GetByRootUrl(string rootUrl)
         {
-            var results = base.FindByProperty(ApplicationMeta.RootUrl, rootUrl, 0, 1);
+            var results = base.FindByProperty(CommonConstants.ApplicationMeta.RootUrl, rootUrl, 0, 1);
             return (results != null && results.Count > 0) ? results[0] : null;
         }
 

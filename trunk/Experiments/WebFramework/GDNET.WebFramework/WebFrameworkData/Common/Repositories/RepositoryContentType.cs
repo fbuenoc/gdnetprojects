@@ -1,6 +1,7 @@
 ﻿using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 using WebFrameworkDomain.Common;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
@@ -14,7 +15,7 @@ namespace WebFrameworkData.Common.Repositories
 
         public ContentType FindByTypeName(string typeName)
         {
-            var results = this.FindByProperty(ContentTypeMeta.TypeName, typeName);
+            var results = this.FindByProperty(CommonConstants.ContentTypeMeta.TypeName, typeName);
             return (results.Count == 0) ? null : results[0];
         }
     }

@@ -3,6 +3,7 @@ using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate.Criterion;
 using WebFrameworkDomain.Common;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
@@ -16,13 +17,13 @@ namespace WebFrameworkData.Common.Repositories
 
         public ListValue FindByName(string name)
         {
-            var results = this.FindByProperty(ListValueMeta.Name, name);
+            var results = this.FindByProperty(CommonConstants.ListValueMeta.Name, name);
             return (results.Count == 0) ? null : results[0];
         }
 
         public IList<ListValue> GetAllRootValues()
         {
-            var criteria = base.sessionStrategy.Session.CreateCriteria(typeof(ListValue)).Add(Expression.IsNull(ListValueMeta.Parent));
+            var criteria = base.sessionStrategy.Session.CreateCriteria(typeof(ListValue)).Add(Expression.IsNull(CommonConstants.ListValueMeta.Parent));
             return criteria.List<ListValue>();
         }
 
