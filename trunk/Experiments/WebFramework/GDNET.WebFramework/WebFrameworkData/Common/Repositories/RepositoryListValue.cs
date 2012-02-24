@@ -3,7 +3,7 @@ using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate.Criterion;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Repositories;
+using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
 {
