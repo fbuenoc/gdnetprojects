@@ -2,6 +2,7 @@
 using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
+using WebFrameworkMapping.Constants;
 
 namespace WebFrameworkMapping.Common
 {
@@ -11,11 +12,17 @@ namespace WebFrameworkMapping.Common
             : base(Generators.Assigned)
         {
             base.Property(e => e.Text);
+
+            base.ManyToOne(e => e.LifeCycle, m =>
+            {
+                m.Column(MappingConstants.StatutLifeCycleId);
+                m.Cascade(Cascade.All);
+            });
             base.ManyToOne(e => e.EncryptionType, m =>
             {
                 m.Cascade(Cascade.None);
                 m.Lazy(LazyRelation.Proxy);
-                m.Column(TemporaryMeta.EncryptionTypeId);
+                m.Column(MappingConstants.Temporary.EncryptionTypeId);
             });
         }
     }

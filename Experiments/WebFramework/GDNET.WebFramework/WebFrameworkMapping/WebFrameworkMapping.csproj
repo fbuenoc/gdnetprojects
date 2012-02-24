@@ -50,11 +50,14 @@
     <Compile Include="Common\ContentTypeMap.cs" />
     <Compile Include="Common\ContentAttributeMap.cs" />
     <Compile Include="Common\ContentItemAttributeValueMap.cs" />
+    <Compile Include="Common\StatutLifeCycleMap.cs" />
+    <Compile Include="Common\StatutLogMap.cs" />
     <Compile Include="Common\CultureMap.cs" />
     <Compile Include="Common\ListValueMap.cs" />
     <Compile Include="Common\TemporaryMap.cs" />
     <Compile Include="Common\TranslationMap.cs" />
     <Compile Include="Base\AbstractEntityMappingWithModification.cs" />
+    <Compile Include="Constants\MappingConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

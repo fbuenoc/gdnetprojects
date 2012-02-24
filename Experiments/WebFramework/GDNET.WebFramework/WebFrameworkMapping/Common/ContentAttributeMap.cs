@@ -1,6 +1,7 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
+using WebFrameworkMapping.Constants;
 
 namespace WebFrameworkMapping.Common
 {
@@ -12,16 +13,22 @@ namespace WebFrameworkMapping.Common
             base.Property(e => e.Code);
             base.Property(e => e.Position);
 
+            base.ManyToOne(e => e.LifeCycle, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.StatutLifeCycleId);
+                m.Cascade(Cascade.All);
+            });
             base.ManyToOne(e => e.ContentType, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentAttributeMeta.ContentTypeId);
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.ContentTypeId);
                 m.Cascade(Cascade.None);
             });
             base.ManyToOne(e => e.DataType, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentAttributeMeta.DataTypeId);
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.ContentAttribute.DataTypeId);
                 m.Cascade(Cascade.None);
             });
 
@@ -29,8 +36,8 @@ namespace WebFrameworkMapping.Common
             {
                 cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Table(ContentItemAttributeValueMeta.ContentItemAttributeValue);
-                cm.Key(k => k.Column(ContentItemAttributeValueMeta.ContentAttributeId));
+                cm.Table(MappingConstants.ContentItemAttributeValue.ContentItemAttributeValueTable);
+                cm.Key(k => k.Column(MappingConstants.ContentItemAttributeValue.ContentAttributeId));
                 cm.Cascade(Cascade.None);
                 cm.Inverse(true);
             }, m =>
@@ -40,10 +47,8 @@ namespace WebFrameworkMapping.Common
 
             base.Bag(e => e.AttributeValues, cm =>
             {
-                cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Table(ContentItemAttributeValueMeta.ContentItemAttributeValue);
-                cm.Key(k => k.Column(ContentItemAttributeValueMeta.ContentAttributeId));
+                cm.Key(k => k.Column(MappingConstants.ContentItemAttributeValue.ContentAttributeId));
                 cm.Cascade(Cascade.None);
                 cm.Inverse(true);
             }, m =>

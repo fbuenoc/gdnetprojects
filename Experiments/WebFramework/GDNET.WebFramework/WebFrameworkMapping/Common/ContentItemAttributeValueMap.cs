@@ -1,6 +1,7 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
+using WebFrameworkMapping.Constants;
 
 namespace WebFrameworkMapping.Common
 {
@@ -11,20 +12,17 @@ namespace WebFrameworkMapping.Common
         {
             base.ManyToOne(e => e.ContentAttribute, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentItemAttributeValueMeta.ContentAttributeId);
+                m.Column(MappingConstants.ContentItemAttributeValue.ContentAttributeId);
                 m.Cascade(Cascade.None);
             });
             base.ManyToOne(e => e.ContentItem, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentItemAttributeValueMeta.ContentItemId);
+                m.Column(MappingConstants.ContentItemId);
                 m.Cascade(Cascade.None);
             });
             base.ManyToOne(e => e.Value, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentItemAttributeValueMeta.ValueTranslationId);
+                m.Column(MappingConstants.ContentItemAttributeValue.ValueTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
         }
