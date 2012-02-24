@@ -1,6 +1,7 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
+using WebFrameworkMapping.Constants;
 
 namespace WebFrameworkMapping.Common
 {
@@ -11,31 +12,33 @@ namespace WebFrameworkMapping.Common
         {
             base.Property(e => e.RootUrl);
 
+            base.ManyToOne(e => e.LifeCycle, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.StatutLifeCycleId);
+                m.Cascade(Cascade.All);
+            });
             base.ManyToOne(e => e.Name, m =>
             {
                 m.Lazy(LazyRelation.NoLazy);
-                m.NotNullable(true);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
-                m.Column(ApplicationMeta.NameTranslationId);
+                m.Column(MappingConstants.NameTranslationId);
             });
             base.ManyToOne(e => e.Description, m =>
             {
                 m.Lazy(LazyRelation.NoLazy);
-                m.NotNullable(true);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
-                m.Column(ApplicationMeta.DescriptionTranslationId);
+                m.Column(MappingConstants.DescriptionTranslationId);
             });
             base.ManyToOne(e => e.Category, m =>
             {
-                m.NotNullable(true);
                 m.Cascade(Cascade.None);
-                m.Column(ApplicationMeta.CategoryId);
+                m.Column(MappingConstants.Application.CategoryId);
             });
             base.ManyToOne(e => e.CultureDefault, m =>
             {
-                m.NotNullable(true);
                 m.Cascade(Cascade.None);
-                m.Column(ApplicationMeta.CultureDefaultId);
+                m.Column(MappingConstants.Application.CultureDefaultId);
             });
         }
     }

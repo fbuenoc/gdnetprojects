@@ -1,6 +1,7 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
+using WebFrameworkMapping.Constants;
 
 namespace WebFrameworkMapping.Common
 {
@@ -12,16 +13,22 @@ namespace WebFrameworkMapping.Common
             base.Property(e => e.TypeName);
             base.Property(e => e.Code);
 
+            base.ManyToOne(e => e.LifeCycle, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.StatutLifeCycleId);
+                m.Cascade(Cascade.All);
+            });
             base.ManyToOne(e => e.Name, m =>
             {
                 m.NotNullable(true);
-                m.Column(ContentTypeMeta.NameTranslationId);
+                m.Column(MappingConstants.NameTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
             base.ManyToOne(e => e.Application, m =>
             {
                 m.NotNullable(false);
-                m.Column(ContentTypeMeta.ApplicationId);
+                m.Column(MappingConstants.ApplicationId);
                 m.Cascade(Cascade.None);
             });
 
@@ -29,7 +36,7 @@ namespace WebFrameworkMapping.Common
             {
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Access(Accessor.Field);
-                cm.Key(k => k.Column(ContentItemMeta.ContentTypeId));
+                cm.Key(k => k.Column(MappingConstants.ContentTypeId));
                 cm.Cascade(Cascade.None);
             }, m =>
             {
@@ -40,7 +47,7 @@ namespace WebFrameworkMapping.Common
             {
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Access(Accessor.Field);
-                cm.Key(k => k.Column(ContentAttributeMeta.ContentTypeId));
+                cm.Key(k => k.Column(MappingConstants.ContentTypeId));
                 cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 cm.Inverse(true);
             }, m =>

@@ -1,6 +1,7 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFrameworkDomain.Common;
 using WebFrameworkMapping.Base;
+using WebFrameworkMapping.Constants;
 
 namespace WebFrameworkMapping.Common
 {
@@ -12,22 +13,26 @@ namespace WebFrameworkMapping.Common
             base.Property(e => e.Position);
             base.Property(e => e.Views);
 
+            base.ManyToOne(e => e.LifeCycle, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.StatutLifeCycleId);
+                m.Cascade(Cascade.All);
+            });
             base.ManyToOne(e => e.ContentType, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentItemMeta.ContentTypeId);
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.ContentTypeId);
                 m.Cascade(Cascade.None);
             });
             base.ManyToOne(e => e.Name, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentItemMeta.NameTranslationId);
+                m.Column(MappingConstants.NameTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
             base.ManyToOne(e => e.Description, m =>
             {
-                m.NotNullable(true);
-                m.Column(ContentItemMeta.DescriptionTranslationId);
+                m.Column(MappingConstants.DescriptionTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
 
@@ -35,14 +40,14 @@ namespace WebFrameworkMapping.Common
             {
                 cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Table(ContentItemMeta.ContentItemRelation);
-                cm.Key(k => k.Column(ContentItemMeta.ContentItemId));
+                cm.Table(MappingConstants.ContentItem.ContentItemRelationTable);
+                cm.Key(k => k.Column(MappingConstants.ContentItemId));
                 cm.Cascade(Cascade.None);
             }, m =>
             {
                 m.ManyToMany(mm =>
                 {
-                    mm.Column(ContentItemMeta.RelationContentItemId);
+                    mm.Column(MappingConstants.ContentItem.RelationContentItemId);
                 });
             });
 
@@ -50,7 +55,7 @@ namespace WebFrameworkMapping.Common
             {
                 cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Key(k => k.Column(ContentItemAttributeValueMeta.ContentItemId));
+                cm.Key(k => k.Column(MappingConstants.ContentItemId));
                 cm.Cascade(Cascade.All);
                 cm.Inverse(true);
             }, m =>
