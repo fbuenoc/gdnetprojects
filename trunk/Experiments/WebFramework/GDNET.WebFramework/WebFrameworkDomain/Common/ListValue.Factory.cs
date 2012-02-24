@@ -34,6 +34,7 @@ namespace WebFrameworkDomain.Common
 
                 listValue.Description = Translation.Factory.Create(description);
                 listValue.Parent = (parentId <= 0) ? null : DomainRepositories.ListValue.GetById(parentId);
+                listValue.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
 
                 return listValue;
             }

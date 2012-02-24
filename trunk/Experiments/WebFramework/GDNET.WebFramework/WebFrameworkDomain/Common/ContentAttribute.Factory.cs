@@ -37,6 +37,7 @@ namespace WebFrameworkDomain.Common
 
                 attribute.ContentType = type;
                 attribute.DataType = dataType;
+                attribute.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
 
                 return attribute;
             }

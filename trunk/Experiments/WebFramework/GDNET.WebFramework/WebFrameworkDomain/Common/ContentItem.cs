@@ -113,10 +113,10 @@ namespace WebFrameworkDomain.Common
         public virtual StatutLifeCycle LifeCycle
         {
             get;
-            private set;
+            protected internal set;
         }
 
-        public void ApplyDefaultSettings()
+        public virtual void ApplyDefaultSettings()
         {
             EntityAssistant.ChangeActive(this, true);
             EntityAssistant.ChangeDeletable(this, true);

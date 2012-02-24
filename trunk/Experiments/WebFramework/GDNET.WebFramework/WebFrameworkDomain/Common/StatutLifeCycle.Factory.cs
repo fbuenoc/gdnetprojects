@@ -11,9 +11,7 @@
         {
             public StatutLifeCycle Create()
             {
-                return new StatutLifeCycle
-                {
-                };
+                return new StatutLifeCycle();
             }
         }
 

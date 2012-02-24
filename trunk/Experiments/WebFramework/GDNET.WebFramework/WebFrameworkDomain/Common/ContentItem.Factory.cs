@@ -36,6 +36,7 @@ namespace WebFrameworkDomain.Common
 
                 contentItem.Name = Translation.Factory.Create(name);
                 contentItem.Description = Translation.Factory.Create(description);
+                contentItem.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
 
                 return contentItem;
             }

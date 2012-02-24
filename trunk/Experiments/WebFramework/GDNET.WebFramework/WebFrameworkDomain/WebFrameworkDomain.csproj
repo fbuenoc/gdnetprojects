@@ -42,6 +42,8 @@
   <ItemGroup>
     <Compile Include="Base\IEntityWithLifeCycle.cs" />
     <Compile Include="Common\Application.cs" />
+    <Compile Include="Common\StatutLifeCycleMeta.cs" />
+    <Compile Include="Common\StatutLogMeta.cs" />
     <Compile Include="Common\StatutLifeCycle.Factory.cs" />
     <Compile Include="Common\StatutLog.Factory.cs" />
     <Compile Include="Common\StatutLifeCycle.cs" />
@@ -90,9 +92,6 @@
     <Compile Include="Common\Translation.cs" />
     <Compile Include="DefaultImpl\DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StatutCycle\StatutLifeCycle.cs" />
-    <Compile Include="StatutCycle\StatutLog.Factory.cs" />
-    <Compile Include="StatutCycle\StatutLog.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">

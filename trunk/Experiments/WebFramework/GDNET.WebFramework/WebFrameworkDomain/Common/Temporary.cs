@@ -1,6 +1,5 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
-using GDNET.Common.DesignByContract;
 using WebFrameworkDomain.Base;
 
 namespace WebFrameworkDomain.Common
@@ -28,12 +27,12 @@ namespace WebFrameworkDomain.Common
         public virtual StatutLifeCycle LifeCycle
         {
             get;
-            private set;
+            protected internal set;
         }
 
-        public void ApplyDefaultSettings()
+        public virtual void ApplyDefaultSettings()
         {
-            ThrowException.NotImplementedException(string.Empty);
+            // OKIE, DO NOTHING
         }
 
         #endregion
