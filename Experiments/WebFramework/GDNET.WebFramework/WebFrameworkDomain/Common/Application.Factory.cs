@@ -31,6 +31,7 @@ namespace WebFrameworkDomain.Common
                 application.Description = Translation.Factory.Create(description);
                 application.Category = DomainRepositories.ListValue.FindByName(categoryCode);
                 application.CultureDefault = DomainRepositories.Culture.FindByCode(CommonConstants.CultureCodeDefault);
+                application.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
 
                 return application;
             }

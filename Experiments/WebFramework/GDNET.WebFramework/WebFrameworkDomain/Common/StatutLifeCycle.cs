@@ -20,7 +20,7 @@ namespace WebFrameworkDomain.Common
         public virtual ListValue ActualStatut
         {
             get;
-            private set;
+            protected internal set;
         }
 
         public virtual DateTime CreatedAt
@@ -66,6 +66,7 @@ namespace WebFrameworkDomain.Common
                 return;
             }
 
+            log.LifeCycle = this;
             this.statutLogs.Add(log);
         }
 

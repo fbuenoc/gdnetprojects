@@ -1,4 +1,7 @@
 ﻿using System;
+using GDNET.Common.Security.DefaultImpl;
+using WebFrameworkDomain.Constants;
+using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkDomain.Common
 {
@@ -11,6 +14,12 @@ namespace WebFrameworkDomain.Common
 
         public class StatutLogFactory
         {
+            public StatutLog Create(string description)
+            {
+                ListValue statut = DomainRepositories.ListValue.FindByName(ListValueConstants.StatutLogs.Created);
+                return this.Create(SessionService.Instance.User.Identity.Name, description, DateTime.Now, statut);
+            }
+
             public StatutLog Create(string createdBy, ListValue statut)
             {
                 return this.Create(createdBy, string.Empty, DateTime.Now, statut);

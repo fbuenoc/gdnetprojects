@@ -10,13 +10,13 @@ namespace WebFrameworkDomain.Common
         public virtual ListValue Statut
         {
             get;
-            private set;
+            protected internal set;
         }
 
         public virtual string Description
         {
             get;
-            private set;
+            protected internal set;
         }
 
         public virtual string BackupData
@@ -28,13 +28,19 @@ namespace WebFrameworkDomain.Common
         public virtual DateTime CreatedAt
         {
             get;
-            protected set;
+            protected internal set;
         }
 
         public virtual string CreatedBy
         {
             get;
-            protected set;
+            protected internal set;
+        }
+
+        public virtual StatutLifeCycle LifeCycle
+        {
+            get;
+            set;
         }
 
         #endregion

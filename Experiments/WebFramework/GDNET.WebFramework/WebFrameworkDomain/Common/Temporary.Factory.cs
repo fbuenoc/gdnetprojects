@@ -55,6 +55,7 @@ namespace WebFrameworkDomain.Common
                 };
 
                 temporary.EncryptionType = DomainRepositories.ListValue.FindByName(encodingTypeName);
+                temporary.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
 
                 return temporary;
             }
