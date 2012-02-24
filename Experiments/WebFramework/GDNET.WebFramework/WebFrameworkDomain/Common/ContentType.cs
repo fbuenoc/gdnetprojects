@@ -112,8 +112,8 @@ namespace WebFrameworkDomain.Common
         public virtual void ApplyDefaultSettings()
         {
             EntityAssistant.ChangeActive(this, true);
-            EntityAssistant.ChangeDeletable(this, true);
             EntityAssistant.ChangeEditable(this, true);
+            EntityAssistant.ChangeDeletable(this, true);
         }
 
         #endregion

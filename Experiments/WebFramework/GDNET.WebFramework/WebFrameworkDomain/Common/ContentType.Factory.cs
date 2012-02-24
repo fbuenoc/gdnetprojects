@@ -32,6 +32,7 @@ namespace WebFrameworkDomain.Common
                     TypeName = typeName,
                     Code = code,
                 };
+                contentType.Name = Translation.Factory.Create(name);
                 contentType.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
 
                 return contentType;
