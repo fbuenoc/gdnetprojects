@@ -1,5 +1,4 @@
-﻿using GDNET.Common.Data;
-using GDNET.NHibernate.Specifications;
+﻿using GDNET.NHibernate.Specifications;
 using WebFrameworkDomain.Common;
 
 namespace WebFrameworkData.Common.Specifications
@@ -20,23 +19,6 @@ namespace WebFrameworkData.Common.Specifications
 
         private void UpdateContentItem(ContentItem entity)
         {
-            // In case of creating new ContentItem, its Name is also saved. But Name.CreatedDate may be not set
-            if (entity.Name != null)
-            {
-                var x = (entity.Name.Id < 1) ? DataService.SetCreationInfo(entity.Name) : DataService.SetModificationInfo(entity.Name);
-            }
-            if (entity.Description != null)
-            {
-                var x = (entity.Description.Id < 1) ? DataService.SetCreationInfo(entity.Description) : DataService.SetModificationInfo(entity.Description);
-            }
-
-            foreach (var attributeValue in entity.AttributeValues)
-            {
-                if (attributeValue.Value != null)
-                {
-                    var x = (attributeValue.Value.Id < 1) ? DataService.SetCreationInfo(attributeValue.Value) : DataService.SetModificationInfo(attributeValue.Value);
-                }
-            }
         }
     }
 }

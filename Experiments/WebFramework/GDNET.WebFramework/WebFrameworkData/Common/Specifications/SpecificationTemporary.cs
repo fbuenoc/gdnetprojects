@@ -1,13 +1,14 @@
-﻿using GDNET.Common.DesignByContract;
+﻿using System;
+using GDNET.Common.DesignByContract;
 using GDNET.Common.Encryption;
 using GDNET.Common.Security.Services;
 using GDNET.NHibernate.Specifications;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 
 namespace WebFrameworkData.Common.Specifications
 {
-    public class SpecificationTemporary : AbstractSpecification<Temporary, string>
+    public class SpecificationTemporary : AbstractSpecification<Temporary, Guid>
     {
         private readonly IEncryptionService encryptor = new EncryptionService();
 
@@ -45,15 +46,15 @@ namespace WebFrameworkData.Common.Specifications
                 // Do NOTHING in case of encryption = None
                 switch (encryptionType.Name)
                 {
-                    case ListValueConstants.EncryptionTypes_None:
+                    case ListValueConstants.EncryptionTypes.None:
                         option = EncryptionOption.None;
                         break;
 
-                    case ListValueConstants.EncryptionTypes_Base64:
+                    case ListValueConstants.EncryptionTypes.Base64:
                         option = EncryptionOption.Base64;
                         break;
 
-                    case ListValueConstants.EncryptionTypes_AES:
+                    case ListValueConstants.EncryptionTypes.AES:
                         option = EncryptionOption.AES;
                         break;
 
