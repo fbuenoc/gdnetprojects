@@ -37,7 +37,7 @@ namespace WebFrameworkData.UnitTest.Common
             DomainRepositories.ContentItem.Delete(item);
             DomainRepositories.ContentType.Delete(type);
 
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
         }
 
         [Test]
@@ -72,10 +72,10 @@ namespace WebFrameworkData.UnitTest.Common
             var item = ContentItem.Factory.Create("T1", "Test 1", type);
 
             DomainRepositories.ContentItem.Save(item);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             DomainRepositories.ContentItem.Delete(item.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var savedItem = DomainRepositories.ContentItem.GetById(item.Id);
             Assert.IsNull(savedItem);
@@ -99,8 +99,7 @@ namespace WebFrameworkData.UnitTest.Common
             contentItem.AddAttributeValue(attributeValue2);
 
             DomainRepositories.ContentItem.Save(contentItem);
-            DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNotNull(savedItem);
@@ -110,13 +109,13 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual("V2", savedItem.AttributeValues[1].Value.Value);
 
             DomainRepositories.ContentItem.Delete(contentItem.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNull(savedItem);
 
             DomainRepositories.ContentType.Delete(contentAttribute.ContentType.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
         }
 
         [Test]
@@ -131,8 +130,7 @@ namespace WebFrameworkData.UnitTest.Common
             contentItem.AddAttributeValue(attributeValue2);
 
             DomainRepositories.ContentItem.Save(contentItem);
-            DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNotNull(savedItem);
@@ -142,19 +140,19 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual("V2", savedItem.AttributeValues[1].Value.Value);
 
             DomainRepositories.ContentItem.Delete(contentItem.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNull(savedItem);
 
             DomainRepositories.ContentAttribute.Delete(contentAttribute.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var savedAttribute = DomainRepositories.ContentAttribute.GetById(contentAttribute.Id);
             Assert.IsNull(savedAttribute);
 
             DomainRepositories.ContentType.Delete(contentAttribute.ContentType.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var savedContentType = DomainRepositories.ContentType.GetById(contentAttribute.ContentType.Id);
             Assert.IsNull(savedContentType);
@@ -177,7 +175,7 @@ namespace WebFrameworkData.UnitTest.Common
             contentItem.AddRelationItem(relationItem1);
             contentItem.AddRelationItem(relationItem2);
 
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var savedItem = DomainRepositories.ContentItem.GetById(contentItem.Id);
             Assert.IsNotNull(savedItem);
@@ -194,8 +192,8 @@ namespace WebFrameworkData.UnitTest.Common
             var r2 = DomainRepositories.ContentItem.GetById(relationItem2.Id);
             Assert.IsNotNull(r2);
 
-            DomainRepositories.ContentAttribute.Delete(relationItem1.Id);
-            DomainRepositories.ContentAttribute.Delete(relationItem2.Id);
+            DomainRepositories.ContentAttribute.Delete(r1.Id);
+            DomainRepositories.ContentAttribute.Delete(r2.Id);
             DomainRepositories.RepositoryAssistant.Flush();
         }
     }

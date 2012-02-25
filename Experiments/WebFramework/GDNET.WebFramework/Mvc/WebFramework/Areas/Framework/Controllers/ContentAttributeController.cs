@@ -1,13 +1,10 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-
 using GDNET.Web.Helpers;
-
 using WebFramework.Constants;
 using WebFramework.Modeles.Base;
+using WebFramework.Modeles.Framework.Base;
 using WebFramework.Modeles.Framework.Common;
-using WebFramework.Modeles.Framework.DomainModels;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.DefaultImpl;
 
@@ -47,7 +44,7 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override object OnCreateExecuting(ContentAttributeModel model, FormCollection collection)
         {
-            var caEntity = ContentAttribute.Factory.Create(model.Code, model.ContentTypeId, model.DataTypeId, model.Position);
+            var caEntity = ContentAttribute.Factory.Create(model.Code, model.ContentTypeId, model.DataType, model.Position);
             bool result = DomainRepositories.ContentAttribute.Save(caEntity);
             return result ? (object)caEntity.Id : null;
         }

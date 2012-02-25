@@ -40,7 +40,7 @@ namespace WebFrameworkMapping.Common
 
             base.Bag(e => e.RelationItems, cm =>
             {
-                cm.Access(Accessor.NoSetter);
+                cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Table(MappingConstants.ContentItem.ContentItemRelationTable);
                 cm.Key(k => k.Column(MappingConstants.ContentItemId));
@@ -55,7 +55,7 @@ namespace WebFrameworkMapping.Common
 
             base.Bag(e => e.AttributeValues, cm =>
             {
-                cm.Access(Accessor.NoSetter);
+                cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Key(k => k.Column(MappingConstants.ContentItemId));
                 cm.Cascade(Cascade.All);

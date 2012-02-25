@@ -39,6 +39,5 @@ namespace WebFrameworkBusiness.Common
             : base(EncryptionOption.Base64)
         {
         }
-
     }
 }

@@ -1,13 +1,10 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-
 using GDNET.Web.Helpers;
-
 using WebFramework.Constants;
 using WebFramework.Modeles.Base;
+using WebFramework.Modeles.Framework.Base;
 using WebFramework.Modeles.Framework.Common;
-using WebFramework.Modeles.Framework.DomainModels;
-
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.DefaultImpl;
 

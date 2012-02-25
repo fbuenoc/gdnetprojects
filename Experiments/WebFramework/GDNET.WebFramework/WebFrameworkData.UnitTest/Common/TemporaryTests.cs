@@ -28,8 +28,8 @@ namespace WebFrameworkData.UnitTest.Common
             var temporary = Temporary.Factory.Create("T1");
 
             Assert.IsNotNull(temporary.Id.ToString());
-            Assert.IsNull(temporary.EncryptionType);
-            Assert.IsNull(temporary.Text);
+            Assert.AreEqual(ListValueConstants.EncryptionTypes.None, temporary.EncryptionType.Name);
+            Assert.AreEqual("T1", temporary.Text);
         }
 
         #endregion
@@ -41,7 +41,6 @@ namespace WebFrameworkData.UnitTest.Common
             DomainRepositories.Temporary.Save(temporary);
 
             DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
@@ -58,7 +57,6 @@ namespace WebFrameworkData.UnitTest.Common
             DomainRepositories.Temporary.Save(temporary);
 
             DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 
@@ -75,7 +73,6 @@ namespace WebFrameworkData.UnitTest.Common
             DomainRepositories.Temporary.Save(temporary);
 
             DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedTemporary = DomainRepositories.Temporary.GetById(temporary.Id);
 

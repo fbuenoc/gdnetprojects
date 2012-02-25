@@ -41,10 +41,10 @@ namespace WebFrameworkMapping.Common
 
             base.Bag(e => e.SubValues, cm =>
             {
-                cm.Access(Accessor.NoSetter);
-                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Key(k => k.Column(MappingConstants.ListValue.ParentId));
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
             }, m =>
             {
                 m.OneToMany();

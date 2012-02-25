@@ -29,9 +29,8 @@ namespace WebFrameworkData.UnitTest.Common
             var attribute = ContentAttribute.Factory.Create("T1", contentType, listValue, 0);
 
             DomainRepositories.ContentAttribute.Save(attribute);
-            DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
-
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
+            
             var myAttribute = DomainRepositories.ContentAttribute.GetById(attribute.Id);
             Assert.IsNotNull(myAttribute);
             Assert.AreEqual(attribute.Id, myAttribute.Id);
@@ -40,10 +39,10 @@ namespace WebFrameworkData.UnitTest.Common
             Assert.AreEqual(ListValueConstants.ContentDataTypes.TextSimpleTextBox, myAttribute.DataType.Name);
 
             DomainRepositories.ContentAttribute.Delete(attribute.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
         }
 
         [Test]
@@ -54,17 +53,16 @@ namespace WebFrameworkData.UnitTest.Common
             var attribute = ContentAttribute.Factory.Create("T1", type, listValue, 0);
 
             DomainRepositories.ContentAttribute.Save(attribute);
-            DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
-
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
+            
             DomainRepositories.ContentAttribute.Delete(attribute.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var savedAttribute = DomainRepositories.ContentAttribute.GetById(attribute.Id);
             Assert.IsNull(savedAttribute);
 
             DomainRepositories.ContentType.Delete(type.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
         }
     }
 }
