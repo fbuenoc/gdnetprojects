@@ -2,13 +2,25 @@
 
 namespace WebFramework.Modeles.Framework.Common
 {
-    public abstract class ModelActiveBase<TEntity, TId> : EntityActiveBase<TId> where TEntity : EntityActiveBase<TId>
+    public abstract class ModelActiveBase<TEntity, TId> : EntityWithActiveBase<TId>, IEntityModeleBase<TId> where TEntity : EntityWithActiveBase<TId>
     {
         protected TEntity Entity
         {
             get;
             private set;
         }
+
+        #region IEntityModeleBase Members
+
+        public new TId Id
+        {
+            get { return base.Id; }
+            set { base.Id = value; }
+        }
+
+        #endregion
+
+        #region Ctors
 
         public ModelActiveBase()
             : base()
@@ -20,5 +32,7 @@ namespace WebFramework.Modeles.Framework.Common
         {
             this.Entity = entity;
         }
+
+        #endregion
     }
 }

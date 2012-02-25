@@ -1,15 +1,11 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
-using GDNET.Common.Base.Entities;
-
+using WebFramework.Modeles.Framework.Base;
 using WebFrameworkDomain.Common;
-using WebFramework.Modeles.Framework.Common;
 
-namespace WebFramework.Modeles.Framework.DomainModels
+namespace WebFramework.Modeles.Framework.Common
 {
-    public sealed class ApplicationModel : ModelFullControlBase<Application, long>
+    public sealed class ApplicationModel : ModelWithModificationBase<Application, long>
     {
         #region Properties
 

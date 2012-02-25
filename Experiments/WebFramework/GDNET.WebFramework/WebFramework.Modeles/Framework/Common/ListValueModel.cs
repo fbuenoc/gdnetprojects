@@ -2,12 +2,12 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using WebFramework.Modeles.Framework.Common;
+using WebFramework.Modeles.Framework.Base;
 using WebFrameworkDomain.Common;
 
-namespace WebFramework.Modeles.Framework.DomainModels
+namespace WebFramework.Modeles.Framework.Common
 {
-    public sealed class ListValueModel : ModelFullControlBase<ListValue, long>
+    public sealed class ListValueModel : ModelWithModificationBase<ListValue, long>
     {
         #region Properties
 
@@ -59,6 +59,7 @@ namespace WebFramework.Modeles.Framework.DomainModels
             get
             {
                 List<ListValueModel> listOfSubValues = new List<ListValueModel>();
+
                 if (base.Entity != null)
                 {
                     listOfSubValues.AddRange(base.Entity.SubValues.Select(x => new ListValueModel(x)));

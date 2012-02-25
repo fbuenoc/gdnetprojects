@@ -2,7 +2,7 @@
 using System.Web.Routing;
 using GDNET.Web.Membership.DefaultImpl;
 using GDNET.Web.Membership.Services;
-using WebFramework.Modeles.Framework.Common;
+using WebFramework.Modeles.Framework.Base;
 using WebFramework.Models.AccountServices;
 
 namespace WebFramework.Modeles.Base
