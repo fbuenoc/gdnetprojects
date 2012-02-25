@@ -24,7 +24,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddContentAttribute()
         {
-            var contentType = AssistantTest.CreateContentType();
+            var contentType = UnitTestAssistant.CreateContentType();
             var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
             var attribute = ContentAttribute.Factory.Create("T1", contentType, listValue, 0);
 
@@ -48,7 +48,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanDeleteContentAttribute()
         {
-            var type = AssistantTest.CreateContentType();
+            var type = UnitTestAssistant.CreateContentType();
             var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
             var attribute = ContentAttribute.Factory.Create("T1", type, listValue, 0);
 

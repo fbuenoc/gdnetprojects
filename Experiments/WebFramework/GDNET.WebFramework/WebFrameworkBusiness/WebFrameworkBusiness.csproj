@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Administration\Account.cs" />
     <Compile Include="Base\BusinessEntityBase.Factory.cs" />
+    <Compile Include="Base\ContentAttributeInfo.cs" />
     <Compile Include="Base\IBusinessEntity.cs" />
     <Compile Include="Common\Article.cs" />
     <Compile Include="Base\BusinessEntityBase.cs" />

@@ -2,6 +2,7 @@
 using GDNET.Common.Types;
 using NUnit.Framework;
 using WebFrameworkBusiness.Common;
+using WebFrameworkData.UnitTest.Utils;
 
 namespace WebFrameworkData.UnitTest.Business
 {
@@ -12,6 +13,8 @@ namespace WebFrameworkData.UnitTest.Business
         public void SetUp()
         {
             base.Init();
+
+            UnitTestAssistant.EnsureContentTypes();
         }
 
         [TestFixtureTearDown]
@@ -37,8 +40,8 @@ namespace WebFrameworkData.UnitTest.Business
             bool result = myAtc.Save();
             Assert.IsTrue(result);
 
-            Article savedAtc = Article.Factory.Create();
-            savedAtc.LoadItemById(myAtc.Id);
+            Article savedAtc = Article.Factory.NewInstance();
+            savedAtc.GetById(myAtc.Id);
 
             Assert.AreEqual(myAtc.Name, savedAtc.Name);
             Assert.AreEqual(myAtc.Description, savedAtc.Description);
@@ -51,10 +54,10 @@ namespace WebFrameworkData.UnitTest.Business
         }
 
         [Test]
-        public void CanCreateNew100Articles()
+        public void CanCreateNew10Articles()
         {
             DateTime t1 = DateTime.Now;
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Article myAtc = Article.Factory.Create("A1", "This is A One", "MC1");
                 myAtc.SourceInfo = new Website();
@@ -70,34 +73,12 @@ namespace WebFrameworkData.UnitTest.Business
                 bool result = myAtc.Save();
                 Assert.IsTrue(result);
 
-                Article savedAtc = Article.Factory.Create();
-                savedAtc.LoadItemById(myAtc.Id);
+                Article savedAtc = Article.Factory.NewInstance();
+                savedAtc.GetById(myAtc.Id);
 
                 savedAtc.Delete();
             }
             Console.WriteLine("Spent: " + (DateTime.Now - t1).ToString());
-        }
-
-        [Test]
-        public void CanCreateNewComment()
-        {
-            Comment c1 = Comment.Factory.Create("T1", "B1");
-            c1.Name = "A1";
-            c1.Description = "This is A One";
-            c1.Email = new Email("huanhvhd@gmail.com");
-
-            bool result = c1.Save();
-            Assert.IsTrue(result);
-
-            Comment c2 = Comment.Factory.Create();
-            c2.LoadItemById(c1.Id);
-
-            Assert.AreEqual(c1.Name, c2.Name);
-            Assert.AreEqual(c1.Description, c2.Description);
-            Assert.AreEqual(c1.Body, c2.Body);
-            Assert.AreEqual(c1.Email.Serialize(), c2.Email.Serialize());
-
-            c2.Delete();
         }
     }
 }

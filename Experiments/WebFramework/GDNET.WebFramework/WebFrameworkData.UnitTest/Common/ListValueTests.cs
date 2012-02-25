@@ -58,7 +58,7 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanAddListValue()
         {
             string lvName = Guid.NewGuid().ToString();
-            var lv = AssistantTest.CreateListValue(lvName);
+            var lv = UnitTestAssistant.CreateListValue(lvName);
 
             var savedLV = DomainRepositories.ListValue.GetById(lv.Id);
 
@@ -76,8 +76,8 @@ namespace WebFrameworkData.UnitTest.Common
         {
             string lvName = Guid.NewGuid().ToString();
             string lvChild = Guid.NewGuid().ToString();
-            var rootValue = AssistantTest.CreateListValue(lvName);
-            var childValue = AssistantTest.CreateListValue(lvChild);
+            var rootValue = UnitTestAssistant.CreateListValue(lvName);
+            var childValue = UnitTestAssistant.CreateListValue(lvChild);
 
             rootValue.AddSubValue(childValue);
             DomainRepositories.RepositoryAssistant.Flush();
@@ -100,13 +100,13 @@ namespace WebFrameworkData.UnitTest.Common
         {
             string root1 = Guid.NewGuid().ToString();
             string root2 = Guid.NewGuid().ToString();
-            var rootValue1 = AssistantTest.CreateListValue(root1);
-            var rootValue2 = AssistantTest.CreateListValue(root2);
+            var rootValue1 = UnitTestAssistant.CreateListValue(root1);
+            var rootValue2 = UnitTestAssistant.CreateListValue(root2);
 
             string child1 = Guid.NewGuid().ToString();
             string child2 = Guid.NewGuid().ToString();
-            var childValue1 = AssistantTest.CreateListValue(child1);
-            var childValue2 = AssistantTest.CreateListValue(child2);
+            var childValue1 = UnitTestAssistant.CreateListValue(child1);
+            var childValue2 = UnitTestAssistant.CreateListValue(child2);
 
             rootValue1.AddSubValue(childValue1);
             rootValue2.AddSubValue(childValue2);
@@ -131,9 +131,9 @@ namespace WebFrameworkData.UnitTest.Common
             string child1 = Guid.NewGuid().ToString();
             string child2 = Guid.NewGuid().ToString();
 
-            var rootValue1 = AssistantTest.CreateListValue(listName);
-            var childValue1 = AssistantTest.CreateListValue(child1);
-            var childValue2 = AssistantTest.CreateListValue(child2);
+            var rootValue1 = UnitTestAssistant.CreateListValue(listName);
+            var childValue1 = UnitTestAssistant.CreateListValue(child1);
+            var childValue2 = UnitTestAssistant.CreateListValue(child2);
 
             rootValue1.AddSubValue(childValue1);
             childValue1.AddSubValue(childValue2);
@@ -156,9 +156,9 @@ namespace WebFrameworkData.UnitTest.Common
             string child1 = Guid.NewGuid().ToString();
             string child2 = Guid.NewGuid().ToString();
 
-            var rootValue1 = AssistantTest.CreateListValue(listName);
-            var childValue1 = AssistantTest.CreateListValue(child1);
-            var childValue2 = AssistantTest.CreateListValue(child2);
+            var rootValue1 = UnitTestAssistant.CreateListValue(listName);
+            var childValue1 = UnitTestAssistant.CreateListValue(child1);
+            var childValue2 = UnitTestAssistant.CreateListValue(child2);
 
             rootValue1.AddSubValue(childValue1);
             childValue1.AddSubValue(childValue2);
@@ -180,7 +180,7 @@ namespace WebFrameworkData.UnitTest.Common
         {
             string lvRoot = Guid.NewGuid().ToString();
             string lvChild = Guid.NewGuid().ToString();
-            var lv = AssistantTest.CreateListValue(lvRoot);
+            var lv = UnitTestAssistant.CreateListValue(lvRoot);
             var subLV = ListValue.Factory.Create(lvChild, "D1", "CV1", lv.Id);
 
             Assert.IsNotNull(subLV.Parent);
@@ -197,7 +197,7 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanDeleteListValue()
         {
             string lvRoot = Guid.NewGuid().ToString();
-            var lv = AssistantTest.CreateListValue(lvRoot);
+            var lv = UnitTestAssistant.CreateListValue(lvRoot);
 
             DomainRepositories.ListValue.Delete(lv);
             DomainRepositories.RepositoryAssistant.Flush();

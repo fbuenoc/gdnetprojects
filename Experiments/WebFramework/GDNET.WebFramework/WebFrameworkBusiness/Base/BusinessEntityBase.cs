@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
@@ -94,12 +95,32 @@ namespace WebFrameworkBusiness.Base
 
         public BusinessEntityBase(EncryptionOption encryption)
         {
-            foreach (var kvp in ReflectionAssistant.GetProperties(this.GetType()))
+            this.Encryption = encryption;
+            this.RegisterProperties();
+        }
+
+        private void RegisterProperties()
+        {
+            List<string> ignoredProperties = new List<string>();
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Id));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameEncryption));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameItemData));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameProperties));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.QualifiedTypeName));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Name));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Description));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Position));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsActive));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsDeletable));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsEditable));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsViewable));
+            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Signature));
+
+            var neededProperties = ReflectionAssistant.GetProperties(this.GetType()).Where(x => !ignoredProperties.Contains(x.Key)).ToList();
+            foreach (var kvp in neededProperties)
             {
                 this.RegisterProperty(kvp.Key, kvp.Value);
             }
-
-            this.Encryption = encryption;
         }
 
         #endregion
