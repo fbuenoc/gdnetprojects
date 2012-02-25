@@ -7,7 +7,7 @@ using WebFrameworkDomain.Common;
 
 namespace WebFrameworkBusiness.Base
 {
-    public abstract partial class BusinessEntityBase : EntityWithFullInfoBase<long>
+    public abstract partial class BusinessEntityBase : EntityWithModificationBase<long>
     {
         private Dictionary<string, Type> properties = new Dictionary<string, Type>();
         private Dictionary<string, object> propertiesValues = new Dictionary<string, object>();
@@ -18,11 +18,7 @@ namespace WebFrameworkBusiness.Base
 
         public string QualifiedTypeName
         {
-            get
-            {
-                int firstIndex = this.GetType().AssemblyQualifiedName.IndexOf(",") + 1;
-                return this.GetType().AssemblyQualifiedName.Substring(0, this.GetType().AssemblyQualifiedName.IndexOf(",", firstIndex));
-            }
+            get { return this.GetType().GetQualifiedTypeName(); }
         }
 
         protected EncryptionOption Encryption

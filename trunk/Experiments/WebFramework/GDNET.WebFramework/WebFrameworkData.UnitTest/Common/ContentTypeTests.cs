@@ -30,7 +30,6 @@ namespace WebFrameworkData.UnitTest.Common
 
             DomainRepositories.ContentType.Save(contentType);
             DomainRepositories.RepositoryAssistant.Flush();
-            DomainRepositories.RepositoryAssistant.Clear();
 
             var savedCT = DomainRepositories.ContentType.GetById(contentType.Id);
 
@@ -50,6 +49,7 @@ namespace WebFrameworkData.UnitTest.Common
             var contentItem = AssistantTest.CreateContentItem("I1", "Item 1", contentType);
 
             DomainRepositories.RepositoryAssistant.Clear();
+
             var savedType = DomainRepositories.ContentType.GetById(contentType.Id);
 
             Assert.IsNotNull(savedType);
@@ -75,7 +75,6 @@ namespace WebFrameworkData.UnitTest.Common
             contentType.AddContentAttribute(attribute2);
 
             DomainRepositories.ContentType.Update(contentType);
-            DomainRepositories.RepositoryAssistant.Clear();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
             DomainRepositories.RepositoryAssistant.Flush();
@@ -89,8 +88,6 @@ namespace WebFrameworkData.UnitTest.Common
         public void CanDeleteContentType()
         {
             var contentType = AssistantTest.CreateContentType();
-
-            DomainRepositories.RepositoryAssistant.Clear();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
             DomainRepositories.RepositoryAssistant.Flush();

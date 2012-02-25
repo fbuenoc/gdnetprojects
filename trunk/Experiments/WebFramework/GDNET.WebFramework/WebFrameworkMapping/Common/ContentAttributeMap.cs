@@ -34,7 +34,7 @@ namespace WebFrameworkMapping.Common
 
             base.Bag(e => e.ContentItems, cm =>
             {
-                cm.Access(Accessor.NoSetter);
+                cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Table(MappingConstants.ContentItemAttributeValue.ContentItemAttributeValueTable);
                 cm.Key(k => k.Column(MappingConstants.ContentItemAttributeValue.ContentAttributeId));
@@ -47,7 +47,7 @@ namespace WebFrameworkMapping.Common
 
             base.Bag(e => e.AttributeValues, cm =>
             {
-                cm.Access(Accessor.NoSetter);
+                cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Key(k => k.Column(MappingConstants.ContentItemAttributeValue.ContentAttributeId));
                 cm.Cascade(Cascade.None);

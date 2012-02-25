@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate.Criterion;

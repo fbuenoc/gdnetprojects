@@ -1,8 +1,8 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
-using System;
 
 namespace WebFrameworkData.UnitTest.Common
 {
@@ -45,7 +45,8 @@ namespace WebFrameworkData.UnitTest.Common
             var app = Application.Factory.Create(name, desc, rootUrl);
 
             DomainRepositories.Application.Save(app);
-            DomainRepositories.RepositoryAssistant.Flush();
+
+            DomainRepositories.RepositoryAssistant.FlushAndClear();
 
             var myApp = DomainRepositories.Application.GetById(app.Id);
             Assert.IsNotNull(myApp);

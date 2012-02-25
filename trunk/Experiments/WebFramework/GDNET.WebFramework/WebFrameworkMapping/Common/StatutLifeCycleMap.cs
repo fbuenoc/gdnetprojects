@@ -13,7 +13,7 @@ namespace WebFrameworkMapping.Common
             base.Bag(e => e.StatutLogs, cm =>
             {
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Access(Accessor.NoSetter);
+                cm.Access(Accessor.Field);
                 cm.Key(k => k.Column(MappingConstants.StatutLifeCycleId));
                 cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 cm.Inverse(true);

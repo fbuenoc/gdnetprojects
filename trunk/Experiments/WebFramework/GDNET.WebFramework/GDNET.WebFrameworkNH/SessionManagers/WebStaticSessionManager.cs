@@ -24,11 +24,11 @@ namespace WebFrameworkNHibernate.SessionManagers
 
         static WebStaticSessionManager()
         {
-            if (_sessionFactory == null)
+            if (AbstractSessionManager.TheSessionFactory == null)
             {
                 string nhConfigPath = HostingEnvironment.MapPath("~/App_Data/hibernate.cfg.xml");
                 var mapper = AbstractSessionManager.BuildModelMapper();
-                AbstractSessionManager._sessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
+                AbstractSessionManager.TheSessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
             }
             else
             {
@@ -42,7 +42,7 @@ namespace WebFrameworkNHibernate.SessionManagers
 
         public override ISessionFactory SessionFactory
         {
-            get { return _sessionFactory; }
+            get { return AbstractSessionManager.TheSessionFactory; }
         }
 
         public override ISession OpenSession()

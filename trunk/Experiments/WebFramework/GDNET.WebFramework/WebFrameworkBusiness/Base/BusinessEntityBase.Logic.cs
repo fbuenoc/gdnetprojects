@@ -8,7 +8,7 @@ using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
 using GDNET.Extensions;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Common.Constants;
+using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkBusiness.Base
@@ -42,12 +42,17 @@ namespace WebFrameworkBusiness.Base
                     return false;
                 }
 
+                int position = 1;
                 List<ContentAttribute> listOfAttributes = new List<ContentAttribute>();
+
                 foreach (var propertyName in this.properties.Keys)
                 {
-                    var attribute = ContentAttribute.Factory.Create(propertyName, contentType, ListValueConstants.ContentDataTypes_Text_SimpleTextBox);
+                    var listeValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
+                    var attribute = ContentAttribute.Factory.Create(propertyName, contentType, listeValue, position);
                     listOfAttributes.Add(attribute);
+                    position += 1;
                 }
+
                 contentType.AddContentAttributes(listOfAttributes);
 
                 if (!DomainRepositories.ContentType.Update(contentType))
@@ -185,8 +190,19 @@ namespace WebFrameworkBusiness.Base
                 return false;
             }
 
+            // Some properties is stored in content item, so don't need to store it again
+            List<string> listeContentItemProperties = new List<string>();
+            listeContentItemProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Position));
+            listeContentItemProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Name));
+            listeContentItemProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Description));
+
             foreach (var kvp in this.propertiesValues)
             {
+                if (listeContentItemProperties.Contains(kvp.Key))
+                {
+                    continue;
+                }
+
                 var contentAttribute = contentType.ContentAttributes.FirstOrDefault(x => (x.Code == kvp.Key));
                 if (contentAttribute == null)
                 {
@@ -217,14 +233,10 @@ namespace WebFrameworkBusiness.Base
         private void UpdateEntityInfo()
         {
             this.Id = this.contentItem.Id;
-            this.CreatedAt = this.contentItem.CreatedAt;
-            this.CreatedBy = this.contentItem.CreatedBy;
             this.IsActive = this.contentItem.IsActive;
             this.IsDeletable = this.contentItem.IsDeletable;
             this.IsEditable = this.contentItem.IsEditable;
             this.IsViewable = this.contentItem.IsViewable;
-            this.LastModifiedAt = this.contentItem.LastModifiedAt;
-            this.LastModifiedBy = this.contentItem.LastModifiedBy;
         }
 
         #endregion

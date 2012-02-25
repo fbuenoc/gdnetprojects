@@ -2,19 +2,21 @@
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{DEDC16EE-5218-4E19-84C1-0E323D8FD3D4}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFrameworkData</RootNamespace>
-    <AssemblyName>WebFrameworkData</AssemblyName>
+    <RootNamespace>WebFrameworkSampleData</RootNamespace>
+    <AssemblyName>WebFrameworkSampleData</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +25,8 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,8 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NHibernate, Version=3.2.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="NHibernate">
       <HintPath>..\..\..\..\Libs\NHibernate\NHibernate-3.2.0.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -44,43 +46,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Repositories\RepositoryApplication.cs" />
-    <Compile Include="Common\Repositories\RepositoryAssistant.cs" />
-    <Compile Include="Common\Repositories\RepositoryContentAttribute.cs" />
-    <Compile Include="Common\Repositories\RepositoryContentItem.cs" />
-    <Compile Include="Common\Repositories\RepositoryContentType.cs" />
-    <Compile Include="Common\Repositories\RepositoryCulture.cs" />
-    <Compile Include="Common\Repositories\RepositoryGeneric.cs" />
-    <Compile Include="Common\Repositories\RepositoryTemporary.cs" />
-    <Compile Include="Common\Specifications\SpecificationTemporary.cs" />
-    <Compile Include="Common\Specifications\SpecificationListValue.cs" />
-    <Compile Include="Common\Specifications\SpecificationContentType.cs" />
-    <Compile Include="Common\Specifications\SpecificationContentItemAttributeValue.cs" />
-    <Compile Include="Common\Specifications\SpecificationContentItem.cs" />
-    <Compile Include="Common\Specifications\SpecificationApplication.cs" />
-    <Compile Include="Common\Repositories\RepositoryListValue.cs" />
-    <Compile Include="Common\Repositories\RepositoryTranslation.cs" />
+    <Compile Include="DataAssistant.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SampleDataSessionService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\GDNET.Common.Encryption\GDNET.Common.Encryption.csproj">
-      <Project>{7A184704-26D6-407D-A069-D692530F00E7}</Project>
-      <Name>GDNET.Common.Encryption</Name>
+    <ProjectReference Include="..\..\..\Common\GDNET.Common.Types\GDNET.Common.Types.csproj">
+      <Project>{B1D31295-36B4-41DE-B14E-3DB21CA95226}</Project>
+      <Name>GDNET.Common.Types</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.NHibernate\GDNET.NHibernate.csproj">
       <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
       <Name>GDNET.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.WebFrameworkNH\WebFrameworkNHibernate.csproj">
+      <Project>{9A4E737C-5A9A-4F53-80A3-82E4C712F85E}</Project>
+      <Name>WebFrameworkNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkBusiness\WebFrameworkBusiness.csproj">
+      <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
+      <Name>WebFrameworkBusiness</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFrameworkDomain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkMapping\WebFrameworkMapping.csproj">
+      <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
+      <Name>WebFrameworkMapping</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\hibernate.cfg.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

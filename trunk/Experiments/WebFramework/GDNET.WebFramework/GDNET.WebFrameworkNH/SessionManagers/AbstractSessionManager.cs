@@ -8,7 +8,7 @@ namespace WebFrameworkNHibernate.SessionManagers
 {
     public abstract class AbstractSessionManager : SessionManager
     {
-        protected static ISessionFactory _sessionFactory;
+        protected static ISessionFactory TheSessionFactory;
 
         protected static ModelMapper BuildModelMapper()
         {

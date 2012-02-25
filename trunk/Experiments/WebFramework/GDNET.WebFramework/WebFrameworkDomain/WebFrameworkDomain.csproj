@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\IEntityWithLifeCycle.cs" />
+    <Compile Include="Base\IStatutListValue.cs" />
     <Compile Include="Common\Application.cs" />
     <Compile Include="Common\StatutLifeCycle.Factory.cs" />
     <Compile Include="Common\StatutLog.Factory.cs" />
@@ -88,9 +89,7 @@
       <Name>GDNET.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Repositories\StatutCycle\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
