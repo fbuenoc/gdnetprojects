@@ -15,14 +15,15 @@ namespace WebFrameworkMapping.Common
 
             base.ManyToOne(e => e.LifeCycle, m =>
             {
+                m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.StatutLifeCycleId);
                 m.Cascade(Cascade.All);
             });
             base.ManyToOne(e => e.EncryptionType, m =>
             {
-                m.Cascade(Cascade.None);
-                m.Lazy(LazyRelation.Proxy);
+                m.Lazy(LazyRelation.NoLazy);
                 m.Column(MappingConstants.Temporary.EncryptionTypeId);
+                m.Cascade(Cascade.None);
             });
         }
     }

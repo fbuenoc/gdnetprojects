@@ -18,7 +18,7 @@ namespace WebFrameworkMapping.Common
 
             base.ManyToOne(e => e.Statut, m =>
             {
-                m.Lazy(LazyRelation.Proxy);
+                m.Lazy(LazyRelation.NoLazy);
                 m.Cascade(Cascade.None);
                 m.Column(MappingConstants.StatutLog.StatutId);
             });
