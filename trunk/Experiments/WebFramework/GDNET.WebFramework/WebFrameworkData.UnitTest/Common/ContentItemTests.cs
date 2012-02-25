@@ -23,8 +23,8 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddContentItem()
         {
-            var type = AssistantTest.CreateContentType();
-            var item = AssistantTest.CreateContentItem("T1", "Test 1", type);
+            var type = UnitTestAssistant.CreateContentType();
+            var item = UnitTestAssistant.CreateContentItem("T1", "Test 1", type);
 
             var myItem = DomainRepositories.ContentItem.GetById(item.Id);
             Assert.IsNotNull(myItem);
@@ -43,10 +43,10 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddRelationContentItems()
         {
-            var type = AssistantTest.CreateContentType();
-            var item1 = AssistantTest.CreateContentItem("T1", "Test 1", type);
-            var item2 = AssistantTest.CreateContentItem("T2", "Test 2", type);
-            var item3 = AssistantTest.CreateContentItem("T3", "Test 3", type);
+            var type = UnitTestAssistant.CreateContentType();
+            var item1 = UnitTestAssistant.CreateContentItem("T1", "Test 1", type);
+            var item2 = UnitTestAssistant.CreateContentItem("T2", "Test 2", type);
+            var item3 = UnitTestAssistant.CreateContentItem("T3", "Test 3", type);
             item1.AddRelationItem(item2);
             item1.AddRelationItem(item3);
 
@@ -68,7 +68,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanDeleteContentItem()
         {
-            var type = AssistantTest.CreateContentType();
+            var type = UnitTestAssistant.CreateContentType();
             var item = ContentItem.Factory.Create("T1", "Test 1", type);
 
             DomainRepositories.ContentItem.Save(item);
@@ -87,7 +87,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanUpdateContentItem()
         {
-            var contentAttribute = AssistantTest.CreateContentAttribute();
+            var contentAttribute = UnitTestAssistant.CreateContentAttribute();
             var contentItem = ContentItem.Factory.Create("T1", "Test 1", contentAttribute.ContentType);
 
             DomainRepositories.ContentItem.Save(contentItem);
@@ -121,7 +121,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddContentItemWithAttributeValue()
         {
-            var contentAttribute = AssistantTest.CreateContentAttribute();
+            var contentAttribute = UnitTestAssistant.CreateContentAttribute();
             var contentItem = ContentItem.Factory.Create("T1", "Test 1", contentAttribute.ContentType);
 
             ContentItemAttributeValue attributeValue1 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V1");
@@ -161,7 +161,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddContentItemWithRelationItems()
         {
-            var contentAttribute = AssistantTest.CreateContentAttribute();
+            var contentAttribute = UnitTestAssistant.CreateContentAttribute();
             var contentItem = ContentItem.Factory.Create("T1", "Test 1", contentAttribute.ContentType);
 
             DomainRepositories.ContentItem.Save(contentItem);

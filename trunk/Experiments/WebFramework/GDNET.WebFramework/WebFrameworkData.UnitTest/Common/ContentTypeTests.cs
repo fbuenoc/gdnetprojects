@@ -26,7 +26,7 @@ namespace WebFrameworkData.UnitTest.Common
         {
             string name = "Content type test";
             string typeName = "WebFrameworkData.UnitTest.Common.ContentTypeTests, WebFrameworkData.UnitTest";
-            var contentType = AssistantTest.CreateContentType();
+            var contentType = UnitTestAssistant.CreateContentType();
 
             DomainRepositories.ContentType.Save(contentType);
             DomainRepositories.RepositoryAssistant.Flush();
@@ -45,8 +45,8 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddContentTypeWithContentItems()
         {
-            var contentType = AssistantTest.CreateContentType();
-            var contentItem = AssistantTest.CreateContentItem("I1", "Item 1", contentType);
+            var contentType = UnitTestAssistant.CreateContentType();
+            var contentItem = UnitTestAssistant.CreateContentItem("I1", "Item 1", contentType);
 
             DomainRepositories.RepositoryAssistant.Clear();
 
@@ -67,7 +67,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanAddContentTypeWithContentAttributes()
         {
-            var contentType = AssistantTest.CreateContentType();
+            var contentType = UnitTestAssistant.CreateContentType();
             var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
             var attribute1 = ContentAttribute.Factory.Create("A1", contentType, listValue, 0);
             var attribute2 = ContentAttribute.Factory.Create("A2", contentType, listValue, 1);
@@ -87,7 +87,7 @@ namespace WebFrameworkData.UnitTest.Common
         [Test]
         public void CanDeleteContentType()
         {
-            var contentType = AssistantTest.CreateContentType();
+            var contentType = UnitTestAssistant.CreateContentType();
 
             DomainRepositories.ContentType.Delete(contentType.Id);
             DomainRepositories.RepositoryAssistant.Flush();

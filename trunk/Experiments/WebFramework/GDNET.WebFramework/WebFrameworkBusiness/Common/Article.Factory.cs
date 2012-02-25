@@ -19,11 +19,6 @@ namespace WebFrameworkBusiness.Common
                 return BusinessEntityBase.Factory.NewInstance<Article>();
             }
 
-            public Article Create()
-            {
-                return BusinessEntityBase.Factory.Create<Article>();
-            }
-
             public Article Create(string name, string description, string mainContent)
             {
                 var article = BusinessEntityBase.Factory.Create<Article>();

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Business\ArticleTests.cs" />
+    <Compile Include="Business\CommentTests.cs" />
     <Compile Include="Common\ContentTypeTests.cs" />
     <Compile Include="Common\ContentItemTests.cs" />
     <Compile Include="Common\ContentAttributeTests.cs" />
@@ -59,7 +60,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestRepositories.cs" />
     <Compile Include="TestSessionStrategy.cs" />
-    <Compile Include="Utils\AssistantTest.cs" />
+    <Compile Include="Utils\UnitTestAssistant.cs" />
     <Compile Include="TestSessionService.cs" />
   </ItemGroup>
   <ItemGroup>
