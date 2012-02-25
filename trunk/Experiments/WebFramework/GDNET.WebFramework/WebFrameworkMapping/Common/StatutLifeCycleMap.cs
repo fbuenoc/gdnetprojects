@@ -13,7 +13,7 @@ namespace WebFrameworkMapping.Common
             base.Bag(e => e.StatutLogs, cm =>
             {
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Access(Accessor.Field);
+                cm.Access(Accessor.NoSetter);
                 cm.Key(k => k.Column(MappingConstants.StatutLifeCycleId));
                 cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 cm.Inverse(true);
@@ -24,7 +24,7 @@ namespace WebFrameworkMapping.Common
 
             base.ManyToOne(e => e.ActualStatut, cm =>
             {
-                cm.Lazy(LazyRelation.Proxy);
+                cm.Lazy(LazyRelation.NoLazy);
                 cm.Cascade(Cascade.None);
                 cm.Column(MappingConstants.StatutLifeCycle.ActualStatutId);
             });

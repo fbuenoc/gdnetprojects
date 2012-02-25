@@ -18,16 +18,21 @@ namespace WebFrameworkMapping.Common
 
             base.ManyToOne(e => e.LifeCycle, m =>
             {
+                m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.StatutLifeCycleId);
                 m.Cascade(Cascade.All);
             });
             base.ManyToOne(e => e.Category, m =>
             {
+                m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.Translation.CategoryId);
+                m.Cascade(Cascade.None);
             });
             base.ManyToOne(e => e.Culture, m =>
             {
+                m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.Translation.CultureId);
+                m.Cascade(Cascade.None);
             });
         }
     }

@@ -27,18 +27,20 @@ namespace WebFrameworkMapping.Common
             });
             base.ManyToOne(e => e.Name, m =>
             {
+                m.Lazy(LazyRelation.NoLazy);
                 m.Column(MappingConstants.NameTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
             base.ManyToOne(e => e.Description, m =>
             {
+                m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.DescriptionTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
 
             base.Bag(e => e.RelationItems, cm =>
             {
-                cm.Access(Accessor.Field);
+                cm.Access(Accessor.NoSetter);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Table(MappingConstants.ContentItem.ContentItemRelationTable);
                 cm.Key(k => k.Column(MappingConstants.ContentItemId));
@@ -53,7 +55,7 @@ namespace WebFrameworkMapping.Common
 
             base.Bag(e => e.AttributeValues, cm =>
             {
-                cm.Access(Accessor.Field);
+                cm.Access(Accessor.NoSetter);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Key(k => k.Column(MappingConstants.ContentItemId));
                 cm.Cascade(Cascade.All);

@@ -21,13 +21,13 @@ namespace WebFrameworkMapping.Common
             });
             base.ManyToOne(e => e.Name, m =>
             {
-                m.NotNullable(true);
+                m.Lazy(LazyRelation.NoLazy);
                 m.Column(MappingConstants.NameTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
             base.ManyToOne(e => e.Application, m =>
             {
-                m.NotNullable(false);
+                m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.ApplicationId);
                 m.Cascade(Cascade.None);
             });
@@ -35,7 +35,7 @@ namespace WebFrameworkMapping.Common
             base.Bag(e => e.ContentItems, cm =>
             {
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Access(Accessor.Field);
+                cm.Access(Accessor.NoSetter);
                 cm.Key(k => k.Column(MappingConstants.ContentTypeId));
                 cm.Cascade(Cascade.None);
             }, m =>
@@ -46,7 +46,7 @@ namespace WebFrameworkMapping.Common
             base.Bag(e => e.ContentAttributes, cm =>
             {
                 cm.Lazy(CollectionLazy.Lazy);
-                cm.Access(Accessor.Field);
+                cm.Access(Accessor.NoSetter);
                 cm.Key(k => k.Column(MappingConstants.ContentTypeId));
                 cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 cm.Inverse(true);

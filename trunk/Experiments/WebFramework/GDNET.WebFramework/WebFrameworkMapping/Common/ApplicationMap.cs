@@ -32,11 +32,13 @@ namespace WebFrameworkMapping.Common
             });
             base.ManyToOne(e => e.Category, m =>
             {
+                m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
                 m.Column(MappingConstants.Application.CategoryId);
             });
             base.ManyToOne(e => e.CultureDefault, m =>
             {
+                m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
                 m.Column(MappingConstants.Application.CultureDefaultId);
             });
