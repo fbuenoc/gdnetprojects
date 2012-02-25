@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using System;
+using NHibernate;
 using WebFrameworkNHibernate.SessionManagers;
 
 namespace WebFrameworkSampleData
@@ -7,6 +8,7 @@ namespace WebFrameworkSampleData
     {
         static void Main(string[] args)
         {
+            DateTime date1 = DateTime.Now;
             ISession session = AppStaticSessionManager.Instance.OpenSession();
             session.BeginTransaction();
 
@@ -14,7 +16,12 @@ namespace WebFrameworkSampleData
 
             DataAssistant.GenerateContentTypes();
 
+            session.Flush();
             session.Transaction.Commit();
+            session.Transaction.Dispose();
+
+            Console.WriteLine("Done in (" + (DateTime.Now - date1) + ")");
+            Console.ReadLine();
         }
     }
 }
