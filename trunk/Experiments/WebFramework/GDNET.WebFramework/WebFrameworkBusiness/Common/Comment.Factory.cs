@@ -1,4 +1,6 @@
-﻿namespace WebFrameworkBusiness.Common
+﻿using WebFrameworkBusiness.Base;
+
+namespace WebFrameworkBusiness.Common
 {
     public sealed partial class Comment
     {
@@ -9,14 +11,14 @@
 
         public class CommentFactory
         {
-            public Comment Create()
+            public Comment NewInstance()
             {
-                return new Comment { };
+                return BusinessEntityBase.Factory.NewInstance<Comment>();
             }
 
             public Comment Create(string title, string body)
             {
-                var cm = this.Create();
+                var cm = BusinessEntityBase.Factory.Create<Comment>();
                 cm.Title = title;
                 cm.Body = body;
 
