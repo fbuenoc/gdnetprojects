@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using GDNET.Common.DesignByContract;
@@ -7,8 +6,8 @@ using GDNET.Common.Encryption;
 using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
 using GDNET.Extensions;
+using WebFrameworkBusiness.Helpers;
 using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
 using WebFrameworkDomain.DefaultImpl;
 
 namespace WebFrameworkBusiness.Base
@@ -25,45 +24,6 @@ namespace WebFrameworkBusiness.Base
         private string DecryptData(string encryptedText)
         {
             return this.encryptor.Decrypt(encryptedText, this.Encryption);
-        }
-
-        /// <summary>
-        /// Find content type, create new ContentType and its attributes if not found an expected CT
-        /// </summary>
-        private bool EnsureContentType(out ContentType contentType)
-        {
-            contentType = DomainRepositories.ContentType.FindByTypeName(this.QualifiedTypeName);
-
-            if (contentType == null)
-            {
-                contentType = ContentType.Factory.Create(this.GetType().Name, this.QualifiedTypeName);
-                if (!DomainRepositories.ContentType.Save(contentType))
-                {
-                    return false;
-                }
-
-                int position = 1;
-                List<ContentAttribute> listOfAttributes = new List<ContentAttribute>();
-
-                foreach (var propertyName in this.properties.Keys)
-                {
-                    var listeValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
-                    var attribute = ContentAttribute.Factory.Create(propertyName, contentType, listeValue, position);
-                    listOfAttributes.Add(attribute);
-                    position += 1;
-                }
-
-                contentType.AddContentAttributes(listOfAttributes);
-
-                if (!DomainRepositories.ContentType.Update(contentType))
-                {
-                    return false;
-                }
-
-                DomainRepositories.RepositoryAssistant.Flush();
-            }
-
-            return true;
         }
 
         /// <summary>
@@ -140,31 +100,33 @@ namespace WebFrameworkBusiness.Base
 
         #region Public Methods
 
-        public bool LoadItemById(long id)
+        public bool GetById(long id)
         {
-            this.contentItem = DomainRepositories.ContentItem.GetById(id);
-            if (this.contentItem != null)
+            this.ItemData = DomainRepositories.ContentItem.GetById(id);
+            if (this.ItemData == null)
             {
-                // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
-                var encryptionAttribute = this.contentItem.AttributeValues.First(x => x.ContentAttribute.Code == ExpressionAssistant.GetPropertyName(() => this.Encryption));
-                this.Encryption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
-
-                // Now we load other properties
-                foreach (var kvp in this.properties.Where(x => x.Key != ExpressionAssistant.GetPropertyName(() => this.Encryption)))
-                {
-                    var attributeValue = this.contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
-                    if (attributeValue != null)
-                    {
-                        var decryptedValue = this.DecryptData(attributeValue.Value.Value);
-                        this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
-                    }
-                }
-
-                this.UpdateEntityInfo();
-                return true;
+                return false;
             }
 
-            return false;
+            // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
+            var encryptionAttribute = this.ItemData.AttributeValues.First(x => x.ContentAttribute.Code == ExpressionAssistant.GetPropertyName(() => this.Encryption));
+            this.Encryption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
+
+            // Now we load other properties
+            foreach (var kvp in this.properties.Where(x => x.Key != ExpressionAssistant.GetPropertyName(() => this.Encryption)))
+            {
+                var attributeValue = this.ItemData.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
+                if (attributeValue != null)
+                {
+                    var decryptedValue = this.DecryptData(attributeValue.Value.Value);
+                    this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
+                }
+            }
+
+            this.UpdateEntityInfo();
+
+            // Okie now
+            return true;
         }
 
         public bool Delete()
@@ -174,35 +136,24 @@ namespace WebFrameworkBusiness.Base
 
         public bool Save()
         {
-            ContentType contentType = null;
-            if (this.EnsureContentType(out contentType))
-            {
-                this.contentItem = ContentItem.Factory.Create(this.Name, this.Description, contentType, this.Position);
-            }
-            else
+            ContentType contentType = BusinessEntityAssistant.EnsureContentType(this);
+            if (contentType == null)
             {
                 ThrowException.InvalidOperationException(string.Format("Can not setup for type '{0}'", this.QualifiedTypeName));
             }
+            else
+            {
+                this.ItemData = ContentItem.Factory.Create(this.Name, this.Description, contentType, this.Position);
+            }
 
             // Save values
-            if (!DomainRepositories.ContentItem.Save(this.contentItem))
+            if (!DomainRepositories.ContentItem.Save(this.ItemData))
             {
                 return false;
             }
 
-            // Some properties is stored in content item, so don't need to store it again
-            List<string> listeContentItemProperties = new List<string>();
-            listeContentItemProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Position));
-            listeContentItemProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Name));
-            listeContentItemProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Description));
-
             foreach (var kvp in this.propertiesValues)
             {
-                if (listeContentItemProperties.Contains(kvp.Key))
-                {
-                    continue;
-                }
-
                 var contentAttribute = contentType.ContentAttributes.FirstOrDefault(x => (x.Code == kvp.Key));
                 if (contentAttribute == null)
                 {
@@ -215,11 +166,11 @@ namespace WebFrameworkBusiness.Base
                     value = this.EncryptData(value);
                 }
 
-                var attributeValue = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, value);
-                contentItem.AddAttributeValue(attributeValue);
+                var attributeValue = ContentItemAttributeValue.Factory.Create(contentAttribute, ItemData, value);
+                this.ItemData.AddAttributeValue(attributeValue);
             }
 
-            if (!DomainRepositories.ContentItem.Update(this.contentItem))
+            if (!DomainRepositories.ContentItem.Update(this.ItemData))
             {
                 return false;
             }
@@ -232,11 +183,11 @@ namespace WebFrameworkBusiness.Base
 
         private void UpdateEntityInfo()
         {
-            this.Id = this.contentItem.Id;
-            this.IsActive = this.contentItem.IsActive;
-            this.IsDeletable = this.contentItem.IsDeletable;
-            this.IsEditable = this.contentItem.IsEditable;
-            this.IsViewable = this.contentItem.IsViewable;
+            this.Id = this.ItemData.Id;
+            this.IsActive = this.ItemData.IsActive;
+            this.IsDeletable = this.ItemData.IsDeletable;
+            this.IsEditable = this.ItemData.IsEditable;
+            this.IsViewable = this.ItemData.IsViewable;
         }
 
         #endregion

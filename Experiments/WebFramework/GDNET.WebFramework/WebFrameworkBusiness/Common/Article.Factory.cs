@@ -1,4 +1,6 @@
-﻿namespace WebFrameworkBusiness.Common
+﻿using WebFrameworkBusiness.Base;
+
+namespace WebFrameworkBusiness.Common
 {
     public sealed partial class Article
     {
@@ -9,19 +11,33 @@
 
         public class ArticleFactory
         {
+            /// <summary>
+            /// Create a new instance without initializing data item (ONLY USE TO LOAD OBJECT)
+            /// </summary>
+            public Article NewInstance()
+            {
+                return BusinessEntityBase.Factory.NewInstance<Article>();
+            }
+
             public Article Create()
             {
-                return new Article { };
+                return BusinessEntityBase.Factory.Create<Article>();
             }
 
             public Article Create(string name, string description, string mainContent)
             {
-                var ac = this.Create();
-                ac.Name = name;
-                ac.Description = description;
-                ac.MainContent = mainContent;
+                var article = BusinessEntityBase.Factory.Create<Article>();
+                article.MainContent = mainContent;
 
-                return ac;
+                return article;
+            }
+
+            public Article Create(string name, string description, string mainContent, int position)
+            {
+                var article = this.Create(name, description, mainContent);
+                article.ItemData.Position = position;
+
+                return article;
             }
         }
     }

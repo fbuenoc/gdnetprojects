@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GDNET.Common.Base.Entities;
+using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
 using GDNET.Extensions;
 using WebFrameworkDomain.Common;
@@ -12,9 +13,32 @@ namespace WebFrameworkBusiness.Base
         private Dictionary<string, Type> properties = new Dictionary<string, Type>();
         private Dictionary<string, object> propertiesValues = new Dictionary<string, object>();
 
-        private ContentItem contentItem = null;
+        #region Field names
+
+        public string FieldNameItemData
+        {
+            get { return ExpressionAssistant.GetPropertyName(() => this.ItemData); }
+        }
+
+        public string FieldNameEncryption
+        {
+            get { return ExpressionAssistant.GetPropertyName(() => this.Encryption); }
+        }
+
+        public string FieldNameProperties
+        {
+            get { return ExpressionAssistant.GetPropertyName(() => this.properties); }
+        }
+
+        #endregion
 
         #region Properties
+
+        protected ContentItem ItemData
+        {
+            get;
+            set;
+        }
 
         public string QualifiedTypeName
         {
@@ -29,20 +53,34 @@ namespace WebFrameworkBusiness.Base
 
         public string Name
         {
-            get { return this.GetValue<string>(() => this.Name); }
-            set { this.SetValue<string>(() => this.Name, value); }
+            get { return this.ItemData.Name.Value; }
+            set
+            {
+                if (this.ItemData.Name == null)
+                {
+                    this.ItemData.Name = Translation.Factory.Create(value);
+                }
+                this.ItemData.Name.Value = value;
+            }
         }
 
         public string Description
         {
-            get { return this.GetValue<string>(() => this.Description); }
-            set { this.SetValue<string>(() => this.Description, value); }
+            get { return this.ItemData.Description.Value; }
+            set
+            {
+                if (this.ItemData.Description == null)
+                {
+                    this.ItemData.Description = Translation.Factory.Create(value);
+                }
+                this.ItemData.Description.Value = value;
+            }
         }
 
         public int Position
         {
-            get { return this.GetValue<int>(() => this.Position); }
-            set { this.SetValue<int>(() => this.Position, value); }
+            get { return this.ItemData.Position; }
+            set { this.ItemData.Position = value; }
         }
 
         #endregion
