@@ -57,15 +57,13 @@
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
-    <Compile Include="Framework\Common\ModelActiveBase.cs" />
-    <Compile Include="Framework\Common\ModelFullControlBase.cs" />
-    <Compile Include="Framework\Common\ModelService.cs" />
-    <Compile Include="Framework\DomainModels\ApplicationModel.cs" />
-    <Compile Include="Framework\DomainModels\ContentAttributeModel.cs" />
-    <Compile Include="Framework\DomainModels\ContentTypeModel.cs" />
-    <Compile Include="Framework\DomainModels\ContentItemModel.cs" />
-    <Compile Include="Framework\DomainModels\CultureModel.cs" />
-    <Compile Include="Framework\DomainModels\ListValueModel.cs" />
+    <Compile Include="Framework\Base\ModelWithModificationBase.cs" />
+    <Compile Include="Framework\Base\ModelService.cs" />
+    <Compile Include="Framework\Common\ApplicationModel.cs" />
+    <Compile Include="Framework\Common\ContentAttributeModel.cs" />
+    <Compile Include="Framework\Common\ContentTypeModel.cs" />
+    <Compile Include="Framework\Common\ContentItemModel.cs" />
+    <Compile Include="Framework\Common\ListValueModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\AccountValidation.cs" />
   </ItemGroup>

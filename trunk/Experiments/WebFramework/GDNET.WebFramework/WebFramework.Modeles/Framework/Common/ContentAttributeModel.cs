@@ -1,13 +1,11 @@
-﻿using System;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-
+using WebFramework.Modeles.Framework.Base;
 using WebFrameworkDomain.Common;
-using WebFramework.Modeles.Framework.Common;
 
-namespace WebFramework.Modeles.Framework.DomainModels
+namespace WebFramework.Modeles.Framework.Common
 {
-    public class ContentAttributeModel : ModelFullControlBase<ContentAttribute, long>
+    public class ContentAttributeModel : ModelWithModificationBase<ContentAttribute, long>
     {
         #region Ctors
 
