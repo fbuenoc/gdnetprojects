@@ -46,12 +46,14 @@ begin
 		exec @NameTranslationId = SP_CreateOrUpdateTranslation
 							@CultureCode = 'en-US',
 							@Code = @NameTranslationCode,
-							@Value = @Name;
+							@Value = @Name,
+							@IsDeletable = False;
 							
 		exec @DescriptionTranslationId = SP_CreateOrUpdateTranslation
 							@CultureCode = 'en-US',
 							@Code = @DescriptionTranslationCode,
-							@Value = @Description;
+							@Value = @Description,
+							@IsDeletable = False;
 
 
 		INSERT INTO [StatutLifeCycle]
