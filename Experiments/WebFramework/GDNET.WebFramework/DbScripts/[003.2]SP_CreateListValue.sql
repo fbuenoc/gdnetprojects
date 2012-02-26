@@ -81,7 +81,8 @@ begin
 				exec @DescriptionTranslationId = SP_CreateOrUpdateTranslation
 						@CultureCode = 'en-US',
 						@Code = @TranslationDescriptionCode,
-						@Value = @Description;	
+						@Value = @Description,
+						@IsDeletable = False;
 				
 				INSERT INTO [ListValue]
 					   ([DescriptionTranslationId]
