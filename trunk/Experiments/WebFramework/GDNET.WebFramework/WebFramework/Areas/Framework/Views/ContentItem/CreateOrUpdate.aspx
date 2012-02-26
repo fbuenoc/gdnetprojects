@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Create or update
+        <%= TranslationAssistant.CreateOrUpdate<long>(base.Model) %>
     </h2>
     <h3>
         In Content Type:

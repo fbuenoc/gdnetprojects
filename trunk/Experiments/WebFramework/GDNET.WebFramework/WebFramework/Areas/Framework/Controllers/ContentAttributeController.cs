@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using GDNET.Web.Helpers;
+using GDNET.Web.Mvc.Helpers;
 using WebFramework.Constants;
 using WebFramework.Modeles.Base;
 using WebFramework.Modeles.Framework.Base;
@@ -56,7 +57,8 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override bool OnDeleteExecuting(ContentAttributeModel model, FormCollection collection)
         {
-            return DomainRepositories.ContentAttribute.Delete(model.Id);
+            long contentAttributeId = collection.GetItemId<long>();
+            return DomainRepositories.ContentAttribute.Delete(contentAttributeId);
         }
 
         protected override ContentAttributeModel OnEditChecking(string id)

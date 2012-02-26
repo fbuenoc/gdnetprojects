@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
+using GDNET.Web.Mvc.Helpers;
 using WebFramework.Modeles.Base;
 using WebFramework.Modeles.Framework.Common;
 using WebFrameworkDomain.Common;
@@ -24,7 +25,7 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override object OnCreateExecuting(ApplicationModel model, FormCollection collection)
         {
-            var application = Application.Factory.Create(model.RootUrl, model.Name, model.Description);
+            var application = Application.Factory.Create(model.Name, model.Description, model.RootUrl);
             var result = DomainRepositories.Application.Save(application);
             return result ? (object)application.Id : null;
         }
@@ -36,7 +37,8 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override bool OnDeleteExecuting(ApplicationModel model, FormCollection collection)
         {
-            return DomainRepositories.Application.Delete(model.Id);
+            long appId = collection.GetItemId<long>();
+            return DomainRepositories.Application.Delete(appId);
         }
 
         protected override ApplicationModel OnEditChecking(string id)
