@@ -11,6 +11,11 @@ GO
 exec SP_CreateListValue
 	@Name = 'LV.ApplicationCategories.Default',
 	@Description = 'Default category',
-	@CustomValue = '-',
+	@ParentName = 'LV.ApplicationCategories';
+GO
+
+exec SP_CreateListValue
+	@Name = 'LV.ApplicationCategories.SysTranslation',
+	@Description = 'System translations',
 	@ParentName = 'LV.ApplicationCategories';
 GO
