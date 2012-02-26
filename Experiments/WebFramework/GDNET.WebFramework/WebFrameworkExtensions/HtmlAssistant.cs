@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 
 namespace WebFrameworkExtensions
 {
-    public static class HtmlExtensions
+    public static class HtmlAssistant
     {
         public static MvcHtmlString DropDownListLV(this HtmlHelper html, string lvName, string name)
         {
