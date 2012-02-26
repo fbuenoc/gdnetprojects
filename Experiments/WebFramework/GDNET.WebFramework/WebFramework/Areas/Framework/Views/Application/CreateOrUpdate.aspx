@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Create or update
+        <%= TranslationAssistant.CreateOrUpdate<long>(base.Model) %>
     </h2>
     <div>
         <% base.Html.BeginForm(); %>
@@ -28,7 +28,7 @@
             <%= base.Html.TextBoxFor(m => m.RootUrl)%>
         </div>
         <p>
-            <input type="submit" value="Save & Continue" />
+            <input type="submit" value="<%= Translations.System.SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

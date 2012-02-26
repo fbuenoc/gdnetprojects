@@ -15,16 +15,17 @@
         </div>
         <br />
         <div>
-            Created at:
+            <%= Translations.System.CreatedAt %>:
             <%= base.Model.CreatedAt.ToStringEx() %>
-        </div>
-        <div>
-            Created by:
+            <br />
+            <%= Translations.System.CreatedBy %>:
             <%= base.Model.CreatedBy %>
-        </div>
-        <div>
-            Category:
+            <br />
+            <%= Translations.System.Category %>:
             <%= base.Model.Category %>
+            <br />
+            <%= Translations.System.Statut %>:
+            <%= base.Model.ActualStatut %>
         </div>
     </div>
     <p>

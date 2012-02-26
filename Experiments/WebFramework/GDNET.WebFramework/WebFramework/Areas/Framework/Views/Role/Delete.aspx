@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<RoleModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    Delete
+    <%= Translations.System.DeleteConfirmation %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Delete confirmation
+        <%= Translations.System.DeleteConfirmationXYZ(Translations.EntityNames.Role); %>
     </h2>
     <p>
         Role to be deleted:
@@ -13,7 +13,7 @@
     </p>
     <p>
         <% base.Html.BeginForm(); %>
-        <input type="submit" name="btnOK" value="Delete and Continue" />
+        <input type="submit" name="btnOK" value="<%= Translations.System.DeleteAndContinue %>" />
         <%= base.Html.HiddenFor(m => m.Name) %>
         <% base.Html.EndForm(); %>
     </p>
