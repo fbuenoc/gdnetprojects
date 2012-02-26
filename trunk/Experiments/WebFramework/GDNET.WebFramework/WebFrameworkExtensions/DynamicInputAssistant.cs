@@ -5,7 +5,7 @@ using WebFrameworkDomain.DynamicInput;
 
 namespace WebFrameworkExtensions
 {
-    public static class HtmlDynamicInputExtensions
+    public static class DynamicInputAssistant
     {
         private static readonly char[] ParameterSeparator = new char[] { ';' };
         private static readonly char[] ValueSeparator = new char[] { ':' };
