@@ -8,6 +8,7 @@ GO
 create proc SP_CreateListValue
 	@Name varchar(512),
 	@Description ntext,
+	@Detail ntext = NULL,
 	@CustomValue nvarchar(256) = NULL,
 	@ParentName varchar(512) = NULL,
 	@Position int = 0,
@@ -21,6 +22,11 @@ as
 begin
 	declare @CreatedAt datetime;
 	select @CreatedAt = GETDATE();
+	
+	if @Detail IS NULL
+	begin
+		set @Detail = @Description;
+	end
 	
 	-- Test the value is exists
 	declare @TestListValueId bigint, @StatutLifeCycleId int;
@@ -42,13 +48,16 @@ begin
 
 			-- Calculate @TranslationDescriptionCode
 			declare @TranslationDescriptionCode varchar(512);
+			declare @TranslationDetailCode varchar(512);
 			if @ParentName is NULL
 				begin
 					select @TranslationDescriptionCode = 'WF.ListValue.' + @Name + '.Description';
+					select @TranslationDetailCode = 'WF.ListValue.' + @Name + '.Detail';
 				end
 			else
 				begin
 					select @TranslationDescriptionCode = @Name + '.Description';
+					select @TranslationDetailCode = @Name + '.Detail';
 				end
 			
 			begin transaction
@@ -78,14 +87,21 @@ begin
 					   ,@CreatedBy);
 				
 				declare @DescriptionTranslationId bigint;
+				declare @DetailTranslationId bigint;
 				exec @DescriptionTranslationId = SP_CreateOrUpdateTranslation
 						@CultureCode = 'en-US',
 						@Code = @TranslationDescriptionCode,
 						@Value = @Description,
 						@IsDeletable = False;
+				exec @DetailTranslationId = SP_CreateOrUpdateTranslation
+						@CultureCode = 'en-US',
+						@Code = @TranslationDetailCode,
+						@Value = @Detail,
+						@IsDeletable = False;
 				
 				INSERT INTO [ListValue]
 					   ([DescriptionTranslationId]
+					   ,[DetailTranslationId]
 					   ,[ParentId]
 					   ,[ApplicationId]
 					   ,[StatutLifeCycleId]
@@ -99,6 +115,7 @@ begin
 					   )
 				 VALUES
 					   (@DescriptionTranslationId
+					   ,@DetailTranslationId
 					   ,@ParentId
 					   ,@ApplicationId
 					   ,@StatutLifeCycleId

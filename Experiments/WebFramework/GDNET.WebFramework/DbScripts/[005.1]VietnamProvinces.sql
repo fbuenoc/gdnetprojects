@@ -9,6 +9,7 @@ GO
 exec SP_CreateListValue
 	@Name = 'LV.VietnamProvinces.Hanoi',
 	@Description = 'Hanoi',
+	@Detail = 'The capital of Vietnam',
 	@CustomValue = NULL,
 	@ParentName = 'LV.VietnamProvinces';
 GO
@@ -16,6 +17,7 @@ GO
 exec SP_CreateListValue
 	@Name = 'LV.VietnamProvinces.Hanoi.HoanKiem',
 	@Description = 'Hoan Kiem',
+	@Detail = 'The central district of Hanoi',
 	@CustomValue = NULL,
 	@ParentName = 'LV.VietnamProvinces.Hanoi';
 GO
