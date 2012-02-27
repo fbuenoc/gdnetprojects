@@ -3,7 +3,7 @@ using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Repositories.Common
 {
-    public interface IRepositoryCulture : IRepositoryBase<Culture, int>
+    public interface ICultureRepository : IRepositoryBase<Culture, int>
     {
         Culture FindByCode(string code);
     }

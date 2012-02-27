@@ -4,7 +4,7 @@ using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Repositories.Common
 {
-    public interface IRepositoryTemporary : IRepositoryBase<Temporary, Guid>
+    public interface ITemporaryRepository : IRepositoryBase<Temporary, Guid>
     {
     }
 }

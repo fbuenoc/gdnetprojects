@@ -12,44 +12,44 @@ namespace WebFrameworkDomain.DefaultImpl
             _instance = instance;
         }
 
-        public static IRepositoryApplication Application
+        public static IApplicationRepository Application
         {
-            get { return _instance.GetRepositoryApplication(); }
+            get { return _instance.GetApplicationRepository(); }
         }
 
-        public static IRepositoryContentAttribute ContentAttribute
+        public static IContentAttributeRepository ContentAttribute
         {
-            get { return _instance.GetRepositoryContentAttribute(); }
+            get { return _instance.GetContentAttributeRepository(); }
         }
 
-        public static IRepositoryContentItem ContentItem
+        public static IContentItemRepository ContentItem
         {
-            get { return _instance.GetRepositoryContentItem(); }
+            get { return _instance.GetContentItemRepository(); }
         }
 
-        public static IRepositoryContentType ContentType
+        public static IContentTypeRepository ContentType
         {
-            get { return _instance.GetRepositoryContentType(); }
+            get { return _instance.GetContentTypeRepository(); }
         }
 
-        public static IRepositoryCulture Culture
+        public static ICultureRepository Culture
         {
-            get { return _instance.GetRepositoryCulture(); }
+            get { return _instance.GetCultureRepository(); }
         }
 
-        public static IRepositoryListValue ListValue
+        public static IListValueRepository ListValue
         {
             get { return _instance.GetRepositoryListValue(); }
         }
 
-        public static IRepositoryTemporary Temporary
+        public static ITemporaryRepository Temporary
         {
-            get { return _instance.GetRepositoryTemporary(); }
+            get { return _instance.GetTemporaryRepository(); }
         }
 
-        public static IRepositoryTranslation Translation
+        public static ITranslationRepository Translation
         {
-            get { return _instance.GetRepositoryTranslation(); }
+            get { return _instance.GetTranslationRepository(); }
         }
 
         public static IRepositoryAssistant RepositoryAssistant
@@ -59,14 +59,14 @@ namespace WebFrameworkDomain.DefaultImpl
 
         #region Abstract methods
 
-        public abstract IRepositoryApplication GetRepositoryApplication();
-        public abstract IRepositoryContentAttribute GetRepositoryContentAttribute();
-        public abstract IRepositoryContentItem GetRepositoryContentItem();
-        public abstract IRepositoryContentType GetRepositoryContentType();
-        public abstract IRepositoryCulture GetRepositoryCulture();
-        public abstract IRepositoryListValue GetRepositoryListValue();
-        public abstract IRepositoryTemporary GetRepositoryTemporary();
-        public abstract IRepositoryTranslation GetRepositoryTranslation();
+        public abstract IApplicationRepository GetApplicationRepository();
+        public abstract IContentAttributeRepository GetContentAttributeRepository();
+        public abstract IContentItemRepository GetContentItemRepository();
+        public abstract IContentTypeRepository GetContentTypeRepository();
+        public abstract ICultureRepository GetCultureRepository();
+        public abstract IListValueRepository GetRepositoryListValue();
+        public abstract ITemporaryRepository GetTemporaryRepository();
+        public abstract ITranslationRepository GetTranslationRepository();
         public abstract IRepositoryAssistant GetRepositoryAssistant();
 
         #endregion
