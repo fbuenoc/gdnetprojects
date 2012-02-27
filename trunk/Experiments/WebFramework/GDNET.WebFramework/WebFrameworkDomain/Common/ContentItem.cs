@@ -101,7 +101,7 @@ namespace WebFrameworkDomain.Common
             }
         }
 
-        public virtual void RemoveRelationItems()
+        public virtual void RemoveAllRelationItems()
         {
             this.relationItems.Clear();
         }

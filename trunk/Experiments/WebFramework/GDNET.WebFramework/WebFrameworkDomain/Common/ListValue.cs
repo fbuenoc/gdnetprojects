@@ -18,6 +18,12 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual Translation Detail
+        {
+            get;
+            set;
+        }
+
         public virtual ListValue Parent
         {
             get;

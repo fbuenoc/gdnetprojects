@@ -3,7 +3,7 @@ using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Repositories.Common
 {
-    public interface IRepositoryTranslation : IRepositoryBase<Translation, long>
+    public interface ITranslationRepository : IRepositoryBase<Translation, long>
     {
         /// <summary>
         /// Get a translation by code

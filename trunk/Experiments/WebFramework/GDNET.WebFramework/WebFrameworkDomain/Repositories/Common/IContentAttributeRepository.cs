@@ -3,7 +3,7 @@ using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Repositories.Common
 {
-    public interface IRepositoryContentItem : IRepositoryBase<ContentItem, long>
+    public interface IContentAttributeRepository : IRepositoryBase<ContentAttribute, long>
     {
     }
 }

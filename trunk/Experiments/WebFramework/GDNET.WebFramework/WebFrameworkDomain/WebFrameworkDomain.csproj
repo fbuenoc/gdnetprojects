@@ -60,6 +60,7 @@
     <Compile Include="Common\ContentType.Factory.cs" />
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
+    <Compile Include="DefaultImpl\DomainServices.cs" />
     <Compile Include="DynamicInput\AttributeInfo.cs" />
     <Compile Include="DynamicInput\AttributeKey.cs" />
     <Compile Include="DynamicInput\AttributeValue.cs" />
@@ -68,20 +69,31 @@
     <Compile Include="Common\ListValue.cs" />
     <Compile Include="Common\ListValue.Factory.cs" />
     <Compile Include="Extensions\EntityLifeCycleAssistant.cs" />
-    <Compile Include="Repositories\Common\IRepositoryApplication.cs" />
-    <Compile Include="Repositories\Common\IRepositoryContentAttribute.cs" />
-    <Compile Include="Repositories\Common\IRepositoryContentItem.cs" />
-    <Compile Include="Repositories\Common\IRepositoryContentType.cs" />
-    <Compile Include="Repositories\Common\IRepositoryCulture.cs" />
-    <Compile Include="Repositories\Common\IRepositoryTemporary.cs" />
+    <Compile Include="Repositories\Common\IApplicationRepository.cs" />
+    <Compile Include="Repositories\Common\IContentAttributeRepository.cs" />
+    <Compile Include="Repositories\Common\IContentItemRepository.cs" />
+    <Compile Include="Repositories\Common\IContentTypeRepository.cs" />
+    <Compile Include="Repositories\Common\ICultureRepository.cs" />
+    <Compile Include="Repositories\Common\ITemporaryRepository.cs" />
     <Compile Include="Common\Temporary.Factory.cs" />
     <Compile Include="Common\Temporary.cs" />
     <Compile Include="Common\Translation.Factory.cs" />
-    <Compile Include="Repositories\Common\IRepositoryListValue.cs" />
-    <Compile Include="Repositories\Common\IRepositoryTranslation.cs" />
+    <Compile Include="Repositories\Common\IListValueRepository.cs" />
+    <Compile Include="Repositories\Common\ITranslationRepository.cs" />
     <Compile Include="Common\Translation.cs" />
     <Compile Include="DefaultImpl\DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Base\AbstractSpecification.cs" />
+    <Compile Include="Repositories\Specifications\ApplicationSpecification.cs" />
+    <Compile Include="Repositories\Specifications\ContentItemAttributeValueSpecification.cs" />
+    <Compile Include="Repositories\Specifications\ContentItemSpecification.cs" />
+    <Compile Include="Repositories\Specifications\ContentTypeSpecification.cs" />
+    <Compile Include="Base\GenericSpecification.cs" />
+    <Compile Include="Repositories\Specifications\ContentAttributeSpecification.cs" />
+    <Compile Include="Repositories\Specifications\TranslationSpecification.cs" />
+    <Compile Include="Repositories\Specifications\CultureSpecification.cs" />
+    <Compile Include="Repositories\Specifications\ListValueSpecification.cs" />
+    <Compile Include="Repositories\Specifications\TemporarySpecification.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">

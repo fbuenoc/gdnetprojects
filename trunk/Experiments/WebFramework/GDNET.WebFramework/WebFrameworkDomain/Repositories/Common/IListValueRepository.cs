@@ -4,7 +4,7 @@ using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Repositories.Common
 {
-    public interface IRepositoryListValue : IRepositoryBase<ListValue, long>
+    public interface IListValueRepository : IRepositoryBase<ListValue, long>
     {
         ListValue FindByName(string name);
         IList<ListValue> GetAllRootValues();

@@ -3,7 +3,7 @@ using WebFrameworkDomain.Common;
 
 namespace WebFrameworkDomain.Repositories.Common
 {
-    public interface IRepositoryContentType : IRepositoryBase<ContentType, long>
+    public interface IContentTypeRepository : IRepositoryBase<ContentType, long>
     {
         ContentType FindByTypeName(string typeName);
     }
