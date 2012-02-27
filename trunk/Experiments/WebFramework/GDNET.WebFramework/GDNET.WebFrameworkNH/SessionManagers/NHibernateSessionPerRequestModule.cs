@@ -5,6 +5,7 @@ using GDNET.Web;
 using GDNET.Web.Helpers;
 using NHibernate;
 using NHibernate.Context;
+using WebFrameworkServices;
 
 namespace WebFrameworkNHibernate.SessionManagers
 {
@@ -34,11 +35,15 @@ namespace WebFrameworkNHibernate.SessionManagers
 
             CurrentSessionContext.Bind(session);
 
-            // Set data repositories
-            if (HttpContextAssistant.TryGetItem<DataRepositories>("DataRepositories") == null)
+            // Set repositories & services
+            if (HttpContextAssistant.TryGetItem<FrameworkRepositories>("Repositories") == null)
             {
                 ISessionStrategy sessionStrategy = new WebSessionStrategy(session);
-                HttpContextAssistant.TrySetItem("DataRepositories", new DataRepositories(sessionStrategy));
+                HttpContextAssistant.TrySetItem("Repositories", new FrameworkRepositories(sessionStrategy));
+            }
+            if (HttpContextAssistant.TryGetItem<FrameworkRepositories>("Services") == null)
+            {
+                HttpContextAssistant.TrySetItem("Services", new FrameworkServices());
             }
         }
 
