@@ -44,22 +44,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Repositories\RepositoryApplication.cs" />
+    <Compile Include="Common\Repositories\ApplicationRepository.cs" />
     <Compile Include="Common\Repositories\RepositoryAssistant.cs" />
-    <Compile Include="Common\Repositories\RepositoryContentAttribute.cs" />
-    <Compile Include="Common\Repositories\RepositoryContentItem.cs" />
-    <Compile Include="Common\Repositories\RepositoryContentType.cs" />
-    <Compile Include="Common\Repositories\RepositoryCulture.cs" />
-    <Compile Include="Common\Repositories\RepositoryGeneric.cs" />
-    <Compile Include="Common\Repositories\RepositoryTemporary.cs" />
-    <Compile Include="Common\Specifications\SpecificationTemporary.cs" />
-    <Compile Include="Common\Specifications\SpecificationListValue.cs" />
-    <Compile Include="Common\Specifications\SpecificationContentType.cs" />
-    <Compile Include="Common\Specifications\SpecificationContentItemAttributeValue.cs" />
-    <Compile Include="Common\Specifications\SpecificationContentItem.cs" />
-    <Compile Include="Common\Specifications\SpecificationApplication.cs" />
-    <Compile Include="Common\Repositories\RepositoryListValue.cs" />
-    <Compile Include="Common\Repositories\RepositoryTranslation.cs" />
+    <Compile Include="Common\Repositories\ContentAttributeRepository.cs" />
+    <Compile Include="Common\Repositories\ContentItemRepository.cs" />
+    <Compile Include="Common\Repositories\ContentTypeRepository.cs" />
+    <Compile Include="Common\Repositories\CultureRepository.cs" />
+    <Compile Include="Common\Repositories\GenericRepository.cs" />
+    <Compile Include="Common\Repositories\TemporaryRepository.cs" />
+    <Compile Include="Common\Repositories\ListValueRepository.cs" />
+    <Compile Include="Common\Repositories\TranslationRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
