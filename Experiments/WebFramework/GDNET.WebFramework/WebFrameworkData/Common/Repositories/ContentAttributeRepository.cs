@@ -5,9 +5,9 @@ using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryContentAttribute : AbstractRepository<ContentAttribute, long>, IRepositoryContentAttribute
+    public class ContentAttributeRepository : AbstractRepository<ContentAttribute, long>, IContentAttributeRepository
     {
-        public RepositoryContentAttribute(ISessionStrategy sessionStrategy)
+        public ContentAttributeRepository(ISessionStrategy sessionStrategy)
             : base(sessionStrategy)
         {
         }

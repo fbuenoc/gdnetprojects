@@ -6,9 +6,9 @@ using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryCulture : AbstractRepository<Culture, int>, IRepositoryCulture
+    public class CultureRepository : AbstractRepository<Culture, int>, ICultureRepository
     {
-        public RepositoryCulture(ISessionStrategy sessionStrategy)
+        public CultureRepository(ISessionStrategy sessionStrategy)
             : base(sessionStrategy)
         {
         }

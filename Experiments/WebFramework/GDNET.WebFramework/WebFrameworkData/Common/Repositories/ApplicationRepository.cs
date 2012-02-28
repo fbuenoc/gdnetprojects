@@ -6,9 +6,9 @@ using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryApplication : AbstractRepository<Application, long>, IRepositoryApplication
+    public class ApplicationRepository : AbstractRepository<Application, long>, IApplicationRepository
     {
-        public RepositoryApplication(ISessionStrategy sessionStrategy)
+        public ApplicationRepository(ISessionStrategy sessionStrategy)
             : base(sessionStrategy)
         {
         }

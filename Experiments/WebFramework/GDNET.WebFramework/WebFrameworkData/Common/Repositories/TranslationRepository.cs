@@ -6,9 +6,9 @@ using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryTranslation : AbstractRepository<Translation, long>, IRepositoryTranslation
+    public class TranslationRepository : AbstractRepository<Translation, long>, ITranslationRepository
     {
-        public RepositoryTranslation(ISessionStrategy sessionStrategy)
+        public TranslationRepository(ISessionStrategy sessionStrategy)
             : base(sessionStrategy)
         {
         }

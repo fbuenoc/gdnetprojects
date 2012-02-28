@@ -9,9 +9,9 @@ using WebFrameworkDomain.Repositories.Common;
 
 namespace WebFrameworkData.Common.Repositories
 {
-    public class RepositoryListValue : AbstractRepository<ListValue, long>, IRepositoryListValue
+    public class ListValueRepository : AbstractRepository<ListValue, long>, IListValueRepository
     {
-        public RepositoryListValue(ISessionStrategy sessionStrategy)
+        public ListValueRepository(ISessionStrategy sessionStrategy)
             : base(sessionStrategy)
         {
         }
