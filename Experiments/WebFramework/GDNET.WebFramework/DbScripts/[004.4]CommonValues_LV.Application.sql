@@ -22,13 +22,19 @@ GO
 
 exec SP_CreateListValue
 	@Name = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Description = 'System translations',
+	@Description = 'Entitiy names translations',
 	@ParentName = 'LV.ApplicationCategories.SysTranslation';
 GO
 
 exec SP_CreateListValue
 	@Name = 'LV.ApplicationCategories.SysTranslation.ContentItem',
-	@Description = 'System translations',
+	@Description = 'Content item translations',
+	@ParentName = 'LV.ApplicationCategories.SysTranslation';
+GO
+
+exec SP_CreateListValue
+	@Name = 'LV.ApplicationCategories.SysTranslation.Application',
+	@Description = 'Application translations',
 	@ParentName = 'LV.ApplicationCategories.SysTranslation';
 GO
 
