@@ -3,10 +3,17 @@
 ----------------------------
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
+	@Code = 'ApplicationCategories.SysTranslation.Attributes',
+	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
+	@Value = 'Attributes',
+	@IsDeletable = False;
+	
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
 	@Code = 'ApplicationCategories.SysTranslation.CreatedAt',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
 	@Value = 'Created at',
-	@IsDeletable = False;
+	@IsDeletable = False;	
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
@@ -147,6 +154,14 @@ exec SP_CreateOrUpdateTranslation
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
 	@Value = 'Details of {0}',
 	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
+	@Code = 'ApplicationCategories.SysTranslation.ReturnToListOfXYZ',
+	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
+	@Value = 'Return to list of {0}',
+	@IsDeletable = False;
+	
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
