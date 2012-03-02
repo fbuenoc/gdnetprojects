@@ -10,6 +10,13 @@ exec SP_CreateOrUpdateTranslation
 	@Value = 'In content type {0}',
 	@IsDeletable = False;
 
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
+	@Code = 'ApplicationCategories.SysTranslation.ContentItem.NameIsRequired',
+	@CategoryName = 'LV.ApplicationCategories.SysTranslation.ContentItem',
+	@Value = 'The name of content item is required.',
+	@IsDeletable = False;
+
 
 -- Application
 exec SP_CreateOrUpdateTranslation
