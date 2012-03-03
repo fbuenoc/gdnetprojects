@@ -14,7 +14,11 @@ namespace WebFrameworkSampleData
 
             DataAssistant.Initialize(session);
 
-            DataAssistant.GenerateContentTypes();
+            DataAssistant.InitializeContentTypes();
+            if (args.Length > 0 && args[0] == "/s:data")
+            {
+                DataAssistant.GenerateSampleContents();
+            }
 
             session.Flush();
             session.Transaction.Commit();

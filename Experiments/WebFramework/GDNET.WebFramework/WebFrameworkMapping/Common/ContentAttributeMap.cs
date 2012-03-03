@@ -12,6 +12,7 @@ namespace WebFrameworkMapping.Common
         {
             base.Property(e => e.Code);
             base.Property(e => e.Position);
+            base.Property(e => e.IsMultilingual);
 
             base.ManyToOne(e => e.LifeCycle, m =>
             {
@@ -30,6 +31,12 @@ namespace WebFrameworkMapping.Common
                 m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.ContentAttribute.DataTypeId);
                 m.Cascade(Cascade.None);
+            });
+            base.ManyToOne(e => e.Name, m =>
+            {
+                m.Lazy(LazyRelation.NoLazy);
+                m.Column(MappingConstants.NameTranslationId);
+                m.Cascade(Cascade.All);
             });
 
             base.Bag(e => e.ContentItems, cm =>

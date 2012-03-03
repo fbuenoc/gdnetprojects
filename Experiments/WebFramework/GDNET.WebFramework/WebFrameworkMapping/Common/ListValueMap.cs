@@ -26,6 +26,12 @@ namespace WebFrameworkMapping.Common
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 m.Column(MappingConstants.DescriptionTranslationId);
             });
+            base.ManyToOne(e => e.Detail, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                m.Column(MappingConstants.DetailTranslationId);
+            });
             base.ManyToOne(e => e.Application, m =>
             {
                 m.Lazy(LazyRelation.Proxy);

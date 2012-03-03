@@ -43,7 +43,7 @@ namespace WebFrameworkNHibernate.SessionManagers
             }
             if (HttpContextAssistant.TryGetItem<FrameworkRepositories>("Services") == null)
             {
-                HttpContextAssistant.TrySetItem("Services", new FrameworkServices());
+                HttpContextAssistant.TrySetItem("Services", new InfrastructureServices());
             }
         }
 

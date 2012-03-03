@@ -49,17 +49,8 @@ namespace WebFramework.Modeles.Framework.Common
 
         public IEnumerable<ContentAttributeModel> Attributes
         {
-            get
-            {
-                List<ContentAttributeModel> listOfAttributes = new List<ContentAttributeModel>();
-
-                if (base.Entity != null)
-                {
-                    listOfAttributes.AddRange(base.Entity.ContentAttributes.Select(x => new ContentAttributeModel(x)));
-                }
-
-                return listOfAttributes;
-            }
+            get;
+            private set;
         }
 
         #endregion
@@ -82,6 +73,8 @@ namespace WebFramework.Modeles.Framework.Common
                 }
                 this.ApplicationId = entity.Application.Id;
             }
+
+            this.Attributes = entity.ContentAttributes.OrderBy(x => x.Position).Select(x => new ContentAttributeModel(x));
         }
 
         #endregion

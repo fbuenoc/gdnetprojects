@@ -4,6 +4,11 @@
     {
         public static class System
         {
+            public static string Attributes
+            {
+                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Attributes"); }
+            }
+
             public static string Category
             {
                 get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Category"); }
@@ -49,6 +54,12 @@
             public static string Description
             {
                 get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Description"); }
+            }
+
+            public static string ReturnToListOfXYZ(string xyz)
+            {
+                string returnToXYZ = TranslationAssistant.Translate("ApplicationCategories.SysTranslation.ReturnToListOfXYZ");
+                return string.Format(returnToXYZ, xyz);
             }
 
             public static string SaveAndContinue

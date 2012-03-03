@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B8955135-090D-4C77-8FB0-EE6F911B8DA3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebFrameworkPresenters</RootNamespace>
+    <AssemblyName>WebFrameworkPresenters</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\Translation\PresenterTranslationList.cs" />
+    <Compile Include="Admin\Translation\PresenterTranslationDetail.cs" />
+    <Compile Include="Admin\Translation\Views\IViewTranslationDetail.cs" />
+    <Compile Include="Admin\Translation\Views\IViewTranslationList.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Experiments CodePlex\Common\GDNET.Common\GDNET.Common.csproj">
+      <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
+      <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkData\WebFrameworkData.csproj">
+      <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>
+      <Name>WebFrameworkData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkDomainDto\WebFrameworkDomainDto.csproj">
+      <Project>{59E1E83A-26AD-4FC8-A655-54838AD80A53}</Project>
+      <Name>WebFrameworkDomainDto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+      <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
+      <Name>WebFrameworkDomain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

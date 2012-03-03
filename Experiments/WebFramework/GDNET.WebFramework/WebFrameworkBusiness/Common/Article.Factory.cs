@@ -21,16 +21,14 @@ namespace WebFrameworkBusiness.Common
 
             public Article Create(string name, string description, string mainContent)
             {
-                var article = BusinessEntityBase.Factory.Create<Article>();
-                article.MainContent = mainContent;
-
-                return article;
+                return this.Create(name, description, mainContent, int.MinValue);
             }
 
             public Article Create(string name, string description, string mainContent, int position)
             {
-                var article = this.Create(name, description, mainContent);
-                article.ItemData.Position = position;
+                var article = BusinessEntityBase.Factory.Create<Article>(name, description);
+                article.MainContent = mainContent;
+                article.Position = position;
 
                 return article;
             }

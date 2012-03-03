@@ -12,19 +12,19 @@ namespace WebFrameworkDomain.Common
 
         public class ContentAttributeFactory
         {
-            public ContentAttribute Create(string code, long contentTypeId, string dataTypeName)
+            public ContentAttribute Create(string code, string name, string dataTypeName, long contentTypeId)
             {
-                return this.Create(code, contentTypeId, dataTypeName, 0);
+                return this.Create(code, name, dataTypeName, contentTypeId, int.MaxValue);
             }
 
-            public ContentAttribute Create(string code, long contentTypeId, string dataTypeName, int position)
+            public ContentAttribute Create(string code, string name, string dataTypeName, long contentTypeId, int position)
             {
                 var contentType = DomainRepositories.ContentType.GetById(contentTypeId);
                 var dataType = DomainRepositories.ListValue.FindByName(dataTypeName);
-                return this.Create(code, contentType, dataType, position);
+                return this.Create(code, name, contentType, dataType, position);
             }
 
-            public ContentAttribute Create(string code, ContentType type, ListValue dataType, int position)
+            public ContentAttribute Create(string code, string name, ContentType type, ListValue dataType, int position)
             {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be null.");
                 ThrowException.ArgumentNullException(dataType, "dataType", "Data type can not be null.");
@@ -32,7 +32,8 @@ namespace WebFrameworkDomain.Common
                 var attribute = new ContentAttribute
                 {
                     Code = code,
-                    Position = position
+                    Position = position,
+                    Name = Translation.Factory.Create(name),
                 };
 
                 attribute.ContentType = type;

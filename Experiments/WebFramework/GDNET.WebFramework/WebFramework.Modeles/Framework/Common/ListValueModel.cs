@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using WebFramework.Modeles.Framework.Base;
 using WebFrameworkDomain.Common;
+using WebFrameworkServices.ComponentModel;
 
 namespace WebFramework.Modeles.Framework.Common
 {
@@ -12,7 +12,7 @@ namespace WebFramework.Modeles.Framework.Common
         #region Properties
 
         [Required]
-        [DisplayName("Value name")]
+        [DisplayNameML("ApplicationCategories.SysTranslation.Name")]
         public string Name
         {
             get;
@@ -20,28 +20,35 @@ namespace WebFramework.Modeles.Framework.Common
         }
 
         [Required]
-        [DisplayName("Description")]
+        [DisplayNameML("ApplicationCategories.SysTranslation.Description")]
         public string Description
         {
             get;
             set;
         }
 
-        [DisplayName("Custom value")]
+        [DisplayNameML("ApplicationCategories.SysTranslation.Detail")]
+        public string Detail
+        {
+            get;
+            set;
+        }
+
+        [DisplayNameML("ApplicationCategories.SysTranslation.CustomValue")]
         public string CustomValue
         {
             get;
             set;
         }
 
-        [DisplayName("Parent")]
+        [DisplayNameML("ApplicationCategories.SysTranslation.Parent")]
         public string Parent
         {
             get;
             set;
         }
 
-        [DisplayName("Position")]
+        [DisplayNameML("ApplicationCategories.SysTranslation.Position")]
         public int Position
         {
             get;
@@ -104,6 +111,10 @@ namespace WebFramework.Modeles.Framework.Common
             if (base.Entity.Description != null)
             {
                 this.Description = base.Entity.Description.Value;
+            }
+            if (base.Entity.Detail != null)
+            {
+                this.Detail = base.Entity.Detail.Value;
             }
             if (base.Entity.Parent != null)
             {

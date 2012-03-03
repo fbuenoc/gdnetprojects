@@ -9,14 +9,14 @@ namespace WebFrameworkData.UnitTest
 {
     public sealed class TestRepositories : DomainRepositories
     {
-        private IRepositoryApplication repositoryApplication = null;
-        private IRepositoryContentAttribute repositoryContentAttribute = null;
-        private IRepositoryContentItem repositoryContentItem = null;
-        private IRepositoryContentType repositoryContentType = null;
-        private IRepositoryCulture repositoryCulture = null;
-        private IRepositoryListValue repositoryListValue = null;
-        private IRepositoryTemporary repositoryTemporary = null;
-        private IRepositoryTranslation repositoryTranslation = null;
+        private IApplicationRepository repositoryApplication = null;
+        private IContentAttributeRepository repositoryContentAttribute = null;
+        private IContentItemRepository repositoryContentItem = null;
+        private IContentTypeRepository repositoryContentType = null;
+        private ICultureRepository repositoryCulture = null;
+        private IListValueRepository repositoryListValue = null;
+        private ITemporaryRepository repositoryTemporary = null;
+        private ITranslationRepository repositoryTranslation = null;
         private ISessionStrategy sessionStrategy = null;
 
         public TestRepositories(ISessionStrategy sessionStrategy)
@@ -25,79 +25,79 @@ namespace WebFrameworkData.UnitTest
             base.Initialize(this);
         }
 
-        public override IRepositoryApplication GetRepositoryApplication()
+        public override IApplicationRepository GetApplicationRepository()
         {
             if (repositoryApplication == null)
             {
-                repositoryApplication = new RepositoryApplication(this.sessionStrategy);
-                repositoryApplication.Specification = new SpecificationApplication();
+                repositoryApplication = new ApplicationRepository(this.sessionStrategy);
+                repositoryApplication.Specification = new ApplicationSpecification();
             }
             return repositoryApplication;
         }
 
-        public override IRepositoryContentAttribute GetRepositoryContentAttribute()
+        public override IContentAttributeRepository GetContentAttributeRepository()
         {
             if (repositoryContentAttribute == null)
             {
-                repositoryContentAttribute = new RepositoryContentAttribute(this.sessionStrategy);
+                repositoryContentAttribute = new ContentAttributeRepository(this.sessionStrategy);
             }
             return repositoryContentAttribute;
         }
 
-        public override IRepositoryContentItem GetRepositoryContentItem()
+        public override IContentItemRepository GetContentItemRepository()
         {
             if (repositoryContentItem == null)
             {
-                repositoryContentItem = new RepositoryContentItem(this.sessionStrategy);
-                repositoryContentItem.Specification = new SpecificationContentItem();
+                repositoryContentItem = new ContentItemRepository(this.sessionStrategy);
+                repositoryContentItem.Specification = new ContentItemSpecification();
             }
             return repositoryContentItem;
         }
 
-        public override IRepositoryContentType GetRepositoryContentType()
+        public override IContentTypeRepository GetContentTypeRepository()
         {
             if (repositoryContentType == null)
             {
-                repositoryContentType = new RepositoryContentType(this.sessionStrategy);
-                repositoryContentType.Specification = new SpecificationContentType();
+                repositoryContentType = new ContentTypeRepository(this.sessionStrategy);
+                repositoryContentType.Specification = new ContentTypeSpecification();
             }
             return repositoryContentType;
         }
 
-        public override IRepositoryCulture GetRepositoryCulture()
+        public override ICultureRepository GetCultureRepository()
         {
             if (repositoryCulture == null)
             {
-                repositoryCulture = new RepositoryCulture(this.sessionStrategy);
+                repositoryCulture = new CultureRepository(this.sessionStrategy);
             }
             return repositoryCulture;
         }
 
-        public override IRepositoryListValue GetRepositoryListValue()
+        public override IListValueRepository GetRepositoryListValue()
         {
             if (repositoryListValue == null)
             {
-                repositoryListValue = new RepositoryListValue(this.sessionStrategy);
-                repositoryListValue.Specification = new SpecificationListValue();
+                repositoryListValue = new ListValueRepository(this.sessionStrategy);
+                repositoryListValue.Specification = new ListValueSpecification();
             }
             return repositoryListValue;
         }
 
-        public override IRepositoryTemporary GetRepositoryTemporary()
+        public override ITemporaryRepository GetTemporaryRepository()
         {
             if (repositoryTemporary == null)
             {
-                repositoryTemporary = new RepositoryTemporary(this.sessionStrategy);
-                repositoryTemporary.Specification = new SpecificationTemporary();
+                repositoryTemporary = new TemporaryRepository(this.sessionStrategy);
+                repositoryTemporary.Specification = new TemporarySpecification();
             }
             return repositoryTemporary;
         }
 
-        public override IRepositoryTranslation GetRepositoryTranslation()
+        public override ITranslationRepository GetTranslationRepository()
         {
             if (repositoryTranslation == null)
             {
-                repositoryTranslation = new RepositoryTranslation(this.sessionStrategy);
+                repositoryTranslation = new TranslationRepository(this.sessionStrategy);
             }
             return repositoryTranslation;
         }

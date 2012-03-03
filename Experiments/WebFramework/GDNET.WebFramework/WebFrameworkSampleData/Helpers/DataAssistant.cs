@@ -22,29 +22,32 @@ namespace WebFrameworkSampleData
         {
             var sessionService = new SampleDataSessionService();
             var sessionStrategy = new AppSessionStrategy(session);
-            var repositories = new DataRepositories(sessionStrategy);
+            var repositories = new FrameworkRepositories(sessionStrategy);
         }
 
-        public static void GenerateContentTypes()
+        #region Content types
+
+        public static void InitializeContentTypes()
         {
+            Console.WriteLine("InitializeContentTypes");
+
             var listeTypes = ReflectionAssistant.GetTypesImplementedInterface(typeof(IBusinessEntity));
             foreach (Type businessType in listeTypes)
             {
                 if (businessType.GetHashCode() == typeof(Comment).GetHashCode())
                 {
-                    InitializeComment();
-                    DomainRepositories.RepositoryAssistant.Flush();
+                    InitializeCommentContentType();
                 }
                 else if (businessType.GetHashCode() == typeof(Article).GetHashCode())
                 {
-                    InitializeArticle();
-                    GenerateSampleArticles();
-                    DomainRepositories.RepositoryAssistant.Flush();
+                    InitializeArticleContentType();
                 }
             }
+
+            DomainRepositories.RepositoryAssistant.Flush();
         }
 
-        public static void InitializeComment()
+        private static void InitializeCommentContentType()
         {
             Comment myComment = Comment.Factory.NewInstance();
             string attributeCode = string.Empty;
@@ -71,11 +74,7 @@ namespace WebFrameworkSampleData
             EntityAssistant.ChangeActive(contentType, true);
         }
 
-        private static void GenerateSampleComments()
-        {
-        }
-
-        public static void InitializeArticle()
+        private static void InitializeArticleContentType()
         {
             Article myArticle = Article.Factory.NewInstance();
 
@@ -103,9 +102,50 @@ namespace WebFrameworkSampleData
             EntityAssistant.ChangeActive(contentType, true);
         }
 
+        #endregion
+
+        #region Sample contents
+
+        public static void GenerateSampleContents()
+        {
+            Console.WriteLine("GenerateSampleContents");
+
+            var listeTypes = ReflectionAssistant.GetTypesImplementedInterface(typeof(IBusinessEntity));
+            foreach (Type businessType in listeTypes)
+            {
+                if (businessType.GetHashCode() == typeof(Comment).GetHashCode())
+                {
+                    GenerateSampleComments();
+                }
+                else if (businessType.GetHashCode() == typeof(Article).GetHashCode())
+                {
+                    GenerateSampleArticles();
+                }
+            }
+
+            DomainRepositories.RepositoryAssistant.Flush();
+        }
+
+        private static void GenerateSampleComments()
+        {
+            int max = 10;
+
+            for (int count = 0; count < max; count++)
+            {
+                string title = "Comment " + (count + 1);
+                string body = "This is comment " + (count + 1);
+
+                Comment myComment = Comment.Factory.Create(title, body);
+                myComment.Email = new Email("huanhvhd@gmail.com");
+
+                myComment.Save();
+            }
+        }
+
         private static void GenerateSampleArticles()
         {
             int max = 10;
+            List<long> allArticles = new List<long>();
 
             for (int count = 0; count < max; count++)
             {
@@ -124,9 +164,41 @@ namespace WebFrameworkSampleData
                 EntityAssistant.ChangeActive(myArticle, (activeFlag == 1));
 
                 myArticle.Save();
+                allArticles.Add(myArticle.Id);
 
                 Console.WriteLine("Successfully created article: " + name);
             }
+
+            GenerateRelationArticles(allArticles);
         }
+
+        private static void GenerateRelationArticles(List<long> allArticles)
+        {
+            if (allArticles.Count < 1)
+            {
+                return;
+            }
+
+            int totalRelations = new Random().Next(1, allArticles.Count);
+            while (totalRelations > 0)
+            {
+                int itemIndex = new Random().Next(0, allArticles.Count);
+
+                Article myArticle = Article.Factory.NewInstance();
+                myArticle.GetById(allArticles[itemIndex]);
+
+                if (itemIndex < allArticles.Count - 1)
+                {
+                    Article relationArticle = Article.Factory.NewInstance();
+                    relationArticle.GetById(allArticles[itemIndex + 1]);
+
+                    myArticle.AddRelationItem(relationArticle);
+                }
+
+                totalRelations -= 1;
+            }
+        }
+
+        #endregion
     }
 }

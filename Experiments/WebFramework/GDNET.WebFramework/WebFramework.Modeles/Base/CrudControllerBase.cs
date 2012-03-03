@@ -57,13 +57,16 @@ namespace WebFramework.Modeles.Base
         [HttpPost]
         public virtual ActionResult Create(TModel model, FormCollection collection)
         {
-            var objectId = this.OnCreateExecuting(model, collection);
-            if (objectId == null)
+            if (base.ModelState.IsValid)
             {
-                return base.View(ViewCreateOrUpdate, model);
+                var objectId = this.OnCreateExecuting(model, collection);
+                if (objectId != null)
+                {
+                    return base.RedirectToAction(ActionDetails, new { id = objectId.ToString() });
+                }
             }
 
-            return base.RedirectToAction(ActionDetails, new { id = objectId.ToString() });
+            return base.View(ViewCreateOrUpdate, model);
         }
 
         #endregion

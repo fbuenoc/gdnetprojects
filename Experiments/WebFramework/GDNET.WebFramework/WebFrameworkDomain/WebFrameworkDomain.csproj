@@ -60,6 +60,7 @@
     <Compile Include="Common\ContentType.Factory.cs" />
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
+    <Compile Include="DefaultImpl\ContentTypeService.cs" />
     <Compile Include="DefaultImpl\DomainServices.cs" />
     <Compile Include="DynamicInput\AttributeInfo.cs" />
     <Compile Include="DynamicInput\AttributeKey.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Repositories\Specifications\CultureSpecification.cs" />
     <Compile Include="Repositories\Specifications\ListValueSpecification.cs" />
     <Compile Include="Repositories\Specifications\TemporarySpecification.cs" />
+    <Compile Include="Services\IContentTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">

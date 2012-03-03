@@ -100,6 +100,26 @@ namespace WebFrameworkBusiness.Base
 
         #region Public Methods
 
+        public virtual void AddRelationItem(BusinessEntityBase item)
+        {
+            if (item == this)
+            {
+                ThrowException.InvalidOperationException("Can not add an item to be its sub items.");
+            }
+
+            this.ItemData.AddRelationItem(item.ItemData);
+        }
+
+        public virtual void RemoveRelationItem(BusinessEntityBase item)
+        {
+            this.ItemData.RemoveRelationItem(item.ItemData);
+        }
+
+        public virtual void RemoveAllRelationItems()
+        {
+            this.ItemData.RemoveAllRelationItems();
+        }
+
         public bool GetById(long id)
         {
             this.ItemData = DomainRepositories.ContentItem.GetById(id);
@@ -166,7 +186,7 @@ namespace WebFrameworkBusiness.Base
                     value = this.EncryptData(value);
                 }
 
-                var attributeValue = ContentItemAttributeValue.Factory.Create(contentAttribute, ItemData, value);
+                var attributeValue = ContentItemAttributeValue.Factory.Create(contentAttribute, value);
                 this.ItemData.AddAttributeValue(attributeValue);
             }
 
