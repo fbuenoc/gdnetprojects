@@ -8,7 +8,7 @@ using GDNET.Extensions;
 namespace GDNET.Common.Types
 {
     [Serializable]
-    public class Website : ISerializable
+    public class Website : IObjectSerialization
     {
         public string SiteName
         {

@@ -1,8 +1,7 @@
 ﻿using Elixis;
 using Elixis.EncryptionOptions;
-
-using GDNET.Common.Security.Services;
 using GDNET.Common.DesignByContract;
+using GDNET.Common.Security.Services;
 using GDNET.Extensions;
 
 namespace GDNET.Common.Encryption
@@ -19,7 +18,7 @@ namespace GDNET.Common.Encryption
         {
         }
 
-        public EncryptionService(string password)
+        protected EncryptionService(string password)
         {
             ThrowException.ArgumentNullException(password, "password", "Password can not be enpty.");
             this.elixisAESEncryptor = new AESEncryptor(password, AESBits.BITS128);
@@ -35,7 +34,7 @@ namespace GDNET.Common.Encryption
             switch (option)
             {
                 case EncryptionOption.Base64:
-                    return Base64String.Encrypt(sourceData);
+                    return Base64Assistant.Encrypt(sourceData);
 
                 case EncryptionOption.AES:
                     return this.elixisAESEncryptor.Encrypt(sourceData);
@@ -57,7 +56,7 @@ namespace GDNET.Common.Encryption
             switch (option)
             {
                 case EncryptionOption.Base64:
-                    return Base64String.Decrypt(encryptedData);
+                    return Base64Assistant.Decrypt(encryptedData);
 
                 case EncryptionOption.AES:
                     return this.elixisAESEncryptor.Decrypt(encryptedData);

@@ -96,9 +96,9 @@ namespace GDNET.Extensions
                 {
                     result = objectValue.ToString();
                 }
-                else if (objectType.GetInterface(typeof(ISerializable).Name) != null)
+                else if (objectType.GetInterface(typeof(IObjectSerialization).Name) != null)
                 {
-                    result = ((ISerializable)objectValue).Serialize();
+                    result = ((IObjectSerialization)objectValue).Serialize();
                 }
                 else
                 {
@@ -132,7 +132,7 @@ namespace GDNET.Extensions
                 {
                     result = objectString.ParseEnum<EncryptionOption>();
                 }
-                else if (objectType.GetInterface(typeof(ISerializable).Name) != null)
+                else if (objectType.GetInterface(typeof(IObjectSerialization).Name) != null)
                 {
                     result = Activator.CreateInstance(objectType, objectString);
                 }

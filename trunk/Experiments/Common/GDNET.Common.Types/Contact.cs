@@ -11,7 +11,7 @@ using GDNET.Extensions;
 namespace GDNET.Common.Types
 {
     [Serializable]
-    public partial class Contact : ISerializable
+    public partial class Contact : IObjectSerialization
     {
         private List<Email> emails = new List<Email>();
         private List<string> phoneNumbers = new List<string>();
