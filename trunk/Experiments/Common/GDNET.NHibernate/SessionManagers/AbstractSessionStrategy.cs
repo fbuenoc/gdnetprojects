@@ -58,5 +58,11 @@ namespace GDNET.NHibernate.SessionManagers
 
             this.session.Clear();
         }
+
+        public void FlushAndClear()
+        {
+            this.Flush();
+            this.Clear();
+        }
     }
 }

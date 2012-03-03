@@ -71,7 +71,8 @@ namespace GDNET.Web.Helpers
         public static bool GetValueAs<T>(string name, out T expectedResult)
         {
             expectedResult = default(T);
-            bool? result = null;
+            bool result = false;
+            bool notSupported = false;
 
             foreach (object key in HttpContext.Current.Request.QueryString.Keys)
             {
@@ -101,17 +102,20 @@ namespace GDNET.Web.Helpers
                         result = double.TryParse(rawValue, out tempResult);
                         expectedResult = (T)Convert.ChangeType(tempResult, typeof(T));
                     }
-
+                    else
+                    {
+                        notSupported = true;
+                    }
                     break;
                 }
             }
 
-            if (!result.HasValue)
+            if (notSupported)
             {
                 ThrowException.NotSupportedException(string.Format("Not supported for type: {0}", typeof(T).FullName));
             }
 
-            return result.Value;
+            return result;
         }
 
         /// <summary>

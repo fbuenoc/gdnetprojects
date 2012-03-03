@@ -8,7 +8,6 @@ namespace GDNET.NHibernate.SessionManagers
 
         public abstract ISessionFactory SessionFactory { get; }
         public abstract ISession OpenSession();
-        public abstract ISession GetCurrentSession();
 
         #endregion
 
