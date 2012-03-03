@@ -3,8 +3,7 @@ using GDNET.Common.Domain;
 
 namespace GDNET.Common.Types
 {
-    [Serializable]
-    public class Email : ISerializable
+    public class Email : IObjectSerialization
     {
         public string HostName
         {

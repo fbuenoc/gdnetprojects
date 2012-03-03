@@ -8,5 +8,6 @@
 
         void Flush();
         void Clear();
+        void FlushAndClear();
     }
 }

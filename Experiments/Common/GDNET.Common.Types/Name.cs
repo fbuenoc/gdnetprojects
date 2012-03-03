@@ -8,7 +8,7 @@ using GDNET.Extensions;
 namespace GDNET.Common.Types
 {
     [Serializable]
-    public partial class Name : ISerializable
+    public partial class Name : IObjectSerialization
     {
         public string FirstName
         {
