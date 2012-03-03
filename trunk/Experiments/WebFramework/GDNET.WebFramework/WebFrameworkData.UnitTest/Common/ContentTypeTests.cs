@@ -69,8 +69,8 @@ namespace WebFrameworkData.UnitTest.Common
         {
             var contentType = UnitTestAssistant.CreateContentType();
             var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
-            var attribute1 = ContentAttribute.Factory.Create("A1", contentType, listValue, 0);
-            var attribute2 = ContentAttribute.Factory.Create("A2", contentType, listValue, 1);
+            var attribute1 = ContentAttribute.Factory.Create("A1", "Attribute 1", contentType, listValue, 0);
+            var attribute2 = ContentAttribute.Factory.Create("A2", "Attribute 2", contentType, listValue, 1);
             contentType.AddContentAttribute(attribute1);
             contentType.AddContentAttribute(attribute2);
 

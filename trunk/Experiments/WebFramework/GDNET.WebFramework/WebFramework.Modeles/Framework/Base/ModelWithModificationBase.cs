@@ -4,7 +4,7 @@ using WebFrameworkDomain.Base;
 
 namespace WebFramework.Modeles.Framework.Base
 {
-    public abstract class ModelWithModificationBase<TEntity, TId> : EntityWithModificationBase<TId>
+    public abstract class ModelWithModificationBase<TEntity, TId> : EntityWithModificationBase<TId>, IViewModel<TId>
         where TEntity : EntityWithModificationBase<TId>
     {
         protected TEntity Entity
@@ -14,6 +14,12 @@ namespace WebFramework.Modeles.Framework.Base
         }
 
         public Guid ModelId
+        {
+            get;
+            private set;
+        }
+
+        public string ActualStatut
         {
             get;
             private set;
@@ -45,7 +51,11 @@ namespace WebFramework.Modeles.Framework.Base
 
         #region Ctors
 
-        public ModelWithModificationBase() : this(null) { }
+        public ModelWithModificationBase()
+            : base()
+        {
+            this.Initialize();
+        }
 
         public ModelWithModificationBase(TEntity entity)
             : base(entity)
@@ -66,6 +76,10 @@ namespace WebFramework.Modeles.Framework.Base
                 this.CreatedBy = lifeCycle.CreatedBy;
                 this.LastModifiedAt = lifeCycle.LastModifiedAt;
                 this.LastModifiedBy = lifeCycle.LastModifiedBy;
+                if (lifeCycle.ActualStatut != null)
+                {
+                    this.ActualStatut = lifeCycle.ActualStatut.Description.Value;
+                }
             }
         }
 

@@ -253,6 +253,9 @@
     <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
     <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
+    <Compile Include="Common\DefaultImpl\ValidationService.cs" />
+    <Compile Include="Common\FrameworkServices.cs" />
+    <Compile Include="Common\Services\IValidationService.cs" />
     <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
@@ -831,7 +834,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />
-    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
@@ -845,6 +847,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
       <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
       <Name>GDNET.Web.Membership</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
+      <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
+      <Name>GDNET.Web.Mvc</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
@@ -1100,9 +1106,6 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>EditorLocalization.da-DK.designer.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

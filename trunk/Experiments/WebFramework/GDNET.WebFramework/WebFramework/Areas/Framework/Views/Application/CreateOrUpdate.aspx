@@ -28,7 +28,7 @@
             <%= base.Html.TextBoxFor(m => m.RootUrl)%>
         </div>
         <p>
-            <input type="submit" value="<%= Translations.System.SaveAndContinue %>" />
+            <input type="submit" name="btnOK" value="<%= Translations.System.SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

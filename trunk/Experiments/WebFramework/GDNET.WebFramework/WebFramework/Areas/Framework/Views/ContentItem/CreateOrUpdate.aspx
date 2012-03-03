@@ -1,15 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    Content Item
+    <%= Translations.EntityNames.ContentItem %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
         <%= TranslationAssistant.CreateOrUpdate<long>(base.Model) %>
     </h2>
     <h3>
-        In Content Type:
-        <%= base.Model.ContentType %>
+        <%= Translations.ContentItem.InContentTypeXYZ(base.Model.ContentType)%>
     </h3>
     <div>
         <% base.Html.BeginForm(); %>
@@ -17,17 +16,33 @@
             <%= base.Html.LabelFor(m => m.Name) %>
         </div>
         <div>
-            <%= base.Html.TextBoxFor(m => m.Name)%>
+            <%= base.Html.TextBoxFor(m => m.Name) %>
         </div>
         <div class="editor-label">
-            <%= base.Html.LabelFor(m => m.Description)%>
+            <%= base.Html.LabelFor(m => m.Description) %>
         </div>
         <div>
-            <%= base.Html.TextBoxFor(m => m.Description)%>
+            <%= base.Html.TextAreaFor(m => m.Description, new { @class = "desc" }) %>
         </div>
+        <h3>
+            <%= Translations.System.Attributes %>
+        </h3>
+        <%
+            foreach (var attribute in base.Model.Attributes)
+            {
+        %>
+        <div class="editor-label">
+            <%= attribute.Name %>
+        </div>
+        <div>
+            <%= base.Html.TextBox(attribute.Code, string.Empty) %>
+        </div>
+        <%
+            }
+        %>
         <p>
             <%= base.Html.HiddenFor(m => m.ContentTypeId) %>
-            <input type="submit" value="Save & Continue" />
+            <input type="submit" name="btnOK" value="<%= Translations.System.SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

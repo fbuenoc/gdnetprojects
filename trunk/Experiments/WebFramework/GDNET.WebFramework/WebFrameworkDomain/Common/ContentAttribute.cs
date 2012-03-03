@@ -25,6 +25,12 @@ namespace WebFrameworkDomain.Common
             set;
         }
 
+        public virtual Translation Name
+        {
+            get;
+            set;
+        }
+
         public virtual string Code
         {
             get;
@@ -32,6 +38,12 @@ namespace WebFrameworkDomain.Common
         }
 
         public virtual int Position
+        {
+            get;
+            set;
+        }
+
+        public virtual bool IsMultilingual
         {
             get;
             set;

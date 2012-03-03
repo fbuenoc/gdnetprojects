@@ -33,6 +33,7 @@ namespace WebFramework.Modeles.Framework.Common
             }
 
             this.Code = entity.Code;
+            this.Name = entity.Name.Value;
             this.Position = entity.Position;
         }
 
@@ -71,6 +72,14 @@ namespace WebFramework.Modeles.Framework.Common
         [Required]
         [DisplayName("Code - no space")]
         public string Code
+        {
+            get;
+            set;
+        }
+
+        [Required]
+        [DisplayName("Name")]
+        public string Name
         {
             get;
             set;

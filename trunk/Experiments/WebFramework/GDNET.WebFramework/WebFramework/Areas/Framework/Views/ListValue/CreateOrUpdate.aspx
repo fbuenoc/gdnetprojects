@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ListValueModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    Applications
+    <%= Translations.EntityNames.ListValue %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
@@ -10,7 +10,7 @@
     <div>
         <% base.Html.BeginForm(); %>
         <div>
-            Parent value:
+            <%= base.Html.LabelFor(m => m.Parent)%>:
             <%= base.Model.Parent %>
         </div>
         <div class="editor-label">
@@ -26,6 +26,12 @@
             <%= base.Html.TextBoxFor(m => m.Description)%>
         </div>
         <div class="editor-label">
+            <%= base.Html.LabelFor(m => m.Detail)%>
+        </div>
+        <div>
+            <%= base.Html.TextAreaFor(m => m.Detail, new { @class = "desc" }) %>
+        </div>
+        <div class="editor-label">
             <%= base.Html.LabelFor(m => m.CustomValue)%>
         </div>
         <div>
@@ -33,7 +39,7 @@
         </div>
         <p>
             <%= base.Html.HiddenFor(m => m.ParentId) %>
-            <input type="submit" value="Save & Continue" />
+            <input type="submit" name="btnOK" value="<%= Translations.System.SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

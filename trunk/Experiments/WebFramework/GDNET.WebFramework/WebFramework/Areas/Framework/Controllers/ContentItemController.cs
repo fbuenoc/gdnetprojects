@@ -8,6 +8,7 @@ using WebFramework.Modeles.Framework.Base;
 using WebFramework.Modeles.Framework.Common;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Common;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
@@ -26,27 +27,40 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override ContentItemModel OnCreateChecking()
         {
-            ContentItemModel model = base.OnCreateChecking();
+            ContentItemModel itemModel = base.OnCreateChecking();
+
             // When create new Content Item, we have to look which Content Type contains this one
             string contentTypeId;
             if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Key, out contentTypeId))
             {
-                var contentTypeModel = ModelService.GetModelById<ContentTypeModel>(contentTypeId);
-                if (contentTypeModel != null)
-                {
-                    model.ContentType = contentTypeModel.Name;
-                    model.ContentTypeId = contentTypeModel.Id;
-                }
+                var typeModel = ModelService.GetModelById<ContentTypeModel>(contentTypeId);
+                itemModel.InitializeContentType(typeModel);
             }
 
-            return model;
+            return itemModel;
         }
 
         protected override object OnCreateExecuting(ContentItemModel model, FormCollection collection)
         {
-            var ciEntity = ContentItem.Factory.Create(model.Name, model.Description, model.ContentTypeId, model.Position);
-            var result = DomainRepositories.ContentItem.Save(ciEntity);
-            return result ? (object)ciEntity.Id : null;
+            object entityId = null;
+            var contentType = DomainRepositories.ContentType.GetById(model.ContentTypeId);
+            var attributesInfo = DomainServices.ContentType.GetAttributesInformation(contentType);
+
+            string errorMessages = string.Empty;
+            if (FrameworkServices.Validation.ValidateInput(attributesInfo, collection, out errorMessages))
+            {
+                var itemEntity = ContentItem.Factory.Create(model.Name, model.Description, contentType, model.Position);
+
+                if (DomainRepositories.ContentItem.Save(itemEntity))
+                {
+                    DomainServices.ContentType.BuildAttributesValue(contentType, itemEntity, collection.ToDictionary());
+                    DomainRepositories.RepositoryAssistant.Flush();
+
+                    entityId = itemEntity.Id;
+                }
+            }
+
+            return entityId;
         }
 
         protected override ContentItemModel OnDeleteChecking(string id)

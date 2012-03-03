@@ -6,6 +6,7 @@
         public const string ContentItemId = "ContentItemId";
         public const string ContentTypeId = "ContentTypeId";
         public const string DescriptionTranslationId = "DescriptionTranslationId";
+        public const string DetailTranslationId = "DetailTranslationId";
         public const string NameTranslationId = "NameTranslationId";
         public const string StatutLifeCycleId = "StatutLifeCycleId";
 
@@ -58,6 +59,5 @@
         {
             public const string ActualStatutId = "ActualStatutId";
         }
-
     }
 }

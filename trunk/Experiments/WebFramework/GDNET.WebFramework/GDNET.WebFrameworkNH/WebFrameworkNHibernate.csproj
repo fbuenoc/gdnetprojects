@@ -83,9 +83,9 @@
       <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
       <Name>WebFrameworkMapping</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkServices\WebFrameworkServices.csproj">
+    <ProjectReference Include="..\WebFrameworkServices\WebFramework.Services.csproj">
       <Project>{E5044263-8ACE-41CA-95A9-D48385F043DC}</Project>
-      <Name>WebFrameworkServices</Name>
+      <Name>WebFramework.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

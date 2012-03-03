@@ -93,8 +93,8 @@ namespace WebFrameworkData.UnitTest.Common
             DomainRepositories.ContentItem.Save(contentItem);
             DomainRepositories.RepositoryAssistant.Flush();
 
-            ContentItemAttributeValue attributeValue1 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V1");
-            ContentItemAttributeValue attributeValue2 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V2");
+            ContentItemAttributeValue attributeValue1 = ContentItemAttributeValue.Factory.Create(contentAttribute, "V1");
+            ContentItemAttributeValue attributeValue2 = ContentItemAttributeValue.Factory.Create(contentAttribute, "V2");
             contentItem.AddAttributeValue(attributeValue1);
             contentItem.AddAttributeValue(attributeValue2);
 
@@ -124,8 +124,8 @@ namespace WebFrameworkData.UnitTest.Common
             var contentAttribute = UnitTestAssistant.CreateContentAttribute();
             var contentItem = ContentItem.Factory.Create("T1", "Test 1", contentAttribute.ContentType);
 
-            ContentItemAttributeValue attributeValue1 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V1");
-            ContentItemAttributeValue attributeValue2 = ContentItemAttributeValue.Factory.Create(contentAttribute, contentItem, "V2");
+            ContentItemAttributeValue attributeValue1 = ContentItemAttributeValue.Factory.Create(contentAttribute, "V1");
+            ContentItemAttributeValue attributeValue2 = ContentItemAttributeValue.Factory.Create(contentAttribute, "V2");
             contentItem.AddAttributeValue(attributeValue1);
             contentItem.AddAttributeValue(attributeValue2);
 

@@ -26,11 +26,11 @@ namespace WebFrameworkData.UnitTest.Common
         {
             var contentType = UnitTestAssistant.CreateContentType();
             var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
-            var attribute = ContentAttribute.Factory.Create("T1", contentType, listValue, 0);
+            var attribute = ContentAttribute.Factory.Create("A1", "Attribute 1", contentType, listValue, 0);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.FlushAndClear();
-            
+
             var myAttribute = DomainRepositories.ContentAttribute.GetById(attribute.Id);
             Assert.IsNotNull(myAttribute);
             Assert.AreEqual(attribute.Id, myAttribute.Id);
@@ -50,11 +50,11 @@ namespace WebFrameworkData.UnitTest.Common
         {
             var type = UnitTestAssistant.CreateContentType();
             var listValue = DomainRepositories.ListValue.FindByName(ListValueConstants.ContentDataTypes.TextSimpleTextBox);
-            var attribute = ContentAttribute.Factory.Create("T1", type, listValue, 0);
+            var attribute = ContentAttribute.Factory.Create("A1", "Attribute 1", type, listValue, 0);
 
             DomainRepositories.ContentAttribute.Save(attribute);
             DomainRepositories.RepositoryAssistant.FlushAndClear();
-            
+
             DomainRepositories.ContentAttribute.Delete(attribute.Id);
             DomainRepositories.RepositoryAssistant.FlushAndClear();
 
