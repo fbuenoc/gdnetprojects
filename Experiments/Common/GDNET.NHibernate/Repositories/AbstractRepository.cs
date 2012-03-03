@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GDNET.Common.Base;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Data;
 using GDNET.Common.DesignByContract;
@@ -222,10 +221,6 @@ namespace GDNET.NHibernate.Repositories
             }
 
             // Saving entity
-            if (entity is IModification)
-            {
-                DataService.SetCreationInfo((IModification)entity);
-            }
             this.sessionStrategy.Session.SaveOrUpdate(entity);
 
             if ((this.Specification != null) && !this.Specification.OnSaved(entity))
@@ -265,10 +260,6 @@ namespace GDNET.NHibernate.Repositories
                 return false;
             }
 
-            if (entity is IModification)
-            {
-                DataService.SetModificationInfo((IModification)entity);
-            }
             this.sessionStrategy.Session.SaveOrUpdate(entity);
 
             if ((this.Specification != null) && !this.Specification.OnUpdated(entity))
