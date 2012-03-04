@@ -856,10 +856,6 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GDNET.WebFrameworkNH\WebFrameworkNHibernate.csproj">
-      <Project>{9A4E737C-5A9A-4F53-80A3-82E4C712F85E}</Project>
-      <Name>WebFrameworkNHibernate</Name>
-    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Modeles\WebFramework.Modeles.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
       <Name>WebFramework.Modeles</Name>
