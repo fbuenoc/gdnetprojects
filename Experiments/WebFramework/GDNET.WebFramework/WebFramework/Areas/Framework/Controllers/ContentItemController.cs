@@ -1,14 +1,15 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Helpers;
+using WebFramework.Common;
 using WebFramework.Constants;
 using WebFramework.Modeles.Base;
 using WebFramework.Modeles.Framework.Base;
 using WebFramework.Modeles.Framework.Common;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.DefaultImpl;
-using WebFramework.Common;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
@@ -16,7 +17,23 @@ namespace WebFramework.Areas.Framework.Controllers
     {
         public override ActionResult List()
         {
-            var listOfItems = DomainRepositories.ContentItem.GetAll().Select(x => new ContentItemModel(x));
+            IList<ContentItemModel> listOfItems = new List<ContentItemModel>();
+
+            string key;
+            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Key, out key))
+            {
+                long contentTypeId = 0;
+                if (long.TryParse(key, out contentTypeId))
+                {
+                    var contentType = DomainRepositories.ContentType.GetById(contentTypeId);
+                    listOfItems = DomainRepositories.ContentItem.GetByContentType(contentType).Select(x => new ContentItemModel(x)).ToList();
+                }
+            }
+            else
+            {
+                listOfItems = DomainRepositories.ContentItem.GetAll().Select(x => new ContentItemModel(x)).ToList();
+            }
+
             return base.View(listOfItems);
         }
 
