@@ -1,4 +1,7 @@
-﻿namespace WebFrameworkDomain.Constants
+﻿using GDNET.Common.Helpers;
+using WebFrameworkDomain.Common;
+
+namespace WebFrameworkDomain.Constants
 {
     public sealed class CommonConstants
     {
@@ -6,29 +9,46 @@
 
         public sealed class ApplicationMeta
         {
-            public const string RootUrl = "RootUrl";
+            private static readonly Application defaultApp = Application.Factory.NewInstance();
+
+            public static readonly string RootUrl = ExpressionAssistant.GetPropertyName<string>(() => defaultApp.RootUrl);
+        }
+
+        public sealed class ContentItemMeta
+        {
+            private static readonly ContentItem defaultContentItem = ContentItem.Factory.NewInstance();
+
+            public static readonly string ContentType = ExpressionAssistant.GetPropertyName(() => defaultContentItem.ContentType);
         }
 
         public sealed class ContentTypeMeta
         {
-            public const string Code = "Code";
-            public const string TypeName = "TypeName";
+            private static readonly ContentType defaultContentType = ContentType.Factory.NewInstance();
+
+            public static readonly string Code = ExpressionAssistant.GetPropertyName(() => defaultContentType.Code);
+            public static readonly string TypeName = ExpressionAssistant.GetPropertyName(() => defaultContentType.TypeName);
         }
 
         public sealed class CultureMeta
         {
-            public const string CultureCode = "CultureCode";
+            private static readonly Culture defaultCulture = Culture.Factory.NewInstance();
+
+            public static readonly string CultureCode = ExpressionAssistant.GetPropertyName(() => defaultCulture.CultureCode);
         }
 
         public sealed class ListValueMeta
         {
-            public const string Name = "Name";
-            public const string Parent = "Parent";
+            private static readonly ListValue defaultListValue = ListValue.Factory.NewInstance();
+
+            public static readonly string Name = ExpressionAssistant.GetPropertyName(() => defaultListValue.Name);
+            public static readonly string Parent = ExpressionAssistant.GetPropertyName(() => defaultListValue.Parent);
         }
 
         public sealed class TranslationMeta
         {
-            public const string Code = "Code";
+            private static readonly Translation defaultTranslation = Translation.Factory.NewInstance();
+
+            public static readonly string Code = ExpressionAssistant.GetPropertyName(() => defaultTranslation.Code);
         }
 
     }

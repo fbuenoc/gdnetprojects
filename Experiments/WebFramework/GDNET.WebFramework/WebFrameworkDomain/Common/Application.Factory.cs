@@ -13,6 +13,11 @@ namespace WebFrameworkDomain.Common
 
         public class ApplicationFactory
         {
+            public Application NewInstance()
+            {
+                return new Application();
+            }
+
             public Application Create(string name, string description, string rootUrl)
             {
                 return this.Create(name, description, rootUrl, ListValueConstants.ApplicationCategories.Default);

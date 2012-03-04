@@ -12,6 +12,11 @@ namespace WebFrameworkDomain.Common
 
         public sealed class ContentTypeFactory
         {
+            internal ContentType NewInstance()
+            {
+                return new ContentType();
+            }
+
             public ContentType Create(string name)
             {
                 return this.Create(name, string.Empty);

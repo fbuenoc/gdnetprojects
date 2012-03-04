@@ -38,6 +38,11 @@ namespace WebFrameworkDomain.Common
 
                 return listValue;
             }
+
+            internal ListValue NewInstance()
+            {
+                return new ListValue();
+            }
         }
     }
 }

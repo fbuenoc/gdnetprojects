@@ -9,6 +9,11 @@
 
         public class CultureFactory
         {
+            internal Culture NewInstance()
+            {
+                return new Culture();
+            }
+
             public Culture Create(string code)
             {
                 return new Culture
@@ -18,6 +23,7 @@
                     CultureCode = code
                 };
             }
+
         }
     }
 }
