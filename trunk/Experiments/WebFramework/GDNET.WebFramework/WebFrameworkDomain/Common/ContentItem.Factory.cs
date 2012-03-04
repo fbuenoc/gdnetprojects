@@ -40,6 +40,11 @@ namespace WebFrameworkDomain.Common
 
                 return contentItem;
             }
+
+            internal ContentItem NewInstance()
+            {
+                return new ContentItem();
+            }
         }
     }
 }

@@ -57,6 +57,11 @@ namespace WebFrameworkDomain.Common
 
                 return translation;
             }
+
+            internal Translation NewInstance()
+            {
+                return new Translation();
+            }
         }
     }
 }
