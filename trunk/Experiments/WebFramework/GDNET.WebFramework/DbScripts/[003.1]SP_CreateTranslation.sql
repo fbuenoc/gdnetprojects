@@ -31,7 +31,7 @@ begin
 	end
 	
 	declare @TestTranslationId int, @StatutLifeCycleId int;
-	select @TestTranslationId = [Id], @StatutLifeCycleId = [StatutLifeCycleId] from [Translation] where [Code] like @Code;
+	select @TestTranslationId = [Id], @StatutLifeCycleId = [StatutLifeCycleId] from [Translation] where [Code] like @Code and CultureId = @CultureId;
 	
 	if @TestTranslationId > 0 
 		begin
