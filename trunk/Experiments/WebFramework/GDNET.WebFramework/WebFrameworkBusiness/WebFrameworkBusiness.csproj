@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Administration\Account.cs" />
+    <Compile Include="Administration\Shortcut.Factory.cs" />
+    <Compile Include="Administration\Shortcut.cs" />
     <Compile Include="Base\BusinessEntityBase.Factory.cs" />
     <Compile Include="Base\ContentAttributeInfo.cs" />
     <Compile Include="Base\IBusinessEntity.cs" />
@@ -52,6 +54,8 @@
     </Compile>
     <Compile Include="Common\Article.Factory.cs" />
     <Compile Include="Common\Comment.Factory.cs" />
+    <Compile Include="Common\Product.Factory.cs" />
+    <Compile Include="Common\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Helpers\BusinessEntityAssistant.cs" />
   </ItemGroup>
