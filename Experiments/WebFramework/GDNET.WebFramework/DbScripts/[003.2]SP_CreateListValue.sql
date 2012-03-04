@@ -49,16 +49,8 @@ begin
 			-- Calculate @TranslationDescriptionCode
 			declare @TranslationDescriptionCode varchar(512);
 			declare @TranslationDetailCode varchar(512);
-			if @ParentName is NULL
-				begin
-					select @TranslationDescriptionCode = 'WF.ListValue.' + @Name + '.Description';
-					select @TranslationDetailCode = 'WF.ListValue.' + @Name + '.Detail';
-				end
-			else
-				begin
-					select @TranslationDescriptionCode = @Name + '.Description';
-					select @TranslationDetailCode = @Name + '.Detail';
-				end
+			select @TranslationDescriptionCode = @Name + '.Description';
+			select @TranslationDetailCode = @Name + '.Detail';
 			
 			begin transaction
 				
