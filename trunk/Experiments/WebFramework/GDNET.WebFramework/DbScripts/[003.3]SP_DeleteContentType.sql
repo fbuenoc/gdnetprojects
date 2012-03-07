@@ -1,4 +1,4 @@
-IF EXISTS (SELECT name FROM sysobjects WHERE name = 'sp_DeleteContentType' AND type = 'P')
+﻿IF EXISTS (SELECT name FROM sysobjects WHERE name = 'sp_DeleteContentType' AND type = 'P')
 	DROP PROCEDURE sp_DeleteContentType;
 GO
 

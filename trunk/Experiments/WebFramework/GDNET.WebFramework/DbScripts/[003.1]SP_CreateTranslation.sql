@@ -1,4 +1,4 @@
--- Create translation SP
+﻿-- Create translation SP
 -- @CategoryName: uses to lookup CategoryCode (ListValue)
 -- @CultureCode: uses to lookup CultureId (Culture)
 

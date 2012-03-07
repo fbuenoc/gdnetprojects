@@ -1,4 +1,4 @@
--- Create Application SP
+﻿-- Create Application SP
 -- @CategoryName: uses to lookup CategoryCode (ListValue)
 -- @CultureCode: uses to lookup CultureId (Culture)
 

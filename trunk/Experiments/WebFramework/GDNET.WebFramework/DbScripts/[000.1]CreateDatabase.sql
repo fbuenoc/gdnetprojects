@@ -1,4 +1,4 @@
-USE [master]
+﻿USE [master]
 GO
 
 /****** Object:  Database [WebFramework]    Script Date: 12/10/2011 23:02:23 ******/

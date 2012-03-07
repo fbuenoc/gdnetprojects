@@ -1,4 +1,4 @@
--- Set all available LV/LVH to default application
+﻿-- Set all available LV/LVH to default application
 update [dbo].[ListValue] set [ApplicationId] = (
 	select [Id] from [dbo].[Application] where [RootUrl] = '*'
 )
