@@ -5,161 +5,161 @@ exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Attributes',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Thuộc tính',
+	@Value = N'Thuộc tính',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.CreatedAt',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Ngày tạo',
+	@Value = N'Ngày tạo',
 	@IsDeletable = False;	
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.CreatedBy',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Người tạo',
+	@Value = N'Người tạo',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Statut',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Trạng thái',
+	@Value = N'Trạng thái',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Category',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Category',
+	@Value = N'Category',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Name',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Tên',
+	@Value = N'Tên',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.CustomValue',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Giá trị tùy chỉnh',
+	@Value = N'Giá trị tùy chỉnh',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Description',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Mô tả',
+	@Value = N'Mô tả',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Detail',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Chi tiết',
+	@Value = N'Chi tiết',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Position',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Vị trí',
+	@Value = N'Vị trí',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.DeleteAndContinue',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Xóa và tiếp tục',
+	@Value = N'Xóa và tiếp tục',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.DeleteConfirmation',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Xác nhận xóa',
+	@Value = N'Xác nhận xóa',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.DeleteConfirmationXYZ',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Bạn có chắc chắn rằng muốn xóa {0}?',
+	@Value = N'Bạn có chắc chắn rằng muốn xóa {0}?',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.SaveAndContinue',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Lưu và tiếp tục',
+	@Value = N'Lưu và tiếp tục',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Create',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Tạo',
+	@Value = N'Tạo',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Update',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Sửa',
+	@Value = N'Sửa',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Delete',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Xóa',
+	@Value = N'Xóa',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.HostName',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Máy chủ',
+	@Value = N'Máy chủ',
 	@IsDeletable = False;	
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.UserName',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Tên đăng nhập',
+	@Value = N'Tên đăng nhập',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Password',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Mật khẩu',
+	@Value = N'Mật khẩu',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.Birtday',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Ngày sinh',
+	@Value = N'Ngày sinh',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.DetailOfXYZ',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Chi tiết về {0}',
+	@Value = N'Chi tiết về {0}',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.ReturnToListOfXYZ',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation',
-	@Value = 'Về dánh sách của {0}',
+	@Value = N'Về dánh sách của {0}',
 	@IsDeletable = False;
 	
 
@@ -167,69 +167,69 @@ exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Application',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Ứng dụng',
+	@Value = N'Ứng dụng',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ContentType',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Loại dữ liệu',
+	@Value = N'Loại dữ liệu',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ContentItem',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Dữ liệu',
+	@Value = N'Dữ liệu',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ContentAttribute',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Thuộc tính dữ liệu',
+	@Value = N'Thuộc tính dữ liệu',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ListValue',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Danh sách',
+	@Value = N'Danh sách',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Translation',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Bản dịch',
+	@Value = N'Bản dịch',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Role',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Quyền',
+	@Value = N'Quyền',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.User',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Người dùng',
+	@Value = N'Người dùng',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Comment',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Bình luận',
+	@Value = N'Bình luận',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
 	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Article',
 	@CategoryName = 'LV.ApplicationCategories.SysTranslation.EntityNames',
-	@Value = 'Bài viết',
+	@Value = N'Bài viết',
 	@IsDeletable = False;
 	
