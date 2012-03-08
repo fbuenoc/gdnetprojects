@@ -2,10 +2,10 @@
 using System.Web.Routing;
 using GDNET.Web.Membership.DefaultImpl;
 using GDNET.Web.Membership.Services;
-using WebFramework.Modeles.Framework.Base;
+using WebFramework.Models.Framework.Base;
 using WebFramework.Models.AccountServices;
 
-namespace WebFramework.Modeles.Base
+namespace WebFramework.Models.Base
 {
     public abstract class MvcControllerBase<TModel> : MvcControllerBase
     {

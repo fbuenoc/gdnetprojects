@@ -2,7 +2,7 @@
 using GDNET.Common.Base.Entities;
 using WebFrameworkDomain.Base;
 
-namespace WebFramework.Modeles.Framework.Base
+namespace WebFramework.Models.Framework.Base
 {
     public abstract class ModelWithModificationBase<TEntity, TId> : EntityWithModificationBase<TId>, IViewModel<TId>
         where TEntity : EntityWithModificationBase<TId>

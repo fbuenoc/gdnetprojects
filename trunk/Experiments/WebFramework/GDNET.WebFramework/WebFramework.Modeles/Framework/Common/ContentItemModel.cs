@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebFramework.Modeles.Framework.Base;
+using WebFramework.Models.Framework.Base;
 using WebFrameworkDomain.Common;
 using WebFrameworkServices.ComponentModel;
 
-namespace WebFramework.Modeles.Framework.Common
+namespace WebFramework.Models.Framework.Common
 {
     public sealed class ContentItemModel : ModelWithModificationBase<ContentItem, long>
     {
