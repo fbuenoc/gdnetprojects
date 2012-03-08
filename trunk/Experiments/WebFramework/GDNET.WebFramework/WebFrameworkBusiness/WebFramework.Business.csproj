@@ -8,8 +8,8 @@
     <ProjectGuid>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFrameworkBusiness</RootNamespace>
-    <AssemblyName>WebFrameworkBusiness</AssemblyName>
+    <RootNamespace>WebFramework.Business</RootNamespace>
+    <AssemblyName>WebFramework.Business</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

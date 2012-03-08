@@ -99,30 +99,38 @@ namespace WebFrameworkBusiness.Base
             this.RegisterProperties();
         }
 
+        #endregion
+
+        protected virtual IList<string> BaseProperties
+        {
+            get
+            {
+                List<string> baseProperties = new List<string>();
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Id));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameEncryption));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameItemData));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameProperties));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.QualifiedTypeName));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Name));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Description));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Position));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsActive));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsDeletable));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsEditable));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsViewable));
+                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Signature));
+                return baseProperties;
+            }
+        }
+
         private void RegisterProperties()
         {
-            List<string> ignoredProperties = new List<string>();
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Id));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameEncryption));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameItemData));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.FieldNameProperties));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.QualifiedTypeName));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Name));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Description));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Position));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsActive));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsDeletable));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsEditable));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsViewable));
-            ignoredProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Signature));
-
-            var neededProperties = ReflectionAssistant.GetProperties(this.GetType()).Where(x => !ignoredProperties.Contains(x.Key)).ToList();
+            var neededProperties = ReflectionAssistant.GetProperties(this.GetType()).Where(x => !this.BaseProperties.Contains(x.Key)).ToList();
             foreach (var kvp in neededProperties)
             {
                 this.RegisterProperty(kvp.Key, kvp.Value);
             }
         }
 
-        #endregion
     }
 }

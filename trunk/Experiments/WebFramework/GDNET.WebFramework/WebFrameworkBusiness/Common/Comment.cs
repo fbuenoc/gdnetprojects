@@ -6,18 +6,6 @@ namespace WebFrameworkBusiness.Common
 {
     public sealed partial class Comment : BusinessEntityBase, IBusinessEntity
     {
-        public string Title
-        {
-            get { return base.GetValue<string>(() => this.Title); }
-            set { base.SetValue(() => this.Title, value); }
-        }
-
-        public string Body
-        {
-            get { return base.GetValue<string>(() => this.Body); }
-            set { base.SetValue(() => this.Body, value); }
-        }
-
         public Contact FullName
         {
             get { return base.GetValue<Contact>(() => this.FullName); }

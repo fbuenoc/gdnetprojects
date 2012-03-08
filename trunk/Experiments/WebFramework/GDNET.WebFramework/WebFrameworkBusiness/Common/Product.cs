@@ -14,16 +14,16 @@ namespace WebFrameworkBusiness.Common
             set { this.SetValue<decimal>(() => this.Price, value); }
         }
 
+        public decimal Discount
+        {
+            get { return this.GetValue<decimal>(() => this.Discount); }
+            set { this.SetValue<decimal>(() => this.Discount, value); }
+        }
+
         public DateTime IntroDate
         {
             get { return this.GetValue<DateTime>(() => this.IntroDate); }
             set { this.SetValue<DateTime>(() => this.IntroDate, value); }
-        }
-
-        public string MainContent
-        {
-            get { return this.GetValue<string>(() => this.MainContent); }
-            set { this.SetValue<string>(() => this.MainContent, value); }
         }
 
         #endregion
