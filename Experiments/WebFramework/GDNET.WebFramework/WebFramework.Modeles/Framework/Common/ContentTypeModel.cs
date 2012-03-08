@@ -2,10 +2,10 @@
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using WebFramework.Modeles.Framework.Base;
+using WebFramework.Models.Framework.Base;
 using WebFrameworkDomain.Common;
 
-namespace WebFramework.Modeles.Framework.Common
+namespace WebFramework.Models.Framework.Common
 {
     public sealed class ContentTypeModel : ModelWithModificationBase<ContentType, long>
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace WebFramework.Modeles.Base
+namespace WebFramework.Models.Base
 {
     public abstract class CrudControllerBase<TModel> : MvcControllerBase<TModel>
     {

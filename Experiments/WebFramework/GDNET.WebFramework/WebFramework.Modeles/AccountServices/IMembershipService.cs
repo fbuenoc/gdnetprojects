@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Security;
 
-using WebFramework.Modeles.Framework.AccountModeles;
+using WebFramework.Models.Framework.AccountModeles;
 
 namespace WebFramework.Models.AccountServices
 {
