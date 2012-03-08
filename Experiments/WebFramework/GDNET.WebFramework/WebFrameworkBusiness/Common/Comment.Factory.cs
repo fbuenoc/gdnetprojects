@@ -19,8 +19,8 @@ namespace WebFrameworkBusiness.Common
             public Comment Create(string title, string body)
             {
                 var cm = BusinessEntityBase.Factory.Create<Comment>();
-                cm.Title = title;
-                cm.Body = body;
+                cm.Name = title;
+                cm.Description = body;
 
                 return cm;
             }
