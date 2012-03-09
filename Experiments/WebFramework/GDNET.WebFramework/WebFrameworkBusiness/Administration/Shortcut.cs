@@ -19,5 +19,6 @@ namespace WebFrameworkBusiness.Administration
             : base(EncryptionOption.Base64)
         {
         }
+
     }
 }
