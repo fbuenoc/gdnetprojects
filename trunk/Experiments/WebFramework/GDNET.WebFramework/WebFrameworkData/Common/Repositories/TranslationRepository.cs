@@ -21,6 +21,15 @@ namespace WebFrameworkData.Common.Repositories
             return (results != null && results.Count > 0) ? results[0] : null;
         }
 
+        public Translation GetByCode(string code, Culture culture)
+        {
+            var properties = new string[] { CommonConstants.TranslationMeta.Code, CommonConstants.TranslationMeta.Culture };
+            var values = new object[] { code, culture };
+            var results = base.FindByProperties(properties, values);
+            return (results != null && results.Count > 0) ? results[0] : null;
+        }
+
         #endregion
+
     }
 }
