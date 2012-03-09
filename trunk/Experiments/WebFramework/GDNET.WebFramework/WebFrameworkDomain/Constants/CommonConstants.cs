@@ -34,6 +34,7 @@ namespace WebFrameworkDomain.Constants
             private static readonly Culture defaultCulture = Culture.Factory.NewInstance();
 
             public static readonly string CultureCode = ExpressionAssistant.GetPropertyName(() => defaultCulture.CultureCode);
+            public static readonly string IsDefault = ExpressionAssistant.GetPropertyName(() => defaultCulture.IsDefault);
         }
 
         public sealed class ListValueMeta
@@ -49,6 +50,7 @@ namespace WebFrameworkDomain.Constants
             private static readonly Translation defaultTranslation = Translation.Factory.NewInstance();
 
             public static readonly string Code = ExpressionAssistant.GetPropertyName(() => defaultTranslation.Code);
+            public static readonly string Culture = ExpressionAssistant.GetPropertyName(() => defaultTranslation.Culture);
         }
 
     }

@@ -17,6 +17,10 @@
             public const string TextPasswordTextBox = "LVH.ContentDataTypes.Text.PasswordTextBox";
             public const string TextTextArea = "LVH.ContentDataTypes.Text.TextArea";
             public const string TextHtmlEditor = "LVH.ContentDataTypes.Text.HtmlEditor";
+            public const string TextUrl = "LVH.ContentDataTypes.Text.Url";
+            public const string NumberPercentage = "LVH.ContentDataTypes.Number.Percentage";
+            public const string NumberNormalNumber = "LVH.ContentDataTypes.Number.NormalNumber";
+            public const string DateTimeFullDateTime = "LVH.ContentDataTypes.DateTime.FullDateTime";
         }
 
         public sealed class ApplicationCategories
