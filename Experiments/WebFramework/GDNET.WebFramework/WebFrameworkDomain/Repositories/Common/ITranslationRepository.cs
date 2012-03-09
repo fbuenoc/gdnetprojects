@@ -8,8 +8,7 @@ namespace WebFrameworkDomain.Repositories.Common
         /// <summary>
         /// Get a translation by code
         /// </summary>
-        /// <param name="code"></param>
-        /// <returns></returns>
         Translation GetByCode(string code);
+        Translation GetByCode(string code, Culture culture);
     }
 }
