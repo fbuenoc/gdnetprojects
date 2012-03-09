@@ -1,4 +1,5 @@
-﻿using GDNET.NHibernate.Repositories;
+﻿using System.Linq;
+using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 using WebFrameworkDomain.Common;
 using WebFrameworkDomain.Constants;
@@ -17,6 +18,12 @@ namespace WebFrameworkData.Common.Repositories
         {
             var results = this.FindByProperty(CommonConstants.CultureMeta.CultureCode, cultureCode);
             return (results.Count == 0) ? null : results[0];
+        }
+
+        public Culture GetDefault()
+        {
+            var results = this.FindByProperty(CommonConstants.CultureMeta.IsDefault, true);
+            return results.FirstOrDefault();
         }
     }
 }
