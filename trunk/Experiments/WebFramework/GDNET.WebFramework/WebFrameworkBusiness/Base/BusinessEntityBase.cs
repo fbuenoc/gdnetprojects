@@ -88,12 +88,12 @@ namespace WebFrameworkBusiness.Base
 
         #region Ctors
 
-        public BusinessEntityBase()
+        protected BusinessEntityBase()
             : this(EncryptionOption.None)
         {
         }
 
-        public BusinessEntityBase(EncryptionOption encryption)
+        protected BusinessEntityBase(EncryptionOption encryption)
         {
             this.Encryption = encryption;
             this.RegisterProperties();

@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GDNET.Common.Helpers;
-using GDNET.Common.Security.Services;
 using GDNET.Extensions;
 using WebFrameworkBusiness.Base;
 using WebFrameworkDomain.Common;
@@ -29,43 +27,32 @@ namespace WebFrameworkBusiness.Helpers
             return results;
         }
 
-        /// <summary>
-        /// NOT COMPLETED
-        /// </summary>
         public static TEntity GetById<TEntity>(long id) where TEntity : BusinessEntityBase
         {
-            var contentItem = DomainRepositories.ContentItem.GetById(id);
-            if (contentItem != null)
+            TEntity entity = (TEntity)Activator.CreateInstance(typeof(TEntity), true);
+            if (entity.GetById(id))
             {
-                TEntity entity = (TEntity)Activator.CreateInstance(typeof(TEntity), true);
-                if (ReflectionAssistant.SetFieldValue(entity, entity.FieldNameItemData, contentItem))
-                {
-                    // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
-                    var encryptionAttribute = contentItem.AttributeValues.First(x => x.ContentAttribute.Code == entity.FieldNameEncryption);
-                    var encryptionOption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
-
-                    if (ReflectionAssistant.SetFieldValue(entity, entity.FieldNameEncryption, encryptionOption, typeof(BusinessEntityBase)))
-                    {
-                        // Now we load other properties
-                        var objectProperties = ReflectionAssistant.GetFieldValue(entity, entity.FieldNameProperties, typeof(BusinessEntityBase));
-                        if (objectProperties != null)
-                        {
-                            Dictionary<string, Type> properties = (Dictionary<string, Type>)objectProperties;
-                            foreach (var kvp in properties.Where(x => x.Key != ExpressionAssistant.GetPropertyName(() => entity.FieldNameEncryption)))
-                            {
-                                var attributeValue = contentItem.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
-                                if (attributeValue != null)
-                                {
-                                    //var decryptedValue = this.DecryptData(attributeValue.Value.Value);
-                                    //this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
-                                }
-                            }
-                        }
-                    }
-                }
+                return entity;
             }
 
             return default(TEntity);
+        }
+
+        public static IList<TEntity> GetByType<TEntity>() where TEntity : BusinessEntityBase
+        {
+            List<TEntity> listeEntities = new List<TEntity>();
+            IList<ContentItem> listeContentItems = DomainRepositories.ContentItem.GetByContentType(typeof(TEntity));
+
+            foreach (ContentItem item in listeContentItems)
+            {
+                TEntity entity = BusinessEntityAssistant.GetById<TEntity>(item.Id);
+                if (entity != default(TEntity))
+                {
+                    listeEntities.Add(entity);
+                }
+            }
+
+            return listeEntities;
         }
 
         /// <summary>
