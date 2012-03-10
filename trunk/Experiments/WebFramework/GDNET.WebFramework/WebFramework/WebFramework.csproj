@@ -869,25 +869,17 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Modeles\WebFramework.Base.csproj">
-      <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
-      <Name>WebFramework.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkBusiness\WebFramework.Business.csproj">
+    <ProjectReference Include="..\WebFramework.Business\WebFramework.Business.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
       <Name>WebFramework.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkData\WebFramework.Data.csproj">
-      <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>
-      <Name>WebFramework.Data</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
+    <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkMapping\WebFramework.Mapping.csproj">
-      <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
-      <Name>WebFramework.Mapping</Name>
+    <ProjectReference Include="..\WebFramework.Modeles\WebFramework.Base.csproj">
+      <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
+      <Name>WebFramework.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -93,11 +93,11 @@
       <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
       <Name>GDNET.Web.Mvc</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkBusiness\WebFramework.Business.csproj">
+    <ProjectReference Include="..\WebFramework.Business\WebFramework.Business.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
       <Name>WebFramework.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
+    <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
     </ProjectReference>

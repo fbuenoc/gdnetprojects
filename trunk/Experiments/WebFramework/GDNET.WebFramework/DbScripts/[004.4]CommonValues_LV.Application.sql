@@ -37,3 +37,9 @@ exec SP_CreateListValue
 	@Description = 'Application translations',
 	@ParentName = 'LV.ApplicationCategories.SysTranslation';
 GO
+
+exec SP_CreateListValue
+	@Name = 'LV.ApplicationCategories.SysTranslation.Business',
+	@Description = 'Business translations',
+	@ParentName = 'LV.ApplicationCategories.SysTranslation';
+GO

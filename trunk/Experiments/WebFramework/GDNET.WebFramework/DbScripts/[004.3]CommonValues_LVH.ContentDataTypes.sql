@@ -44,6 +44,13 @@ exec sp_CreateListValue
 	@ParentName = 'LVH.ContentDataTypes.Text';
 GO
 
+exec sp_CreateListValue
+	@Name = 'LVH.ContentDataTypes.Text.Url',
+	@Description = 'Text => URL',
+	@CustomValue = 'URL',
+	@ParentName = 'LVH.ContentDataTypes.Text';
+GO
+
 -- Number
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.Number',
@@ -73,38 +80,45 @@ exec sp_CreateListValue
 	@ParentName = 'LVH.ContentDataTypes.Number';
 GO
 
+exec sp_CreateListValue
+	@Name = 'LVH.ContentDataTypes.Number.NormalNumber',
+	@Description = 'Number => Normal number',
+	@CustomValue = 'NormalNumber',
+	@ParentName = 'LVH.ContentDataTypes.Number';
+GO
+
 -- DateTime
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime',
-	@Description = 'Number => Date and time',
+	@Description = 'Time',
 	@CustomValue = NULL,
 	@ParentName = 'LVH.ContentDataTypes';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.Year',
-	@Description = 'Number => Year',
+	@Description = 'Time => Year',
 	@CustomValue = 'Year',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.Month',
-	@Description = 'Number => Month',
+	@Description = 'Time => Month',
 	@CustomValue = 'Month',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.Day',
-	@Description = 'Number => Day',
+	@Description = 'Time => Day',
 	@CustomValue = 'Day',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
 
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes.DateTime.FullDateTime',
-	@Description = 'Number => Day/month/year',
+	@Description = 'Time => Day/month/year',
 	@CustomValue = 'FullDateTime',
 	@ParentName = 'LVH.ContentDataTypes.DateTime';
 GO
