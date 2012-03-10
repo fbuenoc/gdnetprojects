@@ -7,7 +7,7 @@ using System.Web.Security;
 
 using GDNET.Common.Base.Entities;
 
-namespace WebFramework.Models.Framework.AccountModeles
+namespace WebFramework.Base.Framework.AccountModeles
 {
     public sealed class RoleModel : EntityBase<string>
     {

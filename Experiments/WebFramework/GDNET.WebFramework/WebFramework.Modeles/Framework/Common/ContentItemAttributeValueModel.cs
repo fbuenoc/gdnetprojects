@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
-using WebFramework.Models.Framework.Base;
+using WebFramework.Base.Framework.Base;
 using WebFrameworkDomain.Common;
 
-namespace WebFramework.Models.Framework.Common
+namespace WebFramework.Base.Framework.Common
 {
     public class ContentItemAttributeValueModel : ModelBase<ContentItemAttributeValue, long>
     {

@@ -1,4 +1,4 @@
-﻿namespace WebFramework.Models.Framework.Base
+﻿namespace WebFramework.Base.Framework.Base
 {
     public interface IViewModel<TId>
     {

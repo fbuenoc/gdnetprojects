@@ -1,7 +1,7 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
 
-namespace WebFramework.Models.Framework.Base
+namespace WebFramework.Base.Framework.Base
 {
     public abstract class ModelBase<TEntity, TId> : EntityBase<TId>, IViewModel<TId>
         where TEntity : EntityBase<TId>

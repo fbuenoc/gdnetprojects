@@ -8,8 +8,8 @@
     <ProjectGuid>{048916D3-D2F1-45B0-BA0F-7E126112C233}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFramework.Models</RootNamespace>
-    <AssemblyName>WebFramework.Models</AssemblyName>
+    <RootNamespace>WebFramework.Base</RootNamespace>
+    <AssemblyName>WebFramework.Base</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -51,9 +51,12 @@
     <Compile Include="AccountModeles\RegisterModel.cs" />
     <Compile Include="AccountServices\AccountMembershipService.cs" />
     <Compile Include="AccountServices\IMembershipService.cs" />
-    <Compile Include="Base\CrudControllerBase.cs" />
-    <Compile Include="Base\ListCrudControllerBase.cs" />
-    <Compile Include="Base\MvcControllerBase.cs" />
+    <Compile Include="Base\AbstractCrudController.cs" />
+    <Compile Include="Base\AbstractListCrudController.cs" />
+    <Compile Include="Base\AbstractController.cs" />
+    <Compile Include="Business\Administration\ShortcutModel.cs" />
+    <Compile Include="Business\Base\ModelBusinessEntityBase.cs" />
+    <Compile Include="Business\Common\ProductModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
@@ -67,6 +70,7 @@
     <Compile Include="Framework\Common\ContentItemModel.cs" />
     <Compile Include="Framework\Common\ContentItemAttributeValueModel.cs" />
     <Compile Include="Framework\Common\ListValueModel.cs" />
+    <Compile Include="Helpers\NavigationAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\AccountValidation.cs" />
   </ItemGroup>
@@ -75,6 +79,10 @@
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
       <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
       <Name>GDNET.Web.Membership</Name>
@@ -82,6 +90,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
       <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
       <Name>GDNET.Web.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkBusiness\WebFramework.Business.csproj">
+      <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
+      <Name>WebFramework.Business</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
