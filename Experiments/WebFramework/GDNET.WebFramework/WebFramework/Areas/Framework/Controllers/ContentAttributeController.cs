@@ -3,15 +3,15 @@ using System.Web.Mvc;
 using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Constants;
-using WebFramework.Modeles.Base;
-using WebFramework.Modeles.Framework.Base;
-using WebFramework.Modeles.Framework.Common;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Base.Base;
+using WebFramework.Base.Framework.Base;
+using WebFramework.Base.Framework.Common;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class ContentAttributeController : ListCrudControllerBase<ContentAttributeModel>
+    public class ContentAttributeController : AbstractListCrudController<ContentAttributeModel>
     {
         public override ActionResult List()
         {

@@ -9,5 +9,10 @@ namespace WebFramework.Common
         {
             get { return new ValidationService(); }
         }
+
+        public static INavigationService Navigation
+        {
+            get { return new NavigationService(); }
+        }
     }
 }

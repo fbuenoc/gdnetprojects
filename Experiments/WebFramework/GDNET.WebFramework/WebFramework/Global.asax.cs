@@ -30,5 +30,6 @@ namespace WebFramework
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
+
     }
 }

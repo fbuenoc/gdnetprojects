@@ -1,13 +1,13 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Modeles.Base;
-using WebFramework.Modeles.Framework.Common;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Base.Base;
+using WebFramework.Base.Framework.Common;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class ContentTypeController : ListCrudControllerBase<ContentTypeModel>
+    public class ContentTypeController : AbstractListCrudController<ContentTypeModel>
     {
         public override ActionResult List()
         {

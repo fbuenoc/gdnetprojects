@@ -2,8 +2,8 @@
 using System.Text;
 using System.Web.Mvc;
 using WebFramework.Common.Services;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
 
 namespace WebFramework.Common.DefaultImpl
 {

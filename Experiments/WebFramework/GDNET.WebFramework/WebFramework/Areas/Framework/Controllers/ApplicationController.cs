@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using GDNET.Web.Mvc.Helpers;
-using WebFramework.Modeles.Base;
-using WebFramework.Modeles.Framework.Common;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Base.Base;
+using WebFramework.Base.Framework.Common;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class ApplicationController : ListCrudControllerBase<ApplicationModel>
+    public class ApplicationController : AbstractListCrudController<ApplicationModel>
     {
         #region ListCrudControllerBase Members
 

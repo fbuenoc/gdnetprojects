@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
-
 using GDNET.Web.Helpers;
-
 using WebFramework.Constants;
-using WebFramework.Modeles.Base;
-using WebFramework.Modeles.Framework.AccountModeles;
+using WebFramework.Base.Base;
+using WebFramework.Base.Framework.AccountModeles;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class RoleController : ListCrudControllerBase<RoleModel>
+    public class RoleController : AbstractListCrudController<RoleModel>
     {
         public const string ActionAddUser = "AddUser";
 

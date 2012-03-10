@@ -5,15 +5,15 @@ using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common;
 using WebFramework.Constants;
-using WebFramework.Modeles.Base;
-using WebFramework.Modeles.Framework.Base;
-using WebFramework.Modeles.Framework.Common;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Base.Base;
+using WebFramework.Base.Framework.Base;
+using WebFramework.Base.Framework.Common;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class ContentItemController : ListCrudControllerBase<ContentItemModel>
+    public class ContentItemController : AbstractListCrudController<ContentItemModel>
     {
         public override ActionResult List()
         {

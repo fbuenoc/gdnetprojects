@@ -1,12 +1,12 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using WebFramework.Modeles.Base;
-using WebFramework.Models.AccountModeles;
-using WebFramework.Models.Validation;
+using WebFramework.Base.AccountModeles;
+using WebFramework.Base.Base;
+using WebFramework.Base.Validation;
 
 namespace WebFramework.Controllers
 {
-    public class AccountController : MvcControllerBase
+    public class AccountController : AbstractController
     {
         // **************************************
         // URL: /Account/LogOn
