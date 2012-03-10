@@ -6,23 +6,6 @@ namespace WebFramework.Base.Framework.Common
 {
     public class ContentItemAttributeValueModel : ModelBase<ContentItemAttributeValue, long>
     {
-        #region Ctors
-
-        public ContentItemAttributeValueModel() : base() { }
-
-        public ContentItemAttributeValueModel(ContentItemAttributeValue entity)
-            : base(entity)
-        {
-            this.ContentAttributeId = entity.ContentAttribute.Id;
-            this.ContentAttributeName = entity.ContentAttribute.Name.Value;
-            this.ContentItemId = entity.ContentItem.Id;
-            this.ContentItemName = entity.ContentItem.Name.Value;
-            this.Value = entity.Value.Value;
-            this.DataTypeName = entity.ContentAttribute.DataType.Name;
-        }
-
-        #endregion
-
         #region Properties
 
         public string ContentAttributeName
@@ -61,6 +44,31 @@ namespace WebFramework.Base.Framework.Common
         {
             get;
             protected set;
+        }
+
+        public ContentAttributeModel AttributeModel
+        {
+            get;
+            protected set;
+        }
+
+        #endregion
+
+        #region Ctors
+
+        public ContentItemAttributeValueModel() : base() { }
+
+        public ContentItemAttributeValueModel(ContentItemAttributeValue entity)
+            : base(entity)
+        {
+            this.ContentAttributeId = entity.ContentAttribute.Id;
+            this.ContentAttributeName = entity.ContentAttribute.Name.Value;
+            this.ContentItemId = entity.ContentItem.Id;
+            this.ContentItemName = entity.ContentItem.Name.Value;
+            this.Value = entity.Value.Value;
+            this.DataTypeName = entity.ContentAttribute.DataType.Name;
+
+            this.AttributeModel = new ContentAttributeModel(entity.ContentAttribute);
         }
 
         #endregion

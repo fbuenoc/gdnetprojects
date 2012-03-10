@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using WebFramework.Base.ComponentModel;
 using WebFramework.Base.Framework.Base;
 using WebFramework.Domain.Common;
-using WebFramework.Base.ComponentModel;
 
 namespace WebFramework.Base.Framework.Common
 {
@@ -95,9 +96,14 @@ namespace WebFramework.Base.Framework.Common
             this.Attributes = typeModel.Attributes;
         }
 
-        public ContentAttributeModel GetAttribute(string attributeCode)
+        public T GetAttribute<T>(string attributeCode)
         {
-            return this.Attributes.FirstOrDefault(x => x.Code == attributeCode);
+            ContentItemAttributeValueModel valueModel = this.AttributesValue.FirstOrDefault(x => x.AttributeModel.Code == attributeCode);
+            if (valueModel != null)
+            {
+                return (T)Convert.ChangeType(valueModel.Value, typeof(T));
+            }
+            return default(T);
         }
 
         #endregion
