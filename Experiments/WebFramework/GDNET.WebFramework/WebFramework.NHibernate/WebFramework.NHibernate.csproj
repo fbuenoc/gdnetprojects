@@ -76,15 +76,15 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkData\WebFramework.Data.csproj">
+    <ProjectReference Include="..\WebFramework.Data\WebFramework.Data.csproj">
       <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>
       <Name>WebFramework.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
+    <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkMapping\WebFramework.Mapping.csproj">
+    <ProjectReference Include="..\WebFramework.Mapping\WebFramework.Mapping.csproj">
       <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
       <Name>WebFramework.Mapping</Name>
     </ProjectReference>

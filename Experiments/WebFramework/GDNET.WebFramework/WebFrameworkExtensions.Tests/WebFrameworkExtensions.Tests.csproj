@@ -49,7 +49,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebFrameworkExtensions\WebFramework.Extensions.csproj">
+    <ProjectReference Include="..\WebFramework.Extensions\WebFramework.Extensions.csproj">
       <Project>{A53B516C-BA01-48BD-8330-63515DE50356}</Project>
       <Name>WebFramework.Extensions</Name>
     </ProjectReference>

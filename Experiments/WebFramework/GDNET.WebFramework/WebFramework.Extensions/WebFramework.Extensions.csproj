@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</ProjectGuid>
+    <ProjectGuid>{A53B516C-BA01-48BD-8330-63515DE50356}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFramework.Mapping</RootNamespace>
-    <AssemblyName>WebFramework.Mapping</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <RootNamespace>WebFramework.Extensions</RootNamespace>
+    <AssemblyName>WebFramework.Extensions</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,57 +31,38 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NHibernate">
-      <HintPath>..\..\..\..\Libs\NHibernate\NHibernate-3.2.0.GA-bin\Required_Bins\NHibernate.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\AbstractEntityMapping.cs" />
-    <Compile Include="Base\INHibernateMapping.cs" />
-    <Compile Include="Common\ApplicationMap.cs" />
-    <Compile Include="Common\ContentItemMap.cs" />
-    <Compile Include="Common\ContentTypeMap.cs" />
-    <Compile Include="Common\ContentAttributeMap.cs" />
-    <Compile Include="Common\ContentItemAttributeValueMap.cs" />
-    <Compile Include="Common\StatutLifeCycleMap.cs" />
-    <Compile Include="Common\StatutLogMap.cs" />
-    <Compile Include="Common\CultureMap.cs" />
-    <Compile Include="Common\ListValueMap.cs" />
-    <Compile Include="Common\TemporaryMap.cs" />
-    <Compile Include="Common\TranslationMap.cs" />
-    <Compile Include="Base\AbstractEntityMappingWithModification.cs" />
-    <Compile Include="Constants\MappingConstants.cs" />
+    <Compile Include="DynamicInputAssistant.cs" />
+    <Compile Include="HtmlAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Translations.cs" />
+    <Compile Include="TranslationAssistant.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
-      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
-      <Name>GDNET.Extensions</Name>
+    <ProjectReference Include="..\WebFramework.Modeles\WebFramework.Base.csproj">
+      <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
+      <Name>WebFramework.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkBusiness\WebFramework.Business.csproj">
-      <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
-      <Name>WebFramework.Business</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
+    <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
-  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
