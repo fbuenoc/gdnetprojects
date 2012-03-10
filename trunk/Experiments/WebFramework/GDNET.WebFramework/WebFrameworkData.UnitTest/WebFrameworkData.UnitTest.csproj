@@ -80,21 +80,21 @@
       <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkBusiness\WebFrameworkBusiness.csproj">
+    <ProjectReference Include="..\WebFrameworkBusiness\WebFramework.Business.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
-      <Name>WebFrameworkBusiness</Name>
+      <Name>WebFramework.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkData\WebFrameworkData.csproj">
+    <ProjectReference Include="..\WebFrameworkData\WebFramework.Data.csproj">
       <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>
-      <Name>WebFrameworkData</Name>
+      <Name>WebFramework.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
-      <Name>WebFrameworkDomain</Name>
+      <Name>WebFramework.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkMapping\WebFrameworkMapping.csproj">
+    <ProjectReference Include="..\WebFrameworkMapping\WebFramework.Mapping.csproj">
       <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
-      <Name>WebFrameworkMapping</Name>
+      <Name>WebFramework.Mapping</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

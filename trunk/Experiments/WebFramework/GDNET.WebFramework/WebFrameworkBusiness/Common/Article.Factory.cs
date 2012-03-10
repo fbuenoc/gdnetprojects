@@ -1,6 +1,6 @@
-﻿using WebFrameworkBusiness.Base;
+﻿using WebFramework.Business.Base;
 
-namespace WebFrameworkBusiness.Common
+namespace WebFramework.Business.Common
 {
     public sealed partial class Article
     {

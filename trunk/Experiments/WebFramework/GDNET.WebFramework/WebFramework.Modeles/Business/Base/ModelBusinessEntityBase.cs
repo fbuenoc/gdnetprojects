@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebFramework.Base.Framework.Base;
-using WebFrameworkBusiness.Base;
-using WebFrameworkServices.ComponentModel;
+using WebFramework.Business.Base;
+using WebFramework.Base.ComponentModel;
 
 namespace WebFramework.Base.Business.Base
 {

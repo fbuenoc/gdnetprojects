@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkBusiness.Base
+namespace WebFramework.Business.Base
 {
     public abstract partial class BusinessEntityBase
     {

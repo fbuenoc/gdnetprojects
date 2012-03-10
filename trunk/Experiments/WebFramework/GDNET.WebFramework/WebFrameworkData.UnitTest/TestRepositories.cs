@@ -1,11 +1,11 @@
 ﻿using GDNET.Common.Data;
 using GDNET.NHibernate.SessionManagers;
-using WebFrameworkData.Common.Repositories;
-using WebFrameworkData.Common.Specifications;
-using WebFrameworkDomain.DefaultImpl;
-using WebFrameworkDomain.Repositories.Common;
+using WebFramework.Data.Common.Repositories;
+using WebFramework.Data.Common.Specifications;
+using WebFramework.Domain.DefaultImpl;
+using WebFramework.Domain.Repositories.Common;
 
-namespace WebFrameworkData.UnitTest
+namespace WebFramework.Data.UnitTest
 {
     public sealed class TestRepositories : DomainRepositories
     {

@@ -4,7 +4,7 @@ using GDNET.Common.Base;
 using GDNET.Common.Security;
 using GDNET.Common.Security.DefaultImpl;
 
-namespace WebFrameworkData.UnitTest
+namespace WebFramework.Data.UnitTest
 {
     public class TestSessionService : SessionService
     {

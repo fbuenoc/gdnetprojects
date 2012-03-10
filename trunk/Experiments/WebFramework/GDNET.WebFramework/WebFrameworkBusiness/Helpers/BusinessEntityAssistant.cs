@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using GDNET.Extensions;
-using WebFrameworkBusiness.Base;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Business.Base;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkBusiness.Helpers
+namespace WebFramework.Business.Helpers
 {
     public static class BusinessEntityAssistant
     {
@@ -53,6 +53,11 @@ namespace WebFrameworkBusiness.Helpers
             }
 
             return listeEntities;
+        }
+
+        public static IList<ContentItem> GetAllByType<TEntity>() where TEntity : BusinessEntityBase
+        {
+            return DomainRepositories.ContentItem.GetByContentType(typeof(TEntity));
         }
 
         /// <summary>

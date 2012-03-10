@@ -6,11 +6,11 @@ using GDNET.Common.Encryption;
 using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
 using GDNET.Extensions;
-using WebFrameworkBusiness.Helpers;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Business.Helpers;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkBusiness.Base
+namespace WebFramework.Business.Base
 {
     public abstract partial class BusinessEntityBase
     {

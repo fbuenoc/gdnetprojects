@@ -4,7 +4,7 @@ using GDNET.NHibernate;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 
-namespace WebFrameworkNHibernate.SessionManagers
+namespace WebFramework.NHibernate.SessionManagers
 {
     public sealed class AppStaticSessionManager : AbstractSessionManager
     {

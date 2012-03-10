@@ -57,6 +57,8 @@
     <Compile Include="Business\Administration\ShortcutModel.cs" />
     <Compile Include="Business\Base\ModelBusinessEntityBase.cs" />
     <Compile Include="Business\Common\ProductModel.cs" />
+    <Compile Include="ComponentModel\DisplayNameML.cs" />
+    <Compile Include="ComponentModel\RequiredML.cs" />
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
@@ -95,13 +97,9 @@
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
       <Name>WebFramework.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
-      <Name>WebFrameworkDomain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkServices\WebFramework.Services.csproj">
-      <Project>{E5044263-8ACE-41CA-95A9-D48385F043DC}</Project>
-      <Name>WebFramework.Services</Name>
+      <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

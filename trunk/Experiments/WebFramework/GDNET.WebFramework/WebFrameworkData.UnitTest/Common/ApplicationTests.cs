@@ -1,10 +1,10 @@
 ﻿using System;
 using NUnit.Framework;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkData.UnitTest.Common
+namespace WebFramework.Data.UnitTest.Common
 {
     [TestFixture]
     public class ApplicationTests : NUnitBase

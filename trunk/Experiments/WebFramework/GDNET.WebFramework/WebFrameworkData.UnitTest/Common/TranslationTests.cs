@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.DefaultImpl;
 using System;
 
-namespace WebFrameworkData.UnitTest.Common
+namespace WebFramework.Data.UnitTest.Common
 {
     [TestFixture]
     public class TranslationTests : NUnitBase

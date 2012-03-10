@@ -1,6 +1,6 @@
 ﻿using System;
 using WebFramework.Base.Business.Base;
-using WebFrameworkBusiness.Common;
+using WebFramework.Business.Common;
 
 namespace WebFramework.Base.Business.Common
 {

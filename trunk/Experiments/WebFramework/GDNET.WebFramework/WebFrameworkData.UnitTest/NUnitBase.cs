@@ -4,10 +4,10 @@ using GDNET.NHibernate;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 using NHibernate.Mapping.ByCode;
-using WebFrameworkDomain.DefaultImpl;
-using WebFrameworkMapping.Base;
+using WebFramework.Domain.DefaultImpl;
+using WebFramework.Mapping.Base;
 
-namespace WebFrameworkData.UnitTest
+namespace WebFramework.Data.UnitTest
 {
     public abstract class NUnitBase
     {

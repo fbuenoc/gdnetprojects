@@ -5,9 +5,8 @@ using GDNET.Web;
 using GDNET.Web.Helpers;
 using NHibernate;
 using NHibernate.Context;
-using WebFrameworkServices;
 
-namespace WebFrameworkNHibernate.SessionManagers
+namespace WebFramework.NHibernate.SessionManagers
 {
     public class NHibernateSessionPerRequestModule : IHttpModule
     {

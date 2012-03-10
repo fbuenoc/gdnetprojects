@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using WebFramework.Base.Framework.Base;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
 namespace WebFramework.Base.Framework.Common
 {

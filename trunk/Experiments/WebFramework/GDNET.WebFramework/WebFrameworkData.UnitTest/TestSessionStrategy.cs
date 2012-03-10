@@ -1,7 +1,7 @@
 ﻿using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 
-namespace WebFrameworkData.UnitTest
+namespace WebFramework.Data.UnitTest
 {
     public class TestSessionStrategy : AbstractSessionStrategy
     {

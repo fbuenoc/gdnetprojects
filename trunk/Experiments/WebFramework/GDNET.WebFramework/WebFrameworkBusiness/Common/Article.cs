@@ -1,9 +1,9 @@
 ﻿using System;
 using GDNET.Common.Security.Services;
 using GDNET.Common.Types;
-using WebFrameworkBusiness.Base;
+using WebFramework.Business.Base;
 
-namespace WebFrameworkBusiness.Common
+namespace WebFramework.Business.Common
 {
     public sealed partial class Article : BusinessEntityBase, IBusinessEntity
     {

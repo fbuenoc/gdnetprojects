@@ -1,17 +1,17 @@
-﻿using WebFrameworkBusiness.Common;
-using WebFrameworkBusiness.Helpers;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
+﻿using WebFramework.Business.Common;
+using WebFramework.Business.Helpers;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkData.UnitTest.Utils
+namespace WebFramework.Data.UnitTest.Utils
 {
     public sealed class UnitTestAssistant
     {
         public static ContentType CreateContentType()
         {
             string name = "Content type test";
-            string typeName = "WebFrameworkData.UnitTest.Common.ContentTypeTests, WebFrameworkData.UnitTest";
+            string typeName = "WebFramework.Data.UnitTest.Common.ContentTypeTests, WebFramework.Data.UnitTest";
             var type = ContentType.Factory.Create(name, typeName);
 
             DomainRepositories.ContentType.Save(type);
