@@ -2,8 +2,8 @@
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using WebFramework.Base.Framework.Base;
-using WebFrameworkDomain.Common;
-using WebFrameworkServices.ComponentModel;
+using WebFramework.Domain.Common;
+using WebFramework.Base.ComponentModel;
 
 namespace WebFramework.Base.Framework.Common
 {

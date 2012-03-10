@@ -2,7 +2,7 @@
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 
-namespace WebFrameworkData.Common.Repositories
+namespace WebFramework.Data.Common.Repositories
 {
     public sealed class GenericRepository<TEntity, TId> : AbstractRepository<TEntity, TId>
        where TEntity : EntityBase<TId>

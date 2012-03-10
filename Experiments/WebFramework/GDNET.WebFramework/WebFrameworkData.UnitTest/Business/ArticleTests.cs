@@ -1,10 +1,10 @@
 ﻿using System;
 using GDNET.Common.Types;
 using NUnit.Framework;
-using WebFrameworkBusiness.Common;
-using WebFrameworkData.UnitTest.Utils;
+using WebFramework.Business.Common;
+using WebFramework.Data.UnitTest.Utils;
 
-namespace WebFrameworkData.UnitTest.Business
+namespace WebFramework.Data.UnitTest.Business
 {
     [TestFixture]
     public class ArticleTests : NUnitBase

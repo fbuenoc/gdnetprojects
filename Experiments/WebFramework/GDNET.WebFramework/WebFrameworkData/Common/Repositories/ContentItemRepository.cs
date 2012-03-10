@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
-using WebFrameworkDomain.Repositories.Common;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
+using WebFramework.Domain.Repositories.Common;
 
-namespace WebFrameworkData.Common.Repositories
+namespace WebFramework.Data.Common.Repositories
 {
     public class ContentItemRepository : AbstractRepository<ContentItem, long>, IContentItemRepository
     {

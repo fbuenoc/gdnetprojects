@@ -1,9 +1,9 @@
 ﻿using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Repositories.Common;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Repositories.Common;
 
-namespace WebFrameworkData.Common.Repositories
+namespace WebFramework.Data.Common.Repositories
 {
     public class ContentAttributeRepository : AbstractRepository<ContentAttribute, long>, IContentAttributeRepository
     {

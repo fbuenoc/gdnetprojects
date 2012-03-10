@@ -1,6 +1,6 @@
 ﻿using WebFramework.Base.Business.Base;
-using WebFrameworkBusiness.Administration;
-using WebFrameworkServices.ComponentModel;
+using WebFramework.Base.ComponentModel;
+using WebFramework.Business.Administration;
 
 namespace WebFramework.Base.Business.Administration
 {

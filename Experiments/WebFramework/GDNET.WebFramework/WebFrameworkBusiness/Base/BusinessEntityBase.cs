@@ -5,9 +5,9 @@ using GDNET.Common.Base.Entities;
 using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
 using GDNET.Extensions;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
-namespace WebFrameworkBusiness.Base
+namespace WebFramework.Business.Base
 {
     public abstract partial class BusinessEntityBase : EntityWithModificationBase<long>
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
-using WebFrameworkDomain.Base;
+using WebFramework.Domain.Base;
 
 namespace WebFramework.Base.Framework.Base
 {

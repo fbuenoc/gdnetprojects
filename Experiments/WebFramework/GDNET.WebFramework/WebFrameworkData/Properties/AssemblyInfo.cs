@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebFrameworkData")]
+[assembly: AssemblyTitle("WebFramework.Data")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("TVN")]
-[assembly: AssemblyProduct("WebFrameworkData")]
+[assembly: AssemblyProduct("WebFramework.Data")]
 [assembly: AssemblyCopyright("Copyright © TVN 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

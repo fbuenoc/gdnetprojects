@@ -1,7 +1,7 @@
 ﻿using System;
 using GDNET.Common.DesignByContract;
 using WebFramework.Base.Framework.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Base.Framework.Base
 {

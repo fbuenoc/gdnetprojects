@@ -1,4 +1,4 @@
-﻿namespace WebFrameworkBusiness.Base
+﻿namespace WebFramework.Business.Base
 {
     public interface IBusinessEntity
     {

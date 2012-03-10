@@ -8,8 +8,8 @@
     <ProjectGuid>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFrameworkData</RootNamespace>
-    <AssemblyName>WebFrameworkData</AssemblyName>
+    <RootNamespace>WebFramework.Data</RootNamespace>
+    <AssemblyName>WebFramework.Data</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -73,9 +73,9 @@
       <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
-      <Name>WebFrameworkDomain</Name>
+      <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

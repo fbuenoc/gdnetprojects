@@ -76,9 +76,9 @@
       <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
       <Name>GDNET.Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
-      <Name>WebFrameworkDomain</Name>
+      <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

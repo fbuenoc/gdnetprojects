@@ -2,9 +2,9 @@
 using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 using NHibernate.Mapping.ByCode;
-using WebFrameworkMapping.Base;
+using WebFramework.Mapping.Base;
 
-namespace WebFrameworkNHibernate.SessionManagers
+namespace WebFramework.NHibernate.SessionManagers
 {
     public abstract class AbstractSessionManager : SessionManager
     {

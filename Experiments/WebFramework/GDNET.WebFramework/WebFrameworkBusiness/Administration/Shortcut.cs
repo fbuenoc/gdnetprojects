@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.Security.Services;
-using WebFrameworkBusiness.Base;
+using WebFramework.Business.Base;
 
-namespace WebFrameworkBusiness.Administration
+namespace WebFramework.Business.Administration
 {
     public sealed partial class Shortcut : BusinessEntityBase, IBusinessEntity
     {

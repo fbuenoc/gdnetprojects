@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
-using WebFrameworkData.UnitTest.Utils;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Data.UnitTest.Utils;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkData.UnitTest.Common
+namespace WebFramework.Data.UnitTest.Common
 {
     [TestFixture]
     public class ContentItemTests : NUnitBase

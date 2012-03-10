@@ -4,7 +4,7 @@ using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 using NHibernate.Context;
 
-namespace WebFrameworkNHibernate.SessionManagers
+namespace WebFramework.NHibernate.SessionManagers
 {
     public class NHibernateSessionPerConversationModule : IHttpModule
     {
