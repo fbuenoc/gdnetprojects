@@ -1,6 +1,6 @@
-﻿using WebFrameworkDomain.Common;
+﻿using WebFramework.Domain.Common;
 
-namespace WebFrameworkDomain.Base
+namespace WebFramework.Domain.Base
 {
     public interface IEntityWithLifeCycle
     {

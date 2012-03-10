@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.Data;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
-namespace WebFrameworkDomain.Repositories.Common
+namespace WebFramework.Domain.Repositories.Common
 {
     public interface ITranslationRepository : IRepositoryBase<Translation, long>
     {

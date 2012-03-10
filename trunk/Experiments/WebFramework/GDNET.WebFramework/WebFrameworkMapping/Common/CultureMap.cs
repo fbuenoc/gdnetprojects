@@ -1,8 +1,8 @@
 ﻿using NHibernate.Mapping.ByCode;
-using WebFrameworkDomain.Common;
-using WebFrameworkMapping.Base;
+using WebFramework.Domain.Common;
+using WebFramework.Mapping.Base;
 
-namespace WebFrameworkMapping.Common
+namespace WebFramework.Mapping.Common
 {
     public class CultureMap : AbstractEntityMapping<Culture, int>, INHibernateMapping
     {

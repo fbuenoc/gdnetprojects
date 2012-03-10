@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Services;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Services;
 
-namespace WebFrameworkDomain.DefaultImpl
+namespace WebFramework.Domain.DefaultImpl
 {
     public class ContentTypeService : IContentTypeService
     {

@@ -1,8 +1,8 @@
 ﻿using GDNET.Common.DesignByContract;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class Application
     {

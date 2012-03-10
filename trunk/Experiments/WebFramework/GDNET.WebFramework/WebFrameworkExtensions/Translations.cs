@@ -1,4 +1,4 @@
-﻿namespace WebFrameworkExtensions
+﻿namespace WebFramework.Extensions
 {
     public static class Translations
     {

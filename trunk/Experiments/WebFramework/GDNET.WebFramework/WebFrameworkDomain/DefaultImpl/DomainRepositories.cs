@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.Data;
-using WebFrameworkDomain.Repositories.Common;
+using WebFramework.Domain.Repositories.Common;
 
-namespace WebFrameworkDomain.DefaultImpl
+namespace WebFramework.Domain.DefaultImpl
 {
     public abstract class DomainRepositories
     {

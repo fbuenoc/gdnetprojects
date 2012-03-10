@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.Base.Entities;
 using NHibernate.Mapping.ByCode;
 
-namespace WebFrameworkMapping.Base
+namespace WebFramework.Mapping.Base
 {
     public abstract class AbstractEntityMappingWithModification<TObject, TId> : AbstractEntityMapping<TObject, TId>
         where TObject : EntityWithModificationBase<TId>

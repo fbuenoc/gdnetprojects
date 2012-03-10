@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebFrameworkDomain.DynamicInput
+namespace WebFramework.Domain.DynamicInput
 {
     /// <summary>
     /// We use 01, 02... to distinguish with value of attribute

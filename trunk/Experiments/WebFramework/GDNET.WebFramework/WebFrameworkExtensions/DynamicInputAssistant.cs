@@ -1,9 +1,9 @@
 ﻿using System.Text;
 using System.Web.Mvc;
 using GDNET.Common.DesignByContract;
-using WebFrameworkDomain.DynamicInput;
+using WebFramework.Domain.DynamicInput;
 
-namespace WebFrameworkExtensions
+namespace WebFramework.Extensions
 {
     public static class DynamicInputAssistant
     {

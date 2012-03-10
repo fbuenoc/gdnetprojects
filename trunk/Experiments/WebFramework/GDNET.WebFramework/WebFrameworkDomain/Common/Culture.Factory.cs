@@ -1,4 +1,4 @@
-﻿namespace WebFrameworkDomain.Common
+﻿namespace WebFramework.Domain.Common
 {
     public partial class Culture
     {

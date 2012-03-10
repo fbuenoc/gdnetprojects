@@ -1,4 +1,4 @@
-﻿namespace WebFrameworkMapping.Constants
+﻿namespace WebFramework.Mapping.Constants
 {
     public sealed class MappingConstants
     {

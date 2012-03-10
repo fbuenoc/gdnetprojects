@@ -3,7 +3,7 @@ using GDNET.Common.Base.Meta;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
-namespace WebFrameworkMapping.Base
+namespace WebFramework.Mapping.Base
 {
     public abstract class AbstractEntityMapping<TObject, TId> : ClassMapping<TObject> where TObject : EntityBase<TId>
     {

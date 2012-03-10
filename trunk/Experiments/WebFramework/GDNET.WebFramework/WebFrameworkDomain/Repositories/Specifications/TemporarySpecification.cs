@@ -1,12 +1,12 @@
 ﻿using System;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Security.Services;
-using WebFrameworkDomain.Base;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.Base;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkData.Common.Specifications
+namespace WebFramework.Data.Common.Specifications
 {
     public class TemporarySpecification : GenericSpecification<Temporary, Guid>
     {

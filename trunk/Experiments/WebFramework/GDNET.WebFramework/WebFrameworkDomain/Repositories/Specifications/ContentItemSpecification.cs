@@ -1,7 +1,7 @@
-﻿using WebFrameworkDomain.Base;
-using WebFrameworkDomain.Common;
+﻿using WebFramework.Domain.Base;
+using WebFramework.Domain.Common;
 
-namespace WebFrameworkData.Common.Specifications
+namespace WebFramework.Data.Common.Specifications
 {
     public class ContentItemSpecification : GenericSpecification<ContentItem, long>
     {

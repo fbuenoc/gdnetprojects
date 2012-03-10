@@ -1,9 +1,9 @@
 ﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
 using GDNET.Common.Helpers;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
-namespace WebFrameworkDomain.Extensions
+namespace WebFramework.Domain.Extensions
 {
     public static class EntityAssistant
     {

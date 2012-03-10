@@ -1,8 +1,8 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
-using WebFrameworkDomain.Base;
+using WebFramework.Domain.Base;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class Temporary : EntityBase<Guid>, IEntityWithLifeCycle
     {

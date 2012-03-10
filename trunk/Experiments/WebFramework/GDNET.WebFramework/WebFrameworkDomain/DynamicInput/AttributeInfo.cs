@@ -1,4 +1,4 @@
-﻿namespace WebFrameworkDomain.DynamicInput
+﻿namespace WebFramework.Domain.DynamicInput
 {
     /// <summary>
     /// Take care when changing value of any items there, because it can be use in LVH.ContentDataTypes

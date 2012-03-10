@@ -1,7 +1,7 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class StatutLog : EntityBase<Guid>
     {

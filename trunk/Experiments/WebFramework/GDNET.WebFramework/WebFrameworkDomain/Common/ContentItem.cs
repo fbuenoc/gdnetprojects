@@ -2,10 +2,10 @@
 using System.Collections.ObjectModel;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.DesignByContract;
-using WebFrameworkDomain.Base;
-using WebFrameworkDomain.Extensions;
+using WebFramework.Domain.Base;
+using WebFramework.Domain.Extensions;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class ContentItem : EntityWithModificationBase<long>, IEntityWithLifeCycle
     {

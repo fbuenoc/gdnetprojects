@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.DefaultImpl;
 using System.Linq.Expressions;
 
-namespace WebFrameworkExtensions
+namespace WebFramework.Extensions
 {
     public static class HtmlAssistant
     {

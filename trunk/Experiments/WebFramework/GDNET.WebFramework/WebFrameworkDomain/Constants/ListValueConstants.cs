@@ -1,4 +1,4 @@
-﻿namespace WebFrameworkDomain.Constants
+﻿namespace WebFramework.Domain.Constants
 {
     public sealed class ListValueConstants
     {

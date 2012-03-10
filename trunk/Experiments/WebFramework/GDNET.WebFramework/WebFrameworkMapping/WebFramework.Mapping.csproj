@@ -8,8 +8,8 @@
     <ProjectGuid>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFrameworkMapping</RootNamespace>
-    <AssemblyName>WebFrameworkMapping</AssemblyName>
+    <RootNamespace>WebFramework.Mapping</RootNamespace>
+    <AssemblyName>WebFramework.Mapping</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -69,13 +69,13 @@
       <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
       <Name>GDNET.Extensions</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkBusiness\WebFrameworkBusiness.csproj">
+    <ProjectReference Include="..\WebFrameworkBusiness\WebFramework.Business.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
-      <Name>WebFrameworkBusiness</Name>
+      <Name>WebFramework.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
-      <Name>WebFrameworkDomain</Name>
+      <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
