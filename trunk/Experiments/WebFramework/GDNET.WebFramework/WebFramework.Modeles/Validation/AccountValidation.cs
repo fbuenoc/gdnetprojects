@@ -1,6 +1,6 @@
 ﻿using System.Web.Security;
 
-namespace WebFramework.Models.Validation
+namespace WebFramework.Base.Validation
 {
     public static class AccountValidation
     {

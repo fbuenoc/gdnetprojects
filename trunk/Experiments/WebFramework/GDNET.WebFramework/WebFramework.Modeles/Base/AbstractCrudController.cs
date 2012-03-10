@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 
-namespace WebFramework.Models.Base
+namespace WebFramework.Base.Base
 {
-    public abstract class CrudControllerBase<TModel> : MvcControllerBase<TModel>
+    public abstract class AbstractCrudController<TModel> : AbstractController<TModel>
     {
         public const string ActionDetails = "Details";
         public const string ActionCreate = "Create";

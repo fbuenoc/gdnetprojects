@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WebFramework.Models.Framework.Base;
+using WebFramework.Base.Framework.Base;
 using WebFrameworkDomain.Common;
 using WebFrameworkServices.ComponentModel;
 
-namespace WebFramework.Models.Framework.Common
+namespace WebFramework.Base.Framework.Common
 {
-    public sealed class ContentItemModel : ModelWithModificationBase<ContentItem, long>
+    public class ContentItemModel : ModelWithModificationBase<ContentItem, long>
     {
         #region Properties
 
@@ -57,14 +57,13 @@ namespace WebFramework.Models.Framework.Common
             protected set;
         }
 
-        #endregion
-
-        public void InitializeContentType(ContentTypeModel typeModel)
+        public ContentTypeModel ContentTypeModel
         {
-            this.ContentType = typeModel.Name;
-            this.ContentTypeId = typeModel.Id;
-            this.Attributes = typeModel.Attributes;
+            get;
+            protected set;
         }
+
+        #endregion
 
         #region Ctors
 
@@ -73,20 +72,32 @@ namespace WebFramework.Models.Framework.Common
         public ContentItemModel(ContentItem entity)
             : base(entity)
         {
-            if (entity.ContentType != null)
-            {
-                if (entity.ContentType.Name != null)
-                {
-                    this.ContentType = entity.ContentType.Name.Value;
-                }
-                this.ContentTypeId = entity.ContentType.Id;
-            }
+            this.ContentType = entity.ContentType.Name.Value;
+            this.ContentTypeId = entity.ContentType.Id;
+
+            this.ContentTypeModel = new ContentTypeModel(entity.ContentType);
 
             this.Name = (entity.Name == null) ? string.Empty : entity.Name.Value;
             this.Description = (entity.Description == null) ? string.Empty : entity.Description.Value;
             this.Position = entity.Position;
 
             this.AttributesValue = entity.AttributeValues.Select(x => new ContentItemAttributeValueModel(x));
+        }
+
+        #endregion
+
+        #region Behaviors
+
+        public void InitializeContentType(ContentTypeModel typeModel)
+        {
+            this.ContentType = typeModel.Name;
+            this.ContentTypeId = typeModel.Id;
+            this.Attributes = typeModel.Attributes;
+        }
+
+        public ContentAttributeModel GetAttribute(string attributeCode)
+        {
+            return this.Attributes.FirstOrDefault(x => x.Code == attributeCode);
         }
 
         #endregion

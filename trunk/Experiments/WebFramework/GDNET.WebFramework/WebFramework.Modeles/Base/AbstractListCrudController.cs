@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 
-namespace WebFramework.Models.Base
+namespace WebFramework.Base.Base
 {
-    public abstract class ListCrudControllerBase<TModel> : CrudControllerBase<TModel>
+    public abstract class AbstractListCrudController<TModel> : AbstractCrudController<TModel>
     {
         public ActionResult Index()
         {

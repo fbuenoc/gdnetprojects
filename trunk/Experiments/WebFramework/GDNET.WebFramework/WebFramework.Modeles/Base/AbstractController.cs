@@ -2,12 +2,12 @@
 using System.Web.Routing;
 using GDNET.Web.Membership.DefaultImpl;
 using GDNET.Web.Membership.Services;
-using WebFramework.Models.Framework.Base;
-using WebFramework.Models.AccountServices;
+using WebFramework.Base.Framework.Base;
+using WebFramework.Base.AccountServices;
 
-namespace WebFramework.Models.Base
+namespace WebFramework.Base.Base
 {
-    public abstract class MvcControllerBase<TModel> : MvcControllerBase
+    public abstract class AbstractController<TModel> : AbstractController
     {
         protected TModel GetModelById(string id)
         {
@@ -15,7 +15,7 @@ namespace WebFramework.Models.Base
         }
     }
 
-    public abstract class MvcControllerBase : Controller
+    public abstract class AbstractController : Controller
     {
         protected IFormsAuthenticationService formsService = null;
         protected IMembershipService membershipService = null;

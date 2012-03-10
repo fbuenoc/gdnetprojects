@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using GDNET.Web.Mvc.Validation;
 
-namespace WebFramework.Models.AccountModeles
+namespace WebFramework.Base.AccountModeles
 {
     public class RegisterModel
     {

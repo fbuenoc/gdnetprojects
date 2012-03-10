@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using WebFramework.Models.Framework.Base;
+using WebFramework.Base.Framework.Base;
 using WebFrameworkDomain.Common;
 using WebFrameworkServices.ComponentModel;
 
-namespace WebFramework.Models.Framework.Common
+namespace WebFramework.Base.Framework.Common
 {
     public sealed class ListValueModel : ModelWithModificationBase<ListValue, long>
     {

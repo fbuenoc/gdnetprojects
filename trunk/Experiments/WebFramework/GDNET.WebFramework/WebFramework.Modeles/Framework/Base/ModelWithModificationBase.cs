@@ -2,7 +2,7 @@
 using GDNET.Common.Base.Entities;
 using WebFrameworkDomain.Base;
 
-namespace WebFramework.Models.Framework.Base
+namespace WebFramework.Base.Framework.Base
 {
     public abstract class ModelWithModificationBase<TEntity, TId> : EntityWithModificationBase<TId>, IViewModel<TId>
         where TEntity : EntityWithModificationBase<TId>
@@ -76,6 +76,7 @@ namespace WebFramework.Models.Framework.Base
                 this.CreatedBy = lifeCycle.CreatedBy;
                 this.LastModifiedAt = lifeCycle.LastModifiedAt;
                 this.LastModifiedBy = lifeCycle.LastModifiedBy;
+
                 if (lifeCycle.ActualStatut != null)
                 {
                     this.ActualStatut = lifeCycle.ActualStatut.Description.Value;

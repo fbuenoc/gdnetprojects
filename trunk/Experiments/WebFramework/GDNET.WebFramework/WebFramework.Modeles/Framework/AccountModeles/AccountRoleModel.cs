@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 using GDNET.Common.Base.Entities;
 
-namespace WebFramework.Models.Framework.AccountModeles
+namespace WebFramework.Base.Framework.AccountModeles
 {
     public sealed class AccountRoleModel : EntityBase<string>
     {
