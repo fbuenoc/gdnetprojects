@@ -1,5 +1,5 @@
 ﻿<%@ Import Namespace="System.Web.Mvc" %>
-<%@ Import Namespace="WebFramework.Models.AccountModeles" %>
+<%@ Import Namespace="WebFramework.Base.AccountModeles" %>
 
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="ViewPage<LogOnModel>" %>
 

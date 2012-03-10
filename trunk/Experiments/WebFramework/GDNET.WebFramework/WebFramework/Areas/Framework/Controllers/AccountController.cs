@@ -3,12 +3,12 @@ using System.Web.Mvc;
 using GDNET.Web.Helpers;
 using Telerik.Web.Mvc;
 using WebFramework.Constants;
-using WebFramework.Modeles.Base;
-using WebFramework.Modeles.Framework.AccountModeles;
+using WebFramework.Base.Base;
+using WebFramework.Base.Framework.AccountModeles;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class AccountController : ListCrudControllerBase<AccountModel>
+    public class AccountController : AbstractListCrudController<AccountModel>
     {
         #region ListCrudControllerBase members
 

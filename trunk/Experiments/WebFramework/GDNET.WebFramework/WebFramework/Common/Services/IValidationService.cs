@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Services
 {

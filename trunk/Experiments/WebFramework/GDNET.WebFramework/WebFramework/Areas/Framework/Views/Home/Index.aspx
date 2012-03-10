@@ -1,4 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Import Namespace="WebFramework.Base.Business.Administration" %>
+
+<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ShortcutModel>>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     Index
@@ -7,30 +9,52 @@
     <h2>
         Index
     </h2>
-    <div>
-        <ul>
-            <li>
-                <%= base.Html.ActionLink("Roles", "List", "Role")%>
-            </li>
-            <li>
-                <%= base.Html.ActionLink("Accounts", "List", "Account") %>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <%= base.Html.ActionLink("Applications", "List", "Application")%>
-            </li>
-            <li>
-                <%= base.Html.ActionLink("Content types", "List", "ContentType")%>
-            </li>
-            <li>
-                <%= base.Html.ActionLink("Lists", "List", "ListValue")%>
-            </li>
-        </ul>
-        <ul>
-            <li>
-                <%= base.Html.ActionLink("Content items", "List", "ContentItem")%>
-            </li>
-        </ul>
-    </div>
+    <table width="100%">
+        <tr>
+            <td valign="top">
+                <div>
+                    <ul>
+                        <li>
+                            <%= base.Html.ActionLink("Roles", "List", "Role")%>
+                        </li>
+                        <li>
+                            <%= base.Html.ActionLink("Accounts", "List", "Account") %>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <%= base.Html.ActionLink("Applications", "List", "Application")%>
+                        </li>
+                        <li>
+                            <%= base.Html.ActionLink("Content types", "List", "ContentType")%>
+                        </li>
+                        <li>
+                            <%= base.Html.ActionLink("Lists", "List", "ListValue")%>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <%= base.Html.ActionLink("Content items", "List", "ContentItem")%>
+                        </li>
+                    </ul>
+                </div>
+            </td>
+            <td valign="top">
+                <div>
+                    <ul>
+                        <%
+                            foreach (var shortcutModel in base.Model)
+                            {
+                        %>
+                        <li>
+                            <%= base.Html.SimpleLink(shortcutModel.TargetUrl, shortcutModel.Name, shortcutModel.Description) %>
+                        </li>
+                        <%
+                            }
+                        %>
+                    </ul>
+                </div>
+            </td>
+        </tr>
+    </table>
 </asp:Content>

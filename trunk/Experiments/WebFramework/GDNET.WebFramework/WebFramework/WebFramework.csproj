@@ -253,8 +253,10 @@
     <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
     <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
+    <Compile Include="Common\DefaultImpl\NavigationService.cs" />
     <Compile Include="Common\DefaultImpl\ValidationService.cs" />
     <Compile Include="Common\FrameworkServices.cs" />
+    <Compile Include="Common\Services\INavigationService.cs" />
     <Compile Include="Common\Services\IValidationService.cs" />
     <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
@@ -263,12 +265,16 @@
     <Compile Include="Areas\Framework\Controllers\AccountController.cs" />
     <Compile Include="Areas\Framework\Controllers\RoleController.cs" />
     <Compile Include="Areas\Framework\FrameworkAreaRegistration.cs" />
+    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\HomeViewModel.cs" />
+    <Compile Include="ViewModels\ItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\hibernate.cfg.xml" />
@@ -779,6 +785,9 @@
     <Content Include="Scripts\2012.1.214\telerik.treeview.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.upload.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.window.min.js" />
+    <Content Include="Views\Home\Welcome.aspx" />
+    <Content Include="Views\Item\Details.aspx" />
+    <Content Include="Views\Item\ProductDetails.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -840,6 +849,10 @@
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.NHibernate\GDNET.NHibernate.csproj">
       <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
       <Name>GDNET.NHibernate</Name>
@@ -856,21 +869,25 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Modeles\WebFramework.Modeles.csproj">
+    <ProjectReference Include="..\WebFramework.Modeles\WebFramework.Base.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
-      <Name>WebFramework.Modeles</Name>
+      <Name>WebFramework.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkData\WebFrameworkData.csproj">
+    <ProjectReference Include="..\WebFrameworkBusiness\WebFramework.Business.csproj">
+      <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
+      <Name>WebFramework.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFrameworkData\WebFramework.Data.csproj">
       <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>
-      <Name>WebFrameworkData</Name>
+      <Name>WebFramework.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkDomain\WebFrameworkDomain.csproj">
+    <ProjectReference Include="..\WebFrameworkDomain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
-      <Name>WebFrameworkDomain</Name>
+      <Name>WebFramework.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFrameworkMapping\WebFrameworkMapping.csproj">
+    <ProjectReference Include="..\WebFrameworkMapping\WebFramework.Mapping.csproj">
       <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
-      <Name>WebFrameworkMapping</Name>
+      <Name>WebFramework.Mapping</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
