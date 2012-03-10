@@ -1,7 +1,7 @@
 ﻿using System.Globalization;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
-namespace WebFrameworkDomain.Extensions
+namespace WebFramework.Domain.Extensions
 {
     public static class CultureAssistant
     {

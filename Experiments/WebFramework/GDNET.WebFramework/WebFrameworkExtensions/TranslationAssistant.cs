@@ -1,7 +1,7 @@
-﻿using WebFramework.Modeles.Framework.Base;
-using WebFrameworkDomain.DefaultImpl;
+﻿using WebFramework.Base.Framework.Base;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkExtensions
+namespace WebFramework.Extensions
 {
     public static class TranslationAssistant
     {
@@ -9,7 +9,8 @@ namespace WebFrameworkExtensions
         {
             if (!string.IsNullOrEmpty(code))
             {
-                var translation = DomainRepositories.Translation.GetByCode(code);
+                var defaultCulture = DomainRepositories.Culture.GetDefault();
+                var translation = DomainRepositories.Translation.GetByCode(code, defaultCulture);
                 return (translation == null) ? string.Format("!{0}!", code) : translation.Value;
             }
 

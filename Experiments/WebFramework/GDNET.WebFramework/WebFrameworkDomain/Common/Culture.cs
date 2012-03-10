@@ -2,7 +2,7 @@
 using System.Collections.ObjectModel;
 using GDNET.Common.Base.Entities;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class Culture : EntityBase<int>
     {

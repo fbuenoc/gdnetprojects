@@ -1,10 +1,10 @@
 ﻿using System;
 using NHibernate.Mapping.ByCode;
-using WebFrameworkDomain.Common;
-using WebFrameworkMapping.Base;
-using WebFrameworkMapping.Constants;
+using WebFramework.Domain.Common;
+using WebFramework.Mapping.Base;
+using WebFramework.Mapping.Constants;
 
-namespace WebFrameworkMapping.Common
+namespace WebFramework.Mapping.Common
 {
     public class TemporaryMap : AbstractEntityMapping<Temporary, Guid>, INHibernateMapping
     {

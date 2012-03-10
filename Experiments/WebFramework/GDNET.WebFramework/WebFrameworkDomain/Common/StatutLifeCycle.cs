@@ -4,7 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using GDNET.Common.Base.Entities;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class StatutLifeCycle : EntityBase<long>
     {

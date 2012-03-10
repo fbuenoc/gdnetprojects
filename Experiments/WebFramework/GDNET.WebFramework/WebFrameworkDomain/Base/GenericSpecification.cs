@@ -1,12 +1,12 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Security.DefaultImpl;
-using WebFrameworkDomain.Base;
-using WebFrameworkDomain.Common;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.Base;
+using WebFramework.Domain.Common;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkDomain.Base
+namespace WebFramework.Domain.Base
 {
     public class GenericSpecification<TEntity, TId> : AbstractSpecification<TEntity, TId> where TEntity : IEntityBase<TId>
     {

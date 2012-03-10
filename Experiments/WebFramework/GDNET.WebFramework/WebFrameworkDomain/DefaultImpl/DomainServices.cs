@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.Security.Services;
-using WebFrameworkDomain.Services;
+using WebFramework.Domain.Services;
 
-namespace WebFrameworkDomain.DefaultImpl
+namespace WebFramework.Domain.DefaultImpl
 {
     public abstract class DomainServices
     {

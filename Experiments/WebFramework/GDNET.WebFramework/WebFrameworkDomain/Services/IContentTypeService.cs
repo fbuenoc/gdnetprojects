@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
-namespace WebFrameworkDomain.Services
+namespace WebFramework.Domain.Services
 {
     public interface IContentTypeService
     {

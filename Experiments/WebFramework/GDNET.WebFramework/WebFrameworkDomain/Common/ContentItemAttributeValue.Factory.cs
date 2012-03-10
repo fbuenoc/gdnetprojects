@@ -1,6 +1,6 @@
 ﻿using GDNET.Common.DesignByContract;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class ContentItemAttributeValue
     {

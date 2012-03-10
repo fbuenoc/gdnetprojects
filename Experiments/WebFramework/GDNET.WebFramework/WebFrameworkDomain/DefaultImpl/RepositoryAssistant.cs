@@ -1,6 +1,6 @@
 ﻿using GDNET.Common.Data;
 
-namespace WebFrameworkDomain.DefaultImpl
+namespace WebFramework.Domain.DefaultImpl
 {
     public abstract class RepositoryAssistant : IRepositoryAssistant
     {

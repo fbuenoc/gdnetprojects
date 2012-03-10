@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.Helpers;
-using WebFrameworkDomain.Common;
+using WebFramework.Domain.Common;
 
-namespace WebFrameworkDomain.Constants
+namespace WebFramework.Domain.Constants
 {
     public sealed class CommonConstants
     {

@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using NUnit.Framework;
 
-namespace WebFrameworkExtensions.Tests
+namespace WebFramework.Extensions.Tests
 {
     [TestFixture]
     public class HtmlDynamicInputTests

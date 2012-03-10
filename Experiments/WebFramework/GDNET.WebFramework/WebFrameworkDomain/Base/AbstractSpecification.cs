@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.Base.Entities;
 using GDNET.Common.Data;
 
-namespace WebFrameworkDomain.Base
+namespace WebFramework.Domain.Base
 {
     public abstract class AbstractSpecification<TEntity, TId> : ISpecificationBase<TEntity, TId> where TEntity : IEntityBase<TId>
     {

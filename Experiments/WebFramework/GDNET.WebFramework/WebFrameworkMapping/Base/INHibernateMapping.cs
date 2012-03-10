@@ -1,4 +1,4 @@
-﻿namespace WebFrameworkMapping.Base
+﻿namespace WebFramework.Mapping.Base
 {
     /// <summary>
     /// Only uses to mark a class as a mapping domain

@@ -4,15 +4,16 @@ using GDNET.Common.Helpers;
 using GDNET.Common.Types;
 using GDNET.Extensions;
 using NHibernate;
-using WebFrameworkBusiness.Base;
-using WebFrameworkBusiness.Common;
-using WebFrameworkBusiness.Helpers;
-using WebFrameworkData.UnitTest;
-using WebFrameworkDomain.Constants;
-using WebFrameworkDomain.DefaultImpl;
-using WebFrameworkDomain.Extensions;
-using WebFrameworkNHibernate;
-using WebFrameworkNHibernate.SessionManagers;
+using WebFramework.Business.Administration;
+using WebFramework.Business.Base;
+using WebFramework.Business.Common;
+using WebFramework.Business.Helpers;
+using WebFramework.Data.UnitTest;
+using WebFramework.Domain.Constants;
+using WebFramework.Domain.DefaultImpl;
+using WebFramework.Domain.Extensions;
+using WebFramework.NHibernate;
+using WebFramework.NHibernate.SessionManagers;
 
 namespace WebFrameworkSampleData
 {
@@ -42,6 +43,14 @@ namespace WebFrameworkSampleData
                 {
                     InitializeArticleContentType();
                 }
+                else if (businessType.GetHashCode() == typeof(Product).GetHashCode())
+                {
+                    InitializeProductContentType();
+                }
+                else if (businessType.GetHashCode() == typeof(Shortcut).GetHashCode())
+                {
+                    InitializeShortcutContentType();
+                }
             }
 
             DomainRepositories.RepositoryAssistant.Flush();
@@ -54,20 +63,12 @@ namespace WebFrameworkSampleData
             ContentAttributeInfo attrInfo = null;
             List<ContentAttributeInfo> attributesInfo = new List<ContentAttributeInfo>();
 
-            attributeCode = ExpressionAssistant.GetPropertyName(() => myComment.Title);
+            attributeCode = ExpressionAssistant.GetPropertyName(() => myComment.FullName);
             attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextSimpleTextBox, 0);
             attributesInfo.Add(attrInfo);
 
-            attributeCode = ExpressionAssistant.GetPropertyName(() => myComment.Body);
-            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextTextArea, 1);
-            attributesInfo.Add(attrInfo);
-
-            attributeCode = ExpressionAssistant.GetPropertyName(() => myComment.FullName);
-            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextSimpleTextBox, 2);
-            attributesInfo.Add(attrInfo);
-
             attributeCode = ExpressionAssistant.GetPropertyName(() => myComment.Email);
-            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextSimpleTextBox, 3);
+            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextSimpleTextBox, 1);
             attributesInfo.Add(attrInfo);
 
             var contentType = BusinessEntityAssistant.EnsureContentType(myComment, attributesInfo);
@@ -102,6 +103,46 @@ namespace WebFrameworkSampleData
             EntityAssistant.ChangeActive(contentType, true);
         }
 
+        private static void InitializeProductContentType()
+        {
+            Product myProduct = Product.Factory.NewInstance();
+
+            string attributeCode = string.Empty;
+            ContentAttributeInfo attrInfo = null;
+            List<ContentAttributeInfo> attributesInfo = new List<ContentAttributeInfo>();
+
+            attributeCode = ExpressionAssistant.GetPropertyName(() => myProduct.Discount);
+            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.NumberPercentage, 0);
+            attributesInfo.Add(attrInfo);
+
+            attributeCode = ExpressionAssistant.GetPropertyName(() => myProduct.IntroDate);
+            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.DateTimeFullDateTime, 1);
+            attributesInfo.Add(attrInfo);
+
+            attributeCode = ExpressionAssistant.GetPropertyName(() => myProduct.Price);
+            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.NumberNormalNumber, 2);
+            attributesInfo.Add(attrInfo);
+
+            var contentType = BusinessEntityAssistant.EnsureContentType(myProduct, attributesInfo);
+            EntityAssistant.ChangeActive(contentType, true);
+        }
+
+        private static void InitializeShortcutContentType()
+        {
+            Shortcut myShortcut = Shortcut.Factory.NewInstance();
+
+            string attributeCode = string.Empty;
+            ContentAttributeInfo attrInfo = null;
+            List<ContentAttributeInfo> attributesInfo = new List<ContentAttributeInfo>();
+
+            attributeCode = ExpressionAssistant.GetPropertyName(() => myShortcut.TargetUrl);
+            attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextUrl, 0);
+            attributesInfo.Add(attrInfo);
+
+            var contentType = BusinessEntityAssistant.EnsureContentType(myShortcut, attributesInfo);
+            EntityAssistant.ChangeActive(contentType, true);
+        }
+
         #endregion
 
         #region Sample contents
@@ -120,6 +161,14 @@ namespace WebFrameworkSampleData
                 else if (businessType.GetHashCode() == typeof(Article).GetHashCode())
                 {
                     GenerateSampleArticles();
+                }
+                else if (businessType.GetHashCode() == typeof(Product).GetHashCode())
+                {
+                    GenerateSampleProducts();
+                }
+                else if (businessType.GetHashCode() == typeof(Shortcut).GetHashCode())
+                {
+                    GenerateSampleShortcuts();
                 }
             }
 
@@ -196,6 +245,38 @@ namespace WebFrameworkSampleData
                 }
 
                 totalRelations -= 1;
+            }
+        }
+
+        private static void GenerateSampleProducts()
+        {
+            int max = 10;
+
+            for (int count = 0; count < max; count++)
+            {
+                string name = "Product " + (count + 1);
+                string description = "This is product " + (count + 1);
+                decimal price = (decimal)new Random().NextDouble() * 1000;
+
+                Product myProduct = Product.Factory.Create(name, description, price);
+                myProduct.Discount = (decimal)new Random().NextDouble() * price;
+
+                myProduct.Save();
+            }
+        }
+
+        public static void GenerateSampleShortcuts()
+        {
+            int max = 10;
+
+            for (int count = 0; count < max; count++)
+            {
+                string name = "Link " + (count + 1);
+                string description = "This is link " + (count + 1);
+                string targetUrl = "http://google.com?t=" + Guid.NewGuid().ToString();
+
+                Shortcut myShortcut = Shortcut.Factory.Create(name, description, targetUrl);
+                myShortcut.Save();
             }
         }
 

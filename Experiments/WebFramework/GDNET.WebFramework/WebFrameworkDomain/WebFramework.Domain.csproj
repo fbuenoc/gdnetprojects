@@ -8,8 +8,8 @@
     <ProjectGuid>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFrameworkDomain</RootNamespace>
-    <AssemblyName>WebFrameworkDomain</AssemblyName>
+    <RootNamespace>WebFramework.Domain</RootNamespace>
+    <AssemblyName>WebFramework.Domain</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />

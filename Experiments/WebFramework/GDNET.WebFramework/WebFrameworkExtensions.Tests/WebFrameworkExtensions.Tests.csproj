@@ -49,9 +49,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebFrameworkExtensions\WebFrameworkExtensions.csproj">
+    <ProjectReference Include="..\WebFrameworkExtensions\WebFramework.Extensions.csproj">
       <Project>{A53B516C-BA01-48BD-8330-63515DE50356}</Project>
-      <Name>WebFrameworkExtensions</Name>
+      <Name>WebFramework.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

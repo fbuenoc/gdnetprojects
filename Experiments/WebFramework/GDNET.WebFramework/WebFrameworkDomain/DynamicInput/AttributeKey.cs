@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace WebFrameworkDomain.DynamicInput
+namespace WebFramework.Domain.DynamicInput
 {
     public sealed class AttributeKey
     {

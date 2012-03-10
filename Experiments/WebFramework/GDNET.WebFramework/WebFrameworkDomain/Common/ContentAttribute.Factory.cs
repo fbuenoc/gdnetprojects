@@ -1,7 +1,7 @@
 ﻿using GDNET.Common.DesignByContract;
-using WebFrameworkDomain.DefaultImpl;
+using WebFramework.Domain.DefaultImpl;
 
-namespace WebFrameworkDomain.Common
+namespace WebFramework.Domain.Common
 {
     public partial class ContentAttribute
     {

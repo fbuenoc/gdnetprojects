@@ -1,6 +1,6 @@
 ﻿using System;
 using NHibernate;
-using WebFrameworkNHibernate.SessionManagers;
+using WebFramework.NHibernate.SessionManagers;
 
 namespace WebFrameworkSampleData
 {
