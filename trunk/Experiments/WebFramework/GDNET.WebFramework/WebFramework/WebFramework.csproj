@@ -248,16 +248,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UploadLocalization.zh-CN.resx</DependentUpon>
     </Compile>
+    <Compile Include="Areas\Framework\Constants\FrameworkConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ApplicationController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentAttributeController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
+    <Compile Include="Areas\Framework\Controllers\CultureController.cs" />
     <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
-    <Compile Include="Common\DefaultImpl\NavigationService.cs" />
-    <Compile Include="Common\DefaultImpl\ValidationService.cs" />
-    <Compile Include="Common\FrameworkServices.cs" />
-    <Compile Include="Common\Services\INavigationService.cs" />
-    <Compile Include="Common\Services\IValidationService.cs" />
+    <Compile Include="Areas\Framework\Controllers\TranslationController.cs" />
+    <Compile Include="Areas\Framework\ViewModels\TranslationViewModel.cs" />
     <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
@@ -313,6 +312,8 @@
     <Content Include="Areas\Framework\Views\ContentType\Delete.aspx" />
     <Content Include="Areas\Framework\Views\ContentType\Details.aspx" />
     <Content Include="Areas\Framework\Views\ContentType\List.aspx" />
+    <Content Include="Areas\Framework\Views\Culture\CreateOrUpdate.aspx" />
+    <Content Include="Areas\Framework\Views\Culture\List.aspx" />
     <Content Include="Areas\Framework\Views\Home\Index.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\ListValue\Delete.aspx" />
@@ -325,6 +326,7 @@
     <Content Include="Areas\Framework\Views\Role\List.aspx" />
     <Content Include="Areas\Framework\Views\Shared\Error.aspx" />
     <Content Include="Areas\Framework\Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Areas\Framework\Views\Translation\List.aspx" />
     <Content Include="Content\2011.3.1115\Black\editor.png" />
     <Content Include="Content\2011.3.1115\Black\imagebrowser.png" />
     <Content Include="Content\2011.3.1115\Black\loading.gif" />
@@ -725,6 +727,8 @@
     <Content Include="Content\2012.1.214\Windows7\slider-v.gif" />
     <Content Include="Content\2012.1.214\Windows7\sprite-vertical.png" />
     <Content Include="Content\2012.1.214\Windows7\sprite.png" />
+    <Content Include="Content\ContentItem\ProductDetails.css" />
+    <Content Include="Content\Home\Welcome.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\2011.3.1115\jquery-1.6.4.min.js" />
     <Content Include="Scripts\2011.3.1115\jquery.validate.min.js" />
@@ -786,6 +790,7 @@
     <Content Include="Scripts\2012.1.214\telerik.upload.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.window.min.js" />
     <Content Include="Views\Home\Welcome.aspx" />
+    <Content Include="Views\Item\ArticleDetails.aspx" />
     <Content Include="Views\Item\Details.aspx" />
     <Content Include="Views\Item\ProductDetails.aspx" />
     <Content Include="Web.config">
@@ -869,6 +874,10 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Base\WebFramework.Base.csproj">
+      <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
+      <Name>WebFramework.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Business\WebFramework.Business.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
       <Name>WebFramework.Business</Name>
@@ -876,10 +885,6 @@
     <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Modeles\WebFramework.Base.csproj">
-      <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
-      <Name>WebFramework.Base</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
