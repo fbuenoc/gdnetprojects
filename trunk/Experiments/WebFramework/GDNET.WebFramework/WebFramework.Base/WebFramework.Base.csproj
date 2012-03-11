@@ -79,6 +79,9 @@
     <Compile Include="Framework\Common\ListValueModel.cs" />
     <Compile Include="Helpers\FormatterAssistant.cs" />
     <Compile Include="Helpers\NavigationAssistant.cs" />
+    <Compile Include="Helpers\TranslationAssistant.cs" />
+    <Compile Include="Helpers\WebFrameworkAssistant.cs" />
+    <Compile Include="Helpers\WebFrameworkFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\AccountValidation.cs" />
   </ItemGroup>
