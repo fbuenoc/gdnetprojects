@@ -8,7 +8,7 @@ exec SP_CreateListValue
 	@ParentName = 'LV.SysTranslation';
 GO
 exec SP_CreateOrUpdateTranslation
-	@CultureCode = 'vi-VN',
+	@CultureCode = 'en-US',
 	@Code = 'LV.SysTranslation.Navigation.Description',
 	@Value = N'Menu',
 	@IsDeletable = False;
