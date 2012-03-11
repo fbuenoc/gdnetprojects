@@ -3,161 +3,161 @@
 ----------------------------
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Attributes',
+	@Code = 'SysTranslation.Attributes',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Attributes',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.CreatedAt',
+	@Code = 'SysTranslation.CreatedAt',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Created at',
 	@IsDeletable = False;	
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.CreatedBy',
+	@Code = 'SysTranslation.CreatedBy',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Created by',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Statut',
+	@Code = 'SysTranslation.Statut',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Statut',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Category',
+	@Code = 'SysTranslation.Category',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Category',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Name',
+	@Code = 'SysTranslation.Name',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Name',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.CustomValue',
+	@Code = 'SysTranslation.CustomValue',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Custom value',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Description',
+	@Code = 'SysTranslation.Description',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Description',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Detail',
+	@Code = 'SysTranslation.Detail',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Detail',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Position',
+	@Code = 'SysTranslation.Position',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Position',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.DeleteAndContinue',
+	@Code = 'SysTranslation.DeleteAndContinue',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Delete and Continue',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.DeleteConfirmation',
+	@Code = 'SysTranslation.DeleteConfirmation',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Delete confirmation',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.DeleteConfirmationXYZ',
+	@Code = 'SysTranslation.DeleteConfirmationXYZ',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Are you sure that you want to delete this {0}?',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.SaveAndContinue',
+	@Code = 'SysTranslation.SaveAndContinue',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Save and Continue',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Create',
+	@Code = 'SysTranslation.Create',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Create',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Update',
+	@Code = 'SysTranslation.Update',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Update',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Delete',
+	@Code = 'SysTranslation.Delete',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Delete',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.HostName',
+	@Code = 'SysTranslation.HostName',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Host name',
 	@IsDeletable = False;	
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.UserName',
+	@Code = 'SysTranslation.UserName',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Username',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Password',
+	@Code = 'SysTranslation.Password',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Password',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.Birtday',
+	@Code = 'SysTranslation.Birtday',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Date of birth',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.DetailOfXYZ',
+	@Code = 'SysTranslation.DetailOfXYZ',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Details of {0}',
 	@IsDeletable = False;
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.ReturnToListOfXYZ',
+	@Code = 'SysTranslation.ReturnToListOfXYZ',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Return to list of {0}',
 	@IsDeletable = False;
@@ -165,71 +165,70 @@ exec SP_CreateOrUpdateTranslation
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Application',
+	@Code = 'SysTranslation.EntityNames.Application',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Application',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ContentType',
+	@Code = 'SysTranslation.EntityNames.ContentType',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Content type',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ContentItem',
+	@Code = 'SysTranslation.EntityNames.ContentItem',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Content item',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ContentAttribute',
+	@Code = 'SysTranslation.EntityNames.ContentAttribute',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Content attribute',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.ListValue',
+	@Code = 'SysTranslation.EntityNames.ListValue',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'List value',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Translation',
+	@Code = 'SysTranslation.EntityNames.Translation',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Translation',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Role',
+	@Code = 'SysTranslation.EntityNames.Role',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Role',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.User',
+	@Code = 'SysTranslation.EntityNames.User',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'User',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Comment',
+	@Code = 'SysTranslation.EntityNames.Comment',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Comment',
 	@IsDeletable = False;
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
-	@Code = 'ApplicationCategories.SysTranslation.EntityNames.Article',
+	@Code = 'SysTranslation.EntityNames.Article',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Article',
 	@IsDeletable = False;
-	
