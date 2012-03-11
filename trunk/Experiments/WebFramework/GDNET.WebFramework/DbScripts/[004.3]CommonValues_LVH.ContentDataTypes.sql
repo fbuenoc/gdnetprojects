@@ -4,7 +4,6 @@
 exec sp_CreateListValue
 	@Name = 'LVH.ContentDataTypes',
 	@Description = 'WebFramework Data Types',
-	@CustomValue = NULL,
 	@ParentName = NULL;
 GO
 

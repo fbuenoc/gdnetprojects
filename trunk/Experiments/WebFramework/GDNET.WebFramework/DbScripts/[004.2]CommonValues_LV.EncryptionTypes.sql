@@ -1,10 +1,11 @@
-﻿----------------------------
--- LV.EncryptionTypes
-----------------------------
+﻿/************************************
+ ** Created: 		10/02/2012
+ ** Description: 	Default List value
+ ************************************/
+
 exec sp_CreateListValue
 	@Name = 'LV.EncryptionTypes',
-	@Description = 'WebFramework encryption types',
-	@CustomValue = NULL,
+	@Description = 'Encryption types',
 	@ParentName = NULL;
 GO
 
