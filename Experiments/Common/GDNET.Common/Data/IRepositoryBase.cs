@@ -39,6 +39,8 @@ namespace GDNET.Common.Data
         IList<TEntity> GetAll(int page, int pageSize);
         IList<TEntity> GetAll(int page, int pageSize, out int totalRows);
 
+        IList<TEntity> FindByProperties(string[] properties, object[] values);
+
         /// <summary>
         /// Retrieves a collection of entities based on the name and value of a property.
         /// </summary>
