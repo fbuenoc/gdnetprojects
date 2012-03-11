@@ -3,14 +3,14 @@ using System.Web.Routing;
 
 namespace GDNET.Web.Mvc.Helpers
 {
-    public static class ImageAssistant
+    public partial class GDNetFactory
     {
-        public static string Image(this HtmlHelper helper, string id, string url, string alternateText)
+        public string Image(string id, string url, string alternateText)
         {
-            return helper.Image(id, url, alternateText, null);
+            return this.Image(id, url, alternateText, null);
         }
 
-        public static string Image(this HtmlHelper helper, string id, string url, string alternateText, object htmlAttributes)
+        public string Image(string id, string url, string alternateText, object htmlAttributes)
         {
             // Create tag builder
             var builder = new TagBuilder("img");
@@ -29,6 +29,5 @@ namespace GDNET.Web.Mvc.Helpers
             // Render tag
             return builder.ToString(TagRenderMode.SelfClosing);
         }
-
     }
 }

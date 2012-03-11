@@ -3,19 +3,19 @@ using System.Web.Routing;
 
 namespace GDNET.Web.Mvc.Helpers
 {
-    public static class HyperLinkAssistant
+    public partial class GDNetFactory
     {
-        public static string SimpleLink(this HtmlHelper html, string url, string text)
+        public MvcHtmlString HtmlLink(string url, string linkText)
         {
-            return html.SimpleLink(url, text, string.Empty);
+            return this.HtmlLink(url, linkText, string.Empty);
         }
 
-        public static string SimpleLink(this HtmlHelper html, string url, string text, string title)
+        public MvcHtmlString HtmlLink(string url, string text, string titleText)
         {
-            return html.HtmlLink(url, text, new { title = title }).ToHtmlString();
+            return this.HtmlLink(url, text, new { title = titleText });
         }
 
-        public static MvcHtmlString HtmlLink(this HtmlHelper html, string url, string text, object htmlAttributes)
+        public MvcHtmlString HtmlLink(string url, string text, object htmlAttributes)
         {
             TagBuilder tb = new TagBuilder("a");
             tb.InnerHtml = text;
@@ -28,6 +28,5 @@ namespace GDNET.Web.Mvc.Helpers
 
             return MvcHtmlString.Create(tb.ToString(TagRenderMode.Normal));
         }
-
     }
 }
