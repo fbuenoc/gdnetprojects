@@ -7,8 +7,6 @@ namespace GDNET.Web.Helpers
         /// <summary>
         /// Set item value into http context items if there is no item with current name or type of current object with give name is not the same.
         /// </summary>
-        /// <param name="itemName"></param>
-        /// <param name="itemValue"></param>
         public static void TrySetItem(object itemName, object itemValue)
         {
             if (!HttpContext.Current.Items.Contains(itemName) || (HttpContext.Current.Items[itemName] == null) || !HttpContext.Current.Items.Contains(itemName).GetType().Equals(itemValue.GetType()))
@@ -20,9 +18,6 @@ namespace GDNET.Web.Helpers
         /// <summary>
         /// Try to get item from http context items
         /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="itemName"></param>
-        /// <returns></returns>
         public static T TryGetItem<T>(object itemName)
         {
             T result = default(T);

@@ -26,9 +26,6 @@ namespace GDNET.Web.Helpers
         /// <summary>
         /// Get value from query string and parse to the given type
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="expectedResult"></param>
-        /// <returns></returns>
         public static string GetValueAsString(string name)
         {
             string expectedResult = string.Empty;
@@ -65,9 +62,6 @@ namespace GDNET.Web.Helpers
         /// Get value from query string and parse to the given type.
         /// </summary>
         /// <typeparam name="T">Supported type: Enum, int/long, double/float, string</typeparam>
-        /// <param name="name"></param>
-        /// <param name="expectedResult"></param>
-        /// <returns></returns>
         public static bool GetValueAs<T>(string name, out T expectedResult)
         {
             expectedResult = default(T);
@@ -121,9 +115,6 @@ namespace GDNET.Web.Helpers
         /// <summary>
         /// Get value from query string and parse to the given type
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="expectedResult"></param>
-        /// <returns></returns>
         public static bool GetValueAs<T>(string name, T defaultValue, out T expectedResult)
         {
             expectedResult = defaultValue;
