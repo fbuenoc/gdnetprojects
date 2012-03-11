@@ -35,7 +35,8 @@
     <SignAssembly>true</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>GDNET.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -56,17 +57,19 @@
     <Compile Include="Common\QueryStringConstants.cs" />
     <Compile Include="Helpers\ControlAssistant.cs" />
     <Compile Include="Helpers\HttpContextAssistant.cs" />
+    <Compile Include="Helpers\NavigationAssistant.cs" />
     <Compile Include="Helpers\QueryStringAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebSessionService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="GDNET.pfx" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
