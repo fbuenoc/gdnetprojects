@@ -20,7 +20,7 @@ namespace WebFramework.Base.Helpers
 
         public static string CreateOrUpdate<TId>(IViewModel<TId> viewModel)
         {
-            string code = (viewModel.Id.Equals(default(TId))) ? "ApplicationCategories.SysTranslation.Create" : "ApplicationCategories.SysTranslation.Update";
+            string code = (viewModel.Id.Equals(default(TId))) ? "SysTranslation.Create" : "SysTranslation.Update";
             return TranslationAssistant.Translate(code);
         }
     }

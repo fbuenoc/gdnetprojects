@@ -12,7 +12,7 @@ namespace WebFramework.Base.Framework.Common
         #region Properties
 
         [Required]
-        [DisplayNameML("ApplicationCategories.SysTranslation.Name")]
+        [DisplayNameML("SysTranslation.Name")]
         public string Name
         {
             get;
@@ -20,35 +20,35 @@ namespace WebFramework.Base.Framework.Common
         }
 
         [Required]
-        [DisplayNameML("ApplicationCategories.SysTranslation.Description")]
+        [DisplayNameML("SysTranslation.Description")]
         public string Description
         {
             get;
             set;
         }
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.Detail")]
+        [DisplayNameML("SysTranslation.Detail")]
         public string Detail
         {
             get;
             set;
         }
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.CustomValue")]
+        [DisplayNameML("SysTranslation.CustomValue")]
         public string CustomValue
         {
             get;
             set;
         }
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.Parent")]
+        [DisplayNameML("SysTranslation.Parent")]
         public string Parent
         {
             get;
             set;
         }
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.Position")]
+        [DisplayNameML("SysTranslation.Position")]
         public int Position
         {
             get;

@@ -8,14 +8,14 @@ namespace WebFramework.Base.Business.Base
     public abstract class ModelBusinessEntityBase<TEntity> : ModelWithModificationBase<TEntity, long> where TEntity : BusinessEntityBase
     {
         [Required]
-        [DisplayNameML("ApplicationCategories.SysTranslation.Name")]
+        [DisplayNameML("SysTranslation.Name")]
         public string Name
         {
             get;
             set;
         }
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.Description")]
+        [DisplayNameML("SysTranslation.Description")]
         public string Description
         {
             get;

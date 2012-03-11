@@ -11,7 +11,7 @@ namespace WebFramework.Base.Framework.Common
     {
         #region Properties
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.EntityNames.ContentType")]
+        [DisplayNameML("SysTranslation.EntityNames.ContentType")]
         public string ContentType
         {
             get;
@@ -24,22 +24,22 @@ namespace WebFramework.Base.Framework.Common
             set;
         }
 
-        [RequiredML(ErrorCode = "ApplicationCategories.SysTranslation.ContentItem.NameIsRequired")]
-        [DisplayNameML("ApplicationCategories.SysTranslation.Name")]
+        [RequiredML(ErrorCode = "SysTranslation.ContentItem.NameIsRequired")]
+        [DisplayNameML("SysTranslation.Name")]
         public string Name
         {
             get;
             set;
         }
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.Description")]
+        [DisplayNameML("SysTranslation.Description")]
         public string Description
         {
             get;
             set;
         }
 
-        [DisplayNameML("ApplicationCategories.SysTranslation.Position")]
+        [DisplayNameML("SysTranslation.Position")]
         public int Position
         {
             get;
