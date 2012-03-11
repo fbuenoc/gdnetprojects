@@ -26,6 +26,9 @@
                             <%= base.Html.ActionLink("Applications", "List", "Application")%>
                         </li>
                         <li>
+                            <%= base.Html.ActionLink("Cultures", "List", "Culture")%>
+                        </li>
+                        <li>
                             <%= base.Html.ActionLink("Content types", "List", "ContentType")%>
                         </li>
                         <li>
@@ -35,6 +38,9 @@
                     <ul>
                         <li>
                             <%= base.Html.ActionLink("Content items", "List", "ContentItem")%>
+                        </li>
+                        <li>
+                            <%= base.Html.ActionLink("Translations", "List", "Translation")%>
                         </li>
                     </ul>
                 </div>
@@ -47,7 +53,7 @@
                             {
                         %>
                         <li>
-                            <%= base.Html.SimpleLink(shortcutModel.TargetUrl, shortcutModel.Name, shortcutModel.Description) %>
+                            <%= base.Html.GDNet().HtmlLink(shortcutModel.TargetUrl, shortcutModel.Name, shortcutModel.Description) %>
                         </li>
                         <%
                             }
