@@ -36,7 +36,7 @@ namespace GDNET.Extensions
         /// <summary>
         /// Remove HTML from string with Regex.
         /// </summary>
-        public static string StripTagsRegex(string source)
+        public static string StripTagsRegex(this string source)
         {
             if (string.IsNullOrEmpty(source))
             {
@@ -48,7 +48,7 @@ namespace GDNET.Extensions
         /// <summary>
         /// Remove HTML from string with compiled Regex.
         /// </summary>
-        public static string StripTagsRegexCompiled(string source)
+        public static string StripTagsRegexCompiled(this string source)
         {
             if (string.IsNullOrEmpty(source))
             {

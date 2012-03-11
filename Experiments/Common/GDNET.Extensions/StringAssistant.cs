@@ -92,6 +92,10 @@ namespace GDNET.Extensions
                 {
                     result = ((DateTime)objectValue).ToBinary().ToString();
                 }
+                else if (objectType.FullName == typeof(bool).FullName)
+                {
+                    result = ((bool)objectValue).ToString();
+                }
                 else if (objectType.FullName == typeof(EncryptionOption).FullName)
                 {
                     result = objectValue.ToString();
