@@ -103,6 +103,17 @@ namespace GDNET.NHibernate.Repositories
 
         #region FindByProperty Methods
 
+        public IList<TEntity> FindByProperties(string[] properties, object[] values)
+        {
+            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+            for (int counter = 0; counter < properties.Length; counter++)
+            {
+                criteria.Add(Expression.Eq(properties[counter], values[counter]));
+            }
+
+            return criteria.List<TEntity>();
+        }
+
         /// <summary>
         /// Retrieves a collection of entities based on the name and value of a property.
         /// </summary>
