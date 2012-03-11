@@ -1,9 +1,8 @@
-﻿using WebFramework.Domain.Common;
-
-namespace WebFramework.Common.Services
+﻿namespace WebFramework.Common.Services
 {
     public interface INavigationService
     {
-        string GetUrlDetails(ContentItem contentItem);
+        string AddReturnUrl(string currentUrl);
+        string AddParameter(string currentUrl, string paramName, string paramValue);
     }
 }

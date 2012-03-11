@@ -1,28 +1,88 @@
-﻿using System.Text;
-using GDNET.Extensions;
+﻿using System.Web;
+using GDNET.Common.Security.Services;
 using WebFramework.Common.Services;
-using WebFramework.Business.Common;
-using WebFramework.Domain.Common;
+using WebFramework.Constants;
+using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Common.DefaultImpl
 {
     public class NavigationService : INavigationService
     {
-        public string GetUrlDetails(ContentItem contentItem)
+        public string AddReturnUrl(string currentUrl)
         {
-            StringBuilder urlBuilder = new StringBuilder();
-            string typeName = contentItem.ContentType.TypeName;
+            string newUrl = string.Empty;
+            string returnUrl = DomainServices.Encryption.Encrypt(HttpContext.Current.Request.Url.AbsoluteUri, EncryptionOption.Base64);
 
-            if (typeName == typeof(Product).GetQualifiedTypeName())
+            string type1 = string.Format("?{0}=", QueryStringConstants.ReturnUrl);
+            string type2 = string.Format("&{0}=", QueryStringConstants.ReturnUrl);
+
+            if (currentUrl.Contains(type1) || currentUrl.Contains(type2))
             {
-                urlBuilder.AppendFormat("~/Product/Details/{0}", contentItem.Id);
+                int indexFrom = 0;
+                int indexTo = 0;
+
+                if (currentUrl.Contains(type1))
+                {
+                    indexFrom = currentUrl.IndexOf(type1) + type1.Length + 1;
+                    indexTo = currentUrl.IndexOf("&", indexFrom);
+                }
+                if (currentUrl.Contains(type2))
+                {
+                    indexFrom = currentUrl.IndexOf(type2) + type2.Length + 1;
+                    indexTo = currentUrl.IndexOf("&", indexFrom);
+                }
+
+                newUrl = string.Format("{0}{1}", currentUrl.Substring(0, indexFrom), returnUrl);
+                if (indexTo > indexFrom)
+                {
+                    newUrl = string.Format("{0}{1}", newUrl, currentUrl.Substring(indexTo));
+                }
             }
             else
             {
-                urlBuilder.AppendFormat("~/Item/Details/{0}", contentItem.Id);
+                string theFormat = currentUrl.Contains("?") ? "{0}&{1}={2}" : "{0}?{1}={2}";
+                newUrl = string.Format(theFormat, currentUrl, QueryStringConstants.ReturnUrl, returnUrl);
             }
 
-            return urlBuilder.ToString();
+            return newUrl;
+        }
+
+        public string AddParameter(string currentUrl, string paramName, string paramValue)
+        {
+            string newUrl = string.Empty;
+
+            string type1 = string.Format("?{0}=", paramName);
+            string type2 = string.Format("&{0}=", paramName);
+
+            if (currentUrl.Contains(type1) || currentUrl.Contains(type2))
+            {
+                int indexFrom = 0;
+                int indexTo = 0;
+
+                if (currentUrl.Contains(type1))
+                {
+                    indexFrom = currentUrl.IndexOf(type1) + type1.Length + 1;
+                    indexTo = currentUrl.IndexOf("&", indexFrom);
+                }
+                if (currentUrl.Contains(type2))
+                {
+                    indexFrom = currentUrl.IndexOf(type2) + type2.Length + 1;
+                    indexTo = currentUrl.IndexOf("&", indexFrom);
+                }
+
+                newUrl = string.Format("{0}{1}", currentUrl.Substring(0, indexFrom), paramValue);
+                if (indexTo > indexFrom)
+                {
+                    newUrl = string.Format("{0}{1}", newUrl, currentUrl.Substring(indexTo));
+                }
+            }
+            else
+            {
+                string theFormat = currentUrl.Contains("?") ? "{0}&{1}={2}" : "{0}?{1}={2}";
+                newUrl = string.Format(theFormat, currentUrl, paramName, paramValue);
+            }
+
+            return newUrl;
         }
     }
 }
