@@ -1,5 +1,4 @@
 ﻿using System;
-using GDNET.Common.Security.Services;
 using GDNET.Common.Types;
 using WebFramework.Business.Base;
 
@@ -34,10 +33,5 @@ namespace WebFramework.Business.Common
         }
 
         #endregion
-
-        protected Article()
-            : base(EncryptionOption.Base64)
-        {
-        }
     }
 }

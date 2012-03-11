@@ -1,5 +1,4 @@
 ﻿using System;
-using GDNET.Common.Security.Services;
 using WebFramework.Business.Base;
 
 namespace WebFramework.Business.Common
@@ -11,13 +10,27 @@ namespace WebFramework.Business.Common
         public decimal Price
         {
             get { return this.GetValue<decimal>(() => this.Price); }
-            set { this.SetValue<decimal>(() => this.Price, value); }
+            set
+            {
+                this.SetValue<decimal>(() => this.Price, value);
+                this.UpdateRealPrice();
+            }
         }
 
         public decimal Discount
         {
             get { return this.GetValue<decimal>(() => this.Discount); }
-            set { this.SetValue<decimal>(() => this.Discount, value); }
+            set
+            {
+                this.SetValue<decimal>(() => this.Discount, value);
+                this.UpdateRealPrice();
+            }
+        }
+
+        public decimal RealPrice
+        {
+            get { return this.GetValue<decimal>(() => this.RealPrice); }
+            protected set { this.SetValue<decimal>(() => this.RealPrice, value); }
         }
 
         public DateTime IntroDate
@@ -26,11 +39,23 @@ namespace WebFramework.Business.Common
             set { this.SetValue<DateTime>(() => this.IntroDate, value); }
         }
 
+        public bool InStock
+        {
+            get { return this.GetValue<bool>(() => this.InStock); }
+            set { this.SetValue<bool>(() => this.InStock, value); }
+        }
+
         #endregion
 
-        protected Product()
-            : base(EncryptionOption.Base64)
+        #region Behaviors
+
+        private void UpdateRealPrice()
         {
+            decimal realPrice = this.Price - this.Discount;
+            if (realPrice < 0) { realPrice = 0; }
+            this.RealPrice = realPrice;
         }
+
+        #endregion
     }
 }
