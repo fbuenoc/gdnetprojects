@@ -1,5 +1,4 @@
-﻿using GDNET.Common.Security.Services;
-using GDNET.Common.Types;
+﻿using GDNET.Common.Types;
 using WebFramework.Business.Base;
 
 namespace WebFramework.Business.Common
@@ -16,16 +15,6 @@ namespace WebFramework.Business.Common
         {
             get { return base.GetValue<Email>(() => this.Email); }
             set { base.SetValue(() => this.Email, value); }
-        }
-
-        protected Comment()
-            : this(EncryptionOption.None)
-        {
-        }
-
-        protected Comment(EncryptionOption encryption)
-            : base(encryption)
-        {
         }
     }
 }

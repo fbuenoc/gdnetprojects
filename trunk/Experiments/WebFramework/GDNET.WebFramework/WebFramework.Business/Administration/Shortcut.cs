@@ -1,5 +1,4 @@
-﻿using GDNET.Common.Security.Services;
-using WebFramework.Business.Base;
+﻿using WebFramework.Business.Base;
 
 namespace WebFramework.Business.Administration
 {
@@ -14,11 +13,5 @@ namespace WebFramework.Business.Administration
         }
 
         #endregion
-
-        protected Shortcut()
-            : base(EncryptionOption.Base64)
-        {
-        }
-
     }
 }
