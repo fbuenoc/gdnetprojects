@@ -18,6 +18,12 @@ namespace WebFramework.Base.Framework.Base
             private set;
         }
 
+        public new TId Id
+        {
+            get;
+            set;
+        }
+
         #region Ctors
 
         public ModelBase()
@@ -29,7 +35,9 @@ namespace WebFramework.Base.Framework.Base
         public ModelBase(TEntity entity)
             : base(entity)
         {
+            this.Id = entity.Id;
             this.Entity = entity;
+
             this.Initialize();
         }
 

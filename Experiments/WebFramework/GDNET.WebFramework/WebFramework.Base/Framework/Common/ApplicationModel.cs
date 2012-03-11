@@ -10,21 +10,21 @@ namespace WebFramework.Base.Framework.Common
         #region Properties
 
         [Required]
-        [DisplayName("ApplicationCategories.SysTranslation.Name")]
+        [DisplayName("SysTranslation.Name")]
         public string Name
         {
             get;
             set;
         }
 
-        [DisplayName("ApplicationCategories.SysTranslation.Description")]
+        [DisplayName("SysTranslation.Description")]
         public string Description
         {
             get;
             set;
         }
 
-        [DisplayName("ApplicationCategories.SysTranslation.Category")]
+        [DisplayName("SysTranslation.Category")]
         public string Category
         {
             get;
@@ -32,7 +32,7 @@ namespace WebFramework.Base.Framework.Common
         }
 
         [Required]
-        [DisplayName("ApplicationCategories.SysTranslation.Application.RootUrl")]
+        [DisplayName("SysTranslation.Application.RootUrl")]
         public string RootUrl
         {
             get;

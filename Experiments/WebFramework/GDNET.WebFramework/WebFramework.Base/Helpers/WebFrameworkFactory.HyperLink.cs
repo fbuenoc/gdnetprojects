@@ -1,5 +1,4 @@
 ﻿using System.Web;
-using System.Web.Mvc;
 using GDNET.Extensions;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Base.Common;
@@ -7,19 +6,19 @@ using WebFramework.Base.Framework.Common;
 
 namespace WebFramework.Base.Helpers
 {
-    public static class NavigationAssistant
+    public partial class WebFrameworkFactory
     {
-        public static string HyperLink(this HtmlHelper html, ContentItemModel itemModel)
+        public string HyperLink(ContentItemModel itemModel)
         {
             var htmlAttributes = new
             {
                 title = itemModel.Description.StripTagsRegex()
             };
 
-            return html.HyperLink(itemModel, htmlAttributes);
+            return this.HyperLink(itemModel, htmlAttributes);
         }
 
-        public static string HyperLink(this HtmlHelper html, ContentItemModel itemModel, object htmlAttributes)
+        public string HyperLink(ContentItemModel itemModel, object htmlAttributes)
         {
             string absoluteUri = HttpContext.Current.Request.Url.AbsoluteUri;
             string rootUrl = absoluteUri.Substring(0, absoluteUri.IndexOf("/", absoluteUri.IndexOf("//")));
@@ -28,7 +27,7 @@ namespace WebFramework.Base.Helpers
             string newUrl = string.Format("{0}{1}", rootUrl, itemUrl);
             newUrl = FrameworkServices.Navigation.AddReturnUrl(newUrl);
 
-            return html.HtmlLink(newUrl, itemModel.Name, htmlAttributes).ToHtmlString();
+            return this.htmlHelper.GDNet().HtmlLink(newUrl, itemModel.Name, htmlAttributes).ToHtmlString();
         }
     }
 }

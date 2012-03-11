@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
-using System.Web.Mvc.Html;
+using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Base.Helpers
 {
-    public class WebFrameworkFactory
+    public partial class WebFrameworkFactory
     {
         private HtmlHelper htmlHelper;
 
@@ -12,10 +12,17 @@ namespace WebFramework.Base.Helpers
             this.htmlHelper = html;
         }
 
-        public MvcHtmlString ActionLink(string linkCodeText, string actionName, string controllerName)
+        public string Translate(string codeText)
         {
-            string linkText = TranslationAssistant.Translate(linkCodeText);
-            return this.htmlHelper.ActionLink(linkText, actionName, controllerName);
+            var defaultCulture = DomainRepositories.Culture.GetDefault();
+
+            if (string.IsNullOrEmpty(codeText))
+            {
+                return string.Empty;
+            }
+
+            var translation = DomainRepositories.Translation.GetByCode(codeText, defaultCulture);
+            return (translation == null) ? string.Format("!{0}!", codeText) : translation.Value;
         }
     }
 }
