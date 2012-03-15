@@ -10,11 +10,10 @@ namespace WebFramework.Mapping.Common
         public TranslationMap()
             : base(Generators.Native)
         {
+            base.Lazy(false);
+
             base.Property(e => e.Code);
-            base.Property(e => e.Value, m =>
-            {
-                m.Lazy(true);
-            });
+            base.Property(e => e.Value);
 
             base.ManyToOne(e => e.LifeCycle, m =>
             {

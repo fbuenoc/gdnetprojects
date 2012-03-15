@@ -88,6 +88,10 @@
       <Project>{8B6B9E14-48DB-4217-A7C1-D231710CE02C}</Project>
       <Name>WebFramework.Mapping</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Services\WebFramework.Services.csproj">
+      <Project>{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}</Project>
+      <Name>WebFramework.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
