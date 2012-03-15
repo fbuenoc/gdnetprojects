@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
 using WebFramework.Base.AccountModeles;
-using WebFramework.Base.Base;
 using WebFramework.Base.Validation;
+using WebFramework.Common.Controllers;
 
 namespace WebFramework.Controllers
 {

@@ -347,4 +347,6 @@ textarea.desc
 {
     height: 100px;
     width: 500px;
+    padding: 5px;
+    border: 1px solid #CDCDCD;
 }
