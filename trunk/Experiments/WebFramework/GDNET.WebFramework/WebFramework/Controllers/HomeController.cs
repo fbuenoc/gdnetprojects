@@ -1,9 +1,9 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Base.Base;
 using WebFramework.Base.Framework.Common;
 using WebFramework.Business.Common;
 using WebFramework.Business.Helpers;
+using WebFramework.Common.Controllers;
 using WebFramework.ViewModels;
 
 namespace WebFramework.Controllers

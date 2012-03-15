@@ -1,8 +1,8 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using GDNET.Web.Mvc.Helpers;
-using WebFramework.Base.Base;
 using WebFramework.Base.Framework.Common;
+using WebFramework.Common.Controllers;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.DefaultImpl;
 

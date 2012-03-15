@@ -257,6 +257,9 @@
     <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
     <Compile Include="Areas\Framework\Controllers\TranslationController.cs" />
     <Compile Include="Areas\Framework\ViewModels\TranslationViewModel.cs" />
+    <Compile Include="Common\Controllers\AbstractController.cs" />
+    <Compile Include="Common\Controllers\AbstractCrudController.cs" />
+    <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
     <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
@@ -326,6 +329,7 @@
     <Content Include="Areas\Framework\Views\Role\List.aspx" />
     <Content Include="Areas\Framework\Views\Shared\Error.aspx" />
     <Content Include="Areas\Framework\Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Areas\Framework\Views\Translation\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\Translation\List.aspx" />
     <Content Include="Content\2011.3.1115\Black\editor.png" />
     <Content Include="Content\2011.3.1115\Black\imagebrowser.png" />
@@ -789,6 +793,7 @@
     <Content Include="Scripts\2012.1.214\telerik.treeview.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.upload.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.window.min.js" />
+    <Content Include="Views\About\Index.aspx" />
     <Content Include="Views\Home\Welcome.aspx" />
     <Content Include="Views\Item\ArticleDetails.aspx" />
     <Content Include="Views\Item\Details.aspx" />

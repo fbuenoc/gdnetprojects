@@ -18,9 +18,7 @@
                     columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
         %>
-        <%= base.Html.ActionLink("Details", "Details", new { id = template.Id }) %>
-        <%= base.Html.ActionLink("Edit", "Edit", new { id = template.Id })%>
-        <%= base.Html.ActionLink("Delete", "Delete", new { id = template.Id })%>
+        <%= base.Html.WebFramework().HyperLinkActions(new { id = template.Id }) %>
         <%
                     });
                 })
