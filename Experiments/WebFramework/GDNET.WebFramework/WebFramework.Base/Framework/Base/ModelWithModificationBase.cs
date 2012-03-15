@@ -19,6 +19,12 @@ namespace WebFramework.Base.Framework.Base
             private set;
         }
 
+        public new TId Id
+        {
+            get;
+            set;
+        }
+
         public string ActualStatut
         {
             get;
