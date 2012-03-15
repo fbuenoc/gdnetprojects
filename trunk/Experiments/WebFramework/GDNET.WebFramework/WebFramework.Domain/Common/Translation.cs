@@ -46,7 +46,7 @@ namespace WebFramework.Domain.Common
         {
             EntityAssistant.ChangeActive(this, true);
             EntityAssistant.ChangeDeletable(this, true);
-            EntityAssistant.ChangeEditable(this, true);
+            EntityAssistant.ChangeEditable(this, false);
         }
 
         #endregion

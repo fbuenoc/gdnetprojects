@@ -1,7 +1,8 @@
 ﻿using GDNET.Common.Security.Services;
+using GDNET.Common.Services;
 using WebFramework.Domain.Services;
 
-namespace WebFramework.Domain.DefaultImpl
+namespace WebFramework.Domain
 {
     public abstract class DomainServices
     {
@@ -22,7 +23,19 @@ namespace WebFramework.Domain.DefaultImpl
             get { return _instance.GetContentTypeService(); }
         }
 
+        public static ITranslationService Translation
+        {
+            get { return _instance.GetTranslationService(); }
+        }
+
+        public static IFormatterService Formatter
+        {
+            get { return _instance.GetFormatterService(); }
+        }
+
         protected abstract IEncryptionService GetEncryptionService();
         protected abstract IContentTypeService GetContentTypeService();
+        protected abstract ITranslationService GetTranslationService();
+        protected abstract IFormatterService GetFormatterService();
     }
 }

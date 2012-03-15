@@ -48,6 +48,7 @@
     <Compile Include="Common\StatutLifeCycle.cs" />
     <Compile Include="Common\StatutLog.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
+    <Compile Include="Constants\MetaConstants.cs" />
     <Compile Include="Constants\ListValueConstants.cs" />
     <Compile Include="Common\ContentType.cs" />
     <Compile Include="Common\ContentItemAttributeValue.cs" />
@@ -60,8 +61,7 @@
     <Compile Include="Common\ContentType.Factory.cs" />
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
-    <Compile Include="DefaultImpl\ContentTypeService.cs" />
-    <Compile Include="DefaultImpl\DomainServices.cs" />
+    <Compile Include="DomainServices.cs" />
     <Compile Include="DynamicInput\AttributeInfo.cs" />
     <Compile Include="DynamicInput\AttributeKey.cs" />
     <Compile Include="DynamicInput\AttributeValue.cs" />
@@ -83,19 +83,10 @@
     <Compile Include="Repositories\Common\IListValueRepository.cs" />
     <Compile Include="Repositories\Common\ITranslationRepository.cs" />
     <Compile Include="Common\Translation.cs" />
-    <Compile Include="DefaultImpl\DomainRepositories.cs" />
+    <Compile Include="DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\AbstractSpecification.cs" />
-    <Compile Include="Repositories\Specifications\ApplicationSpecification.cs" />
-    <Compile Include="Repositories\Specifications\ContentItemAttributeValueSpecification.cs" />
-    <Compile Include="Repositories\Specifications\ContentItemSpecification.cs" />
-    <Compile Include="Repositories\Specifications\ContentTypeSpecification.cs" />
     <Compile Include="Base\GenericSpecification.cs" />
-    <Compile Include="Repositories\Specifications\ContentAttributeSpecification.cs" />
-    <Compile Include="Repositories\Specifications\TranslationSpecification.cs" />
-    <Compile Include="Repositories\Specifications\CultureSpecification.cs" />
-    <Compile Include="Repositories\Specifications\ListValueSpecification.cs" />
-    <Compile Include="Repositories\Specifications\TemporarySpecification.cs" />
     <Compile Include="Services\IContentTypeService.cs" />
   </ItemGroup>
   <ItemGroup>
