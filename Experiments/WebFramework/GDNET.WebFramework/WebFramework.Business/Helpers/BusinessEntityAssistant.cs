@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using GDNET.Extensions;
 using WebFramework.Business.Base;
+using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Business.Helpers
 {

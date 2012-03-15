@@ -7,8 +7,8 @@ using GDNET.Common.Helpers;
 using GDNET.Common.Security.Services;
 using GDNET.Extensions;
 using WebFramework.Business.Helpers;
+using WebFramework.Domain;
 using WebFramework.Domain.Common;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Business.Base
 {

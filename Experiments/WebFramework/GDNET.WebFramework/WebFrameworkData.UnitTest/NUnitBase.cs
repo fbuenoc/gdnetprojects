@@ -4,7 +4,7 @@ using GDNET.NHibernate;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 using NHibernate.Mapping.ByCode;
-using WebFramework.Domain.DefaultImpl;
+using WebFramework.Domain;
 using WebFramework.Mapping.Base;
 
 namespace WebFramework.Data.UnitTest

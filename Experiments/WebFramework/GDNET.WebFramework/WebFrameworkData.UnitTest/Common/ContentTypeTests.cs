@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
 using WebFramework.Data.UnitTest.Utils;
+using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Data.UnitTest.Common
 {
