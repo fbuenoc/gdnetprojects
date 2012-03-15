@@ -51,9 +51,6 @@
     <Compile Include="AccountModeles\RegisterModel.cs" />
     <Compile Include="AccountServices\AccountMembershipService.cs" />
     <Compile Include="AccountServices\IMembershipService.cs" />
-    <Compile Include="Base\AbstractCrudController.cs" />
-    <Compile Include="Base\AbstractListCrudController.cs" />
-    <Compile Include="Base\AbstractController.cs" />
     <Compile Include="Business\Administration\ShortcutModel.cs" />
     <Compile Include="Business\Base\ModelBusinessEntityBase.cs" />
     <Compile Include="Business\Common\ProductModel.cs" />
