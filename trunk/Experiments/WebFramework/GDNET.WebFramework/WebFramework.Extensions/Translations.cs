@@ -1,4 +1,6 @@
-﻿namespace WebFramework.Extensions
+﻿using WebFramework.Domain;
+
+namespace WebFramework.Extensions
 {
     public static class Translations
     {
@@ -6,70 +8,70 @@
         {
             public static string Attributes
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Attributes"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.Attributes"); }
             }
 
             public static string Category
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Category"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.Category"); }
             }
 
             public static string CreatedAt
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.CreatedAt"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.CreatedAt"); }
             }
 
             public static string CreatedBy
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.CreatedBy"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.CreatedBy"); }
             }
 
             public static string DeleteAndContinue
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.DeleteAndContinue"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.DeleteAndContinue"); }
             }
 
             public static string DeleteConfirmation
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.DeleteConfirmation"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.DeleteConfirmation"); }
             }
 
             public static string DeleteConfirmationXYZ(string xyz)
             {
-                string confirmationXYZ = TranslationAssistant.Translate("ApplicationCategories.SysTranslation.DeleteConfirmationXYZ");
+                string confirmationXYZ = DomainServices.Translation.Translate("SysTranslation.DeleteConfirmationXYZ");
                 return string.Format(confirmationXYZ, xyz);
             }
 
             public static string DetailOfXYZ(string xyz)
             {
-                string detailXYZ = TranslationAssistant.Translate("ApplicationCategories.SysTranslation.DetailOfXYZ");
+                string detailXYZ = DomainServices.Translation.Translate("SysTranslation.DetailOfXYZ");
                 return string.Format(detailXYZ, xyz);
             }
 
             public static string Name
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Name"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.Name"); }
             }
 
             public static string Description
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Description"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.Description"); }
             }
 
             public static string ReturnToListOfXYZ(string xyz)
             {
-                string returnToXYZ = TranslationAssistant.Translate("ApplicationCategories.SysTranslation.ReturnToListOfXYZ");
+                string returnToXYZ = DomainServices.Translation.Translate("SysTranslation.ReturnToListOfXYZ");
                 return string.Format(returnToXYZ, xyz);
             }
 
             public static string SaveAndContinue
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.SaveAndContinue"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.SaveAndContinue"); }
             }
 
             public static string Statut
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.Statut"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.Statut"); }
             }
         }
 
@@ -77,52 +79,52 @@
         {
             public static string Application
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.Application"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Application"); }
             }
 
             public static string Article
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.Article"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Article"); }
             }
 
             public static string Comment
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.Comment"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Comment"); }
             }
 
             public static string ContentType
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.ContentType"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.ContentType"); }
             }
 
             public static string ContentItem
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.ContentItem"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.ContentItem"); }
             }
 
             public static string ContentAttribute
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.ContentAttribute"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.ContentAttribute"); }
             }
 
             public static string ListValue
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.ListValue"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.ListValue"); }
             }
 
             public static string Translation
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.Translation"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Translation"); }
             }
 
             public static string Role
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.Role"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Role"); }
             }
 
             public static string User
             {
-                get { return TranslationAssistant.Translate("ApplicationCategories.SysTranslation.EntityNames.User"); }
+                get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.User"); }
             }
         }
 
@@ -130,7 +132,7 @@
         {
             public static string InContentTypeXYZ(string xyz)
             {
-                string formatXYZ = TranslationAssistant.Translate("ApplicationCategories.SysTranslation.ContentItem.InContentTypeXYZ");
+                string formatXYZ = DomainServices.Translation.Translate("SysTranslation.ContentItem.InContentTypeXYZ");
                 return string.Format(formatXYZ, xyz);
             }
         }

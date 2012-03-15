@@ -1,7 +1,9 @@
 ﻿using GDNET.Common.Encryption;
 using GDNET.Common.Security.Services;
-using WebFramework.Domain.DefaultImpl;
+using GDNET.Common.Services;
+using WebFramework.Domain;
 using WebFramework.Domain.Services;
+using WebFramework.Services;
 
 namespace WebFramework.NHibernate
 {
@@ -22,6 +24,16 @@ namespace WebFramework.NHibernate
         {
             IContentTypeService contentTypeService = new ContentTypeService();
             return contentTypeService;
+        }
+
+        protected override ITranslationService GetTranslationService()
+        {
+            return new TranslationService();
+        }
+
+        protected override IFormatterService GetFormatterService()
+        {
+            return new FormatterService();
         }
     }
 }
