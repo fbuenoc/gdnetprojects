@@ -17,7 +17,7 @@ namespace WebFramework.Data.Common.Repositories
 
         public Application GetByRootUrl(string rootUrl)
         {
-            var results = base.FindByProperty(CommonConstants.ApplicationMeta.RootUrl, rootUrl, 0, 1);
+            var results = base.FindByProperty(MetaInfos.ApplicationMeta.RootUrl, rootUrl, 0, 1);
             return (results != null && results.Count > 0) ? results[0] : null;
         }
 

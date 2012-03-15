@@ -16,13 +16,13 @@ namespace WebFramework.Data.Common.Repositories
 
         public Culture FindByCode(string cultureCode)
         {
-            var results = this.FindByProperty(CommonConstants.CultureMeta.CultureCode, cultureCode);
+            var results = this.FindByProperty(MetaInfos.CultureMeta.CultureCode, cultureCode);
             return (results.Count == 0) ? null : results[0];
         }
 
         public Culture GetDefault()
         {
-            var results = this.FindByProperty(CommonConstants.CultureMeta.IsDefault, true);
+            var results = this.FindByProperty(MetaInfos.CultureMeta.IsDefault, true);
             return results.FirstOrDefault();
         }
     }

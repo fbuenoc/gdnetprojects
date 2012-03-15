@@ -18,13 +18,13 @@ namespace WebFramework.Data.Common.Repositories
 
         public ListValue FindByName(string name)
         {
-            var results = this.FindByProperty(CommonConstants.ListValueMeta.Name, name);
+            var results = this.FindByProperty(MetaInfos.ListValueMeta.Name, name);
             return (results.Count == 0) ? null : results[0];
         }
 
         public IList<ListValue> GetAllRootValues()
         {
-            var criteria = base.sessionStrategy.Session.CreateCriteria(typeof(ListValue)).Add(Expression.IsNull(CommonConstants.ListValueMeta.Parent));
+            var criteria = base.sessionStrategy.Session.CreateCriteria(typeof(ListValue)).Add(Expression.IsNull(MetaInfos.ListValueMeta.Parent));
             return criteria.List<ListValue>();
         }
 
