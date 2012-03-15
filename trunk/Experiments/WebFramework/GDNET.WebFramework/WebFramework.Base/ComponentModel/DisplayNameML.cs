@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel;
-using WebFramework.Domain.DefaultImpl;
+using WebFramework.Domain;
 
 namespace WebFramework.Base.ComponentModel
 {

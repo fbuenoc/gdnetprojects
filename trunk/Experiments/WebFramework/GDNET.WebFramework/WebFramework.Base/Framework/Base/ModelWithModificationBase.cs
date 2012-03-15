@@ -66,6 +66,7 @@ namespace WebFramework.Base.Framework.Base
         public ModelWithModificationBase(TEntity entity)
             : base(entity)
         {
+            this.Id = entity.Id;
             this.Entity = entity;
             this.Initialize();
         }
