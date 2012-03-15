@@ -54,6 +54,15 @@
     <Compile Include="Common\Repositories\TemporaryRepository.cs" />
     <Compile Include="Common\Repositories\ListValueRepository.cs" />
     <Compile Include="Common\Repositories\TranslationRepository.cs" />
+    <Compile Include="Common\Specifications\ApplicationSpecification.cs" />
+    <Compile Include="Common\Specifications\ContentAttributeSpecification.cs" />
+    <Compile Include="Common\Specifications\ContentItemAttributeValueSpecification.cs" />
+    <Compile Include="Common\Specifications\ContentItemSpecification.cs" />
+    <Compile Include="Common\Specifications\ContentTypeSpecification.cs" />
+    <Compile Include="Common\Specifications\CultureSpecification.cs" />
+    <Compile Include="Common\Specifications\ListValueSpecification.cs" />
+    <Compile Include="Common\Specifications\TemporarySpecification.cs" />
+    <Compile Include="Common\Specifications\TranslationSpecification.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,6 +85,10 @@
     <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Services\WebFramework.Services.csproj">
+      <Project>{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}</Project>
+      <Name>WebFramework.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

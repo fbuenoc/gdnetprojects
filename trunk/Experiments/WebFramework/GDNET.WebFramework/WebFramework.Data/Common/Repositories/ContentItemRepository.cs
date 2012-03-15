@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
+using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 using WebFramework.Domain.Repositories.Common;
 
 namespace WebFramework.Data.Common.Repositories
@@ -18,7 +18,7 @@ namespace WebFramework.Data.Common.Repositories
 
         public IList<ContentItem> GetByContentType(ContentType contentType)
         {
-            return base.FindByProperty(CommonConstants.ContentItemMeta.ContentType, contentType);
+            return base.FindByProperty(MetaInfos.ContentItemMeta.ContentType, contentType);
         }
 
         public IList<ContentItem> GetByContentType(Type typeOfContentType)

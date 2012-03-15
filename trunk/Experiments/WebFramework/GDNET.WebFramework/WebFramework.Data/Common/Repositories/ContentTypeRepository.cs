@@ -17,7 +17,7 @@ namespace WebFramework.Data.Common.Repositories
 
         public ContentType FindByTypeName(string qualifiedTypeName)
         {
-            var results = this.FindByProperty(CommonConstants.ContentTypeMeta.TypeName, qualifiedTypeName);
+            var results = this.FindByProperty(MetaInfos.ContentTypeMeta.TypeName, qualifiedTypeName);
             return (results.Count == 0) ? null : results[0];
         }
 
