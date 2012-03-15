@@ -1,7 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
+using WebFramework.Domain;
 using WebFramework.Domain.Common;
-using WebFramework.Domain.DefaultImpl;
-using System;
 
 namespace WebFramework.Data.UnitTest.Common
 {

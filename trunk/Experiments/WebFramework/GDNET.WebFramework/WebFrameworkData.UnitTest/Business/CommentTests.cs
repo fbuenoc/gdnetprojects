@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using WebFramework.Business.Common;
 using WebFramework.Data.UnitTest.Utils;
-using WebFramework.Domain.DefaultImpl;
+using WebFramework.Domain;
 
 namespace WebFramework.Data.UnitTest.Business
 {

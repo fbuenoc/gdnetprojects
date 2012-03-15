@@ -3,6 +3,7 @@ using WebFramework.Data.UnitTest.Utils;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
 using WebFramework.Domain.DefaultImpl;
+using WebFramework.Domain;
 
 namespace WebFramework.Data.UnitTest.Common
 {
