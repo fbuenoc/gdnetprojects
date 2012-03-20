@@ -26,7 +26,7 @@ namespace MergingTool
             DirectoryInfo dInfo = new DirectoryInfo(pathToMerge);
             var listOfFiles = dInfo.GetFiles().Where(file => fileExtensions.Contains(file.Extension) && !excludeFiles.Contains(file.Name)).ToList();
 
-            foreach (var file in listOfFiles)
+            foreach (var file in listOfFiles.OrderBy(x => x.FullName))
             {
                 resultBuilder.Append("-- #####################");
                 resultBuilder.AppendLine();
