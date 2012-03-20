@@ -58,21 +58,6 @@ exec SP_CreateOrUpdateTranslation
 
 -- //
 
-exec SP_CreateListValue
-	@Name = 'LV.SysTranslation.ContentItem',
-	@Description = 'Content item translations',
-	@ParentName = 'LV.SysTranslation';
-GO
-exec SP_CreateOrUpdateTranslation
-	@CultureCode = 'vi-VN',
-	@Code = 'LV.SysTranslation.ContentItem.Description',
-	@Value = N'Bản dịnh Nội dung',
-	@IsDeletable = False;
-exec SP_CreateOrUpdateTranslation
-	@CultureCode = 'vi-VN',
-	@Code = 'LV.SysTranslation.ContentItem.Detail',
-	@Value = N'Bản dịnh Nội dung',
-	@IsDeletable = False;
 
 -- // 
 
