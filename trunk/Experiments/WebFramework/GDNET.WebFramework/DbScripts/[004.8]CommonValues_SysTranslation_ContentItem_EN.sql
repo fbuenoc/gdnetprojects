@@ -1,8 +1,9 @@
-﻿----------------------------
--- Content entities translations
-----------------------------
+﻿exec SP_CreateListValue
+	@Name = 'LV.SysTranslation.ContentItem',
+	@Description = 'Content item translations',
+	@ParentName = 'LV.SysTranslation';
+GO
 
--- ContentItem
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
 	@Code = 'SysTranslation.ContentItem.InContentTypeXYZ',
@@ -15,13 +16,4 @@ exec SP_CreateOrUpdateTranslation
 	@Code = 'SysTranslation.ContentItem.NameIsRequired',
 	@CategoryName = 'LV.SysTranslation.ContentItem',
 	@Value = 'The name of content item is required.',
-	@IsDeletable = False;
-
-
--- Application
-exec SP_CreateOrUpdateTranslation
-	@CultureCode = 'en-US',
-	@Code = 'SysTranslation.Application.RootUrl',
-	@CategoryName = 'LV.SysTranslation.Application',
-	@Value = 'Root Url (without http://)',
 	@IsDeletable = False;
