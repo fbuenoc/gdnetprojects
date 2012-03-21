@@ -38,7 +38,7 @@ namespace WebFramework.Business.Helpers
             return default(TEntity);
         }
 
-        public static IList<TEntity> GetByType<TEntity>() where TEntity : BusinessEntityBase
+        public static IList<TEntity> GetAllByType<TEntity>() where TEntity : BusinessEntityBase
         {
             List<TEntity> listeEntities = new List<TEntity>();
             IList<ContentItem> listeContentItems = DomainRepositories.ContentItem.GetByContentType(typeof(TEntity));
@@ -53,11 +53,6 @@ namespace WebFramework.Business.Helpers
             }
 
             return listeEntities;
-        }
-
-        public static IList<ContentItem> GetAllByType<TEntity>() where TEntity : BusinessEntityBase
-        {
-            return DomainRepositories.ContentItem.GetByContentType(typeof(TEntity));
         }
 
         /// <summary>

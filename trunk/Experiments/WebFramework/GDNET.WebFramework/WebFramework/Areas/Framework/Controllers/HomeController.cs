@@ -12,7 +12,7 @@ namespace WebFramework.Areas.Framework.Controllers
     {
         public ActionResult Index()
         {
-            IList<Shortcut> listeShortcuts = BusinessEntityAssistant.GetByType<Shortcut>();
+            IList<Shortcut> listeShortcuts = BusinessEntityAssistant.GetAllByType<Shortcut>();
             List<ShortcutModel> listeShortcutsModel = listeShortcuts.Select(x => new ShortcutModel(x)).ToList();
 
             return View(listeShortcutsModel);

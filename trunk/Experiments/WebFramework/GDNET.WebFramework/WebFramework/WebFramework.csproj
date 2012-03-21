@@ -895,6 +895,10 @@
       <Project>{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}</Project>
       <Name>WebFramework.Services</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.UI\WebFramework.UI.csproj">
+      <Project>{18980C72-F35D-4D3F-B76B-7D1A005C6275}</Project>
+      <Name>WebFramework.UI</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Framework\Views\Web.config">

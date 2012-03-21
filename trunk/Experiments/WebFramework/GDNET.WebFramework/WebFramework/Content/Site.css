@@ -341,6 +341,14 @@ table th
     width: 65%;
     border-right: solid 1px #ccc;
     padding-right: 15px;
+    float: left;
+}
+.content_right
+{
+    width: 30%;
+    padding-left: 15px;
+    float: left;
+    position: relative;
 }
 .title_focus
 {
