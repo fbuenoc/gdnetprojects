@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using WebFramework.Base.Framework.Common;
 using WebFramework.Business.Common;
-using WebFramework.Business.Helpers;
 using WebFramework.Common.Controllers;
+using WebFramework.Domain;
 using WebFramework.ViewModels;
 
 namespace WebFramework.Controllers
@@ -19,11 +19,13 @@ namespace WebFramework.Controllers
         {
             base.ViewBag.Message = "Welcome to ASP.NET MVC!";
 
-            var listeProducts = BusinessEntityAssistant.GetAllByType<Product>();
-            var listeProductsModel = listeProducts.Select(x => new ContentItemModel(x)).ToList();
+            var listeProducts = DomainRepositories.ContentItem.GetByContentType(typeof(Product));
+            var listeArticles = DomainRepositories.ContentItem.GetByContentType(typeof(Article));
+
             var viewModel = new HomeViewModel
             {
-                Products = listeProductsModel,
+                Products = listeProducts.Select(x => new ContentItemModel(x)).ToList(),
+                Articles = listeArticles.Select(x => new ContentItemModel(x)).ToList()
             };
 
             return base.View(viewModel);

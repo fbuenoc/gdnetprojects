@@ -53,6 +53,7 @@
     <Compile Include="AccountServices\IMembershipService.cs" />
     <Compile Include="Business\Administration\ShortcutModel.cs" />
     <Compile Include="Business\Base\ModelBusinessEntityBase.cs" />
+    <Compile Include="Business\Common\ArticleModel.cs" />
     <Compile Include="Business\Common\ProductModel.cs" />
     <Compile Include="Common\DefaultImpl\NavigationService.cs" />
     <Compile Include="Common\DefaultImpl\ValidationService.cs" />

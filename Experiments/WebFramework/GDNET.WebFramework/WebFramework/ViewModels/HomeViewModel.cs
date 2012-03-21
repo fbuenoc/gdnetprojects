@@ -10,5 +10,11 @@ namespace WebFramework.ViewModels
             get;
             set;
         }
+
+        public IList<ContentItemModel> Articles
+        {
+            get;
+            set;
+        }
     }
 }
