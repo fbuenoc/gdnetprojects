@@ -58,6 +58,7 @@ namespace WebFramework.Domain.Constants
             public static readonly string Code = ExpressionAssistant.GetPropertyName(() => defaultTranslation.Code);
             public static readonly string Culture = ExpressionAssistant.GetPropertyName(() => defaultTranslation.Culture);
             public static readonly string Category = ExpressionAssistant.GetPropertyName(() => defaultTranslation.Category);
+            public static readonly string IsRichTextEditor = ExpressionAssistant.GetPropertyName(() => defaultTranslation.IsRichTextEditor);
         }
     }
 }

@@ -70,7 +70,6 @@
     <Compile Include="Extensions\EntityAssistant.cs" />
     <Compile Include="Common\ListValue.cs" />
     <Compile Include="Common\ListValue.Factory.cs" />
-    <Compile Include="Extensions\EntityLifeCycleAssistant.cs" />
     <Compile Include="Repositories\Common\IApplicationRepository.cs" />
     <Compile Include="Repositories\Common\IContentAttributeRepository.cs" />
     <Compile Include="Repositories\Common\IContentItemRepository.cs" />

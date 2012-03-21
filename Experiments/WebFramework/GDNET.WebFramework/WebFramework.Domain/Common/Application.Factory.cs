@@ -1,6 +1,5 @@
 ﻿using GDNET.Common.DesignByContract;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Domain.Common
 {
@@ -36,7 +35,7 @@ namespace WebFramework.Domain.Common
                 application.Description = Translation.Factory.Create(description);
                 application.Category = DomainRepositories.ListValue.FindByName(categoryCode);
                 application.CultureDefault = DomainRepositories.Culture.FindByCode(CommonConstants.CultureCodeDefault);
-                application.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
+                application.LifeCycle.AddStatutLog(StatutLog.Factory.Create(string.Empty));
 
                 return application;
             }

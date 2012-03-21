@@ -32,6 +32,12 @@ namespace WebFramework.Domain.Common
             set;
         }
 
+        public virtual bool IsRichTextEditor
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region IEntityLifeCycle

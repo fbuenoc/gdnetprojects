@@ -53,7 +53,7 @@ namespace WebFramework.Domain.Common
                     Value = value,
                     Culture = culture
                 };
-                translation.LifeCycle.AddStatutLog(StatutLog.Factory.Create("BF"));
+                translation.LifeCycle.AddStatutLog(StatutLog.Factory.Create(string.Empty));
 
                 return translation;
             }
