@@ -12,19 +12,19 @@
 <asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
     <div class="content_left">
         <div class="title_focus">
-            <%= TranslationAssistant.Translate("SysTranslation.Business.Product.AvailableProducts")%>
+            <%= base.Html.WebFramework().Translate("SysTranslation.Business.Product.AvailableProducts")%>
         </div>
         <div>
             <table cellpadding="0" cellspacing="0" width="100%">
                 <tr>
                     <th class="column_name">
-                        <%= TranslationAssistant.Translate("SysTranslation.Business.Product.NameView")%>
+                        <%= base.Html.WebFramework().Translate("SysTranslation.Business.Product.NameView")%>
                     </th>
                     <th class="number">
-                        <%= TranslationAssistant.Translate("SysTranslation.Business.Product.PriceView")%>
+                        <%= base.Html.WebFramework().Translate("SysTranslation.Business.Product.PriceView")%>
                     </th>
                     <th class="number">
-                        <%= TranslationAssistant.Translate("SysTranslation.Business.Product.DiscountView")%>
+                        <%= base.Html.WebFramework().Translate("SysTranslation.Business.Product.DiscountView")%>
                     </th>
                 </tr>
                 <%
@@ -39,10 +39,10 @@
                         <%= base.Html.WebFramework().HyperLink(productModel) %>
                     </td>
                     <td class="number">
-                        <%= FormatterAssistant.FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Price))%>
+                        <%= base.Html.WebFramework().FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Price))%>
                     </td>
                     <td class="number">
-                        <%= FormatterAssistant.FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Discount))%>
+                        <%= base.Html.WebFramework().FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Discount))%>
                     </td>
                 </tr>
                 <%

@@ -4,7 +4,40 @@ using WebFramework.Domain.Base;
 
 namespace WebFramework.Base.Framework.Base
 {
-    public abstract class ModelWithModificationBase<TEntity, TId> : EntityWithModificationBase<TId>, IViewModel<TId>
+    public abstract class AbstractModelWithModification : AbstractModel
+    {
+        public string ActualStatut
+        {
+            get;
+            protected set;
+        }
+
+        public DateTime CreatedAt
+        {
+            get;
+            protected set;
+        }
+
+        public string CreatedBy
+        {
+            get;
+            protected set;
+        }
+
+        public DateTime LastModifiedAt
+        {
+            get;
+            protected set;
+        }
+
+        public string LastModifiedBy
+        {
+            get;
+            protected set;
+        }
+    }
+
+    public abstract class AbstractModelWithModification<TEntity, TId> : AbstractModelWithModification, IViewModel<TId>
         where TEntity : EntityWithModificationBase<TId>
     {
         protected TEntity Entity
@@ -13,68 +46,37 @@ namespace WebFramework.Base.Framework.Base
             private set;
         }
 
-        public Guid ModelId
+        public TId Id
         {
-            get;
-            private set;
-        }
-
-        public new TId Id
-        {
-            get;
-            set;
-        }
-
-        public string ActualStatut
-        {
-            get;
-            private set;
-        }
-
-        public DateTime CreatedAt
-        {
-            get;
-            private set;
-        }
-
-        public string CreatedBy
-        {
-            get;
-            private set;
-        }
-
-        public DateTime LastModifiedAt
-        {
-            get;
-            private set;
-        }
-
-        public string LastModifiedBy
-        {
-            get;
-            private set;
+            get
+            {
+                if (base.id != null)
+                {
+                    return (TId)base.id;
+                }
+                return default(TId);
+            }
+            set { base.id = value; }
         }
 
         #region Ctors
 
-        public ModelWithModificationBase()
+        public AbstractModelWithModification()
             : base()
         {
             this.Initialize();
         }
 
-        public ModelWithModificationBase(TEntity entity)
-            : base(entity)
+        public AbstractModelWithModification(TEntity entity)
+            : base()
         {
-            this.Id = entity.Id;
+            base.id = entity.Id;
             this.Entity = entity;
             this.Initialize();
         }
 
         private void Initialize()
         {
-            this.ModelId = Guid.NewGuid();
-
             if (this.Entity is IEntityWithLifeCycle)
             {
                 var lifeCycle = ((IEntityWithLifeCycle)this.Entity).LifeCycle;

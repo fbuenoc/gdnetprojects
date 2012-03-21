@@ -10,18 +10,15 @@
     </h2>
     <div>
         <div>
-            Created at:
+            <%= base.Html.WebFramework().SysTranslations.CreatedAt %>:
             <%= base.Model.CreatedAt.ToStringEx() %>
-        </div>
-        <div>
-            Created by:
+            <br />
+            <%= base.Html.WebFramework().SysTranslations.CreatedBy %>:
             <%= base.Model.CreatedBy %>
-        </div>
-        <div>
+            <br />
             Content type:
             <%= base.Model.ContentType %>
-        </div>
-        <div>
+            <br />
             Data type:
             <%= base.Model.DataType %>
         </div>

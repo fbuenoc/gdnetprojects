@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= TranslationAssistant.CreateOrUpdate<long>(base.Model) %>
+        <%= base.Html.WebFramework().CreateOrUpdate<long>(base.Model) %>
     </h2>
     <h3>
         <%= Translations.ContentItem.InContentTypeXYZ(base.Model.ContentType)%>
@@ -42,7 +42,7 @@
         %>
         <p>
             <%= base.Html.HiddenFor(m => m.ContentTypeId) %>
-            <input type="submit" name="btnOK" value="<%= Translations.System.SaveAndContinue %>" />
+            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

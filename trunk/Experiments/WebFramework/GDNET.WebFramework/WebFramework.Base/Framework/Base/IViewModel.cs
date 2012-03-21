@@ -2,6 +2,6 @@
 {
     public interface IViewModel<TId>
     {
-        TId Id { get; }
+        TId Id { get; set; }
     }
 }

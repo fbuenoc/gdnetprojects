@@ -1,20 +1,20 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentTypeModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%= Translations.EntityNames.ContentType %>
+    <%= base.Html.WebFramework().SysTranslations.EntityContentType %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= Translations.System.DetailOfXYZ(base.Model.Name) %>
+        <%= base.Html.WebFramework().SysTranslations.DetailOfXYZ(base.Model.Name)%>
     </h2>
     <div>
-        <%= Translations.System.CreatedAt %>:
+        <%= base.Html.WebFramework().SysTranslations.CreatedAt %>:
         <%= base.Model.CreatedAt.ToStringEx() %>
         <br />
-        <%= Translations.System.CreatedBy %>:
+        <%= base.Html.WebFramework().SysTranslations.CreatedBy %>:
         <%= base.Model.CreatedBy %>
         <br />
-        <%= Translations.System.Statut %>:
+        <%= base.Html.WebFramework().SysTranslations.Statut %>:
         <%= base.Model.ActualStatut %>
         <h3>
             Attributes

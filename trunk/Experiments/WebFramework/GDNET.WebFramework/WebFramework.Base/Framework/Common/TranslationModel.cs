@@ -5,7 +5,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Base.Framework.Common
 {
-    public sealed class TranslationModel : ModelWithModificationBase<Translation, long>
+    public sealed class TranslationModel : AbstractModelWithModification<Translation, long>
     {
         #region Properties
 

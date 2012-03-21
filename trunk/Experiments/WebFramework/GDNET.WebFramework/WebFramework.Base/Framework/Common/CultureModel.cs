@@ -4,7 +4,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Base.Framework.Common
 {
-    public sealed class CultureModel : ModelBase<Culture, int>
+    public sealed class CultureModel : AbstractModelGeneric<Culture, int>
     {
         #region Properties
 

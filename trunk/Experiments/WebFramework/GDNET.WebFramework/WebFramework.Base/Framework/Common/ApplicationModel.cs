@@ -1,30 +1,30 @@
-﻿using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using WebFramework.Base.ComponentModel;
 using WebFramework.Base.Framework.Base;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Base.Framework.Common
 {
-    public sealed class ApplicationModel : ModelWithModificationBase<Application, long>
+    public sealed class ApplicationModel : AbstractModelWithModification<Application, long>
     {
         #region Properties
 
         [Required]
-        [DisplayName("SysTranslation.Name")]
+        [DisplayNameML("SysTranslation.Name")]
         public string Name
         {
             get;
             set;
         }
 
-        [DisplayName("SysTranslation.Description")]
+        [DisplayNameML("SysTranslation.Description")]
         public string Description
         {
             get;
             set;
         }
 
-        [DisplayName("SysTranslation.Category")]
+        [DisplayNameML("SysTranslation.Category")]
         public string Category
         {
             get;
@@ -32,7 +32,7 @@ namespace WebFramework.Base.Framework.Common
         }
 
         [Required]
-        [DisplayName("SysTranslation.Application.RootUrl")]
+        [DisplayNameML("SysTranslation.Application.RootUrl")]
         public string RootUrl
         {
             get;
@@ -53,7 +53,7 @@ namespace WebFramework.Base.Framework.Common
             this.Name = (base.Entity.Name == null) ? string.Empty : base.Entity.Name.Value;
             this.Description = (base.Entity.Description == null) ? string.Empty : base.Entity.Description.Value;
             this.Category = (base.Entity.Category.Description == null) ? string.Empty : base.Entity.Category.Description.Value;
-            this.RootUrl = base.Entity.RootUrl.StartsWith("http://") ? base.Entity.RootUrl : string.Format("http://{0}", base.Entity.RootUrl);
+            this.RootUrl = (base.Entity.RootUrl == "*") ? string.Empty : base.Entity.RootUrl;
         }
 
         #endregion
