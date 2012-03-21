@@ -64,9 +64,10 @@
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
-    <Compile Include="Framework\Base\ModelBase.cs" />
+    <Compile Include="Framework\Base\AbstractModel.cs" />
+    <Compile Include="Framework\Base\AbstractModelGeneric.cs" />
     <Compile Include="Framework\Base\IViewModel.cs" />
-    <Compile Include="Framework\Base\ModelWithModificationBase.cs" />
+    <Compile Include="Framework\Base\AbstractModelWithModification.cs" />
     <Compile Include="Framework\Base\ModelService.cs" />
     <Compile Include="Framework\Common\ApplicationModel.cs" />
     <Compile Include="Framework\Common\ContentAttributeModel.cs" />

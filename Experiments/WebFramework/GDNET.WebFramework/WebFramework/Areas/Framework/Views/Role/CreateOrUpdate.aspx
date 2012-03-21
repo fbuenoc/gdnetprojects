@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= TranslationAssistant.CreateOrUpdate<long>(base.Model) %>
+        <%= base.Html.WebFramework().CreateOrUpdate<long>(base.Model) %>
     </h2>
     <div>
         <% base.Html.BeginForm(); %>
@@ -16,11 +16,11 @@
             <%= base.Html.TextBoxFor(m => m.Name)%>
         </div>
         <p>
-            <input type="submit" value="Save & Continue" />
+            <input type="submit" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return Role management", RoleController.ActionList)%>
+        <%= base.Html.WebFramework().ActionLink("Return Role management", RoleController.ActionList)%>
     </p>
 </asp:Content>

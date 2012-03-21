@@ -5,7 +5,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Base.Framework.Common
 {
-    public class ContentAttributeModel : ModelWithModificationBase<ContentAttribute, long>
+    public class ContentAttributeModel : AbstractModelWithModification<ContentAttribute, long>
     {
         #region Ctors
 

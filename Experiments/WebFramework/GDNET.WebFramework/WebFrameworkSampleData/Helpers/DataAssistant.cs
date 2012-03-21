@@ -9,8 +9,8 @@ using WebFramework.Business.Base;
 using WebFramework.Business.Common;
 using WebFramework.Business.Helpers;
 using WebFramework.Data.UnitTest;
+using WebFramework.Domain;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 using WebFramework.Domain.Extensions;
 using WebFramework.NHibernate;
 using WebFramework.NHibernate.SessionManagers;
@@ -177,7 +177,7 @@ namespace WebFrameworkSampleData
 
         private static void GenerateSampleComments()
         {
-            int max = 10;
+            int max = 20;
 
             for (int count = 0; count < max; count++)
             {
@@ -193,7 +193,7 @@ namespace WebFrameworkSampleData
 
         private static void GenerateSampleArticles()
         {
-            int max = 10;
+            int max = 20;
             List<long> allArticles = new List<long>();
 
             for (int count = 0; count < max; count++)
@@ -250,23 +250,43 @@ namespace WebFrameworkSampleData
 
         private static void GenerateSampleProducts()
         {
-            int max = 10;
+            int max = 20;
 
             for (int count = 0; count < max; count++)
             {
-                string name = "Product " + (count + 1);
-                string description = "This is product " + (count + 1);
+                string name = GenerateRandomName();
+                string description = "This is product " + (count + 1) + ": " + name;
                 decimal price = (decimal)new Random().NextDouble() * 1000;
 
                 Product myProduct = Product.Factory.Create(name, description, price);
                 myProduct.Discount = (decimal)new Random().NextDouble() * price;
+                myProduct.InStock = ((count % 5) != 0);
 
                 myProduct.Save();
             }
         }
 
+        private static string GenerateRandomName()
+        {
+            string name = "09";
+
+            while (name.Length <= 10)
+            {
+                var x = new Random().Next(9).ToString();
+                if (!x.Equals(name[name.Length - 1].ToString()))
+                {
+                    name += x;
+                }
+            }
+
+            return name;
+        }
+
         public static void GenerateSampleShortcuts()
         {
+            Shortcut translation = Shortcut.Factory.Create("Translation list", "Managing translations", "/Framework/Translation/List");
+            translation.Save();
+
             int max = 10;
 
             for (int count = 0; count < max; count++)

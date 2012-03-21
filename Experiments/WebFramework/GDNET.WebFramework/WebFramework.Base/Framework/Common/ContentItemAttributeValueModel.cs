@@ -4,7 +4,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Base.Framework.Common
 {
-    public class ContentItemAttributeValueModel : ModelBase<ContentItemAttributeValue, long>
+    public class ContentItemAttributeValueModel : AbstractModelGeneric<ContentItemAttributeValue, long>
     {
         #region Properties
 

@@ -4,8 +4,8 @@ using GDNET.Web.Helpers;
 using WebFramework.Base.Framework.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Constants;
+using WebFramework.Domain;
 using WebFramework.Domain.Common;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {

@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ApplicationModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    Applications
+    <%= base.Html.WebFramework().SysTranslations.EntityApplication %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= TranslationAssistant.CreateOrUpdate<long>(base.Model) %>
+        <%= base.Html.WebFramework().CreateOrUpdate<long>(base.Model)%>
     </h2>
     <div>
         <% base.Html.BeginForm(); %>
@@ -28,11 +28,11 @@
             <%= base.Html.TextBoxFor(m => m.RootUrl)%>
         </div>
         <p>
-            <input type="submit" name="btnOK" value="<%= Translations.System.SaveAndContinue %>" />
+            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return Application management", RoleController.ActionList)%>
+        <%= base.Html.WebFramework().ActionListLink(base.Html.WebFramework().SysTranslations.EntityApplication, RoleController.ActionList)%>
     </p>
 </asp:Content>

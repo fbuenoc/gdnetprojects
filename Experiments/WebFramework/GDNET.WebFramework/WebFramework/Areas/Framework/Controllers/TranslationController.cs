@@ -8,9 +8,9 @@ using WebFramework.Areas.Framework.Constants;
 using WebFramework.Areas.Framework.ViewModels;
 using WebFramework.Base.Framework.Common;
 using WebFramework.Common.Controllers;
+using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
