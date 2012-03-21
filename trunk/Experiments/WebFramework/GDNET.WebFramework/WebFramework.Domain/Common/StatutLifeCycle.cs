@@ -61,23 +61,19 @@ namespace WebFramework.Domain.Common
 
         public virtual void AddStatutLog(StatutLog log)
         {
-            if (this.statutLogs.Contains(log))
+            if (!this.statutLogs.Contains(log))
             {
-                return;
+                log.LifeCycle = this;
+                this.statutLogs.Add(log);
             }
-
-            log.LifeCycle = this;
-            this.statutLogs.Add(log);
         }
 
         public virtual void RemoveStatutLog(StatutLog log)
         {
-            if (!this.statutLogs.Contains(log))
+            if (this.statutLogs.Contains(log))
             {
-                return;
+                this.statutLogs.Remove(log);
             }
-
-            this.statutLogs.Remove(log);
         }
 
         public virtual void RemoveStatutLogs()

@@ -14,6 +14,7 @@ namespace WebFramework.Mapping.Common
 
             base.Property(e => e.Code);
             base.Property(e => e.Value);
+            base.Property(e => e.IsRichTextEditor);
 
             base.ManyToOne(e => e.LifeCycle, m =>
             {
