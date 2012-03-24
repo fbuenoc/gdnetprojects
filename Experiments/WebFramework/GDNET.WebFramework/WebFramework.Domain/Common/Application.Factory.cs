@@ -17,23 +17,22 @@ namespace WebFramework.Domain.Common
                 return new Application();
             }
 
-            public Application Create(string name, string description, string rootUrl)
+            public Application Create(string name, string rootUrl)
             {
-                return this.Create(name, description, rootUrl, ListValueConstants.ApplicationCategories.Default);
+                return this.Create(name, rootUrl, ListValueConstants.ApplicationCategories.Default);
             }
 
-            public Application Create(string name, string description, string rootUrl, string categoryCode)
+            public Application Create(string name, string rootUrl, string categoryCode)
             {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(rootUrl, "rootUrl", "RootUrl can not be nullable.");
 
-                Application application = new Application
+                Application application = new Application()
                 {
                     RootUrl = rootUrl,
+                    Name = Translation.Factory.Create(name),
+                    Category = DomainRepositories.ListValue.FindByName(categoryCode)
                 };
 
-                application.Name = Translation.Factory.Create(name);
-                application.Description = Translation.Factory.Create(description);
-                application.Category = DomainRepositories.ListValue.FindByName(categoryCode);
                 application.CultureDefault = DomainRepositories.Culture.FindByCode(CommonConstants.CultureCodeDefault);
                 application.LifeCycle.AddStatutLog(StatutLog.Factory.Create(string.Empty));
 

@@ -86,7 +86,22 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\AbstractSpecification.cs" />
     <Compile Include="Base\GenericSpecification.cs" />
+    <Compile Include="Repositories\System\IZoneRepository.cs" />
+    <Compile Include="Repositories\System\IWidgetRepository.cs" />
+    <Compile Include="Repositories\System\IPageRepository.cs" />
     <Compile Include="Services\IContentTypeService.cs" />
+    <Compile Include="System\WidgetProperty.Factory.cs" />
+    <Compile Include="System\RegionSetting.cs" />
+    <Compile Include="System\RegionSetting.Factory.cs" />
+    <Compile Include="System\Region.cs" />
+    <Compile Include="System\Region.Factory.cs" />
+    <Compile Include="System\Zone.Factory.cs" />
+    <Compile Include="System\Zone.cs" />
+    <Compile Include="System\WidgetProperty.cs" />
+    <Compile Include="System\Widget.Factory.cs" />
+    <Compile Include="System\Page.Factory.cs" />
+    <Compile Include="System\Widget.cs" />
+    <Compile Include="System\Page.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
