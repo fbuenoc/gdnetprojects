@@ -3,14 +3,13 @@
     /// <summary>
     /// Entity with with CreMod
     /// </summary>
-    public abstract class EntityWithModificationBase<TId> : EntityBase<TId>, IEntityWithModification<TId>
+    public abstract class EntityWithModificationBase<TId> : EntityWithActiveBase<TId>, IEntityWithModification<TId>
     {
         public EntityWithModificationBase() { }
 
         public EntityWithModificationBase(IEntityWithModification<TId> entity)
             : base(entity)
         {
-            this.IsActive = entity.IsActive;
             this.IsDeletable = entity.IsDeletable;
             this.IsEditable = entity.IsEditable;
             this.IsViewable = entity.IsViewable;

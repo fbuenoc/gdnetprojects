@@ -4,8 +4,6 @@ namespace GDNET.Common.Base.Entities
 {
     /// <summary>
     /// Entity with Id property
-    /// </summary>
-    /// <typeparam name="TId"></typeparam>
     public abstract class EntityBase<TId> : IEntityBase<TId>
     {
         public EntityBase()

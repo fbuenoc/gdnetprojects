@@ -3,7 +3,7 @@ using GDNET.Common.Base.Entities;
 
 namespace GDNET.Common.Data
 {
-    public interface IRepositoryBase<TEntity, TId> where TEntity : IEntityBase<TId>
+    public interface IRepositoryBase<TEntity, TId> where TEntity : IEntityWithActiveBase<TId>
     {
         ISpecificationBase<TEntity, TId> Specification
         {
