@@ -1,9 +1,9 @@
-﻿namespace GDNET.Common.Base
+﻿namespace GDNET.Common.Services
 {
     /// <summary>
     /// Provides methods to check some specific constraints
     /// </summary>
-    public interface ISimpleInterceptor
+    public interface IInterceptorService
     {
         bool IsPassed();
     }

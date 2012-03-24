@@ -2,7 +2,7 @@
 
 namespace GDNET.Common.Data
 {
-    public interface ISpecificationBase<TEntity, TId> where TEntity : IEntityBase<TId>
+    public interface ISpecificationBase<TEntity, TId> where TEntity : IEntityWithActiveBase<TId>
     {
         bool OnGetting(TId id);
         bool OnGotten(TEntity entity);

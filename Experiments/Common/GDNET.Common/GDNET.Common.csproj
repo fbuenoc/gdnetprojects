@@ -67,12 +67,19 @@
     <Compile Include="Adapters\IAdapterLinkButton.cs" />
     <Compile Include="Adapters\IAdapterHyperLink.cs" />
     <Compile Include="Adapters\IAdapterDataPager.cs" />
+    <Compile Include="Base\Entities\EntityWithActiveBase.cs" />
     <Compile Include="Base\Entities\EntityBase.cs" />
     <Compile Include="Base\Entities\EntityWithModificationBase.cs" />
+    <Compile Include="Base\Entities\IEntityBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Base\Meta\MetaCreModBase.cs" />
     <Compile Include="Base\Meta\MetaEntityActiveBase.cs" />
     <Compile Include="Base\Meta\MetaEntityBase.cs" />
     <Compile Include="Base\Meta\MetaFullControlBase.cs" />
+    <Compile Include="Data\Impl\RepositoryAssistant.cs" />
+    <Compile Include="Services\IFormatterService.cs" />
+    <Compile Include="Services\ITranslationService.cs" />
     <Compile Include="Data\IRepositoryAssistant.cs" />
     <Compile Include="Data\ISpecificationBase.cs" />
     <Compile Include="Domain\IObjectSerializable.cs" />
@@ -84,10 +91,9 @@
     <Compile Include="Security\Services\IEncryptionService.cs" />
     <Compile Include="Security\Services\ISessionService.cs" />
     <Compile Include="Security\DefaultImpl\SessionService.cs" />
-    <Compile Include="Base\Entities\IEntityBase.cs" />
+    <Compile Include="Base\Entities\IEntityWithActiveBase.cs" />
     <Compile Include="Base\Entities\IEntityWithModification.cs" />
-    <Compile Include="Base\Services\IMultilingualService.cs" />
-    <Compile Include="Base\Services\IInterceptorService.cs" />
+    <Compile Include="Services\IInterceptorService.cs" />
     <Compile Include="Base\SimpleEventArgs.cs" />
     <Compile Include="Data\Accuracy.cs" />
     <Compile Include="Data\IRepositoryBase.cs" />
