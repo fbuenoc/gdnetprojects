@@ -9,7 +9,6 @@ namespace WebFramework.Mapping.Base
         public AbstractEntityMappingWithModification(IGeneratorDef generator)
             : base(generator)
         {
-            base.Property(e => e.IsActive);
             base.Property(e => e.IsDeletable);
             base.Property(e => e.IsEditable);
             base.Property(e => e.IsViewable);

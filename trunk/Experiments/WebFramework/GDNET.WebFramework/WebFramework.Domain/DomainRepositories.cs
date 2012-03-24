@@ -1,5 +1,6 @@
 ﻿using GDNET.Common.Data;
 using WebFramework.Domain.Repositories.Common;
+using WebFramework.Domain.Repositories.System;
 
 namespace WebFramework.Domain
 {
@@ -11,6 +12,8 @@ namespace WebFramework.Domain
         {
             _instance = instance;
         }
+
+        #region Common Repositories
 
         public static IApplicationRepository Application
         {
@@ -57,17 +60,42 @@ namespace WebFramework.Domain
             get { return _instance.GetRepositoryAssistant(); }
         }
 
+        #endregion
+
+        #region System Repositories
+
+        public static IPageRepository Page
+        {
+            get { return _instance.GetPageRepository(); }
+        }
+
+        public static IWidgetRepository Widget
+        {
+            get { return _instance.GetWidgetRepository(); }
+        }
+
+        public static IZoneRepository Zone
+        {
+            get { return _instance.GetZoneRepository(); }
+        }
+
+        #endregion
+
         #region Abstract methods
 
-        public abstract IApplicationRepository GetApplicationRepository();
-        public abstract IContentAttributeRepository GetContentAttributeRepository();
-        public abstract IContentItemRepository GetContentItemRepository();
-        public abstract IContentTypeRepository GetContentTypeRepository();
-        public abstract ICultureRepository GetCultureRepository();
-        public abstract IListValueRepository GetRepositoryListValue();
-        public abstract ITemporaryRepository GetTemporaryRepository();
-        public abstract ITranslationRepository GetTranslationRepository();
-        public abstract IRepositoryAssistant GetRepositoryAssistant();
+        protected abstract IApplicationRepository GetApplicationRepository();
+        protected abstract IContentAttributeRepository GetContentAttributeRepository();
+        protected abstract IContentItemRepository GetContentItemRepository();
+        protected abstract IContentTypeRepository GetContentTypeRepository();
+        protected abstract ICultureRepository GetCultureRepository();
+        protected abstract IListValueRepository GetRepositoryListValue();
+        protected abstract ITemporaryRepository GetTemporaryRepository();
+        protected abstract ITranslationRepository GetTranslationRepository();
+        protected abstract IRepositoryAssistant GetRepositoryAssistant();
+
+        protected abstract IPageRepository GetPageRepository();
+        protected abstract IWidgetRepository GetWidgetRepository();
+        protected abstract IZoneRepository GetZoneRepository();
 
         #endregion
 

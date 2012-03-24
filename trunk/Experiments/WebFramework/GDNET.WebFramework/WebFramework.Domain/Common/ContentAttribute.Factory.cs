@@ -1,5 +1,4 @@
 ﻿using GDNET.Common.DesignByContract;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Domain.Common
 {
@@ -29,7 +28,7 @@ namespace WebFramework.Domain.Common
                 ThrowException.ArgumentExceptionIfNullOrEmpty(code, "code", "Code of attribute can not be null.");
                 ThrowException.ArgumentNullException(dataType, "dataType", "Data type can not be null.");
 
-                var attribute = new ContentAttribute
+                var attribute = new ContentAttribute()
                 {
                     Code = code,
                     Position = position,

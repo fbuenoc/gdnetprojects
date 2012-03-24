@@ -65,7 +65,6 @@
     <Compile Include="DynamicInput\AttributeInfo.cs" />
     <Compile Include="DynamicInput\AttributeKey.cs" />
     <Compile Include="DynamicInput\AttributeValue.cs" />
-    <Compile Include="DefaultImpl\RepositoryAssistant.cs" />
     <Compile Include="Extensions\CultureAssistant.cs" />
     <Compile Include="Extensions\EntityAssistant.cs" />
     <Compile Include="Common\ListValue.cs" />

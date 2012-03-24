@@ -59,6 +59,12 @@
     <Compile Include="Base\AbstractEntityMappingWithModification.cs" />
     <Compile Include="Constants\MappingConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\RegionSettingMap.cs" />
+    <Compile Include="System\WidgetPropertyMap.cs" />
+    <Compile Include="System\WidgetMap.cs" />
+    <Compile Include="System\ZoneMap.cs" />
+    <Compile Include="System\RegionMap.cs" />
+    <Compile Include="System\PageMap.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
@@ -78,6 +84,7 @@
       <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

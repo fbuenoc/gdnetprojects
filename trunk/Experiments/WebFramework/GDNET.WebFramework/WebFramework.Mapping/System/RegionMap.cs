@@ -1,20 +1,18 @@
 ﻿using NHibernate.Mapping.ByCode;
-using WebFramework.Domain.Common;
+using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
 using WebFramework.Mapping.Constants;
 
-namespace WebFramework.Mapping.Common
+namespace WebFramework.Mapping.System
 {
-    public class TranslationMap : AbstractEntityMappingWithModification<Translation, long>, INHibernateMapping
+    public class RegionMap : AbstractEntityMapping<Region, long>, INHibernateMapping
     {
-        public TranslationMap()
+        public RegionMap()
             : base(Generators.Native)
         {
-            base.Lazy(false);
-
-            base.Property(e => e.Code);
-            base.Property(e => e.Value);
-            base.Property(e => e.IsRichTextEditor);
+            base.Property(e => e.Name);
+            base.Property(e => e.Description);
+            base.Property(e => e.Position);
 
             base.ManyToOne(e => e.LifeCycle, m =>
             {
@@ -22,17 +20,19 @@ namespace WebFramework.Mapping.Common
                 m.Column(MappingConstants.StatutLifeCycleId);
                 m.Cascade(Cascade.All);
             });
-            base.ManyToOne(e => e.Category, m =>
+
+            base.ManyToOne(e => e.Widget, m =>
             {
                 m.Lazy(LazyRelation.Proxy);
-                m.Column(MappingConstants.CategoryId);
                 m.Cascade(Cascade.None);
+                m.Column(MappingConstants.WidgetId);
             });
-            base.ManyToOne(e => e.Culture, m =>
+
+            base.ManyToOne(e => e.Zone, m =>
             {
                 m.Lazy(LazyRelation.Proxy);
-                m.Column(MappingConstants.CultureId);
                 m.Cascade(Cascade.None);
+                m.Column(MappingConstants.Region.ZoneId);
             });
         }
     }

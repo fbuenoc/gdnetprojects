@@ -9,14 +9,15 @@
 
         public class PageFactory
         {
-            public Page Create(string name)
+            public Page Create(string name, string uniqueName)
             {
-                var p = new Page()
+                var page = new Page()
                 {
                     Name = name,
+                    UniqueName = uniqueName,
                 };
 
-                return p;
+                return page;
             }
         }
     }

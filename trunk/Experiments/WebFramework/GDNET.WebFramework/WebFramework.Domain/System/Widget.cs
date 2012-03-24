@@ -34,6 +34,18 @@ namespace WebFramework.Domain.System
             set;
         }
 
+        public virtual string ClassName
+        {
+            get;
+            set;
+        }
+
+        public virtual string AssemblyName
+        {
+            get;
+            set;
+        }
+
         public virtual ReadOnlyCollection<WidgetFactory> Properties
         {
             get { return new ReadOnlyCollection<WidgetFactory>(this.widgetProperties); }

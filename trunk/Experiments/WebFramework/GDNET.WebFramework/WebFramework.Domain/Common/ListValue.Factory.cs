@@ -1,5 +1,4 @@
 ﻿using GDNET.Common.DesignByContract;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Domain.Common
 {
