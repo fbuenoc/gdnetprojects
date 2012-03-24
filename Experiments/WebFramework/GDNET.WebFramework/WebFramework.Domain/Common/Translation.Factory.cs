@@ -1,7 +1,6 @@
 ﻿using System;
 using GDNET.Common.DesignByContract;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Domain.Common
 {
@@ -58,7 +57,7 @@ namespace WebFramework.Domain.Common
                 return translation;
             }
 
-            internal Translation NewInstance()
+            public Translation NewInstance()
             {
                 return new Translation();
             }

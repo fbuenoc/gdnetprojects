@@ -1,7 +1,6 @@
 ﻿using System;
 using GDNET.Common.DesignByContract;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Domain.Common
 {
@@ -17,8 +16,6 @@ namespace WebFramework.Domain.Common
             /// <summary>
             /// Create Temporary data with default encoding (NONE)
             /// </summary>
-            /// <param name="value"></param>
-            /// <returns></returns>
             public Temporary Create(string value)
             {
                 return this.Create(value, ListValueConstants.EncryptionTypes.None);
@@ -27,8 +24,6 @@ namespace WebFramework.Domain.Common
             /// <summary>
             /// Create Temporary data with base64 encoding
             /// </summary>
-            /// <param name="value"></param>
-            /// <returns></returns>
             public Temporary CreateWithBase64(string value)
             {
                 return this.Create(value, ListValueConstants.EncryptionTypes.Base64);
@@ -37,8 +32,6 @@ namespace WebFramework.Domain.Common
             /// <summary>
             /// Create Temporary data with AES encryption
             /// </summary>
-            /// <param name="value"></param>
-            /// <returns></returns>
             public Temporary CreateWithAES(string value)
             {
                 return this.Create(value, ListValueConstants.EncryptionTypes.AES);
@@ -48,7 +41,7 @@ namespace WebFramework.Domain.Common
             {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(encodingTypeName, "encodingTypeName", "Encoding type name can not be null.");
 
-                var temporary = new Temporary
+                var temporary = new Temporary()
                 {
                     Id = Guid.NewGuid(),
                     Text = value,

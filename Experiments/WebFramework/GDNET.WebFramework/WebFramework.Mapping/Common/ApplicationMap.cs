@@ -34,7 +34,7 @@ namespace WebFramework.Mapping.Common
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
-                m.Column(MappingConstants.Application.CategoryId);
+                m.Column(MappingConstants.CategoryId);
             });
             base.ManyToOne(e => e.CultureDefault, m =>
             {

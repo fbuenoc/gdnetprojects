@@ -2,8 +2,10 @@
 using GDNET.NHibernate.SessionManagers;
 using WebFramework.Data.Common.Repositories;
 using WebFramework.Data.Common.Specifications;
+using WebFramework.Data.System.Repositories;
 using WebFramework.Domain;
 using WebFramework.Domain.Repositories.Common;
+using WebFramework.Domain.Repositories.System;
 
 namespace WebFramework.NHibernate
 {
@@ -17,67 +19,86 @@ namespace WebFramework.NHibernate
             base.Initialize(this);
         }
 
-        public override IApplicationRepository GetApplicationRepository()
+        protected override IApplicationRepository GetApplicationRepository()
         {
-            IApplicationRepository repositoryApplication = new ApplicationRepository(this.sessionStrategy);
-            repositoryApplication.Specification = new ApplicationSpecification();
+            IApplicationRepository repository = new ApplicationRepository(this.sessionStrategy);
+            repository.Specification = new ApplicationSpecification();
 
-            return repositoryApplication;
+            return repository;
         }
 
-        public override IContentAttributeRepository GetContentAttributeRepository()
+        protected override IContentAttributeRepository GetContentAttributeRepository()
         {
-            IContentAttributeRepository contentAttributeRepository = new ContentAttributeRepository(this.sessionStrategy);
-            contentAttributeRepository.Specification = new ContentAttributeSpecification();
+            IContentAttributeRepository repository = new ContentAttributeRepository(this.sessionStrategy);
+            repository.Specification = new ContentAttributeSpecification();
 
-            return contentAttributeRepository;
+            return repository;
         }
 
-        public override IContentItemRepository GetContentItemRepository()
+        protected override IContentItemRepository GetContentItemRepository()
         {
-            IContentItemRepository repositoryContentItem = new ContentItemRepository(this.sessionStrategy);
-            repositoryContentItem.Specification = new ContentItemSpecification();
+            IContentItemRepository repository = new ContentItemRepository(this.sessionStrategy);
+            repository.Specification = new ContentItemSpecification();
 
-            return repositoryContentItem;
+            return repository;
         }
 
-        public override IContentTypeRepository GetContentTypeRepository()
+        protected override IContentTypeRepository GetContentTypeRepository()
         {
-            IContentTypeRepository repositoryContentType = new ContentTypeRepository(this.sessionStrategy);
-            repositoryContentType.Specification = new ContentTypeSpecification();
+            IContentTypeRepository repository = new ContentTypeRepository(this.sessionStrategy);
+            repository.Specification = new ContentTypeSpecification();
 
-            return repositoryContentType;
+            return repository;
         }
 
-        public override ICultureRepository GetCultureRepository()
+        protected override ICultureRepository GetCultureRepository()
         {
-            ICultureRepository cultureRepository = new CultureRepository(this.sessionStrategy);
-            cultureRepository.Specification = new CultureSpecification();
-            return cultureRepository;
+            ICultureRepository repository = new CultureRepository(this.sessionStrategy);
+            repository.Specification = new CultureSpecification();
+            return repository;
         }
 
-        public override IListValueRepository GetRepositoryListValue()
+        protected override IListValueRepository GetRepositoryListValue()
         {
-            IListValueRepository repositoryListValue = new ListValueRepository(this.sessionStrategy);
-            repositoryListValue.Specification = new ListValueSpecification();
-            return repositoryListValue;
+            IListValueRepository repository = new ListValueRepository(this.sessionStrategy);
+            repository.Specification = new ListValueSpecification();
+            return repository;
         }
 
-        public override ITemporaryRepository GetTemporaryRepository()
+        protected override ITemporaryRepository GetTemporaryRepository()
         {
-            ITemporaryRepository temporaryRepository = new TemporaryRepository(this.sessionStrategy);
-            temporaryRepository.Specification = new TemporarySpecification();
-            return temporaryRepository;
+            ITemporaryRepository repository = new TemporaryRepository(this.sessionStrategy);
+            repository.Specification = new TemporarySpecification();
+            return repository;
         }
 
-        public override ITranslationRepository GetTranslationRepository()
+        protected override ITranslationRepository GetTranslationRepository()
         {
-            ITranslationRepository translationRepository = new TranslationRepository(this.sessionStrategy);
-            translationRepository.Specification = new TranslationSpecification();
-            return translationRepository;
+            ITranslationRepository repository = new TranslationRepository(this.sessionStrategy);
+            repository.Specification = new TranslationSpecification();
+
+            return repository;
         }
 
-        public override IRepositoryAssistant GetRepositoryAssistant()
+        protected override IPageRepository GetPageRepository()
+        {
+            IPageRepository repository = new PageRepository(this.sessionStrategy);
+            return repository;
+        }
+
+        protected override IWidgetRepository GetWidgetRepository()
+        {
+            IWidgetRepository repository = new WidgetRepository(this.sessionStrategy);
+            return repository;
+        }
+
+        protected override IZoneRepository GetZoneRepository()
+        {
+            IZoneRepository repository = new ZoneRepository(this.sessionStrategy);
+            return repository;
+        }
+
+        protected override IRepositoryAssistant GetRepositoryAssistant()
         {
             return this.sessionStrategy;
         }

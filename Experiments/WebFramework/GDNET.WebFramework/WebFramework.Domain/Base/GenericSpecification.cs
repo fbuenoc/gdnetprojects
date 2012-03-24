@@ -1,10 +1,8 @@
 ﻿using System;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Security.DefaultImpl;
-using WebFramework.Domain.Base;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Domain.Base
 {

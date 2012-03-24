@@ -3,16 +3,18 @@
     public sealed class MappingConstants
     {
         public const string ApplicationId = "ApplicationId";
+        public const string CategoryId = "CategoryId";
         public const string ContentItemId = "ContentItemId";
         public const string ContentTypeId = "ContentTypeId";
+        public const string CultureId = "CultureId";
         public const string DescriptionTranslationId = "DescriptionTranslationId";
         public const string DetailTranslationId = "DetailTranslationId";
         public const string NameTranslationId = "NameTranslationId";
         public const string StatutLifeCycleId = "StatutLifeCycleId";
+        public const string WidgetId = "WidgetId";
 
         public sealed class Application
         {
-            public const string CategoryId = "CategoryId";
             public const string CultureDefaultId = "CultureDefaultId";
         }
 
@@ -39,15 +41,15 @@
             public const string ParentId = "ParentId";
         }
 
-        public sealed class Temporary
+        public sealed class Region
         {
-            public const string EncryptionTypeId = "EncryptionTypeId";
+            public const string ZoneId = "ZoneId";
         }
 
-        public sealed class Translation
+        public sealed class RegionSetting
         {
-            public const string CultureId = "CultureId";
-            public const string CategoryId = "CategoryId";
+            public const string RegionId = "RegionId";
+            public const string WidgetPropertyId = "WidgetPropertyId";
         }
 
         public sealed class StatutLog
@@ -58,6 +60,16 @@
         public sealed class StatutLifeCycle
         {
             public const string ActualStatutId = "ActualStatutId";
+        }
+
+        public sealed class Temporary
+        {
+            public const string EncryptionTypeId = "EncryptionTypeId";
+        }
+
+        public sealed class Zone
+        {
+            public const string PageId = "PageId";
         }
     }
 }

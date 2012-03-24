@@ -34,6 +34,12 @@ namespace WebFramework.Domain.System
             set;
         }
 
+        public virtual string UniqueName
+        {
+            get;
+            set;
+        }
+
         public virtual string Description
         {
             get;

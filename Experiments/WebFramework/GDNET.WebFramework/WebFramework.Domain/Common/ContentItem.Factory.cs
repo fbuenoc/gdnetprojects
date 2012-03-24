@@ -1,5 +1,4 @@
 ﻿using GDNET.Common.DesignByContract;
-using WebFramework.Domain.DefaultImpl;
 
 namespace WebFramework.Domain.Common
 {
@@ -28,7 +27,7 @@ namespace WebFramework.Domain.Common
                 ThrowException.ArgumentNullException(type, "type", "Type of content item can not be null.");
                 ThrowException.ArgumentExceptionIfNullOrEmpty(name, "name", "Name of content item can not be null.");
 
-                var contentItem = new ContentItem
+                var contentItem = new ContentItem()
                 {
                     ContentType = type,
                     Position = position

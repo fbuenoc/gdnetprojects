@@ -10,12 +10,15 @@ namespace WebFramework.Mapping.Base
         public AbstractEntityMapping(IGeneratorDef generator)
         {
             base.Lazy(true);
+
             base.Id<TId>(e => e.Id, m =>
             {
                 m.Generator(generator);
                 m.Column(MetaEntityBase.Id);
                 m.Access(Accessor.Property);
             });
+
+            base.Property(e => e.IsActive);
         }
     }
 }
