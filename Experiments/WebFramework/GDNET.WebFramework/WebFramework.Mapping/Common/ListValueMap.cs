@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.Common;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.Common
 {
-    public class ListValueMap : AbstractEntityMappingWithModification<ListValue, long>, INHibernateMapping
+    public class ListValueMap : AbstractEntityWithModificationMapping<ListValue, long>, INHibernateMapping
     {
         public ListValueMap()
             : base(Generators.Native)

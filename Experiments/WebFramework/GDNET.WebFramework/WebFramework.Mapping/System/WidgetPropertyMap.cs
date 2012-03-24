@@ -1,7 +1,6 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.System
 {
@@ -18,6 +17,13 @@ namespace WebFramework.Mapping.System
                 m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
                 m.Column(MappingConstants.WidgetId);
+            });
+
+            base.ManyToOne(e => e.LifeCycle, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.StatutLifeCycleId);
+                m.Cascade(Cascade.All);
             });
         }
     }

@@ -1,7 +1,6 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.System
 {

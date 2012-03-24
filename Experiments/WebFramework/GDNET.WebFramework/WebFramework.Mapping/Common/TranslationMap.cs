@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.Common;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.Common
 {
-    public class TranslationMap : AbstractEntityMappingWithModification<Translation, long>, INHibernateMapping
+    public class TranslationMap : AbstractEntityWithModificationMapping<Translation, long>, INHibernateMapping
     {
         public TranslationMap()
             : base(Generators.Native)

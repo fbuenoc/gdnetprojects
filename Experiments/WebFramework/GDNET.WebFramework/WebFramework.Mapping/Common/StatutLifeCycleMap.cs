@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.Common;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.Common
 {
-    public class StatutLifeCycleMap : AbstractEntityMapping<StatutLifeCycle, long>, INHibernateMapping
+    public class StatutLifeCycleMap : AbstractEntityWithActiveMapping<StatutLifeCycle, long>, INHibernateMapping
     {
         public StatutLifeCycleMap()
             : base(Generators.Native)

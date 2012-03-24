@@ -2,11 +2,10 @@
 using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.Common;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.Common
 {
-    public class StatutLogMap : AbstractEntityMapping<StatutLog, Guid>, INHibernateMapping
+    public class StatutLogMap : AbstractEntityWithActiveMapping<StatutLog, Guid>, INHibernateMapping
     {
         public StatutLogMap()
             : base(Generators.Assigned)
