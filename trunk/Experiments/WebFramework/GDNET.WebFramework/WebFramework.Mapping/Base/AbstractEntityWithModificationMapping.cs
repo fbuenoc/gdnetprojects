@@ -3,10 +3,10 @@ using NHibernate.Mapping.ByCode;
 
 namespace WebFramework.Mapping.Base
 {
-    public abstract class AbstractEntityMappingWithModification<TObject, TId> : AbstractEntityMapping<TObject, TId>
+    public abstract class AbstractEntityWithModificationMapping<TObject, TId> : AbstractEntityWithActiveMapping<TObject, TId>
         where TObject : EntityWithModificationBase<TId>
     {
-        public AbstractEntityMappingWithModification(IGeneratorDef generator)
+        public AbstractEntityWithModificationMapping(IGeneratorDef generator)
             : base(generator)
         {
             base.Property(e => e.IsDeletable);

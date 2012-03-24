@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.System
 {
-    public class RegionMap : AbstractEntityMapping<Region, long>, INHibernateMapping
+    public class RegionMap : AbstractEntityWithActiveMapping<Region, long>, INHibernateMapping
     {
         public RegionMap()
             : base(Generators.Native)

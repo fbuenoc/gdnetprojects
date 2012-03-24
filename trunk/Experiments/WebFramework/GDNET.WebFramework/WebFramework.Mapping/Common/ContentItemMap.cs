@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.Common;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.Common
 {
-    public class ContentItemMap : AbstractEntityMappingWithModification<ContentItem, long>, INHibernateMapping
+    public class ContentItemMap : AbstractEntityWithModificationMapping<ContentItem, long>, INHibernateMapping
     {
         public ContentItemMap()
             : base(Generators.Native)

@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.System
 {
-    public class PageMap : AbstractEntityMapping<Page, long>, INHibernateMapping
+    public class PageMap : AbstractEntityWithActiveMapping<Page, long>, INHibernateMapping
     {
         public PageMap()
             : base(Generators.Native)

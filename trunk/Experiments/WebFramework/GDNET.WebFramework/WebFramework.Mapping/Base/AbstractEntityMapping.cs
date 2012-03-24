@@ -17,8 +17,6 @@ namespace WebFramework.Mapping.Base
                 m.Column(MetaEntityBase.Id);
                 m.Access(Accessor.Property);
             });
-
-            base.Property(e => e.IsActive);
         }
     }
 }

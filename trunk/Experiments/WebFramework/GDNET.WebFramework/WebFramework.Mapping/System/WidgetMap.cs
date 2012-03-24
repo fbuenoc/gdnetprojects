@@ -1,11 +1,10 @@
 ﻿using NHibernate.Mapping.ByCode;
 using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
-using WebFramework.Mapping.Constants;
 
 namespace WebFramework.Mapping.System
 {
-    public class WidgetMap : AbstractEntityMapping<Widget, long>, INHibernateMapping
+    public class WidgetMap : AbstractEntityWithActiveMapping<Widget, long>, INHibernateMapping
     {
         public WidgetMap()
             : base(Generators.Native)
