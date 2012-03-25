@@ -25,6 +25,17 @@ namespace WebFramework.Mapping.System
                 m.Cascade(Cascade.None);
                 m.Column(MappingConstants.PageId);
             });
+
+            base.Bag(e => e.Regions, cm =>
+            {
+                cm.Access(Accessor.Field);
+                cm.Lazy(CollectionLazy.Lazy);
+                cm.Key(k => k.Column(MappingConstants.ZoneId));
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+            }, m =>
+            {
+                m.OneToMany();
+            });
         }
     }
 }
