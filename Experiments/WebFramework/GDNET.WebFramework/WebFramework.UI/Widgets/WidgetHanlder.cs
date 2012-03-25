@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using WebFramework.Base.Framework.System;
+using WebFramework.Common.Widgets;
 
 namespace WebFramework.UI.Widgets
 {
@@ -21,8 +23,12 @@ namespace WebFramework.UI.Widgets
             {
                 foreach (var region in zoneModel.Regions)
                 {
+                    var objet = Activator.CreateInstance(region.Widget.AssemblyName, region.Widget.ClassName);
+                    var widget = objet.Unwrap() as IWidget;
+                    object resultModel = widget.Initialize(region);
+
                     string viewName = string.Format("{0}/{1}", region.Widget.TechnicalName, "Index");
-                    this.html.RenderPartial(viewName, region);
+                    this.html.RenderPartial(viewName, resultModel);
                 }
             }
         }

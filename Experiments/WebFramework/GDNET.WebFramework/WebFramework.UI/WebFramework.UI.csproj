@@ -78,6 +78,10 @@
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
       <Name>WebFramework.Base</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Common.Widgets\WebFramework.Common.Widgets.csproj">
+      <Project>{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}</Project>
+      <Name>WebFramework.Common.Widgets</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
