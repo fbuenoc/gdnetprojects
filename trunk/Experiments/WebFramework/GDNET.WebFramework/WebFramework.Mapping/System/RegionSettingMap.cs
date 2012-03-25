@@ -22,7 +22,7 @@ namespace WebFramework.Mapping.System
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
-                m.Column(MappingConstants.RegionSetting.RegionId);
+                m.Column(MappingConstants.RegionId);
             });
         }
     }

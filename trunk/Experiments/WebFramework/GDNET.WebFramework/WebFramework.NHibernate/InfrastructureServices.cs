@@ -4,6 +4,7 @@ using GDNET.Common.Services;
 using WebFramework.Domain;
 using WebFramework.Domain.Services;
 using WebFramework.Services;
+using WebFramework.Services.System;
 
 namespace WebFramework.NHibernate
 {
@@ -34,6 +35,11 @@ namespace WebFramework.NHibernate
         protected override IFormatterService GetFormatterService()
         {
             return new FormatterService();
+        }
+
+        protected override IRegionService GetRegionService()
+        {
+            return new RegionService();
         }
     }
 }

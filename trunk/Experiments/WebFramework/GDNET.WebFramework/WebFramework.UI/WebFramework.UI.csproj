@@ -53,6 +53,7 @@
     <Compile Include="Helpers\WebFrameworkFactory.ActionLink.cs" />
     <Compile Include="Helpers\WebFrameworkFactory.cs" />
     <Compile Include="Helpers\WebFrameworkFactory.HyperLink.cs" />
+    <Compile Include="Widgets\WidgetHanlder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WebFrameworkAssistant.cs" />
   </ItemGroup>
