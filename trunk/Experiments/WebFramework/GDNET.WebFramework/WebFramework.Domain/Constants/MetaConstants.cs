@@ -69,5 +69,12 @@ namespace WebFramework.Domain.Constants
             public static readonly string Category = ExpressionAssistant.GetPropertyName(() => defaultTranslation.Category);
             public static readonly string IsRichTextEditor = ExpressionAssistant.GetPropertyName(() => defaultTranslation.IsRichTextEditor);
         }
+
+        public sealed class WidgetMeta
+        {
+            public static readonly Widget defaultWidget = Widget.Factory.NewInstance();
+
+            public static readonly string Code = ExpressionAssistant.GetPropertyName(() => defaultWidget.Code);
+        }
     }
 }

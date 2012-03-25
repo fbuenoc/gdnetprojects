@@ -33,9 +33,20 @@ namespace WebFramework.Domain
             get { return _instance.GetFormatterService(); }
         }
 
+        #region System
+
+        public static IRegionService Region
+        {
+            get { return _instance.GetRegionService(); }
+        }
+
+        #endregion
+
         protected abstract IEncryptionService GetEncryptionService();
         protected abstract IContentTypeService GetContentTypeService();
         protected abstract ITranslationService GetTranslationService();
         protected abstract IFormatterService GetFormatterService();
+
+        protected abstract IRegionService GetRegionService();
     }
 }

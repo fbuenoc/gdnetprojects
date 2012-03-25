@@ -34,6 +34,12 @@ namespace WebFramework.Domain.System
             protected internal set;
         }
 
+        public virtual string TechnicalName
+        {
+            get;
+            protected internal set;
+        }
+
         public virtual string Version
         {
             get;
