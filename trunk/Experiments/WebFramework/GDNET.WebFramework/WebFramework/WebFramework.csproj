@@ -260,6 +260,7 @@
     <Compile Include="Common\Controllers\AbstractController.cs" />
     <Compile Include="Common\Controllers\AbstractCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
+    <Compile Include="Common\WebFrameworkViewEngine.cs" />
     <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
@@ -271,6 +272,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -794,10 +796,12 @@
     <Content Include="Scripts\2012.1.214\telerik.upload.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.window.min.js" />
     <Content Include="Views\About\Index.aspx" />
+    <Content Include="Views\Home\ArticleView.ascx" />
     <Content Include="Views\Home\Welcome.aspx" />
     <Content Include="Views\Item\ArticleDetails.aspx" />
     <Content Include="Views\Item\Details.aspx" />
     <Content Include="Views\Item\ProductDetails.aspx" />
+    <Content Include="Views\Page\Index.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -853,6 +857,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />
+    <Folder Include="Views\Widgets\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">

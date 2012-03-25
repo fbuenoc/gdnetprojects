@@ -6,8 +6,8 @@
     <title>
         <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
     </title>
-    <%= base.Html.GDNet().RegisterStyleSheet("Site.css")%>
     <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+    <%= base.Html.GDNet().RegisterStyleSheet("Site.css")%>
 </head>
 <body>
     <div class="page">
