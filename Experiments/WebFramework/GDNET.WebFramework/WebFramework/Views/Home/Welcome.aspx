@@ -52,20 +52,7 @@
         </div>
     </div>
     <div class="content_right">
-        <table>
-            <%
-                foreach (var articleModel in base.Model.Articles)
-                {
-            %>
-            <tr>
-                <td>
-                    <%= base.Html.WebFramework().HyperLink(articleModel)%>
-                </td>
-            </tr>
-            <%
-                }
-            %>
-        </table>
+        <% base.Html.RenderPartial("ArticleView", base.Model.Articles); %>
     </div>
     <div class="clear">
     </div>
