@@ -35,6 +35,17 @@ namespace WebFramework.Mapping.System
                 m.Cascade(Cascade.None);
                 m.Column(MappingConstants.CultureId);
             });
+
+            base.Bag(e => e.Zones, cm =>
+            {
+                cm.Access(Accessor.Field);
+                cm.Lazy(CollectionLazy.Lazy);
+                cm.Key(k => k.Column(MappingConstants.PageId));
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+            }, m =>
+            {
+                m.OneToMany();
+            });
         }
     }
 }

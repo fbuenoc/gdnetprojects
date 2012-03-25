@@ -10,6 +10,7 @@ namespace WebFramework.Mapping.System
             : base(Generators.Native)
         {
             base.Property(e => e.Code);
+            base.Property(e => e.Version);
             base.Property(e => e.ClassName);
             base.Property(e => e.AssemblyName);
 
@@ -30,6 +31,17 @@ namespace WebFramework.Mapping.System
                 m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.StatutLifeCycleId);
                 m.Cascade(Cascade.All);
+            });
+
+            base.Bag(e => e.Properties, cm =>
+            {
+                cm.Access(Accessor.Field);
+                cm.Lazy(CollectionLazy.Lazy);
+                cm.Key(k => k.Column(MappingConstants.WidgetId));
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+            }, m =>
+            {
+                m.OneToMany();
             });
         }
     }
