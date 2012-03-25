@@ -2,8 +2,10 @@
 using GDNET.NHibernate.SessionManagers;
 using WebFramework.Data.Common.Repositories;
 using WebFramework.Data.Common.Specifications;
+using WebFramework.Data.System.Repositories;
 using WebFramework.Domain;
 using WebFramework.Domain.Repositories.Common;
+using WebFramework.Domain.Repositories.System;
 
 namespace WebFramework.Data.UnitTest
 {
@@ -25,7 +27,7 @@ namespace WebFramework.Data.UnitTest
             base.Initialize(this);
         }
 
-        public override IApplicationRepository GetApplicationRepository()
+        protected override IApplicationRepository GetApplicationRepository()
         {
             if (repositoryApplication == null)
             {
@@ -35,7 +37,7 @@ namespace WebFramework.Data.UnitTest
             return repositoryApplication;
         }
 
-        public override IContentAttributeRepository GetContentAttributeRepository()
+        protected override IContentAttributeRepository GetContentAttributeRepository()
         {
             if (repositoryContentAttribute == null)
             {
@@ -44,7 +46,7 @@ namespace WebFramework.Data.UnitTest
             return repositoryContentAttribute;
         }
 
-        public override IContentItemRepository GetContentItemRepository()
+        protected override IContentItemRepository GetContentItemRepository()
         {
             if (repositoryContentItem == null)
             {
@@ -54,7 +56,7 @@ namespace WebFramework.Data.UnitTest
             return repositoryContentItem;
         }
 
-        public override IContentTypeRepository GetContentTypeRepository()
+        protected override IContentTypeRepository GetContentTypeRepository()
         {
             if (repositoryContentType == null)
             {
@@ -64,7 +66,7 @@ namespace WebFramework.Data.UnitTest
             return repositoryContentType;
         }
 
-        public override ICultureRepository GetCultureRepository()
+        protected override ICultureRepository GetCultureRepository()
         {
             if (repositoryCulture == null)
             {
@@ -73,7 +75,7 @@ namespace WebFramework.Data.UnitTest
             return repositoryCulture;
         }
 
-        public override IListValueRepository GetRepositoryListValue()
+        protected override IListValueRepository GetRepositoryListValue()
         {
             if (repositoryListValue == null)
             {
@@ -83,7 +85,7 @@ namespace WebFramework.Data.UnitTest
             return repositoryListValue;
         }
 
-        public override ITemporaryRepository GetTemporaryRepository()
+        protected override ITemporaryRepository GetTemporaryRepository()
         {
             if (repositoryTemporary == null)
             {
@@ -93,7 +95,7 @@ namespace WebFramework.Data.UnitTest
             return repositoryTemporary;
         }
 
-        public override ITranslationRepository GetTranslationRepository()
+        protected override ITranslationRepository GetTranslationRepository()
         {
             if (repositoryTranslation == null)
             {
@@ -102,9 +104,27 @@ namespace WebFramework.Data.UnitTest
             return repositoryTranslation;
         }
 
-        public override IRepositoryAssistant GetRepositoryAssistant()
+        protected override IRepositoryAssistant GetRepositoryAssistant()
         {
             return (IRepositoryAssistant)this.sessionStrategy;
+        }
+
+        protected override IPageRepository GetPageRepository()
+        {
+            IPageRepository repository = new PageRepository(this.sessionStrategy);
+            return repository;
+        }
+
+        protected override IWidgetRepository GetWidgetRepository()
+        {
+            IWidgetRepository repository = new WidgetRepository(this.sessionStrategy);
+            return repository;
+        }
+
+        protected override IZoneRepository GetZoneRepository()
+        {
+            IZoneRepository repository = new ZoneRepository(this.sessionStrategy);
+            return repository;
         }
     }
 }

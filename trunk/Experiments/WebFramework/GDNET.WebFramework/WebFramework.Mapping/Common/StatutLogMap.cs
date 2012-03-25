@@ -5,7 +5,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.Common
 {
-    public class StatutLogMap : AbstractEntityWithActiveMapping<StatutLog, Guid>, INHibernateMapping
+    public class StatutLogMap : AbstractEntityMapping<StatutLog, Guid>, INHibernateMapping
     {
         public StatutLogMap()
             : base(Generators.Assigned)

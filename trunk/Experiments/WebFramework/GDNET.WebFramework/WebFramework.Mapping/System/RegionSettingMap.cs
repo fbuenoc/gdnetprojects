@@ -15,7 +15,7 @@ namespace WebFramework.Mapping.System
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
-                m.Column(MappingConstants.RegionSetting.WidgetPropertyId);
+                m.Column(MappingConstants.WidgetPropertyId);
             });
 
             base.ManyToOne(e => e.Region, m =>

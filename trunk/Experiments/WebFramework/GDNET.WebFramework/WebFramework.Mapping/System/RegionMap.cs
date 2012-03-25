@@ -31,7 +31,7 @@ namespace WebFramework.Mapping.System
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
-                m.Column(MappingConstants.Region.ZoneId);
+                m.Column(MappingConstants.ZoneId);
             });
         }
     }

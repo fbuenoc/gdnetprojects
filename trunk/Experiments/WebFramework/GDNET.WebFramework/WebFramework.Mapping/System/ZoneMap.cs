@@ -23,7 +23,7 @@ namespace WebFramework.Mapping.System
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Cascade(Cascade.None);
-                m.Column(MappingConstants.Zone.PageId);
+                m.Column(MappingConstants.PageId);
             });
         }
     }

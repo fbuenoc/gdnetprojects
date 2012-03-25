@@ -10,8 +10,11 @@
         public const string DescriptionTranslationId = "DescriptionTranslationId";
         public const string DetailTranslationId = "DetailTranslationId";
         public const string NameTranslationId = "NameTranslationId";
+        public const string PageId = "PageId";
         public const string StatutLifeCycleId = "StatutLifeCycleId";
         public const string WidgetId = "WidgetId";
+        public const string WidgetPropertyId = "WidgetPropertyId";
+        public const string ZoneId = "ZoneId";
 
         public sealed class Application
         {
@@ -41,15 +44,9 @@
             public const string ParentId = "ParentId";
         }
 
-        public sealed class Region
-        {
-            public const string ZoneId = "ZoneId";
-        }
-
         public sealed class RegionSetting
         {
             public const string RegionId = "RegionId";
-            public const string WidgetPropertyId = "WidgetPropertyId";
         }
 
         public sealed class StatutLog
@@ -65,11 +62,6 @@
         public sealed class Temporary
         {
             public const string EncryptionTypeId = "EncryptionTypeId";
-        }
-
-        public sealed class Zone
-        {
-            public const string PageId = "PageId";
         }
     }
 }
