@@ -11,22 +11,6 @@ namespace WebFramework.Business.Helpers
 {
     public static class BusinessEntityAssistant
     {
-        public static IList<TEntity> GetAll<TEntity>() where TEntity : BusinessEntityBase
-        {
-            return BusinessEntityAssistant.GetAll<TEntity>(int.MinValue, int.MinValue);
-        }
-
-        public static IList<TEntity> GetAllPaging<TEntity>(int pageIndex, int itemsPerPage) where TEntity : BusinessEntityBase
-        {
-            return BusinessEntityAssistant.GetAll<TEntity>(pageIndex * itemsPerPage, itemsPerPage);
-        }
-
-        public static IList<TEntity> GetAll<TEntity>(int fromIndex, int limitItems) where TEntity : BusinessEntityBase
-        {
-            List<TEntity> results = new List<TEntity>();
-            return results;
-        }
-
         public static TEntity GetById<TEntity>(long id) where TEntity : BusinessEntityBase
         {
             TEntity entity = (TEntity)Activator.CreateInstance(typeof(TEntity), true);

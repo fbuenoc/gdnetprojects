@@ -78,8 +78,15 @@
     <Compile Include="Framework\Common\CultureModel.cs" />
     <Compile Include="Framework\Common\TranslationModel.cs" />
     <Compile Include="Framework\Common\ListValueModel.cs" />
+    <Compile Include="Framework\System\PageModel.cs" />
+    <Compile Include="Framework\System\ZoneModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validation\AccountValidation.cs" />
+    <Compile Include="Widgets\IWidget.cs" />
+    <Compile Include="Widgets\WidgetBase.cs" />
+    <Compile Include="Widgets\WidgetEventArgs.cs" />
+    <Compile Include="Widgets\WidgetEventHandler.cs" />
+    <Compile Include="Widgets\WidgetModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
@@ -111,9 +118,7 @@
       <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Helpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,6 @@
 ﻿using GDNET.Common.Helpers;
 using WebFramework.Domain.Common;
+using WebFramework.Domain.System;
 
 namespace WebFramework.Domain.Constants
 {
@@ -49,6 +50,14 @@ namespace WebFramework.Domain.Constants
 
             public static readonly string Name = ExpressionAssistant.GetPropertyName(() => defaultListValue.Name);
             public static readonly string Parent = ExpressionAssistant.GetPropertyName(() => defaultListValue.Parent);
+        }
+
+        public sealed class PageMeta
+        {
+            private static readonly Page defaultPage = Page.Factory.NewInstance();
+
+            public static readonly string Name = ExpressionAssistant.GetPropertyName(() => defaultPage.Name);
+            public static readonly string UniqueName = ExpressionAssistant.GetPropertyName(() => defaultPage.UniqueName);
         }
 
         public sealed class TranslationMeta

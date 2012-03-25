@@ -3,7 +3,7 @@ using GDNET.Common.Data;
 
 namespace WebFramework.Domain.Base
 {
-    public abstract class AbstractSpecification<TEntity, TId> : ISpecificationBase<TEntity, TId> where TEntity : IEntityBase<TId>
+    public abstract class AbstractSpecification<TEntity, TId> : ISpecificationBase<TEntity, TId> where TEntity : IEntityWithActiveBase<TId>
     {
         public virtual bool OnGetting(TId id)
         {

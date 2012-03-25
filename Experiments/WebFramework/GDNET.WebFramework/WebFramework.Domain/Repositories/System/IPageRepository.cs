@@ -5,5 +5,6 @@ namespace WebFramework.Domain.Repositories.System
 {
     public interface IPageRepository : IRepositoryBase<Page, long>
     {
+        Page GetByUniqueName(string uniqueName);
     }
 }

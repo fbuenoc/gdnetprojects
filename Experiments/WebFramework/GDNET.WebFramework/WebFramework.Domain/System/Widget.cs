@@ -6,11 +6,11 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Widget : EntityBase<long>, IEntityWithLifeCycle
+    public partial class Widget : EntityWithActiveBase<long>, IEntityWithLifeCycle
     {
         #region Fields
 
-        private IList<WidgetFactory> widgetProperties = new List<WidgetFactory>();
+        private IList<WidgetProperty> properties = new List<WidgetProperty>();
 
         #endregion
 
@@ -31,6 +31,12 @@ namespace WebFramework.Domain.System
         public virtual string Code
         {
             get;
+            protected internal set;
+        }
+
+        public virtual string Version
+        {
+            get;
             set;
         }
 
@@ -46,9 +52,9 @@ namespace WebFramework.Domain.System
             set;
         }
 
-        public virtual ReadOnlyCollection<WidgetFactory> Properties
+        public virtual ReadOnlyCollection<WidgetProperty> Properties
         {
-            get { return new ReadOnlyCollection<WidgetFactory>(this.widgetProperties); }
+            get { return new ReadOnlyCollection<WidgetProperty>(this.properties); }
         }
 
         #region IEntityLifeCycle
@@ -67,9 +73,39 @@ namespace WebFramework.Domain.System
 
         #endregion
 
+        #region Methods
+
+        public virtual void AddProperty(WidgetProperty property)
+        {
+            if (!this.Properties.Contains(property))
+            {
+                property.Widget = this;
+                this.properties.Add(property);
+            }
+        }
+
+        public virtual void RemoveProperty(WidgetProperty property)
+        {
+            if (this.Properties.Contains(property))
+            {
+                this.properties.Remove(property);
+            }
+        }
+
+        public virtual void RemoveAllProperties()
+        {
+            this.properties.Clear();
+        }
+
+        #endregion
+
         #region Ctors
 
-        protected Widget() { }
+        protected Widget()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
 
         #endregion
     }

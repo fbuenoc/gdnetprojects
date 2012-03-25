@@ -1,8 +1,10 @@
 ﻿using GDNET.Common.Base.Entities;
+using WebFramework.Domain.Base;
+using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class WidgetProperty : EntityBase<long>
+    public partial class WidgetProperty : EntityBase<long>, IEntityWithLifeCycle
     {
         #region Properties
 
@@ -24,8 +26,30 @@ namespace WebFramework.Domain.System
             set;
         }
 
+        #region IEntityLifeCycle
+
+        public virtual StatutLifeCycle LifeCycle
+        {
+            get;
+            protected internal set;
+        }
+
+        public virtual void ApplyDefaultSettings()
+        {
+        }
+
         #endregion
 
-        protected WidgetProperty() { }
+        #endregion
+
+        #region Ctors
+
+        protected WidgetProperty()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
+
+        #endregion
     }
 }

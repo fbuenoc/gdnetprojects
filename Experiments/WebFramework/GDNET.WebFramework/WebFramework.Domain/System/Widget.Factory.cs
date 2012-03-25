@@ -1,4 +1,6 @@
-﻿namespace WebFramework.Domain.System
+﻿using WebFramework.Domain.Common;
+
+namespace WebFramework.Domain.System
 {
     public partial class Widget
     {
@@ -9,10 +11,16 @@
 
         public class WidgetFactory
         {
-            public Widget Create()
+            public Widget Create(string code, string name)
             {
-                var w = new Widget();
-                return w;
+                var widget = new Widget
+                {
+                    Code = code,
+                    Name = Translation.Factory.Create(string.Format("W-N|{0}", code), name),
+                    Description = Translation.Factory.Create(string.Format("W-D|{0}", code), string.Empty)
+                };
+
+                return widget;
             }
         }
     }

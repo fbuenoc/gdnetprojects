@@ -9,11 +9,12 @@
 
         public class WidgetPropertyFactory
         {
-            public WidgetProperty Create(string code)
+            public WidgetProperty Create(string code, string value)
             {
                 return new WidgetProperty()
                 {
                     Code = code,
+                    Value = value
                 };
             }
         }

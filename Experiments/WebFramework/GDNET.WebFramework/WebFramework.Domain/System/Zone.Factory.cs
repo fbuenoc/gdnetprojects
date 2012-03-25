@@ -9,11 +9,12 @@
 
         public class ZoneFactory
         {
-            public Zone Create(string code)
+            public Zone Create(string code, string description)
             {
                 var zone = new Zone()
                 {
                     Code = code,
+                    Description = description
                 };
                 return zone;
             }
