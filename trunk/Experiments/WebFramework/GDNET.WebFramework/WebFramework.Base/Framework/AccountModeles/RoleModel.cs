@@ -9,7 +9,7 @@ using GDNET.Common.Base.Entities;
 
 namespace WebFramework.Base.Framework.AccountModeles
 {
-    public sealed class RoleModel : EntityBase<string>
+    public sealed class RoleModel : EntityWithActiveBase<string>
     {
         private List<string> usersInRole = new List<string>();
 

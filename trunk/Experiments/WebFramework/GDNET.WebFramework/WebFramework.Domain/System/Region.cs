@@ -6,7 +6,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Region : EntityBase<long>, IEntityWithLifeCycle
+    public partial class Region : EntityWithActiveBase<long>, IEntityWithLifeCycle
     {
         private IList<RegionSetting> settings = new List<RegionSetting>();
 
@@ -36,7 +36,7 @@ namespace WebFramework.Domain.System
             set;
         }
 
-        public virtual int Position
+        public virtual int? Position
         {
             get;
             set;
@@ -69,6 +69,7 @@ namespace WebFramework.Domain.System
         {
             if (!this.Settings.Contains(setting))
             {
+                setting.Region = this;
                 this.settings.Add(setting);
             }
         }
@@ -90,7 +91,11 @@ namespace WebFramework.Domain.System
 
         #region Ctors
 
-        protected Region() { }
+        protected Region()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
 
         #endregion
     }

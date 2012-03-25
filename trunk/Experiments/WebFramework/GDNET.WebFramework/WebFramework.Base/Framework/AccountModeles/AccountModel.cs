@@ -8,7 +8,7 @@ using GDNET.Web.Membership.Profiles.Objects;
 
 namespace WebFramework.Base.Framework.AccountModeles
 {
-    public sealed class AccountModel : EntityBase<string>
+    public sealed class AccountModel : EntityWithActiveBase<string>
     {
         /// <summary>
         /// User key

@@ -6,7 +6,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Zone : EntityBase<long>, IEntityWithLifeCycle
+    public partial class Zone : EntityWithActiveBase<long>, IEntityWithLifeCycle
     {
         private IList<Region> regions = new List<Region>();
 
@@ -15,7 +15,7 @@ namespace WebFramework.Domain.System
         public virtual Page Page
         {
             get;
-            protected internal set;
+            set;
         }
 
         public virtual string Code
@@ -78,7 +78,11 @@ namespace WebFramework.Domain.System
 
         #region Ctors
 
-        protected Zone() { }
+        protected Zone()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
 
         #endregion
     }

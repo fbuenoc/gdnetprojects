@@ -84,7 +84,7 @@ namespace WebFramework.Domain.Extensions
             entity.RefreshTranslation(entity.Description, ExpressionAssistant.GetPropertyName(() => entity.Description));
         }
 
-        public static void RefreshTranslation(this IEntityBase entity, Translation translation, string propertyName)
+        public static void RefreshTranslation(this IEntityWithActiveBase entity, Translation translation, string propertyName)
         {
             ThrowException.ArgumentNullException(entity, "entity", "Entity name can not be null.");
             ThrowException.ArgumentNullException(translation, "translation", "Translation can not be null.");

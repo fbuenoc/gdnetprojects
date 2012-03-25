@@ -3,7 +3,7 @@
 namespace WebFramework.Base.Framework.Base
 {
     public abstract class AbstractModelGeneric<TEntity, TId> : AbstractModel, IViewModel<TId>
-        where TEntity : EntityBase<TId>
+        where TEntity : EntityWithActiveBase<TId>
     {
         protected TEntity Entity
         {

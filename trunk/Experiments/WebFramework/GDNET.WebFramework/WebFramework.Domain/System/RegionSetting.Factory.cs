@@ -9,12 +9,12 @@
 
         public class RegionSettingFactory
         {
-            public RegionSetting Create(Region region, WidgetProperty property)
+            public RegionSetting Create(WidgetProperty property, string value)
             {
                 return new RegionSetting()
                 {
-                    Region = region,
-                    WidgetProperty = property
+                    WidgetProperty = property,
+                    Value = value
                 };
             }
         }

@@ -6,7 +6,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Page : EntityBase<long>, IEntityWithLifeCycle
+    public partial class Page : EntityWithActiveBase<long>, IEntityWithLifeCycle
     {
         #region Fields
 
@@ -25,7 +25,7 @@ namespace WebFramework.Domain.System
         public virtual Culture Culture
         {
             get;
-            protected internal set;
+            set;
         }
 
         public virtual string Name
@@ -52,7 +52,7 @@ namespace WebFramework.Domain.System
             set;
         }
 
-        public virtual int Position
+        public virtual int? Position
         {
             get;
             set;
@@ -81,10 +81,19 @@ namespace WebFramework.Domain.System
 
         #region Methods
 
+        public virtual void AddZones(params Zone[] listZones)
+        {
+            foreach (Zone z in listZones)
+            {
+                this.AddZone(z);
+            }
+        }
+
         public virtual void AddZone(Zone zone)
         {
             if (!this.Zones.Contains(zone))
             {
+                zone.Page = this;
                 this.zones.Add(zone);
             }
         }
@@ -106,7 +115,11 @@ namespace WebFramework.Domain.System
 
         #region Ctors
 
-        protected Page() { }
+        protected Page()
+        {
+            this.LifeCycle = StatutLifeCycle.Factory.Create();
+            this.ApplyDefaultSettings();
+        }
 
         #endregion
     }
