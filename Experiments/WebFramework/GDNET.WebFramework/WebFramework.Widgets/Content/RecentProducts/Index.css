@@ -1,0 +1,15 @@
+﻿.text
+{
+    text-align: left;
+}
+.number
+{
+    text-align: right;
+    white-space: nowrap;
+    width: 80px;
+}
+
+.column_name
+{
+    width: auto;
+}
