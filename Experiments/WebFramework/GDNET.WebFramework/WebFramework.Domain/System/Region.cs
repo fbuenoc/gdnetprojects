@@ -9,6 +9,7 @@ namespace WebFramework.Domain.System
     public partial class Region : EntityWithActiveBase<long>, IEntityWithLifeCycle
     {
         private IList<RegionSetting> settings = new List<RegionSetting>();
+        private IList<RegionConnection> regionConnections = new List<RegionConnection>();
 
         #region Properties
 
@@ -45,6 +46,11 @@ namespace WebFramework.Domain.System
         public virtual ReadOnlyCollection<RegionSetting> Settings
         {
             get { return new ReadOnlyCollection<RegionSetting>(this.settings); }
+        }
+
+        public virtual ReadOnlyCollection<RegionConnection> RegionConnections
+        {
+            get { return new ReadOnlyCollection<RegionConnection>(this.regionConnections); }
         }
 
         #region IEntityLifeCycle
@@ -85,6 +91,28 @@ namespace WebFramework.Domain.System
         public virtual void RemoveAllSettings()
         {
             this.settings.Clear();
+        }
+
+        public virtual void AddConnection(RegionConnection connection)
+        {
+            if (!this.RegionConnections.Contains(connection))
+            {
+                connection.From = this;
+                this.regionConnections.Add(connection);
+            }
+        }
+
+        public virtual void RemoveConnection(RegionConnection connection)
+        {
+            if (this.RegionConnections.Contains(connection))
+            {
+                this.regionConnections.Remove(connection);
+            }
+        }
+
+        public virtual void RemoveAllConnection()
+        {
+            this.regionConnections.Clear();
         }
 
         #endregion

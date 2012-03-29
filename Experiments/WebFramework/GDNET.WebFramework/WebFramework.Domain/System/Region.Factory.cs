@@ -9,13 +9,12 @@
 
         public class RegionFactory
         {
-            public Region Create(string name, Widget widget, Zone zone)
+            public Region Create(string name, Widget widget)
             {
                 var region = new Region()
                 {
                     Name = name,
                     Widget = widget,
-                    Zone = zone,
                 };
 
                 return region;

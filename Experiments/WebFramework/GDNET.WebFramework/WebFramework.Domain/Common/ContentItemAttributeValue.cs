@@ -2,7 +2,7 @@
 
 namespace WebFramework.Domain.Common
 {
-    public partial class ContentItemAttributeValue : EntityWithActiveBase<long>
+    public partial class ContentItemAttributeValue : EntityBase<long>
     {
         #region Properties
 

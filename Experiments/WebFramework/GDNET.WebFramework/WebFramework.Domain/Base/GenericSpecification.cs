@@ -6,7 +6,7 @@ using WebFramework.Domain.Constants;
 
 namespace WebFramework.Domain.Base
 {
-    public class GenericSpecification<TEntity, TId> : AbstractSpecification<TEntity, TId> where TEntity : IEntityWithActiveBase<TId>
+    public class GenericSpecification<TEntity, TId> : AbstractSpecification<TEntity, TId> where TEntity : IEntityBase<TId>
     {
         public override bool OnSaved(TEntity entity)
         {

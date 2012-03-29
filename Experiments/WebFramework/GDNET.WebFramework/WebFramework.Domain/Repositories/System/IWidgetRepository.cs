@@ -3,7 +3,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Domain.Repositories.System
 {
-    public interface IWidgetRepository : IRepositoryBase<Widget, long>
+    public interface IWidgetRepository : IRepositoryWithActiveBase<Widget, long>
     {
         Widget GetByCode(string p);
     }
