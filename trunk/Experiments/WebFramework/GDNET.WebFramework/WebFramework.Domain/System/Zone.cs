@@ -57,6 +57,7 @@ namespace WebFramework.Domain.System
         {
             if (!this.Regions.Contains(region))
             {
+                region.Zone = this;
                 this.regions.Add(region);
             }
         }

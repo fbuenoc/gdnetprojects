@@ -26,5 +26,11 @@ namespace WebFramework.Data.Common.Repositories
             ContentType contentType = DomainRepositories.ContentType.FindByType(typeOfContentType);
             return this.GetByContentType(contentType);
         }
+
+        public IList<ContentItem> GetByContentType(Type typeOfContentType, int nbItems)
+        {
+            ContentType contentType = DomainRepositories.ContentType.FindByType(typeOfContentType);
+            return base.FindByProperty(MetaInfos.ContentItemMeta.ContentType, contentType, 0, nbItems);
+        }
     }
 }
