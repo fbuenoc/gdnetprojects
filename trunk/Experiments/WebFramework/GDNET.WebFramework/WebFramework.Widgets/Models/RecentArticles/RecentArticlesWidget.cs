@@ -32,7 +32,7 @@ namespace WebFramework.Widgets.Models.RecentArticles
 
         protected override RecentArticlesModel InitializeModel()
         {
-            int pageSize = base.GetPropertyValue<int>(WidgetBaseConstants.PropertyDefaultPageSize);
+            int pageSize = base.GetPropertyValue<int>(WidgetBaseConstants.PropertyPageSize);
             var listArticles = DomainRepositories.ContentItem.GetByContentType(typeof(Article), pageSize);
 
             RecentArticlesModel model = new RecentArticlesModel(base.region);

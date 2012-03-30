@@ -12,6 +12,7 @@ namespace WebFramework.Common.Widgets
         #region Members
 
         private const int DefaultPageSize = 10;
+        private const string DefaultTemplate = "Default";
         private Dictionary<string, string> propertiesInfo = new Dictionary<string, string>();
         protected RegionModel region = null;
 
@@ -115,7 +116,8 @@ namespace WebFramework.Common.Widgets
             // Will be override in concrete implementation
 
             // Based properties
-            this.RegisterProperty(WidgetBaseConstants.PropertyDefaultPageSize, DefaultPageSize.ToString());
+            this.RegisterProperty(WidgetBaseConstants.PropertyPageSize, DefaultPageSize.ToString());
+            this.RegisterProperty(WidgetBaseConstants.PropertyUsageTemplate, DefaultTemplate);
         }
 
         protected void RegisterProperty(string code, string value)

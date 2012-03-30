@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using GDNET.Extensions;
 using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain;
@@ -28,10 +29,21 @@ namespace WebFramework.UI.Widgets
                     var widget = objet.Unwrap() as IWidget;
                     object resultModel = widget.Initialize(region);
 
-                    string viewName = string.Format("{0}/{1}", region.Widget.TechnicalName, "Index");
+                    string viewName = string.Format("{0}/{1}/{2}", region.Widget.TechnicalName, this.GetUsageTemplate(region), "Index");
                     this.htmlHelper.RenderPartial(viewName, resultModel);
                 }
             }
+        }
+
+        private string GetUsageTemplate(RegionModel region)
+        {
+            var setting = region.Properties.FirstOrDefault(x => x.Key == WidgetBaseConstants.PropertyUsageTemplate);
+            if (!setting.IsDefault())
+            {
+                return setting.Value;
+            }
+
+            return string.Empty;
         }
 
         public string ActionLinkShowMore(RegionModel targetRegion)
