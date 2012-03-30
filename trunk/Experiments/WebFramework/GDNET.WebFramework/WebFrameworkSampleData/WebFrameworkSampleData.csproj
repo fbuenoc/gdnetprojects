@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebFrameworkSampleData</RootNamespace>
     <AssemblyName>WebFrameworkSampleData</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -20,7 +20,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\Build\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -29,7 +29,7 @@
     <PlatformTarget>x86</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>..\Build\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -68,9 +68,17 @@
       <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Base\WebFramework.Common.csproj">
+      <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
+      <Name>WebFramework.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Business\WebFramework.Business.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
       <Name>WebFramework.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Common.Widgets\WebFramework.Common.Widgets.csproj">
+      <Project>{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}</Project>
+      <Name>WebFramework.Common.Widgets</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
@@ -79,6 +87,10 @@
     <ProjectReference Include="..\WebFramework.NHibernate\WebFramework.NHibernate.csproj">
       <Project>{9A4E737C-5A9A-4F53-80A3-82E4C712F85E}</Project>
       <Name>WebFramework.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Widgets\WebFramework.Widgets.csproj">
+      <Project>{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}</Project>
+      <Name>WebFramework.Widgets</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using WebFramework.UI.Helpers;
+using WebFramework.UI.Common;
 
 namespace WebFramework.UI
 {

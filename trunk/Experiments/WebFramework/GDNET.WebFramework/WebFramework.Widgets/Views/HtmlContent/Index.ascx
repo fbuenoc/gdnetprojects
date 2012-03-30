@@ -8,10 +8,17 @@
         <%= base.Model.HtmlContentCalculated %>
     </p>
     <%
+        var contentHtml = (base.Model.IsOverWeight) ? base.Model.HtmlContentCalculated : base.Model.HtmlContent;
+    %>
+    <p>
+        <%= contentHtml %>
+    </p>
+    <%
         if (base.Model.IsOverWeight)
         {
     %>
     <p>
+        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkShowMore(base.Model.DetailConnection, new { }) %>
     </p>
     <%
         }

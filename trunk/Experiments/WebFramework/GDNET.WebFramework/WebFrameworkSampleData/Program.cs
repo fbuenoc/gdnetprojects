@@ -18,6 +18,7 @@ namespace WebFrameworkSampleData
             if (args.Length > 0 && args[0] == "/s:data")
             {
                 DataAssistant.GenerateSampleContents();
+                DataAssistant.GenerateSystemContents();
             }
 
             session.Flush();
