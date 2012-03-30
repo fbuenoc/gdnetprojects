@@ -32,7 +32,7 @@ namespace WebFramework.Widgets.Models.RecentProducts
 
         protected override RecentProductsModel InitializeModel()
         {
-            int pageSize = base.GetPropertyValue<int>(WidgetBaseConstants.PropertyDefaultPageSize);
+            int pageSize = base.GetPropertyValue<int>(WidgetBaseConstants.PropertyPageSize);
             var listProducts = DomainRepositories.ContentItem.GetByContentType(typeof(Product), pageSize);
 
             RecentProductsModel model = new RecentProductsModel(base.region);
