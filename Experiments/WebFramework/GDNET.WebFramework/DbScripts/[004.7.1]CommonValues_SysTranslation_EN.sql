@@ -168,3 +168,10 @@ exec SP_CreateOrUpdateTranslation
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Return to list of {0}',
 	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.ShowMore',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = 'Show more',
+	@IsDeletable = False;

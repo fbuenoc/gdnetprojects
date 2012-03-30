@@ -16,6 +16,13 @@ namespace WebFramework.Common.Framework.System
             }
         }
 
+        public PageModel Page
+        {
+            get { return new PageModel(base.Entity.Page); }
+        }
+
+        #region Properties
+
         public string Code
         {
             get;
@@ -28,6 +35,10 @@ namespace WebFramework.Common.Framework.System
             private set;
         }
 
+        #endregion
+
+        #region Ctors
+
         public ZoneModel()
             : base()
         {
@@ -39,5 +50,7 @@ namespace WebFramework.Common.Framework.System
             this.Code = entity.Code;
             this.Description = entity.Description;
         }
+
+        #endregion
     }
 }

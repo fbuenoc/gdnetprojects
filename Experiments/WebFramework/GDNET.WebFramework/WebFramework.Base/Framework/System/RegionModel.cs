@@ -13,6 +13,11 @@ namespace WebFramework.Common.Framework.System
             get { return new WidgetModel(base.Entity.Widget); }
         }
 
+        public ZoneModel Zone
+        {
+            get { return new ZoneModel(base.Entity.Zone); }
+        }
+
         public ReadOnlyCollection<KeyValuePair<string, RegionModel>> RegionConnections
         {
             get

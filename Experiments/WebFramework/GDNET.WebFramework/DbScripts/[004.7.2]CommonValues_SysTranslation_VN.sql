@@ -168,3 +168,11 @@ exec SP_CreateOrUpdateTranslation
 	@CategoryName = 'LV.SysTranslation',
 	@Value = N'Về dánh sách của {0}',
 	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'vi-VN',
+	@Code = 'SysTranslation.ShowMore',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = N'Xem thêm',
+	@IsDeletable = False;
+	
