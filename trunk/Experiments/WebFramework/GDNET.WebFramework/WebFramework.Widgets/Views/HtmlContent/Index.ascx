@@ -4,9 +4,6 @@
     <h3>
         <%= base.Model.Name %>
     </h3>
-    <p>
-        <%= base.Model.HtmlContentCalculated %>
-    </p>
     <%
         var contentHtml = (base.Model.IsOverWeight) ? base.Model.HtmlContentCalculated : base.Model.HtmlContent;
     %>
@@ -18,7 +15,7 @@
         {
     %>
     <p>
-        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkShowMore(base.Model.DetailConnection, new { }) %>
+        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkShowMore(base.Model.DetailConnection) %>
     </p>
     <%
         }
