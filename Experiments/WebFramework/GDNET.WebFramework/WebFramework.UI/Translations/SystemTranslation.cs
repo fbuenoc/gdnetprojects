@@ -1,6 +1,6 @@
 ﻿using WebFramework.Domain;
 
-namespace WebFramework.UI.Helpers.Translations
+namespace WebFramework.UI.Translations
 {
     public class SystemTranslation
     {

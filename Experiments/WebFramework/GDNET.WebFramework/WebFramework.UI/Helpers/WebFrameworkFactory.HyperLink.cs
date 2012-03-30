@@ -3,8 +3,8 @@ using System.Web;
 using System.Web.Mvc.Html;
 using GDNET.Extensions;
 using GDNET.Web.Mvc;
-using WebFramework.Base.Common;
-using WebFramework.Base.Framework.Common;
+using WebFramework.Common.Common;
+using WebFramework.Common.Framework.Common;
 
 namespace WebFramework.UI.Helpers
 {

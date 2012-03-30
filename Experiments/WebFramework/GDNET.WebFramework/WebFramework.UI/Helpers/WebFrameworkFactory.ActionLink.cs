@@ -20,7 +20,7 @@ namespace WebFramework.UI.Helpers
 
         public MvcHtmlString ActionListLink(string entityName, string actionName)
         {
-            return this.htmlHelper.ActionLink(this.SysTranslations.ReturnToListOfXYZ(entityName), actionName);
+            return this.htmlHelper.ActionLink(this.SysTranslations().ReturnToListOfXYZ(entityName), actionName);
         }
     }
 }

@@ -2,12 +2,12 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
-using WebFramework.Base.Framework.System;
+using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
 
 namespace WebFramework.UI.Widgets
 {
-    public sealed class WidgetHanlder
+    public class WidgetHanlder
     {
         private HtmlHelper html;
 
