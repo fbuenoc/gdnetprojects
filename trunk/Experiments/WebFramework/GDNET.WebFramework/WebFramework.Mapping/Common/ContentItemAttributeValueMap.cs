@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.Common
 {
-    public class ContentItemAttributeValueMap : AbstractEntityWithActiveMapping<ContentItemAttributeValue, long>, INHibernateMapping
+    public class ContentItemAttributeValueMap : AbstractEntityMapping<ContentItemAttributeValue, long>, INHibernateMapping
     {
         public ContentItemAttributeValueMap()
             : base(Generators.Native)

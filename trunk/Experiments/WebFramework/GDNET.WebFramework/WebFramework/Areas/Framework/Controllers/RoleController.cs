@@ -4,8 +4,8 @@ using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using GDNET.Web.Helpers;
-using WebFramework.Base.Framework.AccountModeles;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Framework.AccountModeles;
 using WebFramework.Constants;
 
 namespace WebFramework.Areas.Framework.Controllers

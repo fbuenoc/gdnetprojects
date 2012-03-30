@@ -1,7 +1,7 @@
-﻿using WebFramework.Base.Common.DefaultImpl;
-using WebFramework.Base.Common.Services;
+﻿using WebFramework.Common.Common.DefaultImpl;
+using WebFramework.Common.Common.Services;
 
-namespace WebFramework.Base.Common
+namespace WebFramework.Common.Common
 {
     public sealed class FrameworkServices
     {

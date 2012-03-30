@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
-using WebFramework.Base.Framework.Base;
+using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.Common;
 
-namespace WebFramework.Base.Framework.Common
+namespace WebFramework.Common.Framework.Common
 {
     public class ContentItemAttributeValueModel : AbstractModelGeneric<ContentItemAttributeValue, long>
     {

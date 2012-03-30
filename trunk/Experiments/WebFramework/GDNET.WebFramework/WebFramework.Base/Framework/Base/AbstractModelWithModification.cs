@@ -2,9 +2,10 @@
 using GDNET.Common.Base.Entities;
 using WebFramework.Domain.Base;
 
-namespace WebFramework.Base.Framework.Base
+namespace WebFramework.Common.Framework.Base
 {
-    public abstract class AbstractModelWithModification : AbstractModel
+    public abstract class AbstractModelWithModification<TEntity, TId> : AbstractModelGenericWithActive<TEntity, TId>, IViewModel<TId>
+        where TEntity : EntityWithModificationBase<TId>
     {
         public string ActualStatut
         {
@@ -35,29 +36,6 @@ namespace WebFramework.Base.Framework.Base
             get;
             protected set;
         }
-    }
-
-    public abstract class AbstractModelWithModification<TEntity, TId> : AbstractModelWithModification, IViewModel<TId>
-        where TEntity : EntityWithModificationBase<TId>
-    {
-        protected TEntity Entity
-        {
-            get;
-            private set;
-        }
-
-        public TId Id
-        {
-            get
-            {
-                if (base.id != null)
-                {
-                    return (TId)base.id;
-                }
-                return default(TId);
-            }
-            set { base.id = value; }
-        }
 
         #region Ctors
 
@@ -70,8 +48,6 @@ namespace WebFramework.Base.Framework.Base
         public AbstractModelWithModification(TEntity entity)
             : base()
         {
-            base.id = entity.Id;
-            this.Entity = entity;
             this.Initialize();
         }
 

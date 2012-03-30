@@ -1,9 +1,9 @@
 ﻿using GDNET.Common.Base.Entities;
 
-namespace WebFramework.Base.Framework.Base
+namespace WebFramework.Common.Framework.Base
 {
     public abstract class AbstractModelGeneric<TEntity, TId> : AbstractModel, IViewModel<TId>
-        where TEntity : EntityWithActiveBase<TId>
+        where TEntity : EntityBase<TId>
     {
         protected TEntity Entity
         {

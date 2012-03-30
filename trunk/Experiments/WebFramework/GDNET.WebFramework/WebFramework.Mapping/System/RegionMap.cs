@@ -44,6 +44,17 @@ namespace WebFramework.Mapping.System
             {
                 m.OneToMany();
             });
+
+            base.Bag(e => e.RegionConnections, cm =>
+            {
+                cm.Access(Accessor.Field);
+                cm.Lazy(CollectionLazy.Lazy);
+                cm.Key(k => k.Column(MappingConstants.RegionIdFrom));
+                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+            }, m =>
+            {
+                m.OneToMany();
+            });
         }
     }
 }

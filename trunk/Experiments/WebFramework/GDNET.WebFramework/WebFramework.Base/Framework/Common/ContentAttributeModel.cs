@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using WebFramework.Base.Framework.Base;
+using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.Common;
 
-namespace WebFramework.Base.Framework.Common
+namespace WebFramework.Common.Framework.Common
 {
     public class ContentAttributeModel : AbstractModelWithModification<ContentAttribute, long>
     {

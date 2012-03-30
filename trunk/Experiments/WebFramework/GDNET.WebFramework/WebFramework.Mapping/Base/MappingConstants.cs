@@ -12,6 +12,8 @@
         public const string NameTranslationId = "NameTranslationId";
         public const string PageId = "PageId";
         public const string RegionId = "RegionId";
+        public const string RegionIdFrom = "RegionIdFrom";
+        public const string RegionIdTo = "RegionIdTo";
         public const string StatutLifeCycleId = "StatutLifeCycleId";
         public const string WidgetId = "WidgetId";
         public const string WidgetPropertyId = "WidgetPropertyId";

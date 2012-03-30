@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Web.Mvc;
-using WebFramework.Base.Common.Services;
+using WebFramework.Common.Common.Services;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
 
-namespace WebFramework.Base.Common.DefaultImpl
+namespace WebFramework.Common.Common.DefaultImpl
 {
     public class ValidationService : IValidationService
     {

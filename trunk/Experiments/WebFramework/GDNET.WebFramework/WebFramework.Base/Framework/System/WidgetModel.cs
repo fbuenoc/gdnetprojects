@@ -1,9 +1,9 @@
-﻿using WebFramework.Base.Framework.Base;
+﻿using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.System;
 
-namespace WebFramework.Base.Framework.System
+namespace WebFramework.Common.Framework.System
 {
-    public sealed class WidgetModel : AbstractModelGeneric<Widget, long>
+    public sealed class WidgetModel : AbstractModelGenericWithActive<Widget, long>
     {
         public string Code
         {

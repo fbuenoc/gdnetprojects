@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Base.Framework.Common;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Framework.Common;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 

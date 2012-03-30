@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using WebFramework.Domain.Common;
 
-namespace WebFramework.Base.Common.Services
+namespace WebFramework.Common.Common.Services
 {
     public interface IValidationService
     {

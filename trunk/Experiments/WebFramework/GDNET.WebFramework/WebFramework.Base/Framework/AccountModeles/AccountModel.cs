@@ -6,7 +6,7 @@ using GDNET.Common.Base.Entities;
 using GDNET.Web.Membership.Profiles;
 using GDNET.Web.Membership.Profiles.Objects;
 
-namespace WebFramework.Base.Framework.AccountModeles
+namespace WebFramework.Common.Framework.AccountModeles
 {
     public sealed class AccountModel : EntityWithActiveBase<string>
     {

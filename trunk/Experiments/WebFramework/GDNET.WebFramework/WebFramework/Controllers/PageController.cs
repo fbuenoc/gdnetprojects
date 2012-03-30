@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using GDNET.Web.Helpers;
-using WebFramework.Base.Framework.System;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
 
 namespace WebFramework.Controllers

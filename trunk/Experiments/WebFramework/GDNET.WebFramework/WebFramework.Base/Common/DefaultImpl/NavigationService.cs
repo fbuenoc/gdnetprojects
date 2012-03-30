@@ -1,7 +1,7 @@
 ﻿using GDNET.Web.Helpers;
-using WebFramework.Base.Common.Services;
+using WebFramework.Common.Common.Services;
 
-namespace WebFramework.Base.Common.DefaultImpl
+namespace WebFramework.Common.Common.DefaultImpl
 {
     public class NavigationService : INavigationService
     {

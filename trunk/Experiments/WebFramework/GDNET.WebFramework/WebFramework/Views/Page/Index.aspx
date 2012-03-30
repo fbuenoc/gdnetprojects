@@ -1,4 +1,4 @@
-﻿<%@ Import Namespace="WebFramework.Base.Framework.System" %>
+﻿<%@ Import Namespace="WebFramework.Common.Framework.System" %>
 
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<PageModel>" %>
 
@@ -8,7 +8,7 @@
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
         <div class="LeftContent">
-            <% base.Html.WebFramework().WidgetHanlder.DisplayContent(base.Model, "LeftContent"); %>
+            <% base.Html.WebFramework().WidgetHanlder().DisplayContent(base.Model, "LeftContent"); %>
         </div>
         <div class="RightContent">
         </div>

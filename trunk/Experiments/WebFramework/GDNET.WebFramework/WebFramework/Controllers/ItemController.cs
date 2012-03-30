@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
 using GDNET.Extensions;
-using WebFramework.Base.Framework.Common;
 using WebFramework.Business.Common;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Framework.Common;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.ViewModels;

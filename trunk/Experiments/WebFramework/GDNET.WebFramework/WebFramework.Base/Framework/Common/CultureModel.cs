@@ -1,10 +1,10 @@
-﻿using WebFramework.Base.ComponentModel;
-using WebFramework.Base.Framework.Base;
+﻿using WebFramework.Common.ComponentModel;
+using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.Common;
 
-namespace WebFramework.Base.Framework.Common
+namespace WebFramework.Common.Framework.Common
 {
-    public sealed class CultureModel : AbstractModelGeneric<Culture, int>
+    public sealed class CultureModel : AbstractModelGenericWithActive<Culture, int>
     {
         #region Properties
 

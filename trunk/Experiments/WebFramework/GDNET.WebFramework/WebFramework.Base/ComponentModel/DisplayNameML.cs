@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using WebFramework.Domain;
 
-namespace WebFramework.Base.ComponentModel
+namespace WebFramework.Common.ComponentModel
 {
     public class DisplayNameML : DisplayNameAttribute
     {
