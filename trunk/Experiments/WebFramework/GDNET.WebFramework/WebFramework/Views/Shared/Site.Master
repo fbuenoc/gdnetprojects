@@ -15,9 +15,9 @@
             <div id="menucontainer">
                 <ul id="menu">
                     <li>
-                        <%: base.Html.WebFramework().ActionLink("SysTranslation.Navigation.Home", "Index", "Home")%></li>
+                        <%: base.Html.WebFramework().ActionLink().ActionLink("SysTranslation.Navigation.Home", "Index", "Home")%></li>
                     <li>
-                        <%: base.Html.WebFramework().ActionLink("SysTranslation.Navigation.About", "Index", "About")%></li>
+                        <%: base.Html.WebFramework().ActionLink().ActionLink("SysTranslation.Navigation.About", "Index", "About")%></li>
                 </ul>
             </div>
         </div>
@@ -26,10 +26,10 @@
         </div>
         <div id="footer">
             <div id="info">
-                <%= base.Html.WebFramework().Translate("SysTranslation.General.FooterInfo")%>
+                <%= base.Html.WebFramework().Translation().Translate("SysTranslation.General.FooterInfo")%>
             </div>
             <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
+                <% base.Html.RenderPartial("LogOnUserControl"); %>
             </div>
         </div>
     </div>
