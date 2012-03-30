@@ -866,6 +866,7 @@
     <Folder Include="Areas\System\Views\Shared\" />
     <Folder Include="Areas\System\Views\Widget\" />
     <Folder Include="Areas\System\Views\Zone\" />
+    <Folder Include="Content\Widgets\" />
     <Folder Include="Views\Widgets\" />
   </ItemGroup>
   <ItemGroup>
