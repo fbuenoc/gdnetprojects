@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Security;
-using WebFramework.Base.Framework.AccountModeles;
+using WebFramework.Common.Framework.AccountModeles;
 
-namespace WebFramework.Base.AccountServices
+namespace WebFramework.Common.AccountServices
 {
     public class AccountMembershipService : IMembershipService
     {

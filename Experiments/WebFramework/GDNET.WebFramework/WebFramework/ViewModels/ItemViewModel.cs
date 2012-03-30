@@ -1,4 +1,4 @@
-﻿using WebFramework.Base.Framework.Common;
+﻿using WebFramework.Common.Framework.Common;
 
 namespace WebFramework.ViewModels
 {

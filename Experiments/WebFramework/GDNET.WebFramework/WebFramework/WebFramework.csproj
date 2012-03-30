@@ -253,10 +253,14 @@
     <Compile Include="Areas\Framework\Controllers\ContentAttributeController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
+    <Compile Include="Areas\System\Controllers\WidgetController.cs" />
     <Compile Include="Areas\Framework\Controllers\CultureController.cs" />
     <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
+    <Compile Include="Areas\System\Controllers\PageController.cs" />
     <Compile Include="Areas\Framework\Controllers\TranslationController.cs" />
     <Compile Include="Areas\Framework\ViewModels\TranslationViewModel.cs" />
+    <Compile Include="Areas\System\Controllers\ZoneController.cs" />
+    <Compile Include="Areas\System\SystemAreaRegistration.cs" />
     <Compile Include="Common\Controllers\AbstractController.cs" />
     <Compile Include="Common\Controllers\AbstractCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
@@ -857,6 +861,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />
+    <Folder Include="Areas\System\Models\" />
+    <Folder Include="Areas\System\Views\Page\" />
+    <Folder Include="Areas\System\Views\Shared\" />
+    <Folder Include="Areas\System\Views\Widget\" />
+    <Folder Include="Areas\System\Views\Zone\" />
     <Folder Include="Views\Widgets\" />
   </ItemGroup>
   <ItemGroup>
@@ -884,9 +893,9 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Base\WebFramework.Base.csproj">
+    <ProjectReference Include="..\WebFramework.Base\WebFramework.Common.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
-      <Name>WebFramework.Base</Name>
+      <Name>WebFramework.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Business\WebFramework.Business.csproj">
       <Project>{8ADA45AC-E55C-4B2D-9C45-A0E4DF9678F3}</Project>
@@ -1134,6 +1143,9 @@
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>EditorLocalization.da-DK.designer.cs</LastGenOutput>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\System\Views\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebFramework.Base.ComponentModel
+namespace WebFramework.Common.ComponentModel
 {
     public sealed class RequiredML : RequiredAttribute
     {

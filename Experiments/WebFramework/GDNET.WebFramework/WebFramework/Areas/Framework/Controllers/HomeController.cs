@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Base.Business.Administration;
 using WebFramework.Business.Administration;
 using WebFramework.Business.Helpers;
+using WebFramework.Common.Business.Administration;
 using WebFramework.Common.Controllers;
 
 namespace WebFramework.Areas.Framework.Controllers

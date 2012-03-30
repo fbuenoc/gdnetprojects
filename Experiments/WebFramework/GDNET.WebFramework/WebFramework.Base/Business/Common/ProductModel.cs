@@ -1,8 +1,8 @@
 ﻿using System;
-using WebFramework.Base.Business.Base;
+using WebFramework.Common.Business.Base;
 using WebFramework.Business.Common;
 
-namespace WebFramework.Base.Business.Common
+namespace WebFramework.Common.Business.Common
 {
     public sealed class ProductModel : ModelBusinessEntityBase<Product>
     {

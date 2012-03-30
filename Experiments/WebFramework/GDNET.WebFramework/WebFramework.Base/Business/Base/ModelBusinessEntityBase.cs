@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using WebFramework.Base.Framework.Base;
+using WebFramework.Common.Framework.Base;
 using WebFramework.Business.Base;
-using WebFramework.Base.ComponentModel;
+using WebFramework.Common.ComponentModel;
 
-namespace WebFramework.Base.Business.Base
+namespace WebFramework.Common.Business.Base
 {
     public abstract class ModelBusinessEntityBase<TEntity> : AbstractModelWithModification<TEntity, long> where TEntity : BusinessEntityBase
     {

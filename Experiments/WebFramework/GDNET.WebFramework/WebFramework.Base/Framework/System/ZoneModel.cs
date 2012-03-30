@@ -1,11 +1,11 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using WebFramework.Base.Framework.Base;
+using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.System;
 
-namespace WebFramework.Base.Framework.System
+namespace WebFramework.Common.Framework.System
 {
-    public sealed class ZoneModel : AbstractModelGeneric<Zone, long>
+    public sealed class ZoneModel : AbstractModelGenericWithActive<Zone, long>
     {
         public ReadOnlyCollection<RegionModel> Regions
         {

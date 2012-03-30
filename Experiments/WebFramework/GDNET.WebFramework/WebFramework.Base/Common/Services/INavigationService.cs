@@ -1,4 +1,4 @@
-﻿namespace WebFramework.Base.Common.Services
+﻿namespace WebFramework.Common.Common.Services
 {
     public interface INavigationService
     {

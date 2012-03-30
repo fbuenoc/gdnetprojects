@@ -1,9 +1,9 @@
 ﻿using System;
 using GDNET.Common.DesignByContract;
-using WebFramework.Base.Framework.Common;
+using WebFramework.Common.Framework.Common;
 using WebFramework.Domain;
 
-namespace WebFramework.Base.Framework.Base
+namespace WebFramework.Common.Framework.Base
 {
     public static class ModelService
     {

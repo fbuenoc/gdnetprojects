@@ -2,7 +2,7 @@
 using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Areas.Framework.Constants;
-using WebFramework.Base.Framework.Common;
+using WebFramework.Common.Framework.Common;
 
 namespace WebFramework.Areas.Framework.ViewModels
 {

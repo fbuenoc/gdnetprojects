@@ -1,8 +1,8 @@
-﻿using WebFramework.Base.Business.Base;
-using WebFramework.Base.ComponentModel;
+﻿using WebFramework.Common.Business.Base;
+using WebFramework.Common.ComponentModel;
 using WebFramework.Business.Administration;
 
-namespace WebFramework.Base.Business.Administration
+namespace WebFramework.Common.Business.Administration
 {
     public sealed class ShortcutModel : ModelBusinessEntityBase<Shortcut>
     {

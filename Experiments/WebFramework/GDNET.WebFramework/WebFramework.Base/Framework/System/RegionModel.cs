@@ -1,16 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using WebFramework.Base.Framework.Base;
+using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.System;
 
-namespace WebFramework.Base.Framework.System
+namespace WebFramework.Common.Framework.System
 {
-    public class RegionModel : AbstractModelGeneric<Region, long>
+    public class RegionModel : AbstractModelGenericWithActive<Region, long>
     {
         public WidgetModel Widget
         {
             get { return new WidgetModel(base.Entity.Widget); }
+        }
+
+        public ReadOnlyCollection<KeyValuePair<string, RegionModel>> RegionConnections
+        {
+            get
+            {
+                var listConnections = base.Entity.RegionConnections.Select(x => new KeyValuePair<string, RegionModel>(x.Action, new RegionModel(x.To))).ToList();
+                return new ReadOnlyCollection<KeyValuePair<string, RegionModel>>(listConnections);
+            }
         }
 
         public ReadOnlyCollection<KeyValuePair<string, string>> Properties
@@ -21,6 +30,8 @@ namespace WebFramework.Base.Framework.System
                 return new ReadOnlyCollection<KeyValuePair<string, string>>(listProperties);
             }
         }
+
+        #region Properties
 
         public string Name
         {
@@ -40,6 +51,10 @@ namespace WebFramework.Base.Framework.System
             set;
         }
 
+        #endregion
+
+        #region Ctors
+
         public RegionModel()
             : base()
         {
@@ -52,5 +67,7 @@ namespace WebFramework.Base.Framework.System
             this.Description = entity.Description;
             this.Position = entity.Position;
         }
+
+        #endregion
     }
 }
