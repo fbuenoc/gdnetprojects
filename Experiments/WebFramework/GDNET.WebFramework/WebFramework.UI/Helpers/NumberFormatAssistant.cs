@@ -2,7 +2,7 @@
 
 namespace WebFramework.UI.Helpers
 {
-    public partial class WebFrameworkFactory
+    public class NumberFormatAssistant
     {
         public string FormatNumber(object number)
         {

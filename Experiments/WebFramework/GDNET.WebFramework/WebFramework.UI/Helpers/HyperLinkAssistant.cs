@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using GDNET.Extensions;
 using GDNET.Web.Mvc;
@@ -8,8 +9,15 @@ using WebFramework.Common.Framework.Common;
 
 namespace WebFramework.UI.Helpers
 {
-    public partial class WebFrameworkFactory
+    public class HyperLinkAssistant
     {
+        private HtmlHelper htmlHelper;
+
+        public HyperLinkAssistant(HtmlHelper htmlHelper)
+        {
+            this.htmlHelper = htmlHelper;
+        }
+
         public string HyperLink(ContentItemModel itemModel)
         {
             var htmlAttributes = new

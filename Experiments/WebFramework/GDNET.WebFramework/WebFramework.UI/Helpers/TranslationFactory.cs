@@ -4,7 +4,7 @@ using WebFramework.UI.Translations;
 
 namespace WebFramework.UI.Helpers
 {
-    public partial class WebFrameworkFactory
+    public class TranslationFactory
     {
         public string Translate(string codeText)
         {
@@ -17,9 +17,10 @@ namespace WebFramework.UI.Helpers
             return this.Translate(code);
         }
 
-        public SystemTranslation SysTranslations()
+        public string InContentTypeXYZ(string xyz)
         {
-            return new SystemTranslation();
+            string formatXYZ = DomainServices.Translation.Translate("SysTranslation.ContentItem.InContentTypeXYZ");
+            return string.Format(formatXYZ, xyz);
         }
     }
 }

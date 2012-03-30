@@ -5,13 +5,13 @@
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <th class="column_name">
-                <%= base.Html.WebFramework().Translate("SysTranslation.Business.Product.NameView")%>
+                <%= base.Html.WebFramework().Translation().Translate("SysTranslation.Business.Product.NameView")%>
             </th>
             <th class="number">
-                <%= base.Html.WebFramework().Translate("SysTranslation.Business.Product.PriceView")%>
+                <%= base.Html.WebFramework().Translation().Translate("SysTranslation.Business.Product.PriceView")%>
             </th>
             <th class="number">
-                <%= base.Html.WebFramework().Translate("SysTranslation.Business.Product.DiscountView")%>
+                <%= base.Html.WebFramework().Translation().Translate("SysTranslation.Business.Product.DiscountView")%>
             </th>
         </tr>
         <%
@@ -23,13 +23,13 @@
         %>
         <tr class="<%= altCss %>">
             <td class="column_name">
-                <%= base.Html.WebFramework().HyperLink(productModel) %>
+                <%= base.Html.WebFramework().HyperLink().HyperLink(productModel) %>
             </td>
             <td class="number">
-                <%= base.Html.WebFramework().FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Price))%>
+                <%= base.Html.WebFramework().NumberFormat().FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Price))%>
             </td>
             <td class="number">
-                <%= base.Html.WebFramework().FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Discount))%>
+                <%= base.Html.WebFramework().NumberFormat().FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Discount))%>
             </td>
         </tr>
         <%

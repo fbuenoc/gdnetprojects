@@ -46,12 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions.cs" />
-    <Compile Include="Helpers\WebFrameworkFactory.Translations.cs" />
-    <Compile Include="Helpers\WebFrameworkFactory.FormatNumber.cs" />
-    <Compile Include="Helpers\WebFrameworkFactory.ActionLink.cs" />
-    <Compile Include="Helpers\WebFrameworkFactory.cs" />
-    <Compile Include="Helpers\WebFrameworkFactory.HyperLink.cs" />
-    <Compile Include="Translations\EntityTranslation.cs" />
+    <Compile Include="Helpers\TranslationFactory.cs" />
+    <Compile Include="Helpers\NumberFormatAssistant.cs" />
+    <Compile Include="Helpers\ActionLinkFactory.cs" />
+    <Compile Include="Common\WebFrameworkFactory.cs" />
+    <Compile Include="Helpers\HyperLinkAssistant.cs" />
     <Compile Include="Translations\SystemTranslation.cs" />
     <Compile Include="Widgets\WidgetHanlder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
