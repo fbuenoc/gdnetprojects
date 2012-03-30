@@ -61,12 +61,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\RecentArticles\Index.css" />
-    <Content Include="Content\RecentProducts\Index.css" />
-    <Content Include="Views\Contact\Index.ascx" />
-    <Content Include="Views\HtmlContent\Index.ascx" />
-    <Content Include="Views\RecentArticles\Index.ascx" />
-    <Content Include="Views\RecentProducts\Index.ascx" />
+    <Content Include="Content\RecentArticles\Default\Index.css" />
+    <Content Include="Content\RecentProducts\Default\Index.css" />
+    <Content Include="Views\Contact\Default\Index.ascx" />
+    <Content Include="Views\HtmlContent\Default\Index.ascx" />
+    <Content Include="Views\RecentArticles\Default\Index.ascx" />
+    <Content Include="Views\RecentProducts\Default\Index.ascx" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.aspx" />
   </ItemGroup>
@@ -141,6 +141,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)Views\*.*" "$(SolutionDir)WebFramework\Views\Widgets" /y/s</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(ProjectDir)Views\*.*" "$(SolutionDir)WebFramework\Views\Widgets" /y/s
+xcopy "$(ProjectDir)Content\*.*" "$(SolutionDir)WebFramework\Content\Widgets" /y/s</PostBuildEvent>
   </PropertyGroup>
 </Project>
