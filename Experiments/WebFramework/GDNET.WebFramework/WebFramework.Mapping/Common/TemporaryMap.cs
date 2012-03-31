@@ -5,7 +5,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.Common
 {
-    public class TemporaryMap : AbstractEntityWithActiveMapping<Temporary, Guid>, INHibernateMapping
+    public class TemporaryMap : EntityWithActiveMapping<Temporary, Guid>, INHibernateMapping
     {
         public TemporaryMap()
             : base(Generators.Assigned)

@@ -8,6 +8,7 @@ using WebFramework.Business.Administration;
 using WebFramework.Business.Base;
 using WebFramework.Business.Common;
 using WebFramework.Business.Helpers;
+using WebFramework.Common.Widgets;
 using WebFramework.Data.UnitTest;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
@@ -17,6 +18,7 @@ using WebFramework.Domain.System;
 using WebFramework.NHibernate;
 using WebFramework.NHibernate.SessionManagers;
 using WebFramework.Widgets.Models.Contact;
+using WebFramework.Widgets.Models.DetailArticle;
 using WebFramework.Widgets.Models.HtmlContent;
 using WebFramework.Widgets.Models.RecentArticles;
 using WebFramework.Widgets.Models.RecentProducts;
@@ -320,13 +322,14 @@ namespace WebFrameworkSampleData
             homePage.Description = "GiangDuong.NET - Welcome";
             homePage.Keyword = "Giang duong online, Chia se tai lieu giay";
             homePage.Culture = culture;
+            homePage.IsDefault = true;
             DomainRepositories.Page.Save(homePage);
 
-            Zone headerZone = Zone.Factory.Create("Header", string.Empty);
-            Zone footerZone = Zone.Factory.Create("Footer", string.Empty);
-            Zone leftContentZone = Zone.Factory.Create("LeftContent", string.Empty);
-            Zone rightContentZone = Zone.Factory.Create("RightContent", string.Empty);
-            homePage.AddZones(headerZone, footerZone, leftContentZone, rightContentZone);
+            Zone homePageHeaderZone = Zone.Factory.Create("Header", string.Empty);
+            Zone homePageFooterZone = Zone.Factory.Create("Footer", string.Empty);
+            Zone homePageLeftContentZone = Zone.Factory.Create("LeftContent", string.Empty);
+            Zone homePageRightContentZone = Zone.Factory.Create("RightContent", string.Empty);
+            homePage.AddZones(homePageHeaderZone, homePageFooterZone, homePageLeftContentZone, homePageRightContentZone);
             DomainRepositories.RepositoryAssistant.Flush();
 
             Page aboutPage = Page.Factory.Create("About us", "about", app);
@@ -334,11 +337,11 @@ namespace WebFrameworkSampleData
             aboutPage.Culture = culture;
             DomainRepositories.Page.Save(aboutPage);
 
-            Zone headerZone2 = Zone.Factory.Create("Header", string.Empty);
-            Zone footerZone2 = Zone.Factory.Create("Footer", string.Empty);
-            Zone leftContentZone2 = Zone.Factory.Create("LeftContent", string.Empty);
-            Zone rightContentZone2 = Zone.Factory.Create("RightContent", string.Empty);
-            aboutPage.AddZones(headerZone2, footerZone2, leftContentZone2, rightContentZone2);
+            Zone aboutPageHeaderZone = Zone.Factory.Create("Header", string.Empty);
+            Zone aboutPageFooterZone = Zone.Factory.Create("Footer", string.Empty);
+            Zone aboutPageLeftContentZone = Zone.Factory.Create("LeftContent", string.Empty);
+            Zone aboutPageRightContentZone = Zone.Factory.Create("RightContent", string.Empty);
+            aboutPage.AddZones(aboutPageHeaderZone, aboutPageFooterZone, aboutPageLeftContentZone, aboutPageRightContentZone);
             DomainRepositories.RepositoryAssistant.Flush();
 
             #endregion
@@ -357,36 +360,50 @@ namespace WebFrameworkSampleData
             RecentArticlesWidget articlesWidget = new RecentArticlesWidget();
             articlesWidget.Install();
 
+            DetailArticleWidget detailArticleWidget = new DetailArticleWidget();
+            detailArticleWidget.Install();
+
             #endregion
 
             Widget htmlWidgetInfo = DomainRepositories.Widget.GetByCode(htmlWidget.Code);
             Widget contactWidgetInfo = DomainRepositories.Widget.GetByCode(contactWidget.Code);
             Widget productWidgetInfo = DomainRepositories.Widget.GetByCode(productWidget.Code);
             Widget articlesWidgetInfo = DomainRepositories.Widget.GetByCode(articlesWidget.Code);
+            Widget detailArticleWidgetInfo = DomainRepositories.Widget.GetByCode(detailArticleWidget.Code);
 
-            Region leftContentR1 = Region.Factory.Create("Who we are?", htmlWidgetInfo);
-            DomainServices.Region.ApplyDefaultProperties(leftContentR1);
-            leftContentZone.AddRegion(leftContentR1);
 
-            Region leftContentR2 = Region.Factory.Create("Our plan", htmlWidgetInfo);
-            DomainServices.Region.ApplyDefaultProperties(leftContentR2);
-            leftContentZone.AddRegion(leftContentR2);
+            Region leftContentHPR1 = Region.Factory.Create("Who we are?", htmlWidgetInfo);
+            DomainServices.Region.ApplyDefaultProperties(leftContentHPR1);
+            homePageLeftContentZone.AddRegion(leftContentHPR1);
 
-            Region leftContentR3 = Region.Factory.Create("Recent products", productWidgetInfo);
-            DomainServices.Region.ApplyDefaultProperties(leftContentR3);
-            leftContentZone.AddRegion(leftContentR3);
+            Region leftContentHPR2 = Region.Factory.Create("Our plan", htmlWidgetInfo);
+            DomainServices.Region.ApplyDefaultProperties(leftContentHPR2);
+            homePageLeftContentZone.AddRegion(leftContentHPR2);
 
-            Region rightContentR1 = Region.Factory.Create("Recent articles", articlesWidgetInfo);
-            DomainServices.Region.ApplyDefaultProperties(rightContentR1);
-            rightContentZone.AddRegion(rightContentR1);
+            Region leftContentHPR3 = Region.Factory.Create("Recent products", productWidgetInfo);
+            DomainServices.Region.ApplyDefaultProperties(leftContentHPR3);
+            homePageLeftContentZone.AddRegion(leftContentHPR3);
+
+            Region rightContentHPR1 = Region.Factory.Create("Recent articles", articlesWidgetInfo);
+            DomainServices.Region.ApplyDefaultProperties(rightContentHPR1);
+            homePageRightContentZone.AddRegion(rightContentHPR1);
 
             Region aboutRegion1 = Region.Factory.Create("About us", htmlWidgetInfo);
             DomainServices.Region.ApplyDefaultProperties(aboutRegion1);
-            leftContentZone2.AddRegion(aboutRegion1);
+            aboutPageLeftContentZone.AddRegion(aboutRegion1);
+
+            Region aboutRegion2 = Region.Factory.Create("Detail article", detailArticleWidgetInfo);
+            DomainServices.Region.ApplyDefaultProperties(aboutRegion2);
+            aboutPageLeftContentZone.AddRegion(aboutRegion2);
+
             DomainRepositories.RepositoryAssistant.Flush();
 
-            var connection1 = RegionConnection.Factory.Create(aboutRegion1, HtmlContentWidgetConstants.ActionDetail);
-            leftContentR1.AddConnection(connection1);
+            var connection1 = RegionConnection.Factory.Create(aboutRegion1, WidgetActions.Detail);
+            leftContentHPR1.AddConnection(connection1);
+
+            var connection2 = RegionConnection.Factory.Create(aboutRegion2, WidgetActions.Detail);
+            rightContentHPR1.AddConnection(connection2);
+
             DomainRepositories.RepositoryAssistant.Flush();
         }
     }

@@ -34,15 +34,18 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ContentTypeService.cs" />
-    <Compile Include="FormatterService.cs" />
+    <Compile Include="Common\ContentTypeService.cs" />
+    <Compile Include="Common\FormatterService.cs" />
+    <Compile Include="WebSessionInformationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\PageService.cs" />
     <Compile Include="System\RegionService.cs" />
     <Compile Include="TranslationService.cs" />
   </ItemGroup>
@@ -54,6 +57,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
       <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
       <Name>GDNET.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
+      <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
+      <Name>GDNET.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>

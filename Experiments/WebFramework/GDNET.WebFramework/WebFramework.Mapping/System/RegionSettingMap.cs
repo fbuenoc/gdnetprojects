@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.System
 {
-    public class RegionSettingMap : AbstractEntityMapping<RegionSetting, long>, INHibernateMapping
+    public class RegionSettingMap : EntityBaseMapping<RegionSetting, long>, INHibernateMapping
     {
         public RegionSettingMap()
             : base(Generators.Native)

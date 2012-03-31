@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\AbstractEntityWithActiveMapping.cs" />
-    <Compile Include="Base\AbstractEntityMapping.cs">
+    <Compile Include="Base\EntityWithActiveMapping.cs" />
+    <Compile Include="Base\EntityBaseMapping.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Base\INHibernateMapping.cs" />
@@ -59,7 +59,7 @@
     <Compile Include="Common\ListValueMap.cs" />
     <Compile Include="Common\TemporaryMap.cs" />
     <Compile Include="Common\TranslationMap.cs" />
-    <Compile Include="Base\AbstractEntityWithModificationMapping.cs" />
+    <Compile Include="Base\EntityWithModificationMapping.cs" />
     <Compile Include="Base\MappingConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\RegionConnectionMap.cs" />

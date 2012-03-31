@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using Finley.Common;
 using GDNET.Extensions;
+using WebFramework.Common.Framework.Common;
 using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain;
@@ -46,12 +48,41 @@ namespace WebFramework.UI.Widgets
             return string.Empty;
         }
 
-        public string ActionLinkShowMore(RegionModel targetRegion)
+        public MvcHtmlString ActionLinkShowMore(RegionModel targetRegion)
         {
             string linkText = DomainServices.Translation.Translate("SysTranslation.ShowMore");
             object routeValues = new { page = targetRegion.Zone.Page.UniqueName };
 
-            return this.htmlHelper.ActionLink(linkText, "Index", "Page", routeValues, null).ToHtmlString();
+            return this.ActionLinkToPage(linkText, routeValues, null);
+        }
+
+        public MvcHtmlString ActionLinkContentItem(ContentItemModel itemModel, RegionModel targetRegion)
+        {
+            var htmlAttributes = new
+            {
+                title = itemModel.Description.StripTagsRegex()
+            };
+
+            object routeValues = new
+            {
+                idci = itemModel.Id.ToString(),
+            };
+
+            if (targetRegion != null)
+            {
+                object routeValue2 = new
+                {
+                    page = targetRegion.Zone.Page.UniqueName,
+                };
+                routeValues = TypeMerger.MergeTypes(routeValue2, routeValues);
+            }
+
+            return this.ActionLinkToPage(itemModel.Name, routeValues, htmlAttributes);
+        }
+
+        private MvcHtmlString ActionLinkToPage(string linkText, object routeValues, object htmlAttributes)
+        {
+            return this.htmlHelper.ActionLink(linkText, "Index", "Page", routeValues, htmlAttributes);
         }
     }
 }

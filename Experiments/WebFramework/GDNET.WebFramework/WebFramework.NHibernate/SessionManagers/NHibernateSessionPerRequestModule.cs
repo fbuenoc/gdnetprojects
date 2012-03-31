@@ -5,6 +5,7 @@ using GDNET.Web;
 using GDNET.Web.Helpers;
 using NHibernate;
 using NHibernate.Context;
+using WebFramework.Services.Common;
 
 namespace WebFramework.NHibernate.SessionManagers
 {
@@ -44,6 +45,8 @@ namespace WebFramework.NHibernate.SessionManagers
             {
                 HttpContextAssistant.TrySetItem("Services", new InfrastructureServices());
             }
+
+            WebSessionInformationService.Instance.Initialize();
         }
 
         private void Application_EndRequest(object sender, EventArgs e)
