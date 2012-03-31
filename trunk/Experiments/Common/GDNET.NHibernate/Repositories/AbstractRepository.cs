@@ -12,8 +12,6 @@ namespace GDNET.NHibernate.Repositories
     /// <summary>
     /// Base Repository for working with NHibernate
     /// </summary>
-    /// <typeparam name="TEntity"></typeparam>
-    /// <typeparam name="TId"></typeparam>
     public abstract class AbstractRepository<TEntity, TId> : IRepositoryBase<TEntity, TId> where TEntity : EntityBase<TId>
     {
         protected ISessionStrategy sessionStrategy = null;
@@ -41,7 +39,7 @@ namespace GDNET.NHibernate.Repositories
             return this.sessionStrategy.Session.Load<TEntity>(id);
         }
 
-        public TEntity GetById(TId id)
+        public virtual TEntity GetById(TId id)
         {
             if (this.Specification != null)
             {
@@ -65,7 +63,6 @@ namespace GDNET.NHibernate.Repositories
         /// <summary>
         /// Gets all entities (of TEntity type) from data store.
         /// </summary>
-        /// <returns></returns>
         public IList<TEntity> GetAll()
         {
             return this.GetAll(0, 0);
@@ -76,8 +73,7 @@ namespace GDNET.NHibernate.Repositories
         /// </summary>
         /// <param name="page">Zero base page</param>
         /// <param name="pageSize">Number of item per each page</param>
-        /// <returns></returns>
-        public IList<TEntity> GetAll(int page, int pageSize)
+        public virtual IList<TEntity> GetAll(int page, int pageSize)
         {
             var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
             if (!(page == 0 && pageSize == 0))
@@ -87,7 +83,7 @@ namespace GDNET.NHibernate.Repositories
             return query.ToList();
         }
 
-        public IList<TEntity> GetAll(int page, int pageSize, out int totalRows)
+        public virtual IList<TEntity> GetAll(int page, int pageSize, out int totalRows)
         {
             var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
             totalRows = query.Count();
@@ -103,12 +99,28 @@ namespace GDNET.NHibernate.Repositories
 
         #region FindByProperty Methods
 
-        public IList<TEntity> FindByProperties(string[] properties, object[] values)
+        public virtual IList<TEntity> FindByProperties(string[] properties, object[] values)
         {
             var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
             for (int counter = 0; counter < properties.Length; counter++)
             {
                 criteria.Add(Expression.Eq(properties[counter], values[counter]));
+            }
+
+            return criteria.List<TEntity>();
+        }
+
+        public virtual IList<TEntity> FindByProperties(string[] properties, object[] values, int page, int pageSize)
+        {
+            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+            for (int counter = 0; counter < properties.Length; counter++)
+            {
+                criteria.Add(Expression.Eq(properties[counter], values[counter]));
+            }
+
+            if (!(page == 0 && pageSize == 0))
+            {
+                criteria = criteria.SetFirstResult(page * pageSize).SetFetchSize(pageSize);
             }
 
             return criteria.List<TEntity>();
@@ -131,7 +143,7 @@ namespace GDNET.NHibernate.Repositories
         /// <typeparam name="TEntity">The type of entities to retrieve.</typeparam>
         /// <param name="property">The name of the property; should be a member of type TEntity.</param>
         /// <param name="values">The value of the property.</param>
-        public IList<TEntity> FindByProperty(string property, object[] values)
+        public virtual IList<TEntity> FindByProperty(string property, object[] values)
         {
             ThrowException.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
 
@@ -148,7 +160,7 @@ namespace GDNET.NHibernate.Repositories
         /// <param name="value">The value of the property.</param>
         /// <param name="page">Zero base page</param>
         /// <param name="pageSize">Number of item per each page</param>
-        public IList<TEntity> FindByProperty(string property, object value, int page, int pageSize)
+        public virtual IList<TEntity> FindByProperty(string property, object value, int page, int pageSize)
         {
             ThrowException.ArgumentExceptionIfNullOrEmpty(property, "property", "You must specify a valid property.");
 
@@ -206,7 +218,7 @@ namespace GDNET.NHibernate.Repositories
         /// <param name="value">The value of the property.</param>
         /// <param name="page">Zero base page</param>
         /// <param name="pageSize">Number of item per each page</param>
-        public IList<TEntity> FindByProperty(string property, object value, string orderByProperty, bool isAsc, int page, int pageSize)
+        public virtual IList<TEntity> FindByProperty(string property, object value, string orderByProperty, bool isAsc, int page, int pageSize)
         {
             var orderBy = new Order(orderByProperty, isAsc);
             var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
@@ -222,7 +234,7 @@ namespace GDNET.NHibernate.Repositories
 
         #endregion
 
-        public virtual bool Save(TEntity entity)
+        public bool Save(TEntity entity)
         {
             ThrowException.ArgumentNullException(entity, "entity", "Entity must be valid to be saved.");
 
@@ -245,9 +257,7 @@ namespace GDNET.NHibernate.Repositories
         /// <summary>
         /// Save many entities to data store.
         /// </summary>
-        /// <param name="entities"></param>
-        /// <returns></returns>
-        public virtual bool Save(IList<TEntity> entities)
+        public bool Save(IList<TEntity> entities)
         {
             ThrowException.ArgumentNullException(entities, "entities", "List of entities must be valid to be saved.");
 
@@ -262,7 +272,7 @@ namespace GDNET.NHibernate.Repositories
             return true;
         }
 
-        public virtual bool Update(TEntity entity)
+        public bool Update(TEntity entity)
         {
             ThrowException.ArgumentNullException(entity, "entity", "Entity must be valid to be updated.");
 
@@ -284,9 +294,7 @@ namespace GDNET.NHibernate.Repositories
         /// <summary>
         /// Update many entities to data store.
         /// </summary>
-        /// <param name="entities"></param>
-        /// <returns></returns>
-        public virtual bool Update(IList<TEntity> entities)
+        public bool Update(IList<TEntity> entities)
         {
             ThrowException.ArgumentNullException(entities, "entities", "List of entities must be valid to be updated.");
 
@@ -301,12 +309,12 @@ namespace GDNET.NHibernate.Repositories
             return true;
         }
 
-        public virtual bool Delete(TId id)
+        public bool Delete(TId id)
         {
             return this.Delete(this.sessionStrategy.Session.Load<TEntity>(id));
         }
 
-        public virtual bool Delete(TEntity entity)
+        public bool Delete(TEntity entity)
         {
             ThrowException.ArgumentNullException(entity, "entity", "Entity must be valid to be deleted.");
 
@@ -332,6 +340,5 @@ namespace GDNET.NHibernate.Repositories
         }
 
         #endregion
-
     }
 }

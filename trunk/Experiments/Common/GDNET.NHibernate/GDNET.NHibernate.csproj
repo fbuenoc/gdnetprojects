@@ -46,6 +46,7 @@
     <Compile Include="NHibernateAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />
+    <Compile Include="Repositories\AbstractRepositoryWithActive.cs" />
     <Compile Include="SessionManagers\AbstractSessionStrategy.cs" />
     <Compile Include="SessionManagers\ISessionStrategy.cs" />
     <Compile Include="SessionManagers\SessionManager.cs" />

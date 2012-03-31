@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Helpers\GDNetFactory.ListValue.cs" />
-    <Compile Include="Helpers\GDNetAssistant.cs" />
+    <Compile Include="GDNetAssistant.cs" />
     <Compile Include="Helpers\GDNetFactory.Image.cs" />
     <Compile Include="Helpers\GDNetFactory.HyperLink.cs" />
     <Compile Include="Helpers\FormCollectionAssistant.cs" />
