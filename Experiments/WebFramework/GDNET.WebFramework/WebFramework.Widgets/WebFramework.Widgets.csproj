@@ -35,7 +35,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
@@ -43,14 +42,12 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Contact\ContactModel.cs" />
     <Compile Include="Models\Contact\ContactWidget.cs" />
+    <Compile Include="Models\DetailArticle\DetailArticleModel.cs" />
+    <Compile Include="Models\DetailArticle\DetailArticleWidget.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentModel.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentWidget.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentWidgetConstants.cs" />
@@ -61,9 +58,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\DetailArticle\Default\Index.css" />
     <Content Include="Content\RecentArticles\Default\Index.css" />
     <Content Include="Content\RecentProducts\Default\Index.css" />
     <Content Include="Views\Contact\Default\Index.ascx" />
+    <Content Include="Views\DetailArticle\Default\Index.ascx" />
     <Content Include="Views\HtmlContent\Default\Index.ascx" />
     <Content Include="Views\RecentArticles\Default\Index.ascx" />
     <Content Include="Views\RecentProducts\Default\Index.ascx" />
@@ -87,6 +86,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
       <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
       <Name>GDNET.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
+      <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
+      <Name>GDNET.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Base\WebFramework.Common.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>

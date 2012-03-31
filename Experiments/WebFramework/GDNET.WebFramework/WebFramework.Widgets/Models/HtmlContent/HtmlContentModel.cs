@@ -52,10 +52,6 @@ namespace WebFramework.Widgets.Models.HtmlContent
                 return false;
             }
         }
-
-        public RegionModel DetailConnection
-        {
-            get { return base.GetConnectionTo(HtmlContentWidgetConstants.ActionDetail); }
-        }
+        
     }
 }

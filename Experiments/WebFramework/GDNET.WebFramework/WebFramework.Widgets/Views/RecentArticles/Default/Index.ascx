@@ -8,7 +8,7 @@
     %>
     <tr>
         <td>
-            <%= base.Html.WebFramework().HyperLink(articleModel)%>
+            <%= base.Html.WebFramework().WidgetHanlder().ActionLinkContentItem(articleModel, base.Model.DetailConnection) %>
         </td>
     </tr>
     <%
