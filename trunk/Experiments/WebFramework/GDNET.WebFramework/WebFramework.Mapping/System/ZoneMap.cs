@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.System
 {
-    public class ZoneMap : AbstractEntityWithActiveMapping<Zone, long>, INHibernateMapping
+    public class ZoneMap : EntityWithActiveMapping<Zone, long>, INHibernateMapping
     {
         public ZoneMap()
             : base(Generators.Native)

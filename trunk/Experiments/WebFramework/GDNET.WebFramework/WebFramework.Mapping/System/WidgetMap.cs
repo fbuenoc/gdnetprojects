@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.System
 {
-    public class WidgetMap : AbstractEntityWithActiveMapping<Widget, long>, INHibernateMapping
+    public class WidgetMap : EntityWithActiveMapping<Widget, long>, INHibernateMapping
     {
         public WidgetMap()
             : base(Generators.Native)

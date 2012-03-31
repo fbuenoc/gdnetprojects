@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.Common
 {
-    public class TranslationMap : AbstractEntityWithModificationMapping<Translation, long>, INHibernateMapping
+    public class TranslationMap : EntityWithModificationMapping<Translation, long>, INHibernateMapping
     {
         public TranslationMap()
             : base(Generators.Native)

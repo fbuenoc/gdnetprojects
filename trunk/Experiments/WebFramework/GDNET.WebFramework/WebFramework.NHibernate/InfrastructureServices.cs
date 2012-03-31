@@ -4,6 +4,7 @@ using GDNET.Common.Services;
 using WebFramework.Domain;
 using WebFramework.Domain.Services;
 using WebFramework.Services;
+using WebFramework.Services.Common;
 using WebFramework.Services.System;
 
 namespace WebFramework.NHibernate
@@ -27,9 +28,9 @@ namespace WebFramework.NHibernate
             return contentTypeService;
         }
 
-        protected override ITranslationService GetTranslationService()
+        protected override IPageService GetPageService()
         {
-            return new TranslationService();
+            return new PageService();
         }
 
         protected override IFormatterService GetFormatterService()
@@ -40,6 +41,11 @@ namespace WebFramework.NHibernate
         protected override IRegionService GetRegionService()
         {
             return new RegionService();
+        }
+
+        protected override ITranslationService GetTranslationService()
+        {
+            return new TranslationService();
         }
     }
 }

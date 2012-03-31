@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.Common
 {
-    public class StatutLifeCycleMap : AbstractEntityMapping<StatutLifeCycle, long>, INHibernateMapping
+    public class StatutLifeCycleMap : EntityBaseMapping<StatutLifeCycle, long>, INHibernateMapping
     {
         public StatutLifeCycleMap()
             : base(Generators.Native)

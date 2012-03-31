@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.System
 {
-    public class PageMap : AbstractEntityWithActiveMapping<Page, long>, INHibernateMapping
+    public class PageMap : EntityWithActiveMapping<Page, long>, INHibernateMapping
     {
         public PageMap()
             : base(Generators.Native)
@@ -14,6 +14,7 @@ namespace WebFramework.Mapping.System
             base.Property(e => e.Description);
             base.Property(e => e.Keyword);
             base.Property(e => e.Position);
+            base.Property(e => e.IsDefault);
 
             base.ManyToOne(e => e.LifeCycle, m =>
             {

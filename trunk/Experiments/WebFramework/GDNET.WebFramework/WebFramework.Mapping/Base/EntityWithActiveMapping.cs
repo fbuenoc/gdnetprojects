@@ -3,9 +3,9 @@ using NHibernate.Mapping.ByCode;
 
 namespace WebFramework.Mapping.Base
 {
-    public abstract class AbstractEntityWithActiveMapping<TObject, TId> : AbstractEntityMapping<TObject, TId> where TObject : EntityWithActiveBase<TId>
+    public abstract class EntityWithActiveMapping<TObject, TId> : EntityBaseMapping<TObject, TId> where TObject : EntityWithActive<TId>
     {
-        public AbstractEntityWithActiveMapping(IGeneratorDef generator)
+        public EntityWithActiveMapping(IGeneratorDef generator)
             : base(generator)
         {
             base.Property(e => e.IsActive);

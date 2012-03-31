@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.Common
 {
-    public class ApplicationMap : AbstractEntityWithModificationMapping<Application, long>, INHibernateMapping
+    public class ApplicationMap : EntityWithModificationMapping<Application, long>, INHibernateMapping
     {
         public ApplicationMap()
             : base(Generators.Native)

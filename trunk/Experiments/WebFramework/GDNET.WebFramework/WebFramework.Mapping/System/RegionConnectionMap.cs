@@ -4,7 +4,7 @@ using WebFramework.Mapping.Base;
 
 namespace WebFramework.Mapping.System
 {
-    public class RegionConnectionMap : AbstractEntityMapping<RegionConnection, long>, INHibernateMapping
+    public class RegionConnectionMap : EntityBaseMapping<RegionConnection, long>, INHibernateMapping
     {
         public RegionConnectionMap()
             : base(Generators.Native)

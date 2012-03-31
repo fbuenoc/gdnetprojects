@@ -31,7 +31,6 @@ namespace WebFramework.Data.UnitTest.Common
             Assert.AreEqual(false, app.IsActive);
             Assert.AreEqual(true, app.IsDeletable);
             Assert.AreEqual(true, app.IsEditable);
-            Assert.AreEqual(false, app.IsViewable);
         }
 
         #endregion
