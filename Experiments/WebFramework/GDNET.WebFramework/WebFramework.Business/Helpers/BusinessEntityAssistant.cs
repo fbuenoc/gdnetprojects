@@ -22,6 +22,17 @@ namespace WebFramework.Business.Helpers
             return default(TEntity);
         }
 
+        public static TEntity BuildEntity<TEntity>(ContentItem contentItem) where TEntity : BusinessEntityBase
+        {
+            TEntity entity = (TEntity)Activator.CreateInstance(typeof(TEntity), true);
+            if (entity.BuildEntity(contentItem))
+            {
+                return entity;
+            }
+
+            return default(TEntity);
+        }
+
         public static IList<TEntity> GetAllByType<TEntity>() where TEntity : BusinessEntityBase
         {
             List<TEntity> listeEntities = new List<TEntity>();

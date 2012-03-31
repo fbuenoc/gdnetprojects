@@ -60,8 +60,10 @@ namespace WebFramework.Common.Framework.Common
 
         public ContentTypeModel ContentTypeModel
         {
-            get;
-            protected set;
+            get
+            {
+                return (base.Entity == null) ? null : new ContentTypeModel(base.Entity.ContentType);
+            }
         }
 
         #endregion
@@ -75,8 +77,6 @@ namespace WebFramework.Common.Framework.Common
         {
             this.ContentType = entity.ContentType.Name.Value;
             this.ContentTypeId = entity.ContentType.Id;
-
-            this.ContentTypeModel = new ContentTypeModel(entity.ContentType);
 
             this.Name = (entity.Name == null) ? string.Empty : entity.Name.Value;
             this.Description = (entity.Description == null) ? string.Empty : entity.Description.Value;

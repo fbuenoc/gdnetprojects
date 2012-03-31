@@ -264,6 +264,7 @@
     <Compile Include="Common\Controllers\AbstractController.cs" />
     <Compile Include="Common\Controllers\AbstractCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
+    <Compile Include="Common\Controllers\AbstractControllerT.cs" />
     <Compile Include="Common\WebFrameworkViewEngine.cs" />
     <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
@@ -272,10 +273,8 @@
     <Compile Include="Areas\Framework\Controllers\AccountController.cs" />
     <Compile Include="Areas\Framework\Controllers\RoleController.cs" />
     <Compile Include="Areas\Framework\FrameworkAreaRegistration.cs" />
-    <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ItemController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -799,12 +798,6 @@
     <Content Include="Scripts\2012.1.214\telerik.treeview.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.upload.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.window.min.js" />
-    <Content Include="Views\About\Index.aspx" />
-    <Content Include="Views\Home\ArticleView.ascx" />
-    <Content Include="Views\Home\Welcome.aspx" />
-    <Content Include="Views\Item\ArticleDetails.aspx" />
-    <Content Include="Views\Item\Details.aspx" />
-    <Content Include="Views\Item\ProductDetails.aspx" />
     <Content Include="Views\Page\Index.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -852,8 +845,6 @@
     <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Views\Account\LogOn.aspx" />
     <Content Include="Views\Account\Register.aspx" />
-    <Content Include="Views\Home\About.aspx" />
-    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
@@ -867,6 +858,7 @@
     <Folder Include="Areas\System\Views\Widget\" />
     <Folder Include="Areas\System\Views\Zone\" />
     <Folder Include="Content\Widgets\" />
+    <Folder Include="Views\Home\" />
     <Folder Include="Views\Widgets\" />
   </ItemGroup>
   <ItemGroup>

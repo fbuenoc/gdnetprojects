@@ -122,7 +122,14 @@ namespace WebFramework.Business.Base
 
         public bool GetById(long id)
         {
-            this.ItemData = DomainRepositories.ContentItem.GetById(id);
+            ContentItem contentItem = DomainRepositories.ContentItem.GetById(id);
+            return this.BuildEntity(contentItem);
+        }
+
+        public bool BuildEntity(ContentItem contentItem)
+        {
+            this.ItemData = contentItem;
+
             if (this.ItemData == null)
             {
                 return false;
@@ -207,7 +214,6 @@ namespace WebFramework.Business.Base
             this.IsActive = this.ItemData.IsActive;
             this.IsDeletable = this.ItemData.IsDeletable;
             this.IsEditable = this.ItemData.IsEditable;
-            this.IsViewable = this.ItemData.IsViewable;
         }
 
         #endregion

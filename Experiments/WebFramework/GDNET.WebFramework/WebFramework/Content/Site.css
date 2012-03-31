@@ -336,14 +336,14 @@ table th
 
 /** DATA
 -------------------------------*/
-.content_left
+.LeftContent
 {
     width: 65%;
     border-right: solid 1px #ccc;
     padding-right: 15px;
     float: left;
 }
-.content_right
+.RightContent
 {
     width: 30%;
     padding-left: 15px;

@@ -19,6 +19,8 @@ namespace WebFramework.Common.Widgets
             this.Description = regionModel.Description;
         }
 
+        #region Properties
+
         public ReadOnlyCollection<KeyValuePair<string, string>> Properties
         {
             get { return this.regionModel.Properties; }
@@ -36,6 +38,15 @@ namespace WebFramework.Common.Widgets
             set;
         }
 
+        public RegionModel DetailConnection
+        {
+            get { return this.GetConnectionTo(WidgetActions.Detail); }
+        }
+
+        #endregion
+
+        #region Methods
+
         protected T GetPropertyValue<T>(string propertyName)
         {
             if (this.regionModel.Properties.Any(x => x.Key == propertyName))
@@ -52,5 +63,7 @@ namespace WebFramework.Common.Widgets
             var connection = this.regionModel.RegionConnections.FirstOrDefault(x => x.Key == action);
             return connection.IsDefault() ? null : connection.Value;
         }
+
+        #endregion
     }
 }

@@ -1,5 +1,6 @@
-﻿using WebFramework.Common.Business.Base;
+﻿using System;
 using WebFramework.Business.Common;
+using WebFramework.Common.Business.Base;
 
 namespace WebFramework.Common.Business.Common
 {
@@ -8,6 +9,20 @@ namespace WebFramework.Common.Business.Common
         public ArticleModel(Article article)
             : base(article)
         {
+            this.MainContent = article.MainContent;
+            this.PublishedDate = article.PublishedDate;
+        }
+
+        public string MainContent
+        {
+            get;
+            private set;
+        }
+
+        public DateTime PublishedDate
+        {
+            get;
+            private set;
         }
     }
 }

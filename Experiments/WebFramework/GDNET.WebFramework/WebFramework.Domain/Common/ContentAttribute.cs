@@ -6,7 +6,7 @@ using WebFramework.Domain.Extensions;
 
 namespace WebFramework.Domain.Common
 {
-    public partial class ContentAttribute : EntityWithModificationBase<long>, IEntityWithLifeCycle
+    public partial class ContentAttribute : EntityWithModification<long>, IEntityWithLifeCycle
     {
         private IList<ContentItem> contentItems = new List<ContentItem>();
         private IList<ContentItemAttributeValue> attributeValues = new List<ContentItemAttributeValue>();

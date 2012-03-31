@@ -6,7 +6,7 @@ using GDNET.Common.Base.Entities;
 
 namespace WebFramework.Common.Framework.AccountModeles
 {
-    public sealed class AccountRoleModel : EntityWithActiveBase<string>
+    public sealed class AccountRoleModel : EntityWithActive<string>
     {
         /// <summary>
         /// The name of role

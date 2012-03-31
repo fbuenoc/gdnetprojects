@@ -3,8 +3,9 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.Repositories.Common
 {
-    public interface IApplicationRepository : IRepositoryWithActiveBase<Application, long>
+    public interface IApplicationRepository : IRepositoryBase<Application, long>
     {
         Application GetByRootUrl(string rootUrl);
+        Application GetByRootUrl(string rootUrl, bool includeDefaultApp);
     }
 }

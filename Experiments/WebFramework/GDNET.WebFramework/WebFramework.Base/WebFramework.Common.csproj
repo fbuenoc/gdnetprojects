@@ -57,6 +57,7 @@
     <Compile Include="Business\Common\ProductModel.cs" />
     <Compile Include="Common\DefaultImpl\NavigationService.cs" />
     <Compile Include="Common\DefaultImpl\ValidationService.cs" />
+    <Compile Include="Common\EntityQueryString.cs" />
     <Compile Include="Common\FrameworkServices.cs" />
     <Compile Include="Common\Services\INavigationService.cs" />
     <Compile Include="Common\Services\IValidationService.cs" />

@@ -1,10 +1,7 @@
-﻿using System.Linq;
-using System.Web.Mvc;
-using WebFramework.Business.Common;
+﻿using System.Web.Mvc;
 using WebFramework.Common.Controllers;
-using WebFramework.Common.Framework.Common;
 using WebFramework.Domain;
-using WebFramework.ViewModels;
+using WebFramework.Services.Common;
 
 namespace WebFramework.Controllers
 {
@@ -12,23 +9,20 @@ namespace WebFramework.Controllers
     {
         public ActionResult Index()
         {
-            return base.RedirectToAction("Welcome");
+            var defaultPage = DomainServices.Page.GetDefaultPage(WebSessionInformationService.Instance.CurrentApplication, WebSessionInformationService.Instance.CurrentCulture);
+            if (defaultPage == null)
+            {
+                return base.RedirectToAction("NoPage");
+            }
+            else
+            {
+                return base.RedirectToAction("Index", "Page", new { page = defaultPage.UniqueName });
+            }
         }
 
-        public ActionResult Welcome()
+        public ActionResult NoPage()
         {
-            base.ViewBag.Message = "Welcome to ASP.NET MVC!";
-
-            var listeProducts = DomainRepositories.ContentItem.GetByContentType(typeof(Product));
-            var listeArticles = DomainRepositories.ContentItem.GetByContentType(typeof(Article));
-
-            var viewModel = new HomeViewModel
-            {
-                Products = listeProducts.Select(x => new ContentItemModel(x)).ToList(),
-                Articles = listeArticles.Select(x => new ContentItemModel(x)).ToList()
-            };
-
-            return base.View(viewModel);
+            return base.View();
         }
     }
 }
