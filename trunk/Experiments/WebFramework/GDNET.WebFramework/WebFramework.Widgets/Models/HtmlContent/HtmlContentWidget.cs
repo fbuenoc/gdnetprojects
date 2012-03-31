@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using WebFramework.Common.Widgets;
 
 namespace WebFramework.Widgets.Models.HtmlContent
@@ -17,7 +18,7 @@ namespace WebFramework.Widgets.Models.HtmlContent
             get
             {
                 var actions = base.Actions;
-                actions.Add(new WidgetAction(HtmlContentWidgetConstants.ActionDetail));
+                actions.Add(new WidgetAction(WidgetActions.Detail));
 
                 return actions;
             }
@@ -32,7 +33,7 @@ namespace WebFramework.Widgets.Models.HtmlContent
 
         #region Events
 
-        void HtmlContentWidget_BeforeInstalled(object sender, System.EventArgs e)
+        void HtmlContentWidget_BeforeInstalled(object sender, EventArgs e)
         {
         }
 
