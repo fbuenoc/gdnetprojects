@@ -1,8 +1,8 @@
 ﻿namespace GDNET.Common.Base.Entities
 {
-    public interface IEntityBase
+    public interface IEntityBase<TId> : IEntityBase
     {
-        string Signature
+        TId Id
         {
             get;
         }

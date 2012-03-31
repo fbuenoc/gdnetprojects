@@ -30,5 +30,6 @@ namespace GDNET.Common.Helpers
 
             return member.Member.DeclaringType.FullName;
         }
+
     }
 }

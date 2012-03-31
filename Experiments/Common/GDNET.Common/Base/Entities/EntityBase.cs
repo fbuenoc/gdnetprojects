@@ -6,6 +6,8 @@ namespace GDNET.Common.Base.Entities
     /// Entity with Id property
     public abstract class EntityBase<TId> : IEntityBase<TId>
     {
+        #region Ctors
+
         public EntityBase()
         {
             this.Id = default(TId);
@@ -17,6 +19,8 @@ namespace GDNET.Common.Base.Entities
 
             this.Id = entity.Id;
         }
+
+        #endregion
 
         #region IEntity<TId> Members
 

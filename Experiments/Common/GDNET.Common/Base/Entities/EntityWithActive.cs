@@ -1,16 +1,13 @@
 ﻿namespace GDNET.Common.Base.Entities
 {
-    /// <summary>
-    /// Entity with Id property
-    /// </summary>
-    public abstract class EntityWithActiveBase<TId> : EntityBase<TId>, IEntityWithActiveBase<TId>
+    public abstract class EntityWithActive<TId> : EntityBase<TId>, IEntityWithActive<TId>
     {
-        public EntityWithActiveBase()
+        public EntityWithActive()
             : base()
         {
         }
 
-        public EntityWithActiveBase(IEntityWithActiveBase<TId> entity)
+        public EntityWithActive(IEntityWithActive<TId> entity)
             : base(entity)
         {
             this.IsActive = entity.IsActive;

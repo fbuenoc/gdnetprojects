@@ -1,6 +1,6 @@
 ﻿namespace GDNET.Common.Base.Entities
 {
-    public interface IEntityWithModification : IEntityWithActiveBase
+    public interface IEntityWithModification : IEntityWithActive
     {
         bool IsDeletable
         {
@@ -13,15 +13,5 @@
             get;
             set;
         }
-
-        bool IsViewable
-        {
-            get;
-            set;
-        }
-    }
-
-    public interface IEntityWithModification<TId> : IEntityWithActiveBase<TId>, IEntityWithModification
-    {
     }
 }

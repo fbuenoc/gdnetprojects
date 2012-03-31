@@ -1,18 +1,14 @@
 ﻿namespace GDNET.Common.Base.Entities
 {
-    /// <summary>
-    /// Entity with with CreMod
-    /// </summary>
-    public abstract class EntityWithModificationBase<TId> : EntityWithActiveBase<TId>, IEntityWithModification<TId>
+    public abstract class EntityWithModification<TId> : EntityWithActive<TId>, IEntityWithModification<TId>
     {
-        public EntityWithModificationBase() { }
+        public EntityWithModification() { }
 
-        public EntityWithModificationBase(IEntityWithModification<TId> entity)
+        public EntityWithModification(IEntityWithModification<TId> entity)
             : base(entity)
         {
             this.IsDeletable = entity.IsDeletable;
             this.IsEditable = entity.IsEditable;
-            this.IsViewable = entity.IsViewable;
         }
 
         #region IEntityWithModification Members
@@ -30,12 +26,6 @@
         }
 
         public virtual bool IsEditable
-        {
-            get;
-            set;
-        }
-
-        public virtual bool IsViewable
         {
             get;
             set;

@@ -18,7 +18,7 @@ namespace GDNET.Common.Encryption
         {
         }
 
-        protected EncryptionService(string password)
+        public EncryptionService(string password)
         {
             ThrowException.ArgumentNullException(password, "password", "Password can not be enpty.");
             this.elixisAESEncryptor = new AESEncryptor(password, AESBits.BITS128);
