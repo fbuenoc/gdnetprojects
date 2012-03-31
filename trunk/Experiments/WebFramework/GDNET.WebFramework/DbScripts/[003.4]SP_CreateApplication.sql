@@ -15,7 +15,6 @@ create proc SP_CreateApplication
 	@IsActive bit = 1,
 	@IsEditable bit = 1,
 	@IsDeletable bit = 1,
-	@IsViewable bit = 1,
 	@CreatedBy varchar(255) = 'webframework@gmail.com'
 as
 begin
@@ -90,8 +89,7 @@ begin
 			   ,[RootUrl]
 			   ,[IsActive]
 			   ,[IsEditable]
-			   ,[IsDeletable]
-			   ,[IsViewable])
+			   ,[IsDeletable])
 		 VALUES
 			   (@NameTranslationId
 			   ,@DescriptionTranslationId
@@ -101,8 +99,7 @@ begin
 			   ,@RootUrl
 			   ,@IsActive
 			   ,@IsEditable
-			   ,@IsDeletable
-			   ,@IsViewable)
+			   ,@IsDeletable)
 		
 		declare @applicationId varchar(10);
 		select @applicationId = convert(varchar(10), SCOPE_IDENTITY());

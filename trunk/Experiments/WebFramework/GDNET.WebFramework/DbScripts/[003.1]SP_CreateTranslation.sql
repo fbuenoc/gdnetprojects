@@ -14,7 +14,6 @@ create proc SP_CreateOrUpdateTranslation
 	@IsActive bit = 1,
 	@IsEditable bit = 1,
 	@IsDeletable bit = 1,
-	@IsViewable bit = 1,
 	@CreatedBy varchar(255) = 'webframework@gmail.com'
 as
 begin
@@ -42,7 +41,6 @@ begin
 				  ,[IsActive] = @IsActive
 				  ,[IsEditable] = @IsEditable
 				  ,[IsDeletable] = @IsDeletable
-				  ,[IsViewable] = @IsViewable
 			WHERE [Id] = @TestTranslationId;
 			
 			INSERT INTO [StatutLog]
@@ -102,7 +100,6 @@ begin
 				   ,[IsActive]
 				   ,[IsEditable]
 				   ,[IsDeletable]
-				   ,[IsViewable]
 				   )
 			 VALUES
 				   (@CategoryId
@@ -113,7 +110,6 @@ begin
 				   ,@IsActive
 				   ,@IsEditable
 				   ,@IsDeletable
-				   ,@IsViewable
 				   );
 				   
 			print N'Translation insert DONE: @Code: ' + @Code;

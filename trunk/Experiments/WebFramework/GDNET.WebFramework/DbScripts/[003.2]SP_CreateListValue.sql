@@ -15,7 +15,6 @@ create proc SP_CreateListValue
 	@IsActive bit = 1,
 	@IsEditable bit = 1,
 	@IsDeletable bit = 1,
-	@IsViewable bit = 1,
 	@CreatedBy varchar(255) = 'webframework@gmail.com',
 	@ApplicationId int = NULL
 as
@@ -103,7 +102,6 @@ begin
 					   ,[IsActive]
 					   ,[IsEditable]
 					   ,[IsDeletable]
-					   ,[IsViewable]
 					   )
 				 VALUES
 					   (@DescriptionTranslationId
@@ -117,7 +115,6 @@ begin
 					   ,@IsActive
 					   ,@IsEditable
 					   ,@IsDeletable
-					   ,@IsViewable
 					   );
 				
 				print N'List insert DONE: @Name: ' + @Name;
