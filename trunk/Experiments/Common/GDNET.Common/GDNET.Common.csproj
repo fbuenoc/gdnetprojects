@@ -67,17 +67,23 @@
     <Compile Include="Adapters\IAdapterLinkButton.cs" />
     <Compile Include="Adapters\IAdapterHyperLink.cs" />
     <Compile Include="Adapters\IAdapterDataPager.cs" />
-    <Compile Include="Base\Entities\EntityWithActiveBase.cs" />
+    <Compile Include="Base\Entities\IEntityWithModificationT.cs" />
+    <Compile Include="Base\Entities\IEntityWithActiveT.cs" />
+    <Compile Include="Base\Entities\IEntityBaseT.cs" />
+    <Compile Include="Base\Entities\EntityWithActive.cs" />
     <Compile Include="Base\Entities\EntityBase.cs" />
-    <Compile Include="Base\Entities\EntityWithModificationBase.cs" />
+    <Compile Include="Base\Entities\EntityWithModification.cs" />
     <Compile Include="Base\Entities\IEntityBase.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Base\Meta\MetaCreModBase.cs" />
-    <Compile Include="Base\Meta\MetaEntityActiveBase.cs" />
+    <Compile Include="Base\Meta\EntityMetaBase.cs" />
+    <Compile Include="Base\Meta\EntityMetaWithActive.cs" />
     <Compile Include="Base\Meta\MetaEntityBase.cs" />
     <Compile Include="Base\Meta\MetaFullControlBase.cs" />
     <Compile Include="Data\Impl\RepositoryAssistant.cs" />
+    <Compile Include="Data\IRepositoryBase.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Services\IFormatterService.cs" />
     <Compile Include="Services\ITranslationService.cs" />
     <Compile Include="Data\IRepositoryAssistant.cs" />
@@ -91,12 +97,11 @@
     <Compile Include="Security\Services\IEncryptionService.cs" />
     <Compile Include="Security\Services\ISessionService.cs" />
     <Compile Include="Security\DefaultImpl\SessionService.cs" />
-    <Compile Include="Base\Entities\IEntityWithActiveBase.cs" />
+    <Compile Include="Base\Entities\IEntityWithActive.cs" />
     <Compile Include="Base\Entities\IEntityWithModification.cs" />
     <Compile Include="Services\IInterceptorService.cs" />
     <Compile Include="Base\SimpleEventArgs.cs" />
     <Compile Include="Data\Accuracy.cs" />
-    <Compile Include="Data\IRepositoryBase.cs" />
     <Compile Include="DesignByContract\ThrowException.cs" />
     <Compile Include="Domain\IObjectValidation.cs" />
     <Compile Include="Multilingual\IMultilingualTextControl.cs" />

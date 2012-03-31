@@ -3,7 +3,7 @@ using GDNET.Common.Base.Entities;
 
 namespace GDNET.Common.Data
 {
-    public interface IRepositoryBase<TEntity, TId> where TEntity : IEntityWithActiveBase<TId>
+    public interface IRepositoryBase<TEntity, TId> where TEntity : IEntityBase<TId>
     {
         ISpecificationBase<TEntity, TId> Specification
         {
@@ -14,20 +14,15 @@ namespace GDNET.Common.Data
         /// <summary>
         /// Try to load an entity, it's not query to data store if we don't access file other than its id.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         TEntity LoadById(TId id);
         /// <summary>
         /// Gets entity from data store by its id.
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
         TEntity GetById(TId id);
 
         /// <summary>
         /// Gets all entities (of TEntity type) from data store.
         /// </summary>
-        /// <returns></returns>
         IList<TEntity> GetAll();
         /// <summary>
         /// Gets all entities (of TEntity type) from data store. We ignore paging condition if page & pageSize are equal 0.
@@ -35,11 +30,11 @@ namespace GDNET.Common.Data
         /// <param name="page">Zero base page</param>
         /// <param name="pageSize">Number of item per each page</param>
         /// <param name="totalRows">Total rows by request</param>
-        /// <returns></returns>
         IList<TEntity> GetAll(int page, int pageSize);
         IList<TEntity> GetAll(int page, int pageSize, out int totalRows);
 
         IList<TEntity> FindByProperties(string[] properties, object[] values);
+        IList<TEntity> FindByProperties(string[] properties, object[] values, int page, int pageSize);
 
         /// <summary>
         /// Retrieves a collection of entities based on the name and value of a property.

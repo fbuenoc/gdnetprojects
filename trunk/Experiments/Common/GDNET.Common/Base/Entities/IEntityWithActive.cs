@@ -1,10 +1,11 @@
 ﻿namespace GDNET.Common.Base.Entities
 {
-    public interface IEntityBase
+    public interface IEntityWithActive : IEntityBase
     {
-        string Signature
+        bool IsActive
         {
             get;
+            set;
         }
     }
 }

@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GDNET.Extensions</RootNamespace>
     <AssemblyName>GDNET.Extensions</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,13 +46,16 @@
     <Compile Include="BooleanExtensions.cs" />
     <Compile Include="BooleanAssistant.cs" />
     <Compile Include="DateTimeAssistant.cs" />
+    <Compile Include="DynamicAssistant.cs" />
     <Compile Include="EnumAssistant.cs" />
     <Compile Include="HtmlAssistant.cs" />
+    <Compile Include="ListAssistant.cs" />
     <Compile Include="NumberAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetAssistant.cs" />
     <Compile Include="ReflectionAssistant.cs" />
     <Compile Include="StringAssistant.cs" />
+    <Compile Include="StructAssistant.cs" />
     <Compile Include="TypeAssistant.cs" />
   </ItemGroup>
   <ItemGroup>

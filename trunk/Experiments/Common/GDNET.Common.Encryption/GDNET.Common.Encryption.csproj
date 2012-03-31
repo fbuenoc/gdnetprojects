@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GDNET.Common.Encryption</RootNamespace>
     <AssemblyName>GDNET.Common.Encryption</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
