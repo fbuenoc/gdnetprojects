@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
+using GDNET.Web.Mvc.Helpers;
 
-namespace GDNET.Web.Mvc.Helpers
+namespace GDNET.Web.Mvc
 {
     public static class GDNetAssistant
     {

@@ -27,12 +27,12 @@ namespace GDNET.Web.Helpers
 
                 if (currentUrl.Contains(type1))
                 {
-                    indexFrom = currentUrl.IndexOf(type1) + type1.Length + 1;
+                    indexFrom = currentUrl.IndexOf(type1) + type1.Length;
                     indexTo = currentUrl.IndexOf("&", indexFrom);
                 }
                 if (currentUrl.Contains(type2))
                 {
-                    indexFrom = currentUrl.IndexOf(type2) + type2.Length + 1;
+                    indexFrom = currentUrl.IndexOf(type2) + type2.Length;
                     indexTo = currentUrl.IndexOf("&", indexFrom);
                 }
 
@@ -65,12 +65,12 @@ namespace GDNET.Web.Helpers
 
                 if (currentUrl.Contains(type1))
                 {
-                    indexFrom = currentUrl.IndexOf(type1) + type1.Length + 1;
+                    indexFrom = currentUrl.IndexOf(type1) + type1.Length;
                     indexTo = currentUrl.IndexOf("&", indexFrom);
                 }
                 if (currentUrl.Contains(type2))
                 {
-                    indexFrom = currentUrl.IndexOf(type2) + type2.Length + 1;
+                    indexFrom = currentUrl.IndexOf(type2) + type2.Length;
                     indexTo = currentUrl.IndexOf("&", indexFrom);
                 }
 

@@ -28,5 +28,44 @@ namespace GDNET.Web.Mvc.Helpers
 
             return results;
         }
+
+        /// <summary>
+        /// Get values from a collection, only apply with the key in collection that start with given value.
+        /// </summary>
+        public static Dictionary<string, string> GetValuesFromCollection(this FormCollection collection, string keyStartWith)
+        {
+            Dictionary<string, string> results = new Dictionary<string, string>();
+            if (collection != null)
+            {
+                foreach (string key in collection.Keys)
+                {
+                    if (key.StartsWith(keyStartWith))
+                    {
+                        results.Add(key.Substring(keyStartWith.Length), collection[key]);
+                    }
+                }
+            }
+            return results;
+        }
+
+        /// <summary>
+        /// Get value from a collection, only apply with the key in collection that start with given value.
+        /// </summary>
+        public static string GetValueFromCollection(this FormCollection collection, string keyStartWith)
+        {
+            string localResult = string.Empty;
+            if (collection != null)
+            {
+                foreach (string key in collection.Keys)
+                {
+                    if (key.StartsWith(keyStartWith))
+                    {
+                        localResult = collection[key];
+                        break;
+                    }
+                }
+            }
+            return localResult;
+        }
     }
 }
