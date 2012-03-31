@@ -88,9 +88,9 @@
     <Compile Include="Repositories\System\IZoneRepository.cs" />
     <Compile Include="Repositories\System\IWidgetRepository.cs" />
     <Compile Include="Repositories\System\IPageRepository.cs" />
-    <Compile Include="Services\IRegionService.cs" />
-    <Compile Include="Services\IContentTypeService.cs" />
-    <Compile Include="Services\IPageService.cs" />
+    <Compile Include="Services\System\IRegionService.cs" />
+    <Compile Include="Services\Common\IContentTypeService.cs" />
+    <Compile Include="Services\System\IPageService.cs" />
     <Compile Include="System\RegionConnection.Factory.cs" />
     <Compile Include="System\RegionConnection.cs" />
     <Compile Include="System\WidgetProperty.Factory.cs" />

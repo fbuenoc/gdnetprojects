@@ -56,6 +56,9 @@ namespace WebFramework.Domain.Constants
         {
             private static readonly Page defaultPage = Page.Factory.NewInstance();
 
+            public static readonly string Application = ExpressionAssistant.GetPropertyName(() => defaultPage.Application);
+            public static readonly string Culture = ExpressionAssistant.GetPropertyName(() => defaultPage.Culture);
+            public static readonly string IsDefault = ExpressionAssistant.GetPropertyName(() => defaultPage.IsDefault);
             public static readonly string Name = ExpressionAssistant.GetPropertyName(() => defaultPage.Name);
             public static readonly string UniqueName = ExpressionAssistant.GetPropertyName(() => defaultPage.UniqueName);
         }

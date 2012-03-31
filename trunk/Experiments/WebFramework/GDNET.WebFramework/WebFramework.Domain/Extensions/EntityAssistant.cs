@@ -15,22 +15,6 @@ namespace WebFramework.Domain.Extensions
         public static void ChangeActive(this IEntityWithModification entity, bool isActive)
         {
             entity.IsActive = isActive;
-            if (!isActive)
-            {
-                entity.IsViewable = false;
-            }
-        }
-
-        /// <summary>
-        /// If the entity is viewable, it's also be active.
-        /// </summary>
-        public static void ChangeViable(this IEntityWithModification entity, bool isViewable)
-        {
-            entity.IsViewable = isViewable;
-            if (isViewable)
-            {
-                entity.IsActive = true;
-            }
         }
 
         /// <summary>

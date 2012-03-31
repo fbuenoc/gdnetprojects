@@ -6,7 +6,7 @@ using WebFramework.Domain.Extensions;
 
 namespace WebFramework.Domain.Common
 {
-    public partial class ListValue : EntityWithModificationBase<long>, IEntityWithLifeCycle
+    public partial class ListValue : EntityWithModification<long>, IEntityWithLifeCycle
     {
         private IList<ListValue> subValues = new List<ListValue>();
 

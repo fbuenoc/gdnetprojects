@@ -6,7 +6,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Widget : EntityWithActiveBase<long>, IEntityWithLifeCycle
+    public partial class Widget : EntityWithActive<long>, IEntityWithLifeCycle
     {
         #region Fields
 

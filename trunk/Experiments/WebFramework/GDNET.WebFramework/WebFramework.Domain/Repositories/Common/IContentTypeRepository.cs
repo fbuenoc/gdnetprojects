@@ -4,7 +4,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.Repositories.Common
 {
-    public interface IContentTypeRepository : IRepositoryWithActiveBase<ContentType, long>
+    public interface IContentTypeRepository : IRepositoryBase<ContentType, long>
     {
         ContentType FindByTypeName(string qualifiedTypeName);
         ContentType FindByType(Type typeOfContentType);

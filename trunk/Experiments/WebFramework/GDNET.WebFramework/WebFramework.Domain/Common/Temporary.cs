@@ -4,7 +4,7 @@ using WebFramework.Domain.Base;
 
 namespace WebFramework.Domain.Common
 {
-    public partial class Temporary : EntityWithActiveBase<Guid>, IEntityWithLifeCycle
+    public partial class Temporary : EntityWithActive<Guid>, IEntityWithLifeCycle
     {
         #region Properties
 

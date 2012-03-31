@@ -4,7 +4,7 @@ using GDNET.Common.Base.Entities;
 
 namespace WebFramework.Domain.Common
 {
-    public partial class Culture : EntityWithActiveBase<int>
+    public partial class Culture : EntityWithActive<int>
     {
         private IList<Translation> translations = new List<Translation>();
 

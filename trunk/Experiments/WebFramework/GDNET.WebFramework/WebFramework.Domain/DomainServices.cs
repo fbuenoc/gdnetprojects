@@ -13,24 +13,29 @@ namespace WebFramework.Domain
             _instance = instance;
         }
 
-        public static IEncryptionService Encryption
-        {
-            get { return _instance.GetEncryptionService(); }
-        }
-
         public static IContentTypeService ContentType
         {
             get { return _instance.GetContentTypeService(); }
         }
 
-        public static ITranslationService Translation
+        public static IEncryptionService Encryption
         {
-            get { return _instance.GetTranslationService(); }
+            get { return _instance.GetEncryptionService(); }
         }
 
         public static IFormatterService Formatter
         {
             get { return _instance.GetFormatterService(); }
+        }
+
+        public static IPageService Page
+        {
+            get { return _instance.GetPageService(); }
+        }
+
+        public static ITranslationService Translation
+        {
+            get { return _instance.GetTranslationService(); }
         }
 
         #region System
@@ -48,5 +53,6 @@ namespace WebFramework.Domain
         protected abstract IFormatterService GetFormatterService();
 
         protected abstract IRegionService GetRegionService();
+        protected abstract IPageService GetPageService();
     }
 }

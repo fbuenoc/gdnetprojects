@@ -5,7 +5,7 @@ using WebFramework.Domain.Base;
 namespace WebFramework.Common.Framework.Base
 {
     public abstract class AbstractModelWithModification<TEntity, TId> : AbstractModelGenericWithActive<TEntity, TId>, IViewModel<TId>
-        where TEntity : EntityWithModificationBase<TId>
+        where TEntity : EntityWithModification<TId>
     {
         public string ActualStatut
         {
@@ -46,7 +46,7 @@ namespace WebFramework.Common.Framework.Base
         }
 
         public AbstractModelWithModification(TEntity entity)
-            : base()
+            : base(entity)
         {
             this.Initialize();
         }

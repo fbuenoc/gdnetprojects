@@ -3,7 +3,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Domain.Repositories.System
 {
-    public interface IZoneRepository : IRepositoryWithActiveBase<Zone, long>
+    public interface IZoneRepository : IRepositoryBase<Zone, long>
     {
     }
 }

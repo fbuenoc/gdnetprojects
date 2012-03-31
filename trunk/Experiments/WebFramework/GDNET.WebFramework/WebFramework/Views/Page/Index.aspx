@@ -6,12 +6,13 @@
     <%= base.Model.Name %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
-    <div>
-        <div class="LeftContent">
-            <% base.Html.WebFramework().WidgetHanlder().DisplayContent(base.Model, "LeftContent"); %>
-        </div>
-        <div class="RightContent">
-        </div>
+    <div class="LeftContent">
+        <% base.Html.WebFramework().WidgetHanlder().DisplayContent(base.Model, "LeftContent"); %>
+    </div>
+    <div class="RightContent">
+        <% base.Html.WebFramework().WidgetHanlder().DisplayContent(base.Model, "RightContent"); %>
+    </div>
+    <div style="clear: both;">
     </div>
 </asp:Content>
 <asp:Content ID="C3" ContentPlaceHolderID="HeadContent" runat="server">

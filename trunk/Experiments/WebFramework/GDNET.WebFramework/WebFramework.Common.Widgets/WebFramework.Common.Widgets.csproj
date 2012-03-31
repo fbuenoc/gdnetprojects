@@ -43,6 +43,7 @@
     <Compile Include="IWidget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WidgetAction.cs" />
+    <Compile Include="WidgetActions.cs" />
     <Compile Include="WidgetBase.cs" />
     <Compile Include="WidgetBaseConstants.cs" />
     <Compile Include="WidgetEventArgs.cs" />

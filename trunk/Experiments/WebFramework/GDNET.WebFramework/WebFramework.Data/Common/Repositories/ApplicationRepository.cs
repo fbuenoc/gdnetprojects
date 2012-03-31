@@ -1,4 +1,5 @@
-﻿using GDNET.NHibernate.Repositories;
+﻿using System.Linq;
+using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
@@ -21,6 +22,27 @@ namespace WebFramework.Data.Common.Repositories
             return (results != null && results.Count > 0) ? results[0] : null;
         }
 
+        public Application GetByRootUrl(string rootUrl, bool includeDefaultApp)
+        {
+            if (includeDefaultApp)
+            {
+                var applications = base.FindByProperty(MetaInfos.ApplicationMeta.RootUrl, new string[] { rootUrl, CommonConstants.DefaultApplicationRootUrl });
+                if (applications.Count == 1)
+                {
+                    return applications[0];
+                }
+                else
+                {
+                    return applications.FirstOrDefault(x => x.RootUrl == rootUrl);
+                }
+            }
+            else
+            {
+                return this.GetByRootUrl(rootUrl);
+            }
+        }
+
         #endregion
+
     }
 }

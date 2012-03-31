@@ -6,7 +6,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Zone : EntityWithActiveBase<long>, IEntityWithLifeCycle
+    public partial class Zone : EntityWithActive<long>, IEntityWithLifeCycle
     {
         private IList<Region> regions = new List<Region>();
 

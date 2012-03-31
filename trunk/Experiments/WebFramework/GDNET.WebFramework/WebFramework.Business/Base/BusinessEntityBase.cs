@@ -9,7 +9,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Business.Base
 {
-    public abstract partial class BusinessEntityBase : EntityWithModificationBase<long>
+    public abstract partial class BusinessEntityBase : EntityWithModification<long>
     {
         private Dictionary<string, Type> properties = new Dictionary<string, Type>();
         private Dictionary<string, object> propertiesValues = new Dictionary<string, object>();
@@ -117,7 +117,6 @@ namespace WebFramework.Business.Base
                 baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsActive));
                 baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsDeletable));
                 baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsEditable));
-                baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.IsViewable));
                 baseProperties.Add(ExpressionAssistant.GetPropertyName(() => this.Signature));
                 return baseProperties;
             }

@@ -6,7 +6,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Page : EntityWithActiveBase<long>, IEntityWithLifeCycle
+    public partial class Page : EntityWithActive<long>, IEntityWithLifeCycle
     {
         #region Fields
 
@@ -53,6 +53,12 @@ namespace WebFramework.Domain.System
         }
 
         public virtual int? Position
+        {
+            get;
+            set;
+        }
+
+        public virtual bool IsDefault
         {
             get;
             set;

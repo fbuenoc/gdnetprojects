@@ -6,7 +6,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Domain.System
 {
-    public partial class Region : EntityWithActiveBase<long>, IEntityWithLifeCycle
+    public partial class Region : EntityWithActive<long>, IEntityWithLifeCycle
     {
         private IList<RegionSetting> settings = new List<RegionSetting>();
         private IList<RegionConnection> regionConnections = new List<RegionConnection>();

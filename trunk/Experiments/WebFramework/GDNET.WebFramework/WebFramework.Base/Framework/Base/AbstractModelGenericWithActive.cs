@@ -3,7 +3,7 @@
 namespace WebFramework.Common.Framework.Base
 {
     public abstract class AbstractModelGenericWithActive<TEntity, TId> : AbstractModelGeneric<TEntity, TId>, IViewModel<TId>
-        where TEntity : EntityWithActiveBase<TId>
+        where TEntity : EntityWithActive<TId>
     {
         public bool IsActive
         {

@@ -6,8 +6,8 @@ namespace WebFramework.Data.Common.Repositories
 {
     public static class RepositoryAssistant
     {
-        public static IRepositoryWithActiveBase<TEntity, TId> Get<TEntity, TId>(ISessionStrategy sessionStrategy)
-            where TEntity : EntityWithActiveBase<TId>
+        public static IRepositoryBase<TEntity, TId> Get<TEntity, TId>(ISessionStrategy sessionStrategy)
+            where TEntity : EntityWithActive<TId>
         {
             return new GenericRepository<TEntity, TId>(sessionStrategy);
         }

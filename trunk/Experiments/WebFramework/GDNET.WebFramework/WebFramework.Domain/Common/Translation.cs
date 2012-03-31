@@ -4,7 +4,7 @@ using WebFramework.Domain.Extensions;
 
 namespace WebFramework.Domain.Common
 {
-    public partial class Translation : EntityWithModificationBase<long>, IEntityWithLifeCycle
+    public partial class Translation : EntityWithModification<long>, IEntityWithLifeCycle
     {
         #region Properties
 
