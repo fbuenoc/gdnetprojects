@@ -1,7 +1,4 @@
-﻿using System;
-using GDNET.Web.Helpers;
-using WebFramework.Business.Common;
-using WebFramework.Business.Helpers;
+﻿using GDNET.Web.Helpers;
 using WebFramework.Common.Common;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain;
@@ -18,20 +15,9 @@ namespace WebFramework.Widgets.Models.DetailArticle
         public DetailArticleWidget()
             : base()
         {
-            base.BeforeInstalled += HtmlContentWidget_BeforeInstalled;
-            base.AfterInstalled += HtmlContentWidget_AfterInstalled;
         }
 
         #region Events
-
-        void HtmlContentWidget_BeforeInstalled(object sender, EventArgs e)
-        {
-        }
-
-        void HtmlContentWidget_AfterInstalled(IWidget sender, WidgetEventArgs e)
-        {
-        }
-
         #endregion
 
         protected override DetailArticleModel InitializeModel()
@@ -42,7 +28,7 @@ namespace WebFramework.Widgets.Models.DetailArticle
             if (contentItemId.HasValue)
             {
                 var contentItemObject = DomainRepositories.ContentItem.GetById(contentItemId.Value);
-                resultModel.InitializeContentItem(contentItemObject);
+                resultModel.InitializeModel(contentItemObject);
             }
 
             return resultModel;

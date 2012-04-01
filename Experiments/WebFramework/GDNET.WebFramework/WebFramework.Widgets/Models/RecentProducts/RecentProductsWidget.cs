@@ -14,21 +14,27 @@ namespace WebFramework.Widgets.Models.RecentProducts
 
         public RecentProductsWidget()
         {
-            base.BeforeInstalled += RecentProductWidget_BeforeInstalled;
-            base.AfterInstalled += RecentProductWidget_AfterInstalled;
+            base.BeforeInstalled += WidgetBeforeInstalled;
+            base.AfterInstalled += WidgetAfterInstalled;
         }
 
         #region Events
 
-        void RecentProductWidget_BeforeInstalled(object sender, EventArgs e)
+        void WidgetBeforeInstalled(object sender, EventArgs e)
         {
         }
 
-        void RecentProductWidget_AfterInstalled(IWidget sender, WidgetEventArgs e)
+        void WidgetAfterInstalled(IWidget sender, WidgetEventArgs e)
         {
         }
 
         #endregion
+
+        protected override void RegisterProperties()
+        {
+            base.RegisterProperties();
+            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString());
+        }
 
         protected override RecentProductsModel InitializeModel()
         {

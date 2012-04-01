@@ -25,7 +25,7 @@ namespace WebFramework.Areas.System.Controllers
         protected override object OnCreateExecuting(PageModel model, FormCollection collection)
         {
             Application app = null;
-            var page = Page.Factory.Create(model.Name, model.UniqueName, app);
+            var page = Page.Factory.Create(model.Name, model.UniqueName, app, app.CultureDefault);
             var result = DomainRepositories.Page.Save(page);
             return result ? (object)page.Id : null;
         }

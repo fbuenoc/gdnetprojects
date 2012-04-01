@@ -9,6 +9,8 @@ namespace WebFramework.Common.Framework.Common
 {
     public class ContentItemModel : AbstractModelWithModification<ContentItem, long>
     {
+        private List<ContentAttributeModel> listAttributes = new List<ContentAttributeModel>();
+
         #region Properties
 
         [DisplayNameML("SysTranslation.EntityNames.ContentType")]
@@ -48,14 +50,40 @@ namespace WebFramework.Common.Framework.Common
 
         public IEnumerable<ContentAttributeModel> Attributes
         {
-            get;
-            protected set;
+            get
+            {
+                if (base.Entity != null)
+                {
+                    this.listAttributes.AddRange(base.Entity.AttributeValues.Select(x => new ContentAttributeModel(x.ContentAttribute)));
+                }
+                return this.listAttributes;
+            }
         }
 
         public IEnumerable<ContentItemAttributeValueModel> AttributesValue
         {
-            get;
-            protected set;
+            get
+            {
+                List<ContentItemAttributeValueModel> listAttributes = new List<ContentItemAttributeValueModel>();
+                if (base.Entity != null)
+                {
+                    listAttributes.AddRange(base.Entity.AttributeValues.Select(x => new ContentItemAttributeValueModel(x)));
+                }
+                return listAttributes;
+            }
+        }
+
+        public IEnumerable<ContentItemModel> RelatedItems
+        {
+            get
+            {
+                List<ContentItemModel> listItems = new List<ContentItemModel>();
+                if (base.Entity != null)
+                {
+                    listItems.AddRange(base.Entity.RelationItems.Select(x => new ContentItemModel(x)));
+                }
+                return listItems;
+            }
         }
 
         public ContentTypeModel ContentTypeModel
@@ -81,8 +109,6 @@ namespace WebFramework.Common.Framework.Common
             this.Name = (entity.Name == null) ? string.Empty : entity.Name.Value;
             this.Description = (entity.Description == null) ? string.Empty : entity.Description.Value;
             this.Position = entity.Position;
-
-            this.AttributesValue = entity.AttributeValues.Select(x => new ContentItemAttributeValueModel(x));
         }
 
         #endregion
@@ -93,7 +119,9 @@ namespace WebFramework.Common.Framework.Common
         {
             this.ContentType = typeModel.Name;
             this.ContentTypeId = typeModel.Id;
-            this.Attributes = typeModel.Attributes;
+
+            this.listAttributes.Clear();
+            this.listAttributes.AddRange(typeModel.Attributes);
         }
 
         public T GetAttribute<T>(string attributeCode)

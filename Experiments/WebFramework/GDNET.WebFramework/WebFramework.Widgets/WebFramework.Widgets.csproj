@@ -55,6 +55,8 @@
     <Compile Include="Models\RecentArticles\RecentArticlesWidget.cs" />
     <Compile Include="Models\RecentProducts\RecentProductsModel.cs" />
     <Compile Include="Models\RecentProducts\RecentProductsWidget.cs" />
+    <Compile Include="Models\RelatedItems\RelatedItemsModel.cs" />
+    <Compile Include="Models\RelatedItems\RelatedItemsWidget.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +68,7 @@
     <Content Include="Views\HtmlContent\Default\Index.ascx" />
     <Content Include="Views\RecentArticles\Default\Index.ascx" />
     <Content Include="Views\RecentProducts\Default\Index.ascx" />
+    <Content Include="Views\RelatedItems\Default\Index.ascx" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.aspx" />
   </ItemGroup>

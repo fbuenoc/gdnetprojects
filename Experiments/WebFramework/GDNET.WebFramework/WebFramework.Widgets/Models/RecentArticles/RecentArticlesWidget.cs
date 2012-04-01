@@ -14,21 +14,27 @@ namespace WebFramework.Widgets.Models.RecentArticles
 
         public RecentArticlesWidget()
         {
-            base.AfterInstalled += RecentArticlesWidget_AfterInstalled;
-            base.BeforeInstalled += RecentArticlesWidget_BeforeInstalled;
+            base.AfterInstalled += WidgetAfterInstalled;
+            base.BeforeInstalled += WidgetBeforeInstalled;
         }
 
         #region Events
 
-        void RecentArticlesWidget_BeforeInstalled(object sender, EventArgs e)
+        void WidgetBeforeInstalled(object sender, EventArgs e)
         {
         }
 
-        void RecentArticlesWidget_AfterInstalled(IWidget sender, WidgetEventArgs e)
+        void WidgetAfterInstalled(IWidget sender, WidgetEventArgs e)
         {
         }
 
         #endregion
+
+        protected override void RegisterProperties()
+        {
+            base.RegisterProperties();
+            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString());
+        }
 
         protected override RecentArticlesModel InitializeModel()
         {
