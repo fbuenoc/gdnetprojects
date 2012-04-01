@@ -22,6 +22,7 @@ using WebFramework.Widgets.Models.DetailArticle;
 using WebFramework.Widgets.Models.HtmlContent;
 using WebFramework.Widgets.Models.RecentArticles;
 using WebFramework.Widgets.Models.RecentProducts;
+using WebFramework.Widgets.Models.RelatedItems;
 
 namespace WebFrameworkSampleData
 {
@@ -318,10 +319,9 @@ namespace WebFrameworkSampleData
 
             #region Pages
 
-            Page homePage = Page.Factory.Create("Homepage", "welcome", app);
+            Page homePage = Page.Factory.Create("Homepage", "welcome", app, culture);
             homePage.Description = "GiangDuong.NET - Welcome";
             homePage.Keyword = "Giang duong online, Chia se tai lieu giay";
-            homePage.Culture = culture;
             homePage.IsDefault = true;
             DomainRepositories.Page.Save(homePage);
 
@@ -332,9 +332,8 @@ namespace WebFrameworkSampleData
             homePage.AddZones(homePageHeaderZone, homePageFooterZone, homePageLeftContentZone, homePageRightContentZone);
             DomainRepositories.RepositoryAssistant.Flush();
 
-            Page aboutPage = Page.Factory.Create("About us", "about", app);
+            Page aboutPage = Page.Factory.Create("About us", "about", app, culture);
             aboutPage.Description = "GiangDuong.NET - Information";
-            aboutPage.Culture = culture;
             DomainRepositories.Page.Save(aboutPage);
 
             Zone aboutPageHeaderZone = Zone.Factory.Create("Header", string.Empty);
@@ -342,6 +341,17 @@ namespace WebFrameworkSampleData
             Zone aboutPageLeftContentZone = Zone.Factory.Create("LeftContent", string.Empty);
             Zone aboutPageRightContentZone = Zone.Factory.Create("RightContent", string.Empty);
             aboutPage.AddZones(aboutPageHeaderZone, aboutPageFooterZone, aboutPageLeftContentZone, aboutPageRightContentZone);
+            DomainRepositories.RepositoryAssistant.Flush();
+
+            Page detailArticlePage = Page.Factory.Create("Detail article", "detail", app, culture);
+            detailArticlePage.Description = "GiangDuong.NET - Detail article";
+            DomainRepositories.Page.Save(detailArticlePage);
+
+            Zone detailPageHeaderZone = Zone.Factory.Create("Header", string.Empty);
+            Zone detailPageFooterZone = Zone.Factory.Create("Footer", string.Empty);
+            Zone detailPageLeftContentZone = Zone.Factory.Create("LeftContent", string.Empty);
+            Zone detailPageRightContentZone = Zone.Factory.Create("RightContent", string.Empty);
+            detailArticlePage.AddZones(detailPageHeaderZone, detailPageFooterZone, detailPageLeftContentZone, detailPageRightContentZone);
             DomainRepositories.RepositoryAssistant.Flush();
 
             #endregion
@@ -363,14 +373,23 @@ namespace WebFrameworkSampleData
             DetailArticleWidget detailArticleWidget = new DetailArticleWidget();
             detailArticleWidget.Install();
 
+            RelatedItemsWidget relatedItemsWidget = new RelatedItemsWidget();
+            relatedItemsWidget.Install();
+
             #endregion
+
+            #region Widget infos
 
             Widget htmlWidgetInfo = DomainRepositories.Widget.GetByCode(htmlWidget.Code);
             Widget contactWidgetInfo = DomainRepositories.Widget.GetByCode(contactWidget.Code);
             Widget productWidgetInfo = DomainRepositories.Widget.GetByCode(productWidget.Code);
             Widget articlesWidgetInfo = DomainRepositories.Widget.GetByCode(articlesWidget.Code);
             Widget detailArticleWidgetInfo = DomainRepositories.Widget.GetByCode(detailArticleWidget.Code);
+            Widget relatedItemsInfo = DomainRepositories.Widget.GetByCode(relatedItemsWidget.Code);
 
+            #endregion
+
+            #region Home page regions
 
             Region leftContentHPR1 = Region.Factory.Create("Who we are?", htmlWidgetInfo);
             DomainServices.Region.ApplyDefaultProperties(leftContentHPR1);
@@ -388,21 +407,41 @@ namespace WebFrameworkSampleData
             DomainServices.Region.ApplyDefaultProperties(rightContentHPR1);
             homePageRightContentZone.AddRegion(rightContentHPR1);
 
+            #endregion
+
+            #region About page regions
+
             Region aboutRegion1 = Region.Factory.Create("About us", htmlWidgetInfo);
             DomainServices.Region.ApplyDefaultProperties(aboutRegion1);
             aboutPageLeftContentZone.AddRegion(aboutRegion1);
 
-            Region aboutRegion2 = Region.Factory.Create("Detail article", detailArticleWidgetInfo);
-            DomainServices.Region.ApplyDefaultProperties(aboutRegion2);
-            aboutPageLeftContentZone.AddRegion(aboutRegion2);
+            #endregion
+
+            #region Detail page regions
+
+            Region detailRegion1 = Region.Factory.Create("Detail article", detailArticleWidgetInfo);
+            DomainServices.Region.ApplyDefaultProperties(detailRegion1);
+            detailPageLeftContentZone.AddRegion(detailRegion1);
+
+            Region detailRegion2 = Region.Factory.Create("Related items", relatedItemsInfo);
+            DomainServices.Region.ApplyDefaultProperties(detailRegion2);
+            detailPageRightContentZone.AddRegion(detailRegion2);
+
+            #endregion
 
             DomainRepositories.RepositoryAssistant.Flush();
 
+            // content from Homepage links to about page
             var connection1 = RegionConnection.Factory.Create(aboutRegion1, WidgetActions.Detail);
             leftContentHPR1.AddConnection(connection1);
 
-            var connection2 = RegionConnection.Factory.Create(aboutRegion2, WidgetActions.Detail);
+            // Articles from homepage link to detail page
+            var connection2 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
             rightContentHPR1.AddConnection(connection2);
+
+            // Articles from detail page link to this page
+            var connection3 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
+            detailRegion2.AddConnection(connection3);
 
             DomainRepositories.RepositoryAssistant.Flush();
         }

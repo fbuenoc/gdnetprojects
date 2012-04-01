@@ -27,17 +27,17 @@ namespace WebFramework.Widgets.Models.HtmlContent
         public HtmlContentWidget()
             : base()
         {
-            base.BeforeInstalled += HtmlContentWidget_BeforeInstalled;
-            base.AfterInstalled += HtmlContentWidget_AfterInstalled;
+            base.BeforeInstalled += WidgetBeforeInstalled;
+            base.AfterInstalled += WidgetAfterInstalled;
         }
 
         #region Events
 
-        void HtmlContentWidget_BeforeInstalled(object sender, EventArgs e)
+        void WidgetBeforeInstalled(object sender, EventArgs e)
         {
         }
 
-        void HtmlContentWidget_AfterInstalled(IWidget sender, WidgetEventArgs e)
+        void WidgetAfterInstalled(IWidget sender, WidgetEventArgs e)
         {
         }
 

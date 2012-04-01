@@ -43,11 +43,17 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Mapping", "Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Extensions", "WebFramework.Extensions\WebFramework.Extensions.csproj", "{A53B516C-BA01-48BD-8330-63515DE50356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Base", "WebFramework.Base\WebFramework.Base.csproj", "{048916D3-D2F1-45B0-BA0F-7E126112C233}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Common", "WebFramework.Base\WebFramework.Common.csproj", "{048916D3-D2F1-45B0-BA0F-7E126112C233}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.UI", "WebFramework.UI\WebFramework.UI.csproj", "{18980C72-F35D-4D3F-B76B-7D1A005C6275}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Services", "WebFramework.Services\WebFramework.Services.csproj", "{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Widgets", "WebFramework.Widgets\WebFramework.Widgets.csproj", "{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{4DA6B69F-2E86-4828-BF60-CF3570D2FA4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Common.Widgets", "WebFramework.Common.Widgets\WebFramework.Common.Widgets.csproj", "{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -269,6 +275,26 @@ Global
 		{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}.Release|x86.ActiveCfg = Release|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}.Release|x86.ActiveCfg = Release|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -289,5 +315,7 @@ Global
 		{8B6B9E14-48DB-4217-A7C1-D231710CE02C} = {530B9B7A-6FFE-480C-879F-7C6CA24D280B}
 		{C39A1B4C-DDB4-46DC-A368-1B53B305F343} = {DF2EAB0C-EF8A-45A1-BAAD-4FEA642075FD}
 		{CBEDD53B-2055-4773-B719-4BA460ECA2C4} = {DF2EAB0C-EF8A-45A1-BAAD-4FEA642075FD}
+		{18980C72-F35D-4D3F-B76B-7D1A005C6275} = {4DA6B69F-2E86-4828-BF60-CF3570D2FA4B}
+		{F9EE342B-0348-4BC0-B963-7E7B01E47FC5} = {4DA6B69F-2E86-4828-BF60-CF3570D2FA4B}
 	EndGlobalSection
 EndGlobal

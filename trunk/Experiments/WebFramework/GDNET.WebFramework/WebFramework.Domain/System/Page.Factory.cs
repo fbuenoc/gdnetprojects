@@ -11,13 +11,14 @@ namespace WebFramework.Domain.System
 
         public class PageFactory
         {
-            public Page Create(string name, string uniqueName, Application app)
+            public Page Create(string name, string uniqueName, Application app, Culture culture)
             {
                 var page = new Page()
                 {
                     Name = name,
                     UniqueName = uniqueName,
-                    Application = app
+                    Application = app,
+                    Culture = culture
                 };
 
                 return page;

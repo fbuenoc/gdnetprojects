@@ -20,7 +20,7 @@ namespace WebFramework.Widgets.Models.DetailArticle
             private set;
         }
 
-        public void InitializeContentItem(ContentItem itemEntity)
+        public void InitializeModel(ContentItem itemEntity)
         {
             if (itemEntity != null)
             {
