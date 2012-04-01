@@ -51,7 +51,7 @@
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Base\WebFramework.Common.csproj">
+    <ProjectReference Include="..\WebFramework.Common\WebFramework.Common.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
       <Name>WebFramework.Common</Name>
     </ProjectReference>

@@ -68,7 +68,7 @@
       <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Base\WebFramework.Common.csproj">
+    <ProjectReference Include="..\WebFramework.Common\WebFramework.Common.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
       <Name>WebFramework.Common</Name>
     </ProjectReference>
