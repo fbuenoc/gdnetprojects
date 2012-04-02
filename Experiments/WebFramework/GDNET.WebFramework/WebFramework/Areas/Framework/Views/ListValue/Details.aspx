@@ -9,23 +9,17 @@
         <%= base.Model.Name %>
     </h2>
     <div>
-        <div>
-            Created at:
-            <%= base.Model.CreatedAt.ToStringEx() %>
-        </div>
-        <div>
-            Created by:
-            <%= base.Model.CreatedBy %>
-        </div>
-        <div>
-            Parent:
-            <%= base.Model.Parent %>
-        </div>
-        <h3>
-            Sub Values
-        </h3>
-        <div>
-            <% base.Html.Telerik().Grid<ListValueModel>(base.Model.SubValues)
+        <% base.Html.RenderPartial("InfoModificationControl", base.Model); %>
+    </div>
+    <div>
+        Parent:
+        <%= base.Model.Parent %>
+    </div>
+    <h3>
+        Sub Values
+    </h3>
+    <div>
+        <% base.Html.Telerik().Grid<ListValueModel>(base.Model.SubValues)
                 .Name("SubValues")
                 .Columns(columns =>
                 {
@@ -33,11 +27,11 @@
                     columns.Bound(c => c.Description).Title("Description");
                     columns.Bound(c => c.Name).Title("Actions").Template(template =>
                     {
-            %>
-            <%= base.Html.ActionLink("Details", "Details", new { id = template.Id })%>
-            <%= base.Html.ActionLink("Edit", "Edit", new { id = template.Id })%>
-            <%= base.Html.ActionLink("Delete", "Delete", new { id = template.Id })%>
-            <%
+        %>
+        <%= base.Html.ActionLink("Details", "Details", new { id = template.Id })%>
+        <%= base.Html.ActionLink("Edit", "Edit", new { id = template.Id })%>
+        <%= base.Html.ActionLink("Delete", "Delete", new { id = template.Id })%>
+        <%
                     });
                 })
                 .Pageable()
@@ -46,11 +40,10 @@
                     x.Enabled(true).SortMode(GridSortMode.MultipleColumn).OrderBy(y => y.Add(m => m.Description));
                 })
                 .Render();
-            %>
-        </div>
+        %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ListValue) %>
         <% if (base.Model.ParentId != 0)
            {
         %>

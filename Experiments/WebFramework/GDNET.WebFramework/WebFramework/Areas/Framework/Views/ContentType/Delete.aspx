@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <%= base.Html.WebFramework().SystemTranslation().DeleteConfirmationXYZ(Translations.EntityNames.ContentType); %>
+        <%= base.Html.WebFramework().SystemTranslation().DeleteConfirmationXYZ(base.Html.WebFramework().SystemTranslation().EntityContentType); %>
     </div>
     <div>
         <%= base.Model.Name %>
@@ -27,7 +27,7 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ContentType) %>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionList) %>
     </p>
 </asp:Content>

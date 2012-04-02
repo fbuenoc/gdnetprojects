@@ -20,7 +20,7 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentItems) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ContentItem) %>
         <%= base.Html.ActionLink("Return to current Content Item", ContentItemController.ActionDetails, new { id = base.Model.Id })%>
     </p>
 </asp:Content>

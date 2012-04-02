@@ -80,7 +80,7 @@ namespace WebFramework.Areas.Framework.Controllers
             long? contentTypeId = QueryStringAssistant.ParseInteger(QueryStringConstants.Key);
             if (contentTypeId.HasValue)
             {
-                DomainRepositories.ContentType.GetById(contentTypeId.Value);
+                contentType = DomainRepositories.ContentType.GetById(contentTypeId.Value);
                 model.InitializeContentType(contentType);
             }
 

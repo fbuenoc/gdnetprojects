@@ -40,6 +40,9 @@
                             <%= base.Html.ActionLink("Content items", "List", "ContentItem")%>
                         </li>
                         <li>
+                            <%= base.Html.ActionLink("Pages", "List", "Page", new { area = "System" }, null)%>
+                        </li>
+                        <li>
                             <%= base.Html.ActionLink("Translations", "List", "Translation")%>
                         </li>
                     </ul>

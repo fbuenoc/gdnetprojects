@@ -33,6 +33,6 @@
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.Applications) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Application) %>
     </p>
 </asp:Content>

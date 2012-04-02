@@ -15,19 +15,9 @@ namespace WebFramework.Areas.System.Controllers
             return base.View(listeEntites);
         }
 
-        protected override ZoneModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override object OnCreateExecuting(ZoneModel model, FormCollection collection)
         {
             throw new NotImplementedException();
-        }
-
-        protected override ZoneModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnDeleteExecuting(ZoneModel model, FormCollection collection)
@@ -35,25 +25,13 @@ namespace WebFramework.Areas.System.Controllers
             throw new NotImplementedException();
         }
 
-        protected override ZoneModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnEditExecuting(ZoneModel model, FormCollection collection)
         {
-            try
-            {
-                var entity = DomainRepositories.Zone.GetById(model.Id);
-                entity.Code = model.Code;
-                entity.Description = model.Description;
+            var entity = DomainRepositories.Zone.GetById(model.Id);
+            entity.Code = model.Code;
+            entity.Description = model.Description;
 
-                return DomainRepositories.Zone.Update(entity);
-            }
-            catch
-            {
-                return false;
-            }
+            return DomainRepositories.Zone.Update(entity);
         }
     }
 }
