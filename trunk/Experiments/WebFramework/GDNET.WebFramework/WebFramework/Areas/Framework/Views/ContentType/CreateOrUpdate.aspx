@@ -28,7 +28,7 @@
             <%= base.Html.TextBoxFor(m => m.TypeName)%>
         </div>
         <p>
-            <input type="submit" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
+            <input type="submit" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

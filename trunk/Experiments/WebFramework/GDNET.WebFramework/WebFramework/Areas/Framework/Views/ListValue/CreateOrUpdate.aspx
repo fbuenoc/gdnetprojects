@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ListValueModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%= base.Html.WebFramework().SysTranslations.EntityListValue %>
+    <%= base.Html.WebFramework().SystemTranslation().EntityListValue %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
@@ -39,7 +39,7 @@
         </div>
         <p>
             <%= base.Html.HiddenFor(m => m.ParentId) %>
-            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
+            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

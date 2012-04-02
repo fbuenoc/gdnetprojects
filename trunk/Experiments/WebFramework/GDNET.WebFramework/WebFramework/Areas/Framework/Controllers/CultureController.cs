@@ -16,11 +16,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(listOfCultures);
         }
 
-        protected override CultureModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override object OnCreateExecuting(CultureModel model, FormCollection collection)
         {
             var culture = Culture.Factory.Create(model.CultureCode);
@@ -28,20 +23,10 @@ namespace WebFramework.Areas.Framework.Controllers
             return result ? (object)culture.Id : null;
         }
 
-        protected override CultureModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(CultureModel model, FormCollection collection)
         {
             int entityId = collection.GetItemId<int>();
             return DomainRepositories.Culture.Delete(entityId);
-        }
-
-        protected override CultureModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnEditExecuting(CultureModel model, FormCollection collection)

@@ -19,11 +19,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(listOfAttributes);
         }
 
-        protected override ContentAttributeModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override ContentAttributeModel OnCreateChecking()
         {
             ContentAttributeModel model = base.OnCreateChecking();
@@ -50,20 +45,10 @@ namespace WebFramework.Areas.Framework.Controllers
             return result ? (object)caEntity.Id : null;
         }
 
-        protected override ContentAttributeModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(ContentAttributeModel model, FormCollection collection)
         {
             long contentAttributeId = collection.GetItemId<long>();
             return DomainRepositories.ContentAttribute.Delete(contentAttributeId);
-        }
-
-        protected override ContentAttributeModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnEditExecuting(ContentAttributeModel model, FormCollection collection)

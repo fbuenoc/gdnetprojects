@@ -16,7 +16,7 @@
             <%= base.Html.CheckBoxFor(m => m.IsDefault)%>
         </div>
         <p>
-            <input type="submit" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
+            <input type="submit" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

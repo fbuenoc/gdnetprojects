@@ -3,7 +3,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentAttributeModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%= base.Html.WebFramework().SysTranslations.EntityContentAttribute %>
+    <%= base.Html.WebFramework().SystemTranslation().EntityContentAttribute %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
@@ -29,7 +29,7 @@
         </div>
         <p>
             <%= base.Html.HiddenFor(m => m.ContentTypeId) %>
-            <input type="submit" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
+            <input type="submit" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

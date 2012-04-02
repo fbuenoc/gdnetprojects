@@ -17,7 +17,7 @@
                     columns.Bound(c => c.Name).Title("Actions").Template(template =>
                     {
         %>
-        <%= base.Html.WebFramework().HyperLinkActions(new { id = template.Id }) %>
+        <%= base.Html.WebFramework().HyperLink().HyperLinkActions(new { id = template.Id }) %>
         <%
                     });
                 })

@@ -1,4 +1,4 @@
-﻿<%@ Import Namespace="WebFramework.Base.Business.Administration" %>
+﻿<%@ Import Namespace="WebFramework.Common.Business.Administration" %>
 
 <%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<ShortcutModel>>" %>
 

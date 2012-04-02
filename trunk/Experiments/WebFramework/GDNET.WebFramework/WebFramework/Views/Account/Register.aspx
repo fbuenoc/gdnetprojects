@@ -1,4 +1,4 @@
-﻿<%@ Import Namespace="WebFramework.Base.AccountModeles" %>
+﻿<%@ Import Namespace="WebFramework.Common.AccountModeles" %>
 
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="ViewPage<RegisterModel>" %>
 

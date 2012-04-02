@@ -22,24 +22,9 @@ namespace WebFramework.Areas.Framework.Controllers
             return result ? (object)ctEntity.Id : null;
         }
 
-        protected override ContentTypeModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
-        protected override ContentTypeModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(ContentTypeModel model, FormCollection collection)
         {
             return DomainRepositories.ContentType.Delete(model.Id);
-        }
-
-        protected override ContentTypeModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnEditExecuting(ContentTypeModel model, FormCollection collection)

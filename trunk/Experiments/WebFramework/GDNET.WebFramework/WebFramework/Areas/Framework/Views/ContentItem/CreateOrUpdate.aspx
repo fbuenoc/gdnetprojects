@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%= Translations.EntityNames.ContentItem %>
+    <%= base.Html.WebFramework().SystemTranslation().EntityContentItem %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= base.Html.WebFramework().CreateOrUpdate<long>(base.Model) %>
+        <%= base.Html.WebFramework().Translation().CreateOrUpdate<long>(base.Model) %>
     </h2>
     <h3>
-        <%= Translations.ContentItem.InContentTypeXYZ(base.Model.ContentType)%>
+        <%= base.Html.WebFramework().Translation().InContentTypeXYZ(base.Model.ContentType)%>
     </h3>
     <div>
         <% base.Html.BeginForm(); %>
@@ -24,25 +24,9 @@
         <div>
             <%= base.Html.TextAreaFor(m => m.Description, new { @class = "desc" }) %>
         </div>
-        <h3>
-            <%= Translations.System.Attributes %>
-        </h3>
-        <%
-            foreach (var attribute in base.Model.Attributes)
-            {
-        %>
-        <div class="editor-label">
-            <%= attribute.Name %>
-        </div>
-        <div>
-            <%= base.Html.TextBox(attribute.Code, string.Empty) %>
-        </div>
-        <%
-            }
-        %>
         <p>
             <%= base.Html.HiddenFor(m => m.ContentTypeId) %>
-            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
+            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

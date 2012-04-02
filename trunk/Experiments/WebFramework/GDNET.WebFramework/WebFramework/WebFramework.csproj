@@ -251,6 +251,7 @@
     <Compile Include="Areas\Framework\Constants\FrameworkConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ApplicationController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentAttributeController.cs" />
+    <Compile Include="Areas\Framework\Controllers\ContentItemAttributeValueController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
     <Compile Include="Areas\System\Controllers\WidgetController.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Areas\Framework\Views\ContentAttribute\Delete.aspx" />
     <Content Include="Areas\Framework\Views\ContentAttribute\Details.aspx" />
     <Content Include="Areas\Framework\Views\ContentAttribute\List.aspx" />
+    <Content Include="Areas\Framework\Views\ContentItemAttributeValue\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\ContentItem\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\ContentItem\Delete.aspx" />
     <Content Include="Areas\Framework\Views\ContentItem\Details.aspx" />
@@ -333,6 +335,7 @@
     <Content Include="Areas\Framework\Views\Role\Details.aspx" />
     <Content Include="Areas\Framework\Views\Role\List.aspx" />
     <Content Include="Areas\Framework\Views\Shared\Error.aspx" />
+    <Content Include="Areas\Framework\Views\Shared\InfoModificationControl.ascx" />
     <Content Include="Areas\Framework\Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Areas\Framework\Views\Translation\CreateOrUpdate.aspx" />
     <Content Include="Areas\Framework\Views\Translation\List.aspx" />
@@ -852,6 +855,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />
+    <Folder Include="App_Data\ImagesCache\" />
     <Folder Include="Areas\System\Models\" />
     <Folder Include="Areas\System\Views\Page\" />
     <Folder Include="Areas\System\Views\Shared\" />
@@ -911,9 +915,6 @@
     <Content Include="Areas\Framework\Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Areas\Framework\Views\Shared\Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_GlobalResources\UploadLocalization.zh-CN.resx">
@@ -1139,6 +1140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\System\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Areas\Framework\Views\Shared\Site.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
