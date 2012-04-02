@@ -13,8 +13,22 @@ namespace WebFramework.Domain.Common
         {
             public ContentItemAttributeValue Create(ContentAttribute attribute, string value)
             {
-                var translation = Translation.Factory.Create(value);
-                return this.Create(attribute, translation);
+                ThrowException.ArgumentNullException(attribute, "attribute", "Content attribute can not be nullable.");
+
+                if (attribute.IsMultilingual)
+                {
+                    var translation = Translation.Factory.Create(value);
+                    return this.Create(attribute, translation);
+                }
+                else
+                {
+                    var itemAttributeValue = new ContentItemAttributeValue()
+                    {
+                        ContentAttribute = attribute,
+                        ValueText = value
+                    };
+                    return itemAttributeValue;
+                }
             }
 
             public ContentItemAttributeValue Create(ContentAttribute attribute, Translation value)
@@ -22,10 +36,11 @@ namespace WebFramework.Domain.Common
                 ThrowException.ArgumentNullException(attribute, "attribute", "Content attribute can not be nullable.");
                 ThrowException.ArgumentNullException(value, "value", "Value can not be nullable.");
 
-                var itemAttributeValue = new ContentItemAttributeValue { };
-
-                itemAttributeValue.ContentAttribute = attribute;
-                itemAttributeValue.Value = value;
+                var itemAttributeValue = new ContentItemAttributeValue()
+                {
+                    ContentAttribute = attribute,
+                    Value = value
+                };
 
                 return itemAttributeValue;
             }

@@ -4,6 +4,9 @@ namespace WebFramework.Domain.Common
 {
     public partial class ContentItemAttributeValue : EntityBase<long>
     {
+        private string valueText = null;
+        private Translation valueTranslation = null;
+
         #region Properties
 
         public virtual ContentAttribute ContentAttribute
@@ -20,8 +23,22 @@ namespace WebFramework.Domain.Common
 
         public virtual Translation Value
         {
-            get;
-            set;
+            get { return this.valueTranslation; }
+            set
+            {
+                this.valueText = null;
+                this.valueTranslation = value;
+            }
+        }
+
+        public virtual string ValueText
+        {
+            get { return this.valueText; }
+            set
+            {
+                this.valueText = value;
+                this.valueTranslation = null;
+            }
         }
 
         #endregion
