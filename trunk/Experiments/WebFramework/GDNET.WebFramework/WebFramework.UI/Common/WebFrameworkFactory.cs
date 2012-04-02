@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using WebFramework.UI.Helpers;
+using WebFramework.UI.Translations;
 using WebFramework.UI.Widgets;
 
 namespace WebFramework.UI.Common
@@ -36,6 +37,16 @@ namespace WebFramework.UI.Common
         public TranslationFactory Translation()
         {
             return new TranslationFactory();
+        }
+
+        public SystemTranslation SystemTranslation()
+        {
+            return new SystemTranslation();
+        }
+
+        public TextEditorFactory TextEditor()
+        {
+            return new TextEditorFactory(this.htmlHelper);
         }
     }
 

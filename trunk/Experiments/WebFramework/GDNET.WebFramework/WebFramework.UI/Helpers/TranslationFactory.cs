@@ -11,7 +11,7 @@ namespace WebFramework.UI.Helpers
             return DomainServices.Translation.Translate(codeText);
         }
 
-        public string CreateOrUpdate<TId>(IViewModel<TId> viewModel)
+        public string CreateOrUpdate<TId>(IModel<TId> viewModel)
         {
             string code = (viewModel.Id.Equals(default(TId))) ? "SysTranslation.Create" : "SysTranslation.Update";
             return this.Translate(code);
