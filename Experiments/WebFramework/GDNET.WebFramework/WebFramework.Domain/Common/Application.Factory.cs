@@ -30,7 +30,8 @@ namespace WebFramework.Domain.Common
                 {
                     RootUrl = rootUrl,
                     Name = Translation.Factory.Create(name),
-                    Category = DomainRepositories.ListValue.FindByName(categoryCode)
+                    Description = Translation.Factory.Create(string.Empty),
+                    Category = DomainRepositories.ListValue.FindByName(categoryCode),
                 };
 
                 application.CultureDefault = DomainRepositories.Culture.FindByCode(CommonConstants.CultureCodeDefault);

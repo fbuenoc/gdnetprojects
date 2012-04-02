@@ -138,6 +138,23 @@ namespace WebFramework.UI.Translations
             get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.User"); }
         }
 
+        public string EntityPage
+        {
+            get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Page"); }
+        }
+
+        public string EntityWidget
+        {
+            get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Widget"); }
+        }
+
+        public string EntityZone
+        {
+            get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Zone"); }
+        }
+
         #endregion
+
+
     }
 }

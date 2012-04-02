@@ -52,7 +52,7 @@
     <Compile Include="Helpers\ActionLinkFactory.cs" />
     <Compile Include="Common\WebFrameworkFactory.cs" />
     <Compile Include="Helpers\HyperLinkAssistant.cs" />
-    <Compile Include="ListType.cs" />
+    <Compile Include="EntityType.cs" />
     <Compile Include="Translations\SystemTranslation.cs" />
     <Compile Include="WebFrameworkConstants.cs" />
     <Compile Include="Widgets\WidgetHanlder.cs" />
