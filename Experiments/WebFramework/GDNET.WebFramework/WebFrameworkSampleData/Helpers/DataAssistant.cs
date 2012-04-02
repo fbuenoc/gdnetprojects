@@ -95,6 +95,7 @@ namespace WebFrameworkSampleData
 
             attributeCode = ExpressionAssistant.GetPropertyName(() => myArticle.Author);
             attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextSimpleTextBox, 0);
+            attrInfo.IsMultilingual = true;
             attributesInfo.Add(attrInfo);
 
             attributeCode = ExpressionAssistant.GetPropertyName(() => myArticle.SourceInfo);
@@ -107,6 +108,7 @@ namespace WebFrameworkSampleData
 
             attributeCode = ExpressionAssistant.GetPropertyName(() => myArticle.MainContent);
             attrInfo = new ContentAttributeInfo(attributeCode, ListValueConstants.ContentDataTypes.TextHtmlEditor, 3);
+            attrInfo.IsMultilingual = true;
             attributesInfo.Add(attrInfo);
 
             var contentType = BusinessEntityAssistant.EnsureContentType(myArticle, attributesInfo);

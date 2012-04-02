@@ -70,11 +70,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(viewModel);
         }
 
-        protected override TranslationModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override object OnCreateExecuting(TranslationModel model, FormCollection collection)
         {
             var translation = Translation.Factory.Create(model.Code, model.Value, model.CultureCode);
@@ -82,20 +77,10 @@ namespace WebFramework.Areas.Framework.Controllers
             return result ? (object)translation.Id : null;
         }
 
-        protected override TranslationModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(TranslationModel model, FormCollection collection)
         {
             long appId = collection.GetItemId<long>();
             return DomainRepositories.Translation.Delete(appId);
-        }
-
-        protected override TranslationModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnEditExecuting(TranslationModel model, FormCollection collection)

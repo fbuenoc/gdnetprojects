@@ -85,12 +85,27 @@ namespace WebFramework.Business.Helpers
 
                     foreach (var propertyName in properties.Keys)
                     {
+                        string contentDataType = string.Empty;
+                        int position = 0;
+                        bool isMultilingual = false;
+
                         var attrInfo = attributesInfo.FirstOrDefault(x => x.PropertyName == propertyName);
-                        string contentDataType = (attrInfo == null) ? ListValueConstants.ContentDataTypes.TextSimpleTextBox : attrInfo.ContentDataType;
-                        int position = (attrInfo == null) ? int.MaxValue : attrInfo.Position;
+                        if (attrInfo == null)
+                        {
+                            contentDataType = ListValueConstants.ContentDataTypes.TextSimpleTextBox;
+                            position = int.MaxValue;
+                        }
+                        else
+                        {
+                            contentDataType = attrInfo.ContentDataType;
+                            position = attrInfo.Position;
+                            isMultilingual = attrInfo.IsMultilingual;
+                        }
 
                         var dataType = DomainRepositories.ListValue.FindByName(contentDataType);
                         var attribute = ContentAttribute.Factory.Create(propertyName, propertyName, contentType, dataType, position);
+                        attribute.IsMultilingual = isMultilingual;
+
                         listOfAttributes.Add(attribute);
                     }
                     contentType.AddContentAttributes(listOfAttributes);

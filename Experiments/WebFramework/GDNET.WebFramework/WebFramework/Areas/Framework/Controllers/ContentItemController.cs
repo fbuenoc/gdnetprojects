@@ -5,7 +5,6 @@ using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
-using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
 using WebFramework.Constants;
 using WebFramework.Domain;
@@ -39,19 +38,23 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override ContentItemModel OnDetailsChecking(string id)
         {
-            return base.GetModelById(id);
-        }
+            ContentItemModel itemModel = base.OnDetailsChecking(id);
 
-        protected override ContentItemModel OnCreateChecking()
-        {
-            ContentItemModel itemModel = base.OnCreateChecking();
-
-            // When create new Content Item, we have to look which Content Type contains this one
-            string contentTypeId;
-            if (QueryStringAssistant.GetValueAsString(QueryStringConstants.Key, out contentTypeId))
+            // Check to add empty value for new attribute of content type
+            if (itemModel.ContentType != null)
             {
-                var typeModel = ModelService.GetModelById<ContentTypeModel>(contentTypeId);
-                itemModel.InitializeContentType(typeModel);
+                if (!itemModel.ContentType.Attributes.Any(x => itemModel.AttributesValue.Any(y => x.Id == y.ContentAttribute.Id)))
+                {
+                    ContentItem itemEntity = DomainRepositories.ContentItem.GetById(itemModel.Id);
+                    foreach (var attribute in itemEntity.ContentType.ContentAttributes.Where(x => !itemModel.AttributesValue.Any(y => x.Id == y.ContentAttribute.Id)))
+                    {
+                        ContentItemAttributeValue attributeValue = ContentItemAttributeValue.Factory.Create(attribute, string.Empty);
+                        itemEntity.AddAttributeValue(attributeValue);
+                    }
+
+                    DomainRepositories.RepositoryAssistant.Flush();
+                    itemModel = new ContentItemModel(itemEntity);
+                }
             }
 
             return itemModel;
@@ -60,7 +63,7 @@ namespace WebFramework.Areas.Framework.Controllers
         protected override object OnCreateExecuting(ContentItemModel model, FormCollection collection)
         {
             object entityId = null;
-            var contentType = DomainRepositories.ContentType.GetById(model.ContentTypeId);
+            var contentType = DomainRepositories.ContentType.GetById(model.ContentType.Id);
             var attributesInfo = DomainServices.ContentType.GetAttributesInformation(contentType);
 
             string errorMessages = string.Empty;
@@ -80,34 +83,17 @@ namespace WebFramework.Areas.Framework.Controllers
             return entityId;
         }
 
-        protected override ContentItemModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(ContentItemModel model, FormCollection collection)
         {
             long contentItemId = collection.GetItemId<long>();
             return DomainRepositories.ContentItem.Delete(contentItemId);
         }
 
-        protected override ContentItemModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnEditExecuting(ContentItemModel model, FormCollection collection)
         {
             var ciEntity = DomainRepositories.ContentItem.GetById(model.Id);
-            if (ciEntity.Name != null)
-            {
-                ciEntity.Name.Value = model.Name;
-            }
-            if (ciEntity.Description != null)
-            {
-                ciEntity.Description.Value = model.Description;
-            }
-            ciEntity.Position = model.Position;
+            ciEntity.Name.Value = model.Name;
+            ciEntity.Description.Value = model.Description;
 
             return DomainRepositories.ContentItem.Update(ciEntity);
         }

@@ -137,7 +137,14 @@ namespace WebFramework.Business.Base
 
             // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
             var encryptionAttribute = this.ItemData.AttributeValues.First(x => x.ContentAttribute.Code == ExpressionAssistant.GetPropertyName(() => this.Encryption));
-            this.Encryption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
+            if (encryptionAttribute.Value == null)
+            {
+                this.Encryption = encryptionAttribute.ValueText.ParseEnum<EncryptionOption>();
+            }
+            else
+            {
+                this.Encryption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
+            }
 
             // Now we load other properties
             foreach (var kvp in this.properties.Where(x => x.Key != ExpressionAssistant.GetPropertyName(() => this.Encryption)))
@@ -145,7 +152,8 @@ namespace WebFramework.Business.Base
                 var attributeValue = this.ItemData.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
                 if (attributeValue != null)
                 {
-                    var decryptedValue = this.DecryptData(attributeValue.Value.Value);
+                    string value = (attributeValue.Value == null) ? attributeValue.ValueText : attributeValue.Value.Value;
+                    string decryptedValue = this.DecryptData(value);
                     this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
                 }
             }

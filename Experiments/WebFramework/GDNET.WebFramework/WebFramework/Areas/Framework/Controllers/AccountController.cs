@@ -52,11 +52,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.membershipService.DeleteUser(model.UserName, true);
         }
 
-        protected override AccountModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnEditExecuting(AccountModel model, FormCollection collection)
         {
             throw new NotImplementedException();

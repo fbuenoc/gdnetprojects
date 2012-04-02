@@ -19,11 +19,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(rootValues);
         }
 
-        protected override ListValueModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override ListValueModel OnCreateChecking()
         {
             string parentId;
@@ -44,19 +39,9 @@ namespace WebFramework.Areas.Framework.Controllers
             return result ? (object)listValue.Id : null;
         }
 
-        protected override ListValueModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(ListValueModel model, FormCollection collection)
         {
             return DomainRepositories.ListValue.Delete(model.Id);
-        }
-
-        protected override ListValueModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnEditExecuting(ListValueModel model, FormCollection collection)

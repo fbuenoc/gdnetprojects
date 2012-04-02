@@ -9,6 +9,8 @@ namespace WebFramework.Mapping.Common
         public ContentItemAttributeValueMap()
             : base(Generators.Native)
         {
+            base.Property(e => e.ValueText);
+
             base.ManyToOne(e => e.ContentAttribute, m =>
             {
                 m.Lazy(LazyRelation.Proxy);

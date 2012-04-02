@@ -17,7 +17,7 @@
                     columns.Bound(c => c.Name).Title("Category").Template(template =>
                     {
         %>
-        <%= base.Html.WebFramework().HyperLinkActions(new { id = template.Id }, Actions.DetailEdit) %>
+        <%= base.Html.WebFramework().HyperLink().HyperLinkActions(new { id = template.Id }, Actions.DetailEdit) %>
         <%
                     });
                 })

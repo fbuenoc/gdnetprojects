@@ -15,9 +15,8 @@
             <div id="menucontainer">
                 <ul id="menu">
                     <li>
-                        <%: base.Html.WebFramework().ActionLink().ActionLink("SysTranslation.Navigation.Home", "Index", "Home")%></li>
-                    <li>
-                        <%: base.Html.WebFramework().ActionLink().ActionLink("SysTranslation.Navigation.About", "Index", "About")%></li>
+                        <%: base.Html.WebFramework().ActionLink().ActionLink("SysTranslation.Navigation.Home", "Index", "Home")%>
+                    </li>
                 </ul>
             </div>
         </div>

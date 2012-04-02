@@ -17,6 +17,8 @@ namespace WebFramework.Constants
         public const string FrameworkListValueController = "ListValue";
         public const string FrameworkRoleController = "Role";
 
+        public const string SystemPage = "Page";
+
         #endregion
     }
 }

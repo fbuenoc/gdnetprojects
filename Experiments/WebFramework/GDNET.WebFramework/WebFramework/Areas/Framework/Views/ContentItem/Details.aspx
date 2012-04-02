@@ -1,44 +1,49 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%= Translations.EntityNames.ContentItem %>
+    <%= base.Html.WebFramework().SystemTranslation().EntityContentItem %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= Translations.System.DetailOfXYZ(base.Model.Name) %>
+        <%= base.Html.WebFramework().SystemTranslation().DetailOfXYZ(base.Model.Name) %>
     </h2>
     <div>
-        <%= Translations.System.CreatedAt %>:
-        <%= base.Model.CreatedAt.ToStringEx() %>
-        <br />
-        <%= Translations.System.CreatedBy %>:
-        <%= base.Model.CreatedBy %>
-        <br />
-        <%= Translations.System.Statut %>:
-        <%= base.Model.ActualStatut %>
         <div>
-            <%= Translations.System.Description %>:
-            <%= base.Model.Description %>
+            <% base.Html.RenderPartial("InfoModificationControl", base.Model); %>
+        </div>
+        <br />
+        <div>
+            <h3>
+                <%= base.Html.WebFramework().SystemTranslation().Description %>
+            </h3>
+            <div>
+                <%= base.Model.Description %>
+            </div>
         </div>
         <h3>
-            <%= Translations.System.Attributes %>
+            <%= base.Html.WebFramework().SystemTranslation().Attributes %>
         </h3>
         <%
             foreach (var attributeValue in base.Model.AttributesValue)
             {
         %>
         <div>
-            <%= attributeValue.ContentAttributeName %>
+            <h4>
+                <%= attributeValue.ContentAttribute.Name %>
+            </h4>
         </div>
         <div>
-            <%= attributeValue.Value %>
+            <%= base.Html.WebFramework().ActionLink().ActionLinkUpdateValue(attributeValue) %>
+        </div>
+        <div>
+            <%= HttpUtility.HtmlDecode(attributeValue.Value) %>
         </div>
         <%
             }
         %>
     </div>
     <p>
-        <%= base.Html.ActionLink(Translations.System.ReturnToListOfXYZ(Translations.EntityNames.ContentItem), ContentItemController.ActionList)%>
-        <%= base.Html.ActionLink("Create other Content Item", ContentItemController.ActionCreate, ControllerConstants.FrameworkContentItemController, new { key = base.Model.ContentTypeId }, new { })%>
+        <%= base.Html.ActionLink(base.Html.WebFramework().SystemTranslation().ReturnToListOfXYZ(base.Html.WebFramework().SystemTranslation().EntityContentItem), ContentItemController.ActionList)%>
+        <%= base.Html.ActionLink("Create other Content Item", ContentItemController.ActionCreate, ControllerConstants.FrameworkContentItemController, new { key = base.Model.ContentType.Id }, new { })%>
     </p>
 </asp:Content>

@@ -20,6 +20,12 @@
             set;
         }
 
+        public bool IsMultilingual
+        {
+            get;
+            set;
+        }
+
         public ContentAttributeInfo(string propertyName, string contentDataType, int position)
         {
             this.PropertyName = propertyName;

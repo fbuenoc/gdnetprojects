@@ -15,7 +15,12 @@ namespace WebFramework.Common.Controllers
 
         #region Methods
 
-        protected abstract TModel OnDetailsChecking(string id);
+        #region Details Methods
+
+        protected virtual TModel OnDetailsChecking(string id)
+        {
+            return base.GetModelById(id);
+        }
 
         public virtual ActionResult Details(string id)
         {
@@ -27,6 +32,8 @@ namespace WebFramework.Common.Controllers
 
             return base.RedirectToAction(ActionList);
         }
+
+        #endregion
 
         #region Create Methods
 
@@ -73,7 +80,11 @@ namespace WebFramework.Common.Controllers
 
         #region Delete Methods
 
-        protected abstract TModel OnDeleteChecking(string id);
+        protected virtual TModel OnDeleteChecking(string id)
+        {
+            return base.GetModelById(id);
+        }
+
         protected abstract bool OnDeleteExecuting(TModel model, FormCollection collection);
 
         public virtual ActionResult Delete(string id)
@@ -103,7 +114,11 @@ namespace WebFramework.Common.Controllers
 
         #endregion
 
-        protected abstract TModel OnEditChecking(string id);
+        protected virtual TModel OnEditChecking(string id)
+        {
+            return base.GetModelById(id);
+        }
+
         protected abstract bool OnEditExecuting(TModel model, FormCollection collection);
 
         public virtual ActionResult Edit(string id)

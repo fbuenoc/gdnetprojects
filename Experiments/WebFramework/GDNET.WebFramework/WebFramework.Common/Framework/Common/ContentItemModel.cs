@@ -14,16 +14,16 @@ namespace WebFramework.Common.Framework.Common
         #region Properties
 
         [DisplayNameML("SysTranslation.EntityNames.ContentType")]
-        public string ContentType
+        public ContentTypeModel ContentType
         {
-            get;
-            protected set;
-        }
-
-        public long ContentTypeId
-        {
-            get;
-            set;
+            get
+            {
+                if (base.Entity != null && base.Entity.ContentType != null)
+                {
+                    return new ContentTypeModel(base.Entity.ContentType);
+                }
+                return default(ContentTypeModel);
+            }
         }
 
         [RequiredML(ErrorCode = "SysTranslation.ContentItem.NameIsRequired")]
@@ -86,14 +86,6 @@ namespace WebFramework.Common.Framework.Common
             }
         }
 
-        public ContentTypeModel ContentTypeModel
-        {
-            get
-            {
-                return (base.Entity == null) ? null : new ContentTypeModel(base.Entity.ContentType);
-            }
-        }
-
         #endregion
 
         #region Ctors
@@ -103,9 +95,6 @@ namespace WebFramework.Common.Framework.Common
         public ContentItemModel(ContentItem entity)
             : base(entity)
         {
-            this.ContentType = entity.ContentType.Name.Value;
-            this.ContentTypeId = entity.ContentType.Id;
-
             this.Name = (entity.Name == null) ? string.Empty : entity.Name.Value;
             this.Description = (entity.Description == null) ? string.Empty : entity.Description.Value;
             this.Position = entity.Position;
@@ -114,15 +103,6 @@ namespace WebFramework.Common.Framework.Common
         #endregion
 
         #region Behaviors
-
-        public void InitializeContentType(ContentTypeModel typeModel)
-        {
-            this.ContentType = typeModel.Name;
-            this.ContentTypeId = typeModel.Id;
-
-            this.listAttributes.Clear();
-            this.listAttributes.AddRange(typeModel.Attributes);
-        }
 
         public T GetAttribute<T>(string attributeCode)
         {

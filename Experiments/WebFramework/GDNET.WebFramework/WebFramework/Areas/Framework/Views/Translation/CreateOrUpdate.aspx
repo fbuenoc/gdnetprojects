@@ -1,28 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="ViewPage<TranslationModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%= base.Html.WebFramework().SysTranslations.EntityTranslation %>
+    <%= base.Html.WebFramework().SystemTranslation().EntityTranslation %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= base.Html.WebFramework().CreateOrUpdate<long>(base.Model) %>
+        <%= base.Html.WebFramework().Translation().CreateOrUpdate<long>(base.Model) %>
     </h2>
     <div>
         <% base.Html.BeginForm(); %>
         <div>
-            <%= base.Html.WebFramework().SysTranslations.CreatedAt %>:
+            <%= base.Html.WebFramework().SystemTranslation().CreatedAt %>:
             <%= base.Model.CreatedAt.ToStringEx() %>
             <br />
-            <%= base.Html.WebFramework().SysTranslations.CreatedBy %>:
+            <%= base.Html.WebFramework().SystemTranslation().CreatedBy %>:
             <%= base.Model.CreatedBy %>
             <br />
-            <%= base.Html.WebFramework().SysTranslations.Statut %>:
+            <%= base.Html.WebFramework().SystemTranslation().Statut %>:
             <%= base.Model.ActualStatut %>
             <br />
-            <%= base.Html.WebFramework().SysTranslations.Category %>:
+            <%= base.Html.WebFramework().SystemTranslation().Category %>:
             <%= base.Model.Category %>
             <br />
-            <%= base.Html.WebFramework().SysTranslations.Code %>
+            <%= base.Html.WebFramework().SystemTranslation().Code %>
             <%= base.Model.Code %>
         </div>
         <div class="editor-label">
@@ -32,7 +32,7 @@
             <%= base.Html.TextAreaFor(m => m.Value, new { @class = "desc" })%>
         </div>
         <p>
-            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
+            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>

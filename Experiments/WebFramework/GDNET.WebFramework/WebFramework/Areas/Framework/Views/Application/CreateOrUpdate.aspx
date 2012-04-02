@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ApplicationModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%= base.Html.WebFramework().SysTranslations.EntityApplication %>
+    <%= base.Html.WebFramework().SystemTranslation().EntityApplication %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
@@ -28,11 +28,11 @@
             <%= base.Html.TextBoxFor(m => m.RootUrl)%>
         </div>
         <p>
-            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SysTranslations.SaveAndContinue %>" />
+            <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionListLink(base.Html.WebFramework().SysTranslations.EntityApplication, RoleController.ActionList)%>
+        <%= base.Html.WebFramework().ActionListLink(base.Html.WebFramework().SystemTranslation().EntityApplication, RoleController.ActionList)%>
     </p>
 </asp:Content>

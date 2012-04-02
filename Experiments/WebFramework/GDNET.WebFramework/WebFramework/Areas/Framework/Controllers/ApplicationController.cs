@@ -18,11 +18,6 @@ namespace WebFramework.Areas.Framework.Controllers
             return base.View(listOfApplications);
         }
 
-        protected override ApplicationModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override object OnCreateExecuting(ApplicationModel model, FormCollection collection)
         {
             var application = Application.Factory.Create(model.Name, model.Description, model.RootUrl);
@@ -30,20 +25,10 @@ namespace WebFramework.Areas.Framework.Controllers
             return result ? (object)application.Id : null;
         }
 
-        protected override ApplicationModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(ApplicationModel model, FormCollection collection)
         {
             long appId = collection.GetItemId<long>();
             return DomainRepositories.Application.Delete(appId);
-        }
-
-        protected override ApplicationModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnEditExecuting(ApplicationModel model, FormCollection collection)
