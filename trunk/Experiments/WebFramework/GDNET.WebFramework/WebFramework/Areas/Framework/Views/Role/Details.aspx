@@ -19,7 +19,7 @@
         <%= usersInRole %>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return Role management", RoleController.ActionList)%>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
         |
         <%= base.Html.ActionLink("Add User to role", RoleController.ActionAddUser, new { role = base.Model.Name })%>
     </p>

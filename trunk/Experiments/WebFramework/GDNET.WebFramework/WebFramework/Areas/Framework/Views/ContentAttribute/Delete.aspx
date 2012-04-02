@@ -5,23 +5,16 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <%= base.Html.WebFramework().SystemTranslation().DeleteConfirmationXYZ(Translations.EntityNames.ContentAttribute) %>
+        <%= base.Html.WebFramework().SystemTranslation().DeleteConfirmationXYZ(base.Html.WebFramework().SystemTranslation().EntityContentAttribute) %>
     </div>
     <div>
         <%= base.Model.Code %>
         in the Content Type:
         <%= base.Model.ContentType %>
     </div>
-    <p>
-        <%= base.Html.WebFramework().SystemTranslation().CreatedAt %>:
-        <%= base.Model.CreatedAt.ToStringEx() %>
-        <br />
-        <%= base.Html.WebFramework().SystemTranslation().CreatedBy %>:
-        <%= base.Model.CreatedBy %>
-        <br />
-        <%= base.Html.WebFramework().SystemTranslation().Statut %>:
-        <%= base.Model.ActualStatut %>
-    </p>
+    <div>
+        <% base.Html.RenderPartial("InfoModificationControl", base.Model); %>
+    </div>
     <p>
         <% base.Html.BeginForm(); %>
         <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().DeleteAndContinue %>" />
@@ -29,6 +22,7 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentAttributes) %>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionDetails, ControllerConstants.FrameworkContentTypeController, new { id = base.Model.ContentTypeId }, new { })%>
     </p>
 </asp:Content>

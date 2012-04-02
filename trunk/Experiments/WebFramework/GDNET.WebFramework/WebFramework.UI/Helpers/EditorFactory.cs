@@ -7,11 +7,11 @@ using WebFramework.Domain.Constants;
 
 namespace WebFramework.UI.Helpers
 {
-    public class TextEditorFactory
+    public class EditorFactory
     {
         private HtmlHelper htmlHelper;
 
-        public TextEditorFactory(HtmlHelper htmlHelper)
+        public EditorFactory(HtmlHelper htmlHelper)
         {
             this.htmlHelper = htmlHelper;
         }
@@ -40,10 +40,17 @@ namespace WebFramework.UI.Helpers
                             return this.htmlHelper.TextBox(inputName, htmlValue, htmlAttributes);
                         }
 
-                    case ListValueConstants.ContentDataTypes.NumberPercentage:
+                    case ListValueConstants.ContentDataTypes.NumberNormalNumber:
                         {
                             double value = double.Parse(valueModel.Value);
                             string inputComponent = this.htmlHelper.Telerik().NumericTextBox().Name(inputName).Value(value).HtmlAttributes(htmlAttributes).ToHtmlString();
+                            return MvcHtmlString.Create(inputComponent);
+                        }
+
+                    case ListValueConstants.ContentDataTypes.NumberPercentage:
+                        {
+                            double value = double.Parse(valueModel.Value);
+                            string inputComponent = this.htmlHelper.Telerik().PercentTextBox().Name(inputName).Value(value).HtmlAttributes(htmlAttributes).ToHtmlString();
                             return MvcHtmlString.Create(inputComponent);
                         }
 

@@ -20,7 +20,9 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override object OnCreateExecuting(ApplicationModel model, FormCollection collection)
         {
-            var application = Application.Factory.Create(model.Name, model.Description, model.RootUrl);
+            var application = Application.Factory.Create(model.Name, model.RootUrl);
+            application.Description.Value = model.Description;
+
             var result = DomainRepositories.Application.Save(application);
             return result ? (object)application.Id : null;
         }
@@ -36,15 +38,10 @@ namespace WebFramework.Areas.Framework.Controllers
             try
             {
                 var appEntity = DomainRepositories.Application.GetById(model.Id);
-                if (appEntity.Description != null)
-                {
-                    appEntity.Description.Value = model.Description;
-                }
                 appEntity.RootUrl = model.RootUrl;
-                if (appEntity.Name != null)
-                {
-                    appEntity.Name.Value = model.Name;
-                }
+
+                appEntity.Name.Value = model.Name;
+                appEntity.Description.Value = model.Description;
 
                 return DomainRepositories.Application.Update(appEntity);
             }

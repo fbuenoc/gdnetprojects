@@ -12,10 +12,6 @@ namespace WebFramework.Areas.Framework.Controllers
     {
         #region ListCrudControllerBase members
 
-        /// <summary>
-        /// GET: /Framework/Account/List/
-        /// </summary>
-        /// <returns></returns>
         public override ActionResult List()
         {
             return base.View();
@@ -34,7 +30,7 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override object OnCreateExecuting(AccountModel model, FormCollection collection)
         {
-            throw new NotImplementedException();
+            return null;
         }
 
         protected override AccountModel OnDeleteChecking(string id)
@@ -62,8 +58,6 @@ namespace WebFramework.Areas.Framework.Controllers
         /// <summary>
         /// Get accounts support paging
         /// </summary>
-        /// <param name="command"></param>
-        /// <returns></returns>
         [GridAction(EnableCustomBinding = true)]
         public ActionResult TelerikGetAccounts(GridCommand command)
         {

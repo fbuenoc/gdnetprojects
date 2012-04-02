@@ -113,6 +113,11 @@ namespace WebFramework.UI.Translations
             get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.ContentAttribute"); }
         }
 
+        public string EntityCulture
+        {
+            get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Culture"); }
+        }
+
         public string EntityListValue
         {
             get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.ListValue"); }

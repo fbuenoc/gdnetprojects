@@ -19,6 +19,7 @@
         <%= base.Model.DataType %>
     </div>
     <p>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentAttributes) %>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionDetails, ControllerConstants.FrameworkContentTypeController, new { id = base.Model.ContentTypeId }, new { })%>
         <%= base.Html.ActionLink("Add other Attribute", ListValueController.ActionCreate, new { key = base.Model.ContentTypeId }) %>
     </p>

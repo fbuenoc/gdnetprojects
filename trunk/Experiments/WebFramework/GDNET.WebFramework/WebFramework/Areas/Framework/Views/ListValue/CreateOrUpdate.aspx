@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= base.Html.WebFramework().CreateOrUpdate<long>(base.Model) %>
+        <%= base.Html.WebFramework().Translation().CreateOrUpdate<long>(base.Model) %>
     </h2>
     <div>
         <% base.Html.BeginForm(); %>

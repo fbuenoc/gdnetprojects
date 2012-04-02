@@ -1,11 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<CultureModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    Culture
+    <%= base.Html.WebFramework().SystemTranslation().EntityCulture %>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        <%= base.Html.WebFramework().CreateOrUpdate<int>(base.Model) %>
+        <%= base.Html.WebFramework().Translation().CreateOrUpdate<int>(base.Model) %>
     </h2>
     <div>
         <% base.Html.BeginForm(); %>
@@ -21,6 +21,6 @@
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return Content Type management", CultureController.ActionList)%>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.Cultures) %>
     </p>
 </asp:Content>

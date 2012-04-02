@@ -5,21 +5,15 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <%= base.Html.WebFramework().SystemTranslation().DeleteConfirmationXYZ(Translations.EntityNames.Application) %>
+        <%= base.Html.WebFramework().SystemTranslation().DeleteConfirmationXYZ(base.Html.WebFramework().SystemTranslation().EntityApplication)%>
     </div>
     <div>
         <%= base.Model.Name %>
     </div>
+    <div>
+        <% base.Html.RenderPartial("InfoModificationControl", base.Model); %>
+    </div>
     <p>
-        <%= base.Html.WebFramework().SystemTranslation().CreatedAt %>:
-        <%= base.Model.CreatedAt.ToStringEx() %>
-        <br />
-        <%= base.Html.WebFramework().SystemTranslation().CreatedBy %>:
-        <%= base.Model.CreatedBy %>
-        <br />
-        <%= base.Html.WebFramework().SystemTranslation().Statut %>:
-        <%= base.Model.ActualStatut %>
-        <br />
         <%= base.Html.WebFramework().SystemTranslation().Category %>:
         <%= base.Model.Category %>
     </p>
@@ -30,6 +24,6 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
-        <%= base.Html.ActionLink("Return Application management", RoleController.ActionList) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.Applications) %>
     </p>
 </asp:Content>

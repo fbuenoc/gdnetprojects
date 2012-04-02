@@ -19,8 +19,8 @@ namespace WebFramework.Areas.Framework.Controllers
         public override ActionResult List()
         {
             var viewModel = new TranslationViewModel();
-            List<string> propertiesConditions = new List<string>() { MetaInfos.Common.IsEditable, MetaInfos.Common.IsViewable };
-            List<object> propertiesValues = new List<object>() { true, true };
+            List<string> propertiesConditions = new List<string>() { MetaInfos.Common.IsEditable };
+            List<object> propertiesValues = new List<object>() { true };
 
             int cultureId = 0;
             long categoryId = 0;

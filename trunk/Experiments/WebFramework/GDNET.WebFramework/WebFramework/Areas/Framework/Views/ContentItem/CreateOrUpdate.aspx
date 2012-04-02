@@ -8,7 +8,7 @@
         <%= base.Html.WebFramework().Translation().CreateOrUpdate<long>(base.Model) %>
     </h2>
     <h3>
-        <%= base.Html.WebFramework().Translation().InContentTypeXYZ(base.Model.ContentType)%>
+        <%= base.Html.WebFramework().Translation().InContentTypeXYZ(base.Model.ContentTypeName)%>
     </h3>
     <div>
         <% base.Html.BeginForm(); %>
@@ -25,13 +25,13 @@
             <%= base.Html.TextAreaFor(m => m.Description, new { @class = "desc" }) %>
         </div>
         <p>
-            <%= base.Html.HiddenFor(m => m.ContentTypeId) %>
+            <%= base.Html.HiddenFor(m => m.ContentType.Id) %>
             <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
         </p>
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return Content Item management", ContentItemController.ActionList)%>
-        <%= base.Html.ActionLink("Return current Content Type", ContentTypeController.ActionDetails, ControllerConstants.FrameworkContentTypeController, new { id = base.Model.ContentTypeId }, new { })%>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentItems) %>
+        <%= base.Html.ActionLink("Return current Content Type", ContentTypeController.ActionDetails, WebFrameworkConstants.Controllers.FrameworkContentType, new { id = base.Model.ContentTypeId }, new { })%>
     </p>
 </asp:Content>
