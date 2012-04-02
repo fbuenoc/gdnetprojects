@@ -3,7 +3,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class WidgetModel : AbstractModelGenericWithActive<Widget, long>
+    public sealed class WidgetModel : ModelWithActiveBase<Widget, long>
     {
         public string Code
         {

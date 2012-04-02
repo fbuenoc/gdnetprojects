@@ -7,7 +7,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public class ContentItemModel : AbstractModelWithModification<ContentItem, long>
+    public class ContentItemModel : ModelWithModificationBase<ContentItem, long>
     {
         private List<ContentAttributeModel> listAttributes = new List<ContentAttributeModel>();
 
@@ -126,7 +126,7 @@ namespace WebFramework.Common.Framework.Common
 
         public T GetAttribute<T>(string attributeCode)
         {
-            ContentItemAttributeValueModel valueModel = this.AttributesValue.FirstOrDefault(x => x.AttributeModel.Code == attributeCode);
+            ContentItemAttributeValueModel valueModel = this.AttributesValue.FirstOrDefault(x => x.ContentAttribute.Code == attributeCode);
             if (valueModel != null)
             {
                 return (T)Convert.ChangeType(valueModel.Value, typeof(T));

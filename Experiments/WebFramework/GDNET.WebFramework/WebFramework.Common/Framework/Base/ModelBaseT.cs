@@ -2,9 +2,11 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class AbstractModelGeneric<TEntity, TId> : AbstractModel, IViewModel<TId>
+    public abstract class ModelBase<TEntity, TId> : ModelBase, IModel<TId>
         where TEntity : EntityBase<TId>
     {
+        #region Properties
+
         protected TEntity Entity
         {
             get;
@@ -24,14 +26,16 @@ namespace WebFramework.Common.Framework.Base
             set { base.id = value; }
         }
 
+        #endregion
+
         #region Ctors
 
-        public AbstractModelGeneric()
+        public ModelBase()
             : base()
         {
         }
 
-        public AbstractModelGeneric(TEntity entity)
+        public ModelBase(TEntity entity)
             : base()
         {
             this.Id = entity.Id;

@@ -5,7 +5,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class PageModel : AbstractModelGenericWithActive<Page, long>
+    public sealed class PageModel : ModelWithActiveBase<Page, long>
     {
         #region Properties
 

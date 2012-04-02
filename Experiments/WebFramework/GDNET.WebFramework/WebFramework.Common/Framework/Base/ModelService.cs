@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Collections.Generic;
 using GDNET.Common.DesignByContract;
 using WebFramework.Common.Framework.Common;
 using WebFramework.Domain;
+using WebFramework.Common.Common;
 
 namespace WebFramework.Common.Framework.Base
 {
@@ -52,6 +55,36 @@ namespace WebFramework.Common.Framework.Base
                 else
                 {
                     ThrowException.NotImplementedException(string.Format("Not implemented for type: '{0}'.", typeof(TModel).FullName));
+                }
+
+                if (modelEntity != null)
+                {
+                    return (TModel)Convert.ChangeType(modelEntity, typeof(TModel));
+                }
+            }
+
+            return default(TModel);
+        }
+
+        public static TModel GetModelById<TModel>(string id, IDictionary<object, object> parameters)
+        {
+            long modelId;
+            object modelEntity = null;
+
+            if (long.TryParse(id, out modelId))
+            {
+                if (typeof(TModel).FullName == typeof(ContentItemAttributeValueModel).FullName)
+                {
+                    if (parameters.ContainsKey(EntityQueryString.ContentItemId))
+                    {
+                        long contentItemId = (long)parameters[EntityQueryString.ContentItemId];
+                        var contentItem = DomainRepositories.ContentItem.GetById(contentItemId);
+                        var attributeValue = contentItem.AttributeValues.FirstOrDefault(x => x.Id == modelId);
+                        if (attributeValue != null)
+                        {
+                            modelEntity = new ContentItemAttributeValueModel(attributeValue);
+                        }
+                    }
                 }
 
                 if (modelEntity != null)

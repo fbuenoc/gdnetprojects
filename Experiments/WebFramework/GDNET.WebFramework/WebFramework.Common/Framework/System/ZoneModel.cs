@@ -5,7 +5,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class ZoneModel : AbstractModelGenericWithActive<Zone, long>
+    public sealed class ZoneModel : ModelWithActiveBase<Zone, long>
     {
         public ReadOnlyCollection<RegionModel> Regions
         {

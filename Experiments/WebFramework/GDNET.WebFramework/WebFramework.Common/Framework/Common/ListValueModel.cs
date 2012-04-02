@@ -7,7 +7,7 @@ using WebFramework.Common.ComponentModel;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class ListValueModel : AbstractModelWithModification<ListValue, long>
+    public sealed class ListValueModel : ModelWithModificationBase<ListValue, long>
     {
         #region Properties
 
