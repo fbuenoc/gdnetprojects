@@ -2,7 +2,7 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class AbstractModelGenericWithActive<TEntity, TId> : AbstractModelGeneric<TEntity, TId>, IViewModel<TId>
+    public abstract class ModelWithActiveBase<TEntity, TId> : ModelBase<TEntity, TId>, IModel<TId>
         where TEntity : EntityWithActive<TId>
     {
         public bool IsActive
@@ -13,12 +13,12 @@ namespace WebFramework.Common.Framework.Base
 
         #region Ctors
 
-        public AbstractModelGenericWithActive()
+        public ModelWithActiveBase()
             : base()
         {
         }
 
-        public AbstractModelGenericWithActive(TEntity entity)
+        public ModelWithActiveBase(TEntity entity)
             : base(entity)
         {
             this.IsActive = entity.IsActive;

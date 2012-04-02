@@ -4,21 +4,9 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public class ContentItemAttributeValueModel : AbstractModelGeneric<ContentItemAttributeValue, long>
+    public class ContentItemAttributeValueModel : ModelBase<ContentItemAttributeValue, long>
     {
         #region Properties
-
-        public string ContentAttributeName
-        {
-            get;
-            protected set;
-        }
-
-        public long ContentAttributeId
-        {
-            get;
-            protected set;
-        }
 
         public string ContentItemName
         {
@@ -26,14 +14,19 @@ namespace WebFramework.Common.Framework.Common
             protected set;
         }
 
-        [DisplayName("Data type")]
-        public long ContentItemId
+        public ContentItemModel ContentItem
         {
-            get;
-            protected set;
+            get
+            {
+                if (base.Entity != null)
+                {
+                    return new ContentItemModel(base.Entity.ContentItem);
+                }
+
+                return default(ContentItemModel);
+            }
         }
 
-        [DisplayName("")]
         public string Value
         {
             get;
@@ -46,10 +39,16 @@ namespace WebFramework.Common.Framework.Common
             protected set;
         }
 
-        public ContentAttributeModel AttributeModel
+        public ContentAttributeModel ContentAttribute
         {
-            get;
-            protected set;
+            get
+            {
+                if (base.Entity != null)
+                {
+                    return new ContentAttributeModel(base.Entity.ContentAttribute);
+                }
+                return default(ContentAttributeModel);
+            }
         }
 
         #endregion
@@ -61,14 +60,9 @@ namespace WebFramework.Common.Framework.Common
         public ContentItemAttributeValueModel(ContentItemAttributeValue entity)
             : base(entity)
         {
-            this.ContentAttributeId = entity.ContentAttribute.Id;
-            this.ContentAttributeName = entity.ContentAttribute.Name.Value;
-            this.ContentItemId = entity.ContentItem.Id;
             this.ContentItemName = entity.ContentItem.Name.Value;
             this.Value = entity.Value.Value;
             this.DataTypeName = entity.ContentAttribute.DataType.Name;
-
-            this.AttributeModel = new ContentAttributeModel(entity.ContentAttribute);
         }
 
         #endregion

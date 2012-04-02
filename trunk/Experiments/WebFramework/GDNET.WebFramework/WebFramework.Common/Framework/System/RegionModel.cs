@@ -6,7 +6,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public class RegionModel : AbstractModelGenericWithActive<Region, long>
+    public class RegionModel : ModelWithActiveBase<Region, long>
     {
         public WidgetModel Widget
         {

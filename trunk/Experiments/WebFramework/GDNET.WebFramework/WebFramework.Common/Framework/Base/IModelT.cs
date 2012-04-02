@@ -1,6 +1,6 @@
 ﻿namespace WebFramework.Common.Framework.Base
 {
-    public interface IViewModel<TId>
+    public interface IModel<TId>
     {
         TId Id { get; set; }
     }

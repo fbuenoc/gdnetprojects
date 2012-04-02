@@ -2,7 +2,7 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class AbstractModel
+    public abstract class ModelBase
     {
         protected object id
         {
@@ -16,7 +16,7 @@ namespace WebFramework.Common.Framework.Base
             private set;
         }
 
-        public AbstractModel()
+        public ModelBase()
         {
             this.ModelId = Guid.NewGuid();
         }

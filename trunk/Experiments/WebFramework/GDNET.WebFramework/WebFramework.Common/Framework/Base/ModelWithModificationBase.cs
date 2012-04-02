@@ -4,9 +4,11 @@ using WebFramework.Domain.Base;
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class AbstractModelWithModification<TEntity, TId> : AbstractModelGenericWithActive<TEntity, TId>, IViewModel<TId>
+    public abstract class ModelWithModificationBase<TEntity, TId> : ModelWithActiveBase<TEntity, TId>, IModel<TId>, IModelWithModification
         where TEntity : EntityWithModification<TId>
     {
+        #region IModelWithModification members
+
         public string ActualStatut
         {
             get;
@@ -37,15 +39,17 @@ namespace WebFramework.Common.Framework.Base
             protected set;
         }
 
+        #endregion
+
         #region Ctors
 
-        public AbstractModelWithModification()
+        public ModelWithModificationBase()
             : base()
         {
             this.Initialize();
         }
 
-        public AbstractModelWithModification(TEntity entity)
+        public ModelWithModificationBase(TEntity entity)
             : base(entity)
         {
             this.Initialize();

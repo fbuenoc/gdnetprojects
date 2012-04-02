@@ -5,7 +5,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class ApplicationModel : AbstractModelWithModification<Application, long>
+    public sealed class ApplicationModel : ModelWithModificationBase<Application, long>
     {
         #region Properties
 

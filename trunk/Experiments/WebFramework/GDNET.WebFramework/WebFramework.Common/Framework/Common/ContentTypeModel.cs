@@ -7,7 +7,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class ContentTypeModel : AbstractModelWithModification<ContentType, long>
+    public sealed class ContentTypeModel : ModelWithModificationBase<ContentType, long>
     {
         #region Properties
 
