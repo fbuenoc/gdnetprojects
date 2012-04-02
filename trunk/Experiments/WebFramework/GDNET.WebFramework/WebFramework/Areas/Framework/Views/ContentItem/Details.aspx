@@ -43,7 +43,7 @@
         %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentItems) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ContentItem) %>
         <%= base.Html.ActionLink(base.Html.WebFramework().SystemTranslation().ReturnToListOfXYZ(base.Html.WebFramework().SystemTranslation().EntityContentItem), ContentItemController.ActionList)%>
         <%= base.Html.ActionLink("Create other Content Item", ContentItemController.ActionCreate, WebFrameworkConstants.Controllers.FrameworkContentItem, new { key = base.Model.ContentType.Id }, new { })%>
     </p>

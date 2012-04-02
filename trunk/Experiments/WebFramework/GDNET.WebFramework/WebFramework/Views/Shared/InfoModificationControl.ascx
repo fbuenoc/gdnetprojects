@@ -1,5 +1,5 @@
 ﻿<%@ Import Namespace="WebFramework.Common.Framework.Base" %>
-<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IModelWithModification>" %>
+<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<IModelWithLifeCycle>" %>
 <table>
     <tr>
         <td width="100px">

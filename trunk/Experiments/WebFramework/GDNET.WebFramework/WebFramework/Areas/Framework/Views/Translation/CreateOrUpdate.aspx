@@ -31,6 +31,6 @@
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.Translations) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Translations) %>
     </p>
 </asp:Content>

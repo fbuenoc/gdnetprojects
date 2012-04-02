@@ -22,7 +22,7 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentAttributes) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ContentAttribute) %>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionDetails, ControllerConstants.FrameworkContentTypeController, new { id = base.Model.ContentTypeId }, new { })%>
     </p>
 </asp:Content>

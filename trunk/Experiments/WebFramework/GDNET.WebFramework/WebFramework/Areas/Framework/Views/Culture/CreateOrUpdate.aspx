@@ -21,6 +21,6 @@
         <% base.Html.EndForm(); %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.Cultures) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Culture) %>
     </p>
 </asp:Content>

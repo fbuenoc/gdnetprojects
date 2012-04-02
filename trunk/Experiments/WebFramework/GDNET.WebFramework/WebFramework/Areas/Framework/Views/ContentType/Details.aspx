@@ -10,7 +10,6 @@
     <div>
         <% base.Html.RenderPartial("InfoModificationControl", base.Model); %>
     </div>
-    <br />
     <h3>
         Attributes
     </h3>
@@ -35,7 +34,7 @@
         %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ContentType) %>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionList)%>
         <%= base.Html.ActionLink("Add new Attribute", ContentAttributeController.ActionCreate, WebFrameworkConstants.Controllers.FrameworkContentAttribute, new { key = base.Model.Id }, new { })%>
         <%= base.Html.ActionLink("Add new Content Item", ContentItemController.ActionCreate, WebFrameworkConstants.Controllers.FrameworkContentItem, new { key = base.Model.Id }, new { })%>
