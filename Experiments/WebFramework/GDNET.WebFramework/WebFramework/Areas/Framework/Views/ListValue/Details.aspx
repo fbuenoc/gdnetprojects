@@ -50,7 +50,7 @@
         </div>
     </div>
     <p>
-        <%= base.Html.ActionLink("Return ListValue management", ListValueController.ActionList)%>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
         <% if (base.Model.ParentId != 0)
            {
         %>

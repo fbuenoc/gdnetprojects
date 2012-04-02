@@ -9,8 +9,8 @@ using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
-using WebFramework.Constants;
 using WebFramework.Domain;
+using WebFramework.UI;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
@@ -46,7 +46,14 @@ namespace WebFramework.Areas.Framework.Controllers
                 var contentItemObject = DomainRepositories.ContentItem.GetById(contentItemId.Value);
 
                 var attributeValue = contentItemObject.AttributeValues.FirstOrDefault(x => x.Id == model.Id);
-                attributeValue.Value.Value = collection.GetValueFromCollection(attributeValue.ContentAttribute.Code);
+                if (attributeValue.ContentAttribute.IsMultilingual)
+                {
+                    attributeValue.Value.Value = collection.GetValueFromCollection(attributeValue.ContentAttribute.Code);
+                }
+                else
+                {
+                    attributeValue.ValueText = collection.GetValueFromCollection(attributeValue.ContentAttribute.Code);
+                }
 
                 DomainRepositories.RepositoryAssistant.Flush();
                 return true;
@@ -60,7 +67,7 @@ namespace WebFramework.Areas.Framework.Controllers
             if (this.OnEditExecuting(model, collection))
             {
                 var contentItemId = QueryStringAssistant.ParseInteger(EntityQueryString.ContentItemId);
-                return base.RedirectToAction(ActionDetails, ControllerConstants.FrameworkContentItemController, new { id = contentItemId.Value });
+                return base.RedirectToAction(ActionDetails, WebFrameworkConstants.Controllers.FrameworkContentItem.ToString(), new { id = contentItemId.Value });
             }
 
             return base.View(ViewCreateOrUpdate, model);

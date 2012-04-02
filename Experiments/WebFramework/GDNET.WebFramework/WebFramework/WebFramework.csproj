@@ -267,7 +267,6 @@
     <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractControllerT.cs" />
     <Compile Include="Common\WebFrameworkViewEngine.cs" />
-    <Compile Include="Constants\ControllerConstants.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Constants\QueryStringConstants.cs" />
@@ -1161,7 +1160,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>1701</DevelopmentServerPort>
+          <DevelopmentServerPort>3628</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

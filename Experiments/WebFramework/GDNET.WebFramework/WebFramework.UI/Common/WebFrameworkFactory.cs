@@ -44,9 +44,9 @@ namespace WebFramework.UI.Common
             return new SystemTranslation();
         }
 
-        public TextEditorFactory TextEditor()
+        public EditorFactory TextEditor()
         {
-            return new TextEditorFactory(this.htmlHelper);
+            return new EditorFactory(this.htmlHelper);
         }
     }
 

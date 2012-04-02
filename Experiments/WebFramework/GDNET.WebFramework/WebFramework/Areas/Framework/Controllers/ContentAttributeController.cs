@@ -55,7 +55,6 @@ namespace WebFramework.Areas.Framework.Controllers
         {
             var caEntity = DomainRepositories.ContentAttribute.GetById(model.Id);
             caEntity.Code = model.Code;
-            caEntity.Position = model.Position;
 
             if ((caEntity.DataType == null) || (caEntity.DataType.Id != model.DataTypeId))
             {

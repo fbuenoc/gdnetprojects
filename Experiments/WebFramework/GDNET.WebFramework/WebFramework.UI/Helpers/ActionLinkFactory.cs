@@ -39,6 +39,32 @@ namespace WebFramework.UI.Helpers
             return this.ActionLink("SysTranslation.Update", "Edit", "ContentItemAttributeValue", routeValues);
         }
 
+        public MvcHtmlString ActionListLink(ListType listType)
+        {
+            var sysTranslation = new SystemTranslation();
+            switch (listType)
+            {
+                case ListType.Applications:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityApplication), "List", "Application");
+                case ListType.ContentAttributes:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityContentAttribute), "List", "ContentAttribute");
+                case ListType.ContentItems:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityContentItem), "List", "ContentItem");
+                case ListType.ContentTypes:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityContentType), "List", "ContentType");
+                case ListType.Cultures:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityCulture), "List", "Culture");
+                case ListType.ListValues:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityListValue), "List", "ListValue");
+                case ListType.Roles:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityRole), "List", "Role");
+                case ListType.Translations:
+                    return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(sysTranslation.EntityTranslation), "List", "Translation");
+            }
+
+            return MvcHtmlString.Create(string.Empty);
+        }
+
         public MvcHtmlString ActionListLink(string entityName, string actionName)
         {
             return this.htmlHelper.ActionLink(new SystemTranslation().ReturnToListOfXYZ(entityName), actionName);

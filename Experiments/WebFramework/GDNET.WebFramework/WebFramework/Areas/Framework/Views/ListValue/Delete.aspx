@@ -18,6 +18,6 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
-        <%= base.Html.ActionLink("Return List Value management", ListValueController.ActionList) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
     </p>
 </asp:Content>

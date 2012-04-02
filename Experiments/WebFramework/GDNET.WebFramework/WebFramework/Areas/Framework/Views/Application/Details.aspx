@@ -11,19 +11,13 @@
         <%= base.Model.Description %>
     </p>
     <div>
-        <%= base.Html.WebFramework().SystemTranslation().CreatedAt %>:
-        <%= base.Model.CreatedAt.ToStringEx() %>
-        <br />
-        <%= base.Html.WebFramework().SystemTranslation().CreatedBy %>:
-        <%= base.Model.CreatedBy %>
-        <br />
+        <% base.Html.RenderPartial("InfoModificationControl", base.Model); %>
+    </div>
+    <div>
         <%= base.Html.WebFramework().SystemTranslation().Category %>:
         <%= base.Model.Category %>
-        <br />
-        <%= base.Html.WebFramework().SystemTranslation().Statut %>:
-        <%= base.Model.ActualStatut %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionListLink(base.Html.WebFramework().SystemTranslation().EntityApplication, RoleController.ActionList)%>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.Applications) %>
     </p>
 </asp:Content>

@@ -60,10 +60,31 @@ namespace WebFramework.Areas.Framework.Controllers
             return itemModel;
         }
 
+        protected override ContentItemModel OnCreateChecking()
+        {
+            ContentItemModel itemModel = base.OnCreateChecking();
+
+            long? contentTypeId = QueryStringAssistant.ParseInteger(QueryStringConstants.Key);
+            if (contentTypeId.HasValue)
+            {
+                var contentType = DomainRepositories.ContentType.GetById(contentTypeId.Value);
+                itemModel.InitializeContentType(contentType);
+            }
+
+            return itemModel;
+        }
+
         protected override object OnCreateExecuting(ContentItemModel model, FormCollection collection)
         {
+            ContentType contentType = null;
+            long? contentTypeId = QueryStringAssistant.ParseInteger(QueryStringConstants.Key);
+            if (contentTypeId.HasValue)
+            {
+                DomainRepositories.ContentType.GetById(contentTypeId.Value);
+                model.InitializeContentType(contentType);
+            }
+
             object entityId = null;
-            var contentType = DomainRepositories.ContentType.GetById(model.ContentType.Id);
             var attributesInfo = DomainServices.ContentType.GetAttributesInformation(contentType);
 
             string errorMessages = string.Empty;

@@ -18,6 +18,6 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
-        <%= base.Html.ActionLink("Return Role management", RoleController.ActionList) %>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
     </p>
 </asp:Content>

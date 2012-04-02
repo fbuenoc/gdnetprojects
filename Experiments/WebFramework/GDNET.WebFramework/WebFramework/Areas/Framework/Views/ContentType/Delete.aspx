@@ -27,6 +27,7 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionList) %>
     </p>
 </asp:Content>

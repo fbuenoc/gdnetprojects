@@ -24,9 +24,9 @@
                     columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
         %>
-        <%= base.Html.ActionLink("Details", "Details", ControllerConstants.FrameworkContentAttributeController, new { id = template.Id }, new { })%>
-        <%= base.Html.ActionLink("Edit", "Edit", ControllerConstants.FrameworkContentAttributeController, new { id = template.Id }, new { })%>
-        <%= base.Html.ActionLink("Delete", "Delete", ControllerConstants.FrameworkContentAttributeController, new { id = template.Id }, new { })%>
+        <%= base.Html.ActionLink("Details", "Details", WebFrameworkConstants.Controllers.FrameworkContentAttribute, new { id = template.Id }, new { })%>
+        <%= base.Html.ActionLink("Edit", "Edit", WebFrameworkConstants.Controllers.FrameworkContentAttribute, new { id = template.Id }, new { })%>
+        <%= base.Html.ActionLink("Delete", "Delete", WebFrameworkConstants.Controllers.FrameworkContentAttribute, new { id = template.Id }, new { })%>
         <%
                     });
                 })
@@ -35,8 +35,9 @@
         %>
     </div>
     <p>
+        <%= base.Html.WebFramework().ActionLink().ActionListLink(ListType.ContentTypes) %>
         <%= base.Html.ActionLink("Return Content Type management", ContentTypeController.ActionList)%>
-        <%= base.Html.ActionLink("Add new Attribute", ContentAttributeController.ActionCreate, ControllerConstants.FrameworkContentAttributeController, new { key = base.Model.Id }, new { })%>
-        <%= base.Html.ActionLink("Add new Content Item", ContentItemController.ActionCreate, ControllerConstants.FrameworkContentItemController, new { key = base.Model.Id }, new { })%>
+        <%= base.Html.ActionLink("Add new Attribute", ContentAttributeController.ActionCreate, WebFrameworkConstants.Controllers.FrameworkContentAttribute, new { key = base.Model.Id }, new { })%>
+        <%= base.Html.ActionLink("Add new Content Item", ContentItemController.ActionCreate, WebFrameworkConstants.Controllers.FrameworkContentItem, new { key = base.Model.Id }, new { })%>
     </p>
 </asp:Content>
