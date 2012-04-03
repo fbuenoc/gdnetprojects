@@ -7,9 +7,10 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public class ContentItemModel : ModelWithModificationBase<ContentItem, long>
+    public class ContentItemModel : ModelWithLifeCycleBase<ContentItem, long>
     {
         private List<ContentAttributeModel> listAttributes = new List<ContentAttributeModel>();
+        private ContentTypeModel contentType = default(ContentTypeModel);
 
         #region Properties
 
@@ -20,9 +21,9 @@ namespace WebFramework.Common.Framework.Common
             {
                 if (base.Entity != null && base.Entity.ContentType != null)
                 {
-                    return new ContentTypeModel(base.Entity.ContentType);
+                    this.InitializeContentType(base.Entity.ContentType);
                 }
-                return default(ContentTypeModel);
+                return contentType;
             }
         }
 
@@ -104,10 +105,16 @@ namespace WebFramework.Common.Framework.Common
 
         #region Behaviors
 
+        public ContentItemModel InitializeContentType(ContentType contentType)
+        {
+            this.contentType = new ContentTypeModel(contentType);
+            return this;
+        }
+
         public T GetAttribute<T>(string attributeCode)
         {
             ContentItemAttributeValueModel valueModel = this.AttributesValue.FirstOrDefault(x => x.ContentAttribute.Code == attributeCode);
-            if (valueModel != null)
+            if ((valueModel != null) && !string.IsNullOrEmpty(valueModel.Value))
             {
                 return (T)Convert.ChangeType(valueModel.Value, typeof(T));
             }

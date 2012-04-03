@@ -4,10 +4,10 @@ namespace WebFramework.Common.Framework.Base
 {
     public abstract class ModelBase
     {
-        protected object id
+        public object EntityId
         {
             get;
-            set;
+            protected set;
         }
 
         public Guid ModelId

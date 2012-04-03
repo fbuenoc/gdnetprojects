@@ -1,5 +1,4 @@
-﻿using System.ComponentModel;
-using WebFramework.Common.Framework.Base;
+﻿using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
@@ -61,7 +60,7 @@ namespace WebFramework.Common.Framework.Common
             : base(entity)
         {
             this.ContentItemName = entity.ContentItem.Name.Value;
-            this.Value = entity.Value.Value;
+            this.Value = (entity.Value == null) ? entity.ValueText : entity.Value.Value;
             this.DataTypeName = entity.ContentAttribute.DataType.Name;
         }
 

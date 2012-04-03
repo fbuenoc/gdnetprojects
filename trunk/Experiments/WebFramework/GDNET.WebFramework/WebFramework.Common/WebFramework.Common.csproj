@@ -66,7 +66,7 @@
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
-    <Compile Include="Framework\Base\IModelWithModification.cs" />
+    <Compile Include="Framework\Base\IModelWithLifeCycle.cs" />
     <Compile Include="Framework\Base\ModelBaseT.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -75,7 +75,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Framework\Base\IModelT.cs" />
-    <Compile Include="Framework\Base\ModelWithModificationBase.cs" />
+    <Compile Include="Framework\Base\ModelWithLifeCycleBaseT.cs" />
     <Compile Include="Framework\Base\ModelService.cs" />
     <Compile Include="Framework\Common\ApplicationModel.cs" />
     <Compile Include="Framework\Common\ContentAttributeModel.cs" />
@@ -85,6 +85,7 @@
     <Compile Include="Framework\Common\CultureModel.cs" />
     <Compile Include="Framework\Common\TranslationModel.cs" />
     <Compile Include="Framework\Common\ListValueModel.cs" />
+    <Compile Include="Framework\System\WidgetPropertyModel.cs" />
     <Compile Include="Framework\System\WidgetModel.cs" />
     <Compile Include="Framework\System\PageModel.cs" />
     <Compile Include="Framework\System\RegionModel.cs" />

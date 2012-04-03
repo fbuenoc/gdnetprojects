@@ -4,8 +4,8 @@ using WebFramework.Domain.Base;
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class ModelWithModificationBase<TEntity, TId> : ModelWithActiveBase<TEntity, TId>, IModel<TId>, IModelWithModification
-        where TEntity : EntityWithModification<TId>
+    public abstract class ModelWithLifeCycleBase<TEntity, TId> : ModelWithActiveBase<TEntity, TId>, IModel<TId>, IModelWithLifeCycle
+        where TEntity : EntityWithActive<TId>
     {
         #region IModelWithModification members
 
@@ -43,13 +43,13 @@ namespace WebFramework.Common.Framework.Base
 
         #region Ctors
 
-        public ModelWithModificationBase()
+        public ModelWithLifeCycleBase()
             : base()
         {
             this.Initialize();
         }
 
-        public ModelWithModificationBase(TEntity entity)
+        public ModelWithLifeCycleBase(TEntity entity)
             : base(entity)
         {
             this.Initialize();

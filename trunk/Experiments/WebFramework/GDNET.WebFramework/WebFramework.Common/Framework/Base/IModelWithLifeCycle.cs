@@ -2,7 +2,7 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public interface IModelWithModification
+    public interface IModelWithLifeCycle
     {
         string ActualStatut { get; }
 

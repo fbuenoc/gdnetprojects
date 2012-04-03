@@ -5,7 +5,7 @@ using WebFramework.Common.ComponentModel;
 
 namespace WebFramework.Common.Business.Base
 {
-    public abstract class ModelBusinessEntityBase<TEntity> : ModelWithModificationBase<TEntity, long> where TEntity : BusinessEntityBase
+    public abstract class ModelBusinessEntityBase<TEntity> : ModelWithLifeCycleBase<TEntity, long> where TEntity : BusinessEntityBase
     {
         [Required]
         [DisplayNameML("SysTranslation.Name")]

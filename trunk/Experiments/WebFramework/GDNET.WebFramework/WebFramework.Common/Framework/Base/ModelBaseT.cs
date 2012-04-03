@@ -17,13 +17,13 @@ namespace WebFramework.Common.Framework.Base
         {
             get
             {
-                if (base.id != null)
+                if (base.EntityId != null)
                 {
-                    return (TId)base.id;
+                    return (TId)base.EntityId;
                 }
                 return default(TId);
             }
-            set { base.id = value; }
+            set { base.EntityId = value; }
         }
 
         #endregion
