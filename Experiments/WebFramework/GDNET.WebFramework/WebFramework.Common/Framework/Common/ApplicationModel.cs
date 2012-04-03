@@ -5,7 +5,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class ApplicationModel : ModelWithModificationBase<Application, long>
+    public sealed class ApplicationModel : ModelWithLifeCycleBase<Application, long>
     {
         #region Properties
 
@@ -52,7 +52,7 @@ namespace WebFramework.Common.Framework.Common
         {
             this.Name = (base.Entity.Name == null) ? string.Empty : base.Entity.Name.Value;
             this.Description = (base.Entity.Description == null) ? string.Empty : base.Entity.Description.Value;
-            this.Category = (base.Entity.Category.Description == null) ? string.Empty : base.Entity.Category.Description.Value;
+            this.Category = (base.Entity.Category == null || base.Entity.Category.Description == null) ? string.Empty : base.Entity.Category.Description.Value;
             this.RootUrl = (base.Entity.RootUrl == "*") ? string.Empty : base.Entity.RootUrl;
         }
 

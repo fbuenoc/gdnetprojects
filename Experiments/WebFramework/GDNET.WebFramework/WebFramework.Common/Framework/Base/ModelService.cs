@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using GDNET.Common.DesignByContract;
-using WebFramework.Common.Framework.Common;
-using WebFramework.Domain;
 using WebFramework.Common.Common;
+using WebFramework.Common.Framework.Common;
+using WebFramework.Common.Framework.System;
+using WebFramework.Domain;
 
 namespace WebFramework.Common.Framework.Base
 {
@@ -12,68 +13,53 @@ namespace WebFramework.Common.Framework.Base
     {
         public static TModel GetModelById<TModel>(string id)
         {
-            long modelId;
-            object modelEntity = null;
-
-            if (long.TryParse(id, out modelId))
-            {
-                if (typeof(TModel).FullName == typeof(ApplicationModel).FullName)
-                {
-                    var app = DomainRepositories.Application.GetById(modelId);
-                    modelEntity = new ApplicationModel(app);
-                }
-                else if (typeof(TModel).FullName == typeof(ContentAttributeModel).FullName)
-                {
-                    var attr = DomainRepositories.ContentAttribute.GetById(modelId);
-                    modelEntity = new ContentAttributeModel(attr);
-                }
-                else if (typeof(TModel).FullName == typeof(ContentItemModel).FullName)
-                {
-                    var item = DomainRepositories.ContentItem.GetById(modelId);
-                    modelEntity = new ContentItemModel(item);
-                }
-                else if (typeof(TModel).FullName == typeof(ContentTypeModel).FullName)
-                {
-                    var type = DomainRepositories.ContentType.GetById(modelId);
-                    modelEntity = new ContentTypeModel(type);
-                }
-                else if (typeof(TModel).FullName == typeof(CultureModel).FullName)
-                {
-                    var culture = DomainRepositories.Culture.GetById((int)modelId);
-                    modelEntity = new CultureModel(culture);
-                }
-                else if (typeof(TModel).FullName == typeof(ListValueModel).FullName)
-                {
-                    var lv = DomainRepositories.ListValue.GetById(modelId);
-                    modelEntity = new ListValueModel(lv);
-                }
-                else if (typeof(TModel).FullName == typeof(TranslationModel).FullName)
-                {
-                    var translation = DomainRepositories.Translation.GetById(modelId);
-                    modelEntity = new TranslationModel(translation);
-                }
-                else
-                {
-                    ThrowException.NotImplementedException(string.Format("Not implemented for type: '{0}'.", typeof(TModel).FullName));
-                }
-
-                if (modelEntity != null)
-                {
-                    return (TModel)Convert.ChangeType(modelEntity, typeof(TModel));
-                }
-            }
-
-            return default(TModel);
+            return ModelService.GetModelById<TModel>(id, null);
         }
 
         public static TModel GetModelById<TModel>(string id, IDictionary<object, object> parameters)
         {
             long modelId;
             object modelEntity = null;
+            string modelFullName = typeof(TModel).FullName;
 
             if (long.TryParse(id, out modelId))
             {
-                if (typeof(TModel).FullName == typeof(ContentItemAttributeValueModel).FullName)
+                if (modelFullName == typeof(ApplicationModel).FullName)
+                {
+                    var app = DomainRepositories.Application.GetById(modelId);
+                    modelEntity = new ApplicationModel(app);
+                }
+                else if (modelFullName == typeof(ContentAttributeModel).FullName)
+                {
+                    var attr = DomainRepositories.ContentAttribute.GetById(modelId);
+                    modelEntity = new ContentAttributeModel(attr);
+                }
+                else if (modelFullName == typeof(ContentItemModel).FullName)
+                {
+                    var item = DomainRepositories.ContentItem.GetById(modelId);
+                    modelEntity = new ContentItemModel(item);
+                }
+                else if (modelFullName == typeof(ContentTypeModel).FullName)
+                {
+                    var type = DomainRepositories.ContentType.GetById(modelId);
+                    modelEntity = new ContentTypeModel(type);
+                }
+                else if (modelFullName == typeof(CultureModel).FullName)
+                {
+                    var culture = DomainRepositories.Culture.GetById((int)modelId);
+                    modelEntity = new CultureModel(culture);
+                }
+                else if (modelFullName == typeof(ListValueModel).FullName)
+                {
+                    var lv = DomainRepositories.ListValue.GetById(modelId);
+                    modelEntity = new ListValueModel(lv);
+                }
+                else if (modelFullName == typeof(TranslationModel).FullName)
+                {
+                    var translation = DomainRepositories.Translation.GetById(modelId);
+                    modelEntity = new TranslationModel(translation);
+                }
+                else if (modelFullName == typeof(ContentItemAttributeValueModel).FullName)
                 {
                     if (parameters.ContainsKey(EntityQueryString.ContentItemId))
                     {
@@ -85,6 +71,25 @@ namespace WebFramework.Common.Framework.Base
                             modelEntity = new ContentItemAttributeValueModel(attributeValue);
                         }
                     }
+                }
+                else if (modelFullName == typeof(PageModel).FullName)
+                {
+                    var page = DomainRepositories.Page.GetById(modelId);
+                    modelEntity = new PageModel(page);
+                }
+                else if (modelFullName == typeof(WidgetModel).FullName)
+                {
+                    var widget = DomainRepositories.Widget.GetById(modelId);
+                    modelEntity = new WidgetModel(widget);
+                }
+                else if (modelFullName == typeof(ZoneModel).FullName)
+                {
+                    var zone = DomainRepositories.Zone.GetById(modelId);
+                    modelEntity = new ZoneModel(zone);
+                }
+                else
+                {
+                    ThrowException.NotImplementedException(string.Format("Not implemented for type: '{0}'.", typeof(TModel).FullName));
                 }
 
                 if (modelEntity != null)

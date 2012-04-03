@@ -1,4 +1,6 @@
-﻿using WebFramework.Common.Framework.Base;
+﻿using System.Collections.Generic;
+using System.Linq;
+using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
@@ -45,6 +47,19 @@ namespace WebFramework.Common.Framework.System
         {
             get;
             set;
+        }
+
+        public IList<WidgetPropertyModel> PropertiesModel
+        {
+            get
+            {
+                List<WidgetPropertyModel> listProperties = new List<WidgetPropertyModel>();
+                if (base.Entity != null)
+                {
+                    listProperties.AddRange(base.Entity.Properties.Select(x => new WidgetPropertyModel(x)));
+                }
+                return listProperties;
+            }
         }
 
         public WidgetModel()

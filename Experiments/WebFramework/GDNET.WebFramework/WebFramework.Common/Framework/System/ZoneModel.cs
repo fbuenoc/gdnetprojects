@@ -5,7 +5,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class ZoneModel : ModelWithActiveBase<Zone, long>
+    public sealed class ZoneModel : ModelWithLifeCycleBase<Zone, long>
     {
         public ReadOnlyCollection<RegionModel> Regions
         {
@@ -18,7 +18,15 @@ namespace WebFramework.Common.Framework.System
 
         public PageModel Page
         {
-            get { return new PageModel(base.Entity.Page); }
+            get
+            {
+                if (base.Entity != null && base.Entity.Page != null)
+                {
+                    return new PageModel(base.Entity.Page);
+                }
+
+                return default(PageModel);
+            }
         }
 
         #region Properties
