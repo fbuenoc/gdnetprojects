@@ -175,4 +175,11 @@ exec SP_CreateOrUpdateTranslation
 	@CategoryName = 'LV.SysTranslation',
 	@Value = N'Xem thêm',
 	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'vi-VN',
+	@Code = 'SysTranslation.RegionAdminister',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = N'Quản trị',
+	@IsDeletable = False;
 	

@@ -175,3 +175,10 @@ exec SP_CreateOrUpdateTranslation
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Show more',
 	@IsDeletable = False;
+	
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.RegionAdminister',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = 'Administer',
+	@IsDeletable = False;
