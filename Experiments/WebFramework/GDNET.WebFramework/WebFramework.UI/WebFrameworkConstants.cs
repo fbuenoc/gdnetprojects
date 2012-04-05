@@ -16,6 +16,11 @@
             public const string FrameworkRole = "Role";
 
             public const string SystemPage = "Page";
+            public const string SystemWidget = "Widget";
+            public const string SystemZone = "Zone";
+
+            public const string RegionAdmin = "RegionAdmin";
         }
     }
 }
+
