@@ -132,11 +132,11 @@ namespace WebFramework.UI.Helpers
                     return this.htmlHelper.ActionLink(sysTranslation.ReturnToListOfXYZ(sysTranslation.EntityTranslation), "List", "Translation", routeFramework, null);
 
                 case EntityType.Page:
-                    return this.htmlHelper.ActionLink(sysTranslation.ReturnToListOfXYZ(sysTranslation.EntityTranslation), "List", "Page", routeSystem, null);
+                    return this.htmlHelper.ActionLink(sysTranslation.ReturnToListOfXYZ(sysTranslation.EntityPage), "List", "Page", routeSystem, null);
                 case EntityType.Zone:
-                    return this.htmlHelper.ActionLink(sysTranslation.ReturnToListOfXYZ(sysTranslation.EntityTranslation), "List", "Zone", routeSystem, null);
+                    return this.htmlHelper.ActionLink(sysTranslation.ReturnToListOfXYZ(sysTranslation.EntityZone), "List", "Zone", routeSystem, null);
                 case EntityType.Widget:
-                    return this.htmlHelper.ActionLink(sysTranslation.ReturnToListOfXYZ(sysTranslation.EntityTranslation), "List", "Widget", routeSystem, null);
+                    return this.htmlHelper.ActionLink(sysTranslation.ReturnToListOfXYZ(sysTranslation.EntityWidget), "List", "Widget", routeSystem, null);
             }
 
             return MvcHtmlString.Create(string.Empty);
