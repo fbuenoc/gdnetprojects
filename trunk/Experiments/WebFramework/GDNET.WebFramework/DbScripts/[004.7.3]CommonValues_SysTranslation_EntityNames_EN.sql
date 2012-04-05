@@ -24,6 +24,13 @@ exec SP_CreateOrUpdateTranslation
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.EntityNames.Culture',
+	@CategoryName = 'LV.SysTranslation.EntityNames',
+	@Value = 'Culture',
+	@IsDeletable = False;	
+	
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
 	@Code = 'SysTranslation.EntityNames.ContentAttribute',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Content attribute',
@@ -69,4 +76,25 @@ exec SP_CreateOrUpdateTranslation
 	@Code = 'SysTranslation.EntityNames.Article',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'Article',
+	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.EntityNames.Page',
+	@CategoryName = 'LV.SysTranslation.EntityNames',
+	@Value = 'Page',
+	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.EntityNames.Widget',
+	@CategoryName = 'LV.SysTranslation.EntityNames',
+	@Value = 'Widget',
+	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.EntityNames.Zone',
+	@CategoryName = 'LV.SysTranslation.EntityNames',
+	@Value = 'Zone',
 	@IsDeletable = False;
