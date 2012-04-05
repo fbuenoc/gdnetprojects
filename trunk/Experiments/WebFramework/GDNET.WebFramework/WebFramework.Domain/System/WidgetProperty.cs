@@ -26,6 +26,18 @@ namespace WebFramework.Domain.System
             set;
         }
 
+        public virtual bool IsActive
+        {
+            get;
+            set;
+        }
+
+        public virtual ListValue DataType
+        {
+            get;
+            set;
+        }
+
         #region IEntityLifeCycle
 
         public virtual StatutLifeCycle LifeCycle

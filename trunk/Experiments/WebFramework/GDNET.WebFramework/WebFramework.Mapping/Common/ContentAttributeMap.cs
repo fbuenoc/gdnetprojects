@@ -28,7 +28,7 @@ namespace WebFramework.Mapping.Common
             base.ManyToOne(e => e.DataType, m =>
             {
                 m.Lazy(LazyRelation.Proxy);
-                m.Column(MappingConstants.ContentAttribute.DataTypeId);
+                m.Column(MappingConstants.DataTypeId);
                 m.Cascade(Cascade.None);
             });
             base.ManyToOne(e => e.Name, m =>

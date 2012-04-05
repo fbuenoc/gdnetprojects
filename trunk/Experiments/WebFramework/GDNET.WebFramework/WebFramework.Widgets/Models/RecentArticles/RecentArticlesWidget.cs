@@ -2,6 +2,7 @@
 using WebFramework.Business.Common;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain;
+using WebFramework.Domain.Constants;
 
 namespace WebFramework.Widgets.Models.RecentArticles
 {
@@ -33,7 +34,7 @@ namespace WebFramework.Widgets.Models.RecentArticles
         protected override void RegisterProperties()
         {
             base.RegisterProperties();
-            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString());
+            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString(), ListValueConstants.ContentDataTypes.NumberNormalNumber);
         }
 
         protected override RecentArticlesModel InitializeModel()

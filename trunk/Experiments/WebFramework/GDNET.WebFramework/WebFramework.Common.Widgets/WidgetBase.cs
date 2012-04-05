@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
+using WebFramework.Domain.Constants;
 using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Widgets
@@ -12,7 +13,7 @@ namespace WebFramework.Common.Widgets
         #region Members
 
         private const string DefaultTemplate = "Default";
-        private Dictionary<string, string> propertiesInfo = new Dictionary<string, string>();
+        private IList<WidgetPropertyInfo> propertiesInfo = new List<WidgetPropertyInfo>();
         protected RegionModel region = null;
 
         #endregion
@@ -36,11 +37,6 @@ namespace WebFramework.Common.Widgets
         public virtual string Version
         {
             get { return this.GetType().Assembly.GetName().Version.ToString(); }
-        }
-
-        public Dictionary<string, string> PropertiesInfo
-        {
-            get { return this.propertiesInfo; }
         }
 
         public virtual IList<WidgetAction> Actions
@@ -70,11 +66,16 @@ namespace WebFramework.Common.Widgets
             var result = DomainRepositories.Widget.Save(widget);
             if (result)
             {
-                foreach (var kvp in this.PropertiesInfo)
+                foreach (var propertyInfo in this.propertiesInfo)
                 {
-                    WidgetProperty property = WidgetProperty.Factory.Create(kvp.Key, kvp.Value);
-                    widget.AddProperty(property);
+                    WidgetProperty widgetProperty = WidgetProperty.Factory.Create(propertyInfo.Code, propertyInfo.Value);
+                    if (!string.IsNullOrEmpty(propertyInfo.DataTypeName))
+                    {
+                        widgetProperty.DataType = DomainRepositories.ListValue.FindByName(propertyInfo.DataTypeName);
+                    }
+                    widget.AddProperty(widgetProperty);
                 }
+
                 DomainRepositories.RepositoryAssistant.Flush();
             }
 
@@ -116,19 +117,29 @@ namespace WebFramework.Common.Widgets
         protected virtual void RegisterProperties()
         {
             // Based properties
-            this.RegisterProperty(WidgetBaseConstants.PropertyUsageTemplate, DefaultTemplate);
+            this.RegisterProperty(WidgetBaseConstants.PropertyUsageTemplate, DefaultTemplate, ListValueConstants.ContentDataTypes.TextSimpleTextBox);
         }
 
         protected void RegisterProperty(string code, string value)
         {
-            this.propertiesInfo.Add(code, value);
+            RegisterProperty(code, value, string.Empty);
+        }
+
+        protected void RegisterProperty(string code, string value, string dataTypeCode)
+        {
+            this.propertiesInfo.Add(new WidgetPropertyInfo
+            {
+                Code = code,
+                Value = value,
+                DataTypeName = dataTypeCode
+            });
         }
 
         protected T GetPropertyValue<T>(string propertyName)
         {
-            if (this.region.Properties.Any(x => x.Key == propertyName))
+            if (this.region.Properties.Any(x => x.Key.Code == propertyName))
             {
-                var kvp = this.region.Properties.First(x => x.Key == propertyName);
+                var kvp = this.region.Properties.First(x => x.Key.Code == propertyName);
                 return (T)Convert.ChangeType(kvp.Value, typeof(T));
             }
 

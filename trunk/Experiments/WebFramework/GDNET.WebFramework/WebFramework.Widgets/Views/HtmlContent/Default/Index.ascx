@@ -21,3 +21,6 @@
         }
     %>
 </div>
+<div>
+    <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
+</div>

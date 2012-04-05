@@ -1,4 +1,5 @@
 ﻿using WebFramework.Common.Widgets;
+using WebFramework.Domain.Constants;
 
 namespace WebFramework.Widgets.Models.Contact
 {
@@ -12,7 +13,7 @@ namespace WebFramework.Widgets.Models.Contact
         protected override void RegisterProperties()
         {
             base.RegisterProperties();
-            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString());
+            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString(), ListValueConstants.ContentDataTypes.NumberNormalNumber);
         }
 
         protected override ContactModel InitializeModel()

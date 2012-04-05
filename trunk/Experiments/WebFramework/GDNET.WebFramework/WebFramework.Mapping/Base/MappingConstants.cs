@@ -7,6 +7,7 @@
         public const string ContentItemId = "ContentItemId";
         public const string ContentTypeId = "ContentTypeId";
         public const string CultureId = "CultureId";
+        public const string DataTypeId = "DataTypeId";
         public const string DescriptionTranslationId = "DescriptionTranslationId";
         public const string DetailTranslationId = "DetailTranslationId";
         public const string NameTranslationId = "NameTranslationId";
@@ -22,11 +23,6 @@
         public sealed class Application
         {
             public const string CultureDefaultId = "CultureDefaultId";
-        }
-
-        public sealed class ContentAttribute
-        {
-            public const string DataTypeId = "DataTypeId";
         }
 
         public sealed class ContentItemAttributeValue

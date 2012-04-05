@@ -3,6 +3,7 @@ using GDNET.Web.Helpers;
 using WebFramework.Common.Common;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain;
+using WebFramework.Domain.Constants;
 
 namespace WebFramework.Widgets.Models.RelatedItems
 {
@@ -34,7 +35,7 @@ namespace WebFramework.Widgets.Models.RelatedItems
         protected override void RegisterProperties()
         {
             base.RegisterProperties();
-            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString());
+            base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString(), ListValueConstants.ContentDataTypes.NumberNormalNumber);
         }
 
         protected override RelatedItemsModel InitializeModel()
