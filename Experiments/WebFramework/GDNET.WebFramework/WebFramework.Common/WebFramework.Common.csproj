@@ -61,6 +61,9 @@
     <Compile Include="Common\FrameworkServices.cs" />
     <Compile Include="Common\Services\INavigationService.cs" />
     <Compile Include="Common\Services\IValidationService.cs" />
+    <Compile Include="ComponentEditors\ComponentEditorBase.cs" />
+    <Compile Include="ComponentEditors\TextBoxComponentEditor.cs" />
+    <Compile Include="ComponentEditors\HtmlComponentEditor.cs" />
     <Compile Include="ComponentModel\DisplayNameML.cs" />
     <Compile Include="ComponentModel\RequiredML.cs" />
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />

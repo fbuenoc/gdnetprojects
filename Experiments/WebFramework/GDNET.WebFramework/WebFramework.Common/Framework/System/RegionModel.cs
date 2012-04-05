@@ -27,12 +27,12 @@ namespace WebFramework.Common.Framework.System
             }
         }
 
-        public ReadOnlyCollection<KeyValuePair<string, string>> Properties
+        public ReadOnlyCollection<KeyValuePair<WidgetPropertyModel, string>> Properties
         {
             get
             {
-                var listProperties = base.Entity.Settings.Select(x => new KeyValuePair<string, string>(x.WidgetProperty.Code, x.Value)).ToList();
-                return new ReadOnlyCollection<KeyValuePair<string, string>>(listProperties);
+                var listProperties = base.Entity.Settings.Select(x => new KeyValuePair<WidgetPropertyModel, string>(new WidgetPropertyModel(x.WidgetProperty), x.Value)).ToList();
+                return new ReadOnlyCollection<KeyValuePair<WidgetPropertyModel, string>>(listProperties);
             }
         }
 

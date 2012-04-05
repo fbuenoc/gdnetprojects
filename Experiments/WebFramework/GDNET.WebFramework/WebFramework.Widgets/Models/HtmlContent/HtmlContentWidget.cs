@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using WebFramework.Common.Widgets;
+using WebFramework.Domain.Constants;
 
 namespace WebFramework.Widgets.Models.HtmlContent
 {
@@ -45,8 +46,8 @@ namespace WebFramework.Widgets.Models.HtmlContent
 
         protected override void RegisterProperties()
         {
-            base.RegisterProperty(HtmlContentWidgetConstants.ContentProperty, "The content of HtmlContent widget");
-            base.RegisterProperty(HtmlContentWidgetConstants.MaxVisibleLengthProperty, MaxVisibleLengthValue.ToString());
+            base.RegisterProperty(HtmlContentWidgetConstants.ContentProperty, "The content of HtmlContent widget", ListValueConstants.ContentDataTypes.TextHtmlEditor);
+            base.RegisterProperty(HtmlContentWidgetConstants.MaxVisibleLengthProperty, MaxVisibleLengthValue.ToString(), ListValueConstants.ContentDataTypes.NumberNormalNumber);
 
             base.RegisterProperties();
         }

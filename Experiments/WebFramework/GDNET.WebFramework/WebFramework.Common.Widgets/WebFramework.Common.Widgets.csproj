@@ -49,6 +49,7 @@
     <Compile Include="WidgetEventArgs.cs" />
     <Compile Include="WidgetEventHandler.cs" />
     <Compile Include="WidgetModelBase.cs" />
+    <Compile Include="WidgetPropertyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">

@@ -5,7 +5,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class WidgetModel : ModelWithActiveBase<Widget, long>
+    public sealed class WidgetModel : ModelWithLifeCycleBase<Widget, long>
     {
         public string Code
         {

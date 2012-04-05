@@ -1,4 +1,5 @@
 ﻿using WebFramework.Common.Framework.Base;
+using WebFramework.Common.Framework.Common;
 using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
@@ -15,6 +16,18 @@ namespace WebFramework.Common.Framework.System
         {
             get;
             set;
+        }
+
+        public ListValueModel DataType
+        {
+            get
+            {
+                if (base.Entity != null && base.Entity.DataType != null)
+                {
+                    return new ListValueModel(base.Entity.DataType);
+                }
+                return default(ListValueModel);
+            }
         }
 
         #region Ctors

@@ -11,6 +11,14 @@ namespace WebFramework.Mapping.System
         {
             base.Property(e => e.Code);
             base.Property(e => e.Value);
+            base.Property(e => e.IsActive);
+
+            base.ManyToOne(e => e.DataType, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(MappingConstants.DataTypeId);
+                m.Cascade(Cascade.None);
+            });
 
             base.ManyToOne(e => e.Widget, m =>
             {
