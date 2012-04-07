@@ -15,7 +15,7 @@
                 <div>
                     <ul>
                         <li>
-                            <%= base.Html.ActionLink("Roles", "List", "Role")%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Zone)%>
                         </li>
                         <li>
                             <%= base.Html.ActionLink("Accounts", "List", "Account") %>
@@ -23,27 +23,33 @@
                     </ul>
                     <ul>
                         <li>
-                            <%= base.Html.ActionLink("Applications", "List", "Application")%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Application)%>
                         </li>
                         <li>
-                            <%= base.Html.ActionLink("Cultures", "List", "Culture")%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Culture)%>
                         </li>
                         <li>
-                            <%= base.Html.ActionLink("Content types", "List", "ContentType")%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ContentType)%>
                         </li>
                         <li>
-                            <%= base.Html.ActionLink("Lists", "List", "ListValue")%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ListValue)%>
                         </li>
                     </ul>
                     <ul>
                         <li>
-                            <%= base.Html.ActionLink("Content items", "List", "ContentItem")%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.ContentItem)%>
                         </li>
                         <li>
-                            <%= base.Html.ActionLink("Pages", "List", "Page", new { area = "System" }, null)%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Translation)%>
                         </li>
                         <li>
-                            <%= base.Html.ActionLink("Translations", "List", "Translation")%>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Page)%>
+                        </li>
+                        <li>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Widget)%>
+                        </li>
+                        <li>
+                            <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Zone)%>
                         </li>
                     </ul>
                 </div>
