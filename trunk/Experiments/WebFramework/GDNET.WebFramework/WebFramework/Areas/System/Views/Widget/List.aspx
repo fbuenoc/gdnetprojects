@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<PageModel>>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IEnumerable<WidgetModel>>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     List
@@ -8,12 +8,13 @@
         List
     </h2>
     <div>
-        <% base.Html.Telerik().Grid<PageModel>(base.Model)
+        <% base.Html.Telerik().Grid<WidgetModel>(base.Model)
                 .Name("AllPages")
                 .Columns(columns =>
                 {
                     columns.Bound(c => c.Name).Title("Name");
-                    columns.Bound(c => c.UniqueName).Title("Unique name");
+                    columns.Bound(c => c.TechnicalName).Title("Technical name");
+                    columns.Bound(c => c.Version).Title("Version");
                     columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
         %>

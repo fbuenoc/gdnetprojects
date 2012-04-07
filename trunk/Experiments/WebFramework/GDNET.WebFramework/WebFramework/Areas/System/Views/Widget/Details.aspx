@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<PageModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Areas/Framework/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<WidgetModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     <%= base.Html.WebFramework().SystemTranslation().EntityPage %>
@@ -12,12 +12,12 @@
     </div>
     <br />
     <div>
-        <% base.Html.Telerik().Grid<ZoneModel>(base.Model.ZoneModels)
+        <% base.Html.Telerik().Grid<WidgetPropertyModel>(base.Model.PropertiesModel)
                 .Name("ZoneModels")
                 .Columns(columns =>
                 {
                     columns.Bound(c => c.Code).Title("Code");
-                    columns.Bound(c => c.Description).Title("Description");
+                    columns.Bound(c => c.Value).Title("Value");
                     columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
         %>

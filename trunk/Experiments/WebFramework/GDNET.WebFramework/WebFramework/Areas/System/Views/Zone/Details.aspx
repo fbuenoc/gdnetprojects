@@ -35,5 +35,6 @@
     </div>
     <p>
         <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Zone) %>
+        <%= base.Html.WebFramework().ActionLink().ActionCreateLink(base.Html.WebFramework().Translation().Translate("SysTranslation.Zone.CreateRegion"), EntityType.Region, new { idzn = base.Model.Id })%>
     </p>
 </asp:Content>

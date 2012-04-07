@@ -35,6 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
@@ -43,21 +44,16 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
     <Reference Include="Telerik.Web.Mvc">
       <HintPath>..\..\..\..\Libs\TelerikMvc\2012.1.214\lib\net40\Telerik.Web.Mvc.dll</HintPath>
     </Reference>
@@ -254,6 +250,7 @@
     <Compile Include="Areas\Framework\Controllers\ContentItemAttributeValueController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
     <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
+    <Compile Include="Areas\System\Controllers\RegionController.cs" />
     <Compile Include="Areas\System\Controllers\WidgetController.cs" />
     <Compile Include="Areas\Framework\Controllers\CultureController.cs" />
     <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
@@ -276,12 +273,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\RegionAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\HomeViewModel.cs" />
     <Compile Include="ViewModels\ItemViewModel.cs" />
+    <Compile Include="WebServices\SystemServices.asmx.cs">
+      <DependentUpon>SystemServices.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\hibernate.cfg.xml" />
@@ -334,10 +336,28 @@
     <Content Include="Areas\Framework\Views\Role\Details.aspx" />
     <Content Include="Areas\Framework\Views\Role\List.aspx" />
     <Content Include="Areas\Framework\Views\Shared\Error.aspx" />
+    <Content Include="Areas\System\Views\Page\CreateOrUpdate.aspx" />
+    <Content Include="Areas\System\Views\Region\CreateOrUpdate.aspx" />
     <Content Include="Areas\System\Views\Widget\Details.aspx" />
     <Content Include="Areas\System\Views\Widget\List.aspx" />
     <Content Include="Areas\System\Views\Zone\Details.aspx" />
     <Content Include="Areas\System\Views\Zone\List.aspx" />
+    <Content Include="Views\RegionAdmin\Index.aspx" />
+    <Content Include="Views\Shared\EditorComponents\HtmlEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Views\Shared\EditorComponents\TextBoxEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Views\Shared\EditorComponents\TextAreaEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Views\Shared\EditorComponents\NumberEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
+    <Content Include="Views\Shared\EditorComponents\PercentageEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Views\Shared\InfoModificationControl.ascx" />
     <Content Include="Areas\Framework\Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Areas\Framework\Views\Translation\CreateOrUpdate.aspx" />
@@ -857,6 +877,7 @@
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
+    <Content Include="WebServices\SystemServices.asmx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />

@@ -17,11 +17,6 @@ namespace WebFramework.Areas.System.Controllers
             return base.View(listOfPages);
         }
 
-        protected override PageModel OnDetailsChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override object OnCreateExecuting(PageModel model, FormCollection collection)
         {
             Application app = null;
@@ -30,20 +25,10 @@ namespace WebFramework.Areas.System.Controllers
             return result ? (object)page.Id : null;
         }
 
-        protected override PageModel OnDeleteChecking(string id)
-        {
-            return base.GetModelById(id);
-        }
-
         protected override bool OnDeleteExecuting(PageModel model, FormCollection collection)
         {
             long pageId = collection.GetItemId<long>();
             return DomainRepositories.Page.Delete(pageId);
-        }
-
-        protected override PageModel OnEditChecking(string id)
-        {
-            return base.GetModelById(id);
         }
 
         protected override bool OnEditExecuting(PageModel model, FormCollection collection)

@@ -24,5 +24,10 @@ namespace WebFramework.Controllers
         {
             return base.View();
         }
+
+        public ActionResult OnError()
+        {
+            return base.View();
+        }
     }
 }

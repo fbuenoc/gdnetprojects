@@ -40,7 +40,7 @@
     <!-- other content -->
     <%= base.Html.Telerik().ScriptRegistrar().Scripts(a => { 
             a.Add("MicrosoftAjax.js");
-            a.Add("MicrosoftMvcAjax.js");    
+            a.Add("MicrosoftMvcAjax.js");
         }
     )%>
 </body>
