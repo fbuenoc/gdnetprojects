@@ -344,6 +344,7 @@
     <Content Include="Areas\System\Views\Widget\List.aspx" />
     <Content Include="Areas\System\Views\Zone\Details.aspx" />
     <Content Include="Areas\System\Views\Zone\List.aspx" />
+    <Content Include="Views\Home\NoPage.aspx" />
     <Content Include="Views\RegionAdmin\Index.aspx" />
     <Content Include="Views\Shared\EditorComponents\HtmlEditor.ascx">
       <SubType>ASPXCodeBehind</SubType>
@@ -884,10 +885,8 @@
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />
     <Folder Include="App_Data\ImagesCache\" />
-    <Folder Include="Areas\System\Models\" />
     <Folder Include="Areas\System\Views\Shared\" />
     <Folder Include="Content\Widgets\" />
-    <Folder Include="Views\Home\" />
     <Folder Include="Views\Widgets\" />
   </ItemGroup>
   <ItemGroup>
@@ -1168,6 +1167,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Framework\Views\Shared\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\SiteError.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

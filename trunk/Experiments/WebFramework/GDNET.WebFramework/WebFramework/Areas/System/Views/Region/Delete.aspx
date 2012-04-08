@@ -20,6 +20,6 @@
         <% base.Html.EndForm(); %>
     </p>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionDetailLink(EntityType.Region, base.Model, "Details", new { idzn = base.Model.Zone.Id }) %>
+        <%= base.Html.WebFramework().ActionLink().CreateDetailAction(EntityType.Region, base.Model, "Details", new { idzn = base.Model.Zone.Id }) %>
     </p>
 </asp:Content>

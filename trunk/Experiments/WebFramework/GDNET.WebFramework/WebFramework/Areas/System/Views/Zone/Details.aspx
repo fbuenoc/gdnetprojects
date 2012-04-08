@@ -22,7 +22,8 @@
                     columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
         %>
-        <%= base.Html.WebFramework().ActionLink().ActionDetailLink(EntityType.Region, template, "Details", new { idzn = template.Zone.Id })%>
+        <%= base.Html.WebFramework().ActionLink().CreateDetailAction(EntityType.Region, template, new { idzn = template.Zone.Id })%>
+        <%= base.Html.WebFramework().ActionLink().CreateEditAction(EntityType.Region, template, new { idzn = template.Zone.Id })%>
         <%= base.Html.WebFramework().ActionLink().CreateActionDelete(EntityType.Region, template, new { idzn = template.Zone.Id })%>
         <%
                     });
@@ -37,6 +38,6 @@
     </div>
     <p>
         <%= base.Html.WebFramework().ActionLink().ActionListLink(EntityType.Zone) %>
-        <%= base.Html.WebFramework().ActionLink().ActionCreateLink(base.Html.WebFramework().Translation().Translate("SysTranslation.Zone.CreateRegion"), EntityType.Region, new { idzn = base.Model.Id })%>
+        <%= base.Html.WebFramework().ActionLink().CreateActionCreate(base.Html.WebFramework().Translation().Translate("SysTranslation.Zone.CreateRegion"), EntityType.Region, new { idzn = base.Model.Id })%>
     </p>
 </asp:Content>

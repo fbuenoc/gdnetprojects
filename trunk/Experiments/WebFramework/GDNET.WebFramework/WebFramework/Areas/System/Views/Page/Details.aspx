@@ -21,7 +21,7 @@
                     columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
         %>
-        <%= base.Html.WebFramework().ActionLink().ActionDetailLink(EntityType.Zone, template) %>
+        <%= base.Html.WebFramework().ActionLink().CreateDetailAction(EntityType.Zone, template) %>
         <%= base.Html.WebFramework().ActionLink().ActionEditLink(EntityType.Zone, template) %>
         <%= base.Html.WebFramework().ActionLink().ActionDeleteLink(EntityType.Zone, template) %>
         <%
