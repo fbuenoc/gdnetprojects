@@ -59,6 +59,13 @@ exec SP_CreateOrUpdateTranslation
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
+	@Code = 'SysTranslation.EntityNames.Region',
+	@CategoryName = 'LV.SysTranslation.EntityNames',
+	@Value = N'Region',
+	@IsDeletable = False;
+	
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'vi-VN',
 	@Code = 'SysTranslation.EntityNames.User',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = N'Người dùng',
