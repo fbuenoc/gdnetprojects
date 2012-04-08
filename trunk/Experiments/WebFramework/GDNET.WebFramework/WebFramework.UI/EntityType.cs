@@ -11,7 +11,9 @@
         ListValue,
         Role,
         Translation,
+
         Page,
+        Region,
         Zone,
         Widget,
     }

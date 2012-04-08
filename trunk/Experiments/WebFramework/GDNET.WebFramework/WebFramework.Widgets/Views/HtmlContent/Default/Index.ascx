@@ -1,26 +1,26 @@
 ﻿<%@ Import Namespace="WebFramework.Widgets.Models.HtmlContent" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<HtmlContentModel>" %>
-<div>
-    <h3>
+<div class="widget_container">
+    <h3 class="title">
         <%= base.Model.Name %>
     </h3>
     <%
         var contentHtml = (base.Model.IsOverWeight) ? base.Model.HtmlContentCalculated : base.Model.HtmlContent;
     %>
-    <p>
-        <%= contentHtml %>
-    </p>
+    <div>
+        <%= HttpUtility.HtmlDecode(contentHtml) %>
+    </div>
     <%
         if (base.Model.IsOverWeight)
         {
     %>
-    <p>
+    <div>
         <%= base.Html.WebFramework().WidgetHanlder().ActionLinkShowMore(base.Model.DetailConnection) %>
-    </p>
+    </div>
     <%
         }
     %>
-</div>
-<div>
-    <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
+    <div class="management_space">
+        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
+    </div>
 </div>

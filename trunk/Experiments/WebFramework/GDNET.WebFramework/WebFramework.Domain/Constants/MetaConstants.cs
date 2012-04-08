@@ -78,6 +78,7 @@ namespace WebFramework.Domain.Constants
             public static readonly Widget defaultWidget = Widget.Factory.NewInstance();
 
             public static readonly string Code = ExpressionAssistant.GetPropertyName(() => defaultWidget.Code);
+            public static readonly string TechnicalName = ExpressionAssistant.GetPropertyName(() => defaultWidget.TechnicalName);
         }
     }
 }

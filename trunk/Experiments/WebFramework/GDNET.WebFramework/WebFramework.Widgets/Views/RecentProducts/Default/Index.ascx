@@ -1,7 +1,10 @@
 ﻿<%@ Import Namespace="WebFramework.Business" %>
 <%@ Import Namespace="WebFramework.Widgets.Models.RecentProducts" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<RecentProductsModel>" %>
-<div>
+<div class="widget_container">
+    <h3 class="title">
+        <%= base.Model.Name %>
+    </h3>
     <table cellpadding="0" cellspacing="0" width="100%">
         <tr>
             <th class="column_name">
@@ -23,7 +26,7 @@
         %>
         <tr class="<%= altCss %>">
             <td class="column_name">
-                <%= base.Html.WebFramework().HyperLink().HyperLink(productModel) %>
+                <%= base.Html.WebFramework().WidgetHanlder().ActionLinkContentItem(productModel, base.Model.DetailConnection)%>
             </td>
             <td class="number">
                 <%= base.Html.WebFramework().NumberFormat().FormatNumber(productModel.GetAttribute<decimal>(BusinessConstants.ProductConstants.Price))%>
@@ -36,4 +39,7 @@
             }
         %>
     </table>
+    <div class="management_space">
+        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
+    </div>
 </div>

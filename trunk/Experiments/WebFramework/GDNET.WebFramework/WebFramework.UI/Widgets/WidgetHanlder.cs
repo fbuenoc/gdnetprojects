@@ -95,10 +95,17 @@ namespace WebFramework.UI.Widgets
 
         public MvcHtmlString ActionLinkShowMore(RegionModel targetRegion)
         {
-            string linkText = DomainServices.Translation.Translate("SysTranslation.ShowMore");
-            object routeValues = new { page = targetRegion.Zone.Page.UniqueName };
+            if (targetRegion != null)
+            {
+                string linkText = DomainServices.Translation.Translate("SysTranslation.ShowMore");
+                object routeValues = new { page = targetRegion.Zone.Page.UniqueName };
 
-            return this.ActionLinkToPage(linkText, routeValues, null);
+                return this.ActionLinkToPage(linkText, routeValues, null);
+            }
+            else
+            {
+                return MvcHtmlString.Empty;
+            }
         }
 
         public MvcHtmlString ActionLinkAdminister(WidgetModelBase widgetModel)
