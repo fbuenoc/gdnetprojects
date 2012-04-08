@@ -2,7 +2,7 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class ModelWithActiveBase<TEntity, TId> : ModelBase<TEntity, TId>, IModel<TId>
+    public abstract class ModelWithActiveBase<TEntity, TId> : ModelBase<TEntity, TId>
         where TEntity : EntityWithActive<TId>
     {
         public bool IsActive

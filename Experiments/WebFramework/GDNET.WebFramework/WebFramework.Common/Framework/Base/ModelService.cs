@@ -77,6 +77,11 @@ namespace WebFramework.Common.Framework.Base
                     var page = DomainRepositories.Page.GetById(modelId);
                     modelEntity = new PageModel(page);
                 }
+                else if (modelFullName == typeof(RegionModel).FullName)
+                {
+                    long zoneId = (long)parameters[EntityQueryString.ZoneId];
+                    modelEntity = ModelService.GetRegionModel(zoneId, modelId);
+                }
                 else if (modelFullName == typeof(WidgetModel).FullName)
                 {
                     var widget = DomainRepositories.Widget.GetById(modelId);
@@ -99,6 +104,18 @@ namespace WebFramework.Common.Framework.Base
             }
 
             return default(TModel);
+        }
+
+        private static RegionModel GetRegionModel(long zoneId, long regionId)
+        {
+            var zoneEntity = DomainRepositories.Zone.GetById(zoneId);
+            var regionEntity = zoneEntity.Regions.FirstOrDefault(x => x.Id == regionId);
+            if (regionEntity != null)
+            {
+                return new RegionModel(regionEntity);
+            }
+
+            return default(RegionModel);
         }
     }
 }

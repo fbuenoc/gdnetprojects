@@ -1,4 +1,6 @@
-﻿namespace WebFramework.Domain.System
+﻿using WebFramework.Domain.Common;
+
+namespace WebFramework.Domain.System
 {
     public partial class Zone
     {
@@ -16,6 +18,10 @@
                     Code = code,
                     Description = description
                 };
+
+                StatutLog statutLog = StatutLog.Factory.Create("Factory");
+                zone.LifeCycle.AddStatutLog(statutLog);
+
                 return zone;
             }
         }

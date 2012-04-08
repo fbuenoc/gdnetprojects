@@ -1,6 +1,5 @@
 ﻿using WebFramework.Common.Framework.Base;
 using WebFramework.Domain;
-using WebFramework.UI.Translations;
 
 namespace WebFramework.UI.Helpers
 {
@@ -13,7 +12,7 @@ namespace WebFramework.UI.Helpers
 
         public string CreateOrUpdate<TId>(IModel<TId> viewModel)
         {
-            string code = (viewModel.Id.Equals(default(TId))) ? "SysTranslation.Create" : "SysTranslation.Update";
+            string code = viewModel.IsNew ? "SysTranslation.Create" : "SysTranslation.Update";
             return this.Translate(code);
         }
 

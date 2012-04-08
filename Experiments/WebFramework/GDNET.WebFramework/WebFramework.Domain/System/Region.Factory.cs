@@ -1,4 +1,6 @@
-﻿namespace WebFramework.Domain.System
+﻿using WebFramework.Domain.Common;
+
+namespace WebFramework.Domain.System
 {
     public partial class Region
     {
@@ -16,6 +18,9 @@
                     Name = name,
                     Widget = widget,
                 };
+
+                var statutLog = StatutLog.Factory.Create("Factory");
+                region.LifeCycle.AddStatutLog(statutLog);
 
                 return region;
             }
