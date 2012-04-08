@@ -11,6 +11,6 @@
         <% base.Html.RenderPartial("InfoModificationControl", base.Model); %>
     </div>
     <p>
-        <%= base.Html.WebFramework().ActionLink().ActionDetailLink(EntityType.Zone, new { id = base.Model.Zone.Id }, "Zone Details")%>
+        <%= base.Html.WebFramework().ActionLink().CreateDetailAction(EntityType.Zone, base.Model.Zone, new { }, base.Html.WebFramework().SystemTranslation().DetailOfXYZ(base.Model.Zone.Code))%>
     </p>
 </asp:Content>

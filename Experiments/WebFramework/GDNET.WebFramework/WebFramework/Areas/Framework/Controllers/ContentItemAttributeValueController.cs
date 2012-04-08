@@ -62,15 +62,10 @@ namespace WebFramework.Areas.Framework.Controllers
             return false;
         }
 
-        public override ActionResult Edit(ContentItemAttributeValueModel model, FormCollection collection)
+        protected override ActionResult AfterEdited(ContentItemAttributeValueModel model, FormCollection collection)
         {
-            if (this.OnEditExecuting(model, collection))
-            {
-                var contentItemId = QueryStringAssistant.ParseInteger(EntityQueryString.ContentItemId);
-                return base.RedirectToAction(ActionDetails, WebFrameworkConstants.Controllers.FrameworkContentItem.ToString(), new { id = contentItemId.Value });
-            }
-
-            return base.View(ViewCreateOrUpdate, model);
+            var contentItemId = QueryStringAssistant.ParseInteger(EntityQueryString.ContentItemId);
+            return base.RedirectToAction(ActionDetails, WebFrameworkConstants.Controllers.FrameworkContentItem.ToString(), new { id = contentItemId.Value });
         }
     }
 }

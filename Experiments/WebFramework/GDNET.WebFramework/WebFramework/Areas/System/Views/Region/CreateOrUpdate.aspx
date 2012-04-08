@@ -35,7 +35,7 @@
             <%= base.Html.LabelFor(m => m.WidgetSelection) %>
         </div>
         <div>
-            <% base.Html.WebFramework().ComboBox().Create("WidgetSelection", ServicesType.SystemWidget, true); %>
+            <% base.Html.WebFramework().ComboBox().Create("WidgetSelection", ServicesType.SystemWidget, base.Model.IsNew); %>
         </div>
         <p>
             <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />

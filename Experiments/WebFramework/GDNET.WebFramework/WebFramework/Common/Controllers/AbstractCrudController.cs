@@ -137,11 +137,11 @@ namespace WebFramework.Common.Controllers
         }
 
         [HttpPost]
-        public virtual ActionResult Edit(TModel model, FormCollection collection)
+        public ActionResult Edit(TModel model, FormCollection collection)
         {
             if (this.OnEditExecuting(model, collection))
             {
-                return base.RedirectToAction(ActionList);
+                return this.AfterEdited(model, collection);
             }
 
             return base.View(ViewCreateOrUpdate, model);

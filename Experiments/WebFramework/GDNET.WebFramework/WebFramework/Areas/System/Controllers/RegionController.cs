@@ -50,10 +50,11 @@ namespace WebFramework.Areas.System.Controllers
                 Region region = Region.Factory.Create(model.Name, widget);
                 region.Description = model.Description;
                 region.IsActive = model.IsActive;
-
                 this.zoneEntity.AddRegion(region);
 
+                DomainServices.Region.ApplyDefaultProperties(region);
                 DomainRepositories.RepositoryAssistant.Flush();
+
                 return region.Id;
             }
 
@@ -97,11 +98,17 @@ namespace WebFramework.Areas.System.Controllers
 
         #region Edit methods
 
+        protected override RegionModel OnEditChecking(string id)
+        {
+            return this.GetRegionModel(id);
+        }
+
         protected override bool OnEditExecuting(RegionModel model, FormCollection collection)
         {
             if (this.GetZoneEntity())
             {
                 var region = this.zoneEntity.GetRegionById(model.Id);
+                region.Name = model.Name;
                 region.Description = model.Description;
                 region.IsActive = model.IsActive;
 
