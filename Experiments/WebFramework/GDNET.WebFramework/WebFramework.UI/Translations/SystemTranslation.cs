@@ -133,6 +133,11 @@ namespace WebFramework.UI.Translations
             get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Role"); }
         }
 
+        public string EntityRegion
+        {
+            get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.Region"); }
+        }
+
         public string EntityUser
         {
             get { return DomainServices.Translation.Translate("SysTranslation.EntityNames.User"); }

@@ -1,12 +1,21 @@
 ﻿<%@ Import Namespace="WebFramework.Widgets.Models.RelatedItems" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<RelatedItemsModel>" %>
-<%
-    foreach (var itemModel in base.Model.RelatedItems)
-    {
-%>
 <div>
-    <%= base.Html.WebFramework().WidgetHanlder().ActionLinkContentItem(itemModel, base.Model.DetailConnection)%>
-</div>
-<%
+    <table>
+        <%
+            foreach (var itemModel in base.Model.RelatedItems)
+            {
+        %>
+        <tr>
+            <td>
+                <%= base.Html.WebFramework().WidgetHanlder().ActionLinkContentItem(itemModel, base.Model.DetailConnection)%>
+            </td>
+        </tr>
+        <%
     }
-%>
+        %>
+    </table>
+    <div>
+        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
+    </div>
+</div>

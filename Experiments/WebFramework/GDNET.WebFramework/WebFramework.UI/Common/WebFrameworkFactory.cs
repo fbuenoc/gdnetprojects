@@ -48,6 +48,16 @@ namespace WebFramework.UI.Common
         {
             return new EditorFactory(this.htmlHelper);
         }
+
+        public ComboBoxWS ComboBox()
+        {
+            return new ComboBoxWS(this.htmlHelper);
+        }
+
+        public AutoCompleteWS AutoComplete()
+        {
+            return new AutoCompleteWS(this.htmlHelper);
+        }
     }
 
 }

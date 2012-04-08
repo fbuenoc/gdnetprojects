@@ -75,10 +75,13 @@ namespace WebFramework.Common.Widgets
             return default(T);
         }
 
+        /// <summary>
+        /// Get the target region. If not specified, returns current region
+        /// </summary>
         protected RegionModel GetConnectionTo(string action)
         {
             var connection = this.regionModel.RegionConnections.FirstOrDefault(x => x.Key == action);
-            return connection.IsDefault() ? null : connection.Value;
+            return connection.IsDefault() ? this.regionModel : connection.Value;
         }
 
         #endregion

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using GDNET.Common.Base.Entities;
 using WebFramework.Domain.Base;
 using WebFramework.Domain.Common;
@@ -68,6 +69,17 @@ namespace WebFramework.Domain.System
             {
                 this.regions.Remove(region);
             }
+        }
+
+        public virtual Region GetRegionById(long regionId)
+        {
+            return this.regions.FirstOrDefault(x => x.Id == regionId);
+        }
+
+        public virtual void RemoveRegionById(long regionId)
+        {
+            var regionEntity = this.GetRegionById(regionId);
+            this.RemoveRegion(regionEntity);
         }
 
         public virtual void RemoveAllRegions()
