@@ -21,6 +21,9 @@ namespace WebFramework.Domain.System
                     Description = Translation.Factory.Create(string.Format("W-D|{0}", code), string.Empty)
                 };
 
+                StatutLog statutLog = StatutLog.Factory.Create("Factory");
+                widget.LifeCycle.AddStatutLog(statutLog);
+
                 return widget;
             }
 

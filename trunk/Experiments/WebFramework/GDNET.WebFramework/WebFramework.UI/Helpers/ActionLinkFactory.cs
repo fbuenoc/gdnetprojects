@@ -42,25 +42,32 @@ namespace WebFramework.UI.Helpers
             return this.ActionLink("SysTranslation.Update", "Edit", "ContentItemAttributeValue", routeValues);
         }
 
-        public MvcHtmlString ActionDetailLink(EntityType objectType, ModelBase modelEntity)
+        #region Detail actions
+
+        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelBase modelEntity)
         {
-            return this.ActionDetailLink(objectType, modelEntity, string.Empty);
+            string linkText = "Details";
+            return this.CreateDetailAction(objectType, modelEntity, null, linkText);
         }
 
-        public MvcHtmlString ActionDetailLink(EntityType objectType, ModelBase modelEntity, string linkText, object customRoutes)
+        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelBase modelEntity, object customRoutes)
         {
-            object routeValuesFramework = new { area = "Framework" };
-            object routeValuesSystem = new { area = "System" };
+            string linkText = "Details";
+            return this.CreateDetailAction(objectType, modelEntity, customRoutes, linkText);
+        }
 
-            if (modelEntity != null)
+        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelBase modelEntity, object customRoutes, string linkText)
+        {
+            object routeValuesFramework = new
             {
-                object tempRoutes = new
-                {
-                    id = modelEntity.EntityId.ToString()
-                };
-                routeValuesSystem = TypeMerger.MergeTypes(routeValuesSystem, tempRoutes);
-                routeValuesFramework = TypeMerger.MergeTypes(routeValuesFramework, tempRoutes);
-            }
+                area = "Framework",
+                id = modelEntity.EntityId.ToString()
+            };
+            object routeValuesSystem = new
+            {
+                area = "System",
+                id = modelEntity.EntityId.ToString()
+            };
 
             if (customRoutes != null)
             {
@@ -68,48 +75,57 @@ namespace WebFramework.UI.Helpers
                 routeValuesFramework = TypeMerger.MergeTypes(routeValuesFramework, customRoutes);
             }
 
-            if (string.IsNullOrEmpty(linkText))
-            {
-                linkText = "Details";
-            }
-
+            object routeValues = null;
             switch (objectType)
             {
                 case EntityType.Page:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Page", routeValuesSystem, null);
                 case EntityType.Widget:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Widget", routeValuesSystem, null);
                 case EntityType.Zone:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Zone", routeValuesSystem, null);
                 case EntityType.Region:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Region", routeValuesSystem, null);
+                    routeValues = routeValuesSystem;
+                    break;
+
                 default:
                     ThrowException.NotImplementedException("");
                     break;
             }
 
-            return MvcHtmlString.Create(string.Empty);
+            return this.CreateDetailActionInternal(objectType, routeValues, null, linkText);
         }
 
-        public MvcHtmlString ActionDetailLink(EntityType objectType, object routeValues, string linkText, object htmlAttributes = null)
+        private MvcHtmlString CreateDetailActionInternal(EntityType objectType, object routeValues, object htmlAttributes, string linkText)
         {
+            string controllerName = string.Empty;
+
             switch (objectType)
             {
                 case EntityType.Page:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Page", routeValues, htmlAttributes);
+                    controllerName = WebFrameworkConstants.Controllers.SystemPage;
+                    break;
+
                 case EntityType.Widget:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Widget", routeValues, htmlAttributes);
+                    controllerName = WebFrameworkConstants.Controllers.SystemWidget;
+                    break;
+
                 case EntityType.Zone:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Zone", routeValues, htmlAttributes);
+                    controllerName = WebFrameworkConstants.Controllers.SystemZone;
+                    break;
+
                 case EntityType.Region:
-                    return this.htmlHelper.ActionLink(linkText, "Details", "Region", routeValues, null);
+                    controllerName = WebFrameworkConstants.Controllers.SystemRegion;
+                    break;
+
                 default:
                     ThrowException.NotImplementedException("");
                     break;
             }
 
-            return MvcHtmlString.Create(string.Empty);
+            return this.htmlHelper.ActionLink(linkText, "Details", controllerName, routeValues, htmlAttributes);
         }
+
+        #endregion
+
+        #region Delete actions
 
         public MvcHtmlString CreateActionDelete(EntityType objectType, ModelBase modelEntity, object customRoutes, object htmlAttributes = null)
         {
@@ -129,12 +145,17 @@ namespace WebFramework.UI.Helpers
             return MvcHtmlString.Create(string.Empty);
         }
 
-        public MvcHtmlString ActionCreateLink(EntityType objectType, object routeValues = null)
+        #endregion
+
+        #region Create actions
+
+        public MvcHtmlString CreateActionCreate(EntityType objectType, object routeValues = null)
         {
-            return this.ActionCreateLink(string.Empty, objectType, routeValues);
+            return this.CreateActionCreate(string.Empty, objectType, routeValues);
         }
 
-        public MvcHtmlString ActionCreateLink(string linkText, EntityType objectType, object routeValues = null)
+        #endregion
+        public MvcHtmlString CreateActionCreate(string linkText, EntityType objectType, object routeValues = null)
         {
             object routeValuesFramework = new { area = "Framework" };
             object routeValuesSystem = new { area = "System" };
@@ -164,21 +185,40 @@ namespace WebFramework.UI.Helpers
 
         public MvcHtmlString ActionEditLink(EntityType objectType, ModelBase modelEntity)
         {
-            var routeValuesFramework = new { area = "Framework" };
-            var routeValuesSystem = new
+            return this.CreateEditAction(objectType, modelEntity, null);
+        }
+
+        public MvcHtmlString CreateEditAction(EntityType objectType, ModelBase modelEntity, object customRouteValues, object htmlAttributes = null)
+        {
+            string linkText = "Edit";
+
+            object routeValuesFramework = new
+            {
+                area = "Framework",
+                id = modelEntity.EntityId.ToString()
+            };
+            object routeValuesSystem = new
             {
                 area = "System",
                 id = modelEntity.EntityId.ToString()
             };
 
+            if (customRouteValues != null)
+            {
+                routeValuesFramework = TypeMerger.MergeTypes(routeValuesFramework, customRouteValues);
+                routeValuesSystem = TypeMerger.MergeTypes(routeValuesSystem, customRouteValues);
+            }
+
             switch (objectType)
             {
                 case EntityType.Page:
-                    return this.htmlHelper.ActionLink("Edit", "Edit", "Page", routeValuesSystem, null);
+                    return this.htmlHelper.ActionLink(linkText, "Edit", "Page", routeValuesSystem, htmlAttributes);
                 case EntityType.Widget:
-                    return this.htmlHelper.ActionLink("Edit", "Edit", "Widget", routeValuesSystem, null);
+                    return this.htmlHelper.ActionLink(linkText, "Edit", "Widget", routeValuesSystem, htmlAttributes);
+                case EntityType.Region:
+                    return this.htmlHelper.ActionLink(linkText, "Edit", "Region", routeValuesSystem, htmlAttributes);
                 case EntityType.Zone:
-                    return this.htmlHelper.ActionLink("Edit", "Edit", "Zone", routeValuesSystem, null);
+                    return this.htmlHelper.ActionLink(linkText, "Edit", "Zone", routeValuesSystem, htmlAttributes);
                 default:
                     ThrowException.NotImplementedException("");
                     break;

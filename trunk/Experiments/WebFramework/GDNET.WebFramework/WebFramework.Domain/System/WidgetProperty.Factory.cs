@@ -1,4 +1,6 @@
-﻿namespace WebFramework.Domain.System
+﻿using WebFramework.Domain.Common;
+
+namespace WebFramework.Domain.System
 {
     public partial class WidgetProperty
     {
@@ -11,11 +13,16 @@
         {
             public WidgetProperty Create(string code, string value)
             {
-                return new WidgetProperty()
+                var property = new WidgetProperty()
                 {
                     Code = code,
                     Value = value
                 };
+
+                StatutLog statutLog = StatutLog.Factory.Create("Factory");
+                property.LifeCycle.AddStatutLog(statutLog);
+
+                return property;
             }
         }
     }

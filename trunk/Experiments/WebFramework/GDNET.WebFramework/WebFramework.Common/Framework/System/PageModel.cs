@@ -60,7 +60,7 @@ namespace WebFramework.Common.Framework.System
             this.Name = entity.Name;
             this.UniqueName = entity.UniqueName;
             this.Description = entity.Description;
-            this.Keyword = Keyword;
+            this.Keyword = entity.Keyword;
         }
 
         #endregion

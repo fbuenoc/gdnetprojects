@@ -31,7 +31,7 @@ namespace WebFramework.Mapping.System
                 cm.Access(Accessor.Field);
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Key(k => k.Column(MappingConstants.ZoneId));
-                cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                cm.Cascade(Cascade.All);
             }, m =>
             {
                 m.OneToMany();

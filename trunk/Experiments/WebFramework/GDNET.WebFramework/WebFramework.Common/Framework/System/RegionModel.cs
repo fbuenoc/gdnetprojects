@@ -6,16 +6,39 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public class RegionModel : ModelWithActiveBase<Region, long>
+    public class RegionModel : ModelWithLifeCycleBase<Region, long>
     {
+        private ZoneModel zone = default(ZoneModel);
+        private WidgetModel widget = default(WidgetModel);
+
         public WidgetModel Widget
         {
-            get { return new WidgetModel(base.Entity.Widget); }
+            get
+            {
+                if (base.Entity != null && base.Entity.Widget != null)
+                {
+                    widget = new WidgetModel(base.Entity.Widget);
+                }
+                return widget;
+            }
+        }
+
+        public string WidgetSelection
+        {
+            get;
+            set;
         }
 
         public ZoneModel Zone
         {
-            get { return new ZoneModel(base.Entity.Zone); }
+            get
+            {
+                if (base.Entity != null && base.Entity.Zone != null)
+                {
+                    zone = new ZoneModel(base.Entity.Zone);
+                }
+                return zone;
+            }
         }
 
         public ReadOnlyCollection<KeyValuePair<string, RegionModel>> RegionConnections
@@ -71,6 +94,15 @@ namespace WebFramework.Common.Framework.System
             this.Name = entity.Name;
             this.Description = entity.Description;
             this.Position = entity.Position;
+        }
+
+        #endregion
+
+        #region Methods
+
+        public void InitializeZone(Zone zoneEntity)
+        {
+            this.zone = new ZoneModel(zoneEntity);
         }
 
         #endregion

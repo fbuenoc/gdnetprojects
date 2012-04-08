@@ -26,6 +26,11 @@ namespace WebFramework.Common.Framework.Base
             set { base.EntityId = value; }
         }
 
+        public bool IsNew
+        {
+            get { return (this.Id == null || this.Id.Equals(default(TId))) ? true : false; }
+        }
+
         #endregion
 
         #region Ctors
@@ -43,6 +48,5 @@ namespace WebFramework.Common.Framework.Base
         }
 
         #endregion
-
     }
 }

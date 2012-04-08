@@ -21,10 +21,13 @@ namespace WebFramework.Domain.System
                     Culture = culture
                 };
 
+                StatutLog statutLog = StatutLog.Factory.Create("Factory");
+                page.LifeCycle.AddStatutLog(statutLog);
+
                 return page;
             }
 
-            public Page NewInstance()
+            internal Page NewInstance()
             {
                 return new Page();
             }
