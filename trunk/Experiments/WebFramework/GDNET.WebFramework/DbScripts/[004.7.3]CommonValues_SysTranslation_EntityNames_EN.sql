@@ -59,6 +59,13 @@ exec SP_CreateOrUpdateTranslation
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.EntityNames.Region',
+	@CategoryName = 'LV.SysTranslation.EntityNames',
+	@Value = 'Region',
+	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
 	@Code = 'SysTranslation.EntityNames.User',
 	@CategoryName = 'LV.SysTranslation.EntityNames',
 	@Value = 'User',
