@@ -58,9 +58,6 @@ namespace WebFramework.Common.Controllers
             return base.View(ViewCreateOrUpdate, model);
         }
 
-        /// <summary>
-        /// With HttpPost action
-        /// </summary>
         [HttpPost]
         public virtual ActionResult Create(TModel model, FormCollection collection)
         {
@@ -69,11 +66,16 @@ namespace WebFramework.Common.Controllers
                 var objectId = this.OnCreateExecuting(model, collection);
                 if (objectId != null)
                 {
-                    return base.RedirectToAction(ActionDetails, new { id = objectId.ToString() });
+                    return this.AfterCreated(objectId);
                 }
             }
 
             return base.View(ViewCreateOrUpdate, model);
+        }
+
+        protected virtual ActionResult AfterCreated(object objectId)
+        {
+            return base.RedirectToAction(ActionDetails, new { id = objectId.ToString() });
         }
 
         #endregion
@@ -98,18 +100,20 @@ namespace WebFramework.Common.Controllers
             return base.RedirectToAction(ActionList);
         }
 
-        /// <summary>
-        /// With HttpPost action
-        /// </summary>
-        /// <returns></returns>
         [HttpPost]
         public virtual ActionResult Delete(TModel model, FormCollection collection)
         {
             if (this.OnDeleteExecuting(model, collection))
             {
-                return base.RedirectToAction(ActionList);
+                return this.AfterDeleted();
             }
+
             return base.View(model);
+        }
+
+        public virtual ActionResult AfterDeleted()
+        {
+            return base.RedirectToAction(ActionList);
         }
 
         #endregion
@@ -132,9 +136,6 @@ namespace WebFramework.Common.Controllers
             return base.RedirectToAction(ActionList);
         }
 
-        /// <summary>
-        /// With HttpPost action
-        /// </summary>
         [HttpPost]
         public virtual ActionResult Edit(TModel model, FormCollection collection)
         {
@@ -144,6 +145,11 @@ namespace WebFramework.Common.Controllers
             }
 
             return base.View(ViewCreateOrUpdate, model);
+        }
+
+        protected virtual ActionResult AfterEdited(TModel model, FormCollection collection)
+        {
+            return base.RedirectToAction(ActionList);
         }
 
         #endregion

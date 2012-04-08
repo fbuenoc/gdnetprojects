@@ -32,10 +32,10 @@
             <%= base.Html.CheckBoxFor(m => m.IsActive)%>
         </div>
         <div class="editor-label">
-            <%= base.Html.LabelFor(m => m.Widget) %>
+            <%= base.Html.LabelFor(m => m.WidgetSelection) %>
         </div>
         <div>
-            <%= base.Html.WebFramework().ComboBox().CreateCombo("Widget", ServicesType.SystemWidget) %>
+            <% base.Html.WebFramework().ComboBox().Create("WidgetSelection", ServicesType.SystemWidget, true); %>
         </div>
         <p>
             <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />
