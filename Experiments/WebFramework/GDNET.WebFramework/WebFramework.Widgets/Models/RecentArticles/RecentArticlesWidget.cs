@@ -34,6 +34,7 @@ namespace WebFramework.Widgets.Models.RecentArticles
         protected override void RegisterProperties()
         {
             base.RegisterProperties();
+            base.RegisterProperty(RecentArticlesConstants.ViewOption, ViewOption.WithDescription.ToString());
             base.RegisterProperty(WidgetBaseConstants.PropertyPageSize, WidgetBaseConstants.DefaultPageSize.ToString(), ListValueConstants.ContentDataTypes.NumberNormalNumber);
         }
 

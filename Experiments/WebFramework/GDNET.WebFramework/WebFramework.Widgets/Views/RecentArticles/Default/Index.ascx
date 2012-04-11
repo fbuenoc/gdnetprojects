@@ -13,6 +13,16 @@
         <tr>
             <td>
                 <%= base.Html.WebFramework().WidgetHanlder().ActionLinkContentItem(articleModel, base.Model.DetailConnection) %>
+                <%
+                if (base.Model.ViewOption == ViewOption.WithDescription)
+                {
+                %>
+                <div class="">
+                    <%= articleModel.Description %>
+                </div>
+                <%
+                }
+                %>
             </td>
         </tr>
         <%
