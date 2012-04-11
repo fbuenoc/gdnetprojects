@@ -51,8 +51,10 @@
     <Compile Include="Models\HtmlContent\HtmlContentModel.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentWidget.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentWidgetConstants.cs" />
+    <Compile Include="Models\RecentArticles\RecentArticlesConstants.cs" />
     <Compile Include="Models\RecentArticles\RecentArticlesModel.cs" />
     <Compile Include="Models\RecentArticles\RecentArticlesWidget.cs" />
+    <Compile Include="Models\RecentArticles\ViewOption.cs" />
     <Compile Include="Models\RecentProducts\RecentProductsModel.cs" />
     <Compile Include="Models\RecentProducts\RecentProductsWidget.cs" />
     <Compile Include="Models\RelatedItems\RelatedItemsModel.cs" />

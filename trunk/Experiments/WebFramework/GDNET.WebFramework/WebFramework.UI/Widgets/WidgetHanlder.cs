@@ -42,11 +42,12 @@ namespace WebFramework.UI.Widgets
 
         public void DisplayRegionSettings(RegionModel regionModel)
         {
+            bool isEnabled = true;
             foreach (var property in regionModel.Properties)
             {
                 if (property.Key.DataType == null)
                 {
-                    var textBoxComponentModel = new TextBoxEditorComponent(property.Key.Code, property.Value);
+                    var textBoxComponentModel = new TextBoxEditorComponent(property.Key.Code, property.Value, isEnabled);
                     this.htmlHelper.RenderPartial("ComponentEditorSimpleTextBox", textBoxComponentModel);
                 }
                 else
@@ -55,25 +56,25 @@ namespace WebFramework.UI.Widgets
                     {
                         case ListValueConstants.ContentDataTypes.TextHtmlEditor:
                             {
-                                var editorModel = new HtmlEditorComponent(property.Key.Code, property.Value);
+                                var editorModel = new HtmlEditorComponent(property.Key.Code, property.Value, isEnabled);
                                 this.htmlHelper.GDNet().EditorAssistant().RenderEditorComponent(Editors.HtmlEditor, editorModel);
                             }
                             break;
                         case ListValueConstants.ContentDataTypes.NumberNormalNumber:
                             {
-                                var editorModel = new NumberEditorComponent(property.Key.Code, Convert.ToDouble(property.Value));
+                                var editorModel = new NumberEditorComponent(property.Key.Code, Convert.ToDouble(property.Value), isEnabled);
                                 this.htmlHelper.GDNet().EditorAssistant().RenderEditorComponent(Editors.NumberEditor, editorModel);
                             }
                             break;
                         case ListValueConstants.ContentDataTypes.TextSimpleTextBox:
                             {
-                                var editorModel = new TextBoxEditorComponent(property.Key.Code, property.Value);
+                                var editorModel = new TextBoxEditorComponent(property.Key.Code, property.Value, isEnabled);
                                 this.htmlHelper.GDNet().EditorAssistant().RenderEditorComponent(Editors.TextBoxEditor, editorModel);
                             }
                             break;
                         case ListValueConstants.ContentDataTypes.TextTextArea:
                             {
-                                var editorModel = new TextAreaEditorComponent(property.Key.Code, property.Value);
+                                var editorModel = new TextAreaEditorComponent(property.Key.Code, property.Value, isEnabled);
                                 this.htmlHelper.GDNet().EditorAssistant().RenderEditorComponent(Editors.TextAreaEditor, editorModel);
                             }
                             break;

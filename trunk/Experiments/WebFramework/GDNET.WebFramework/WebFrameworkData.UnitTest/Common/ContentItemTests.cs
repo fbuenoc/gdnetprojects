@@ -105,8 +105,8 @@ namespace WebFramework.Data.UnitTest.Common
             Assert.IsNotNull(savedItem);
             Assert.AreEqual(contentItem.Name.Value, savedItem.Name.Value);
             Assert.AreEqual(2, savedItem.AttributeValues.Count);
-            Assert.AreEqual("V1", savedItem.AttributeValues[0].Value.Value);
-            Assert.AreEqual("V2", savedItem.AttributeValues[1].Value.Value);
+            Assert.AreEqual("V1", savedItem.AttributeValues[0].ValueTranslation.Value);
+            Assert.AreEqual("V2", savedItem.AttributeValues[1].ValueTranslation.Value);
 
             DomainRepositories.ContentItem.Delete(contentItem.Id);
             DomainRepositories.RepositoryAssistant.FlushAndClear();
@@ -136,8 +136,8 @@ namespace WebFramework.Data.UnitTest.Common
             Assert.IsNotNull(savedItem);
             Assert.AreEqual(contentItem.Name.Value, savedItem.Name.Value);
             Assert.AreEqual(2, savedItem.AttributeValues.Count);
-            Assert.AreEqual("V1", savedItem.AttributeValues[0].Value.Value);
-            Assert.AreEqual("V2", savedItem.AttributeValues[1].Value.Value);
+            Assert.AreEqual("V1", savedItem.AttributeValues[0].ValueTranslation.Value);
+            Assert.AreEqual("V2", savedItem.AttributeValues[1].ValueTranslation.Value);
 
             DomainRepositories.ContentItem.Delete(contentItem.Id);
             DomainRepositories.RepositoryAssistant.FlushAndClear();
