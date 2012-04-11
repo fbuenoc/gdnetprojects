@@ -34,6 +34,11 @@ namespace WebFramework.Common.Widgets
             }
         }
 
+        public virtual string UsageTemplate
+        {
+            get { return this.GetPropertyValue<string>(WidgetBaseConstants.PropertyUsageTemplate); }
+        }
+
         public virtual string Version
         {
             get { return this.GetType().Assembly.GetName().Version.ToString(); }
@@ -127,12 +132,18 @@ namespace WebFramework.Common.Widgets
 
         protected void RegisterProperty(string code, string value, string dataTypeCode)
         {
-            this.propertiesInfo.Add(new WidgetPropertyInfo
+            if (this.propertiesInfo.Any(x => x.Code == code))
             {
-                Code = code,
-                Value = value,
-                DataTypeName = dataTypeCode
-            });
+            }
+            else
+            {
+                this.propertiesInfo.Add(new WidgetPropertyInfo
+                {
+                    Code = code,
+                    Value = value,
+                    DataTypeName = dataTypeCode
+                });
+            }
         }
 
         protected T GetPropertyValue<T>(string propertyName)

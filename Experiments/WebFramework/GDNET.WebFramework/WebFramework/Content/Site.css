@@ -374,6 +374,12 @@ table th
     background-color: #F7F7F7;
 }
 
+.region_admin_header, .region_admin_header th
+{
+    font-weight: bold;
+    background-color: #8EACCA;
+    color: #FFFFFF;
+}
 
 .widget_container
 {

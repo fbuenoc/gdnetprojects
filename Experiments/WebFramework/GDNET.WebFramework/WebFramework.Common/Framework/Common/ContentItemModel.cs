@@ -49,7 +49,7 @@ namespace WebFramework.Common.Framework.Common
             set;
         }
 
-        public IEnumerable<ContentAttributeModel> Attributes
+        public IList<ContentAttributeModel> Attributes
         {
             get
             {
@@ -61,7 +61,7 @@ namespace WebFramework.Common.Framework.Common
             }
         }
 
-        public IEnumerable<ContentItemAttributeValueModel> AttributesValue
+        public IList<ContentItemAttributeValueModel> AttributesValue
         {
             get
             {
@@ -74,7 +74,7 @@ namespace WebFramework.Common.Framework.Common
             }
         }
 
-        public IEnumerable<ContentItemModel> RelatedItems
+        public IList<ContentItemModel> RelatedItems
         {
             get
             {

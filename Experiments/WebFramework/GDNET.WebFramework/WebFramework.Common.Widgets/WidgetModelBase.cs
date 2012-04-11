@@ -64,7 +64,7 @@ namespace WebFramework.Common.Widgets
 
         #region Methods
 
-        protected T GetPropertyValue<T>(string propertyName)
+        protected virtual T GetPropertyValue<T>(string propertyName)
         {
             if (this.regionModel.Properties.Any(x => x.Key.Code == propertyName))
             {

@@ -25,8 +25,9 @@ namespace WebFramework.Domain.Common
                     var itemAttributeValue = new ContentItemAttributeValue()
                     {
                         ContentAttribute = attribute,
-                        ValueText = value
                     };
+                    itemAttributeValue.SetValueText(value);
+
                     return itemAttributeValue;
                 }
             }
@@ -39,8 +40,8 @@ namespace WebFramework.Domain.Common
                 var itemAttributeValue = new ContentItemAttributeValue()
                 {
                     ContentAttribute = attribute,
-                    Value = value
                 };
+                itemAttributeValue.SetValueTranslation(value);
 
                 return itemAttributeValue;
             }

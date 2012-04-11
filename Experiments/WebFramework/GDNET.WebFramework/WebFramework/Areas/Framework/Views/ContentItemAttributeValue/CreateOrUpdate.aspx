@@ -12,7 +12,7 @@
         <%= base.Model.ContentAttribute.Name %>
     </h4>
     <div>
-        <%= base.Html.WebFramework().TextEditor().RenderTextEditor(base.Model) %>
+        <% base.Html.WebFramework().TextEditor().RenderEditorComponent(base.Model, true); %>
     </div>
     <p>
         <input type="submit" name="btnOK" value="<%= base.Html.WebFramework().SystemTranslation().SaveAndContinue %>" />

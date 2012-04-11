@@ -25,10 +25,6 @@ namespace WebFramework.Common.Framework.Common
 
             if (entity.DataType != null)
             {
-                if (entity.DataType.Description != null)
-                {
-                    this.DataType = entity.DataType.Description.Value;
-                }
                 this.DataTypeId = entity.DataType.Id;
             }
 
@@ -55,11 +51,16 @@ namespace WebFramework.Common.Framework.Common
             set;
         }
 
-        [DisplayName("Data type")]
-        public string DataType
+        public ListValueModel DataType
         {
-            get;
-            set;
+            get
+            {
+                if (base.Entity != null && base.Entity.DataType != null)
+                {
+                    return new ListValueModel(base.Entity.DataType);
+                }
+                return default(ListValueModel);
+            }
         }
 
         [DisplayName("Data type")]

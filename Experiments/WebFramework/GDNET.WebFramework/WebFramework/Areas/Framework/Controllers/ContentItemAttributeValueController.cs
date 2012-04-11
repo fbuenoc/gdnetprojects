@@ -4,12 +4,14 @@ using System.Linq;
 using System.Web.Mvc;
 using GDNET.Extensions;
 using GDNET.Web.Helpers;
+using GDNET.Web.Mvc.Adapters;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
 using WebFramework.Domain;
+using WebFramework.Domain.Common;
 using WebFramework.UI;
 
 namespace WebFramework.Areas.Framework.Controllers
@@ -44,15 +46,24 @@ namespace WebFramework.Areas.Framework.Controllers
             if (contentItemId.HasValue)
             {
                 var contentItemObject = DomainRepositories.ContentItem.GetById(contentItemId.Value);
-
                 var attributeValue = contentItemObject.AttributeValues.FirstOrDefault(x => x.Id == model.Id);
+                HtmlEditorAdapter htmlEditor = new HtmlEditorAdapter(attributeValue.ContentAttribute.Code, collection);
+
                 if (attributeValue.ContentAttribute.IsMultilingual)
                 {
-                    attributeValue.Value.Value = collection.GetValueFromCollection(attributeValue.ContentAttribute.Code);
+                    if (attributeValue.ValueTranslation == null)
+                    {
+                        Translation valueTranslation = Translation.Factory.Create(htmlEditor.Value);
+                        attributeValue.SetValueTranslation(valueTranslation);
+                    }
+                    else
+                    {
+                        attributeValue.ValueTranslation.Value = htmlEditor.Value;
+                    }
                 }
                 else
                 {
-                    attributeValue.ValueText = collection.GetValueFromCollection(attributeValue.ContentAttribute.Code);
+                    attributeValue.SetValueText(htmlEditor.Value);
                 }
 
                 DomainRepositories.RepositoryAssistant.Flush();

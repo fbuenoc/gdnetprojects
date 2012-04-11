@@ -40,7 +40,7 @@ namespace WebFramework.Areas.Framework.Controllers
 
         protected override object OnCreateExecuting(ContentAttributeModel model, FormCollection collection)
         {
-            var caEntity = ContentAttribute.Factory.Create(model.Code, model.Name, model.DataType, model.ContentTypeId, model.Position);
+            var caEntity = ContentAttribute.Factory.Create(model.Code, model.Name, model.DataType.Name, model.ContentTypeId, model.Position);
             bool result = DomainRepositories.ContentAttribute.Save(caEntity);
             return result ? (object)caEntity.Id : null;
         }
