@@ -23,9 +23,9 @@ namespace WebFramework.Mapping.Common
                 m.Column(MappingConstants.ContentItemId);
                 m.Cascade(Cascade.None);
             });
-            base.ManyToOne(e => e.Value, m =>
+            base.ManyToOne(e => e.ValueTranslation, m =>
             {
-                m.Lazy(LazyRelation.NoLazy);
+                m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.ContentItemAttributeValue.ValueTranslationId);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
             });
