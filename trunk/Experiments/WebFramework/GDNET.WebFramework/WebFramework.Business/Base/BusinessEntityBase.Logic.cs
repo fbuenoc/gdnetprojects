@@ -137,13 +137,13 @@ namespace WebFramework.Business.Base
 
             // We always have Encryption attribute, so we have to retrieve it first, then use to decrypt other properties
             var encryptionAttribute = this.ItemData.AttributeValues.First(x => x.ContentAttribute.Code == ExpressionAssistant.GetPropertyName(() => this.Encryption));
-            if (encryptionAttribute.Value == null)
+            if (encryptionAttribute.ValueTranslation == null)
             {
                 this.Encryption = encryptionAttribute.ValueText.ParseEnum<EncryptionOption>();
             }
             else
             {
-                this.Encryption = encryptionAttribute.Value.Value.ParseEnum<EncryptionOption>();
+                this.Encryption = encryptionAttribute.ValueTranslation.Value.ParseEnum<EncryptionOption>();
             }
 
             // Now we load other properties
@@ -152,7 +152,7 @@ namespace WebFramework.Business.Base
                 var attributeValue = this.ItemData.AttributeValues.FirstOrDefault(x => x.ContentAttribute.Code == kvp.Key);
                 if (attributeValue != null)
                 {
-                    string value = (attributeValue.Value == null) ? attributeValue.ValueText : attributeValue.Value.Value;
+                    string value = (attributeValue.ValueTranslation == null) ? attributeValue.ValueText : attributeValue.ValueTranslation.Value;
                     string decryptedValue = this.DecryptData(value);
                     this.PerformSetValue(kvp.Key, decryptedValue.ConvertFromString(kvp.Value));
                 }

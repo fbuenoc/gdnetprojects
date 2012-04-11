@@ -60,7 +60,7 @@ namespace WebFramework.Common.Framework.Common
             : base(entity)
         {
             this.ContentItemName = entity.ContentItem.Name.Value;
-            this.Value = (entity.Value == null) ? entity.ValueText : entity.Value.Value;
+            this.Value = (entity.ValueTranslation == null) ? entity.ValueText : entity.ValueTranslation.Value;
             this.DataTypeName = entity.ContentAttribute.DataType.Name;
         }
 

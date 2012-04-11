@@ -43,7 +43,7 @@ namespace WebFramework.Areas.Framework.Controllers
             // Check to add empty value for new attribute of content type
             if (itemModel.ContentType != null)
             {
-                if (!itemModel.ContentType.Attributes.Any(x => itemModel.AttributesValue.Any(y => x.Id == y.ContentAttribute.Id)))
+                if (itemModel.AttributesValue.Any(x => itemModel.ContentType.Attributes.Any(y => y.Id != x.ContentAttribute.Id)))
                 {
                     ContentItem itemEntity = DomainRepositories.ContentItem.GetById(itemModel.Id);
                     foreach (var attribute in itemEntity.ContentType.ContentAttributes.Where(x => !itemModel.AttributesValue.Any(y => x.Id == y.ContentAttribute.Id)))

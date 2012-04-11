@@ -47,10 +47,17 @@ namespace WebFramework.Common.Framework.Common
             set;
         }
 
-        public IEnumerable<ContentAttributeModel> Attributes
+        public IList<ContentAttributeModel> Attributes
         {
-            get;
-            private set;
+            get
+            {
+                List<ContentAttributeModel> attributesModel = new List<ContentAttributeModel>();
+                if (base.Entity != null)
+                {
+                    attributesModel.AddRange(base.Entity.ContentAttributes.OrderBy(x => x.Position).Select(x => new ContentAttributeModel(x)));
+                }
+                return attributesModel;
+            }
         }
 
         #endregion
@@ -73,8 +80,6 @@ namespace WebFramework.Common.Framework.Common
                 }
                 this.ApplicationId = entity.Application.Id;
             }
-
-            this.Attributes = entity.ContentAttributes.OrderBy(x => x.Position).Select(x => new ContentAttributeModel(x));
         }
 
         #endregion

@@ -9,11 +9,13 @@
     </h2>
     <% base.Html.BeginForm(); %>
     <table width="100%">
-        <tr>
-            <td width="120px">
-            </td>
-            <td>
-            </td>
+        <tr class="region_admin_header">
+            <th width="120px">
+                <%= base.Html.WebFramework().Translation().Translate("SysTranslation.RegionAdministerPropertyName") %>
+            </th>
+            <th>
+                <%= base.Html.WebFramework().Translation().Translate("SysTranslation.RegionAdministerPropertyValue")%>
+            </th>
         </tr>
         <% base.Html.WebFramework().WidgetHanlder().DisplayRegionSettings(base.Model); %>
     </table>

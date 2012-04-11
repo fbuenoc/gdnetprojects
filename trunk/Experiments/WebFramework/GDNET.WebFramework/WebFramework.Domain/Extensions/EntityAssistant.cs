@@ -49,13 +49,13 @@ namespace WebFramework.Domain.Extensions
 
             foreach (var attributeValue in entity.AttributeValues)
             {
-                attributeValue.RefreshTranslation(attributeValue.Value, ExpressionAssistant.GetPropertyName(() => attributeValue.Value));
+                attributeValue.RefreshTranslation(attributeValue.ValueTranslation, ExpressionAssistant.GetPropertyName(() => attributeValue.ValueTranslation));
             }
         }
 
         public static void RefreshTranslation(this ContentItemAttributeValue entity)
         {
-            entity.RefreshTranslation(entity.Value, ExpressionAssistant.GetPropertyName(() => entity.Value));
+            entity.RefreshTranslation(entity.ValueTranslation, ExpressionAssistant.GetPropertyName(() => entity.ValueTranslation));
         }
 
         public static void RefreshTranslation(this ContentType entity)
