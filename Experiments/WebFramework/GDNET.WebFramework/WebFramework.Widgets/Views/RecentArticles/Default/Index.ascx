@@ -17,7 +17,7 @@
                 if (base.Model.ViewOption == ViewOption.WithDescription)
                 {
                 %>
-                <div class="">
+                <div class="w_retar_desc">
                     <%= articleModel.Description %>
                 </div>
                 <%

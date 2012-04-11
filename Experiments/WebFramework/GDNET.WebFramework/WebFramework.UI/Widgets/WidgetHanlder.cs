@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
@@ -6,6 +7,7 @@ using Finley.Common;
 using GDNET.Extensions;
 using GDNET.Web.Mvc;
 using GDNET.Web.Mvc.ComponentEditors;
+using Telerik.Web.Mvc.UI;
 using WebFramework.Common.Framework.Common;
 using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
@@ -150,6 +152,27 @@ namespace WebFramework.UI.Widgets
         private MvcHtmlString ActionLinkToPage(string linkText, object routeValues, object htmlAttributes)
         {
             return this.htmlHelper.ActionLink(linkText, "Index", "Page", routeValues, htmlAttributes);
+        }
+
+        public string RegisterStyleSheets(PageModel pageModel)
+        {
+            List<string> listCss = new List<string>();
+
+            foreach (var zoneModel in pageModel.ZoneModels)
+            {
+                foreach (var regionModel in zoneModel.Regions)
+                {
+                    string cssPath = string.Format("Widgets/{0}/{1}/Index.css", regionModel.Widget.TechnicalName, this.GetUsageTemplate(regionModel));
+                    string styleSheet = this.htmlHelper.Telerik().StyleSheetRegistrar().DefaultGroup(dg => dg.Add(cssPath)).ToHtmlString();
+
+                    if (!listCss.Contains(styleSheet))
+                    {
+                        listCss.Add(styleSheet);
+                    }
+                }
+            }
+
+            return string.Join(string.Empty, listCss.ToArray());
         }
     }
 }

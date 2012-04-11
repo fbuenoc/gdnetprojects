@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\DetailArticle\Default\Index.css" />
+    <Content Include="Content\HtmlContent\Default\Index.css" />
     <Content Include="Content\RecentArticles\Default\Index.css" />
     <Content Include="Content\RecentProducts\Default\Index.css" />
     <Content Include="Views\Contact\Default\Index.ascx" />
