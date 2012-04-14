@@ -9,7 +9,7 @@ using QuyenMua.Data.DTOs;
 
 namespace QuyenMua.Presenters.Views
 {
-    public interface IViewListTransaction : IView<PresenterListTransaction>
+    public interface IViewListTransaction : IView<PresenterTransactionList, string>
     {
         /// <summary>
         /// Sets available transactions

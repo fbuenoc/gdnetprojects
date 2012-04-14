@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -7,21 +8,20 @@ using System.Web;
 using GDNET.Common.MVP;
 
 using TVNFramework.Extensions;
+using TVNFramework.Extensions.DateTimeEx;
 using TVNFramework.InterWeb.Common;
 using TVNFramework.Modules.GenericContent;
+using TVNFramework.Modules.GenericContent.Models;
 using TVNFramework.Modules.GenericContent.BLL;
+using TVNFramework.Modules.Transactions;
 using TVNFramework.Modules.Transactions.BLL;
 
-using QuyenMua.Presenters.Views;
 using QuyenMua.Data.DTOs;
-using TVNFramework.Modules.GenericContent.Models;
-using TVNFramework.Modules.Transactions;
-using System.Globalization;
-using TVNFramework.Extensions.DateTimeEx;
+using QuyenMua.Presenters.Views;
 
 namespace QuyenMua.Presenters
 {
-    public class PresenterListTransaction : PresenterBase<IViewListTransaction>
+    public class PresenterTransactionList : PresenterBase<IViewListTransaction>
     {
         private GenericTransactionEntity genericTransactionEntity = null;
 
@@ -29,11 +29,8 @@ namespace QuyenMua.Presenters
         /// Instantiate a presenter
         /// </summary>
         /// <param name="view"></param>
-        public PresenterListTransaction(IViewListTransaction view)
-            : base(view)
-        {
-            this.CurrentView.AttachPresenter(this);
-        }
+        /// <param name="mode"></param>
+        public PresenterTransactionList(IViewListTransaction view, ViewMode mode) : base(view, mode) { }
 
         /// <summary>
         /// Initializes presenter
@@ -86,39 +83,9 @@ namespace QuyenMua.Presenters
             base.CurrentView.Transactions = listOfTransactions.Select(m => new DTOTransaction(m)).ToList();
         }
 
-        private void T()
+        public override bool Perform(bool isPostBack)
         {
-            //StringBuilder conditionBuilder = new StringBuilder();
-            //List<ConditionObject> conditionValues = new List<ConditionObject>();
-            //conditionValues.Add(new ConditionObject
-            //{
-            //    AttributeCode = AttributeCodes.FROM_DATE,
-            //    Value = DateTime.Today,
-            //    Operation = Operations.GreaterOrEqual
-            //});
-            //conditionValues.Add(new ConditionObject
-            //{
-            //    AttributeCode = AttributeCodes.TO_DATE,
-            //    Value = DateTime.Today.AddMonths(3),
-            //    Operation = Operations.LessOrEqual
-            //});
-
-            //conditionBuilder.Append("(");
-            //conditionBuilder.AppendFormat("(Attribute.AttributeCode = \"{0}\")", AttributeCodes.FROM_DATE.ToString());
-            //conditionBuilder.Append(" || ");
-            //conditionBuilder.AppendFormat("(Attribute.AttributeCode = \"{0}\")", AttributeCodes.TO_DATE.ToString());
-            //conditionBuilder.Append(")");
-
-            //var hoseRelatedItems = ItemEntity.GetList(SpecialCategories.HOSE_ID, 0, 20, true, true, conditionBuilder.ToString(), conditionValues);
-            //var hnxRelatedItems = ItemEntity.GetList(SpecialCategories.HNX_ID, 0, 20, true, true, conditionBuilder.ToString(), conditionValues);
-            //var upComRelatedItems = ItemEntity.GetList(SpecialCategories.UPCOM_ID, 0, 20, true, true, conditionBuilder.ToString(), conditionValues);
-
-            //var listOfTransactions = new List<TransactionDTO>();
-            //foreach (var item in hoseRelatedItems)
-            //{
-            //    listOfTransactions.Add(new TransactionDTO(item));
-            //}
-            //base.CurrentView.Transactions = listOfTransactions;
+            throw new NotImplementedException();
         }
     }
 }
