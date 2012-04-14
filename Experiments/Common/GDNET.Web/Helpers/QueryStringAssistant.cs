@@ -6,6 +6,9 @@ namespace GDNET.Web.Helpers
 {
     public static class QueryStringAssistant
     {
+        /// <summary>
+        /// Get information form query string, parse value to long. NULL if there is no key matches with parameter name or value is invalid.
+        /// </summary>
         public static long? ParseInteger(string parameterName)
         {
             long? result = null;
@@ -14,7 +17,7 @@ namespace GDNET.Web.Helpers
             if (!string.IsNullOrEmpty(parameterValue))
             {
                 Int64 x;
-                if (Int64.TryParse(parameterName, out x))
+                if (Int64.TryParse(parameterValue, out x))
                 {
                     result = x;
                 }

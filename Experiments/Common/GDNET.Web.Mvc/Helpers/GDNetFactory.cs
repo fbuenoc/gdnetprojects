@@ -10,5 +10,10 @@ namespace GDNET.Web.Mvc.Helpers
         {
             this.htmlHelper = html;
         }
+
+        public EditorManager EditorAssistant()
+        {
+            return new EditorManager(this.htmlHelper);
+        }
     }
 }
