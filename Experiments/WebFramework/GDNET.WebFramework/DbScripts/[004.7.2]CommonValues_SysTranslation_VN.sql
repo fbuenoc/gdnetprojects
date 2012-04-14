@@ -183,3 +183,17 @@ exec SP_CreateOrUpdateTranslation
 	@Value = N'Quản trị',
 	@IsDeletable = False;
 	
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'vi-VN',
+	@Code = 'SysTranslation.RegionAdministerPropertyName',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = N'Tên thuộc tính',
+	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'vi-VN',
+	@Code = 'SysTranslation.RegionAdministerPropertyValue',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = N'Giá trị',
+	@IsDeletable = False;
+	

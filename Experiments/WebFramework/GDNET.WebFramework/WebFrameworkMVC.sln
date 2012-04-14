@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Mapping", "Web
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Extensions", "WebFramework.Extensions\WebFramework.Extensions.csproj", "{A53B516C-BA01-48BD-8330-63515DE50356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Common", "WebFramework.Base\WebFramework.Common.csproj", "{048916D3-D2F1-45B0-BA0F-7E126112C233}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.Common", "WebFramework.Common\WebFramework.Common.csproj", "{048916D3-D2F1-45B0-BA0F-7E126112C233}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebFramework.UI", "WebFramework.UI\WebFramework.UI.csproj", "{18980C72-F35D-4D3F-B76B-7D1A005C6275}"
 EndProject
