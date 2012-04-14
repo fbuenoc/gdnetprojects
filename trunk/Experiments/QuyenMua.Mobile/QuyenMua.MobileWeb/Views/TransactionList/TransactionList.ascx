@@ -7,7 +7,7 @@
         <h3>
             <asp:Literal ID="ltrTitle" runat="server" Text="Giao dịch gần nhất"></asp:Literal>
         </h3>
-        <jqmob:MobHyperLink ID="nt" runat="server" NavigateUrl="~/TransactionDetail.aspx?m=c"
+        <jqmob:MobHyperLink ID="nt" runat="server" NavigateUrl="~/TransactionDetail.aspx?mode=Creation"
             Text="Đăng tin" Theme="E" Icon="ArrowUp" Position="Right" />
     </Header>
     <Content>
