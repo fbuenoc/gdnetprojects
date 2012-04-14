@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 
 using GDNET.jQueryMobileControls;
 using GDNET.MvpWeb;
+using GDNET.Web.Helpers;
 
 using QuyenMua.Data.DTOs;
 using QuyenMua.Presenters;
@@ -14,7 +15,7 @@ using QuyenMua.Presenters.Views;
 
 namespace QuyenMua.MobileWeb.Views.TransactionList
 {
-    public partial class TransactionList : ViewUserControlBase<PresenterListTransaction>, IViewListTransaction
+    public partial class TransactionList : ViewUserControlBase<PresenterTransactionList, string>, IViewListTransaction
     {
         #region IViewListTransaction members
 
@@ -41,6 +42,11 @@ namespace QuyenMua.MobileWeb.Views.TransactionList
         {
             base.HandleError(ex);
             base.Response.Redirect("~/e.aspx");
+        }
+
+        public override void InitializeAdapters()
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

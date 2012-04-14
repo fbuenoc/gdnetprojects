@@ -9,8 +9,17 @@
     <asp:ContentPlaceHolder ID="H" runat="server" />
     <jqmob:Reference ID="r1" runat="server" />
     <script type="text/javascript" language="javascript" src="Content/jQuery/jquery-1.6.4.min.js"></script>
+    <script type="text/javascript" language="javascript" src="Content/jQuery/jquery.validate.min.js"></script>
     <script type="text/javascript" language="javascript" src="Content/jQuery.Mobile/jquery.mobile-1.0b3.min.js"></script>
     <link type="text/css" rel="Stylesheet" href="Content/jQuery.Mobile/jquery.mobile-1.0b3.min.css" />
+    <style type="text/css">
+        label.error
+        {
+            display: block;
+            color: #EE0000;
+            vertical-align: top;
+        }
+    </style>
 </head>
 <body>
     <asp:ContentPlaceHolder ID="B" runat="server" />

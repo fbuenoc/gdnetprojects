@@ -59,8 +59,11 @@
     <Content Include="Content\jQuery.Mobile\jquery.mobile-1.0b3.min.css" />
     <Content Include="Content\jQuery.Mobile\jquery.mobile-1.0b3.min.js" />
     <Content Include="Content\jQuery\jquery-1.6.4.min.js" />
+    <Content Include="Content\jQuery\jquery.validate.min.js" />
     <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
     <Content Include="TransactionDetail.aspx" />
+    <Content Include="Views\Common\DefaultNotifier.ascx" />
     <Content Include="Views\TransactionList\TransactionList.ascx" />
     <Content Include="Views\TransactionDetail\TransactionDetail.ascx" />
     <Content Include="Web.config">
@@ -82,6 +85,9 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
@@ -96,6 +102,13 @@
     </Compile>
     <Compile Include="TransactionDetail.aspx.designer.cs">
       <DependentUpon>TransactionDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\DefaultNotifier.ascx.cs">
+      <DependentUpon>DefaultNotifier.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Common\DefaultNotifier.ascx.designer.cs">
+      <DependentUpon>DefaultNotifier.ascx</DependentUpon>
     </Compile>
     <Compile Include="Views\TransactionList\TransactionList.ascx.cs">
       <DependentUpon>TransactionList.ascx</DependentUpon>
@@ -116,6 +129,10 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\Development Resources\jQuery\ASP.NET Mobile Framework\AMF\Mobile.Framework\AMF.csproj">
+      <Project>{82A90FE5-C919-425F-800D-08C5CEB8F246}</Project>
+      <Name>AMF</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Experiments CodePlex\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
@@ -128,6 +145,10 @@
       <Project>{DBEFAA38-6DF3-47CB-8C4D-DB84515B9EC8}</Project>
       <Name>GDNET.jQueryMobileControls</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Common\GDNET.Web\GDNET.Web.csproj">
+      <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
+      <Name>GDNET.Web</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuyenMua.Data\QuyenMua.Data.csproj">
       <Project>{F2EC9ADE-0E30-4F1F-81D6-566FB82F2C9E}</Project>
       <Name>QuyenMua.Data</Name>
@@ -137,9 +158,7 @@
       <Name>QuyenMua.Presenters</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
