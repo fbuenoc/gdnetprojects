@@ -51,20 +51,19 @@ namespace GDNET.Web.Mvc.Helpers
         /// <summary>
         /// Get value from a collection, only apply with the key in collection that start with given value.
         /// </summary>
-        public static string GetValueFromCollection(this FormCollection collection, string keyStartWith)
+        public static string GetValueFromCollection(this FormCollection collection, string variableName)
         {
             string localResult = string.Empty;
-            if (collection != null)
+
+            foreach (string key in collection.Keys)
             {
-                foreach (string key in collection.Keys)
+                if (key == variableName)
                 {
-                    if (key.StartsWith(keyStartWith))
-                    {
-                        localResult = collection[key];
-                        break;
-                    }
+                    localResult = collection[key];
+                    break;
                 }
             }
+
             return localResult;
         }
     }

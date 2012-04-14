@@ -245,8 +245,6 @@ namespace GDNET.Extensions
         /// <summary>
         /// Simple validation rule to determine the text is email address or not
         /// </summary>
-        /// <param name="text"></param>
-        /// <returns></returns>
         public static bool IsEmailAddress(this string text)
         {
             bool localResult = false;
@@ -267,6 +265,15 @@ namespace GDNET.Extensions
         public static bool In(this string text, params string[] contaimers)
         {
             return contaimers.Contains(text);
+        }
+
+        public static double? ToDouble(this string text)
+        {
+            if (string.IsNullOrEmpty(text))
+            {
+                return null;
+            }
+            return double.Parse(text);
         }
     }
 }

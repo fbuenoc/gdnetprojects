@@ -18,7 +18,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\Build\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,10 +46,13 @@
     <Compile Include="BooleanExtensions.cs" />
     <Compile Include="BooleanAssistant.cs" />
     <Compile Include="DateTimeAssistant.cs" />
+    <Compile Include="DictionaryAssistant.cs" />
     <Compile Include="DynamicAssistant.cs" />
     <Compile Include="EnumAssistant.cs" />
     <Compile Include="HtmlAssistant.cs" />
     <Compile Include="ListAssistant.cs" />
+    <Compile Include="Merging\TypeMerger.cs" />
+    <Compile Include="Merging\TypeMergerPolicy.cs" />
     <Compile Include="NumberAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NetAssistant.cs" />
