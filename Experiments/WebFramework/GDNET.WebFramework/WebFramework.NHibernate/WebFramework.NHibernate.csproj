@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrameworkAdminRepositories.cs" />
     <Compile Include="FrameworkRepositories.cs" />
     <Compile Include="InfrastructureServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

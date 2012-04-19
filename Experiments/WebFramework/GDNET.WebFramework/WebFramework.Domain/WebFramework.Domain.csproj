@@ -40,9 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\DTOEntityBase.cs" />
+    <Compile Include="Base\IDTOEntity.cs" />
     <Compile Include="Base\IEntityWithLifeCycle.cs" />
     <Compile Include="Base\IStatutListValue.cs" />
     <Compile Include="Common\Application.cs" />
+    <Compile Include="Common\DTOContentItem.cs" />
     <Compile Include="Common\StatutLifeCycle.Factory.cs" />
     <Compile Include="Common\StatutLog.Factory.cs" />
     <Compile Include="Common\StatutLifeCycle.cs" />

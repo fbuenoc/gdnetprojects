@@ -41,7 +41,7 @@ namespace WebFramework.NHibernate.SessionManagers
                 ISessionStrategy sessionStrategy = new WebSessionStrategy(session);
                 HttpContextAssistant.TrySetItem("Repositories", new FrameworkRepositories(sessionStrategy));
             }
-            if (HttpContextAssistant.TryGetItem<FrameworkRepositories>("Services") == null)
+            if (HttpContextAssistant.TryGetItem<InfrastructureServices>("Services") == null)
             {
                 HttpContextAssistant.TrySetItem("Services", new InfrastructureServices());
             }
