@@ -31,38 +31,45 @@ namespace WebFramework.Controllers
         {
             if (this.GetRegionModel())
             {
+                // Name & Description of the Region
+                var nameEditorAdapter = new TextBoxEditorAdapter("RG_Name", collection);
+                this.currantRegionEntity.Name = nameEditorAdapter.Value;
+
+                var descriptionEditorAdapter = new HtmlEditorAdapter("RG_Description", collection);
+                this.currantRegionEntity.Description = descriptionEditorAdapter.Value;
+
                 foreach (var property in this.currantRegionModel.Properties)
                 {
                     bool isHandled = true;
                     string newValue = null;
+                    string dataTypeName = (property.Key.DataType == null) ? string.Empty : property.Key.DataType.Name;
 
-                    if (property.Key.DataType == null)
+                    switch (dataTypeName)
                     {
-                        var editorAdapter = new TextBoxEditorAdapter(property.Key.Code, collection);
-                        newValue = editorAdapter.Value;
-                    }
-                    else
-                    {
-                        switch (property.Key.DataType.Name)
-                        {
-                            case ListValueConstants.ContentDataTypes.TextHtmlEditor:
-                                {
-                                    var editorAdapter = new HtmlEditorAdapter(property.Key.Code, collection);
-                                    newValue = editorAdapter.Value;
-                                }
-                                break;
+                        case ListValueConstants.ContentDataTypes.TextHtmlEditor:
+                            {
+                                var editorAdapter = new HtmlEditorAdapter(property.Key.Code, collection);
+                                newValue = editorAdapter.Value;
+                            }
+                            break;
 
-                            case ListValueConstants.ContentDataTypes.NumberNormalNumber:
-                                {
-                                    var editorAdapter = new NumberEditorAdapter(property.Key.Code, collection);
-                                    newValue = editorAdapter.Value.ToString();
-                                }
-                                break;
+                        case ListValueConstants.ContentDataTypes.NumberNormalNumber:
+                            {
+                                var editorAdapter = new NumberEditorAdapter(property.Key.Code, collection);
+                                newValue = editorAdapter.Value.ToString();
+                            }
+                            break;
 
-                            default:
-                                isHandled = false;
-                                break;
-                        }
+                        case ListValueConstants.ContentDataTypes.TextSimpleTextBox:
+                            {
+                                var editorAdapter = new TextBoxEditorAdapter(property.Key.Code, collection);
+                                newValue = editorAdapter.Value.ToString();
+                            }
+                            break;
+
+                        default:
+                            isHandled = false;
+                            break;
                     }
 
                     if (isHandled)
