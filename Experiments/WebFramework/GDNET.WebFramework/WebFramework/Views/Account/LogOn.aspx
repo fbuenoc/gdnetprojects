@@ -8,7 +8,8 @@
 </asp:Content>
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Log On</h2>
+        Log On
+    </h2>
     <p>
         Please enter your username and password.
         <%: Html.ActionLink("Register", "Register") %>
@@ -46,4 +47,7 @@
         </fieldset>
     </div>
     <% } %>
+</asp:Content>
+<asp:Content ID="C3" ContentPlaceHolderID="HeadContent" runat="server">
+    <% base.Html.WebFramework().WidgetHanlder().RegisterStyleSheets(); %>
 </asp:Content>

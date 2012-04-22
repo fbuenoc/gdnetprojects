@@ -13,14 +13,14 @@ namespace WebFramework.Controllers
 {
     public class RegionAdminController : AbstractController
     {
-        private RegionModel currantRegionModel = null;
-        private Region currantRegionEntity = null;
+        private Region regionEntity = null;
 
         public ActionResult Index()
         {
-            if (this.GetRegionModel())
+            var regionModel = this.GetRegionModel();
+            if (regionModel != null)
             {
-                return base.View(this.currantRegionModel);
+                return base.View(regionModel);
             }
 
             return base.RedirectToAction("OnError", "Home");
@@ -29,16 +29,17 @@ namespace WebFramework.Controllers
         [HttpPost]
         public ActionResult Index(FormCollection collection)
         {
-            if (this.GetRegionModel())
+            var regionModel = this.GetRegionModel();
+            if (regionModel != null)
             {
                 // Name & Description of the Region
                 var nameEditorAdapter = new TextBoxEditorAdapter("RG_Name", collection);
-                this.currantRegionEntity.Name = nameEditorAdapter.Value;
+                this.regionEntity.Name = nameEditorAdapter.Value;
 
                 var descriptionEditorAdapter = new HtmlEditorAdapter("RG_Description", collection);
-                this.currantRegionEntity.Description = descriptionEditorAdapter.Value;
+                this.regionEntity.Description = descriptionEditorAdapter.Value;
 
-                foreach (var property in this.currantRegionModel.Properties)
+                foreach (var property in regionModel.Properties)
                 {
                     bool isHandled = true;
                     string newValue = null;
@@ -74,7 +75,7 @@ namespace WebFramework.Controllers
 
                     if (isHandled)
                     {
-                        var setting = this.currantRegionEntity.Settings.FirstOrDefault(x => x.WidgetProperty.Code == property.Key.Code);
+                        var setting = this.regionEntity.Settings.FirstOrDefault(x => x.WidgetProperty.Code == property.Key.Code);
                         if (setting != null)
                         {
                             setting.Value = newValue;
@@ -83,13 +84,13 @@ namespace WebFramework.Controllers
                 }
 
                 DomainRepositories.RepositoryAssistant.Flush();
-                return base.View(this.currantRegionModel);
+                return base.View(regionModel);
             }
 
             return base.RedirectToAction("OnError", "Home");
         }
 
-        private bool GetRegionModel()
+        private RegionModel GetRegionModel()
         {
             long? zoneId = QueryStringAssistant.ParseInteger(EntityQueryString.ZoneId);
             long? regionId = QueryStringAssistant.ParseInteger(EntityQueryString.RegionId);
@@ -99,13 +100,12 @@ namespace WebFramework.Controllers
                 var zone = DomainRepositories.Zone.GetById(zoneId.Value);
                 if (zone != null)
                 {
-                    this.currantRegionEntity = zone.Regions.FirstOrDefault(x => x.Id == regionId.Value);
-                    this.currantRegionModel = new RegionModel(this.currantRegionEntity);
-                    return true;
+                    this.regionEntity = zone.Regions.FirstOrDefault(x => x.Id == regionId.Value);
+                    return new RegionModel(this.regionEntity);
                 }
             }
 
-            return false;
+            return default(RegionModel);
         }
     }
 }

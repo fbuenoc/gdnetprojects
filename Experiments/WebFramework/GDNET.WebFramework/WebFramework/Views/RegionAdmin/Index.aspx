@@ -2,11 +2,11 @@
 
 <%@ Import Namespace="GDNET.Web.Mvc.ComponentEditors" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    Index
+    Region administrator
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Index
+        Region administrator
     </h2>
     <% base.Html.BeginForm(); %>
     <p>
@@ -31,4 +31,5 @@
     <% base.Html.EndForm(); %>
 </asp:Content>
 <asp:Content ID="C3" ContentPlaceHolderID="HeadContent" runat="server">
+    <% base.Html.WebFramework().WidgetHanlder().RegisterStyleSheets(); %>
 </asp:Content>
