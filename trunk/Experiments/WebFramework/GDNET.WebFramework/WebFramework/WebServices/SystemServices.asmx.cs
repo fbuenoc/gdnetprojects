@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Script.Services;
 using System.Web.Services;
 using GDNET.Web.Common;
+using Telerik.Web.Mvc;
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
 using WebFramework.Domain.System;
@@ -35,6 +36,17 @@ namespace WebFramework.WebServices
                 }
 
                 return new SelectList(listOfWidgets, MetaInfos.WidgetMeta.Code, MetaInfos.WidgetMeta.TechnicalName);
+            }
+
+            throw new UnauthorizedAccessException();
+        }
+
+        [WebMethod]
+        public GridModel GetZoneByPage(GridState state)
+        {
+            if (base.ValidateSecurity())
+            {
+
             }
 
             throw new UnauthorizedAccessException();

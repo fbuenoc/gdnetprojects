@@ -13,7 +13,7 @@ namespace WebFramework.Areas.System.Controllers
     {
         public override ActionResult List()
         {
-            var listOfPages = DomainRepositories.Page.GetAll().Select(page => new PageModel(page));
+            var listOfPages = DomainRepositories.Page.GetAll().Select(page => new PageModel(page)).ToList();
             return base.View(listOfPages);
         }
 

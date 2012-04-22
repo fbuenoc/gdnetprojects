@@ -185,6 +185,13 @@ exec SP_CreateOrUpdateTranslation
 
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'en-US',
+	@Code = 'SysTranslation.PageAdminister',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = 'Administer',
+	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'en-US',
 	@Code = 'SysTranslation.RegionAdministerPropertyName',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = 'Property name',

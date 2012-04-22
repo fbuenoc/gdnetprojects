@@ -345,6 +345,7 @@
     <Content Include="Areas\System\Views\Zone\Details.aspx" />
     <Content Include="Areas\System\Views\Zone\List.aspx" />
     <Content Include="Views\Home\NoPage.aspx" />
+    <Content Include="Views\Page\Admin.aspx" />
     <Content Include="Views\RegionAdmin\Index.aspx" />
     <Content Include="Views\Shared\EditorComponents\HtmlEditor.ascx">
       <SubType>ASPXCodeBehind</SubType>

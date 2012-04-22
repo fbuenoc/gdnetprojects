@@ -185,6 +185,13 @@ exec SP_CreateOrUpdateTranslation
 	
 exec SP_CreateOrUpdateTranslation
 	@CultureCode = 'vi-VN',
+	@Code = 'SysTranslation.PageAdminister',
+	@CategoryName = 'LV.SysTranslation',
+	@Value = N'Quản trị trang',
+	@IsDeletable = False;
+
+exec SP_CreateOrUpdateTranslation
+	@CultureCode = 'vi-VN',
 	@Code = 'SysTranslation.RegionAdministerPropertyName',
 	@CategoryName = 'LV.SysTranslation',
 	@Value = N'Tên thuộc tính',

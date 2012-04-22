@@ -14,8 +14,11 @@
     </div>
     <div style="clear: both;">
     </div>
+    <div class="management_space">
+        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
+    </div>
 </asp:Content>
 <asp:Content ID="C3" ContentPlaceHolderID="HeadContent" runat="server">
     <meta name="keyword" content="<%= base.Model.Keyword %>" />
-    <%= base.Html.WebFramework().WidgetHanlder().RegisterStyleSheets(base.Model) %>
+    <% base.Html.WebFramework().WidgetHanlder().RegisterStyleSheets(base.Model); %>
 </asp:Content>

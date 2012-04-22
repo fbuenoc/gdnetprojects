@@ -121,6 +121,20 @@ namespace WebFramework.UI.Widgets
             return this.htmlHelper.ActionLink(linkText, "Index", WebFrameworkConstants.Controllers.RegionAdmin, routeValues, null);
         }
 
+        public MvcHtmlString ActionLinkAdminister(PageModel pageModel)
+        {
+            string linkText = DomainServices.Translation.Translate("SysTranslation.PageAdminister");
+
+            var routeValues = new
+            {
+                area = string.Empty,
+                idpg = pageModel.Id,
+                page = pageModel.UniqueName
+            };
+
+            return this.htmlHelper.ActionLink(linkText, "Admin", WebFrameworkConstants.Controllers.Page, routeValues, null);
+        }
+
         public MvcHtmlString ActionLinkContentItem(ContentItemModel itemModel, RegionModel targetRegion)
         {
             var htmlAttributes = new
@@ -150,25 +164,41 @@ namespace WebFramework.UI.Widgets
             return this.htmlHelper.ActionLink(linkText, "Index", "Page", routeValues, htmlAttributes);
         }
 
-        public string RegisterStyleSheets(PageModel pageModel)
+        public void RegisterStyleSheets(PageModel pageModel)
         {
-            List<string> listCss = new List<string>();
+            List<string> listCssPaths = new List<string>();
 
             foreach (var zoneModel in pageModel.ZoneModels)
             {
                 foreach (var regionModel in zoneModel.Regions)
                 {
                     string cssPath = string.Format("Widgets/{0}/{1}/Index.css", regionModel.Widget.TechnicalName, this.GetUsageTemplate(regionModel));
-                    string styleSheet = this.htmlHelper.Telerik().StyleSheetRegistrar().DefaultGroup(dg => dg.Add(cssPath)).ToHtmlString();
-
-                    if (!listCss.Contains(styleSheet))
+                    if (!listCssPaths.Contains(cssPath))
                     {
-                        listCss.Add(styleSheet);
+                        listCssPaths.Add(cssPath);
                     }
                 }
             }
 
-            return string.Join(string.Empty, listCss.ToArray());
+            this.RegisterStyleSheets(listCssPaths);
+        }
+
+        public void RegisterStyleSheets()
+        {
+            this.RegisterStyleSheets(new List<string>());
+        }
+
+        private void RegisterStyleSheets(List<string> listCssPaths)
+        {
+            this.htmlHelper.Telerik().StyleSheetRegistrar().DefaultGroup(dg =>
+            {
+                dg.Add("Site.css").Add("telerik.common.css").Add("telerik.vista.css");
+                foreach (string cssPath in listCssPaths)
+                {
+                    dg.Add(cssPath);
+                }
+                dg.Combined(true).Compress(true);
+            }).Render();
         }
     }
 }
