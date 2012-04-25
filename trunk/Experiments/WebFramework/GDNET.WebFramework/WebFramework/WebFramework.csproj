@@ -271,9 +271,9 @@
     <Compile Include="Areas\Framework\Controllers\RoleController.cs" />
     <Compile Include="Areas\Framework\FrameworkAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\MonitorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PageController.cs" />
-    <Compile Include="Controllers\RegionAdminController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

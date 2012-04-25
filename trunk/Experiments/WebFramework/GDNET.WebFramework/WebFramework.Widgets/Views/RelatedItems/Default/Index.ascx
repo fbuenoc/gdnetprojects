@@ -1,6 +1,7 @@
 ﻿<%@ Import Namespace="WebFramework.Widgets.Models.RelatedItems" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<RelatedItemsModel>" %>
 <div>
+    <a name="<%= base.Model.IdRegion %>"></a>
     <table>
         <%
             foreach (var itemModel in base.Model.RelatedItems)
@@ -12,7 +13,7 @@
             </td>
         </tr>
         <%
-    }
+            }
         %>
     </table>
     <div>

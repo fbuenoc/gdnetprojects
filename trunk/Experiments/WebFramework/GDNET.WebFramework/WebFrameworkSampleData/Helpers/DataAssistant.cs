@@ -325,17 +325,23 @@ namespace WebFrameworkSampleData
             homePage.Description = "GiangDuong.NET - Welcome";
             homePage.Keyword = "Giang duong online, Chia se tai lieu giay";
             homePage.IsDefault = true;
+            homePage.IsActive = true;
             DomainRepositories.Page.Save(homePage);
 
             Zone homePageHeaderZone = Zone.Factory.Create("Header", string.Empty);
+            homePageHeaderZone.IsActive = true;
             Zone homePageFooterZone = Zone.Factory.Create("Footer", string.Empty);
+            homePageFooterZone.IsActive = true;
             Zone homePageLeftContentZone = Zone.Factory.Create("LeftContent", string.Empty);
+            homePageLeftContentZone.IsActive = true;
             Zone homePageRightContentZone = Zone.Factory.Create("RightContent", string.Empty);
+            homePageRightContentZone.IsActive = true;
             homePage.AddZones(homePageHeaderZone, homePageFooterZone, homePageLeftContentZone, homePageRightContentZone);
             DomainRepositories.RepositoryAssistant.Flush();
 
             Page aboutPage = Page.Factory.Create("About us", "about", app, culture);
             aboutPage.Description = "GiangDuong.NET - Information";
+            aboutPage.IsActive = true;
             DomainRepositories.Page.Save(aboutPage);
 
             Zone aboutPageHeaderZone = Zone.Factory.Create("Header", string.Empty);
@@ -347,12 +353,17 @@ namespace WebFrameworkSampleData
 
             Page detailArticlePage = Page.Factory.Create("Detail article", "detail", app, culture);
             detailArticlePage.Description = "GiangDuong.NET - Detail article";
+            detailArticlePage.IsActive = true;
             DomainRepositories.Page.Save(detailArticlePage);
 
             Zone detailPageHeaderZone = Zone.Factory.Create("Header", string.Empty);
+            detailPageHeaderZone.IsActive = true;
             Zone detailPageFooterZone = Zone.Factory.Create("Footer", string.Empty);
+            detailPageFooterZone.IsActive = true;
             Zone detailPageLeftContentZone = Zone.Factory.Create("LeftContent", string.Empty);
+            detailPageLeftContentZone.IsActive = true;
             Zone detailPageRightContentZone = Zone.Factory.Create("RightContent", string.Empty);
+            detailPageRightContentZone.IsActive = true;
             detailArticlePage.AddZones(detailPageHeaderZone, detailPageFooterZone, detailPageLeftContentZone, detailPageRightContentZone);
             DomainRepositories.RepositoryAssistant.Flush();
 
@@ -394,18 +405,22 @@ namespace WebFrameworkSampleData
             #region Home page regions
 
             Region leftContentHPR1 = Region.Factory.Create("Who we are?", htmlWidgetInfo);
+            leftContentHPR1.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(leftContentHPR1);
             homePageLeftContentZone.AddRegion(leftContentHPR1);
 
             Region leftContentHPR2 = Region.Factory.Create("Our plan", htmlWidgetInfo);
+            leftContentHPR2.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(leftContentHPR2);
             homePageLeftContentZone.AddRegion(leftContentHPR2);
 
             Region leftContentHPR3 = Region.Factory.Create("Recent products", productWidgetInfo);
+            leftContentHPR3.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(leftContentHPR3);
             homePageLeftContentZone.AddRegion(leftContentHPR3);
 
             Region rightContentHPR1 = Region.Factory.Create("Recent articles", articlesWidgetInfo);
+            rightContentHPR1.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(rightContentHPR1);
             homePageRightContentZone.AddRegion(rightContentHPR1);
 
@@ -414,6 +429,7 @@ namespace WebFrameworkSampleData
             #region About page regions
 
             Region aboutRegion1 = Region.Factory.Create("About us", htmlWidgetInfo);
+            aboutRegion1.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(aboutRegion1);
             aboutPageLeftContentZone.AddRegion(aboutRegion1);
 
@@ -422,10 +438,12 @@ namespace WebFrameworkSampleData
             #region Detail page regions
 
             Region detailRegion1 = Region.Factory.Create("Detail article", detailArticleWidgetInfo);
+            detailRegion1.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(detailRegion1);
             detailPageLeftContentZone.AddRegion(detailRegion1);
 
             Region detailRegion2 = Region.Factory.Create("Related items", relatedItemsInfo);
+            detailRegion2.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(detailRegion2);
             detailPageRightContentZone.AddRegion(detailRegion2);
 

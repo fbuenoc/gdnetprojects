@@ -48,6 +48,11 @@
     <Compile Include="Models\Contact\ContactWidget.cs" />
     <Compile Include="Models\DetailArticle\DetailArticleModel.cs" />
     <Compile Include="Models\DetailArticle\DetailArticleWidget.cs" />
+    <Compile Include="Models\FileManager\Domain\File.cs" />
+    <Compile Include="Models\FileManager\Domain\IFileRepository.cs" />
+    <Compile Include="Models\FileManager\Domain\FileRepository.cs" />
+    <Compile Include="Models\FileManager\FileManagerModel.cs" />
+    <Compile Include="Models\FileManager\FileManagerWidget.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentModel.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentWidget.cs" />
     <Compile Include="Models\HtmlContent\HtmlContentWidgetConstants.cs" />
@@ -66,6 +71,7 @@
     <Content Include="Content\HtmlContent\Default\Index.css" />
     <Content Include="Content\RecentArticles\Default\Index.css" />
     <Content Include="Content\RecentProducts\Default\Index.css" />
+    <Content Include="Content\RelatedItems\Default\Index.css" />
     <Content Include="Views\Contact\Default\Index.ascx" />
     <Content Include="Views\DetailArticle\Default\Index.ascx" />
     <Content Include="Views\HtmlContent\Default\Index.ascx" />
@@ -120,7 +126,13 @@
       <Name>WebFramework.UI</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Content\FileManager\" />
+    <Folder Include="Models\Article\Domain\" />
+    <Folder Include="Models\Article\Mapping\" />
+    <Folder Include="Models\FileManager\Mapping\" />
+    <Folder Include="Views\FileManager\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
