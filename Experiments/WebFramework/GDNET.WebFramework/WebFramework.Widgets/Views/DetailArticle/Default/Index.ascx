@@ -2,6 +2,7 @@
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<DetailArticleModel>" %>
 <div>
     <%= base.Model.ItemModel.Name %>
+    <a name="<%= base.Model.IdRegion %>"></a>
 </div>
 <div>
     <%= base.Model.ItemModel.Description %>

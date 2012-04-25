@@ -4,6 +4,7 @@
 <div class="widget_container">
     <h3 class="title">
         <%= base.Model.Name %>
+        <a name="<%= base.Model.IdRegion %>"></a>
     </h3>
     <table cellpadding="0" cellspacing="0" width="100%">
         <%

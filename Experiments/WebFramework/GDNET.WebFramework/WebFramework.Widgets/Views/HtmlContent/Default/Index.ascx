@@ -3,6 +3,7 @@
 <div class="widget_container">
     <h3 class="title">
         <%= base.Model.Name %>
+        <a name="<%= base.Model.IdRegion %>"></a>
     </h3>
     <%
         var contentHtml = (base.Model.IsOverWeight) ? base.Model.HtmlContentCalculated : base.Model.HtmlContent;

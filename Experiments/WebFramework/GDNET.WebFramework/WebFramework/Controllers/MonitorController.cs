@@ -5,20 +5,83 @@ using GDNET.Web.Mvc.Adapters;
 using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
+using WebFramework.Constants;
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
 using WebFramework.Domain.System;
 
 namespace WebFramework.Controllers
 {
-    public class RegionAdminController : AbstractController
+    public class MonitorController : AbstractController
     {
-        private Region regionEntity = null;
+        #region Page management
 
-        public ActionResult Index()
+        public ActionResult Page()
         {
-            var regionModel = this.GetRegionModel();
-            if (regionModel != null)
+            Page pageEntity = null;
+            PageModel pageModel = null;
+
+            if (this.GetPageModel(out pageModel, out pageEntity))
+            {
+                return base.View(pageModel);
+            }
+
+            return base.RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public ActionResult Page(FormCollection collection)
+        {
+            Page pageEntity = null;
+            PageModel pageModel = null;
+
+            if (this.GetPageModel(out pageModel, out pageEntity))
+            {
+                // Name, Keyword & Description
+                var nameEditorAdapter = new TextBoxEditorAdapter("RG_Name", collection);
+                pageEntity.Name = nameEditorAdapter.Value;
+
+                var keywordEditorAdapter = new TextAreaEditorAdapter("RG_Keyword", collection);
+                pageEntity.Keyword = keywordEditorAdapter.Value;
+
+                var descriptionEditorAdapter = new TextAreaEditorAdapter("RG_Description", collection);
+                pageEntity.Description = descriptionEditorAdapter.Value;
+
+                pageModel = new PageModel(pageEntity);
+            }
+
+            return base.View(pageModel);
+        }
+
+        private bool GetPageModel(out PageModel pageModel, out Page pageEntity)
+        {
+            pageModel = null;
+            pageEntity = null;
+
+            string uniqueName = QueryStringAssistant.GetValueAsString(QueryStringConstants.Page);
+            if (!string.IsNullOrEmpty(uniqueName))
+            {
+                pageEntity = DomainRepositories.Page.GetByUniqueName(uniqueName);
+                if (pageEntity != null)
+                {
+                    pageModel = new PageModel(pageEntity);
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        #endregion
+
+        #region Region management
+
+        public ActionResult Region()
+        {
+            Region regionEntity = null;
+            RegionModel regionModel = null;
+
+            if (this.GetRegionModel(out regionModel, out regionEntity))
             {
                 return base.View(regionModel);
             }
@@ -27,17 +90,19 @@ namespace WebFramework.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(FormCollection collection)
+        public ActionResult Region(FormCollection collection)
         {
-            var regionModel = this.GetRegionModel();
-            if (regionModel != null)
+            Region regionEntity = null;
+            RegionModel regionModel = null;
+
+            if (this.GetRegionModel(out regionModel, out regionEntity))
             {
                 // Name & Description of the Region
                 var nameEditorAdapter = new TextBoxEditorAdapter("RG_Name", collection);
-                this.regionEntity.Name = nameEditorAdapter.Value;
+                regionEntity.Name = nameEditorAdapter.Value;
 
                 var descriptionEditorAdapter = new HtmlEditorAdapter("RG_Description", collection);
-                this.regionEntity.Description = descriptionEditorAdapter.Value;
+                regionEntity.Description = descriptionEditorAdapter.Value;
 
                 foreach (var property in regionModel.Properties)
                 {
@@ -75,7 +140,7 @@ namespace WebFramework.Controllers
 
                     if (isHandled)
                     {
-                        var setting = this.regionEntity.Settings.FirstOrDefault(x => x.WidgetProperty.Code == property.Key.Code);
+                        var setting = regionEntity.Settings.FirstOrDefault(x => x.WidgetProperty.Code == property.Key.Code);
                         if (setting != null)
                         {
                             setting.Value = newValue;
@@ -90,8 +155,11 @@ namespace WebFramework.Controllers
             return base.RedirectToAction("OnError", "Home");
         }
 
-        private RegionModel GetRegionModel()
+        private bool GetRegionModel(out RegionModel regionModel, out Region regionEntity)
         {
+            regionModel = null;
+            regionEntity = null;
+
             long? zoneId = QueryStringAssistant.ParseInteger(EntityQueryString.ZoneId);
             long? regionId = QueryStringAssistant.ParseInteger(EntityQueryString.RegionId);
 
@@ -100,12 +168,15 @@ namespace WebFramework.Controllers
                 var zone = DomainRepositories.Zone.GetById(zoneId.Value);
                 if (zone != null)
                 {
-                    this.regionEntity = zone.Regions.FirstOrDefault(x => x.Id == regionId.Value);
-                    return new RegionModel(this.regionEntity);
+                    regionEntity = zone.Regions.FirstOrDefault(x => x.Id == regionId.Value);
+                    regionModel = new RegionModel(regionEntity);
+                    return true;
                 }
             }
 
-            return default(RegionModel);
+            return false;
         }
+
+        #endregion
     }
 }
