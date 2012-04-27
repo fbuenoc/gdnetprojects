@@ -4,14 +4,12 @@ using GDNET.Common.Base.Entities;
 using GDNET.Common.Data;
 using GDNET.Common.DesignByContract;
 using GDNET.NHibernate.SessionManagers;
+using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Linq;
 
 namespace GDNET.NHibernate.Repositories
 {
-    /// <summary>
-    /// Base Repository for working with NHibernate
-    /// </summary>
     public abstract class AbstractRepository<TEntity, TId> : IRepositoryBase<TEntity, TId> where TEntity : EntityBase<TId>
     {
         protected ISessionStrategy sessionStrategy = null;
@@ -32,7 +30,14 @@ namespace GDNET.NHibernate.Repositories
             set;
         }
 
+        protected IQuery CreateQuery(string hqlQuery)
+        {
+            return this.sessionStrategy.Session.CreateQuery(hqlQuery);
+        }
+
         #region IRepositoryBase<TEntity,TId> Members
+
+        #region Get/load
 
         public TEntity LoadById(TId id)
         {
@@ -58,12 +63,11 @@ namespace GDNET.NHibernate.Repositories
             return result;
         }
 
+        #endregion
+
         #region GetAll Methods
 
-        /// <summary>
-        /// Gets all entities (of TEntity type) from data store.
-        /// </summary>
-        public IList<TEntity> GetAll()
+        public virtual IList<TEntity> GetAll()
         {
             return this.GetAll(0, 0);
         }
@@ -234,6 +238,8 @@ namespace GDNET.NHibernate.Repositories
 
         #endregion
 
+        #region Save/update
+
         public bool Save(TEntity entity)
         {
             ThrowException.ArgumentNullException(entity, "entity", "Entity must be valid to be saved.");
@@ -254,9 +260,6 @@ namespace GDNET.NHibernate.Repositories
             return true;
         }
 
-        /// <summary>
-        /// Save many entities to data store.
-        /// </summary>
         public bool Save(IList<TEntity> entities)
         {
             ThrowException.ArgumentNullException(entities, "entities", "List of entities must be valid to be saved.");
@@ -291,9 +294,6 @@ namespace GDNET.NHibernate.Repositories
             return true;
         }
 
-        /// <summary>
-        /// Update many entities to data store.
-        /// </summary>
         public bool Update(IList<TEntity> entities)
         {
             ThrowException.ArgumentNullException(entities, "entities", "List of entities must be valid to be updated.");
@@ -308,6 +308,10 @@ namespace GDNET.NHibernate.Repositories
 
             return true;
         }
+
+        #endregion
+
+        #region Delete methods
 
         public bool Delete(TId id)
         {
@@ -338,6 +342,8 @@ namespace GDNET.NHibernate.Repositories
             string hql = "delete " + typeof(TEntity).Name;
             return this.sessionStrategy.Session.CreateQuery(hql).ExecuteUpdate();
         }
+
+        #endregion
 
         #endregion
     }
