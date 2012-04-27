@@ -263,6 +263,7 @@
     <Compile Include="Common\Controllers\AbstractCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractControllerT.cs" />
+    <Compile Include="Common\Controllers\AbstractAuthorizeController.cs" />
     <Compile Include="Common\WebFrameworkViewEngine.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
@@ -345,8 +346,8 @@
     <Content Include="Areas\System\Views\Zone\Details.aspx" />
     <Content Include="Areas\System\Views\Zone\List.aspx" />
     <Content Include="Views\Home\NoPage.aspx" />
-    <Content Include="Views\Page\Admin.aspx" />
-    <Content Include="Views\RegionAdmin\Index.aspx" />
+    <Content Include="Views\Monitor\Page.aspx" />
+    <Content Include="Views\Monitor\Region.aspx" />
     <Content Include="Views\Shared\EditorComponents\HtmlEditor.ascx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
