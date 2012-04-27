@@ -8,7 +8,7 @@ using WebFramework.Common.Controllers;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class HomeController : AbstractController
+    public class HomeController : AbstractAuthorizeController
     {
         public ActionResult Index()
         {

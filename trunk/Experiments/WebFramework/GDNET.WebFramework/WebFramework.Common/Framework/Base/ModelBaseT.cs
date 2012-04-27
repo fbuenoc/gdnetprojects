@@ -31,6 +31,11 @@ namespace WebFramework.Common.Framework.Base
             get { return (this.Id == null || this.Id.Equals(default(TId))) ? true : false; }
         }
 
+        public string EntityInfo
+        {
+            get { return string.Format("{0}|{1}", typeof(TEntity).FullName, this.Id); }
+        }
+
         #endregion
 
         #region Ctors

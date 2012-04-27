@@ -118,7 +118,7 @@ namespace WebFramework.UI.Widgets
                 idrg = widgetModel.IdRegion
             };
 
-            return this.htmlHelper.ActionLink(linkText, "Index", WebFrameworkConstants.Controllers.RegionAdmin, routeValues, null);
+            return this.htmlHelper.ActionLink(linkText, "Region", WebFrameworkConstants.Controllers.Monitor, routeValues, null);
         }
 
         public MvcHtmlString ActionLinkAdminister(PageModel pageModel)
@@ -132,7 +132,7 @@ namespace WebFramework.UI.Widgets
                 page = pageModel.UniqueName
             };
 
-            return this.htmlHelper.ActionLink(linkText, "Admin", WebFrameworkConstants.Controllers.Page, routeValues, null);
+            return this.htmlHelper.ActionLink(linkText, "Page", WebFrameworkConstants.Controllers.Monitor, routeValues, null);
         }
 
         public MvcHtmlString ActionLinkContentItem(ContentItemModel itemModel, RegionModel targetRegion)

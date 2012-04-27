@@ -20,8 +20,8 @@
             public const string SystemWidget = "Widget";
             public const string SystemZone = "Zone";
 
-            public const string RegionAdmin = "RegionAdmin";
             public const string Page = "Page";
+            public const string Monitor = "Monitor";
         }
     }
 }
