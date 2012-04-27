@@ -83,6 +83,11 @@ namespace GDNET.NHibernate.Repositories
             return base.FindByProperty(property, value, orderByProperty, isAsc, page, pageSize);
         }
 
+        public override IList<TEntity> GetAll()
+        {
+            return this.GetAll(0, 0);
+        }
+
         public override IList<TEntity> GetAll(int page, int pageSize)
         {
             return this.FindByProperty(EntityMetaWithActive.IsActive, true, page, pageSize);
