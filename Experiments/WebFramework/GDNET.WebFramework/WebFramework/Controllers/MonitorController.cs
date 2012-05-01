@@ -5,6 +5,7 @@ using GDNET.Web.Mvc.Adapters;
 using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
+using WebFramework.Common.Security;
 using WebFramework.Constants;
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
@@ -12,7 +13,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Controllers
 {
-    public class MonitorController : AbstractController
+    public class MonitorController : AbstractController, IRequiredAuthenticatedController
     {
         #region Page management
 

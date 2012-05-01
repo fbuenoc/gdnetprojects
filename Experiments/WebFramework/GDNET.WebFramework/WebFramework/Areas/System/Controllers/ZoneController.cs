@@ -3,11 +3,12 @@ using System.Linq;
 using System.Web.Mvc;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 
 namespace WebFramework.Areas.System.Controllers
 {
-    public class ZoneController : AbstractListCrudController<ZoneModel>
+    public class ZoneController : AbstractListCrudController<ZoneModel>, IRequiredAdministerController
     {
         public override ActionResult List()
         {

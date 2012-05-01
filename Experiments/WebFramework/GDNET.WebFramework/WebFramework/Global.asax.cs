@@ -1,7 +1,9 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using FluentSecurity;
 using WebFramework.Common;
+using WebFramework.Common.Security;
 
 namespace WebFramework
 {
@@ -9,6 +11,7 @@ namespace WebFramework
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
+            filters.Add(new HandleSecurityAttribute());
             filters.Add(new HandleErrorAttribute());
         }
 
@@ -29,6 +32,7 @@ namespace WebFramework
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new WebFrameworkViewEngine());
 
+            Bootstrapper.SetupFluentSecurity();
             AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);

@@ -5,10 +5,11 @@ using WebFramework.Business.Administration;
 using WebFramework.Business.Helpers;
 using WebFramework.Common.Business.Administration;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Security;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class HomeController : AbstractAuthorizeController
+    public class HomeController : AbstractController, IRequiredAdministerController
     {
         public ActionResult Index()
         {
@@ -17,6 +18,5 @@ namespace WebFramework.Areas.Framework.Controllers
 
             return View(listeShortcutsModel);
         }
-
     }
 }
