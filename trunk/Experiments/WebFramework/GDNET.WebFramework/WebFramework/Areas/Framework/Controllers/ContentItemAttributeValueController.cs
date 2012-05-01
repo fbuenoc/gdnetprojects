@@ -5,18 +5,18 @@ using System.Web.Mvc;
 using GDNET.Extensions;
 using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Adapters;
-using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.UI;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class ContentItemAttributeValueController : AbstractCrudController<ContentItemAttributeValueModel>
+    public class ContentItemAttributeValueController : AbstractCrudController<ContentItemAttributeValueModel>, IRequiredAdministerController
     {
         protected override object OnCreateExecuting(ContentItemAttributeValueModel model, FormCollection collection)
         {

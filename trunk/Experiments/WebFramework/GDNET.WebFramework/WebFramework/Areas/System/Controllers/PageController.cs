@@ -3,13 +3,14 @@ using System.Web.Mvc;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.System;
 
 namespace WebFramework.Areas.System.Controllers
 {
-    public class PageController : AbstractListCrudController<PageModel>
+    public class PageController : AbstractListCrudController<PageModel>, IRequiredAdministerController
     {
         public override ActionResult List()
         {

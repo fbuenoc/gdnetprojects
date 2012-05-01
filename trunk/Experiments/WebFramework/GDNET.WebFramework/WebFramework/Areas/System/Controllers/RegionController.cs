@@ -6,13 +6,14 @@ using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.System;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.System;
 using WebFramework.UI;
 
 namespace WebFramework.Areas.System.Controllers
 {
-    public class RegionController : AbstractListCrudController<RegionModel>
+    public class RegionController : AbstractListCrudController<RegionModel>, IRequiredAdministerController
     {
         private Zone zoneEntity = null;
 

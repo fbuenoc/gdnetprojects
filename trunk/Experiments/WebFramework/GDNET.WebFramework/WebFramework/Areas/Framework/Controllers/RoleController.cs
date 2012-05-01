@@ -6,11 +6,12 @@ using System.Web.Security;
 using GDNET.Web.Helpers;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.AccountModeles;
+using WebFramework.Common.Security;
 using WebFramework.Constants;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class RoleController : AbstractListCrudController<RoleModel>
+    public class RoleController : AbstractListCrudController<RoleModel>, IRequiredAdministerController
     {
         public const string ActionAddUser = "AddUser";
 

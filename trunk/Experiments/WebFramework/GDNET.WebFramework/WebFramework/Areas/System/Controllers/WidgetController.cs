@@ -3,11 +3,12 @@ using System.Linq;
 using System.Web.Mvc;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 
 namespace WebFramework.Areas.System.Controllers
 {
-    public class WidgetController : AbstractListCrudController<WidgetModel>
+    public class WidgetController : AbstractListCrudController<WidgetModel>, IRequiredAdministerController
     {
         public override ActionResult List()
         {

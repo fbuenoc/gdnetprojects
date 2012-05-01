@@ -34,6 +34,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentSecurity">
+      <HintPath>..\..\..\..\Libs\FluentSecurity\FluentSecurity-1.4.0\FluentSecurity.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -263,7 +266,10 @@
     <Compile Include="Common\Controllers\AbstractCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
     <Compile Include="Common\Controllers\AbstractControllerT.cs" />
-    <Compile Include="Common\Controllers\AbstractAuthorizeController.cs" />
+    <Compile Include="Common\Security\ConfigurationExpressionAssistant.cs" />
+    <Compile Include="Common\Security\IRequiredAdministerController.cs" />
+    <Compile Include="Common\Security\IRequiredAuthenticatedController.cs" />
+    <Compile Include="Common\Security\Bootstrapper.cs" />
     <Compile Include="Common\WebFrameworkViewEngine.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />

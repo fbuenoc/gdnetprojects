@@ -8,13 +8,14 @@ using WebFramework.Areas.Framework.Constants;
 using WebFramework.Areas.Framework.ViewModels;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Common;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.Constants;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class TranslationController : AbstractListCrudController<TranslationModel>
+    public class TranslationController : AbstractListCrudController<TranslationModel>, IRequiredAdministerController
     {
         public override ActionResult List()
         {

@@ -6,13 +6,14 @@ using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.Common;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Common;
+using WebFramework.Common.Security;
 using WebFramework.Constants;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class ContentItemController : AbstractListCrudController<ContentItemModel>
+    public class ContentItemController : AbstractListCrudController<ContentItemModel>, IRequiredAdministerController
     {
         public override ActionResult List()
         {

@@ -2,11 +2,12 @@
 using System.Web.Security;
 using WebFramework.Common.AccountModeles;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Security;
 using WebFramework.Common.Validation;
 
 namespace WebFramework.Controllers
 {
-    public class AccountController : AbstractController
+    public class AccountController : AbstractController, IRequiredAuthenticatedController
     {
         // **************************************
         // URL: /Account/LogOn

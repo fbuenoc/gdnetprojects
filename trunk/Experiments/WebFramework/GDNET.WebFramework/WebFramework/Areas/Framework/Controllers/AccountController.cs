@@ -4,11 +4,12 @@ using GDNET.Web.Helpers;
 using Telerik.Web.Mvc;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.AccountModeles;
+using WebFramework.Common.Security;
 using WebFramework.Constants;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class AccountController : AbstractListCrudController<AccountModel>
+    public class AccountController : AbstractListCrudController<AccountModel>, IRequiredAdministerController
     {
         #region ListCrudControllerBase members
 

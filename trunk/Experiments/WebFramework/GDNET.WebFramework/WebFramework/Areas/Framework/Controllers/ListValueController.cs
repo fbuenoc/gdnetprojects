@@ -3,13 +3,14 @@ using System.Web.Mvc;
 using GDNET.Web.Helpers;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Common;
+using WebFramework.Common.Security;
 using WebFramework.Constants;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Areas.Framework.Controllers
 {
-    public class ListValueController : AbstractListCrudController<ListValueModel>
+    public class ListValueController : AbstractListCrudController<ListValueModel>, IRequiredAdministerController
     {
         #region ListCrudControllerBase Members
 
