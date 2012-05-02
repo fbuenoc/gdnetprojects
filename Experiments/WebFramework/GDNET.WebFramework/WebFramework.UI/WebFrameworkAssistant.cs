@@ -9,5 +9,10 @@ namespace WebFramework.UI
         {
             return new WebFrameworkFactory(html);
         }
+
+        public static SecurityAssistant FrameworkSecurity(this HtmlHelper html)
+        {
+            return new SecurityAssistant();
+        }
     }
 }

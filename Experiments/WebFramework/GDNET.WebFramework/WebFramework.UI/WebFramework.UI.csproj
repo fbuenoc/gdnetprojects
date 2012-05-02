@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentSecurity">
+      <HintPath>..\..\..\..\Libs\FluentSecurity\FluentSecurity-1.4.0\FluentSecurity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
@@ -48,6 +51,9 @@
     <Compile Include="Actions.cs" />
     <Compile Include="Helpers\AutoCompleteWS.cs" />
     <Compile Include="Helpers\ComponentFactoryBase.cs" />
+    <Compile Include="Helpers\SecurityAssistant.cs" />
+    <Compile Include="SecuredUrlAssistant.cs" />
+    <Compile Include="SecurityPermission.cs" />
     <Compile Include="ServicesType.cs" />
     <Compile Include="Helpers\ComboBoxWS.cs" />
     <Compile Include="Helpers\EditorFactory.cs" />

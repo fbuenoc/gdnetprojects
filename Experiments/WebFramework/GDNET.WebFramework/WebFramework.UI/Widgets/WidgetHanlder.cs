@@ -121,6 +121,8 @@ namespace WebFramework.UI.Widgets
             return this.htmlHelper.ActionLink(linkText, "Region", WebFrameworkConstants.Controllers.Monitor, routeValues, null);
         }
 
+
+
         public MvcHtmlString ActionLinkAdminister(PageModel pageModel)
         {
             string linkText = DomainServices.Translation.Translate("SysTranslation.PageAdminister");
