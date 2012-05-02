@@ -838,6 +838,7 @@
     <Content Include="Scripts\2012.1.214\telerik.upload.min.js" />
     <Content Include="Scripts\2012.1.214\telerik.window.min.js" />
     <Content Include="Views\Page\Index.aspx" />
+    <Content Include="Views\Shared\PageAdminister.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

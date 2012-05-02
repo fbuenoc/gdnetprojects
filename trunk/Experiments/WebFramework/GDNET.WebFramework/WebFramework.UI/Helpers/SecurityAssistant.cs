@@ -31,11 +31,24 @@ namespace WebFramework.UI
             return this.ActionIsAllowedForUser(controllerName, actionName);
         }
 
-        public bool IsAllowedToUpdateWidget(string entityInfo)
+        public bool CanManageWidget(string entityInfo)
         {
             if (!string.IsNullOrEmpty(entityInfo))
             {
                 if (this.ActionIsAllowedForUser("Monitor", "Region"))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public bool CanManagePage(string entityInfo)
+        {
+            if (!string.IsNullOrEmpty(entityInfo))
+            {
+                if (this.ActionIsAllowedForUser("Monitor", "Page"))
                 {
                     return true;
                 }
