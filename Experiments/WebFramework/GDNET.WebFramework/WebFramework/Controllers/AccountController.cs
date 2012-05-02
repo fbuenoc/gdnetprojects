@@ -2,74 +2,62 @@
 using System.Web.Security;
 using WebFramework.Common.AccountModeles;
 using WebFramework.Common.Controllers;
-using WebFramework.Common.Security;
 using WebFramework.Common.Validation;
+using WebFramework.UI;
 
 namespace WebFramework.Controllers
 {
-    public class AccountController : AbstractController, IRequiredAuthenticatedController
+    public class AccountController : AbstractController
     {
-        // **************************************
-        // URL: /Account/LogOn
-        // **************************************
-
         public ActionResult LogOn()
         {
-            return View();
+            return base.View();
         }
 
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
         {
-            if (ModelState.IsValid)
+            if (base.ModelState.IsValid)
             {
                 if (base.membershipService.ValidateUser(model.UserName, model.Password))
                 {
                     base.formsService.SignIn(model.UserName, model.RememberMe);
-                    if (Url.IsLocalUrl(returnUrl))
+                    if (base.Url.IsLocalUrl(returnUrl))
                     {
-                        return Redirect(returnUrl);
+                        return base.Redirect(returnUrl);
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return base.Redirect(base.Url.Action<HomeController>(x => x.Index()));
                     }
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    base.ModelState.AddModelError("", "The user name or password provided is incorrect.");
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return base.View(model);
         }
 
-        // **************************************
-        // URL: /Account/LogOff
-        // **************************************
-
+        [Authorize]
         public ActionResult LogOff()
         {
             base.formsService.SignOut();
-
-            return RedirectToAction("Index", "Home");
+            return base.Redirect(base.Url.Action<HomeController>(x => x.Index()));
         }
-
-        // **************************************
-        // URL: /Account/Register
-        // **************************************
 
         public ActionResult Register()
         {
-            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
-            return View();
+            base.ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
+            return base.View();
         }
 
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
-            if (ModelState.IsValid)
+            if (base.ModelState.IsValid)
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus = base.membershipService.CreateUser(model.UserName, model.Password, model.Email);
@@ -81,54 +69,46 @@ namespace WebFramework.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", AccountValidation.ErrorCodeToString(createStatus));
+                    base.ModelState.AddModelError("", AccountValidation.ErrorCodeToString(createStatus));
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
-            return View(model);
+            base.ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
+            return base.View(model);
         }
-
-        // **************************************
-        // URL: /Account/ChangePassword
-        // **************************************
 
         [Authorize]
         public ActionResult ChangePassword()
         {
-            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
-            return View();
+            base.ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
+            return base.View();
         }
 
         [Authorize]
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordModel model)
         {
-            if (ModelState.IsValid)
+            if (base.ModelState.IsValid)
             {
                 if (base.membershipService.ChangePassword(User.Identity.Name, model.OldPassword, model.NewPassword))
                 {
-                    return RedirectToAction("ChangePasswordSuccess");
+                    return base.Redirect(base.Url.Action<AccountController>(x => x.ChangePasswordSuccess()));
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                    base.ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
-            return View(model);
+            base.ViewBag.PasswordLength = base.membershipService.MinPasswordLength;
+            return base.View(model);
         }
-
-        // **************************************
-        // URL: /Account/ChangePasswordSuccess
-        // **************************************
 
         public ActionResult ChangePasswordSuccess()
         {
-            return View();
+            return base.View();
         }
 
     }
