@@ -12,11 +12,7 @@
     <div class="RightContent">
         <% base.Html.WebFramework().WidgetHanlder().DisplayContent(base.Model, "RightContent"); %>
     </div>
-    <div style="clear: both;">
-    </div>
-    <div class="management_space">
-        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
-    </div>
+    <% base.Html.RenderPartial("PageAdminister", base.Model); %>
 </asp:Content>
 <asp:Content ID="C3" ContentPlaceHolderID="HeadContent" runat="server">
     <meta name="keyword" content="<%= base.Model.Keyword %>" />
