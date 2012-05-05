@@ -262,15 +262,6 @@
     <Compile Include="Areas\Framework\ViewModels\TranslationViewModel.cs" />
     <Compile Include="Areas\System\Controllers\ZoneController.cs" />
     <Compile Include="Areas\System\SystemAreaRegistration.cs" />
-    <Compile Include="Common\Controllers\AbstractController.cs" />
-    <Compile Include="Common\Controllers\AbstractCrudController.cs" />
-    <Compile Include="Common\Controllers\AbstractListCrudController.cs" />
-    <Compile Include="Common\Controllers\AbstractControllerT.cs" />
-    <Compile Include="Common\Security\ConfigurationExpressionAssistant.cs" />
-    <Compile Include="Common\Security\IRequiredAdministerController.cs" />
-    <Compile Include="Common\Security\IRequiredAuthenticatedController.cs" />
-    <Compile Include="Common\Security\Bootstrapper.cs" />
-    <Compile Include="Common\WebFrameworkViewEngine.cs" />
     <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Constants\QueryStringConstants.cs" />
@@ -294,6 +285,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\hibernate.cfg.xml" />
+    <Content Include="App_Data\Widgets.txt" />
     <Content Include="Areas\Framework\Content\Site.css" />
     <Content Include="Areas\Framework\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Areas\Framework\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -922,6 +914,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Common.Widgets\WebFramework.Common.Widgets.csproj">
+      <Project>{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}</Project>
+      <Name>WebFramework.Common.Widgets</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Common\WebFramework.Common.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
