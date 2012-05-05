@@ -43,6 +43,11 @@ namespace WebFramework.Common.Widgets
             }
         }
 
+        public string EntityInfo
+        {
+            get { return this.regionModel.EntityInfo; }
+        }
+
         public string Name
         {
             get;

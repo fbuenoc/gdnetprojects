@@ -81,12 +81,12 @@ namespace WebFramework.Common.Widgets
                     widget.AddProperty(widgetProperty);
                 }
 
-                DomainRepositories.RepositoryAssistant.Flush();
-            }
+                if (this.AfterInstalled != null)
+                {
+                    this.AfterInstalled(this, new WidgetEventArgs(widget));
+                }
 
-            if (this.AfterInstalled != null)
-            {
-                this.AfterInstalled(this, new WidgetEventArgs(widget));
+                DomainRepositories.RepositoryAssistant.Flush();
             }
 
             return result;

@@ -47,6 +47,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentSecurity, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Libs\FluentSecurity\FluentSecurity-1.4.0\FluentSecurity.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -78,6 +82,10 @@
     <Compile Include="Common\Services\IValidationService.cs" />
     <Compile Include="ComponentModel\DisplayNameML.cs" />
     <Compile Include="ComponentModel\RequiredML.cs" />
+    <Compile Include="Controllers\AbstractController.cs" />
+    <Compile Include="Controllers\AbstractControllerT.cs" />
+    <Compile Include="Controllers\AbstractCrudController.cs" />
+    <Compile Include="Controllers\AbstractListCrudController.cs" />
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
@@ -106,6 +114,10 @@
     <Compile Include="Framework\System\RegionModel.cs" />
     <Compile Include="Framework\System\ZoneModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\Bootstrapper.cs" />
+    <Compile Include="Security\ConfigurationExpressionAssistant.cs" />
+    <Compile Include="Security\IRequiredAdministerController.cs" />
+    <Compile Include="Security\IRequiredAuthenticatedController.cs" />
     <Compile Include="Validation\AccountValidation.cs" />
   </ItemGroup>
   <ItemGroup>
