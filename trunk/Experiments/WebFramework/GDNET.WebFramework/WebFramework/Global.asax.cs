@@ -1,9 +1,11 @@
-﻿using System.Web;
+﻿using System.Linq;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using FluentSecurity;
-using WebFramework.Common;
 using WebFramework.Common.Security;
+using WebFramework.Common.Widgets;
+using WebFramework.Domain;
 
 namespace WebFramework
 {
@@ -18,19 +20,11 @@ namespace WebFramework
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                "Default", // Route name
-                "{controller}/{action}/{id}", // URL with parameters
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
-                new string[] { "WebFramework.Controllers" }
-            );
         }
 
         protected void Application_Start()
         {
             ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new WebFrameworkViewEngine());
 
             Bootstrapper.SetupFluentSecurity();
             AreaRegistration.RegisterAllAreas();
