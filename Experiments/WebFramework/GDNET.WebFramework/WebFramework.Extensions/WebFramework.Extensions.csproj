@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DynamicInputAssistant.cs" />
     <Compile Include="HtmlAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

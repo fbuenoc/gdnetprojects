@@ -58,7 +58,6 @@ namespace WebFramework.Mapping.Common
                 cm.Lazy(CollectionLazy.Lazy);
                 cm.Key(k => k.Column(MappingConstants.ContentItemId));
                 cm.Cascade(Cascade.All);
-                cm.Inverse(true);
             }, m =>
             {
                 m.OneToMany();

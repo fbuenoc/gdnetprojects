@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -55,6 +56,7 @@
     <Compile Include="SessionManagers\NHibernateSessionPerRequestModule.cs" />
     <Compile Include="SessionManagers\WebStaticSessionManager.cs" />
     <Compile Include="SessionManagers\WebSessionStrategy.cs" />
+    <Compile Include="WebFrameworkViewEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common.Encryption\GDNET.Common.Encryption.csproj">
@@ -76,6 +78,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Common.Widgets\WebFramework.Common.Widgets.csproj">
+      <Project>{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}</Project>
+      <Name>WebFramework.Common.Widgets</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Data\WebFramework.Data.csproj">
       <Project>{C5A9580A-F658-4AC6-A1B2-93F942567E06}</Project>

@@ -21,7 +21,7 @@ namespace WebFramework.Domain.System
                     Culture = culture
                 };
 
-                StatutLog statutLog = StatutLog.Factory.Create("Factory");
+                StatutLog statutLog = StatutLog.Factory.Create(typeof(PageFactory).FullName);
                 page.LifeCycle.AddStatutLog(statutLog);
 
                 return page;
