@@ -63,6 +63,10 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Web.Mvc, Version=2012.1.214.340, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\Libs\TelerikMvc\2012.1.214\lib\net40\Telerik.Web.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AccountModeles\ChangePasswordModel.cs" />
@@ -74,6 +78,8 @@
     <Compile Include="Business\Base\ModelBusinessEntityBase.cs" />
     <Compile Include="Business\Common\ArticleModel.cs" />
     <Compile Include="Business\Common\ProductModel.cs" />
+    <Compile Include="Constants\CommonConstants.cs" />
+    <Compile Include="Constants\QueryStringConstants.cs" />
     <Compile Include="Common\DefaultImpl\NavigationService.cs" />
     <Compile Include="Common\DefaultImpl\ValidationService.cs" />
     <Compile Include="Common\EntityQueryString.cs" />
@@ -82,10 +88,30 @@
     <Compile Include="Common\Services\IValidationService.cs" />
     <Compile Include="ComponentModel\DisplayNameML.cs" />
     <Compile Include="ComponentModel\RequiredML.cs" />
+    <Compile Include="Constants\WebFrameworkConstants.cs" />
     <Compile Include="Controllers\AbstractController.cs" />
     <Compile Include="Controllers\AbstractControllerT.cs" />
     <Compile Include="Controllers\AbstractCrudController.cs" />
     <Compile Include="Controllers\AbstractListCrudController.cs" />
+    <Compile Include="Controllers\Areas\Framework\AccountController.cs" />
+    <Compile Include="Controllers\Areas\Framework\ApplicationController.cs" />
+    <Compile Include="Controllers\Areas\Framework\ContentAttributeController.cs" />
+    <Compile Include="Controllers\Areas\Framework\ContentItemAttributeValueController.cs" />
+    <Compile Include="Controllers\Areas\Framework\ContentItemController.cs" />
+    <Compile Include="Controllers\Areas\Framework\ContentTypeController.cs" />
+    <Compile Include="Controllers\Areas\Framework\CultureController.cs" />
+    <Compile Include="Controllers\Areas\Framework\HomeController.cs" />
+    <Compile Include="Controllers\Areas\Framework\ListValueController.cs" />
+    <Compile Include="Controllers\Areas\Framework\RoleController.cs" />
+    <Compile Include="Controllers\Areas\Framework\TranslationController.cs" />
+    <Compile Include="Controllers\Areas\System\PageController.cs" />
+    <Compile Include="Controllers\Areas\System\RegionController.cs" />
+    <Compile Include="Controllers\Areas\System\WidgetController.cs" />
+    <Compile Include="Controllers\Areas\System\ZoneController.cs" />
+    <Compile Include="Controllers\Main\AccountController.cs" />
+    <Compile Include="Controllers\Main\HomeController.cs" />
+    <Compile Include="Controllers\Main\MonitorController.cs" />
+    <Compile Include="Controllers\Main\PageController.cs" />
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
@@ -118,7 +144,11 @@
     <Compile Include="Security\ConfigurationExpressionAssistant.cs" />
     <Compile Include="Security\IRequiredAdministerController.cs" />
     <Compile Include="Security\IRequiredAuthenticatedController.cs" />
+    <Compile Include="Security\SecuredUrlAssistant.cs" />
+    <Compile Include="Security\SecurityAssistant.cs" />
     <Compile Include="Validation\AccountValidation.cs" />
+    <Compile Include="ViewModels\Framework\FrameworkConstants.cs" />
+    <Compile Include="ViewModels\Framework\TranslationViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
@@ -148,6 +178,10 @@
     <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Services\WebFramework.Services.csproj">
+      <Project>{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}</Project>
+      <Name>WebFramework.Services</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

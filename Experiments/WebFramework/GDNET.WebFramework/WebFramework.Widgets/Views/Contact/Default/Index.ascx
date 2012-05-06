@@ -3,3 +3,4 @@
 <div>
     <a name="<%= base.Model.IdRegion %>"></a>
 </div>
+<% base.Html.RenderPartial("WidgetAdminister", base.Model); %>

@@ -1,4 +1,4 @@
-﻿<%@ Import Namespace="WebFramework.Widgets.Models.HtmlContent" %>
+﻿<%@ Import Namespace="WebFramework.Widgets.HtmlContentWg" %>
 <%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<HtmlContentModel>" %>
 <div class="widget_container">
     <h3 class="title">
@@ -21,7 +21,5 @@
     <%
         }
     %>
-    <div class="management_space">
-        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
-    </div>
+    <% base.Html.RenderPartial("WidgetAdminister", base.Model); %>
 </div>

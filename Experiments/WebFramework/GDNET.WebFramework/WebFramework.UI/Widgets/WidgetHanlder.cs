@@ -8,6 +8,7 @@ using GDNET.Extensions;
 using GDNET.Web.Mvc;
 using GDNET.Web.Mvc.ComponentEditors;
 using Telerik.Web.Mvc.UI;
+using WebFramework.Common.Constants;
 using WebFramework.Common.Framework.Common;
 using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
@@ -35,9 +36,11 @@ namespace WebFramework.UI.Widgets
                     var objet = Activator.CreateInstance(region.Widget.AssemblyName, region.Widget.ClassName);
                     var widget = objet.Unwrap() as IWidget;
                     object resultModel = widget.Initialize(region);
-
-                    string viewName = string.Format("{0}/{1}/{2}", region.Widget.TechnicalName, this.GetUsageTemplate(region), "Index");
-                    this.htmlHelper.RenderPartial(viewName, resultModel);
+                    if (resultModel != null)
+                    {
+                        string viewName = string.Format("{0}/{1}/{2}", region.Widget.TechnicalName, this.GetUsageTemplate(region), "Index");
+                        this.htmlHelper.RenderPartial(viewName, resultModel);
+                    }
                 }
             }
         }

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using WebFramework.Common.Security;
 using WebFramework.UI.Common;
 
 namespace WebFramework.UI

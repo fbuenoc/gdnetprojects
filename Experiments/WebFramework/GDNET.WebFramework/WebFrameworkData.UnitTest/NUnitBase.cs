@@ -1,11 +1,15 @@
-﻿using System.Diagnostics;
+﻿using System;
 using GDNET.Extensions;
-using GDNET.NHibernate;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate;
+using NHibernate.Cfg;
+using NHibernate.Dialect;
+using NHibernate.Driver;
 using NHibernate.Mapping.ByCode;
+using NHibernate.Tool.hbm2ddl;
 using WebFramework.Domain;
 using WebFramework.Mapping.Base;
+using Environment = NHibernate.Cfg.Environment;
 
 namespace WebFramework.Data.UnitTest
 {
@@ -40,21 +44,10 @@ namespace WebFramework.Data.UnitTest
         /// </summary>
         public void Clean()
         {
-            if (_currentSession != null)
-            {
-                using (_currentSession)
-                {
-                    _currentSession.Close();
-                }
-                _currentSession = null;
-            }
-
             if (_sessionFactory != null)
             {
-                using (_sessionFactory)
-                {
-                    _sessionFactory.Close();
-                }
+                _sessionFactory.Close();
+                _sessionFactory.Dispose();
                 _sessionFactory = null;
             }
         }
@@ -64,29 +57,30 @@ namespace WebFramework.Data.UnitTest
         /// </summary>
         private static void BuildSessionFactory()
         {
-            if (_sessionFactory != null)
-            {
-                return;
-            }
-
             var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(INHibernateMapping), typeof(INHibernateMapping).Assembly);
             var mapper = new ModelMapper();
             mapper.AddMappings(listeMappingTypes);
 
-            var nhConfigPath = "App_Data/hibernate.cfg.xml";
-            _sessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
+            var cfg = new Configuration()
+                     .SetProperty(Environment.ReleaseConnections, "on_close")
+                     .SetProperty(Environment.Dialect, typeof(SQLiteDialect).AssemblyQualifiedName)
+                     .SetProperty(Environment.ConnectionDriver, typeof(SQLite20Driver).AssemblyQualifiedName)
+                     .SetProperty(Environment.ConnectionString, "data source=:memory:");
 
-            var hbmMapping = mapper.CompileMappingForAllExplicitlyAddedEntities().AsString();
-            Debug.WriteLine(hbmMapping);
+            cfg.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), string.Empty);
+
+            _sessionFactory = cfg.BuildSessionFactory();
+            _currentSession = _sessionFactory.OpenSession();
+            _currentSession.BeginTransaction();
+
+            new SchemaExport(cfg).Execute(true, true, false, GetCurrentSession().Connection, Console.Out);
+
+            //var hbmMapping = mapper.CompileMappingForAllExplicitlyAddedEntities().AsString();
+            //Debug.WriteLine(hbmMapping);
         }
 
         public static ISession GetCurrentSession()
         {
-            if (_currentSession == null || !_currentSession.IsOpen)
-            {
-                _currentSession = _sessionFactory.OpenSession();
-            }
-
             return _currentSession;
         }
     }

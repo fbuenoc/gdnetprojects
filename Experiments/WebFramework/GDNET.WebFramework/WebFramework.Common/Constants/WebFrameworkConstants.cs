@@ -1,4 +1,4 @@
-﻿namespace WebFramework.UI
+﻿namespace WebFramework.Common.Constants
 {
     public class WebFrameworkConstants
     {

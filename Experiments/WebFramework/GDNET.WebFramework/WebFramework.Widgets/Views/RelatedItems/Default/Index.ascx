@@ -16,7 +16,5 @@
             }
         %>
     </table>
-    <div>
-        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
-    </div>
+    <% base.Html.RenderPartial("WidgetAdminister", base.Model); %>
 </div>

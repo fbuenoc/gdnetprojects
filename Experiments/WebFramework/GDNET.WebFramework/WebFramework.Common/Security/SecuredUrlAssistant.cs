@@ -4,7 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using GDNET.Web.Mvc.Helpers;
 
-namespace WebFramework.UI
+namespace WebFramework.Common.Security
 {
     public static class SecuredUrlAssistant
     {
