@@ -247,31 +247,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>UploadLocalization.zh-CN.resx</DependentUpon>
     </Compile>
-    <Compile Include="Areas\Framework\Constants\FrameworkConstants.cs" />
-    <Compile Include="Areas\Framework\Controllers\ApplicationController.cs" />
-    <Compile Include="Areas\Framework\Controllers\ContentAttributeController.cs" />
-    <Compile Include="Areas\Framework\Controllers\ContentItemAttributeValueController.cs" />
-    <Compile Include="Areas\Framework\Controllers\ContentItemController.cs" />
-    <Compile Include="Areas\Framework\Controllers\ContentTypeController.cs" />
-    <Compile Include="Areas\System\Controllers\RegionController.cs" />
-    <Compile Include="Areas\System\Controllers\WidgetController.cs" />
-    <Compile Include="Areas\Framework\Controllers\CultureController.cs" />
-    <Compile Include="Areas\Framework\Controllers\HomeController.cs" />
-    <Compile Include="Areas\System\Controllers\PageController.cs" />
-    <Compile Include="Areas\Framework\Controllers\TranslationController.cs" />
-    <Compile Include="Areas\Framework\ViewModels\TranslationViewModel.cs" />
-    <Compile Include="Areas\System\Controllers\ZoneController.cs" />
     <Compile Include="Areas\System\SystemAreaRegistration.cs" />
-    <Compile Include="Areas\Framework\Controllers\ListValueController.cs" />
-    <Compile Include="Constants\CommonConstants.cs" />
-    <Compile Include="Constants\QueryStringConstants.cs" />
-    <Compile Include="Areas\Framework\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Framework\Controllers\RoleController.cs" />
     <Compile Include="Areas\Framework\FrameworkAreaRegistration.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\MonitorController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

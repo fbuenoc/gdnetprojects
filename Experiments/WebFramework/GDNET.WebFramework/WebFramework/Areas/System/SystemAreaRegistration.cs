@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using WebFramework.Common.Controllers.Areas.System;
 
 namespace WebFramework.Areas.System
 {
@@ -17,7 +18,8 @@ namespace WebFramework.Areas.System
             context.MapRoute(
                 "System_default",
                 "System/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                new { action = "Index", id = UrlParameter.Optional },
+                new string[] { typeof(PageController).Namespace }
             );
         }
     }
