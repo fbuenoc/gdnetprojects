@@ -10,3 +10,4 @@
 <div>
     <%= base.Model.ItemModel.MainContent %>
 </div>
+<% base.Html.RenderPartial("WidgetAdminister", base.Model); %>

@@ -126,5 +126,10 @@ namespace WebFramework.Data.UnitTest
             IZoneRepository repository = new ZoneRepository(this.sessionStrategy);
             return repository;
         }
+
+        protected override T GetWidgetRepositoryInternal<T>(Domain.System.Widget w)
+        {
+            throw new global::System.NotImplementedException();
+        }
     }
 }

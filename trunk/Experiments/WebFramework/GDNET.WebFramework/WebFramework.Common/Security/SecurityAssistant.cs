@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using FluentSecurity;
 
-namespace WebFramework.UI
+namespace WebFramework.Common.Security
 {
     public class SecurityAssistant
     {
@@ -35,7 +35,7 @@ namespace WebFramework.UI
         {
             if (!string.IsNullOrEmpty(entityInfo))
             {
-                if (this.ActionIsAllowedForUser("Monitor", "Region"))
+                if (this.ActionIsAllowedForUser("WebFramework.Controllers.MonitorController", "Region"))
                 {
                     return true;
                 }
@@ -48,7 +48,7 @@ namespace WebFramework.UI
         {
             if (!string.IsNullOrEmpty(entityInfo))
             {
-                if (this.ActionIsAllowedForUser("Monitor", "Page"))
+                if (this.ActionIsAllowedForUser("WebFramework.Controllers.MonitorController", "Page"))
                 {
                     return true;
                 }

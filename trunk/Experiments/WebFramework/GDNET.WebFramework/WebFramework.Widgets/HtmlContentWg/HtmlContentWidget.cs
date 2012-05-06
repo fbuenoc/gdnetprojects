@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain.Constants;
 
-namespace WebFramework.Widgets.Models.HtmlContent
+namespace WebFramework.Widgets.HtmlContentWg
 {
     public class HtmlContentWidget : WidgetBase<HtmlContentModel>
     {

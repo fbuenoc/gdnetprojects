@@ -30,7 +30,5 @@
             }
         %>
     </table>
-    <div class="management_space">
-        <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
-    </div>
+    <% base.Html.RenderPartial("WidgetAdminister", base.Model); %>
 </div>

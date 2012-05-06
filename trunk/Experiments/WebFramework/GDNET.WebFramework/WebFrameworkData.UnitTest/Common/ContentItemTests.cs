@@ -2,19 +2,23 @@
 using WebFramework.Data.UnitTest.Utils;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
+using WebFrameworkData.UnitTest;
 
 namespace WebFramework.Data.UnitTest.Common
 {
     [TestFixture]
     public class ContentItemTests : NUnitBase
     {
-        [TestFixtureSetUp]
+        [SetUp]
         public void SetUp()
         {
             base.Init();
+
+            TestAssistant.CreateCultures();
+            TestAssistant.CreateListValues();
         }
 
-        [TestFixtureTearDown]
+        [TearDown]
         public void TearDown()
         {
             base.Clean();
@@ -33,11 +37,6 @@ namespace WebFramework.Data.UnitTest.Common
             Assert.AreEqual("T1", myItem.Name.Value);
             Assert.AreEqual("Test 1", myItem.Description.Value);
             Assert.AreEqual(type.TypeName, myItem.ContentType.TypeName);
-
-            DomainRepositories.ContentItem.Delete(item);
-            DomainRepositories.ContentType.Delete(type);
-
-            DomainRepositories.RepositoryAssistant.FlushAndClear();
         }
 
         [Test]
@@ -56,13 +55,6 @@ namespace WebFramework.Data.UnitTest.Common
             Assert.AreEqual(2, myItem.RelationItems.Count);
             Assert.AreEqual(item2.Id, myItem.RelationItems[0].Id);
             Assert.AreEqual(item3.Id, myItem.RelationItems[1].Id);
-
-            DomainRepositories.ContentItem.Delete(item3);
-            DomainRepositories.ContentItem.Delete(item2);
-            DomainRepositories.ContentItem.Delete(item1);
-            DomainRepositories.ContentType.Delete(type);
-
-            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -79,9 +71,6 @@ namespace WebFramework.Data.UnitTest.Common
 
             var savedItem = DomainRepositories.ContentItem.GetById(item.Id);
             Assert.IsNull(savedItem);
-
-            DomainRepositories.ContentType.Delete(type.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
         }
 
         [Test]
@@ -191,10 +180,6 @@ namespace WebFramework.Data.UnitTest.Common
 
             var r2 = DomainRepositories.ContentItem.GetById(relationItem2.Id);
             Assert.IsNotNull(r2);
-
-            DomainRepositories.ContentAttribute.Delete(r1.Id);
-            DomainRepositories.ContentAttribute.Delete(r2.Id);
-            DomainRepositories.RepositoryAssistant.Flush();
         }
     }
 }

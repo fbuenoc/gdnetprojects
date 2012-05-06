@@ -1,4 +1,4 @@
-﻿namespace WebFramework.Widgets.Models.HtmlContent
+﻿namespace WebFramework.Widgets.HtmlContentWg
 {
     public sealed class HtmlContentWidgetConstants
     {

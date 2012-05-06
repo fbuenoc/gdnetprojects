@@ -1,7 +1,7 @@
 ﻿using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
 
-namespace WebFramework.Widgets.Models.HtmlContent
+namespace WebFramework.Widgets.HtmlContentWg
 {
     public sealed class HtmlContentModel : WidgetModelBase
     {

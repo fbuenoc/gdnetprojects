@@ -22,11 +22,11 @@ namespace WebFramework.Widgets.Models.DetailArticle
 
         public void InitializeModel(ContentItem itemEntity)
         {
-            if (itemEntity != null)
-            {
-                Article myArticle = BusinessEntityAssistant.BuildEntity<Article>(itemEntity);
-                this.ItemModel = new ArticleModel(myArticle);
-            }
+            //if (itemEntity != null)
+            //{
+            //    Article myArticle = BusinessEntityAssistant.BuildEntity<Article>(itemEntity);
+            //    this.ItemModel = new ArticleModel(myArticle);
+            //}
         }
     }
 }

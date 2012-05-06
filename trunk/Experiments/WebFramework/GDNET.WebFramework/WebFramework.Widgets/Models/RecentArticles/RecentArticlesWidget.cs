@@ -1,7 +1,5 @@
 ﻿using System;
-using WebFramework.Business.Common;
 using WebFramework.Common.Widgets;
-using WebFramework.Domain;
 using WebFramework.Domain.Constants;
 
 namespace WebFramework.Widgets.Models.RecentArticles
@@ -40,13 +38,14 @@ namespace WebFramework.Widgets.Models.RecentArticles
 
         protected override RecentArticlesModel InitializeModel()
         {
-            int pageSize = base.GetPropertyValue<int>(WidgetBaseConstants.PropertyPageSize);
-            var listArticles = DomainRepositories.ContentItem.GetByContentType(typeof(Article), pageSize);
+            //int pageSize = base.GetPropertyValue<int>(WidgetBaseConstants.PropertyPageSize);
+            //var listArticles = DomainRepositories.ContentItem.GetByContentType(typeof(Article), pageSize);
 
-            RecentArticlesModel model = new RecentArticlesModel(base.region);
-            model.InitializeArticles(listArticles);
+            //RecentArticlesModel model = new RecentArticlesModel(base.region);
+            //model.InitializeArticles(listArticles);
 
-            return model;
+            //return model;
+            return null;
         }
     }
 }

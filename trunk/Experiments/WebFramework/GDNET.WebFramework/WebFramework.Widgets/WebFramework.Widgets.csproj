@@ -44,6 +44,14 @@
     <Reference Include="System.Web" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleWg\ArticleModel.cs" />
+    <Compile Include="ArticleWg\ArticleWidget.cs" />
+    <Compile Include="ArticleWg\Controllers\ListArticlesController.cs" />
+    <Compile Include="ArticleWg\Domain\Article.cs" />
+    <Compile Include="ArticleWg\Domain\Article.Factory.cs" />
+    <Compile Include="ArticleWg\Models\ArticleModel.cs" />
+    <Compile Include="ArticleWg\Repositories\ArticleRepository.cs" />
+    <Compile Include="ArticleWg\Repositories\IArticleRepository.cs" />
     <Compile Include="Models\Contact\ContactModel.cs" />
     <Compile Include="Models\Contact\ContactWidget.cs" />
     <Compile Include="Models\DetailArticle\DetailArticleModel.cs" />
@@ -53,9 +61,9 @@
     <Compile Include="Models\FileManager\Domain\FileRepository.cs" />
     <Compile Include="Models\FileManager\FileManagerModel.cs" />
     <Compile Include="Models\FileManager\FileManagerWidget.cs" />
-    <Compile Include="Models\HtmlContent\HtmlContentModel.cs" />
-    <Compile Include="Models\HtmlContent\HtmlContentWidget.cs" />
-    <Compile Include="Models\HtmlContent\HtmlContentWidgetConstants.cs" />
+    <Compile Include="HtmlContentWg\HtmlContentModel.cs" />
+    <Compile Include="HtmlContentWg\HtmlContentWidget.cs" />
+    <Compile Include="HtmlContentWg\HtmlContentWidgetConstants.cs" />
     <Compile Include="Models\RecentArticles\RecentArticlesConstants.cs" />
     <Compile Include="Models\RecentArticles\RecentArticlesModel.cs" />
     <Compile Include="Models\RecentArticles\RecentArticlesWidget.cs" />
@@ -78,6 +86,7 @@
     <Content Include="Views\RecentArticles\Default\Index.ascx" />
     <Content Include="Views\RecentProducts\Default\Index.ascx" />
     <Content Include="Views\RelatedItems\Default\Index.ascx" />
+    <Content Include="Views\Shared\WidgetAdminister.ascx" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\Shared\Error.aspx" />
   </ItemGroup>
@@ -100,6 +109,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
       <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
       <Name>GDNET.Extensions</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.NHibernate\GDNET.NHibernate.csproj">
+      <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
+      <Name>GDNET.NHibernate</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
@@ -128,8 +141,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\FileManager\" />
-    <Folder Include="Models\Article\Domain\" />
-    <Folder Include="Models\Article\Mapping\" />
     <Folder Include="Models\FileManager\Mapping\" />
     <Folder Include="Views\FileManager\" />
   </ItemGroup>

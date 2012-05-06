@@ -2,6 +2,7 @@
 using System.Web.Mvc.Html;
 using Finley.Common;
 using GDNET.Common.DesignByContract;
+using WebFramework.Common.Constants;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
 using WebFramework.Domain;
