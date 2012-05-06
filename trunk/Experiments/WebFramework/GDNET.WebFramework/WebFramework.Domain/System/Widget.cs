@@ -58,6 +58,18 @@ namespace WebFramework.Domain.System
             set;
         }
 
+        public virtual string RepositoryClassName
+        {
+            get;
+            set;
+        }
+
+        public virtual string RepositoryAssemblyName
+        {
+            get;
+            set;
+        }
+
         public virtual ReadOnlyCollection<WidgetProperty> Properties
         {
             get { return new ReadOnlyCollection<WidgetProperty>(this.properties); }

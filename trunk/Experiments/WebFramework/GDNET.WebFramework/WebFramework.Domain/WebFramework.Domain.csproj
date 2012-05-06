@@ -40,12 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\DTOEntityBase.cs" />
-    <Compile Include="Base\IDTOEntity.cs" />
+    <Compile Include="Common\DTOs\DTOEntityBase.cs" />
+    <Compile Include="Common\DTOs\IDTOEntity.cs" />
     <Compile Include="Base\IEntityWithLifeCycle.cs" />
-    <Compile Include="Base\IStatutListValue.cs" />
     <Compile Include="Common\Application.cs" />
-    <Compile Include="Common\DTOContentItem.cs" />
+    <Compile Include="Common\DTOs\DTOContentItem.cs" />
     <Compile Include="Common\StatutLifeCycle.Factory.cs" />
     <Compile Include="Common\StatutLog.Factory.cs" />
     <Compile Include="Common\StatutLifeCycle.cs" />
@@ -65,35 +64,32 @@
     <Compile Include="Common\Culture.Factory.cs" />
     <Compile Include="Common\Culture.cs" />
     <Compile Include="DomainServices.cs" />
-    <Compile Include="DynamicInput\AttributeInfo.cs" />
-    <Compile Include="DynamicInput\AttributeKey.cs" />
-    <Compile Include="DynamicInput\AttributeValue.cs" />
     <Compile Include="Extensions\CultureAssistant.cs" />
     <Compile Include="Extensions\EntityAssistant.cs" />
     <Compile Include="Common\ListValue.cs" />
     <Compile Include="Common\ListValue.Factory.cs" />
-    <Compile Include="Repositories\Common\IApplicationRepository.cs" />
-    <Compile Include="Repositories\Common\IContentAttributeRepository.cs" />
-    <Compile Include="Repositories\Common\IContentItemRepository.cs" />
-    <Compile Include="Repositories\Common\IContentTypeRepository.cs" />
-    <Compile Include="Repositories\Common\ICultureRepository.cs" />
-    <Compile Include="Repositories\Common\ITemporaryRepository.cs" />
+    <Compile Include="Common\Repositories\IApplicationRepository.cs" />
+    <Compile Include="Common\Repositories\IContentAttributeRepository.cs" />
+    <Compile Include="Common\Repositories\IContentItemRepository.cs" />
+    <Compile Include="Common\Repositories\IContentTypeRepository.cs" />
+    <Compile Include="Common\Repositories\ICultureRepository.cs" />
+    <Compile Include="Common\Repositories\ITemporaryRepository.cs" />
     <Compile Include="Common\Temporary.Factory.cs" />
     <Compile Include="Common\Temporary.cs" />
     <Compile Include="Common\Translation.Factory.cs" />
-    <Compile Include="Repositories\Common\IListValueRepository.cs" />
-    <Compile Include="Repositories\Common\ITranslationRepository.cs" />
+    <Compile Include="Common\Repositories\IListValueRepository.cs" />
+    <Compile Include="Common\Repositories\ITranslationRepository.cs" />
     <Compile Include="Common\Translation.cs" />
     <Compile Include="DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Base\AbstractSpecification.cs" />
     <Compile Include="Base\GenericSpecification.cs" />
-    <Compile Include="Repositories\System\IZoneRepository.cs" />
-    <Compile Include="Repositories\System\IWidgetRepository.cs" />
-    <Compile Include="Repositories\System\IPageRepository.cs" />
-    <Compile Include="Services\System\IRegionService.cs" />
-    <Compile Include="Services\Common\IContentTypeService.cs" />
-    <Compile Include="Services\System\IPageService.cs" />
+    <Compile Include="System\Repositories\IZoneRepository.cs" />
+    <Compile Include="System\Repositories\IWidgetRepository.cs" />
+    <Compile Include="System\Repositories\IPageRepository.cs" />
+    <Compile Include="System\Services\IRegionService.cs" />
+    <Compile Include="Common\Services\IContentTypeService.cs" />
+    <Compile Include="System\Services\IPageService.cs" />
     <Compile Include="System\RegionConnection.Factory.cs" />
     <Compile Include="System\RegionConnection.cs" />
     <Compile Include="System\WidgetProperty.Factory.cs" />
@@ -108,6 +104,7 @@
     <Compile Include="System\Page.Factory.cs" />
     <Compile Include="System\Widget.cs" />
     <Compile Include="System\Page.cs" />
+    <Compile Include="Widgets\IWidgetEntityRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">

@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Routing;
 using GDNET.NHibernate.SessionManagers;
 using GDNET.Web;
 using GDNET.Web.Helpers;
 using NHibernate;
 using NHibernate.Context;
+using WebFramework.Common.Widgets;
+using WebFramework.Domain;
 using WebFramework.Services.Common;
 
 namespace WebFramework.NHibernate.SessionManagers
@@ -33,7 +38,7 @@ namespace WebFramework.NHibernate.SessionManagers
             ISession session = WebStaticSessionManager.Instance.OpenSession();
             session.BeginTransaction();
 
-            CurrentSessionContext.Bind(session);
+            ManagedWebSessionContext.Bind(HttpContext.Current, session);
 
             // Set repositories & services
             if (HttpContextAssistant.TryGetItem<FrameworkRepositories>("Repositories") == null)
@@ -47,11 +52,38 @@ namespace WebFramework.NHibernate.SessionManagers
             }
 
             WebSessionInformationService.Instance.Initialize();
+
+            if (ViewEngines.Engines.Count == 0)
+            {
+                var routes = RouteTable.Routes;
+
+                // Route for all widgets
+                foreach (var widget in DomainRepositories.Widget.GetAll())
+                {
+                    string routeName = string.Format("Widget_{0}", widget.TechnicalName);
+                    string urlFormat = string.Format("Widget/{0}/{{controller}}/{{action}}/{{id}}", widget.TechnicalName);
+                    var namespaces = widget.Properties.Where(x => x.Code == WidgetBaseConstants.ControllerNamespace).Select(x => x.Value).ToArray();
+                    if (namespaces.Length > 0)
+                    {
+                        object defaults = new { action = "Index", id = UrlParameter.Optional };
+                        routes.MapRoute(routeName, urlFormat, defaults, namespaces);
+                    }
+                }
+
+                routes.MapRoute(
+                    "Default",                      // Route name
+                    "{controller}/{action}/{id}",   // URL with parameters
+                    new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
+                    new string[] { "WebFramework.Controllers.Main" }
+                );
+
+                ViewEngines.Engines.Add(new WebFrameworkViewEngine());
+            }
         }
 
         private void Application_EndRequest(object sender, EventArgs e)
         {
-            ISession session = CurrentSessionContext.Unbind(WebStaticSessionManager.Instance.SessionFactory);
+            ISession session = ManagedWebSessionContext.Unbind(HttpContext.Current, WebStaticSessionManager.Instance.SessionFactory);
             if (session != null)
             {
                 try

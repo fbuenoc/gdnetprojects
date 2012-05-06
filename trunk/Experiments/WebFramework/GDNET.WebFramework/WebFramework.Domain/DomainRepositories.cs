@@ -1,12 +1,13 @@
 ﻿using GDNET.Common.Data;
 using WebFramework.Domain.Repositories.Common;
 using WebFramework.Domain.Repositories.System;
+using WebFramework.Domain.System;
 
 namespace WebFramework.Domain
 {
     public abstract class DomainRepositories
     {
-        private static DomainRepositories _instance;
+        protected static DomainRepositories _instance;
 
         protected void Initialize(DomainRepositories instance)
         {
@@ -80,6 +81,13 @@ namespace WebFramework.Domain
         }
 
         #endregion
+
+        public static T GetWidgetRepository<T>(Widget w) where T : IWidgetRepository
+        {
+            return _instance.GetWidgetRepositoryInternal<T>(w);
+        }
+
+        protected abstract T GetWidgetRepositoryInternal<T>(Widget w) where T : IWidgetRepository;
 
         #region Abstract methods
 

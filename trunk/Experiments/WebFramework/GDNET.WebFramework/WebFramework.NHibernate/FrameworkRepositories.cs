@@ -1,4 +1,5 @@
-﻿using GDNET.Common.Data;
+﻿using System;
+using GDNET.Common.Data;
 using GDNET.NHibernate.SessionManagers;
 using WebFramework.Data.Common.Repositories;
 using WebFramework.Data.Common.Specifications;
@@ -6,6 +7,7 @@ using WebFramework.Data.System.Repositories;
 using WebFramework.Domain;
 using WebFramework.Domain.Repositories.Common;
 using WebFramework.Domain.Repositories.System;
+using WebFramework.Domain.System;
 
 namespace WebFramework.NHibernate
 {
@@ -17,6 +19,17 @@ namespace WebFramework.NHibernate
         {
             this.sessionStrategy = sessionStrategy;
             base.Initialize(this);
+        }
+
+        protected override T GetWidgetRepositoryInternal<T>(Widget w)
+        {
+            if (!string.IsNullOrEmpty(w.RepositoryAssemblyName) && !string.IsNullOrEmpty(w.RepositoryClassName))
+            {
+                var typeClassName = Type.GetType(w.RepositoryClassName, true);
+                Activator.CreateInstance(typeClassName, this.sessionStrategy);
+            }
+
+            return default(T);
         }
 
         protected override IApplicationRepository GetApplicationRepository()
