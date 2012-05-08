@@ -26,6 +26,7 @@ namespace WebFramework.NHibernate
                 if (templateProperty != null)
                 {
                     viewLocations.Add(string.Format("~/Views/Widgets/{0}/{1}/{{0}}.ascx", widget.TechnicalName, templateProperty.Value));
+                    viewLocations.Add(string.Format("~/Views/Widgets/{0}/{1}/{{0}}.aspx", widget.TechnicalName, templateProperty.Value));
                 }
             }
 

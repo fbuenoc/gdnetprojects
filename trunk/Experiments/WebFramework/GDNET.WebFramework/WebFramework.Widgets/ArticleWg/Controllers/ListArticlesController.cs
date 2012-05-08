@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using WebFramework.Common.Widgets.Controllers;
+using WebFramework.Widgets.ArticleWg.Models;
 
 namespace WebFramework.Widgets.ArticleWg.Controllers
 {

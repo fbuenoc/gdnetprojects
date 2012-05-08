@@ -3,7 +3,7 @@ using WebFramework.Common.Controllers;
 using WebFramework.Domain;
 using WebFramework.Services.Common;
 
-namespace WebFramework.Controllers.Main
+namespace WebFramework.Common.Controllers.Main
 {
     public class HomeController : AbstractController
     {

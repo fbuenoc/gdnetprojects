@@ -55,8 +55,9 @@ namespace WebFramework.NHibernate.SessionManagers
 
             if (ViewEngines.Engines.Count == 0)
             {
-                var routes = RouteTable.Routes;
+                AreaRegistration.RegisterAllAreas();
 
+                var routes = RouteTable.Routes;
                 // Route for all widgets
                 foreach (var widget in DomainRepositories.Widget.GetAll())
                 {
@@ -65,7 +66,7 @@ namespace WebFramework.NHibernate.SessionManagers
                     var namespaces = widget.Properties.Where(x => x.Code == WidgetBaseConstants.ControllerNamespace).Select(x => x.Value).ToArray();
                     if (namespaces.Length > 0)
                     {
-                        object defaults = new { action = "Index", id = UrlParameter.Optional };
+                        object defaults = new { controller = "AdminHome", action = "Index", id = UrlParameter.Optional };
                         routes.MapRoute(routeName, urlFormat, defaults, namespaces);
                     }
                 }
@@ -74,7 +75,7 @@ namespace WebFramework.NHibernate.SessionManagers
                     "Default",                      // Route name
                     "{controller}/{action}/{id}",   // URL with parameters
                     new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
-                    new string[] { "WebFramework.Controllers.Main" }
+                    new string[] { "WebFramework.Common.Controllers.Main" }
                 );
 
                 ViewEngines.Engines.Add(new WebFrameworkViewEngine());

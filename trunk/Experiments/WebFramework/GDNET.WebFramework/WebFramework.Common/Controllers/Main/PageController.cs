@@ -5,7 +5,7 @@ using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
 
-namespace WebFramework.Controllers.Main
+namespace WebFramework.Common.Controllers.Main
 {
     public class PageController : AbstractController
     {

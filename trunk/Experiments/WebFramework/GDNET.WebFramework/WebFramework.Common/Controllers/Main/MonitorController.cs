@@ -11,7 +11,7 @@ using WebFramework.Domain;
 using WebFramework.Domain.Constants;
 using WebFramework.Domain.System;
 
-namespace WebFramework.Controllers.Main
+namespace WebFramework.Common.Controllers.Main
 {
     public class MonitorController : AbstractController, IRequiredAuthenticatedController
     {

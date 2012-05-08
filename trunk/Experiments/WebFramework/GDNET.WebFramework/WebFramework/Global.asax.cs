@@ -24,7 +24,6 @@ namespace WebFramework
             ViewEngines.Engines.Clear();
 
             Bootstrapper.SetupFluentSecurity();
-            AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);

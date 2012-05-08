@@ -5,7 +5,7 @@ using WebFramework.Common.Controllers;
 using WebFramework.Common.Security;
 using WebFramework.Common.Validation;
 
-namespace WebFramework.Controllers.Main
+namespace WebFramework.Common.Controllers.Main
 {
     public class AccountController : AbstractController
     {

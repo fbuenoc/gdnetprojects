@@ -3,9 +3,9 @@ using WebFramework.Common.Widgets;
 
 namespace WebFramework.Widgets.ArticleWg
 {
-    public class ArticleModel : WidgetModelBase
+    public class ArticleWidgetModel : WidgetModelBase
     {
-        public ArticleModel(RegionModel regionModel)
+        public ArticleWidgetModel(RegionModel regionModel)
             : base(regionModel)
         {
         }

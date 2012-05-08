@@ -5,16 +5,16 @@ using WebFramework.Widgets.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg
 {
-    public class ArticleWidget : WidgetBase<ArticleModel>
+    public class ArticleWidget : WidgetBase<ArticleWidgetModel>
     {
         public override string Code
         {
             get { return "6699A437-E1FE-4006-9457-177D40F2EA69"; }
         }
 
-        protected override ArticleModel InitializeModel()
+        protected override ArticleWidgetModel InitializeModel()
         {
-            ArticleModel model = new ArticleModel(base.region);
+            ArticleWidgetModel model = new ArticleWidgetModel(base.region);
             return model;
         }
 
