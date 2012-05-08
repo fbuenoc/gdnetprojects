@@ -104,10 +104,10 @@
     <Compile Include="Controllers\Areas\Framework\ListValueController.cs" />
     <Compile Include="Controllers\Areas\Framework\RoleController.cs" />
     <Compile Include="Controllers\Areas\Framework\TranslationController.cs" />
-    <Compile Include="Controllers\Areas\System\PageController.cs" />
-    <Compile Include="Controllers\Areas\System\RegionController.cs" />
-    <Compile Include="Controllers\Areas\System\WidgetController.cs" />
-    <Compile Include="Controllers\Areas\System\ZoneController.cs" />
+    <Compile Include="Controllers\Areas\System\PageAdminController.cs" />
+    <Compile Include="Controllers\Areas\System\RegionAdminController.cs" />
+    <Compile Include="Controllers\Areas\System\WidgetAdminController.cs" />
+    <Compile Include="Controllers\Areas\System\ZoneAdminController.cs" />
     <Compile Include="Controllers\Main\AccountController.cs" />
     <Compile Include="Controllers\Main\HomeController.cs" />
     <Compile Include="Controllers\Main\MonitorController.cs" />

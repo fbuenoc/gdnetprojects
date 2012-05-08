@@ -8,7 +8,7 @@ using WebFramework.Domain;
 
 namespace WebFramework.Common.Controllers.Areas.System
 {
-    public class WidgetController : AbstractListCrudController<WidgetModel>, IRequiredAdministerController
+    public class WidgetAdminController : AbstractListCrudController<WidgetModel>, IRequiredAdministerController
     {
         public override ActionResult List()
         {

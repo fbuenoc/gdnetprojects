@@ -17,9 +17,10 @@ using WebFramework.Domain.Extensions;
 using WebFramework.Domain.System;
 using WebFramework.NHibernate;
 using WebFramework.NHibernate.SessionManagers;
+using WebFramework.Widgets.ArticleWg;
+using WebFramework.Widgets.HtmlContentWg;
 using WebFramework.Widgets.Models.Contact;
 using WebFramework.Widgets.Models.DetailArticle;
-using WebFramework.Widgets.Models.HtmlContent;
 using WebFramework.Widgets.Models.RecentArticles;
 using WebFramework.Widgets.Models.RecentProducts;
 using WebFramework.Widgets.Models.RelatedItems;
@@ -388,6 +389,9 @@ namespace WebFrameworkSampleData
 
             RelatedItemsWidget relatedItemsWidget = new RelatedItemsWidget();
             relatedItemsWidget.Install();
+
+            ArticleWidget articleWidget = new ArticleWidget();
+            articleWidget.Install();
 
             #endregion
 

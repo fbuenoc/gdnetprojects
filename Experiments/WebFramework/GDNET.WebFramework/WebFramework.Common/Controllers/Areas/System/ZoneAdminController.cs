@@ -8,7 +8,7 @@ using WebFramework.Domain;
 
 namespace WebFramework.Common.Controllers.Areas.System
 {
-    public class ZoneController : AbstractListCrudController<ZoneModel>, IRequiredAdministerController
+    public class ZoneAdminController : AbstractListCrudController<ZoneModel>, IRequiredAdministerController
     {
         public override ActionResult List()
         {
