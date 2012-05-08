@@ -85,6 +85,7 @@
     <Compile Include="ComponentEditors\HtmlEditorComponent.cs" />
     <Compile Include="ComponentEditors\NumberEditorComponent.cs" />
     <Compile Include="ComponentEditors\TextBoxEditorComponent.cs" />
+    <Compile Include="Helpers\ControllerAssistant.cs" />
     <Compile Include="Managers\ControlManager.cs" />
     <Compile Include="Managers\EditorManager.cs" />
     <Compile Include="Helpers\GDNetFactory.ListValue.cs" />

@@ -99,39 +99,30 @@ namespace GDNET.Common.Data
         /// <summary>
         /// Save an entity to data store.
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
         bool Save(TEntity entity);
         /// <summary>
         /// Save many entities to data store.
         /// </summary>
-        /// <param name="entities"></param>
-        /// <returns></returns>
         bool Save(IList<TEntity> entities);
 
         /// <summary>
         /// Update an entity to data store.
         /// </summary>
-        /// <param name="entity"></param>
-        /// <returns></returns>
         bool Update(TEntity entity);
         /// <summary>
         /// Update many entities to data store.
         /// </summary>
-        /// <param name="entities"></param>
-        /// <returns></returns>
         bool Update(IList<TEntity> entities);
 
         /// <summary>
         /// Delete entity from data store by its id.
         /// </summary>
-        /// <param name="id"></param>
         bool Delete(TId id);
         /// <summary>
         /// Delete entity from data store.
         /// </summary>
-        /// <param name="entity"></param>
         bool Delete(TEntity entity);
+
         /// <summary>
         /// Delete all entities of a type from data store.
         /// </summary>
