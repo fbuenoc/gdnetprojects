@@ -9,7 +9,7 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
     {
         public override ActionResult List()
         {
-            return base.View("Article.ListArticles");
+            return base.View();
         }
 
         protected override object OnCreateExecuting(ArticleModel model, FormCollection collection)

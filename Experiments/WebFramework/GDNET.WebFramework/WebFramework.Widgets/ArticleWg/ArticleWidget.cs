@@ -1,5 +1,6 @@
-﻿using System;
-using WebFramework.Common.Widgets;
+﻿using WebFramework.Common.Widgets;
+using WebFramework.Domain;
+using WebFramework.Domain.Constants;
 using WebFramework.Widgets.ArticleWg.Controllers;
 using WebFramework.Widgets.ArticleWg.Repositories;
 
@@ -15,29 +16,11 @@ namespace WebFramework.Widgets.ArticleWg
         protected override ArticleWidgetModel InitializeModel()
         {
             ArticleWidgetModel model = new ArticleWidgetModel(base.region);
+
+            IArticleRepository articleRepository = DomainRepositories.GetWidgetRepository<IArticleRepository>(base.GetWidgetInfo());
+
             return model;
         }
-
-        public ArticleWidget()
-            : base()
-        {
-            base.BeforeInstalled += WidgetBeforeInstalled;
-            base.AfterInstalled += WidgetAfterInstalled;
-        }
-
-        #region Events
-
-        void WidgetBeforeInstalled(object sender, EventArgs e)
-        {
-        }
-
-        void WidgetAfterInstalled(IWidget sender, WidgetEventArgs e)
-        {
-            e.Instance.RepositoryAssemblyName = typeof(ArticleRepository).Assembly.GetName().Name;
-            e.Instance.RepositoryClassName = typeof(ArticleRepository).FullName;
-        }
-
-        #endregion
 
         protected override void RegisterProperties()
         {
@@ -45,6 +28,8 @@ namespace WebFramework.Widgets.ArticleWg
 
             this.RegisterProperty(WidgetBaseConstants.PropertyUsageTemplate, WidgetBaseConstants.DefaultPageSize.ToString());
             this.RegisterProperty(WidgetBaseConstants.ControllerNamespace, typeof(ListArticlesController).Namespace);
+            this.RegisterProperty(string.Format(CommonConstants.WidgetPropertyRepositoryClassName, 0), typeof(ArticleRepository).FullName);
+            this.RegisterProperty(string.Format(CommonConstants.WidgetPropertyRepositoryAssemblyName, 0), typeof(ArticleRepository).Assembly.GetName().Name);
         }
     }
 }
