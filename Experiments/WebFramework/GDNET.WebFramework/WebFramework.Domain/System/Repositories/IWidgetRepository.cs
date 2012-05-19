@@ -6,5 +6,6 @@ namespace WebFramework.Domain.Repositories.System
     public interface IWidgetRepository : IRepositoryBase<Widget, long>
     {
         Widget GetByCode(string code);
+        Widget GetByTechnicalName(string name);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using NHibernate.Mapping.ByCode;
+using WebFramework.Base.Mapping;
 using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
 
@@ -14,8 +15,6 @@ namespace WebFramework.Mapping.System
             base.Property(e => e.Version);
             base.Property(e => e.ClassName);
             base.Property(e => e.AssemblyName);
-            base.Property(e => e.RepositoryClassName);
-            base.Property(e => e.RepositoryAssemblyName);
 
             base.ManyToOne(e => e.Name, m =>
             {

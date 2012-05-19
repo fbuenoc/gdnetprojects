@@ -23,5 +23,16 @@ namespace WebFramework.Data.System.Repositories
 
             return null;
         }
+
+        public Widget GetByTechnicalName(string name)
+        {
+            var widgets = this.FindByProperty(MetaInfos.WidgetMeta.TechnicalName, name);
+            if (widgets.Count == 1)
+            {
+                return widgets[0];
+            }
+
+            return null;
+        }
     }
 }

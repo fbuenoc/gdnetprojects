@@ -1,8 +1,10 @@
-﻿using GDNET.Extensions;
+﻿using System.IO;
+using System.Reflection;
+using GDNET.Extensions;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 using NHibernate.Mapping.ByCode;
-using WebFramework.Mapping.Base;
+using WebFramework.Base.Mapping;
 
 namespace WebFramework.NHibernate.SessionManagers
 {
@@ -10,12 +12,23 @@ namespace WebFramework.NHibernate.SessionManagers
     {
         protected static ISessionFactory TheSessionFactory;
 
-        protected static ModelMapper BuildModelMapper()
+        protected static ModelMapper BuildModelMapper(string mappingAssembliesFile)
         {
-            var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(INHibernateMapping), typeof(INHibernateMapping).Assembly);
-
             var mapper = new ModelMapper();
-            mapper.AddMappings(listeMappingTypes);
+            if (File.Exists(mappingAssembliesFile))
+            {
+                foreach (string line in File.ReadAllLines(mappingAssembliesFile))
+                {
+                    if (string.IsNullOrEmpty(line) || line.StartsWith("#"))
+                    {
+                        continue;
+                    }
+
+                    var asm = Assembly.Load(line);
+                    var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(INHibernateMapping), asm);
+                    mapper.AddMappings(listeMappingTypes);
+                }
+            }
 
             return mapper;
         }

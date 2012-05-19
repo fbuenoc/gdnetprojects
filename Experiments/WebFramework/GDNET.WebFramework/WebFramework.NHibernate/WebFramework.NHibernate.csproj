@@ -78,6 +78,10 @@
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Base\WebFramework.Base.csproj">
+      <Project>{FF847767-6F17-4736-8BE8-C68F4B5D780A}</Project>
+      <Name>WebFramework.Base</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Common.Widgets\WebFramework.Common.Widgets.csproj">
       <Project>{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}</Project>
       <Name>WebFramework.Common.Widgets</Name>

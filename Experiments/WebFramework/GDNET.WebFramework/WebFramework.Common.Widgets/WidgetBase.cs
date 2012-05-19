@@ -47,7 +47,11 @@ namespace WebFramework.Common.Widgets
 
         public virtual IList<WidgetAction> Actions
         {
-            get { return new List<WidgetAction>(); }
+            get
+            {
+                // Do nothing here
+                return new List<WidgetAction>();
+            }
         }
 
         #endregion
@@ -117,10 +121,12 @@ namespace WebFramework.Common.Widgets
 
         protected virtual void WidgetBeforeInstalled(object sender, EventArgs e)
         {
+            // Do nothing here
         }
 
         protected virtual void WidgetAfterInstalled(IWidget sender, WidgetEventArgs e)
         {
+            // Do nothing here
         }
 
         #endregion

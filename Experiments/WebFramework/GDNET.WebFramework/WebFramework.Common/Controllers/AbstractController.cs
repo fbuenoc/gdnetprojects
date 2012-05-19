@@ -2,7 +2,10 @@
 using System.Web.Routing;
 using GDNET.Web.Membership.DefaultImpl;
 using GDNET.Web.Membership.Services;
+using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.AccountServices;
+using WebFramework.Domain;
+using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Controllers
 {
@@ -10,6 +13,7 @@ namespace WebFramework.Common.Controllers
     {
         protected IFormsAuthenticationService formsService = null;
         protected IMembershipService membershipService = null;
+        private Widget currentWidget = null;
 
         protected override void Initialize(RequestContext requestContext)
         {
@@ -18,5 +22,19 @@ namespace WebFramework.Common.Controllers
 
             base.Initialize(requestContext);
         }
+
+        protected Widget CurrentWidget
+        {
+            get
+            {
+                if (this.currentWidget == null)
+                {
+                    string technicalName = this.GetAreaName();
+                    this.currentWidget = DomainRepositories.Widget.GetByTechnicalName(technicalName);
+                }
+                return this.currentWidget;
+            }
+        }
+
     }
 }

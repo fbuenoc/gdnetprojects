@@ -1,4 +1,5 @@
 ﻿using NHibernate.Mapping.ByCode;
+using WebFramework.Base.Mapping;
 using WebFramework.Domain.System;
 using WebFramework.Mapping.Base;
 
