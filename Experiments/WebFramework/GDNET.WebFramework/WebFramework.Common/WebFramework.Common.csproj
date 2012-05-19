@@ -109,10 +109,7 @@
     <Compile Include="Controllers\Areas\System\RegionAdminController.cs" />
     <Compile Include="Controllers\Areas\System\WidgetAdminController.cs" />
     <Compile Include="Controllers\Areas\System\ZoneAdminController.cs" />
-    <Compile Include="Controllers\Main\AccountController.cs" />
     <Compile Include="Controllers\Main\HomeController.cs" />
-    <Compile Include="Controllers\Main\MonitorController.cs" />
-    <Compile Include="Controllers\Main\PageController.cs" />
     <Compile Include="Framework\AccountModeles\AccountModel.cs" />
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
