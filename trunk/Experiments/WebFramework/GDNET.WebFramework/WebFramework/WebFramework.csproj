@@ -75,6 +75,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\hibernate.cfg.xml" />
+    <Content Include="App_Data\MappingAssemblies.txt" />
     <Content Include="Areas\Framework\Content\Site.css" />
     <Content Include="Areas\Framework\Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Areas\Framework\Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

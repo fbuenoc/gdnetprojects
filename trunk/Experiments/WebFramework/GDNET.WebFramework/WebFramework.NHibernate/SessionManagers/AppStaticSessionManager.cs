@@ -26,10 +26,11 @@ namespace WebFramework.NHibernate.SessionManagers
         {
             if (AbstractSessionManager.TheSessionFactory == null)
             {
-                var mapper = AbstractSessionManager.BuildModelMapper();
-
                 string directoryName = Path.GetDirectoryName(typeof(AppStaticSessionManager).Assembly.Location);
                 string nhConfigPath = Path.Combine(directoryName, "App_Data/hibernate.cfg.xml");
+                string mappingAssemblies = Path.Combine(directoryName, "App_Data/MappingAssemblies.txt");
+
+                var mapper = AbstractSessionManager.BuildModelMapper(mappingAssemblies);
                 AbstractSessionManager.TheSessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
             }
             else

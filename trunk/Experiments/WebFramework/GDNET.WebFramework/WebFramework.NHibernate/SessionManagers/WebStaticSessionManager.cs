@@ -8,6 +8,9 @@ namespace WebFramework.NHibernate.SessionManagers
 {
     public sealed class WebStaticSessionManager : AbstractSessionManager
     {
+        private const string HibernateConfiguration = "~/App_Data/hibernate.cfg.xml";
+        private const string MappingAssemblies = "~/App_Data/MappingAssemblies.txt";
+
         #region Singleton
 
         private static class NestedSessionManager
@@ -26,9 +29,8 @@ namespace WebFramework.NHibernate.SessionManagers
         {
             if (AbstractSessionManager.TheSessionFactory == null)
             {
-                string nhConfigPath = HostingEnvironment.MapPath("~/App_Data/hibernate.cfg.xml");
-                var mapper = AbstractSessionManager.BuildModelMapper();
-                AbstractSessionManager.TheSessionFactory = NHibernateAssistant.BuildSessionFactory(nhConfigPath, mapper);
+                var mapper = AbstractSessionManager.BuildModelMapper(HostingEnvironment.MapPath(MappingAssemblies));
+                AbstractSessionManager.TheSessionFactory = NHibernateAssistant.BuildSessionFactory(HostingEnvironment.MapPath(HibernateConfiguration), mapper);
             }
             else
             {

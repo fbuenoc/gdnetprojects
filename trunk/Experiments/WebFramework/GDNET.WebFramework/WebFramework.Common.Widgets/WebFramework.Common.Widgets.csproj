@@ -63,6 +63,10 @@
       <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
       <Name>GDNET.Extensions</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
+      <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
+      <Name>GDNET.Web.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Common\WebFramework.Common.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
       <Name>WebFramework.Common</Name>
