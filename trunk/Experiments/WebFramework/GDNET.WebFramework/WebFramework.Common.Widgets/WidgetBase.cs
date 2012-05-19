@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Web.Mvc;
 using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
@@ -8,7 +9,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Widgets
 {
-    public abstract class WidgetBase<TResult> : IWidget
+    public abstract class WidgetBase<TResult> : AreaRegistration, IWidget
     {
         #region Members
 
@@ -110,11 +111,26 @@ namespace WebFramework.Common.Widgets
         public WidgetBase()
         {
             this.RegisterProperties();
+            this.BeforeInstalled += WidgetBeforeInstalled;
+            this.AfterInstalled += WidgetAfterInstalled;
+        }
+
+        protected virtual void WidgetBeforeInstalled(object sender, EventArgs e)
+        {
+        }
+
+        protected virtual void WidgetAfterInstalled(IWidget sender, WidgetEventArgs e)
+        {
         }
 
         #endregion
 
         #region Behavior methods
+
+        protected Widget GetWidgetInfo()
+        {
+            return DomainRepositories.Widget.GetByCode(this.Code);
+        }
 
         /// <summary>
         /// Can be override in concrete implementation
@@ -158,6 +174,25 @@ namespace WebFramework.Common.Widgets
         }
 
         protected abstract TResult InitializeModel();
+
+        #endregion
+
+        #region AreaRegistration
+
+        public override string AreaName
+        {
+            get { return this.TechnicalName; }
+        }
+
+        public override void RegisterArea(AreaRegistrationContext context)
+        {
+            context.MapRoute(
+                string.Format("{0}_Default", this.AreaName),
+                string.Format("Widget/{0}/{{controller}}/{{action}}/{{id}}", this.TechnicalName),
+                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                new string[] { string.Format("{0}.Controllers", this.GetType().Namespace) }
+            );
+        }
 
         #endregion
     }

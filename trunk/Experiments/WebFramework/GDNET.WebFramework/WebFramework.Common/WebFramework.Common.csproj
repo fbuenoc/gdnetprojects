@@ -78,6 +78,7 @@
     <Compile Include="Business\Base\ModelBusinessEntityBase.cs" />
     <Compile Include="Business\Common\ArticleModel.cs" />
     <Compile Include="Business\Common\ProductModel.cs" />
+    <Compile Include="Base\WebFrameworkViewEngine.cs" />
     <Compile Include="Constants\CommonConstants.cs" />
     <Compile Include="Constants\QueryStringConstants.cs" />
     <Compile Include="Common\DefaultImpl\NavigationService.cs" />
