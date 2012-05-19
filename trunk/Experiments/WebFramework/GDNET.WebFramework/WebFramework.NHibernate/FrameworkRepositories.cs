@@ -1,10 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using GDNET.Common.Data;
 using GDNET.NHibernate.SessionManagers;
 using WebFramework.Data.Common.Repositories;
 using WebFramework.Data.Common.Specifications;
 using WebFramework.Data.System.Repositories;
 using WebFramework.Domain;
+using WebFramework.Domain.Constants;
 using WebFramework.Domain.Repositories.Common;
 using WebFramework.Domain.Repositories.System;
 using WebFramework.Domain.System;
@@ -14,6 +18,7 @@ namespace WebFramework.NHibernate
     public sealed class FrameworkRepositories : DomainRepositories
     {
         private ISessionStrategy sessionStrategy;
+        private Dictionary<Type, object> cacheWidgetRepositories = new Dictionary<Type, object>();
 
         public FrameworkRepositories(ISessionStrategy sessionStrategy)
         {
@@ -23,10 +28,38 @@ namespace WebFramework.NHibernate
 
         protected override T GetWidgetRepositoryInternal<T>(Widget w)
         {
-            if (!string.IsNullOrEmpty(w.RepositoryAssemblyName) && !string.IsNullOrEmpty(w.RepositoryClassName))
+            if (cacheWidgetRepositories.ContainsKey(typeof(T)))
             {
-                var typeClassName = Type.GetType(w.RepositoryClassName, true);
-                Activator.CreateInstance(typeClassName, this.sessionStrategy);
+                return (T)cacheWidgetRepositories[typeof(T)];
+            }
+
+            int counter = 0;
+            while (true)
+            {
+                if (w.Properties.Any(x => x.Code == string.Format(CommonConstants.WidgetPropertyRepositoryAssemblyName, counter)))
+                {
+                    string repositoryAssemblyName = w.Properties.First(x => x.Code == string.Format(CommonConstants.WidgetPropertyRepositoryAssemblyName, counter)).Value;
+                    string repositoryClassName = w.Properties.First(x => x.Code == string.Format(CommonConstants.WidgetPropertyRepositoryClassName, counter)).Value;
+
+                    if (typeof(T).FullName == repositoryClassName)
+                    {
+                        Assembly asm = Assembly.Load(repositoryAssemblyName);
+                        var type = asm.GetType(repositoryClassName, true);
+
+                        T repositoryInstance = (T)Activator.CreateInstance(type, this.sessionStrategy);
+                        cacheWidgetRepositories.Add(typeof(T), repositoryInstance);
+
+                        return repositoryInstance;
+                    }
+                    else
+                    {
+                        counter += 1;
+                    }
+                }
+                else
+                {
+                    break;
+                }
             }
 
             return default(T);

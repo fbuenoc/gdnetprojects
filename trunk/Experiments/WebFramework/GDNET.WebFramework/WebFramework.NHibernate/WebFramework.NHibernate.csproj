@@ -56,7 +56,6 @@
     <Compile Include="SessionManagers\NHibernateSessionPerRequestModule.cs" />
     <Compile Include="SessionManagers\WebStaticSessionManager.cs" />
     <Compile Include="SessionManagers\WebSessionStrategy.cs" />
-    <Compile Include="WebFrameworkViewEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common.Encryption\GDNET.Common.Encryption.csproj">

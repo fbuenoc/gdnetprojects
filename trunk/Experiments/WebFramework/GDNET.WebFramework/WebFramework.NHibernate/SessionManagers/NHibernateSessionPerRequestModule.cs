@@ -1,19 +1,23 @@
 ﻿using System;
-using System.Linq;
 using System.Web;
-using System.Web.Mvc;
 using System.Web.Routing;
 using GDNET.NHibernate.SessionManagers;
 using GDNET.Web;
 using GDNET.Web.Helpers;
 using NHibernate;
 using NHibernate.Context;
-using WebFramework.Common.Widgets;
-using WebFramework.Domain;
 using WebFramework.Services.Common;
 
 namespace WebFramework.NHibernate.SessionManagers
 {
+    public class LocalhostConstraint : IRouteConstraint
+    {
+        public bool Match(HttpContextBase httpContext, Route route, string parameterName, RouteValueDictionary values, RouteDirection routeDirection)
+        {
+            return false;
+        }
+    }
+
     public class NHibernateSessionPerRequestModule : IHttpModule
     {
         #region Public Methods
@@ -52,34 +56,6 @@ namespace WebFramework.NHibernate.SessionManagers
             }
 
             WebSessionInformationService.Instance.Initialize();
-
-            if (ViewEngines.Engines.Count == 0)
-            {
-                AreaRegistration.RegisterAllAreas();
-
-                var routes = RouteTable.Routes;
-                // Route for all widgets
-                foreach (var widget in DomainRepositories.Widget.GetAll())
-                {
-                    string routeName = string.Format("Widget_{0}", widget.TechnicalName);
-                    string urlFormat = string.Format("Widget/{0}/{{controller}}/{{action}}/{{id}}", widget.TechnicalName);
-                    var namespaces = widget.Properties.Where(x => x.Code == WidgetBaseConstants.ControllerNamespace).Select(x => x.Value).ToArray();
-                    if (namespaces.Length > 0)
-                    {
-                        object defaults = new { controller = "AdminHome", action = "Index", id = UrlParameter.Optional };
-                        routes.MapRoute(routeName, urlFormat, defaults, namespaces);
-                    }
-                }
-
-                routes.MapRoute(
-                    "Default",                      // Route name
-                    "{controller}/{action}/{id}",   // URL with parameters
-                    new { controller = "Home", action = "Index", id = UrlParameter.Optional }, // Parameter defaults
-                    new string[] { "WebFramework.Common.Controllers.Main" }
-                );
-
-                ViewEngines.Engines.Add(new WebFrameworkViewEngine());
-            }
         }
 
         private void Application_EndRequest(object sender, EventArgs e)

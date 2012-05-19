@@ -1,5 +1,4 @@
-﻿using System;
-using GDNET.Common.Data;
+﻿using GDNET.Common.Data;
 using GDNET.NHibernate.SessionManagers;
 using WebFramework.Data.Common.Repositories;
 using WebFramework.Data.Common.Specifications;
@@ -25,12 +24,6 @@ namespace WebFramework.NHibernate
 
         protected override T GetWidgetRepositoryInternal<T>(Widget w)
         {
-            if (!string.IsNullOrEmpty(w.RepositoryAssemblyName) && !string.IsNullOrEmpty(w.RepositoryClassName))
-            {
-                var typeClassName = Type.GetType(w.RepositoryClassName, true);
-                Activator.CreateInstance(typeClassName, this.sessionStrategy);
-            }
-
             return default(T);
         }
 

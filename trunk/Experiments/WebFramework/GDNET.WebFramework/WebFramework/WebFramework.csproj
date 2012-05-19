@@ -863,6 +863,7 @@
   <ItemGroup>
     <Folder Include="App_Data\ContentTypes\" />
     <Folder Include="App_Data\ImagesCache\" />
+    <Folder Include="Areas\Article\Views\" />
     <Folder Include="Areas\System\Views\Shared\" />
     <Folder Include="Content\Widgets\" />
     <Folder Include="Views\Widgets\" />
