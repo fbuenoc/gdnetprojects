@@ -10,6 +10,8 @@ namespace WebFramework.Widgets.Daskboard.Controllers
 {
     public class HomeController : AbstractController
     {
+        #region Index
+
         public ActionResult Index()
         {
             var defaultPage = DomainServices.Page.GetDefaultPage(WebSessionInformationService.Instance.CurrentApplication, WebSessionInformationService.Instance.CurrentCulture);
@@ -24,6 +26,20 @@ namespace WebFramework.Widgets.Daskboard.Controllers
             }
         }
 
+        public ActionResult NoPage()
+        {
+            return base.View();
+        }
+
+        public ActionResult OnError()
+        {
+            return base.View();
+        }
+
+        #endregion
+
+        #region Page
+
         public ActionResult Page()
         {
             var pageUniqueName = QueryStringAssistant.GetValueAsString(QueryStringConstants.Page);
@@ -36,5 +52,7 @@ namespace WebFramework.Widgets.Daskboard.Controllers
 
             return base.View();
         }
+
+        #endregion
     }
 }

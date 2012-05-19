@@ -2,7 +2,7 @@
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
 using WebFramework.Widgets.ArticleWg.Controllers;
-using WebFramework.Widgets.ArticleWg.Repositories;
+using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg
 {

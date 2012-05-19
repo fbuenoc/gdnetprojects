@@ -1,0 +1,9 @@
+﻿##############################################################################
+# This file list all assemblies which contains mapping definition
+##############################################################################
+
+# For system framework
+WebFramework.Mapping
+
+# For common widgets
+WebFramework.Widgets.Mapping
