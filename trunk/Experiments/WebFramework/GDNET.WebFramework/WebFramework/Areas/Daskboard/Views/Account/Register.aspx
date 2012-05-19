@@ -59,3 +59,6 @@
     </div>
     <% } %>
 </asp:Content>
+<asp:Content ID="C3" ContentPlaceHolderID="HeadContent" runat="server">
+    <% base.Html.WebFramework().WidgetHanlder().RegisterStyleSheets(); %>
+</asp:Content>
