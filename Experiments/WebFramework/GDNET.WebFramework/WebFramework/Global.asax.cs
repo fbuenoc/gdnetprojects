@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using FluentSecurity;
+using WebFramework.Common.Base;
 using WebFramework.Common.Security;
 
 namespace WebFramework
@@ -22,12 +23,13 @@ namespace WebFramework
         protected void Application_Start()
         {
             ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new WebFrameworkViewEngine());
 
             Bootstrapper.SetupFluentSecurity();
+            AreaRegistration.RegisterAllAreas();
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
         }
-
     }
 }
