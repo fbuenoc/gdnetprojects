@@ -2,6 +2,7 @@
 using WebFramework.Domain.Repositories.Common;
 using WebFramework.Domain.Repositories.System;
 using WebFramework.Domain.System;
+using WebFramework.Domain.Widgets;
 
 namespace WebFramework.Domain
 {
@@ -82,12 +83,12 @@ namespace WebFramework.Domain
 
         #endregion
 
-        public static T GetWidgetRepository<T>(Widget w) where T : IWidgetRepository
+        public static T GetWidgetRepository<T>(Widget w) where T : IWidgetEntityRepository
         {
             return _instance.GetWidgetRepositoryInternal<T>(w);
         }
 
-        protected abstract T GetWidgetRepositoryInternal<T>(Widget w) where T : IWidgetRepository;
+        protected abstract T GetWidgetRepositoryInternal<T>(Widget w) where T : IWidgetEntityRepository;
 
         #region Abstract methods
 
