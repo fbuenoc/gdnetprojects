@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Web.Mvc;
 using WebFramework.Common.Widgets.Controllers;
+using WebFramework.Domain;
 using WebFramework.Widgets.ArticleWg.Models;
+using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg.Controllers
 {
@@ -9,6 +11,8 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
     {
         public override ActionResult List()
         {
+            IArticleRepository articleRepository = DomainRepositories.GetWidgetRepository<ArticleRepository>(base.CurrentWidget);
+
             return base.View();
         }
 

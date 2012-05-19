@@ -29,8 +29,6 @@ namespace WebFramework.Data.UnitTest.Common
             var widget = Widget.Factory.Create("W1", "WidgetOne", "The widget one");
             widget.ClassName = this.GetType().FullName;
             widget.AssemblyName = this.GetType().Assembly.FullName;
-            widget.RepositoryClassName = "";
-            widget.RepositoryAssemblyName = "";
 
             DomainRepositories.Widget.Save(widget);
             DomainRepositories.RepositoryAssistant.FlushAndClear();

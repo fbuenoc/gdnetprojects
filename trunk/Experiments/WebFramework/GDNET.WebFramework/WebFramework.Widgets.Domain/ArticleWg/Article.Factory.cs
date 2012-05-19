@@ -1,6 +1,6 @@
 ﻿using WebFramework.Domain.Common;
 
-namespace WebFramework.Widgets.ArticleWg.Domain
+namespace WebFramework.Widgets.Domain.ArticleWg
 {
     public partial class Article
     {

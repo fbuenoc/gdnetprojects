@@ -47,11 +47,7 @@
     <Compile Include="ArticleWg\ArticleWidgetModel.cs" />
     <Compile Include="ArticleWg\ArticleWidget.cs" />
     <Compile Include="ArticleWg\Controllers\ListArticlesController.cs" />
-    <Compile Include="ArticleWg\Domain\Article.cs" />
-    <Compile Include="ArticleWg\Domain\Article.Factory.cs" />
     <Compile Include="ArticleWg\Models\ArticleModel.cs" />
-    <Compile Include="ArticleWg\Repositories\ArticleRepository.cs" />
-    <Compile Include="ArticleWg\Repositories\IArticleRepository.cs" />
     <Compile Include="Daskboard\Controllers\AccountController.cs" />
     <Compile Include="Daskboard\Controllers\HomeController.cs" />
     <Compile Include="Daskboard\Controllers\MonitorController.cs" />
@@ -164,8 +160,13 @@
       <Project>{18980C72-F35D-4D3F-B76B-7D1A005C6275}</Project>
       <Name>WebFramework.UI</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Widgets.Domain\WebFramework.Widgets.Domain.csproj">
+      <Project>{16ACCAA3-4265-46A0-B14C-399F9AB0606F}</Project>
+      <Name>WebFramework.Widgets.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ArticleWg\Content\" />
     <Folder Include="Daskboard\Domain\" />
     <Folder Include="Models\FileManager\Mapping\" />
   </ItemGroup>

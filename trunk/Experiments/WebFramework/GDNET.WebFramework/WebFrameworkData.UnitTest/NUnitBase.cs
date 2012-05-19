@@ -7,8 +7,8 @@ using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Tool.hbm2ddl;
+using WebFramework.Base.Mapping;
 using WebFramework.Domain;
-using WebFramework.Mapping.Base;
 using Environment = NHibernate.Cfg.Environment;
 
 namespace WebFramework.Data.UnitTest

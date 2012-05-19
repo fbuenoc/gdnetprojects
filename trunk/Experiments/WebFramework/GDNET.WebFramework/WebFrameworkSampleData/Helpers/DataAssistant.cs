@@ -403,10 +403,16 @@ namespace WebFrameworkSampleData
             Widget articlesWidgetInfo = DomainRepositories.Widget.GetByCode(articlesWidget.Code);
             Widget detailArticleWidgetInfo = DomainRepositories.Widget.GetByCode(detailArticleWidget.Code);
             Widget relatedItemsInfo = DomainRepositories.Widget.GetByCode(relatedItemsWidget.Code);
+            Widget articleWidgetInfo = DomainRepositories.Widget.GetByCode(articleWidget.Code);
 
             #endregion
 
             #region Home page regions
+
+            Region leftR1 = Region.Factory.Create("ArticleAg", articleWidgetInfo);
+            leftR1.IsActive = true;
+            DomainServices.Region.ApplyDefaultProperties(leftR1);
+            homePageLeftContentZone.AddRegion(leftR1);
 
             Region leftContentHPR1 = Region.Factory.Create("Who we are?", htmlWidgetInfo);
             leftContentHPR1.IsActive = true;
