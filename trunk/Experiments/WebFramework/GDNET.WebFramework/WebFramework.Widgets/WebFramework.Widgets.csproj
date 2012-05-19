@@ -34,12 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
   </ItemGroup>
@@ -52,6 +52,11 @@
     <Compile Include="ArticleWg\Models\ArticleModel.cs" />
     <Compile Include="ArticleWg\Repositories\ArticleRepository.cs" />
     <Compile Include="ArticleWg\Repositories\IArticleRepository.cs" />
+    <Compile Include="Daskboard\Controllers\AccountController.cs" />
+    <Compile Include="Daskboard\Controllers\HomeController.cs" />
+    <Compile Include="Daskboard\Controllers\MonitorController.cs" />
+    <Compile Include="Daskboard\DaskboardWidget.cs" />
+    <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
     <Compile Include="Models\Contact\ContactModel.cs" />
     <Compile Include="Models\Contact\ContactWidget.cs" />
     <Compile Include="Models\DetailArticle\DetailArticleModel.cs" />
@@ -75,12 +80,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ArticleWg\Views\Admin\ListArticles\List.aspx" />
     <Content Include="Content\DetailArticle\Default\Index.css" />
     <Content Include="Content\HtmlContent\Default\Index.css" />
     <Content Include="Content\RecentArticles\Default\Index.css" />
     <Content Include="Content\RecentProducts\Default\Index.css" />
     <Content Include="Content\RelatedItems\Default\Index.css" />
+    <Content Include="Daskboard\Views\Account\ChangePassword.aspx" />
+    <Content Include="Daskboard\Views\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Daskboard\Views\Account\LogOn.aspx" />
+    <Content Include="Daskboard\Views\Account\Register.aspx" />
+    <Content Include="Daskboard\Views\Home\Index.aspx" />
     <Content Include="Views\Article\Default\Article.ListArticles.aspx" />
+    <Content Include="Views\Article\Default\Index.ascx" />
+    <Content Include="Content\Article\Default\Index.css" />
     <Content Include="Views\Contact\Default\Index.ascx" />
     <Content Include="Views\DetailArticle\Default\Index.ascx" />
     <Content Include="Views\HtmlContent\Default\Index.ascx" />
@@ -115,6 +128,14 @@
       <Project>{AF6324CB-075E-44A0-AB7B-36F73322314E}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web.Membership\GDNET.Web.Membership.csproj">
+      <Project>{1D5227C2-B3FA-4E53-99CF-40A8F5CD832C}</Project>
+      <Name>GDNET.Web.Membership</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
+      <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
+      <Name>GDNET.Web.Mvc</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
       <Name>GDNET.Web</Name>
@@ -135,15 +156,21 @@
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Services\WebFramework.Services.csproj">
+      <Project>{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}</Project>
+      <Name>WebFramework.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.UI\WebFramework.UI.csproj">
       <Project>{18980C72-F35D-4D3F-B76B-7D1A005C6275}</Project>
       <Name>WebFramework.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\FileManager\" />
+    <Folder Include="Daskboard\Domain\" />
     <Folder Include="Models\FileManager\Mapping\" />
-    <Folder Include="Views\FileManager\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Daskboard\Views\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -176,7 +203,8 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(ProjectDir)Views\*.*" "$(SolutionDir)WebFramework\Views\Widgets" /y/s
-xcopy "$(ProjectDir)Content\*.*" "$(SolutionDir)WebFramework\Content\Widgets" /y/s</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*.dll" "$(SolutionDir)WebFramework\bin" /y/s
+xcopy "$(ProjectDir)ArticleWg\Views\Admin\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
+xcopy "$(ProjectDir)Daskboard\Views\*.*" "$(SolutionDir)WebFramework\Areas\Daskboard\Views" /y/s</PostBuildEvent>
   </PropertyGroup>
 </Project>
