@@ -23,7 +23,18 @@ namespace GDNET.Web.Mvc.Helpers
             }
         }
 
+        /// <summary>
+        /// Render editor and with label is name as default
+        /// </summary>
         public void RenderEditorComponent(Editors editor, string name, string value, bool isEnabled)
+        {
+            this.RenderEditorComponent(editor, name, value, isEnabled, name);
+        }
+
+        /// <summary>
+        /// Render editor, specify lable of editor
+        /// </summary>
+        public void RenderEditorComponent(Editors editor, string name, string value, bool isEnabled, string label)
         {
             EditorComponentBase editorModel = null;
 

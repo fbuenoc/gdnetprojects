@@ -1,4 +1,4 @@
-﻿namespace GDNET.Web.Mvc.ComponentEditors
+﻿namespace GDNET.Web.Mvc
 {
     public enum Editors
     {
