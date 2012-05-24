@@ -38,7 +38,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,7 +46,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
+    <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -78,14 +78,18 @@
     <Compile Include="Adapters\EditorAdapterBase.cs" />
     <Compile Include="Adapters\TextBoxEditorAdapter.cs" />
     <Compile Include="Adapters\HtmlEditorAdapter.cs" />
+    <Compile Include="Assistants\TextAreaAssistant.cs" />
     <Compile Include="ComponentEditors\EditorComponentBase.cs" />
     <Compile Include="ComponentEditors\EditorComponentBaseT.cs" />
-    <Compile Include="ComponentEditors\EditorComponentConstants.cs" />
+    <Compile Include="Editors.cs" />
     <Compile Include="ComponentEditors\TextAreaEditorComponent.cs" />
     <Compile Include="ComponentEditors\HtmlEditorComponent.cs" />
     <Compile Include="ComponentEditors\NumberEditorComponent.cs" />
     <Compile Include="ComponentEditors\TextBoxEditorComponent.cs" />
     <Compile Include="Helpers\ControllerAssistant.cs" />
+    <Compile Include="Helpers\GDNetFactory.TextArea.cs" />
+    <Compile Include="Helpers\GDNetFactory.TextBox.cs" />
+    <Compile Include="Assistants\TextBoxAssistant.cs" />
     <Compile Include="Managers\ControlManager.cs" />
     <Compile Include="Managers\EditorManager.cs" />
     <Compile Include="Helpers\GDNetFactory.ListValue.cs" />
@@ -103,6 +107,10 @@
     <ProjectReference Include="..\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
     </ProjectReference>
     <ProjectReference Include="..\GDNET.Web\GDNET.Web.csproj">
       <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
@@ -131,9 +139,50 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\EditorComponents\HtmlEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\EditorComponents\NumberEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\EditorComponents\PercentageEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\EditorComponents\TextAreaEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\EditorComponents\TextBoxEditor.ascx">
+      <SubType>ASPXCodeBehind</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetPath)" "$(SolutionDir)Build" /y /s</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(TargetDir)*.dll" "$(SolutionDir)Build" /y /s
+xcopy "$(TargetDir)*.as?x" "$(SolutionDir)Build" /y /s</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions />

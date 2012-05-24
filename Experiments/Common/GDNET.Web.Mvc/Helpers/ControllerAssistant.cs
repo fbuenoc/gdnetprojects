@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using System.Web.Mvc;
 
 namespace GDNET.Web.Mvc.Helpers
 {
@@ -18,6 +19,15 @@ namespace GDNET.Web.Mvc.Helpers
         public static string GetActionName(this LambdaExpression actionExpression)
         {
             return ((MethodCallExpression)actionExpression.Body).Method.Name;
+        }
+
+        public static string GetAreaName(this Controller controller)
+        {
+            if (controller.RouteData.DataTokens.Count > 0)
+            {
+                return (string)controller.RouteData.DataTokens["area"];
+            }
+            return string.Empty;
         }
     }
 }
