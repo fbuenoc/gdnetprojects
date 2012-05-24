@@ -5,7 +5,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class ZoneModel : ModelWithLifeCycleBase<Zone, long>
+    public sealed class ZoneModel : ModelEntityWithLifeCycleBase<Zone, long>
     {
         public ReadOnlyCollection<RegionModel> Regions
         {

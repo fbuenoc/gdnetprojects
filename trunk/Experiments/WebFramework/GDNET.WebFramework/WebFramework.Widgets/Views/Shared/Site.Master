@@ -1,0 +1,41 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="TitleContent" runat="server" />
+    </title>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server" />
+</head>
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="menucontainer">
+                <ul id="menu">
+                    <li>
+                        <%: base.Html.WebFramework().ActionLink().ActionLink("SysTranslation.Navigation.Home", "Index", "Home")%>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div id="footer">
+            <div id="info">
+                <%= base.Html.WebFramework().Translation().Translate("SysTranslation.General.FooterInfo")%>
+            </div>
+            <div id="logindisplay">
+                <% base.Html.RenderPartial("LogOnUserControl"); %>
+            </div>
+        </div>
+    </div>
+    <!-- other content -->
+    <%= base.Html.Telerik().ScriptRegistrar().Scripts(a => { 
+            a.Add("MicrosoftAjax.js");
+            a.Add("MicrosoftMvcAjax.js");
+        })
+    %>
+</body>
+</html>

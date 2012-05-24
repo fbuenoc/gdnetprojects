@@ -7,7 +7,7 @@ using WebFramework.Common.ComponentModel;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class ListValueModel : ModelWithLifeCycleBase<ListValue, long>
+    public sealed class ListValueModel : ModelEntityWithLifeCycleBase<ListValue, long>
     {
         #region Properties
 

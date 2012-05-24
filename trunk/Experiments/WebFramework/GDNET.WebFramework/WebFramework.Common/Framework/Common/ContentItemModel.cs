@@ -7,7 +7,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public class ContentItemModel : ModelWithLifeCycleBase<ContentItem, long>
+    public class ContentItemModel : ModelEntityWithLifeCycleBase<ContentItem, long>
     {
         private List<ContentAttributeModel> listAttributes = new List<ContentAttributeModel>();
         private ContentTypeModel contentType = default(ContentTypeModel);

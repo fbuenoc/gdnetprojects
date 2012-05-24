@@ -6,7 +6,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public class RegionModel : ModelWithLifeCycleBase<Region, long>
+    public class RegionModel : ModelEntityWithLifeCycleBase<Region, long>
     {
         private ZoneModel zone = default(ZoneModel);
         private WidgetModel widget = default(WidgetModel);

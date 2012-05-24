@@ -5,7 +5,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class TranslationModel : ModelWithLifeCycleBase<Translation, long>
+    public sealed class TranslationModel : ModelEntityWithLifeCycleBase<Translation, long>
     {
         #region Properties
 

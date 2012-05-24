@@ -5,7 +5,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public class ContentAttributeModel : ModelWithLifeCycleBase<ContentAttribute, long>
+    public class ContentAttributeModel : ModelEntityWithLifeCycleBase<ContentAttribute, long>
     {
         #region Ctors
 

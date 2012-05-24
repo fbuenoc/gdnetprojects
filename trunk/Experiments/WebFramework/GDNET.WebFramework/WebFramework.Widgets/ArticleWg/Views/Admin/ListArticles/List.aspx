@@ -1,12 +1,10 @@
-﻿<%@ Page Language="C#" Inherits="System.Web.Mvc.ViewPage" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>List articles</title>
-</head>
-<body>
-    <div>
-    </div>
-</body>
-</html>
+<asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
+    List Articles
+</asp:Content>
+<asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
+</asp:Content>
+<asp:Content ID="C3" ContentPlaceHolderID="HeadContent" runat="server">
+    <% base.Html.WebFramework().WidgetHanlder().RegisterStyleSheets(); %>
+</asp:Content>

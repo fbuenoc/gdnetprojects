@@ -4,7 +4,7 @@ using WebFramework.Domain.Base;
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class ModelWithLifeCycleBase<TEntity, TId> : ModelWithActiveBase<TEntity, TId>, IModel<TId>, IModelWithLifeCycle
+    public abstract class ModelEntityWithLifeCycleBase<TEntity, TId> : ModelEntityWithActiveBase<TEntity, TId>, IModel<TId>, IModelWithLifeCycle
         where TEntity : EntityWithActive<TId>
     {
         #region IModelWithModification members
@@ -43,13 +43,13 @@ namespace WebFramework.Common.Framework.Base
 
         #region Ctors
 
-        public ModelWithLifeCycleBase()
+        public ModelEntityWithLifeCycleBase()
             : base()
         {
             this.Initialize();
         }
 
-        public ModelWithLifeCycleBase(TEntity entity)
+        public ModelEntityWithLifeCycleBase(TEntity entity)
             : base(entity)
         {
             this.Initialize();
@@ -57,19 +57,21 @@ namespace WebFramework.Common.Framework.Base
 
         private void Initialize()
         {
-            if (this.Entity is IEntityWithLifeCycle)
+            if (this.Entity == null)
             {
-                var lifeCycle = ((IEntityWithLifeCycle)this.Entity).LifeCycle;
+                return;
+            }
 
-                this.CreatedAt = lifeCycle.CreatedAt;
-                this.CreatedBy = lifeCycle.CreatedBy;
-                this.LastModifiedAt = lifeCycle.LastModifiedAt;
-                this.LastModifiedBy = lifeCycle.LastModifiedBy;
+            var lifeCycleEntity = ((IEntityWithLifeCycle)this.Entity).LifeCycle;
 
-                if (lifeCycle.ActualStatut != null)
-                {
-                    this.ActualStatut = lifeCycle.ActualStatut.Description.Value;
-                }
+            this.CreatedAt = lifeCycleEntity.CreatedAt;
+            this.CreatedBy = lifeCycleEntity.CreatedBy;
+            this.LastModifiedAt = lifeCycleEntity.LastModifiedAt;
+            this.LastModifiedBy = lifeCycleEntity.LastModifiedBy;
+
+            if (lifeCycleEntity.ActualStatut != null)
+            {
+                this.ActualStatut = lifeCycleEntity.ActualStatut.Description.Value;
             }
         }
 

@@ -2,7 +2,7 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class ModelBase
+    public abstract class ModelEntityBase
     {
         public object EntityId
         {
@@ -16,7 +16,7 @@ namespace WebFramework.Common.Framework.Base
             private set;
         }
 
-        public ModelBase()
+        public ModelEntityBase()
         {
             this.ModelId = Guid.NewGuid();
         }
