@@ -5,7 +5,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class ApplicationModel : ModelWithLifeCycleBase<Application, long>
+    public sealed class ApplicationModel : ModelEntityWithLifeCycleBase<Application, long>
     {
         #region Properties
 

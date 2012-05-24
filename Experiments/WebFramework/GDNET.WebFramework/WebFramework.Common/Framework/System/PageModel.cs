@@ -5,7 +5,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class PageModel : ModelWithLifeCycleBase<Page, long>, IModelWithLifeCycle
+    public sealed class PageModel : ModelEntityWithLifeCycleBase<Page, long>, IModelWithLifeCycle
     {
         #region Properties
 

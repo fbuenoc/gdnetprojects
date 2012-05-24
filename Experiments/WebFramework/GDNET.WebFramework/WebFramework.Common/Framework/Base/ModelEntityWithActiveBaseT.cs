@@ -2,7 +2,7 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class ModelWithActiveBase<TEntity, TId> : ModelBase<TEntity, TId>
+    public abstract class ModelEntityWithActiveBase<TEntity, TId> : ModelEntityBase<TEntity, TId>
         where TEntity : EntityWithActive<TId>
     {
         protected bool filterActive = true;
@@ -15,12 +15,12 @@ namespace WebFramework.Common.Framework.Base
 
         #region Ctors
 
-        public ModelWithActiveBase()
+        public ModelEntityWithActiveBase()
             : base()
         {
         }
 
-        public ModelWithActiveBase(TEntity entity)
+        public ModelEntityWithActiveBase(TEntity entity)
             : base(entity)
         {
             this.IsActive = entity.IsActive;

@@ -113,15 +113,15 @@
     <Compile Include="Framework\AccountModeles\AccountRoleModel.cs" />
     <Compile Include="Framework\AccountModeles\RoleModel.cs" />
     <Compile Include="Framework\Base\IModelWithLifeCycle.cs" />
-    <Compile Include="Framework\Base\ModelBaseT.cs">
+    <Compile Include="Framework\Base\ModelEntityBaseT.cs">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Framework\Base\ModelWithActiveBaseT.cs" />
-    <Compile Include="Framework\Base\ModelBase.cs">
+    <Compile Include="Framework\Base\ModelEntityWithActiveBaseT.cs" />
+    <Compile Include="Framework\Base\ModelEntityBase.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Framework\Base\IModelT.cs" />
-    <Compile Include="Framework\Base\ModelWithLifeCycleBaseT.cs" />
+    <Compile Include="Framework\Base\ModelEntityWithLifeCycleBaseT.cs" />
     <Compile Include="Framework\Base\ModelService.cs" />
     <Compile Include="Framework\Common\ApplicationModel.cs" />
     <Compile Include="Framework\Common\ContentAttributeModel.cs" />

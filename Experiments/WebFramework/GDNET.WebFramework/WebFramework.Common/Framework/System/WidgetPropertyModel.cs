@@ -4,7 +4,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Framework.System
 {
-    public sealed class WidgetPropertyModel : ModelBase<WidgetProperty, long>
+    public sealed class WidgetPropertyModel : ModelEntityBase<WidgetProperty, long>
     {
         public string Code
         {

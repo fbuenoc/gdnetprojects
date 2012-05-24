@@ -7,7 +7,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public sealed class ContentTypeModel : ModelWithLifeCycleBase<ContentType, long>
+    public sealed class ContentTypeModel : ModelEntityWithLifeCycleBase<ContentType, long>
     {
         #region Properties
 

@@ -3,7 +3,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Framework.Common
 {
-    public class ContentItemAttributeValueModel : ModelBase<ContentItemAttributeValue, long>
+    public class ContentItemAttributeValueModel : ModelEntityBase<ContentItemAttributeValue, long>
     {
         #region Properties
 

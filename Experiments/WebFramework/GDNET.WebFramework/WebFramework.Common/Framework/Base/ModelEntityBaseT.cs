@@ -2,7 +2,7 @@
 
 namespace WebFramework.Common.Framework.Base
 {
-    public abstract class ModelBase<TEntity, TId> : ModelBase, IModel<TId>
+    public abstract class ModelEntityBase<TEntity, TId> : ModelEntityBase, IModel<TId>
         where TEntity : EntityBase<TId>
     {
         #region Properties
@@ -40,12 +40,12 @@ namespace WebFramework.Common.Framework.Base
 
         #region Ctors
 
-        public ModelBase()
+        public ModelEntityBase()
             : base()
         {
         }
 
-        public ModelBase(TEntity entity)
+        public ModelEntityBase(TEntity entity)
             : base()
         {
             this.Id = entity.Id;
