@@ -83,6 +83,8 @@
     <Content Include="ArticleWg\Views\Admin\ListArticles\Details.aspx" />
     <Content Include="ArticleWg\Views\Admin\ListArticles\CreateOrUpdate.aspx" />
     <Content Include="ArticleWg\Views\Admin\ListArticles\List.aspx" />
+    <Content Include="ArticleWg\Views\UI\Index.ascx" />
+    <Content Include="ArticleWg\Views\UI\Index.css" />
     <Content Include="Content\DetailArticle\Default\Index.css" />
     <Content Include="Content\HtmlContent\Default\Index.css" />
     <Content Include="Content\RecentArticles\Default\Index.css" />
@@ -173,7 +175,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ArticleWg\Content\" />
-    <Folder Include="ArticleWg\Views\UI\" />
     <Folder Include="Daskboard\Domain\" />
     <Folder Include="Models\FileManager\Mapping\" />
   </ItemGroup>
@@ -184,7 +185,7 @@
     <Content Include="Views\Shared\Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ArticleWg\Views\Admin\Web.config" />
+    <Content Include="ArticleWg\Views\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -218,7 +219,10 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*.dll" "$(SolutionDir)WebFramework\bin" /y/s
+
 xcopy "$(ProjectDir)ArticleWg\Views\Admin\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
+xcopy "$(ProjectDir)ArticleWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\Article\Default" /y/s
+
 xcopy "$(ProjectDir)Daskboard\Views\*.*" "$(SolutionDir)WebFramework\Areas\Daskboard\Views" /y/s</PostBuildEvent>
   </PropertyGroup>
 </Project>

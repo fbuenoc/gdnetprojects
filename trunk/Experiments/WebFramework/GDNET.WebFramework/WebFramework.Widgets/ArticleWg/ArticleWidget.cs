@@ -1,7 +1,9 @@
-﻿using WebFramework.Common.Widgets;
+﻿using System.Linq;
+using WebFramework.Common.Widgets;
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
 using WebFramework.Widgets.ArticleWg.Controllers;
+using WebFramework.Widgets.ArticleWg.Models;
 using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg
@@ -18,6 +20,8 @@ namespace WebFramework.Widgets.ArticleWg
             ArticleWidgetModel model = new ArticleWidgetModel(base.region);
 
             IArticleRepository articleRepository = DomainRepositories.GetWidgetRepository<IArticleRepository>(base.GetWidgetInfo());
+            var articlesModel = articleRepository.GetAll().Select(x => new ArticleModel(x)).ToList();
+            articlesModel.ForEach(x => model.ListArticles.Add(x));
 
             return model;
         }
