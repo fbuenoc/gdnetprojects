@@ -5,6 +5,6 @@
         <%= base.Html.Label(base.Model.Name) %>
     </td>
     <td valign="top">
-        <%= base.Html.TextBox(base.Model.Name, base.Model.Value) %>
+        <%= base.Html.GDNet().TextBox(base.Model.Name, base.Model.Value, base.Model.IsEnabled)%>
     </td>
 </tr>

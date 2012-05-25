@@ -5,19 +5,20 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{A34DD6AF-ABC4-498E-9BFF-8668911E1FC0}</ProjectGuid>
+    <ProjectGuid>{FF847767-6F17-4736-8BE8-C68F4B5D780A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebFramework.Common.Widgets</RootNamespace>
-    <AssemblyName>WebFramework.Common.Widgets</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>WebFramework.Base</RootNamespace>
+    <AssemblyName>WebFramework.Base</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Build\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,54 +26,34 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Build\</OutputPath>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\..\Libs\NHibernate\NHibernate-3.2.0.GA-bin\Required_Bins\NHibernate.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IWidget.cs" />
+    <Compile Include="Mapping\INHibernateMapping.cs" />
+    <Compile Include="Mapping\EntityBaseMapping.cs" />
+    <Compile Include="Mapping\EntityWithActiveMapping.cs" />
+    <Compile Include="Mapping\EntityWithModificationMapping.cs" />
+    <Compile Include="Mapping\MappingConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WidgetAction.cs" />
-    <Compile Include="WidgetActions.cs" />
-    <Compile Include="WidgetBase.cs" />
-    <Compile Include="WidgetBaseConstants.cs" />
-    <Compile Include="WidgetEventArgs.cs" />
-    <Compile Include="WidgetEventHandler.cs" />
-    <Compile Include="WidgetModelBase.cs" />
-    <Compile Include="WidgetPropertyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
-      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
-      <Name>GDNET.Extensions</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Common\GDNET.Web.Mvc\GDNET.Web.Mvc.csproj">
-      <Project>{80C5E034-B21D-4960-8E3B-183BE4741274}</Project>
-      <Name>GDNET.Web.Mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Common\WebFramework.Common.csproj">
-      <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
-      <Name>WebFramework.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\WebFramework.Domain\WebFramework.Domain.csproj">
-      <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
-      <Name>WebFramework.Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

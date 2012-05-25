@@ -20,6 +20,16 @@ namespace WebFramework.Widgets.Domain.ArticleWg
 
                 return article;
             }
+
+            public Article Create(string title, string description, string fulContent)
+            {
+                var article = this.Create();
+                article.Title = title;
+                article.Description = description;
+                article.FullContent = fulContent;
+
+                return article;
+            }
         }
     }
 }
