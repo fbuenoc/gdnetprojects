@@ -41,12 +41,12 @@ namespace WebFramework.NHibernate
                     string repositoryAssemblyName = w.Properties.First(x => x.Code == string.Format(CommonConstants.WidgetPropertyRepositoryAssemblyName, counter)).Value;
                     string repositoryClassName = w.Properties.First(x => x.Code == string.Format(CommonConstants.WidgetPropertyRepositoryClassName, counter)).Value;
 
-                    if (typeof(T).FullName == repositoryClassName)
-                    {
-                        Assembly asm = Assembly.Load(repositoryAssemblyName);
-                        var type = asm.GetType(repositoryClassName, true);
+                    Assembly asmRepository = Assembly.Load(repositoryAssemblyName);
+                    var typeRepository = asmRepository.GetType(repositoryClassName, true);
 
-                        T repositoryInstance = (T)Activator.CreateInstance(type, this.sessionStrategy);
+                    if ((typeof(T).FullName == repositoryClassName) || (typeof(T).IsInterface && (typeRepository.GetInterface(typeof(T).FullName) != null)))
+                    {
+                        T repositoryInstance = (T)Activator.CreateInstance(typeRepository, this.sessionStrategy);
                         cacheWidgetRepositories.Add(typeof(T), repositoryInstance);
 
                         return repositoryInstance;
