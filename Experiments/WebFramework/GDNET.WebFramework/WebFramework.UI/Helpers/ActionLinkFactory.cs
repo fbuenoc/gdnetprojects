@@ -45,19 +45,19 @@ namespace WebFramework.UI.Helpers
 
         #region Detail actions
 
-        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelBase modelEntity)
+        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelEntityBase modelEntity)
         {
             string linkText = "Details";
             return this.CreateDetailAction(objectType, modelEntity, null, linkText);
         }
 
-        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelBase modelEntity, object customRoutes)
+        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelEntityBase modelEntity, object customRoutes)
         {
             string linkText = "Details";
             return this.CreateDetailAction(objectType, modelEntity, customRoutes, linkText);
         }
 
-        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelBase modelEntity, object customRoutes, string linkText)
+        public MvcHtmlString CreateDetailAction(EntityType objectType, ModelEntityBase modelEntity, object customRoutes, string linkText)
         {
             object routeValuesFramework = new
             {
@@ -128,7 +128,7 @@ namespace WebFramework.UI.Helpers
 
         #region Delete actions
 
-        public MvcHtmlString CreateActionDelete(EntityType objectType, ModelBase modelEntity, object customRoutes, object htmlAttributes = null)
+        public MvcHtmlString CreateActionDelete(EntityType objectType, ModelEntityBase modelEntity, object customRoutes, object htmlAttributes = null)
         {
             string linkText = "Delete";
             object routeValues = TypeMerger.MergeTypes(customRoutes, new { id = modelEntity.EntityId.ToString() });
@@ -184,12 +184,12 @@ namespace WebFramework.UI.Helpers
             return MvcHtmlString.Create(string.Empty);
         }
 
-        public MvcHtmlString ActionEditLink(EntityType objectType, ModelBase modelEntity)
+        public MvcHtmlString ActionEditLink(EntityType objectType, ModelEntityBase modelEntity)
         {
             return this.CreateEditAction(objectType, modelEntity, null);
         }
 
-        public MvcHtmlString CreateEditAction(EntityType objectType, ModelBase modelEntity, object customRouteValues, object htmlAttributes = null)
+        public MvcHtmlString CreateEditAction(EntityType objectType, ModelEntityBase modelEntity, object customRouteValues, object htmlAttributes = null)
         {
             string linkText = "Edit";
 
@@ -228,7 +228,7 @@ namespace WebFramework.UI.Helpers
             return MvcHtmlString.Create(string.Empty);
         }
 
-        public MvcHtmlString ActionDeleteLink(EntityType objectType, ModelBase modelEntity)
+        public MvcHtmlString ActionDeleteLink(EntityType objectType, ModelEntityBase modelEntity)
         {
             var routeFramework = new { area = "Framework" };
             var routeSystem = new

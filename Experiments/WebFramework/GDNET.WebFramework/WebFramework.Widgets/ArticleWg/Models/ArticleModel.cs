@@ -31,6 +31,9 @@ namespace WebFramework.Widgets.ArticleWg.Models
         public ArticleModel(Article entity)
             : base(entity)
         {
+            this.Title = entity.Title;
+            this.Description = entity.Description;
+            this.FullContent = entity.FullContent;
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebFramework.Common.Controllers;
@@ -21,8 +21,8 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
 
         public override ActionResult List()
         {
-            var articles = this.articleRepository.GetAll();
-            return base.View();
+            var articles = this.articleRepository.GetAll().Select(x => new ArticleModel(x)).ToList();
+            return base.View(articles);
         }
 
         protected override object OnCreateExecuting(ArticleModel model, FormCollection collection)
@@ -39,7 +39,12 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
 
         protected override bool OnEditExecuting(ArticleModel model, FormCollection collection)
         {
-            throw new NotImplementedException();
+            var article = this.articleRepository.GetById(model.Id);
+            article.Title = model.Title;
+            article.Description = model.Description;
+            article.FullContent = model.FullContent;
+
+            return this.articleRepository.Update(article);
         }
 
         protected override ArticleModel OnDetailsChecking(string id)

@@ -136,21 +136,6 @@
     <Content Include="Views\Home\NoPage.aspx" />
     <Content Include="Views\Monitor\Page.aspx" />
     <Content Include="Views\Monitor\Region.aspx" />
-    <Content Include="Views\Shared\EditorComponents\HtmlEditor.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="Views\Shared\EditorComponents\TextBoxEditor.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="Views\Shared\EditorComponents\TextAreaEditor.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="Views\Shared\EditorComponents\NumberEditor.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
-    <Content Include="Views\Shared\EditorComponents\PercentageEditor.ascx">
-      <SubType>ASPXCodeBehind</SubType>
-    </Content>
     <Content Include="Views\Shared\InfoModificationControl.ascx" />
     <Content Include="Areas\Framework\Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Areas\Framework\Views\Translation\CreateOrUpdate.aspx" />
@@ -772,6 +757,7 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)Build\*.dll" "$(TargetDir)" /y /s
+xcopy "$(SolutionDir)Build\Views\*.as?x" "$(ProjectDir)Views\Shared\" /y /s
 del "$(TargetDir)*.pdb"</PostBuildEvent>
   </PropertyGroup>
 </Project>

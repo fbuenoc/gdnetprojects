@@ -5,6 +5,6 @@
         <%= base.Html.Label(base.Model.Name) %>
     </td>
     <td valign="top">
-        <%= base.Html.TextArea(base.Model.Name, base.Model.Value, new { @class = "editor_textarea" }) %>
+        <%= base.Html.GDNet().TextArea(base.Model.Name, base.Model.Value, base.Model.IsEnabled, new { @class = "editor_textarea" }) %>
     </td>
 </tr>
