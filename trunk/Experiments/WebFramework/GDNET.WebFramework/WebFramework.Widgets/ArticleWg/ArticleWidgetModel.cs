@@ -18,7 +18,5 @@ namespace WebFramework.Widgets.ArticleWg
         {
             get { return this.listArticles; }
         }
-
-
     }
 }

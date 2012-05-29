@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using GDNET.Web.Helpers;
 using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
@@ -9,7 +10,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Widgets
 {
-    public abstract class WidgetBase<TResult> : AreaRegistration, IWidget
+    public abstract class WidgetBase<TResult> : AreaRegistration, IWidget where TResult : WidgetModelBase
     {
         #region Members
 
@@ -108,6 +109,19 @@ namespace WebFramework.Common.Widgets
             return this.InitializeModel();
         }
 
+        public virtual string AdministerUrl
+        {
+            get
+            {
+                if (this.region == null || this.region.Zone == null)
+                {
+                    return string.Empty;
+                }
+
+                return string.Format("{0}/Widget/{1}/Admin?rid={2}&zid={3}", WebAssistant.GetCurrentDomain(), this.TechnicalName, this.region.Id, this.region.Zone.Id);
+            }
+        }
+
         #endregion
 
         #region Ctors
@@ -149,15 +163,12 @@ namespace WebFramework.Common.Widgets
 
         protected void RegisterProperty(string code, string value)
         {
-            RegisterProperty(code, value, string.Empty);
+            this.RegisterProperty(code, value, string.Empty);
         }
 
         protected void RegisterProperty(string code, string value, string dataTypeCode)
         {
-            if (this.propertiesInfo.Any(x => x.Code == code))
-            {
-            }
-            else
+            if (!this.propertiesInfo.Any(x => x.Code == code))
             {
                 this.propertiesInfo.Add(new WidgetPropertyInfo
                 {
@@ -179,7 +190,13 @@ namespace WebFramework.Common.Widgets
             return default(T);
         }
 
-        protected abstract TResult InitializeModel();
+        protected virtual TResult InitializeModel()
+        {
+            TResult resultModel = (TResult)Activator.CreateInstance(typeof(TResult), this.region);
+            resultModel.AdministerUrl = this.AdministerUrl;
+
+            return resultModel;
+        }
 
         #endregion
 

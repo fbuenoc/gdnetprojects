@@ -17,7 +17,7 @@ namespace WebFramework.Widgets.ArticleWg
 
         protected override ArticleWidgetModel InitializeModel()
         {
-            ArticleWidgetModel model = new ArticleWidgetModel(base.region);
+            ArticleWidgetModel model = base.InitializeModel();
 
             IArticleRepository articleRepository = DomainRepositories.GetWidgetRepository<IArticleRepository>(base.GetWidgetInfo());
             var articlesModel = articleRepository.GetAll().Select(x => new ArticleModel(x)).ToList();

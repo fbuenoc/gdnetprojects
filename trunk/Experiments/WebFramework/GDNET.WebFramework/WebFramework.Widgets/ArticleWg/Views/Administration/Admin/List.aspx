@@ -7,6 +7,8 @@
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
+    </div>
+    <div>
         <% base.Html.Telerik().Grid<ArticleModel>(base.Model)
                 .Name("ListArticles")
                 .Columns(columns =>
