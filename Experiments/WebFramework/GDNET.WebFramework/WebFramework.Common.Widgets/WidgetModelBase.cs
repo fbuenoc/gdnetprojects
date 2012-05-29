@@ -60,6 +60,12 @@ namespace WebFramework.Common.Widgets
             set;
         }
 
+        public string AdministerUrl
+        {
+            get;
+            set;
+        }
+
         public RegionModel DetailConnection
         {
             get { return this.GetConnectionTo(WidgetActions.Detail); }

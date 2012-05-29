@@ -606,6 +606,8 @@
     <Content Include="Scripts\2012.1.214\telerik.window.min.js" />
     <Content Include="Views\Page\Index.aspx" />
     <Content Include="Views\Shared\PageAdminister.ascx" />
+    <Content Include="Views\Widgets\Shared\Error.aspx" />
+    <Content Include="Views\Widgets\Shared\WidgetAdminister.ascx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -659,7 +661,6 @@
     <Folder Include="Areas\System\Views\Shared\" />
     <Folder Include="Content\Widgets\" />
     <Folder Include="Temporary\" />
-    <Folder Include="Views\Widgets\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
@@ -724,6 +725,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Shared\SiteError.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Widgets\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

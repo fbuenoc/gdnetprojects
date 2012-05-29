@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="ArticleWg\ArticleWidgetModel.cs" />
     <Compile Include="ArticleWg\ArticleWidget.cs" />
+    <Compile Include="ArticleWg\Controllers\AdminController.cs" />
     <Compile Include="ArticleWg\Controllers\ListArticlesController.cs" />
     <Compile Include="ArticleWg\Models\ArticleModel.cs" />
     <Compile Include="Daskboard\Controllers\AccountController.cs" />
@@ -80,6 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ArticleWg\Views\Admin\Admin\CreateOrUpdate.aspx" />
+    <Content Include="ArticleWg\Views\Admin\Admin\Details.aspx" />
+    <Content Include="ArticleWg\Views\Admin\Admin\List.aspx" />
     <Content Include="ArticleWg\Views\Admin\ListArticles\Details.aspx" />
     <Content Include="ArticleWg\Views\Admin\ListArticles\CreateOrUpdate.aspx" />
     <Content Include="ArticleWg\Views\Admin\ListArticles\List.aspx" />
@@ -220,7 +224,7 @@
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*.dll" "$(SolutionDir)WebFramework\bin" /y/s
 
-xcopy "$(ProjectDir)ArticleWg\Views\Admin\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
+xcopy "$(ProjectDir)ArticleWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
 xcopy "$(ProjectDir)ArticleWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\Article\Default" /y/s
 
 xcopy "$(ProjectDir)Daskboard\Views\*.*" "$(SolutionDir)WebFramework\Areas\Daskboard\Views" /y/s</PostBuildEvent>

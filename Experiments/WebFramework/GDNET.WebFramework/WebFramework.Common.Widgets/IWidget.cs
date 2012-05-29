@@ -12,5 +12,6 @@ namespace WebFramework.Common.Widgets
         bool Uninstall();
 
         object Initialize(RegionModel region);
+        string AdministerUrl { get; }
     }
 }

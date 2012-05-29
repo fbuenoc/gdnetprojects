@@ -1,5 +1,7 @@
-﻿using GDNET.NHibernate.Repositories;
+﻿using System.Collections.Generic;
+using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagers;
+using WebFramework.Domain.System;
 
 namespace WebFramework.Widgets.Domain.ArticleWg.Repositories
 {
@@ -8,6 +10,11 @@ namespace WebFramework.Widgets.Domain.ArticleWg.Repositories
         public ArticleRepository(ISessionStrategy sessionStrategy)
             : base(sessionStrategy)
         {
+        }
+
+        public IList<Article> GetAllByRegion(Region region)
+        {
+            return base.GetAll(x => x.AttachedRegions.Contains(region));
         }
     }
 }
