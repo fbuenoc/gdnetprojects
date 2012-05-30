@@ -40,7 +40,7 @@ namespace WebFramework.Widgets.Models.RelatedItems
 
         protected override RelatedItemsModel InitializeModel()
         {
-            RelatedItemsModel resultModel = new RelatedItemsModel(base.region);
+            RelatedItemsModel resultModel = new RelatedItemsModel(base.regionModel);
 
             long? contentItemId = QueryStringAssistant.ParseInteger(EntityQueryString.ContentItemId);
             if (contentItemId.HasValue)

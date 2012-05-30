@@ -42,7 +42,7 @@ namespace WebFramework.Widgets.Models.RecentProducts
             int pageSize = base.GetPropertyValue<int>(WidgetBaseConstants.PropertyPageSize);
             var listProducts = DomainRepositories.ContentItem.GetByContentType(typeof(Product), pageSize);
 
-            RecentProductsModel model = new RecentProductsModel(base.region);
+            RecentProductsModel model = new RecentProductsModel(base.regionModel);
             model.InitializeProducts(listProducts);
 
             return model;

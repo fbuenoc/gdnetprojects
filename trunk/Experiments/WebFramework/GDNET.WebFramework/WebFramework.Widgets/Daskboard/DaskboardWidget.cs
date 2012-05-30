@@ -22,7 +22,7 @@ namespace WebFramework.Widgets.Daskboard
 
         protected override DaskboardWidgetModel InitializeModel()
         {
-            DaskboardWidgetModel modelResult = new DaskboardWidgetModel(base.region);
+            DaskboardWidgetModel modelResult = new DaskboardWidgetModel(base.regionModel);
             return modelResult;
         }
     }

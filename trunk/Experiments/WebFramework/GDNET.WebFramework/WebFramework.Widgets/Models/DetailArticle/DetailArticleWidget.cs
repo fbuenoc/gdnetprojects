@@ -22,7 +22,7 @@ namespace WebFramework.Widgets.Models.DetailArticle
 
         protected override DetailArticleModel InitializeModel()
         {
-            DetailArticleModel resultModel = new DetailArticleModel(base.region);
+            DetailArticleModel resultModel = new DetailArticleModel(base.regionModel);
 
             long? contentItemId = QueryStringAssistant.ParseInteger(EntityQueryString.ContentItemId);
             if (contentItemId.HasValue)

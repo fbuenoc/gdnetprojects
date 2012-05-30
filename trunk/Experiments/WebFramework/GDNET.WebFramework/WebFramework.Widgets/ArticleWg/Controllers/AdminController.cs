@@ -2,11 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
-using GDNET.Web.Helpers;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Controllers;
 using WebFramework.Domain;
-using WebFramework.Domain.System;
+using WebFramework.Extensions;
 using WebFramework.Widgets.ArticleWg.Models;
 using WebFramework.Widgets.Domain.ArticleWg;
 using WebFramework.Widgets.Domain.ArticleWg.Repositories;
@@ -24,28 +23,21 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
             this.articleRepository = DomainRepositories.GetWidgetRepository<ArticleRepository>(base.CurrentWidget);
         }
 
-        private Region GetCurrentRegion()
+        public override ActionResult Index()
         {
-            var zoneId = QueryStringAssistant.ParseInteger(QueryStringConstants.ZoneId);
-            var regionId = QueryStringAssistant.ParseInteger(QueryStringConstants.RegionId);
-
-            if (zoneId.HasValue && regionId.HasValue)
+            var objet = new
             {
-                var zone = DomainRepositories.Zone.GetById(zoneId.Value);
-                if (zone != null)
-                {
-                    return zone.GetRegionById(regionId.Value);
-                }
-            }
-
-            return null;
+                zid = this.HttpContext.Request.QueryString[QueryStringConstants.ZoneId],
+                rid = this.HttpContext.Request.QueryString[QueryStringConstants.RegionId],
+            };
+            return base.RedirectToAction(ActionList, objet);
         }
 
         public override ActionResult List()
         {
             IList<ArticleModel> listeArticles = null;
 
-            var region = this.GetCurrentRegion();
+            var region = ControllerAssistant.GetCurrentRegion();
             if (region == null)
             {
                 listeArticles = this.articleRepository.GetAll().Select(x => new ArticleModel(x)).ToList();
@@ -60,7 +52,7 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
 
         protected override object OnCreateExecuting(ArticleModel model, FormCollection collection)
         {
-            var region = this.GetCurrentRegion();
+            var region = ControllerAssistant.GetCurrentRegion();
             if (region != null)
             {
                 Article newArticle = Article.Factory.Create(model.Title, model.Description, model.FullContent);
