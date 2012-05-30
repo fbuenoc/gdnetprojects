@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain.Constants;
 
@@ -25,37 +24,12 @@ namespace WebFramework.Widgets.HtmlContentWg
             }
         }
 
-        public HtmlContentWidget()
-            : base()
-        {
-            base.BeforeInstalled += WidgetBeforeInstalled;
-            base.AfterInstalled += WidgetAfterInstalled;
-        }
-
-        #region Events
-
-        void WidgetBeforeInstalled(object sender, EventArgs e)
-        {
-        }
-
-        void WidgetAfterInstalled(IWidget sender, WidgetEventArgs e)
-        {
-        }
-
-        #endregion
-
         protected override void RegisterProperties()
         {
             base.RegisterProperty(HtmlContentWidgetConstants.ContentProperty, "The content of HtmlContent widget", ListValueConstants.ContentDataTypes.TextHtmlEditor);
             base.RegisterProperty(HtmlContentWidgetConstants.MaxVisibleLengthProperty, MaxVisibleLengthValue.ToString(), ListValueConstants.ContentDataTypes.NumberNormalNumber);
 
             base.RegisterProperties();
-        }
-
-        protected override HtmlContentModel InitializeModel()
-        {
-            HtmlContentModel result = new HtmlContentModel(base.region);
-            return result;
         }
     }
 }

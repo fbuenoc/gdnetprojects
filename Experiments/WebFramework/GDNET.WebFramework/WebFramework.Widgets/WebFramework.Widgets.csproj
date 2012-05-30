@@ -58,6 +58,7 @@
     <Compile Include="Daskboard\Controllers\MonitorController.cs" />
     <Compile Include="Daskboard\DaskboardWidget.cs" />
     <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
+    <Compile Include="HtmlContentWg\Controllers\AdminController.cs" />
     <Compile Include="Models\Contact\ContactModel.cs" />
     <Compile Include="Models\Contact\ContactWidget.cs" />
     <Compile Include="Models\DetailArticle\DetailArticleModel.cs" />
@@ -81,12 +82,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ArticleWg\Views\Admin\Admin\CreateOrUpdate.aspx" />
-    <Content Include="ArticleWg\Views\Admin\Admin\Details.aspx" />
-    <Content Include="ArticleWg\Views\Admin\Admin\List.aspx" />
-    <Content Include="ArticleWg\Views\Admin\ListArticles\Details.aspx" />
-    <Content Include="ArticleWg\Views\Admin\ListArticles\CreateOrUpdate.aspx" />
-    <Content Include="ArticleWg\Views\Admin\ListArticles\List.aspx" />
+    <Content Include="ArticleWg\Views\Administration\Admin\CreateOrUpdate.aspx" />
+    <Content Include="ArticleWg\Views\Administration\Admin\Details.aspx" />
+    <Content Include="ArticleWg\Views\Administration\Admin\List.aspx" />
+    <Content Include="ArticleWg\Views\Administration\ListArticles\CreateOrUpdate.aspx" />
+    <Content Include="ArticleWg\Views\Administration\ListArticles\Details.aspx" />
+    <Content Include="ArticleWg\Views\Administration\ListArticles\List.aspx" />
     <Content Include="ArticleWg\Views\UI\Index.ascx" />
     <Content Include="ArticleWg\Views\UI\Index.css" />
     <Content Include="Content\DetailArticle\Default\Index.css" />
@@ -99,6 +100,7 @@
     <Content Include="Daskboard\Views\Account\LogOn.aspx" />
     <Content Include="Daskboard\Views\Account\Register.aspx" />
     <Content Include="Daskboard\Views\Home\Index.aspx" />
+    <Content Include="HtmlContentWg\Views\Administration\Admin\Index.aspx" />
     <Content Include="Views\Article\Default\Article.ListArticles.aspx" />
     <Content Include="Views\Article\Default\Index.ascx" />
     <Content Include="Content\Article\Default\Index.css" />
@@ -164,6 +166,10 @@
       <Project>{E8BDC295-1A67-46D9-90D5-F9D6B810D5B3}</Project>
       <Name>WebFramework.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Extensions\WebFramework.Extensions.csproj">
+      <Project>{A53B516C-BA01-48BD-8330-63515DE50356}</Project>
+      <Name>WebFramework.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Services\WebFramework.Services.csproj">
       <Project>{32E7B4C1-EFC9-4A6F-9FA6-4FEDF65417A8}</Project>
       <Name>WebFramework.Services</Name>
@@ -180,6 +186,7 @@
   <ItemGroup>
     <Folder Include="ArticleWg\Content\" />
     <Folder Include="Daskboard\Domain\" />
+    <Folder Include="HtmlContentWg\Views\UI\" />
     <Folder Include="Models\FileManager\Mapping\" />
   </ItemGroup>
   <ItemGroup>
@@ -226,6 +233,9 @@
 
 xcopy "$(ProjectDir)ArticleWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
 xcopy "$(ProjectDir)ArticleWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\Article\Default" /y/s
+
+xcopy "$(ProjectDir)HtmlContentWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\HtmlContent\Views" /y/s
+xcopy "$(ProjectDir)HtmlContentWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\HtmlContent\Default" /y/s
 
 xcopy "$(ProjectDir)Daskboard\Views\*.*" "$(SolutionDir)WebFramework\Areas\Daskboard\Views" /y/s</PostBuildEvent>
   </PropertyGroup>

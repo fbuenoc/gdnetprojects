@@ -135,7 +135,6 @@
     <Content Include="Areas\System\Views\Zone\List.aspx" />
     <Content Include="Views\Home\NoPage.aspx" />
     <Content Include="Views\Monitor\Page.aspx" />
-    <Content Include="Views\Monitor\Region.aspx" />
     <Content Include="Views\Shared\InfoModificationControl.ascx" />
     <Content Include="Areas\Framework\Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Areas\Framework\Views\Translation\CreateOrUpdate.aspx" />
@@ -657,7 +656,9 @@
     <Content Include="WebServices\SystemServices.asmx" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Article\Views\" />
+    <Folder Include="Areas\Article\" />
+    <Folder Include="Areas\Daskboard\" />
+    <Folder Include="Areas\HtmlContent\" />
     <Folder Include="Areas\System\Views\Shared\" />
     <Folder Include="Content\Widgets\" />
     <Folder Include="Temporary\" />

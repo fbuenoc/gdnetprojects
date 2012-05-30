@@ -18,7 +18,7 @@ namespace WebFramework.Widgets.Models.Contact
 
         protected override ContactModel InitializeModel()
         {
-            ContactModel result = new ContactModel(base.region);
+            ContactModel result = new ContactModel(base.regionModel);
             return result;
         }
     }
