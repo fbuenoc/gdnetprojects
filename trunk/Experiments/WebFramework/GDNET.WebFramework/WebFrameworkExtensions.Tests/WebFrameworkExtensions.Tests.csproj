@@ -45,9 +45,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnonymousObjectAssistantTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\GDNET.Extensions\GDNET.Extensions.csproj">
+      <Project>{92927B96-A85A-427B-A611-22CE023078D0}</Project>
+      <Name>GDNET.Extensions</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebFramework.Extensions\WebFramework.Extensions.csproj">
       <Project>{A53B516C-BA01-48BD-8330-63515DE50356}</Project>
       <Name>WebFramework.Extensions</Name>

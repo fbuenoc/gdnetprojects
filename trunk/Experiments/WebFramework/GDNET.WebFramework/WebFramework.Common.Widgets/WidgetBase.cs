@@ -200,7 +200,14 @@ namespace WebFramework.Common.Widgets
             if (this.regionModel.Properties.Any(x => x.Key.Code == propertyName))
             {
                 var kvp = this.regionModel.Properties.First(x => x.Key.Code == propertyName);
-                return (T)Convert.ChangeType(kvp.Value, typeof(T));
+                if (typeof(T).BaseType == typeof(Enum))
+                {
+                    return (T)Enum.Parse(typeof(T), kvp.Value);
+                }
+                else
+                {
+                    return (T)Convert.ChangeType(kvp.Value, typeof(T));
+                }
             }
 
             return default(T);

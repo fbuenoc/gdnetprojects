@@ -3,6 +3,7 @@ using GDNET.Common.DesignByContract;
 using GDNET.NHibernate;
 using GDNET.NHibernate.SessionManagers;
 using NHibernate;
+using WebFramework.NHibernate.Interceptors;
 
 namespace WebFramework.NHibernate.SessionManagers
 {
@@ -49,7 +50,8 @@ namespace WebFramework.NHibernate.SessionManagers
 
         public override ISession OpenSession()
         {
-            return this.SessionFactory.OpenSession();
+            var interceptor = new GDNetInterceptor();
+            return this.SessionFactory.OpenSession(interceptor);
         }
 
         #endregion
