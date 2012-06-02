@@ -17,7 +17,7 @@ namespace WebFrameworkSampleData
             DataAssistant.InitializeContentTypes();
             if (args.Length > 0 && args[0] == "/s:data")
             {
-                DataAssistant.GenerateSampleContents();
+                //DataAssistant.GenerateSampleContents();
                 DataAssistant.GenerateSystemContents();
             }
 

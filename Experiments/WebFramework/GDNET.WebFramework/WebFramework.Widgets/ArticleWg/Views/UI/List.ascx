@@ -5,15 +5,19 @@
         <%= base.Model.Name %>
         <a name="<%= base.Model.IdRegion %>"></a>
     </h3>
-    <%
-        foreach (var articleModel in base.Model.ListArticles)
-        {
-    %>
-    <div>
-        <%= articleModel.Title %>
-    </div>
-    <%
-        }
-    %>
+    <ul>
+        <%
+            foreach (var articleModel in base.Model.ListArticles)
+            {
+        %>
+        <li>
+            <div>
+                <%= articleModel.Title %>
+            </div>
+        </li>
+        <%
+            }
+        %>
+    </ul>
     <% base.Html.RenderPartial("WidgetAdminister", base.Model); %>
 </div>

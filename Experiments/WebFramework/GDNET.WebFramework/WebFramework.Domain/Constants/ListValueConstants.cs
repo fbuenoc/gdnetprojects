@@ -36,5 +36,14 @@
             public const string Updated = "LV.StatutLogs.Updated";
             public const string Deleted = "LV.StatutLogs.Deleted";
         }
+
+        public sealed class FileTypes
+        {
+            public const string Root = "LV.FileTypes";
+            public const string PlainText = "LV.FileTypes.PlainText";
+            public const string MSWord = "LV.FileTypes.MSWord";
+            public const string MSExcel = "LV.FileTypes.MSExcel";
+            public const string Unknown = "LV.FileTypes.Unknown";
+        }
     }
 }

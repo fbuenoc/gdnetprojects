@@ -8,5 +8,6 @@
         public const string ColumnFileId = "FileId";
         public const string ColumnArticleId = "ArticleId";
         public const string ColumnRegionId = "RegionId";
+        public const string ColumnTypeId = "TypeId";
     }
 }

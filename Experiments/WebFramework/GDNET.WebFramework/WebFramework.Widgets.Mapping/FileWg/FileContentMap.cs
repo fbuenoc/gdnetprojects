@@ -13,16 +13,22 @@ namespace WebFramework.Widgets.Mapping.FileWg
         {
             base.Table("w_" + typeof(FileContent).Name);
             base.Property(e => e.Name);
+            base.Property(e => e.Title);
             base.Property(e => e.Description);
             base.Property(e => e.Base64Content);
 
+            base.ManyToOne(e => e.Type, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Column(WidgetsMappingConstants.ColumnTypeId);
+                m.Cascade(Cascade.None);
+            });
             base.ManyToOne(e => e.LifeCycle, m =>
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Column(MappingConstants.StatutLifeCycleId);
                 m.Cascade(Cascade.All);
             });
-
             base.Bag(x => x.AttachedRegions, cm =>
             {
                 cm.Access(Accessor.Field);

@@ -23,6 +23,12 @@ namespace WebFramework.Widgets.Domain.FileWg
             set;
         }
 
+        public virtual string Title
+        {
+            get;
+            set;
+        }
+
         public virtual string Description
         {
             get;

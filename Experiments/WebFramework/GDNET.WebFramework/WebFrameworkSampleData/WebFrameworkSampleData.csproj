@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\DataAssistant.Business.cs" />
     <Compile Include="Helpers\DataAssistant.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,6 +89,10 @@
     <ProjectReference Include="..\WebFramework.NHibernate\WebFramework.NHibernate.csproj">
       <Project>{9A4E737C-5A9A-4F53-80A3-82E4C712F85E}</Project>
       <Name>WebFramework.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebFramework.Widgets.Domain\WebFramework.Widgets.Domain.csproj">
+      <Project>{16ACCAA3-4265-46A0-B14C-399F9AB0606F}</Project>
+      <Name>WebFramework.Widgets.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Widgets\WebFramework.Widgets.csproj">
       <Project>{D8E0228B-E3C1-448A-852E-E56A4BB1FCD8}</Project>
