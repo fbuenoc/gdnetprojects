@@ -20,7 +20,6 @@ namespace WebFramework.Widgets.ArticleWg
 
         protected override ArticleWidgetModel InitializeModel()
         {
-            Region currentRegion = base.GetCurrentRegion();
             IArticleRepository articleRepository = DomainRepositories.GetWidgetRepository<IArticleRepository>(base.GetWidgetInfo());
 
             WidgetVisiblityMode visiblityMode = base.GetPropertyValue<WidgetVisiblityMode>(ArticleWidgetConstants.UIMode);
@@ -29,6 +28,7 @@ namespace WebFramework.Widgets.ArticleWg
             switch (visiblityMode)
             {
                 case WidgetVisiblityMode.List:
+                    Region currentRegion = base.GetCurrentRegion();
                     var articlesModel = articleRepository.GetAllByRegion(currentRegion).Select(x => new ArticleModel(x)).ToList();
                     articlesModel.ForEach(x => model.ListArticles.Add(x));
                     break;

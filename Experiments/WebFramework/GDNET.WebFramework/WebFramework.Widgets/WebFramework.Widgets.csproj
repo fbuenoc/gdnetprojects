@@ -60,14 +60,12 @@
     <Compile Include="Daskboard\Controllers\MonitorController.cs" />
     <Compile Include="Daskboard\DaskboardWidget.cs" />
     <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
+    <Compile Include="FileManagerWg\Models\FileContentModel.cs" />
     <Compile Include="HtmlContentWg\Controllers\AdminController.cs" />
     <Compile Include="Models\Contact\ContactModel.cs" />
     <Compile Include="Models\Contact\ContactWidget.cs" />
-    <Compile Include="Models\FileManager\Domain\File.cs" />
-    <Compile Include="Models\FileManager\Domain\IFileRepository.cs" />
-    <Compile Include="Models\FileManager\Domain\FileRepository.cs" />
-    <Compile Include="Models\FileManager\FileManagerModel.cs" />
-    <Compile Include="Models\FileManager\FileManagerWidget.cs" />
+    <Compile Include="FileManagerWg\FileManagerModel.cs" />
+    <Compile Include="FileManagerWg\FileManagerWidget.cs" />
     <Compile Include="HtmlContentWg\HtmlContentModel.cs" />
     <Compile Include="HtmlContentWg\HtmlContentWidget.cs" />
     <Compile Include="HtmlContentWg\HtmlContentWidgetConstants.cs" />
@@ -101,12 +99,12 @@
     <Content Include="Daskboard\Views\Account\LogOn.aspx" />
     <Content Include="Daskboard\Views\Account\Register.aspx" />
     <Content Include="Daskboard\Views\Home\Index.aspx" />
+    <Content Include="FileManagerWg\Views\UI\List.ascx" />
     <Content Include="HtmlContentWg\Views\Administration\Admin\Index.aspx" />
     <Content Include="Views\Article\Default\Article.ListArticles.aspx" />
     <Content Include="Views\Article\Default\Index.ascx" />
     <Content Include="Content\Article\Default\Index.css" />
     <Content Include="Views\Contact\Default\Index.ascx" />
-    <Content Include="Views\DetailArticle\Default\Index.ascx" />
     <Content Include="Views\HtmlContent\Default\Index.ascx" />
     <Content Include="Views\RecentArticles\Default\Index.ascx" />
     <Content Include="Views\RecentProducts\Default\Index.ascx" />
@@ -187,8 +185,9 @@
   <ItemGroup>
     <Folder Include="ArticleWg\Content\" />
     <Folder Include="Daskboard\Domain\" />
+    <Folder Include="FileManagerWg\Controllers\" />
+    <Folder Include="FileManagerWg\Views\Administration\" />
     <Folder Include="HtmlContentWg\Views\UI\" />
-    <Folder Include="Models\FileManager\Mapping\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Daskboard\Views\Web.config" />
