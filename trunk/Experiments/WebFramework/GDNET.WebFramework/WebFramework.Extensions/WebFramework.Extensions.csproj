@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerAssistant.cs" />
     <Compile Include="HtmlAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -49,6 +50,10 @@
     <ProjectReference Include="..\..\..\Common\GDNET.Common\GDNET.Common.csproj">
       <Project>{1B78D604-DA64-4D22-A453-560A3009F26C}</Project>
       <Name>GDNET.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Common\GDNET.Web\GDNET.Web.csproj">
+      <Project>{B2EA9EFC-D249-4AC0-A140-59EEEAA03BE1}</Project>
+      <Name>GDNET.Web</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebFramework.Common\WebFramework.Common.csproj">
       <Project>{048916D3-D2F1-45B0-BA0F-7E126112C233}</Project>
