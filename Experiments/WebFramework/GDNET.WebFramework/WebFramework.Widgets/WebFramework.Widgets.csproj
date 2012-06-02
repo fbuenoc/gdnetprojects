@@ -60,6 +60,7 @@
     <Compile Include="Daskboard\Controllers\MonitorController.cs" />
     <Compile Include="Daskboard\DaskboardWidget.cs" />
     <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
+    <Compile Include="FileManagerWg\Controllers\AdminController.cs" />
     <Compile Include="FileManagerWg\Models\FileContentModel.cs" />
     <Compile Include="HtmlContentWg\Controllers\AdminController.cs" />
     <Compile Include="Models\Contact\ContactModel.cs" />
@@ -99,7 +100,8 @@
     <Content Include="Daskboard\Views\Account\LogOn.aspx" />
     <Content Include="Daskboard\Views\Account\Register.aspx" />
     <Content Include="Daskboard\Views\Home\Index.aspx" />
-    <Content Include="FileManagerWg\Views\UI\List.ascx" />
+    <Content Include="FileManagerWg\Views\Administration\Admin\List.aspx" />
+    <Content Include="FileManagerWg\Views\UI\Index.ascx" />
     <Content Include="HtmlContentWg\Views\Administration\Admin\Index.aspx" />
     <Content Include="Views\Article\Default\Article.ListArticles.aspx" />
     <Content Include="Views\Article\Default\Index.ascx" />
@@ -185,8 +187,6 @@
   <ItemGroup>
     <Folder Include="ArticleWg\Content\" />
     <Folder Include="Daskboard\Domain\" />
-    <Folder Include="FileManagerWg\Controllers\" />
-    <Folder Include="FileManagerWg\Views\Administration\" />
     <Folder Include="HtmlContentWg\Views\UI\" />
   </ItemGroup>
   <ItemGroup>
@@ -197,6 +197,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArticleWg\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FileManagerWg\Views\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -236,6 +239,9 @@ xcopy "$(ProjectDir)ArticleWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Wi
 
 xcopy "$(ProjectDir)HtmlContentWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\HtmlContent\Views" /y/s
 xcopy "$(ProjectDir)HtmlContentWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\HtmlContent\Default" /y/s
+
+xcopy "$(ProjectDir)FileManagerWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\FileManager\Views" /y/s
+xcopy "$(ProjectDir)FileManagerWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\FileManager\Default" /y/s
 
 xcopy "$(ProjectDir)Daskboard\Views\*.*" "$(SolutionDir)WebFramework\Areas\Daskboard\Views" /y/s</PostBuildEvent>
   </PropertyGroup>

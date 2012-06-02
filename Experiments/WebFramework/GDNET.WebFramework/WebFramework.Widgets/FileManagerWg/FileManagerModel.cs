@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
+using WebFramework.Widgets.FileManagerWg.Models;
 
-namespace WebFramework.Widgets.FileManagerWg.Models
+namespace WebFramework.Widgets.FileManagerWg
 {
     public class FileManagerModel : WidgetModelBase
     {
