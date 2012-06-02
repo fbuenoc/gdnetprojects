@@ -20,7 +20,7 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
         {
             base.Initialize(requestContext);
 
-            this.articleRepository = DomainRepositories.GetWidgetRepository<ArticleRepository>(base.CurrentWidget);
+            this.articleRepository = DomainRepositories.GetWidgetRepository<IArticleRepository>(base.CurrentWidget);
         }
 
         public override ActionResult Index()

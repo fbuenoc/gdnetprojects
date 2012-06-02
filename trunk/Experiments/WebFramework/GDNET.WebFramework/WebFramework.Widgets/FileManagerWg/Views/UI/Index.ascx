@@ -6,11 +6,14 @@
         <a name="<%= base.Model.IdRegion %>"></a>
     </h3>
     <%
-        foreach (var articleModel in base.Model.ListArticles)
+        foreach (var fileModel in base.Model.FileContents)
         {
     %>
     <div>
-        <%= articleModel.Title %>
+        <%= fileModel.Name %>
+    </div>
+    <div>
+        <%= fileModel.Description %>
     </div>
     <%
         }

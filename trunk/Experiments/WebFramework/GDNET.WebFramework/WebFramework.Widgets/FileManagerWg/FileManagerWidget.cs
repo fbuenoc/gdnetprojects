@@ -1,9 +1,12 @@
 ﻿using System.Linq;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain;
+using WebFramework.Domain.Constants;
 using WebFramework.Widgets.Domain.FileWg.Repositories;
+using WebFramework.Widgets.FileManagerWg.Controllers;
+using WebFramework.Widgets.FileManagerWg.Models;
 
-namespace WebFramework.Widgets.FileManagerWg.Models
+namespace WebFramework.Widgets.FileManagerWg
 {
     public class FileManagerWidget : WidgetBase<FileManagerModel>
     {
@@ -27,6 +30,9 @@ namespace WebFramework.Widgets.FileManagerWg.Models
         protected override void RegisterProperties()
         {
             base.RegisterProperties();
+            this.RegisterProperty(WidgetBaseConstants.ControllerNamespace, typeof(AdminController).FullName);
+            this.RegisterProperty(string.Format(CommonConstants.WidgetPropertyRepositoryClassName, 0), typeof(FileContentRepository).FullName);
+            this.RegisterProperty(string.Format(CommonConstants.WidgetPropertyRepositoryAssemblyName, 0), typeof(FileContentRepository).Assembly.GetName().Name);
         }
     }
 }
