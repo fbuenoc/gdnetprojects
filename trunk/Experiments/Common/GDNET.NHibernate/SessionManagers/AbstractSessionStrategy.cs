@@ -20,10 +20,12 @@ namespace GDNET.NHibernate.SessionManagers
 
         public void BeginTransaction()
         {
-            if (this.transaction == null)
+            if (this.transaction != null)
             {
-                this.transaction = this.session.BeginTransaction();
+                this.transaction.Dispose();
             }
+
+            this.transaction = this.session.BeginTransaction();
         }
 
         public void Commit()

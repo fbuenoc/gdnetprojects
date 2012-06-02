@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AnonymousObjectAssistant.cs" />
     <Compile Include="Base64Assistant.cs" />
     <Compile Include="BooleanConstants.cs" />
     <Compile Include="BooleanExtensions.cs" />

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GDNET.Common.Base.Entities;
 using GDNET.Common.Data;
@@ -7,6 +8,7 @@ using GDNET.NHibernate.SessionManagers;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Linq;
+using Expressions = System.Linq.Expressions;
 
 namespace GDNET.NHibernate.Repositories
 {
@@ -33,6 +35,13 @@ namespace GDNET.NHibernate.Repositories
         protected IQuery CreateQuery(string hqlQuery)
         {
             return this.sessionStrategy.Session.CreateQuery(hqlQuery);
+        }
+
+        protected IList<TEntity> GetAll(Expressions.Expression<Func<TEntity, bool>> predicate)
+        {
+            var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
+            query = query.Where(predicate);
+            return query.ToList();
         }
 
         #region IRepositoryBase<TEntity,TId> Members
