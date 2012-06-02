@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="ArticleWg\ArticleMap.cs" />
     <Compile Include="Constants\WidgetsMappingConstants.cs" />
+    <Compile Include="FileWg\FileContentMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

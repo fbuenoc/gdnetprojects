@@ -20,7 +20,6 @@ using WebFramework.NHibernate.SessionManagers;
 using WebFramework.Widgets.ArticleWg;
 using WebFramework.Widgets.HtmlContentWg;
 using WebFramework.Widgets.Models.Contact;
-using WebFramework.Widgets.Models.DetailArticle;
 using WebFramework.Widgets.Models.RecentArticles;
 using WebFramework.Widgets.Models.RecentProducts;
 using WebFramework.Widgets.Models.RelatedItems;
@@ -384,9 +383,6 @@ namespace WebFrameworkSampleData
             RecentArticlesWidget articlesWidget = new RecentArticlesWidget();
             articlesWidget.Install();
 
-            DetailArticleWidget detailArticleWidget = new DetailArticleWidget();
-            detailArticleWidget.Install();
-
             RelatedItemsWidget relatedItemsWidget = new RelatedItemsWidget();
             relatedItemsWidget.Install();
 
@@ -401,7 +397,6 @@ namespace WebFrameworkSampleData
             Widget contactWidgetInfo = DomainRepositories.Widget.GetByCode(contactWidget.Code);
             Widget productWidgetInfo = DomainRepositories.Widget.GetByCode(productWidget.Code);
             Widget articlesWidgetInfo = DomainRepositories.Widget.GetByCode(articlesWidget.Code);
-            Widget detailArticleWidgetInfo = DomainRepositories.Widget.GetByCode(detailArticleWidget.Code);
             Widget relatedItemsInfo = DomainRepositories.Widget.GetByCode(relatedItemsWidget.Code);
             Widget articleWidgetInfo = DomainRepositories.Widget.GetByCode(articleWidget.Code);
 
@@ -447,11 +442,6 @@ namespace WebFrameworkSampleData
 
             #region Detail page regions
 
-            Region detailRegion1 = Region.Factory.Create("Detail article", detailArticleWidgetInfo);
-            detailRegion1.IsActive = true;
-            DomainServices.Region.ApplyDefaultProperties(detailRegion1);
-            detailPageLeftContentZone.AddRegion(detailRegion1);
-
             Region detailRegion2 = Region.Factory.Create("Related items", relatedItemsInfo);
             detailRegion2.IsActive = true;
             DomainServices.Region.ApplyDefaultProperties(detailRegion2);
@@ -465,13 +455,13 @@ namespace WebFrameworkSampleData
             var connection1 = RegionConnection.Factory.Create(aboutRegion1, WidgetActions.Detail);
             leftContentHPR1.AddConnection(connection1);
 
-            // Articles from homepage link to detail page
-            var connection2 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
-            rightContentHPR1.AddConnection(connection2);
+            //// Articles from homepage link to detail page
+            //var connection2 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
+            //rightContentHPR1.AddConnection(connection2);
 
-            // Articles from detail page link to this page
-            var connection3 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
-            detailRegion2.AddConnection(connection3);
+            //// Articles from detail page link to this page
+            //var connection3 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
+            //detailRegion2.AddConnection(connection3);
 
             DomainRepositories.RepositoryAssistant.Flush();
         }

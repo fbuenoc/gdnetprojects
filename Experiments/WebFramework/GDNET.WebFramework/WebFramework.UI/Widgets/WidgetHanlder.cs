@@ -36,9 +36,10 @@ namespace WebFramework.UI.Widgets
                     var objet = Activator.CreateInstance(region.Widget.AssemblyName, region.Widget.ClassName);
                     var widget = objet.Unwrap() as IWidget;
                     object resultModel = widget.Initialize(region);
+
                     if (resultModel != null)
                     {
-                        string viewName = string.Format("{0}/{1}/{2}", region.Widget.TechnicalName, this.GetUsageTemplate(region), "Index");
+                        string viewName = string.Format("{0}/{1}/{2}", region.Widget.TechnicalName, this.GetUsageTemplate(region), widget.CurrentView);
                         this.htmlHelper.RenderPartial(viewName, resultModel);
                     }
                 }
@@ -113,18 +114,8 @@ namespace WebFramework.UI.Widgets
         public MvcHtmlString ActionLinkAdminister(WidgetModelBase widgetModel)
         {
             string linkText = DomainServices.Translation.Translate("SysTranslation.RegionAdminister");
-
-            var routeValues = new
-            {
-                area = string.Empty,
-                idzn = widgetModel.IdZone,
-                idrg = widgetModel.IdRegion
-            };
-
-            return this.htmlHelper.ActionLink(linkText, "Region", WebFrameworkConstants.Controllers.Monitor, routeValues, null);
+            return this.htmlHelper.GDNet().HtmlLink(widgetModel.AdministerUrl, linkText);
         }
-
-
 
         public MvcHtmlString ActionLinkAdminister(PageModel pageModel)
         {

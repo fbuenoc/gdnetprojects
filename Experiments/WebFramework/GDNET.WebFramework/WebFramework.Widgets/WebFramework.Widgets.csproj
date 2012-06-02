@@ -50,9 +50,11 @@
   <ItemGroup>
     <Compile Include="ArticleWg\ArticleWidgetModel.cs" />
     <Compile Include="ArticleWg\ArticleWidget.cs" />
+    <Compile Include="ArticleWg\Constants\ArticleWidgetConstants.cs" />
     <Compile Include="ArticleWg\Controllers\AdminController.cs" />
     <Compile Include="ArticleWg\Controllers\ListArticlesController.cs" />
     <Compile Include="ArticleWg\Models\ArticleModel.cs" />
+    <Compile Include="ArticleWg\Constants\WidgetVisiblityMode.cs" />
     <Compile Include="Daskboard\Controllers\AccountController.cs" />
     <Compile Include="Daskboard\Controllers\HomeController.cs" />
     <Compile Include="Daskboard\Controllers\MonitorController.cs" />
@@ -61,8 +63,6 @@
     <Compile Include="HtmlContentWg\Controllers\AdminController.cs" />
     <Compile Include="Models\Contact\ContactModel.cs" />
     <Compile Include="Models\Contact\ContactWidget.cs" />
-    <Compile Include="Models\DetailArticle\DetailArticleModel.cs" />
-    <Compile Include="Models\DetailArticle\DetailArticleWidget.cs" />
     <Compile Include="Models\FileManager\Domain\File.cs" />
     <Compile Include="Models\FileManager\Domain\IFileRepository.cs" />
     <Compile Include="Models\FileManager\Domain\FileRepository.cs" />
@@ -88,7 +88,8 @@
     <Content Include="ArticleWg\Views\Administration\ListArticles\CreateOrUpdate.aspx" />
     <Content Include="ArticleWg\Views\Administration\ListArticles\Details.aspx" />
     <Content Include="ArticleWg\Views\Administration\ListArticles\List.aspx" />
-    <Content Include="ArticleWg\Views\UI\Index.ascx" />
+    <Content Include="ArticleWg\Views\UI\Single.ascx" />
+    <Content Include="ArticleWg\Views\UI\List.ascx" />
     <Content Include="ArticleWg\Views\UI\Index.css" />
     <Content Include="Content\DetailArticle\Default\Index.css" />
     <Content Include="Content\HtmlContent\Default\Index.css" />
