@@ -44,6 +44,10 @@
     <Compile Include="ArticleWg\Article.Factory.cs" />
     <Compile Include="ArticleWg\Repositories\ArticleRepository.cs" />
     <Compile Include="ArticleWg\Repositories\IArticleRepository.cs" />
+    <Compile Include="FileWg\FileContent.Factory.cs" />
+    <Compile Include="FileWg\FileContent.cs" />
+    <Compile Include="FileWg\Repositories\FileContentRepository.cs" />
+    <Compile Include="FileWg\Repositories\IFileContentRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
