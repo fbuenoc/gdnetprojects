@@ -235,12 +235,15 @@
 xcopy "$(ProjectDir)Content\*.*" "$(SolutionDir)WebFramework\Content\Widgets" /y/s
 
 xcopy "$(ProjectDir)ArticleWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
+xcopy "$(ProjectDir)ArticleWg\Views\Web.config" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
 xcopy "$(ProjectDir)ArticleWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\Article\Default" /y/s
 
 xcopy "$(ProjectDir)HtmlContentWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\HtmlContent\Views" /y/s
+xcopy "$(ProjectDir)HtmlContentWg\Views\Web.config" "$(SolutionDir)WebFramework\Areas\HtmlContent\Views" /y/s
 xcopy "$(ProjectDir)HtmlContentWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\HtmlContent\Default" /y/s
 
 xcopy "$(ProjectDir)FileManagerWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\FileManager\Views" /y/s
+xcopy "$(ProjectDir)FileManagerWg\Views\Web.config" "$(SolutionDir)WebFramework\Areas\FileManager\Views" /y/s
 xcopy "$(ProjectDir)FileManagerWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\FileManager\Default" /y/s
 
 xcopy "$(ProjectDir)Daskboard\Views\*.*" "$(SolutionDir)WebFramework\Areas\Daskboard\Views" /y/s</PostBuildEvent>
