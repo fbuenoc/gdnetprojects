@@ -4,7 +4,7 @@ namespace WebFramework.Common.Controllers
 {
     public abstract class AbstractListCrudController<TModel> : AbstractCrudController<TModel>
     {
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return base.RedirectToAction(ActionList);
         }

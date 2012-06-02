@@ -16,7 +16,7 @@ namespace WebFramework.Common.Widgets
 
         private const string DefaultTemplate = "Default";
         private IList<WidgetPropertyInfo> propertiesInfo = new List<WidgetPropertyInfo>();
-        protected RegionModel region = null;
+        protected RegionModel regionModel = null;
 
         #endregion
 
@@ -103,9 +103,9 @@ namespace WebFramework.Common.Widgets
             return true;
         }
 
-        public object Initialize(RegionModel region)
+        public object Initialize(RegionModel regionModel)
         {
-            this.region = region;
+            this.regionModel = regionModel;
             return this.InitializeModel();
         }
 
@@ -113,13 +113,18 @@ namespace WebFramework.Common.Widgets
         {
             get
             {
-                if (this.region == null || this.region.Zone == null)
+                if (this.regionModel == null || this.regionModel.Zone == null)
                 {
                     return string.Empty;
                 }
 
-                return string.Format("{0}/Widget/{1}/Admin?rid={2}&zid={3}", WebAssistant.GetCurrentDomain(), this.TechnicalName, this.region.Id, this.region.Zone.Id);
+                return string.Format("{0}/Widget/{1}/Admin?rid={2}&zid={3}", WebAssistant.GetCurrentDomain(), this.TechnicalName, this.regionModel.Id, this.regionModel.Zone.Id);
             }
+        }
+
+        public virtual string CurrentView
+        {
+            get { return "Index"; }
         }
 
         #endregion
@@ -152,6 +157,17 @@ namespace WebFramework.Common.Widgets
             return DomainRepositories.Widget.GetByCode(this.Code);
         }
 
+        protected Region GetCurrentRegion()
+        {
+            if (this.regionModel != null && this.regionModel.Zone != null)
+            {
+                var zone = DomainRepositories.Zone.GetById(this.regionModel.Zone.Id);
+                return zone.GetRegionById(this.regionModel.Id);
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Can be override in concrete implementation
         /// </summary>
@@ -181,9 +197,9 @@ namespace WebFramework.Common.Widgets
 
         protected T GetPropertyValue<T>(string propertyName)
         {
-            if (this.region.Properties.Any(x => x.Key.Code == propertyName))
+            if (this.regionModel.Properties.Any(x => x.Key.Code == propertyName))
             {
-                var kvp = this.region.Properties.First(x => x.Key.Code == propertyName);
+                var kvp = this.regionModel.Properties.First(x => x.Key.Code == propertyName);
                 return (T)Convert.ChangeType(kvp.Value, typeof(T));
             }
 
@@ -192,7 +208,7 @@ namespace WebFramework.Common.Widgets
 
         protected virtual TResult InitializeModel()
         {
-            TResult resultModel = (TResult)Activator.CreateInstance(typeof(TResult), this.region);
+            TResult resultModel = (TResult)Activator.CreateInstance(typeof(TResult), this.regionModel);
             resultModel.AdministerUrl = this.AdministerUrl;
 
             return resultModel;

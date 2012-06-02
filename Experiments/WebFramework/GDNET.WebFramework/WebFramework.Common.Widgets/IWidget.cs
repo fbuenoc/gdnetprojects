@@ -13,5 +13,6 @@ namespace WebFramework.Common.Widgets
 
         object Initialize(RegionModel region);
         string AdministerUrl { get; }
+        string CurrentView { get; }
     }
 }
