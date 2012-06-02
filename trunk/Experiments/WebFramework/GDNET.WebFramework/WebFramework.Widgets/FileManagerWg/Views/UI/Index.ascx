@@ -5,18 +5,25 @@
         <%= base.Model.Name %>
         <a name="<%= base.Model.IdRegion %>"></a>
     </h3>
-    <%
-        foreach (var fileModel in base.Model.FileContents)
-        {
-    %>
-    <div>
-        <%= fileModel.Name %>
-    </div>
-    <div>
-        <%= fileModel.Description %>
-    </div>
-    <%
-        }
-    %>
+    <ul>
+        <%
+            foreach (var fileModel in base.Model.FileContents)
+            {
+        %>
+        <li>
+            <div>
+                <%= fileModel.Title %>
+            </div>
+            <div>
+                <%= fileModel.Description %>
+            </div>
+            <div>
+                Download
+            </div>
+        </li>
+        <%
+            }
+        %>
+    </ul>
     <% base.Html.RenderPartial("WidgetAdminister", base.Model); %>
 </div>

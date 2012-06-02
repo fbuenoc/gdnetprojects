@@ -89,12 +89,7 @@
     <Content Include="ArticleWg\Views\Administration\ListArticles\List.aspx" />
     <Content Include="ArticleWg\Views\UI\Single.ascx" />
     <Content Include="ArticleWg\Views\UI\List.ascx" />
-    <Content Include="ArticleWg\Views\UI\Index.css" />
-    <Content Include="Content\DetailArticle\Default\Index.css" />
-    <Content Include="Content\HtmlContent\Default\Index.css" />
-    <Content Include="Content\RecentArticles\Default\Index.css" />
-    <Content Include="Content\RecentProducts\Default\Index.css" />
-    <Content Include="Content\RelatedItems\Default\Index.css" />
+    <Content Include="Content\Article\Default\Index.css" />
     <Content Include="Daskboard\Views\Account\ChangePassword.aspx" />
     <Content Include="Daskboard\Views\Account\ChangePasswordSuccess.aspx" />
     <Content Include="Daskboard\Views\Account\LogOn.aspx" />
@@ -102,12 +97,13 @@
     <Content Include="Daskboard\Views\Home\Index.aspx" />
     <Content Include="FileManagerWg\Views\Administration\Admin\List.aspx" />
     <Content Include="FileManagerWg\Views\UI\Index.ascx" />
+    <Content Include="Content\FileManager\Default\Index.css" />
     <Content Include="HtmlContentWg\Views\Administration\Admin\Index.aspx" />
+    <Content Include="Content\HtmlContent\Default\Index.css" />
     <Content Include="Views\Article\Default\Article.ListArticles.aspx" />
     <Content Include="Views\Article\Default\Index.ascx" />
-    <Content Include="Content\Article\Default\Index.css" />
     <Content Include="Views\Contact\Default\Index.ascx" />
-    <Content Include="Views\HtmlContent\Default\Index.ascx" />
+    <Content Include="HtmlContentWg\Views\UI\Index.ascx" />
     <Content Include="Views\RecentArticles\Default\Index.ascx" />
     <Content Include="Views\RecentProducts\Default\Index.ascx" />
     <Content Include="Views\RelatedItems\Default\Index.ascx" />
@@ -185,9 +181,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ArticleWg\Content\" />
     <Folder Include="Daskboard\Domain\" />
-    <Folder Include="HtmlContentWg\Views\UI\" />
+    <Folder Include="Views\HtmlContent\Default\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Daskboard\Views\Web.config" />
@@ -200,6 +195,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FileManagerWg\Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HtmlContentWg\Views\Web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -233,6 +231,8 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(TargetDir)*.dll" "$(SolutionDir)WebFramework\bin" /y/s
+
+xcopy "$(ProjectDir)Content\*.*" "$(SolutionDir)WebFramework\Content\Widgets" /y/s
 
 xcopy "$(ProjectDir)ArticleWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
 xcopy "$(ProjectDir)ArticleWg\Views\UI\*.*" "$(SolutionDir)WebFramework\Views\Widgets\Article\Default" /y/s

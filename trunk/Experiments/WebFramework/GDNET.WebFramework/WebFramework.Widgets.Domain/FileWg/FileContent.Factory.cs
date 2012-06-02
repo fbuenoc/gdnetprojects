@@ -17,16 +17,16 @@ namespace WebFramework.Widgets.Domain.FileWg
                 return new FileContent();
             }
 
-            public FileContent Create(string name, string description, string base64Content)
+            public FileContent Create(string name, string title, string description)
             {
                 ThrowException.ArgumentExceptionIfNullOrEmpty(name, "name", "Name can not be nullable.");
-                ThrowException.ArgumentExceptionIfNullOrEmpty(base64Content, "base64Content", "Base64Content can not be nullable.");
+                ThrowException.ArgumentExceptionIfNullOrEmpty(title, "title", "Title can not be nullable.");
 
                 var file = new FileContent
                 {
                     Name = name,
-                    Description = description,
-                    Base64Content = base64Content
+                    Title = title,
+                    Description = description
                 };
 
                 file.LifeCycle.AddStatutLog(StatutLog.Factory.Create(string.Empty));

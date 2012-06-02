@@ -11,6 +11,12 @@ namespace WebFramework.Widgets.FileManagerWg.Models
             set;
         }
 
+        public string Title
+        {
+            get;
+            set;
+        }
+
         public string Description
         {
             get;
@@ -26,6 +32,7 @@ namespace WebFramework.Widgets.FileManagerWg.Models
             : base(file)
         {
             this.Name = base.Entity.Name;
+            this.Title = base.Entity.Title;
             this.Description = base.Entity.Description;
         }
     }
