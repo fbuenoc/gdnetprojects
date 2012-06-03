@@ -10,6 +10,7 @@ using WebFramework.Domain.System;
 using WebFramework.NHibernate;
 using WebFramework.NHibernate.SessionManagers;
 using WebFramework.Widgets.ArticleWg;
+using WebFramework.Widgets.ArticleWg.Constants;
 using WebFramework.Widgets.Domain.ArticleWg;
 using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 using WebFramework.Widgets.Domain.FileWg;
@@ -99,8 +100,8 @@ namespace WebFrameworkSampleData
             RecentProductsWidget productWidget = new RecentProductsWidget();
             productWidget.Install();
 
-            RecentArticlesWidget articlesWidget = new RecentArticlesWidget();
-            articlesWidget.Install();
+            RecentArticlesWidget recentArticlesWidget = new RecentArticlesWidget();
+            recentArticlesWidget.Install();
 
             RelatedItemsWidget relatedItemsWidget = new RelatedItemsWidget();
             relatedItemsWidget.Install();
@@ -118,7 +119,7 @@ namespace WebFrameworkSampleData
             Widget htmlWidgetInfo = DomainRepositories.Widget.GetByCode(htmlWidget.Code);
             Widget contactWidgetInfo = DomainRepositories.Widget.GetByCode(contactWidget.Code);
             Widget productWidgetInfo = DomainRepositories.Widget.GetByCode(productWidget.Code);
-            Widget articlesWidgetInfo = DomainRepositories.Widget.GetByCode(articlesWidget.Code);
+            Widget recentArticlesWidgetInfo = DomainRepositories.Widget.GetByCode(recentArticlesWidget.Code);
             Widget relatedItemsInfo = DomainRepositories.Widget.GetByCode(relatedItemsWidget.Code);
             Widget articleWidgetInfo = DomainRepositories.Widget.GetByCode(articleWidget.Code);
             Widget fileManagerWidgetInfo = DomainRepositories.Widget.GetByCode(fileManager.Code);
@@ -127,32 +128,22 @@ namespace WebFrameworkSampleData
 
             #region Home page regions
 
-            Region leftR1 = Region.Factory.Create("Some articles", articleWidgetInfo);
-            leftR1.IsActive = true;
-            DomainServices.Region.ApplyDefaultProperties(leftR1);
-            homePageLeftContentZone.AddRegion(leftR1);
-            GenerateDemoDataArticles(leftR1, articleWidgetInfo);
+            Region hpRegion1 = Region.Factory.Create("Some articles", articleWidgetInfo);
+            hpRegion1.IsActive = true;
+            DomainServices.Region.ApplyDefaultProperties(hpRegion1);
+            homePageLeftContentZone.AddRegion(hpRegion1);
+            GenerateDemoDataArticles(hpRegion1, articleWidgetInfo);
 
-            Region leftContentHPR1 = Region.Factory.Create("Who we are?", htmlWidgetInfo);
-            leftContentHPR1.IsActive = true;
-            DomainServices.Region.ApplyDefaultProperties(leftContentHPR1);
-            homePageLeftContentZone.AddRegion(leftContentHPR1);
+            Region hpRegion2 = Region.Factory.Create("Who we are?", htmlWidgetInfo);
+            hpRegion2.IsActive = true;
+            DomainServices.Region.ApplyDefaultProperties(hpRegion2);
+            homePageLeftContentZone.AddRegion(hpRegion2);
 
-            Region leftContentHPR2 = Region.Factory.Create("Some files", fileManagerWidgetInfo);
-            leftContentHPR2.IsActive = true;
-            DomainServices.Region.ApplyDefaultProperties(leftContentHPR2);
-            homePageLeftContentZone.AddRegion(leftContentHPR2);
-            GenerateDemoDataFileContents(leftContentHPR2, fileManagerWidgetInfo);
-
-            //Region leftContentHPR3 = Region.Factory.Create("Recent products", productWidgetInfo);
-            //leftContentHPR3.IsActive = true;
-            //DomainServices.Region.ApplyDefaultProperties(leftContentHPR3);
-            //homePageLeftContentZone.AddRegion(leftContentHPR3);
-
-            //Region rightContentHPR1 = Region.Factory.Create("Recent articles", articlesWidgetInfo);
-            //rightContentHPR1.IsActive = true;
-            //DomainServices.Region.ApplyDefaultProperties(rightContentHPR1);
-            //homePageRightContentZone.AddRegion(rightContentHPR1);
+            Region hpRegion3 = Region.Factory.Create("Some files", fileManagerWidgetInfo);
+            hpRegion3.IsActive = true;
+            DomainServices.Region.ApplyDefaultProperties(hpRegion3);
+            homePageLeftContentZone.AddRegion(hpRegion3);
+            GenerateDemoDataFileContents(hpRegion3, fileManagerWidgetInfo);
 
             #endregion
 
@@ -167,10 +158,14 @@ namespace WebFrameworkSampleData
 
             #region Detail page regions
 
-            Region detailRegion2 = Region.Factory.Create("Related items", relatedItemsInfo);
-            detailRegion2.IsActive = true;
-            DomainServices.Region.ApplyDefaultProperties(detailRegion2);
-            detailPageRightContentZone.AddRegion(detailRegion2);
+            Region detailRegion1 = Region.Factory.Create("Detail article", articleWidgetInfo);
+            detailRegion1.IsActive = true;
+
+            DomainServices.Region.ApplyDefaultProperties(detailRegion1);
+            detailRegion1.UpdateSetting(ArticleWidgetConstants.UIMode, WidgetVisiblityMode.Single.ToString());
+
+            detailPageLeftContentZone.AddRegion(detailRegion1);
+
 
             #endregion
 
@@ -178,15 +173,11 @@ namespace WebFrameworkSampleData
 
             // content from Homepage links to about page
             var connection1 = RegionConnection.Factory.Create(aboutRegion1, WidgetActions.Detail);
-            leftContentHPR1.AddConnection(connection1);
+            hpRegion2.AddConnection(connection1);
 
-            //// Articles from homepage link to detail page
-            //var connection2 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
-            //rightContentHPR1.AddConnection(connection2);
-
-            //// Articles from detail page link to this page
-            //var connection3 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
-            //detailRegion2.AddConnection(connection3);
+            // Articles from homepage link to detail page
+            var connection2 = RegionConnection.Factory.Create(detailRegion1, WidgetActions.Detail);
+            hpRegion1.AddConnection(connection2);
 
             DomainRepositories.RepositoryAssistant.Flush();
         }

@@ -23,6 +23,14 @@ namespace WebFramework.Widgets.ArticleWg.Models
             set;
         }
 
+        public string DetailLink
+        {
+            get;
+            set;
+        }
+
+        #region Ctors
+
         public ArticleModel()
             : base()
         {
@@ -35,5 +43,7 @@ namespace WebFramework.Widgets.ArticleWg.Models
             this.Description = entity.Description;
             this.FullContent = entity.FullContent;
         }
+
+        #endregion
     }
 }

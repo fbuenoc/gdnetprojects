@@ -2,6 +2,7 @@
 using System.Web.Mvc.Html;
 using Finley.Common;
 using GDNET.Common.DesignByContract;
+using GDNET.Web.Helpers;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
@@ -35,6 +36,29 @@ namespace WebFramework.UI.Helpers
         {
             string linkText = DomainServices.Translation.Translate(linkCodeText);
             return this.htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, null);
+        }
+
+        public MvcHtmlString ActionLinkCreate(string widget, string controllerName, string actionName)
+        {
+            return this.ActionLinkCreate(widget, controllerName, actionName, null);
+        }
+
+        public MvcHtmlString ActionLinkCreate(string widget, string controllerName, string actionName, object htmlAttributes)
+        {
+            var zoneId = QueryStringAssistant.ParseInteger(QueryStringConstants.ZoneId);
+            var regionId = QueryStringAssistant.ParseInteger(QueryStringConstants.RegionId);
+            var routeValues = new { zid = zoneId, rid = regionId };
+            string linkText = DomainServices.Translation.Translate("SysTranslation.Create");
+            return this.htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, htmlAttributes);
+        }
+
+        public MvcHtmlString ActionLinkUpdate(string controllerName, string actionName, object entityId)
+        {
+            var zoneId = QueryStringAssistant.ParseInteger(QueryStringConstants.ZoneId);
+            var regionId = QueryStringAssistant.ParseInteger(QueryStringConstants.RegionId);
+            var routeValues = new { zid = zoneId, rid = regionId, eid = entityId.ToString() };
+            string linkText = DomainServices.Translation.Translate("SysTranslation.Update");
+            return this.htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues);
         }
 
         public MvcHtmlString ActionLinkUpdateValue(ContentItemAttributeValueModel valueModel)
@@ -156,6 +180,7 @@ namespace WebFramework.UI.Helpers
         }
 
         #endregion
+
         public MvcHtmlString CreateActionCreate(string linkText, EntityType objectType, object routeValues = null)
         {
             object routeValuesFramework = new { area = "Framework" };

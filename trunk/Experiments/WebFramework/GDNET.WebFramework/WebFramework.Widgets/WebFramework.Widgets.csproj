@@ -60,6 +60,7 @@
     <Compile Include="Daskboard\Controllers\MonitorController.cs" />
     <Compile Include="Daskboard\DaskboardWidget.cs" />
     <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
+    <Compile Include="Daskboard\Helpers\DaskboardAssistant.cs" />
     <Compile Include="FileManagerWg\Controllers\AdminController.cs" />
     <Compile Include="FileManagerWg\Models\FileContentModel.cs" />
     <Compile Include="HtmlContentWg\Controllers\AdminController.cs" />
@@ -181,7 +182,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Daskboard\Domain\" />
     <Folder Include="Views\HtmlContent\Default\" />
   </ItemGroup>
   <ItemGroup>
@@ -194,7 +194,9 @@
     <Content Include="ArticleWg\Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FileManagerWg\Views\Web.config" />
+    <Content Include="FileManagerWg\Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Content Include="HtmlContentWg\Views\Web.config" />
