@@ -1,3 +1,17 @@
 ﻿/*
 ** Article
 *************/
+.article_record_even
+{
+    background-color: White;
+}
+
+.article_record_odd
+{
+    background-color: #EFEFEF;
+}
+
+.article_record_even:hover, .article_record_odd:hover
+{
+    background-color: #EEEEEE;
+}

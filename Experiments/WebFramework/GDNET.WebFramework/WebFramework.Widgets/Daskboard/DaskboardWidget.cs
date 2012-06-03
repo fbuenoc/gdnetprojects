@@ -19,11 +19,5 @@ namespace WebFramework.Widgets.Daskboard
                 new string[] { string.Format("{0}.Controllers", this.GetType().Namespace) }
             );
         }
-
-        protected override DaskboardWidgetModel InitializeModel()
-        {
-            DaskboardWidgetModel modelResult = new DaskboardWidgetModel(base.regionModel);
-            return modelResult;
-        }
     }
 }

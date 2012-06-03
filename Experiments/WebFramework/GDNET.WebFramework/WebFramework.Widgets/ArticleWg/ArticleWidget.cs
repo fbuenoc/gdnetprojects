@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using GDNET.Web.Helpers;
 using WebFramework.Common.Widgets;
 using WebFramework.Domain;
@@ -7,6 +8,7 @@ using WebFramework.Domain.System;
 using WebFramework.Widgets.ArticleWg.Constants;
 using WebFramework.Widgets.ArticleWg.Controllers;
 using WebFramework.Widgets.ArticleWg.Models;
+using WebFramework.Widgets.Daskboard.Helpers;
 using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg
@@ -20,17 +22,29 @@ namespace WebFramework.Widgets.ArticleWg
 
         protected override ArticleWidgetModel InitializeModel()
         {
-            IArticleRepository articleRepository = DomainRepositories.GetWidgetRepository<IArticleRepository>(base.GetWidgetInfo());
-
-            WidgetVisiblityMode visiblityMode = base.GetPropertyValue<WidgetVisiblityMode>(ArticleWidgetConstants.UIMode);
             ArticleWidgetModel model = base.InitializeModel();
+            IArticleRepository articleRepository = DomainRepositories.GetWidgetRepository<IArticleRepository>(base.GetWidgetInfo());
+            WidgetVisiblityMode visiblityMode = base.GetPropertyValue<WidgetVisiblityMode>(ArticleWidgetConstants.UIMode);
 
             switch (visiblityMode)
             {
                 case WidgetVisiblityMode.List:
                     Region currentRegion = base.GetCurrentRegion();
+                    Region detailRegion = currentRegion.GetRegionConnectionByAction(WidgetActions.Detail);
+
                     var articlesModel = articleRepository.GetAllByRegion(currentRegion).Select(x => new ArticleModel(x)).ToList();
                     articlesModel.ForEach(x => model.ListArticles.Add(x));
+
+                    // Build link to detail page
+                    if (detailRegion != null)
+                    {
+                        foreach (var articleModel in model.ListArticles)
+                        {
+                            string detailLink = DaskboardAssistant.GetUrlByPage(detailRegion.Zone.Page);
+                            detailLink = NavigationAssistant.AddParameter(detailLink, ArticleWidgetConstants.ParameterNameArticleId, articleModel.Id);
+                            articleModel.DetailLink = detailLink;
+                        }
+                    }
                     break;
 
                 case WidgetVisiblityMode.Single:
@@ -39,6 +53,10 @@ namespace WebFramework.Widgets.ArticleWg
                     {
                         var articleEntity = articleRepository.GetById(articleId.Value);
                         model.ListArticles.Add(new ArticleModel(articleEntity));
+                    }
+                    else
+                    {
+                        throw new Exception();
                     }
                     break;
             }

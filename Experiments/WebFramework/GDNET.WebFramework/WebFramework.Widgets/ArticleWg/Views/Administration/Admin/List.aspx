@@ -6,7 +6,8 @@
     List Articles
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
-    <div>
+    <div class="zone_actions">
+        <%= base.Html.WebFramework().ActionLink().ActionLinkCreate("Article", "Admin", "Create") %>
     </div>
     <div>
         <% base.Html.Telerik().Grid<ArticleModel>(base.Model)
@@ -16,6 +17,9 @@
                     columns.Bound(c => c.Title).Title("Title");
                     columns.Bound(c => c.Id).Title("Actions").Template(template =>
                     {
+        %>
+        <%= base.Html.WebFramework().ActionLink().ActionLinkUpdate("Admin", "Edit", template.Id) %>
+        <%
                     });
                 })
                 .Pageable()
