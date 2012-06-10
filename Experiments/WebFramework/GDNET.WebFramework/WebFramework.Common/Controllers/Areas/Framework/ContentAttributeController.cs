@@ -11,7 +11,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ContentAttributeController : AbstractListCrudController<ContentAttributeModel>, IRequiredAdministerController
+    public class ContentAttributeController : AbstractListCrudController<ContentAttributeModel>, IRequiredAdministratorController
     {
         public override ActionResult List()
         {

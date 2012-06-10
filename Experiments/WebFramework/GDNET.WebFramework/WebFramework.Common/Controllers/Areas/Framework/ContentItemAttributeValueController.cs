@@ -15,7 +15,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ContentItemAttributeValueController : AbstractCrudController<ContentItemAttributeValueModel>, IRequiredAdministerController
+    public class ContentItemAttributeValueController : AbstractCrudController<ContentItemAttributeValueModel>, IRequiredAdministratorController
     {
         protected override object OnCreateExecuting(ContentItemAttributeValueModel model, FormCollection collection)
         {

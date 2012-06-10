@@ -13,7 +13,7 @@ using WebFramework.Domain.Constants;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class TranslationController : AbstractListCrudController<TranslationModel>, IRequiredAdministerController
+    public class TranslationController : AbstractListCrudController<TranslationModel>, IRequiredAdministratorController
     {
         public override ActionResult List()
         {

@@ -6,7 +6,10 @@
    {
 %>
 <div class="management_space">
-    <%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>
+    <a href="<%= base.Model.AdministerUrl %>">
+        <%= WebFramework.Domain.DomainServices.Translation.Translate("SysTranslation.PageAdminister")%>
+    </a>
+    <%--<%= base.Html.WebFramework().WidgetHanlder().ActionLinkAdminister(base.Model) %>--%>
 </div>
 <%
    } 

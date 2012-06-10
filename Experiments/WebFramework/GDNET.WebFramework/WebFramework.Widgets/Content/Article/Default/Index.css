@@ -3,12 +3,12 @@
 *************/
 .article_record_even
 {
-    background-color: White;
+    background-color: #FFFFFF;
 }
 
 .article_record_odd
 {
-    background-color: #EFEFEF;
+    background-color: #FFFFEE;
 }
 
 .article_record_even:hover, .article_record_odd:hover

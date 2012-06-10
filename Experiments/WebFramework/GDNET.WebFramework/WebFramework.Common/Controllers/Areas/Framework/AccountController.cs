@@ -8,7 +8,7 @@ using WebFramework.Common.Security;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class AccountController : AbstractListCrudController<AccountModel>, IRequiredAdministerController
+    public class AccountController : AbstractListCrudController<AccountModel>, IRequiredAdministratorController
     {
         #region ListCrudControllerBase members
 

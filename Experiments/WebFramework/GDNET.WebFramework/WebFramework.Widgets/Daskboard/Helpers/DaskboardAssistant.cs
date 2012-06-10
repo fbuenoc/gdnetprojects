@@ -17,5 +17,17 @@ namespace WebFramework.Widgets.Daskboard.Helpers
                 return string.Format("{0}/Daskboard?page={1}", WebAssistant.GetCurrentDomain(), targetPage.UniqueName);
             }
         }
+
+        public static string GetPageAdministerUrl(Page targetPage)
+        {
+            if (targetPage == null)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                return string.Format("{0}/Daskboard/PageAdmin?page={1}", WebAssistant.GetCurrentDomain(), targetPage.UniqueName);
+            }
+        }
     }
 }

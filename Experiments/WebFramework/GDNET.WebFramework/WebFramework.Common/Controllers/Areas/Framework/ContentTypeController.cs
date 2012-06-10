@@ -8,7 +8,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ContentTypeController : AbstractListCrudController<ContentTypeModel>, IRequiredAdministerController
+    public class ContentTypeController : AbstractListCrudController<ContentTypeModel>, IRequiredAdministratorController
     {
         public override ActionResult List()
         {

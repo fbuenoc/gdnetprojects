@@ -9,7 +9,7 @@ using WebFramework.Common.Security;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class HomeController : AbstractController, IRequiredAdministerController
+    public class HomeController : AbstractController, IRequiredAdministratorController
     {
         public ActionResult Index()
         {

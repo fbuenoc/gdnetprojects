@@ -391,7 +391,6 @@ table th
 
 .widget_container:hover
 {
-    background-color: #F0F0F0;
 }
 
 .widget_container .title
@@ -428,6 +427,10 @@ table th
 .no_style_type
 {
     list-style-type: none;
-    margin-left: 0px;
-    padding-left: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.no_style_type li
+{
+    padding: 5px;
 }

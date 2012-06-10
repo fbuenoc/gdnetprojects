@@ -56,8 +56,10 @@
     <Compile Include="ArticleWg\Models\ArticleModel.cs" />
     <Compile Include="ArticleWg\Constants\WidgetVisiblityMode.cs" />
     <Compile Include="Daskboard\Controllers\AccountController.cs" />
+    <Compile Include="Daskboard\Controllers\RegionAdminController.cs" />
     <Compile Include="Daskboard\Controllers\HomeController.cs" />
     <Compile Include="Daskboard\Controllers\MonitorController.cs" />
+    <Compile Include="Daskboard\Controllers\PageAdminController.cs" />
     <Compile Include="Daskboard\DaskboardWidget.cs" />
     <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
     <Compile Include="Daskboard\Helpers\DaskboardAssistant.cs" />
@@ -96,6 +98,8 @@
     <Content Include="Daskboard\Views\Account\LogOn.aspx" />
     <Content Include="Daskboard\Views\Account\Register.aspx" />
     <Content Include="Daskboard\Views\Home\Index.aspx" />
+    <Content Include="Daskboard\Views\PageAdmin\Edit.aspx" />
+    <Content Include="Daskboard\Views\RegionAdmin\Edit.aspx" />
     <Content Include="FileManagerWg\Views\Administration\Admin\List.aspx" />
     <Content Include="FileManagerWg\Views\UI\Index.ascx" />
     <Content Include="Content\FileManager\Default\Index.css" />
@@ -235,6 +239,7 @@
     <PostBuildEvent>xcopy "$(TargetDir)*.dll" "$(SolutionDir)WebFramework\bin" /y/s
 
 xcopy "$(ProjectDir)Content\*.*" "$(SolutionDir)WebFramework\Content\Widgets" /y/s
+xcopy "$(ProjectDir)Views\Shared\*.*" "$(SolutionDir)WebFramework\Views\Widgets\Shared" /y/s
 
 xcopy "$(ProjectDir)ArticleWg\Views\Administration\*.*" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s
 xcopy "$(ProjectDir)ArticleWg\Views\Web.config" "$(SolutionDir)WebFramework\Areas\Article\Views" /y/s

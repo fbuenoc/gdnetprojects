@@ -10,7 +10,7 @@ using WebFramework.Common.Security;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class RoleController : AbstractListCrudController<RoleModel>, IRequiredAdministerController
+    public class RoleController : AbstractListCrudController<RoleModel>, IRequiredAdministratorController
     {
         public const string ActionAddUser = "AddUser";
 

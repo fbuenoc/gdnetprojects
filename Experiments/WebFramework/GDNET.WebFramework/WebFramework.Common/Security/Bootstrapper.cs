@@ -15,7 +15,7 @@ namespace WebFramework.Common.Security
                 configuration.GetRolesFrom(() => GetRolesForUser());
 
                 configuration.ForAllControllersInAssemblyImplementedType<IRequiredAuthenticatedController>().DenyAnonymousAccess();
-                configuration.ForAllControllersInAssemblyImplementedType<IRequiredAdministerController>().RequireRole("Administrator");
+                configuration.ForAllControllersInAssemblyImplementedType<IRequiredAdministratorController>().RequireRole("Administrator");
             });
 
             return SecurityConfiguration.Current;
@@ -24,7 +24,12 @@ namespace WebFramework.Common.Security
         private static IEnumerable<object> GetRolesForUser()
         {
             List<object> listeOfRoles = new List<object>();
-            listeOfRoles.Add("Administrator");
+
+            if (HttpContext.Current.User.Identity.IsAuthenticated)
+            {
+                listeOfRoles.Add("Administrator");
+            }
+
             return listeOfRoles;
         }
     }
