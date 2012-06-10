@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using GDNET.Common.Base.Entities;
 using WebFramework.Domain.Base;
 using WebFramework.Domain.Common;
@@ -93,6 +94,18 @@ namespace WebFramework.Domain.System
             this.settings.Clear();
         }
 
+        public virtual bool UpdateSetting(string settingCode, string newValue)
+        {
+            var setting = this.settings.FirstOrDefault(x => x.WidgetProperty.Code == settingCode);
+            if (setting != null)
+            {
+                setting.Value = newValue;
+                return true;
+            }
+
+            return false;
+        }
+
         public virtual void AddConnection(RegionConnection connection)
         {
             if (!this.RegionConnections.Contains(connection))
@@ -108,6 +121,12 @@ namespace WebFramework.Domain.System
             {
                 this.regionConnections.Remove(connection);
             }
+        }
+
+        public virtual Region GetRegionConnectionByAction(string action)
+        {
+            var connection = this.regionConnections.FirstOrDefault(x => x.Action == action);
+            return (connection == null) ? null : connection.To;
         }
 
         public virtual void RemoveAllConnection()

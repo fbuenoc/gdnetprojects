@@ -45,6 +45,12 @@ namespace WebFramework.Common.Framework.System
             set;
         }
 
+        public string AdministerUrl
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Ctors

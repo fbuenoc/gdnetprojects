@@ -12,7 +12,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Controllers.Areas.System
 {
-    public class RegionAdminController : AbstractListCrudController<RegionModel>, IRequiredAdministerController
+    public class RegionAdminController : AbstractListCrudController<RegionModel>, IRequiredAdministratorController
     {
         private Zone zoneEntity = null;
 

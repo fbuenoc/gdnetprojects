@@ -2,8 +2,10 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Routing;
+using GDNET.Web.Helpers;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Extensions;
 using WebFramework.Widgets.ArticleWg.Models;
@@ -12,7 +14,7 @@ using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg.Controllers
 {
-    public class AdminController : AbstractListCrudController<ArticleModel>
+    public class AdminController : AbstractListCrudController<ArticleModel>, IRequiredAdministratorController
     {
         private IArticleRepository articleRepository = null;
 
@@ -27,8 +29,8 @@ namespace WebFramework.Widgets.ArticleWg.Controllers
         {
             var objet = new
             {
-                zid = this.HttpContext.Request.QueryString[QueryStringConstants.ZoneId],
-                rid = this.HttpContext.Request.QueryString[QueryStringConstants.RegionId],
+                zid = QueryStringAssistant.GetValueAsString(QueryStringConstants.ZoneId),
+                rid = QueryStringAssistant.GetValueAsString(QueryStringConstants.RegionId),
             };
             return base.RedirectToAction(ActionList, objet);
         }

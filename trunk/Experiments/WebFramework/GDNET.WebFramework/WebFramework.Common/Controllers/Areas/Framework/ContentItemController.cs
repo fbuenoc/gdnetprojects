@@ -12,7 +12,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ContentItemController : AbstractListCrudController<ContentItemModel>, IRequiredAdministerController
+    public class ContentItemController : AbstractListCrudController<ContentItemModel>, IRequiredAdministratorController
     {
         public override ActionResult List()
         {

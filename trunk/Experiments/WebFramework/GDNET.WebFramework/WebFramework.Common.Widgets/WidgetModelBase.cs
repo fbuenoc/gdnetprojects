@@ -71,6 +71,11 @@ namespace WebFramework.Common.Widgets
             get { return this.GetConnectionTo(WidgetActions.Detail); }
         }
 
+        public virtual bool CanManage
+        {
+            get { return false; }
+        }
+
         #endregion
 
         #region Methods

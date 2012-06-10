@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Web.Mvc;
+using System.Web.Routing;
 using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Adapters;
-using WebFramework.Common.Common;
+using WebFramework.Common.Constants;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
 using WebFramework.Common.Security;
@@ -12,31 +14,52 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Widgets.Daskboard.Controllers
 {
-    public class MonitorController : AbstractController, IRequiredAuthenticatedController
+    public class RegionAdminController : AbstractController<PageModel>, IRequiredAdministratorController
     {
-        #region Region management
-
-        public ActionResult Region()
+        protected override void Initialize(RequestContext requestContext)
         {
-            Region regionEntity = null;
-            RegionModel regionModel = null;
+            base.Initialize(requestContext);
+        }
 
-            if (this.GetRegionModel(out regionModel, out regionEntity))
+        public ActionResult Index()
+        {
+            var objet = new
             {
+                rid = QueryStringAssistant.GetValueAsString(QueryStringConstants.RegionId),
+                page = QueryStringAssistant.GetValueAsString(QueryStringConstants.Page)
+            };
+
+            return base.RedirectToAction("Edit", objet);
+        }
+
+        public ActionResult Edit()
+        {
+            var regionEntity = this.GetSelectionRegion();
+
+            if (regionEntity == null)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                var regionModel = new RegionModel(regionEntity);
                 return base.View(regionModel);
             }
-
-            return base.RedirectToAction("OnError", "Home");
         }
 
         [HttpPost]
-        public ActionResult Region(FormCollection collection)
+        public ActionResult Edit(FormCollection collection)
         {
-            Region regionEntity = null;
-            RegionModel regionModel = null;
+            var regionEntity = this.GetSelectionRegion();
 
-            if (this.GetRegionModel(out regionModel, out regionEntity))
+            if (regionEntity == null)
             {
+                throw new Exception();
+            }
+            else
+            {
+                var regionModel = new RegionModel(regionEntity);
+
                 // Name & Description of the Region
                 var nameEditorAdapter = new TextBoxEditorAdapter("RG_Name", collection);
                 regionEntity.Name = nameEditorAdapter.Value;
@@ -91,32 +114,24 @@ namespace WebFramework.Widgets.Daskboard.Controllers
                 DomainRepositories.RepositoryAssistant.Flush();
                 return base.View(regionModel);
             }
-
-            return base.RedirectToAction("OnError", "Home");
         }
 
-        private bool GetRegionModel(out RegionModel regionModel, out Region regionEntity)
+        private Region GetSelectionRegion()
         {
-            regionModel = null;
-            regionEntity = null;
+            var regionId = QueryStringAssistant.ParseInteger(QueryStringConstants.RegionId);
+            var zoneId = QueryStringAssistant.ParseInteger(QueryStringConstants.ZoneId);
+            Region regionEntity = null;
 
-            long? zoneId = QueryStringAssistant.ParseInteger(EntityQueryString.ZoneId);
-            long? regionId = QueryStringAssistant.ParseInteger(EntityQueryString.RegionId);
-
-            if (zoneId.HasValue && regionId.HasValue)
+            if (zoneId.HasValue)
             {
-                var zone = DomainRepositories.Zone.GetById(zoneId.Value);
-                if (zone != null)
+                var zoneEntity = DomainRepositories.Zone.GetById(zoneId.Value);
+                if (zoneEntity != null && regionId.HasValue)
                 {
-                    regionEntity = zone.Regions.FirstOrDefault(x => x.Id == regionId.Value);
-                    regionModel = new RegionModel(regionEntity);
-                    return true;
+                    regionEntity = zoneEntity.GetRegionById(regionId.Value);
                 }
             }
 
-            return false;
+            return regionEntity;
         }
-
-        #endregion
     }
 }

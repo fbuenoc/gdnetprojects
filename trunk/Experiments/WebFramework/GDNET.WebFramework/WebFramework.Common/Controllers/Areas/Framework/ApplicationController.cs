@@ -9,7 +9,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ApplicationController : AbstractListCrudController<ApplicationModel>, IRequiredAdministerController
+    public class ApplicationController : AbstractListCrudController<ApplicationModel>, IRequiredAdministratorController
     {
         #region ListCrudControllerBase Members
 

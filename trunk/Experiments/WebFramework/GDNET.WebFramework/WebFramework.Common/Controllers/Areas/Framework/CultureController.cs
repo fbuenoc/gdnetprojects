@@ -9,7 +9,7 @@ using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class CultureController : AbstractListCrudController<CultureModel>, IRequiredAdministerController
+    public class CultureController : AbstractListCrudController<CultureModel>, IRequiredAdministratorController
     {
         public override ActionResult List()
         {

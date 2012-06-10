@@ -6,6 +6,7 @@ using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
 using WebFramework.Domain.System;
 using WebFramework.Services.Common;
+using WebFramework.Widgets.Daskboard.Helpers;
 
 namespace WebFramework.Widgets.Daskboard.Controllers
 {
@@ -32,6 +33,8 @@ namespace WebFramework.Widgets.Daskboard.Controllers
             else
             {
                 var pageModel = new PageModel(pageEntity);
+                pageModel.AdministerUrl = DaskboardAssistant.GetPageAdministerUrl(pageEntity);
+
                 return base.View(pageModel);
             }
         }

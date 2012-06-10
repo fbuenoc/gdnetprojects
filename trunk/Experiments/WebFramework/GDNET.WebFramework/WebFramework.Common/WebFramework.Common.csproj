@@ -139,7 +139,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\Bootstrapper.cs" />
     <Compile Include="Security\ConfigurationExpressionAssistant.cs" />
-    <Compile Include="Security\IRequiredAdministerController.cs" />
+    <Compile Include="Security\IRequiredAdministratorController.cs" />
     <Compile Include="Security\IRequiredAuthenticatedController.cs" />
     <Compile Include="Security\SecuredUrlAssistant.cs" />
     <Compile Include="Security\SecurityAssistant.cs" />

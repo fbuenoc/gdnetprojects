@@ -10,7 +10,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Common.Controllers.Areas.System
 {
-    public class PageAdminController : AbstractListCrudController<PageModel>, IRequiredAdministerController
+    public class PageAdminController : AbstractListCrudController<PageModel>, IRequiredAdministratorController
     {
         public override ActionResult List()
         {

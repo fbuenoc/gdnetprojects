@@ -123,7 +123,6 @@ namespace WebFramework.UI.Widgets
 
             var routeValues = new
             {
-                area = string.Empty,
                 idpg = pageModel.Id,
                 page = pageModel.UniqueName
             };

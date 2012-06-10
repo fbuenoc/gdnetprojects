@@ -72,10 +72,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ModulesControllersAssemblies.txt" />
     <Content Include="App_Data\hibernate.cfg.xml" />
     <Content Include="App_Data\MappingAssemblies.txt" />
     <Content Include="Views\Home\NoPage.aspx" />
-    <Content Include="Views\Monitor\Page.aspx" />
+    <Content Include="Views\Shared\EditorComponents\HtmlEditor.ascx" />
+    <Content Include="Views\Shared\EditorComponents\NumberEditor.ascx" />
+    <Content Include="Views\Shared\EditorComponents\PercentageEditor.ascx" />
+    <Content Include="Views\Shared\EditorComponents\TextAreaEditor.ascx" />
+    <Content Include="Views\Shared\EditorComponents\TextBoxEditor.ascx" />
     <Content Include="Views\Shared\InfoModificationControl.ascx" />
     <Content Include="Content\2011.3.1115\Black\editor.png" />
     <Content Include="Content\2011.3.1115\Black\imagebrowser.png" />

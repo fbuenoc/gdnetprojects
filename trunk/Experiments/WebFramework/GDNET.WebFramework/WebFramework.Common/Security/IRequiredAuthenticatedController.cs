@@ -1,4 +1,9 @@
 ﻿namespace WebFramework.Common.Security
 {
-    public interface IRequiredAuthenticatedController { }
+    /// <summary>
+    /// With all controllers which implement this interface, only authenticated users can access its page
+    /// </summary>
+    public interface IRequiredAuthenticatedController
+    {
+    }
 }

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using WebFramework.Common.Framework.System;
+using WebFramework.Common.Security;
 using WebFramework.Common.Widgets;
+using WebFramework.Widgets.ArticleWg.Controllers;
 using WebFramework.Widgets.ArticleWg.Models;
 
 namespace WebFramework.Widgets.ArticleWg
@@ -17,6 +19,14 @@ namespace WebFramework.Widgets.ArticleWg
         public IList<ArticleModel> ListArticles
         {
             get { return this.listArticles; }
+        }
+
+        public override bool CanManage
+        {
+            get
+            {
+                return (new SecurityAssistant()).ActionIsAllowedForUser(typeof(AdminController).FullName, "List");
+            }
         }
     }
 }

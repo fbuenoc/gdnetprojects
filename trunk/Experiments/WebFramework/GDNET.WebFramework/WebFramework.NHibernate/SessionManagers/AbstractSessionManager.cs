@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Linq;
 using System.Reflection;
 using GDNET.Extensions;
 using GDNET.NHibernate.SessionManagers;
@@ -17,13 +18,8 @@ namespace WebFramework.NHibernate.SessionManagers
             var mapper = new ModelMapper();
             if (File.Exists(mappingAssembliesFile))
             {
-                foreach (string line in File.ReadAllLines(mappingAssembliesFile))
+                foreach (string line in File.ReadAllLines(mappingAssembliesFile).Where(x => ValidatedLine(x)))
                 {
-                    if (string.IsNullOrEmpty(line) || line.StartsWith("#"))
-                    {
-                        continue;
-                    }
-
                     var asm = Assembly.Load(line);
                     var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(INHibernateMapping), asm);
                     mapper.AddMappings(listeMappingTypes);
@@ -31,6 +27,11 @@ namespace WebFramework.NHibernate.SessionManagers
             }
 
             return mapper;
+        }
+
+        private static bool ValidatedLine(string line)
+        {
+            return !(string.IsNullOrEmpty(line) || line.StartsWith("#"));
         }
     }
 }
