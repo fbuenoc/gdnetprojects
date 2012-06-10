@@ -1,6 +1,6 @@
-﻿<%@ Import Namespace="WebFramework.Common.Framework.System" %>
+﻿<%@ Import Namespace="WebFramework.Widgets.Daskboard.ViewModels" %>
 
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<PageModel>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DaskboardPageModel>" %>
 
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <%= base.Model.Name %>
