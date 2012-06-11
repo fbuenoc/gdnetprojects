@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
-using WebFramework.Common.Security;
 using WebFramework.Domain;
 
 namespace WebFramework.Common.Controllers.Areas.System
 {
-    public class ZoneAdminController : AbstractListCrudController<ZoneModel>, IRequiredAdministratorController
+    public class ZoneAdminController : AbstractListCrudController<ZoneModel>
     {
         public override ActionResult List()
         {

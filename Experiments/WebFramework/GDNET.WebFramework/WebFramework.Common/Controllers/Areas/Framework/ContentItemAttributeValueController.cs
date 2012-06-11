@@ -9,13 +9,12 @@ using WebFramework.Common.Common;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
-using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ContentItemAttributeValueController : AbstractCrudController<ContentItemAttributeValueModel>, IRequiredAdministratorController
+    public class ContentItemAttributeValueController : AbstractCrudController<ContentItemAttributeValueModel>
     {
         protected override object OnCreateExecuting(ContentItemAttributeValueModel model, FormCollection collection)
         {

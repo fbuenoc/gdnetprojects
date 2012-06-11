@@ -1,20 +1,19 @@
 ﻿using GDNET.Web.Helpers;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
-using WebFramework.Domain.Services;
 
-namespace WebFramework.Services.Common
+namespace WebFramework.Services
 {
-    public class WebSessionInformationService
+    public class FrameworkInformationService
     {
         #region Singleton
 
         private class Nested
         {
-            public static readonly WebSessionInformationService Instance = new WebSessionInformationService();
+            public static readonly FrameworkInformationService Instance = new FrameworkInformationService();
         }
 
-        public static WebSessionInformationService Instance
+        public static FrameworkInformationService Instance
         {
             get { return Nested.Instance; }
         }

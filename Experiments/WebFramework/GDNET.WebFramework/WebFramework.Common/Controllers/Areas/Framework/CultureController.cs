@@ -1,15 +1,13 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using GDNET.Web.Mvc.Helpers;
-using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Common;
-using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class CultureController : AbstractListCrudController<CultureModel>, IRequiredAdministratorController
+    public class CultureController : AbstractListCrudController<CultureModel>
     {
         public override ActionResult List()
         {

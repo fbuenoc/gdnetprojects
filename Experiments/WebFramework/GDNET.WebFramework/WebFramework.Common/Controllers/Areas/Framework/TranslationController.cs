@@ -5,7 +5,6 @@ using GDNET.Extensions;
 using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.Framework.Common;
-using WebFramework.Common.Security;
 using WebFramework.Common.ViewModels.Framework;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
@@ -13,7 +12,7 @@ using WebFramework.Domain.Constants;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class TranslationController : AbstractListCrudController<TranslationModel>, IRequiredAdministratorController
+    public class TranslationController : AbstractListCrudController<TranslationModel>
     {
         public override ActionResult List()
         {

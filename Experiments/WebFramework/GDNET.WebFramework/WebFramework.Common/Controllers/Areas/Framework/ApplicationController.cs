@@ -1,15 +1,13 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using GDNET.Web.Mvc.Helpers;
-using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Common;
-using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ApplicationController : AbstractListCrudController<ApplicationModel>, IRequiredAdministratorController
+    public class ApplicationController : AbstractListCrudController<ApplicationModel>
     {
         #region ListCrudControllerBase Members
 

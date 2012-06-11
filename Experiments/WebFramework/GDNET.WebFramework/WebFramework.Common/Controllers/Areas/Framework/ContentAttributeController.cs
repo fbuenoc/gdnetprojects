@@ -5,13 +5,12 @@ using GDNET.Web.Mvc.Helpers;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Common.Framework.Common;
-using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ContentAttributeController : AbstractListCrudController<ContentAttributeModel>, IRequiredAdministratorController
+    public class ContentAttributeController : AbstractListCrudController<ContentAttributeModel>
     {
         public override ActionResult List()
         {

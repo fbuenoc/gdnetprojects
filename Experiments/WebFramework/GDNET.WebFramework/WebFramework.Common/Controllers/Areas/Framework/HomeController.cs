@@ -4,12 +4,10 @@ using System.Web.Mvc;
 using WebFramework.Business.Administration;
 using WebFramework.Business.Helpers;
 using WebFramework.Common.Business.Administration;
-using WebFramework.Common.Controllers;
-using WebFramework.Common.Security;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class HomeController : AbstractController, IRequiredAdministratorController
+    public class HomeController : AbstractController
     {
         public ActionResult Index()
         {

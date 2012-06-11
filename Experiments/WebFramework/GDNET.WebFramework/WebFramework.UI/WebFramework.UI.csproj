@@ -38,11 +38,8 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
     <Reference Include="Telerik.Web.Mvc">
       <HintPath>..\..\..\..\Libs\TelerikMvc\2012.1.214\lib\net40\Telerik.Web.Mvc.dll</HintPath>
     </Reference>
@@ -58,7 +55,7 @@
     <Compile Include="Helpers\TranslationFactory.cs" />
     <Compile Include="Helpers\NumberFormatAssistant.cs" />
     <Compile Include="Helpers\ActionLinkFactory.cs" />
-    <Compile Include="Common\WebFrameworkFactory.cs" />
+    <Compile Include="WebFrameworkFactory.cs" />
     <Compile Include="Helpers\HyperLinkAssistant.cs" />
     <Compile Include="EntityType.cs" />
     <Compile Include="Translations\SystemTranslation.cs" />
