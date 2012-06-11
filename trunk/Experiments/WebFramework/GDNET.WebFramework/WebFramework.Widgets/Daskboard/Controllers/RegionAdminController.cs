@@ -14,7 +14,7 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Widgets.Daskboard.Controllers
 {
-    public class RegionAdminController : AbstractController<PageModel>, IRequiredAdministratorController
+    public class RegionAdminController : AbstractController<PageModel>, IRequiredManagerController
     {
         protected override void Initialize(RequestContext requestContext)
         {

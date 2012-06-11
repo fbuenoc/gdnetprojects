@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Routing;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Widgets.ArticleWg.Models;
 using WebFramework.Widgets.Domain.ArticleWg;
@@ -9,7 +10,7 @@ using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg.Controllers
 {
-    public class ListArticlesController : AbstractListCrudController<ArticleModel>
+    public class ListArticlesController : AbstractListCrudController<ArticleModel>, IRequiredManagerController
     {
         private IArticleRepository articleRepository = null;
 

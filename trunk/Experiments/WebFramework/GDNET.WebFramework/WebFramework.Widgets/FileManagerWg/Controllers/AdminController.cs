@@ -4,6 +4,7 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Controllers;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Extensions;
 using WebFramework.Widgets.Domain.FileWg.Repositories;
@@ -11,7 +12,7 @@ using WebFramework.Widgets.FileManagerWg.Models;
 
 namespace WebFramework.Widgets.FileManagerWg.Controllers
 {
-    public class AdminController : AbstractListCrudController<FileContentModel>
+    public class AdminController : AbstractListCrudController<FileContentModel>, IRequiredManagerController
     {
         private IFileContentRepository fileContentRepository = null;
 

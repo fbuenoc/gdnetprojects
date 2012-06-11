@@ -3,13 +3,14 @@ using System.Web.Mvc;
 using GDNET.Web.Mvc.Adapters;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
+using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Constants;
 using WebFramework.Extensions;
 
 namespace WebFramework.Widgets.HtmlContentWg.Controllers
 {
-    public class AdminController : AbstractController<HtmlContentModel>
+    public class AdminController : AbstractController<HtmlContentModel>, IRequiredManagerController
     {
         public ActionResult Index()
         {

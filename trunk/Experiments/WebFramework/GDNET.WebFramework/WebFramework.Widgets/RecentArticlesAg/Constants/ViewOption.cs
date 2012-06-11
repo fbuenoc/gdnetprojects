@@ -1,4 +1,4 @@
-﻿namespace WebFramework.Widgets.Models.RecentArticles
+﻿namespace WebFramework.Widgets.RecentArticlesAg.Constants
 {
     public enum ViewOption
     {
