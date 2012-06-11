@@ -1,5 +1,7 @@
-﻿using WebFramework.Common.Framework.System;
+﻿using WebFramework.Common.Common;
+using WebFramework.Common.Framework.System;
 using WebFramework.Common.Widgets;
+using WebFramework.Widgets.HtmlContentWg.Controllers;
 
 namespace WebFramework.Widgets.HtmlContentWg
 {
@@ -52,6 +54,13 @@ namespace WebFramework.Widgets.HtmlContentWg
                 return false;
             }
         }
-        
+
+        public override bool CanManage
+        {
+            get
+            {
+                return FrameworkServices.Authorization.ActionIsAllowedForUser(typeof(AdminController).FullName, AdminController.ActionIndex);
+            }
+        }
     }
 }

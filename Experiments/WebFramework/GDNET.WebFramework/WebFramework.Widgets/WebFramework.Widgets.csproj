@@ -63,25 +63,20 @@
     <Compile Include="Daskboard\DaskboardWidget.cs" />
     <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
     <Compile Include="Daskboard\Helpers\DaskboardAssistant.cs" />
+    <Compile Include="Daskboard\ViewModels\DaskboardPageModel.cs" />
     <Compile Include="FileManagerWg\Controllers\AdminController.cs" />
     <Compile Include="FileManagerWg\Models\FileContentModel.cs" />
     <Compile Include="HtmlContentWg\Controllers\AdminController.cs" />
-    <Compile Include="Models\Contact\ContactModel.cs" />
-    <Compile Include="Models\Contact\ContactWidget.cs" />
     <Compile Include="FileManagerWg\FileManagerModel.cs" />
     <Compile Include="FileManagerWg\FileManagerWidget.cs" />
     <Compile Include="HtmlContentWg\HtmlContentModel.cs" />
     <Compile Include="HtmlContentWg\HtmlContentWidget.cs" />
     <Compile Include="HtmlContentWg\HtmlContentWidgetConstants.cs" />
-    <Compile Include="Models\RecentArticles\RecentArticlesConstants.cs" />
-    <Compile Include="Models\RecentArticles\RecentArticlesModel.cs" />
-    <Compile Include="Models\RecentArticles\RecentArticlesWidget.cs" />
-    <Compile Include="Models\RecentArticles\ViewOption.cs" />
-    <Compile Include="Models\RecentProducts\RecentProductsModel.cs" />
-    <Compile Include="Models\RecentProducts\RecentProductsWidget.cs" />
-    <Compile Include="Models\RelatedItems\RelatedItemsModel.cs" />
-    <Compile Include="Models\RelatedItems\RelatedItemsWidget.cs" />
+    <Compile Include="RecentArticlesAg\Constants\RecentArticlesConstants.cs" />
+    <Compile Include="RecentArticlesAg\Constants\ViewOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RecentArticlesAg\RecentArticlesModel.cs" />
+    <Compile Include="RecentArticlesAg\RecentArticlesWidget.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ArticleWg\Views\Administration\Admin\CreateOrUpdate.aspx" />
@@ -105,6 +100,7 @@
     <Content Include="Content\FileManager\Default\Index.css" />
     <Content Include="HtmlContentWg\Views\Administration\Admin\Index.aspx" />
     <Content Include="Content\HtmlContent\Default\Index.css" />
+    <Content Include="RecentArticlesAg\Views\UI\Index.ascx" />
     <Content Include="Views\Article\Default\Article.ListArticles.aspx" />
     <Content Include="Views\Article\Default\Index.ascx" />
     <Content Include="Views\Contact\Default\Index.ascx" />
@@ -186,6 +182,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\" />
     <Folder Include="Views\HtmlContent\Default\" />
   </ItemGroup>
   <ItemGroup>

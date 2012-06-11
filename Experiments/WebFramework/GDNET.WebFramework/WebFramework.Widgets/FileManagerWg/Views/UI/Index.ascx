@@ -5,20 +5,27 @@
         <%= base.Model.Name %>
         <a name="<%= base.Model.IdRegion %>"></a>
     </h3>
-    <ul>
+    <ul class="no_style_type">
         <%
+            int counter = 0;
+            string itemCss = string.Empty;
             foreach (var fileModel in base.Model.FileContents)
             {
+                itemCss = ((counter++ % 2) == 0) ? "file_record_even" : "file_record_odd";
         %>
-        <li>
-            <div>
-                <%= fileModel.Title %>
+        <li class="<%= itemCss %>">
+            <div class="div1">
+                <div>
+                    <%= fileModel.Title %>
+                </div>
+                <div>
+                    <%= fileModel.Description %>
+                </div>
             </div>
-            <div>
-                <%= fileModel.Description %>
-            </div>
-            <div>
+            <div class="div2">
                 Download
+            </div>
+            <div style="clear: both;">
             </div>
         </li>
         <%

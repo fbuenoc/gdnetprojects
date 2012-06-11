@@ -2,11 +2,11 @@
 using GDNET.Web.Helpers;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Controllers;
-using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
 using WebFramework.Domain.System;
-using WebFramework.Services.Common;
+using WebFramework.Services;
 using WebFramework.Widgets.Daskboard.Helpers;
+using WebFramework.Widgets.Daskboard.ViewModels;
 
 namespace WebFramework.Widgets.Daskboard.Controllers
 {
@@ -23,7 +23,7 @@ namespace WebFramework.Widgets.Daskboard.Controllers
             }
             else
             {
-                pageEntity = DomainServices.Page.GetDefaultPage(WebSessionInformationService.Instance.CurrentApplication, WebSessionInformationService.Instance.CurrentCulture);
+                pageEntity = DomainServices.Page.GetDefaultPage(FrameworkInformationService.Instance.CurrentApplication, FrameworkInformationService.Instance.CurrentCulture);
             }
 
             if (pageEntity == null)
@@ -32,7 +32,7 @@ namespace WebFramework.Widgets.Daskboard.Controllers
             }
             else
             {
-                var pageModel = new PageModel(pageEntity);
+                var pageModel = new DaskboardPageModel(pageEntity);
                 pageModel.AdministerUrl = DaskboardAssistant.GetPageAdministerUrl(pageEntity);
 
                 return base.View(pageModel);

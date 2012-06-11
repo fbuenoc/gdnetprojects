@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
+using WebFramework.Common.Common;
 using WebFramework.Common.Framework.System;
-using WebFramework.Common.Security;
 using WebFramework.Common.Widgets;
 using WebFramework.Widgets.ArticleWg.Controllers;
 using WebFramework.Widgets.ArticleWg.Models;
@@ -25,7 +25,7 @@ namespace WebFramework.Widgets.ArticleWg
         {
             get
             {
-                return (new SecurityAssistant()).ActionIsAllowedForUser(typeof(AdminController).FullName, "List");
+                return FrameworkServices.Authorization.ActionIsAllowedForUser(typeof(AdminController).FullName, AdminController.ActionList);
             }
         }
     }

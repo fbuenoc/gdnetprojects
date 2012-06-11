@@ -12,8 +12,10 @@ using WebFramework.Domain.System;
 
 namespace WebFramework.Widgets.Daskboard.Controllers
 {
-    public class PageAdminController : AbstractController<PageModel>, IRequiredAdministratorController
+    public class PageAdminController : AbstractController<PageModel>, IRequiredManagerController
     {
+        public const string ActionEdit = "Edit";
+
         protected override void Initialize(RequestContext requestContext)
         {
             base.Initialize(requestContext);

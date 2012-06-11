@@ -14,7 +14,7 @@ using WebFramework.Widgets.Domain.ArticleWg.Repositories;
 
 namespace WebFramework.Widgets.ArticleWg.Controllers
 {
-    public class AdminController : AbstractListCrudController<ArticleModel>, IRequiredAdministratorController
+    public class AdminController : AbstractListCrudController<ArticleModel>, IRequiredManagerController
     {
         private IArticleRepository articleRepository = null;
 

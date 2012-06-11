@@ -1,3 +1,27 @@
 ﻿/*
 ** FileManager
 *************/
+.file_record_even
+{
+    background-color: #FFFFFF;
+}
+
+.file_record_odd
+{
+    background-color: #FFFFEE;
+}
+
+.file_record_even:hover, .file_record_odd:hover
+{
+    background-color: #EEEEEE;
+}
+
+.file_record_even .div1, .file_record_odd .div1
+{
+    float: left;
+}
+
+.file_record_even .div2, .file_record_odd .div2
+{
+    float: right;
+}
