@@ -4,7 +4,6 @@ using GDNET.Common.Services;
 using WebFramework.Domain;
 using WebFramework.Domain.Services;
 using WebFramework.Services;
-using WebFramework.Services.Common;
 using WebFramework.Services.System;
 
 namespace WebFramework.NHibernate

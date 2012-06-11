@@ -35,15 +35,12 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\ContentTypeService.cs" />
     <Compile Include="Common\FormatterService.cs" />
-    <Compile Include="WebSessionInformationService.cs" />
+    <Compile Include="FrameworkInformationService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\PageService.cs" />
     <Compile Include="System\RegionService.cs" />

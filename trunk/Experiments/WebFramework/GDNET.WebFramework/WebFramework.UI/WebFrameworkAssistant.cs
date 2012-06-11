@@ -1,6 +1,5 @@
 ﻿using System.Web.Mvc;
 using WebFramework.Common.Security;
-using WebFramework.UI.Common;
 
 namespace WebFramework.UI
 {
@@ -11,9 +10,9 @@ namespace WebFramework.UI
             return new WebFrameworkFactory(html);
         }
 
-        public static SecurityAssistant FrameworkSecurity(this HtmlHelper html)
+        public static AuthorizationService FrameworkSecurity(this HtmlHelper html)
         {
-            return new SecurityAssistant();
+            return new AuthorizationService();
         }
     }
 }

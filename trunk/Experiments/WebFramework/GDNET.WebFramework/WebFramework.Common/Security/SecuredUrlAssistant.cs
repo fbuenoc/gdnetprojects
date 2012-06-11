@@ -18,7 +18,7 @@ namespace WebFramework.Common.Security
             var fullControllerName = typeof(TController).GetFullControllerName();
             var actionName = actionExpression.GetActionName();
 
-            if ((new SecurityAssistant()).ActionIsAllowedForUser(fullControllerName, actionName) == false)
+            if ((new AuthorizationService()).ActionIsAllowedForUser(fullControllerName, actionName) == false)
             {
                 return string.Empty;
             }
@@ -32,7 +32,7 @@ namespace WebFramework.Common.Security
             var fullControllerName = typeof(TController).GetFullControllerName();
             var actionName = actionExpression.GetActionName();
 
-            if ((new SecurityAssistant()).ActionIsAllowedForUser(fullControllerName, actionName) == false)
+            if ((new AuthorizationService()).ActionIsAllowedForUser(fullControllerName, actionName) == false)
             {
                 return string.Empty;
             }

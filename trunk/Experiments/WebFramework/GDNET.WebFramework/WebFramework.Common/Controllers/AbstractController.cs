@@ -15,6 +15,8 @@ namespace WebFramework.Common.Controllers
         protected IMembershipService membershipService = null;
         private Widget currentWidget = null;
 
+        public const string ActionIndex = "Index";
+
         protected override void Initialize(RequestContext requestContext)
         {
             this.formsService = new FormsAuthenticationService();
@@ -35,6 +37,5 @@ namespace WebFramework.Common.Controllers
                 return this.currentWidget;
             }
         }
-
     }
 }

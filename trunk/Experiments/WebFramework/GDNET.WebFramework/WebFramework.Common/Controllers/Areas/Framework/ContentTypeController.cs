@@ -1,14 +1,12 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.Common;
-using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 
 namespace WebFramework.Common.Controllers.Areas.Framework
 {
-    public class ContentTypeController : AbstractListCrudController<ContentTypeModel>, IRequiredAdministratorController
+    public class ContentTypeController : AbstractListCrudController<ContentTypeModel>
     {
         public override ActionResult List()
         {

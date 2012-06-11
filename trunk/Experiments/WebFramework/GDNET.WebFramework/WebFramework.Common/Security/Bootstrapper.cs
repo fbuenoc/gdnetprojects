@@ -13,9 +13,8 @@ namespace WebFramework.Common.Security
                 configuration.IgnoreMissingConfiguration();
                 configuration.GetAuthenticationStatusFrom(() => HttpContext.Current.User.Identity.IsAuthenticated);
                 configuration.GetRolesFrom(() => GetRolesForUser());
-
                 configuration.ForAllControllersInAssemblyImplementedType<IRequiredAuthenticatedController>().DenyAnonymousAccess();
-                configuration.ForAllControllersInAssemblyImplementedType<IRequiredAdministratorController>().RequireRole("Administrator");
+                configuration.ForAllControllersInAssemblyImplementedType<IRequiredManagerController>().RequireRole("Administrator");
             });
 
             return SecurityConfiguration.Current;

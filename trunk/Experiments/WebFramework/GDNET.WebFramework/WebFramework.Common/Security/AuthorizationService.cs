@@ -4,10 +4,11 @@ using System.Linq.Expressions;
 using System.Web;
 using System.Web.Mvc;
 using FluentSecurity;
+using GDNET.Web.Mvc.Services;
 
 namespace WebFramework.Common.Security
 {
-    public class SecurityAssistant
+    public class AuthorizationService : IAuthorizationService
     {
         public bool ActionIsAllowedForUser(string controllerName, string actionName)
         {
@@ -19,6 +20,19 @@ namespace WebFramework.Common.Security
                 var context = SecurityContext.Current;
                 var results = policyContainer.EnforcePolicies(context);
                 return results.All(x => x.ViolationOccured == false);
+            }
+
+            return true;
+        }
+
+        public bool ActionIsAllowedForUser(string controllerName, params string[] actionsName)
+        {
+            foreach (string actionName in actionsName)
+            {
+                if (!this.ActionIsAllowedForUser(controllerName, actionName))
+                {
+                    return false;
+                }
             }
 
             return true;

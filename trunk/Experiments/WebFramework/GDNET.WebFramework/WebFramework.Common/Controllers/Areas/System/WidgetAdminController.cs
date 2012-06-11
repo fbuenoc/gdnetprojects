@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Common.Controllers;
 using WebFramework.Common.Framework.System;
-using WebFramework.Common.Security;
 using WebFramework.Domain;
 
 namespace WebFramework.Common.Controllers.Areas.System
 {
-    public class WidgetAdminController : AbstractListCrudController<WidgetModel>, IRequiredAdministratorController
+    public class WidgetAdminController : AbstractListCrudController<WidgetModel>
     {
         public override ActionResult List()
         {
