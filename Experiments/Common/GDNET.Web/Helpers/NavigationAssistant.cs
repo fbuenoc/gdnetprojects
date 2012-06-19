@@ -51,10 +51,20 @@ namespace GDNET.Web.Helpers
             return newUrl;
         }
 
+        public static string AddParameter(string currentUrl, string paramName, object paramValue)
+        {
+            string paramValueString = (paramValue == null) ? string.Empty : paramValue.ToString();
+            return NavigationAssistant.AddParameter(currentUrl, paramName, paramValueString);
+        }
+
         public static string AddParameter(string currentUrl, string paramName, string paramValue)
         {
-            string newUrl = string.Empty;
+            if (string.IsNullOrEmpty(paramName))
+            {
+                return currentUrl;
+            }
 
+            string newUrl = string.Empty;
             string type1 = string.Format("?{0}=", paramName);
             string type2 = string.Format("&{0}=", paramName);
 
