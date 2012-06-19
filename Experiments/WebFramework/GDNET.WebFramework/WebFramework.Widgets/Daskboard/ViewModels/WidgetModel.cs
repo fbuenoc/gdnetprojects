@@ -3,7 +3,7 @@ using System.Linq;
 using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.System;
 
-namespace WebFramework.Common.Framework.System
+namespace WebFramework.Widgets.Daskboard.ViewModels
 {
     public sealed class WidgetModel : ModelEntityWithLifeCycleBase<Widget, long>
     {

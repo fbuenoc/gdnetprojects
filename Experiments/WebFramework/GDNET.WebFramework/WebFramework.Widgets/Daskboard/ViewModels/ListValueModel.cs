@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using WebFramework.Common.Framework.Base;
-using WebFramework.Domain.Common;
 using WebFramework.Common.ComponentModel;
+using WebFramework.Domain.Common;
+using WebFramework.Widgets.Daskboard.Base;
 
-namespace WebFramework.Common.Framework.Common
+namespace WebFramework.Widgets.Daskboard.ViewModels
 {
     public sealed class ListValueModel : ModelEntityWithLifeCycleBase<ListValue, long>
     {

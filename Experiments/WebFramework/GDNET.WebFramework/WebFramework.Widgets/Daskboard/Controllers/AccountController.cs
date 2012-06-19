@@ -1,9 +1,9 @@
 ﻿using System.Web.Mvc;
 using System.Web.Security;
-using WebFramework.Common.AccountModeles;
 using WebFramework.Common.Controllers;
 using WebFramework.Common.Security;
 using WebFramework.Common.Validation;
+using WebFramework.Widgets.Daskboard.ViewModels;
 
 namespace WebFramework.Widgets.Daskboard.Controllers
 {

@@ -2,7 +2,7 @@
 using GDNET.Common.Base.Entities;
 using WebFramework.Domain.Base;
 
-namespace WebFramework.Common.Framework.Base
+namespace WebFramework.Widgets.Daskboard.Base
 {
     public abstract class ModelEntityWithLifeCycleBase<TEntity, TId> : ModelEntityWithActiveBase<TEntity, TId>, IModel<TId>, IModelWithLifeCycle
         where TEntity : EntityWithActive<TId>

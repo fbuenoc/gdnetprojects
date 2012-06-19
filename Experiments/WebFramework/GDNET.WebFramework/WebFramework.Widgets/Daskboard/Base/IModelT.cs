@@ -1,4 +1,4 @@
-﻿namespace WebFramework.Common.Framework.Base
+﻿namespace WebFramework.Widgets.Daskboard.Base
 {
     public interface IModel<TId>
     {

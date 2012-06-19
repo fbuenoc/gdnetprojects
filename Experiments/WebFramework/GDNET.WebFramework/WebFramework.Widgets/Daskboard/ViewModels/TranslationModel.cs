@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using WebFramework.Common.ComponentModel;
-using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.Common;
+using WebFramework.Widgets.Daskboard.Base;
 
-namespace WebFramework.Common.Framework.Common
+namespace WebFramework.Widgets.Daskboard.ViewModels
 {
     public sealed class TranslationModel : ModelEntityWithLifeCycleBase<Translation, long>
     {

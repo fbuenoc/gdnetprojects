@@ -1,5 +1,4 @@
-﻿<%@ Import Namespace="System.Web.Mvc" %>
-<%@ Import Namespace="WebFramework.Common.AccountModeles" %>
+﻿<%@ Import Namespace="WebFramework.Widgets.Daskboard.ViewModels" %>
 
 <%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="ViewPage<LogOnModel>" %>
 

@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
 using System.Web.Mvc;
-using WebFramework.Common.Framework.System;
+using WebFramework.Common.Controllers;
 using WebFramework.Domain;
+using WebFramework.Widgets.Daskboard.ViewModels;
 
-namespace WebFramework.Common.Controllers.Areas.System
+namespace WebFramework.Widgets.Daskboard.Controllers
 {
-    public class ZoneAdminController : AbstractListCrudController<ZoneModel>
+    public class ZoneManagerController : AbstractListCrudController<ZoneModel>
     {
         public override ActionResult List()
         {

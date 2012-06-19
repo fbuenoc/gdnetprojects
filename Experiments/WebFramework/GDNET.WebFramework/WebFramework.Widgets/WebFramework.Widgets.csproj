@@ -34,6 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -55,15 +56,39 @@
     <Compile Include="ArticleWg\Controllers\ListArticlesController.cs" />
     <Compile Include="ArticleWg\Models\ArticleModel.cs" />
     <Compile Include="ArticleWg\Constants\WidgetVisiblityMode.cs" />
+    <Compile Include="Daskboard\Base\IModelT.cs" />
+    <Compile Include="Daskboard\Base\IModelWithLifeCycle.cs" />
+    <Compile Include="Daskboard\Base\ModelEntityBase.cs" />
+    <Compile Include="Daskboard\Base\ModelEntityBaseT.cs" />
+    <Compile Include="Daskboard\Base\ModelEntityWithActiveBaseT.cs" />
+    <Compile Include="Daskboard\Base\ModelEntityWithLifeCycleBaseT.cs" />
+    <Compile Include="Daskboard\Base\ModelService.cs" />
     <Compile Include="Daskboard\Controllers\AccountController.cs" />
+    <Compile Include="Daskboard\Controllers\PageManagerController.cs" />
     <Compile Include="Daskboard\Controllers\RegionAdminController.cs" />
     <Compile Include="Daskboard\Controllers\HomeController.cs" />
-    <Compile Include="Daskboard\Controllers\MonitorController.cs" />
     <Compile Include="Daskboard\Controllers\PageAdminController.cs" />
+    <Compile Include="Daskboard\Controllers\RegionManagerController.cs" />
+    <Compile Include="Daskboard\Controllers\WidgetManagerController.cs" />
+    <Compile Include="Daskboard\Controllers\ZoneManagerController.cs" />
     <Compile Include="Daskboard\DaskboardWidget.cs" />
     <Compile Include="Daskboard\DaskboardWidgetModel.cs" />
     <Compile Include="Daskboard\Helpers\DaskboardAssistant.cs" />
+    <Compile Include="Daskboard\ViewModels\ChangePasswordModel.cs" />
     <Compile Include="Daskboard\ViewModels\DaskboardPageModel.cs" />
+    <Compile Include="Daskboard\ViewModels\ListValueModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Daskboard\ViewModels\LogOnModel.cs" />
+    <Compile Include="Daskboard\ViewModels\PageModel.cs" />
+    <Compile Include="Daskboard\ViewModels\RegionModel.cs" />
+    <Compile Include="Daskboard\ViewModels\RegisterModel.cs" />
+    <Compile Include="Daskboard\ViewModels\TranslationModel.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Daskboard\ViewModels\WidgetModel.cs" />
+    <Compile Include="Daskboard\ViewModels\WidgetPropertyModel.cs" />
+    <Compile Include="Daskboard\ViewModels\ZoneModel.cs" />
     <Compile Include="FileManagerWg\Controllers\AdminController.cs" />
     <Compile Include="FileManagerWg\Models\FileContentModel.cs" />
     <Compile Include="HtmlContentWg\Controllers\AdminController.cs" />
@@ -182,7 +207,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Views\HtmlContent\Default\" />
   </ItemGroup>
   <ItemGroup>

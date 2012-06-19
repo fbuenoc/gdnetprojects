@@ -17,12 +17,6 @@ namespace WebFramework.Common.AccountServices
         void UpdateUser(AccountModel account);
 
         /// <summary>
-        /// Get a user information using its claimed identifier as user name
-        /// </summary>
-        /// <param name="claimedIdentifier">OpenID claimed ID</param>
-        AccountModel GetUser(string claimedIdentifier);
-        AccountModel GetUser(string userName, bool userIsOnline);
-        /// <summary>
         /// Get user by his key
         /// </summary>
         AccountModel GetUserByKey(object providerUserKey, bool userIsOnline);

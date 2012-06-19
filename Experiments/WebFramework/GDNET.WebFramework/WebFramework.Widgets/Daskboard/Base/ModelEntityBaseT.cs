@@ -1,6 +1,6 @@
 ﻿using GDNET.Common.Base.Entities;
 
-namespace WebFramework.Common.Framework.Base
+namespace WebFramework.Widgets.Daskboard.Base
 {
     public abstract class ModelEntityBase<TEntity, TId> : ModelEntityBase, IModel<TId>
         where TEntity : EntityBase<TId>

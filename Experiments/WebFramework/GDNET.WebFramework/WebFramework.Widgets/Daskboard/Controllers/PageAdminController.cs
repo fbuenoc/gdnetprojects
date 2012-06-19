@@ -5,10 +5,10 @@ using GDNET.Web.Helpers;
 using GDNET.Web.Mvc.Adapters;
 using WebFramework.Common.Constants;
 using WebFramework.Common.Controllers;
-using WebFramework.Common.Framework.System;
 using WebFramework.Common.Security;
 using WebFramework.Domain;
 using WebFramework.Domain.System;
+using WebFramework.Widgets.Daskboard.ViewModels;
 
 namespace WebFramework.Widgets.Daskboard.Controllers
 {
