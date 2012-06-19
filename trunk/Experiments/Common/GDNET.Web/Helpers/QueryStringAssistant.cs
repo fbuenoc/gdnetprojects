@@ -40,25 +40,20 @@ namespace GDNET.Web.Helpers
         /// <summary>
         /// Get value from query string and parse to the given type
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="expectedResult"></param>
-        /// <returns></returns>
         public static bool GetValueAsString(string name, out string expectedResult)
         {
             expectedResult = string.Empty;
-            bool result = false;
 
             foreach (object key in HttpContext.Current.Request.QueryString.Keys)
             {
                 if (key.ToString().Equals(name))
                 {
                     expectedResult = HttpContext.Current.Request.QueryString[name];
-                    result = true;
-                    break;
+                    return true;
                 }
             }
 
-            return result;
+            return false;
         }
 
         /// <summary>
