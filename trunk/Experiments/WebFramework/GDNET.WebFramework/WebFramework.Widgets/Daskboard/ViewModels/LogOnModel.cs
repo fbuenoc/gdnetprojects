@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebFramework.Common.AccountModeles
+namespace WebFramework.Widgets.Daskboard.ViewModels
 {
     public class LogOnModel
     {

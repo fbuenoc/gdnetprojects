@@ -1,8 +1,7 @@
-﻿using WebFramework.Common.Framework.Base;
-using WebFramework.Common.Framework.Common;
-using WebFramework.Domain.System;
+﻿using WebFramework.Domain.System;
+using WebFramework.Widgets.Daskboard.Base;
 
-namespace WebFramework.Common.Framework.System
+namespace WebFramework.Widgets.Daskboard.ViewModels
 {
     public sealed class WidgetPropertyModel : ModelEntityBase<WidgetProperty, long>
     {

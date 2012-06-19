@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using GDNET.Common.DesignByContract;
 using WebFramework.Common.Common;
-using WebFramework.Common.Framework.Common;
-using WebFramework.Common.Framework.System;
 using WebFramework.Domain;
+using WebFramework.Widgets.Daskboard.ViewModels;
 
-namespace WebFramework.Common.Framework.Base
+namespace WebFramework.Widgets.Daskboard.Base
 {
     public static class ModelService
     {

@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using GDNET.Web.Mvc.Validation;
 
-namespace WebFramework.Common.AccountModeles
+namespace WebFramework.Widgets.Daskboard.ViewModels
 {
     public class ChangePasswordModel
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WebFramework.Common.Framework.Base
+namespace WebFramework.Widgets.Daskboard.Base
 {
     public abstract class ModelEntityBase
     {

@@ -4,14 +4,15 @@ using System.Web.Mvc;
 using GDNET.Web.Helpers;
 using WebFramework.Common.Common;
 using WebFramework.Common.Constants;
-using WebFramework.Common.Framework.Base;
-using WebFramework.Common.Framework.System;
+using WebFramework.Common.Controllers;
 using WebFramework.Domain;
 using WebFramework.Domain.System;
+using WebFramework.Widgets.Daskboard.Base;
+using WebFramework.Widgets.Daskboard.ViewModels;
 
-namespace WebFramework.Common.Controllers.Areas.System
+namespace WebFramework.Widgets.Daskboard.Controllers
 {
-    public class RegionAdminController : AbstractListCrudController<RegionModel>
+    public class RegionManagerController : AbstractListCrudController<RegionModel>
     {
         private Zone zoneEntity = null;
 

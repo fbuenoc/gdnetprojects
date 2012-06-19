@@ -1,6 +1,6 @@
 ﻿using GDNET.Common.Base.Entities;
 
-namespace WebFramework.Common.Framework.Base
+namespace WebFramework.Widgets.Daskboard.Base
 {
     public abstract class ModelEntityWithActiveBase<TEntity, TId> : ModelEntityBase<TEntity, TId>
         where TEntity : EntityWithActive<TId>

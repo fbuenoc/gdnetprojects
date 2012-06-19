@@ -84,26 +84,6 @@ namespace WebFramework.Common.AccountServices
             this.provider.UpdateUser(account.User);
         }
 
-        public AccountModel GetUser(string claimedIdentifier)
-        {
-            if (String.IsNullOrEmpty(claimedIdentifier))
-            {
-                throw new ArgumentException("Value cannot be null or empty.", "claimedIdentifier");
-            }
-            return this.GetUser(claimedIdentifier, false);
-        }
-
-        public AccountModel GetUser(string userName, bool userIsOnline)
-        {
-            if (String.IsNullOrEmpty(userName))
-            {
-                throw new ArgumentException("Value cannot be null or empty.", "userName");
-            }
-
-            var user = this.provider.GetUser(userName, true);
-            return new AccountModel(user);
-        }
-
         public AccountModel GetUserByKey(object providerUserKey, bool userIsOnline)
         {
             if (providerUserKey == null)

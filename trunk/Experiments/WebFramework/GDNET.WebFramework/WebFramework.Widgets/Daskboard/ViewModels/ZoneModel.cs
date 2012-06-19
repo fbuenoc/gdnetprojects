@@ -1,9 +1,9 @@
 ﻿using System.Collections.ObjectModel;
 using System.Linq;
-using WebFramework.Common.Framework.Base;
 using WebFramework.Domain.System;
+using WebFramework.Widgets.Daskboard.Base;
 
-namespace WebFramework.Common.Framework.System
+namespace WebFramework.Widgets.Daskboard.ViewModels
 {
     public sealed class ZoneModel : ModelEntityWithLifeCycleBase<Zone, long>
     {

@@ -487,7 +487,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Areas\System\Views\Shared\" />
-    <Folder Include="Temporary\" />
     <Folder Include="Views\Widgets\RecentArticles\Default\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,14 +1,15 @@
 ﻿using System.Linq;
 using System.Web.Mvc;
 using GDNET.Web.Mvc.Helpers;
-using WebFramework.Common.Framework.System;
+using WebFramework.Common.Controllers;
 using WebFramework.Domain;
 using WebFramework.Domain.Common;
 using WebFramework.Domain.System;
+using WebFramework.Widgets.Daskboard.ViewModels;
 
-namespace WebFramework.Common.Controllers.Areas.System
+namespace WebFramework.Widgets.Daskboard.Controllers
 {
-    public class PageAdminController : AbstractListCrudController<PageModel>
+    public class PageManagerController : AbstractListCrudController<PageModel>
     {
         public override ActionResult List()
         {

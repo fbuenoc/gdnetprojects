@@ -6,7 +6,7 @@ using WebFramework.Domain;
 
 namespace WebFramework.Common.Controllers.Areas.System
 {
-    public class WidgetAdminController : AbstractListCrudController<WidgetModel>
+    public class WidgetManagerController : AbstractListCrudController<WidgetModel>
     {
         public override ActionResult List()
         {
