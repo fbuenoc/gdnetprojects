@@ -19,7 +19,7 @@ namespace GDNET.Domain.Base.Management
             EntityLog logEntry = new EntityLog
             {
                 CreatedAt = DateTime.Now,
-                CreatedBy = DomainSessionContext.Instance.CurrentUser.Name,
+                CreatedBy = DomainSessionContext.Instance.CurrentUser.Email,
                 LogMessage = message,
                 LogContentText = contentText,
                 EntityHistory = this

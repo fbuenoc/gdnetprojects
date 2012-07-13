@@ -13,8 +13,8 @@ namespace GDNET.Domain.System
         {
             public User Create(string email, string password)
             {
-                ExceptionsManager.BusinessException.ThrowIfIsNullOrWhiteSpace(email, "");
-                ExceptionsManager.BusinessException.ThrowIfTooShort(password, 4, "");
+                ExceptionsManager.BusinessException.ThrowIfIsNullOrWhiteSpace(email);
+                ExceptionsManager.BusinessException.ThrowIfTooShort(password, 4);
 
                 return new User
                 {

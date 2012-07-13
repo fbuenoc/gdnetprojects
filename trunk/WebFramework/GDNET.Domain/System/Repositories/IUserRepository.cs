@@ -1,4 +1,4 @@
-﻿using GDNET.NHibernate.Repositories;
+﻿using GDNET.Domain.Common;
 
 namespace GDNET.Domain.System.Repositories
 {

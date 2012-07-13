@@ -47,8 +47,10 @@
     <Compile Include="Base\Exceptions\Managers\BusinessExceptionManager.cs" />
     <Compile Include="Base\IEntityWithModificationHistoryT.cs" />
     <Compile Include="Base\IEntityWithModificationHistory.cs" />
-    <Compile Include="Base\IRepositoryBase.cs" />
-    <Compile Include="Base\IRepositoryManager.cs" />
+    <Compile Include="Common\AbstractRepositoryGlass.cs" />
+    <Compile Include="Common\IRepositoryBase.cs" />
+    <Compile Include="Common\IRepositoryGlass.cs" />
+    <Compile Include="Common\IRepositoryManager.cs" />
     <Compile Include="Base\SessionManagement\DomainSessionContext.cs" />
     <Compile Include="Base\SessionManagement\ISessionContext.cs" />
     <Compile Include="Base\Management\EntityLog.cs" />
@@ -61,7 +63,7 @@
     <Compile Include="Base\IEntity.cs" />
     <Compile Include="Base\IEntityWithModification.cs" />
     <Compile Include="Base\IEntityT.cs" />
-    <Compile Include="Base\Validators\ExceptionsValidator.cs" />
+    <Compile Include="Base\Validators\DomainValidator.cs" />
     <Compile Include="Constants\EntityConstants.cs" />
     <Compile Include="DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,16 +1,20 @@
-﻿using GDNET.Domain.Base;
-using GDNET.Utils;
+﻿using GDNET.Utils;
 using NUnit.Framework;
 
 namespace GDNET.Tests.UtilsTests
 {
+    public interface ITest
+    {
+        string Signature { get; set; }
+    }
+
     [TestFixture]
     public class ExpressionAssistantTests
     {
         [Test]
         public void CanGetPropertyName()
         {
-            var x = default(IEntity);
+            var x = default(ITest);
             var s = ExpressionAssistant.GetPropertyName(() => x.Signature);
             Assert.AreEqual("Signature", s);
         }

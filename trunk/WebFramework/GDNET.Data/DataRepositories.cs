@@ -1,4 +1,5 @@
 ﻿using GDNET.Data.System;
+using GDNET.Data.System.Repositories;
 using GDNET.Domain;
 using GDNET.Domain.Base;
 using GDNET.Domain.System.Repositories;
@@ -18,7 +19,10 @@ namespace GDNET.Data
 
         protected override IUserRepository GetUserRepository()
         {
-            return new UserRepository(this.sessionStrategy);
+            var userRepository = new UserRepository(this.sessionStrategy);
+            userRepository.RepositoryGlass = new UserRepositoryGlass();
+
+            return userRepository;
         }
 
         protected override IRepositoryManager GetRepositoryManager()

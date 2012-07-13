@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using GDNET.Domain.Base;
 using GDNET.Domain.Base.Validators;
+using GDNET.Domain.Common;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Linq;
@@ -21,6 +22,12 @@ namespace GDNET.NHibernate.Repositories
         }
 
         #endregion
+
+        public IRepositoryGlass<TEntity> RepositoryGlass
+        {
+            get;
+            set;
+        }
 
         protected IQuery CreateQuery(string hqlQuery)
         {
@@ -135,7 +142,7 @@ namespace GDNET.NHibernate.Repositories
         /// <param name="values">The value of the property.</param>
         public virtual IList<TEntity> FindByProperty(string property, object[] values)
         {
-            ExceptionsValidator.Instance.NullOrEmptyException(property);
+            DomainValidator.Instance.NullOrEmptyException(property);
 
             var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.In(property, values)).SetCacheable(true);
             return criteria.List<TEntity>();
@@ -152,7 +159,7 @@ namespace GDNET.NHibernate.Repositories
         /// <param name="pageSize">Number of item per each page</param>
         public virtual IList<TEntity> FindByProperty(string property, object value, int page, int pageSize)
         {
-            ExceptionsValidator.Instance.NullOrEmptyException(property);
+            DomainValidator.Instance.NullOrEmptyException(property);
 
             var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
             if (!(page == 0 && pageSize == 0))
@@ -228,7 +235,12 @@ namespace GDNET.NHibernate.Repositories
 
         public bool Save(TEntity entity)
         {
-            ExceptionsValidator.Instance.NullException(entity);
+            DomainValidator.Instance.NullException(entity);
+
+            if (this.RepositoryGlass != null)
+            {
+                this.RepositoryGlass.ValidateOnCreation(entity);
+            }
 
             // Saving entity
             this.sessionStrategy.Session.SaveOrUpdate(entity);
@@ -238,7 +250,7 @@ namespace GDNET.NHibernate.Repositories
 
         public bool Save(IList<TEntity> entities)
         {
-            ExceptionsValidator.Instance.NullException(entities);
+            DomainValidator.Instance.NullException(entities);
 
             foreach (var e in entities)
             {
@@ -253,7 +265,7 @@ namespace GDNET.NHibernate.Repositories
 
         public bool Update(TEntity entity)
         {
-            ExceptionsValidator.Instance.NullException(entity);
+            DomainValidator.Instance.NullException(entity);
 
             this.sessionStrategy.Session.SaveOrUpdate(entity);
 
@@ -262,7 +274,7 @@ namespace GDNET.NHibernate.Repositories
 
         public bool Update(IList<TEntity> entities)
         {
-            ExceptionsValidator.Instance.NullException(entities);
+            DomainValidator.Instance.NullException(entities);
 
             foreach (var e in entities)
             {
@@ -287,7 +299,7 @@ namespace GDNET.NHibernate.Repositories
 
         public bool Delete(TEntity entity)
         {
-            ExceptionsValidator.Instance.NullException(entity);
+            DomainValidator.Instance.NullException(entity);
             this.sessionStrategy.Session.Delete(entity);
 
             return true;

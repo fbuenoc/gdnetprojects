@@ -11,6 +11,7 @@ namespace GDNET.Data.System
             : base(Generators.Native)
         {
             base.Property(e => e.Email);
+            base.Property(e => e.Password);
             base.Property(e => e.DisplayName);
             base.Property(e => e.IsActive);
         }

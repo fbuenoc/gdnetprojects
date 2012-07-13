@@ -16,10 +16,10 @@ namespace GDNET.Domain.System
             set;
         }
 
-        protected virtual string Password
+        public virtual string Password
         {
             get;
-            set;
+            protected set;
         }
 
         public virtual bool IsActive

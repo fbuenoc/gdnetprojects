@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
 using GDNET.Domain.Base;
 
-namespace GDNET.NHibernate.Repositories
+namespace GDNET.Domain.Common
 {
     public interface IRepositoryBase<TEntity, TId> where TEntity : IEntityT<TId>
     {
+        IRepositoryGlass<TEntity> RepositoryGlass
+        {
+            get;
+            set;
+        }
+
         /// <summary>
         /// Try to load an entity, it's not query to data store if we don't access file other than its id.
         /// </summary>
@@ -101,6 +107,7 @@ namespace GDNET.NHibernate.Repositories
         /// Save an entity to data store.
         /// </summary>
         bool Save(TEntity entity);
+
         /// <summary>
         /// Save many entities to data store.
         /// </summary>

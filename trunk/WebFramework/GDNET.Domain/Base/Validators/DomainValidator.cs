@@ -2,18 +2,18 @@
 
 namespace GDNET.Domain.Base.Validators
 {
-    public class ExceptionsValidator
+    public sealed class DomainValidator
     {
         #region Singleton
 
-        private ExceptionsValidator() { }
+        private DomainValidator() { }
 
         private class Nested
         {
-            public static readonly ExceptionsValidator instance = new ExceptionsValidator();
+            public static readonly DomainValidator instance = new DomainValidator();
         }
 
-        public static ExceptionsValidator Instance
+        public static DomainValidator Instance
         {
             get { return Nested.instance; }
         }
