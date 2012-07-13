@@ -1,5 +1,9 @@
 ﻿using GDNET.Data;
+using GDNET.Data.Base;
 using GDNET.Data.Base.Management;
+using GDNET.Domain;
+using GDNET.Domain.System;
+using GDNET.NHibernate.Interceptors;
 using GDNET.NHibernate.Mapping;
 using GDNET.NHibernate.Repositories;
 using GDNET.Utils;
@@ -16,40 +20,50 @@ namespace GDNET.DataTests.Base
 {
     public class NUnitTestBase
     {
-        private ISessionFactory _sessionFactory = null;
-        private ISession _currentSession = null;
-        private ISessionStrategy _sessionStrategy = null;
+        private ISessionFactory sessionFactory = null;
+        private ISession currentSession = null;
+        private ISessionStrategy sessionStrategy = null;
         private ITransaction currentTransaction = null;
+
+        protected User CurrentUser
+        {
+            get;
+            private set;
+        }
 
         [SetUp]
         public void SetUp()
         {
             this.BuildSessionFactory();
 
-            currentTransaction = _currentSession.BeginTransaction();
-            _sessionStrategy = new UnitTestSessionStrategy(_currentSession);
-            var repositories = new DataRepositories(_sessionStrategy);
+            this.currentTransaction = currentSession.BeginTransaction();
+            this.sessionStrategy = new UnitTestSessionStrategy(currentSession);
+            var repositories = new DataRepositories(sessionStrategy);
+
+            this.CurrentUser = User.Factory.Create("test@mail.com", "123456");
+            var sessionContext = new DataSessionContext(this.CurrentUser);
+            DomainRepositories.User.Save(this.CurrentUser);
         }
 
         [TearDown]
         public void TearDown()
         {
-            if (currentTransaction != null && currentTransaction.IsActive)
+            if (this.currentTransaction != null && this.currentTransaction.IsActive)
             {
-                currentTransaction.Rollback();
-                currentTransaction.Dispose();
+                this.currentTransaction.Rollback();
+                this.currentTransaction.Dispose();
             }
 
-            if (_currentSession != null && _currentSession.IsOpen)
+            if (this.currentSession != null && this.currentSession.IsOpen)
             {
-                _currentSession.Close();
-                _currentSession.Dispose();
+                this.currentSession.Close();
+                this.currentSession.Dispose();
             }
 
-            if (_sessionFactory != null && !_sessionFactory.IsClosed)
+            if (this.sessionFactory != null && !this.sessionFactory.IsClosed)
             {
-                _sessionFactory.Close();
-                _sessionFactory.Dispose();
+                this.sessionFactory.Close();
+                this.sessionFactory.Dispose();
             }
         }
 
@@ -69,10 +83,10 @@ namespace GDNET.DataTests.Base
 
             cfg.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), string.Empty);
 
-            _sessionFactory = cfg.BuildSessionFactory();
-            _currentSession = _sessionFactory.OpenSession();
+            this.sessionFactory = cfg.BuildSessionFactory();
+            this.currentSession = sessionFactory.OpenSession(new EntityWithModificationInterceptor());
 
-            (new SchemaExport(cfg)).Execute(true, true, false, _currentSession.Connection, Console.Out);
+            (new SchemaExport(cfg)).Execute(true, true, false, currentSession.Connection, Console.Out);
         }
     }
 }

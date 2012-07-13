@@ -15,12 +15,22 @@
             }
         }
 
+        public void ThrowIfIsNullOrWhiteSpace(string objet)
+        {
+            this.ThrowIfIsNullOrWhiteSpace(objet, string.Empty);
+        }
+
         public void ThrowIfTooShort(string objet, int minLength, string message)
         {
             if (string.IsNullOrWhiteSpace(objet) || (objet.Length < minLength))
             {
                 throw new BusinessException(message);
             }
+        }
+
+        public void ThrowIfTooShort(string objet, int minLength)
+        {
+            this.ThrowIfTooShort(objet, minLength, string.Empty);
         }
     }
 }

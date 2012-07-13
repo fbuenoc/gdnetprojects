@@ -32,15 +32,15 @@ namespace GDNET.Domain.Base
 
         public virtual void InitializeModificationInfos()
         {
-            if (string.IsNullOrEmpty(this.CreatedBy))
+            if (string.IsNullOrEmpty(this.CreatedBy) && base.Id.Equals(default(TId)))
             {
                 this.createdAt = DateTime.Now;
-                this.createdBy = DomainSessionContext.Instance.CurrentUser.Name;
+                this.createdBy = DomainSessionContext.Instance.CurrentUser.Email;
             }
             else
             {
                 this.lastModifiedAt = DateTime.Now;
-                this.lastModifiedBy = DomainSessionContext.Instance.CurrentUser.Name;
+                this.lastModifiedBy = DomainSessionContext.Instance.CurrentUser.Email;
             }
         }
     }

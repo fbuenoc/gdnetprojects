@@ -1,9 +1,9 @@
-﻿using System.Security.Principal;
+﻿using GDNET.Domain.System;
 
 namespace GDNET.Domain.Base.SessionManagement
 {
     public interface ISessionContext
     {
-        IIdentity CurrentUser { get; }
+        User CurrentUser { get; }
     }
 }

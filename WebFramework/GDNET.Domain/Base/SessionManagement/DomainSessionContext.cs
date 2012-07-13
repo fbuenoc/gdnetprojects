@@ -1,16 +1,20 @@
-﻿using System.Security.Principal;
+﻿using GDNET.Domain.System;
 
 namespace GDNET.Domain.Base.SessionManagement
 {
     public abstract class DomainSessionContext : ISessionContext
     {
-        private static DomainSessionContext instance = default(DomainSessionContext);
-
-        public static DomainSessionContext Instance
+        public static ISessionContext Instance
         {
-            get { return instance; }
+            get;
+            private set;
         }
 
-        public abstract IIdentity CurrentUser { get; }
+        protected void Initialize(ISessionContext context)
+        {
+            Instance = context;
+        }
+
+        public abstract User CurrentUser { get; }
     }
 }
