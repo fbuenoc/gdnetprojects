@@ -5,5 +5,6 @@ namespace GDNET.Domain.Base
     public interface IEntityWithModificationHistory : IEntityWithModification
     {
         EntityHistory History { get; }
+        void AssureCreationHistory();
     }
 }

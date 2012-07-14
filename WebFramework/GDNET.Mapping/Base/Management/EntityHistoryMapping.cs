@@ -6,7 +6,7 @@ using NHibernate.Mapping.ByCode;
 
 namespace GDNET.Data.Base.Management
 {
-    public class EntityHistoryMapping : AbstractEntityWithModificationTMapping<EntityHistory, Guid>, IEntityMapping
+    public class EntityHistoryMapping : AbstractEntityTMapping<EntityHistory, Guid>, IEntityMapping
     {
         public EntityHistoryMapping()
             : base(Generators.Guid)
