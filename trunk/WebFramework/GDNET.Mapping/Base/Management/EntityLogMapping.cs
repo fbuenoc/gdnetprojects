@@ -8,11 +8,11 @@ namespace GDNET.Data.Base.Management
 {
     public class EntityLogMapping : AbstractEntityTMapping<EntityLog, Guid>, IEntityMapping
     {
+        private EntityLog defaultEntity = default(EntityLog);
+
         public EntityLogMapping()
             : base(Generators.Guid)
         {
-            var defaultEntity = default(EntityLog);
-
             base.Property(e => e.CreatedAt, m =>
             {
                 m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedAt));
@@ -33,6 +33,19 @@ namespace GDNET.Data.Base.Management
                 m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.LogMessage));
                 m.Access(Accessor.Property);
             });
+            base.ManyToOne(x => x.EntityHistory, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Access(Accessor.Field);
+                m.Column(this.GetColumnForEntityHistory());
+            });
+        }
+
+        private string GetColumnForEntityHistory()
+        {
+            string entityHistory = ExpressionAssistant.GetPropertyName(() => defaultEntity.EntityHistory);
+            string id = ExpressionAssistant.GetPropertyName(() => defaultEntity.Id);
+            return (entityHistory + id);
         }
     }
 }

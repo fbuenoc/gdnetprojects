@@ -82,9 +82,10 @@ namespace GDNET.DataTests.Base
                      .SetProperty(Environment.ConnectionString, "Data Source=test.db");
 
             cfg.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), string.Empty);
+            cfg.SetInterceptor(new EntityWithModificationInterceptor());
 
             this.sessionFactory = cfg.BuildSessionFactory();
-            this.currentSession = sessionFactory.OpenSession(new EntityWithModificationInterceptor());
+            this.currentSession = sessionFactory.OpenSession();
 
             (new SchemaExport(cfg)).Execute(true, true, false, currentSession.Connection, Console.Out);
         }

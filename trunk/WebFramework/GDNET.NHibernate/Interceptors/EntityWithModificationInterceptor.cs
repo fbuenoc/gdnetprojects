@@ -13,6 +13,12 @@ namespace GDNET.NHibernate.Interceptors
                 ((IEntityWithModification)entity).InitializeModificationInfos();
             }
 
+            if (entity is IEntityWithModificationHistory)
+            {
+                ((IEntityWithModificationHistory)entity).AssureCreationHistory();
+                ((IEntityWithModificationHistory)entity).History.AddLog("Creation", string.Empty);
+            }
+
             return base.OnSave(entity, id, state, propertyNames, types);
         }
 

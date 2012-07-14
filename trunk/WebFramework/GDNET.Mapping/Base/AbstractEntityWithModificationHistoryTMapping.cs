@@ -12,7 +12,7 @@ namespace GDNET.Data.Base
         {
             base.ManyToOne(e => e.History, m =>
             {
-                m.Cascade(Cascade.None);
+                m.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 m.Lazy(LazyRelation.Proxy);
                 m.Access(Accessor.Field);
                 m.Column(this.GetColumnForHistory());
