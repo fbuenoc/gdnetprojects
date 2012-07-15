@@ -14,6 +14,14 @@ namespace GDNET.Domain.Base.Management
             get { return new ReadOnlyCollection<EntityLog>(this.logs); }
         }
 
+        public virtual EntityLog LastLog
+        {
+            get;
+            protected internal set;
+        }
+
+        #region Methods
+
         public virtual void AddLog(string message, string contentText)
         {
             EntityLog logEntry = new EntityLog
@@ -24,7 +32,11 @@ namespace GDNET.Domain.Base.Management
                 LogContentText = contentText,
                 EntityHistory = this
             };
+
+            this.LastLog = logEntry;
             this.logs.Add(logEntry);
         }
+
+        #endregion
     }
 }

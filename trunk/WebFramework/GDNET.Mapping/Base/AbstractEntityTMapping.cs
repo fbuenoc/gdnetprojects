@@ -1,9 +1,10 @@
 ﻿using GDNET.Domain.Base;
+using GDNET.Mapping.Common;
 using GDNET.Utils;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 
-namespace GDNET.Data.Base
+namespace GDNET.Mapping.Base
 {
     public abstract class AbstractEntityTMapping<TObject, TId> : ClassMapping<TObject>
         where TObject : AbstractEntityT<TId>
@@ -13,6 +14,8 @@ namespace GDNET.Data.Base
             var defaultEntity = default(AbstractEntityT<TId>);
 
             base.Lazy(true);
+            base.Table(MappingAssistant.GetStrongTableByType(typeof(TObject)));
+
             base.Id<TId>(e => e.Id, m =>
             {
                 m.Generator(generator);

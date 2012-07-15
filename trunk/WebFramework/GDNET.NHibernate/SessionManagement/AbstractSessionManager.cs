@@ -9,7 +9,7 @@ namespace GDNET.NHibernate.SessionManagement
     {
         protected const string ContextSessionsKey = "ContextSessions";
         protected const string SessionKey = "SessionKey";
-        private static ISessionFactory _sessionFactory = null;
+        protected static ISessionFactory _sessionFactory = null;
 
         /// <summary>
         /// Must be defined in sub-classes
@@ -59,7 +59,10 @@ namespace GDNET.NHibernate.SessionManagement
                     nhSession.Transaction.Commit();
                     nhSession.Transaction.Dispose();
                 }
+
+                nhSession.Close();
                 nhSession.Dispose();
+
                 this.ContextSessions.Remove(SessionKey);
             }
         }
@@ -74,7 +77,10 @@ namespace GDNET.NHibernate.SessionManagement
                     nhSession.Transaction.Rollback();
                     nhSession.Transaction.Dispose();
                 }
+
+                nhSession.Close();
                 nhSession.Dispose();
+
                 this.ContextSessions.Remove(SessionKey);
             }
         }

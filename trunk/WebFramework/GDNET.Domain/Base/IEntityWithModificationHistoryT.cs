@@ -1,6 +1,6 @@
 ﻿namespace GDNET.Domain.Base
 {
-    public interface IEntityWithModificationHistoryT<TId> : IEntityWithModificationT<TId>, IEntityWithModificationHistory
+    public interface IEntityWithModificationHistoryT<TId> : IEntityT<TId>, IEntityWithModificationHistory
     {
     }
 }

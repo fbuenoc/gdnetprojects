@@ -1,5 +1,5 @@
-﻿using GDNET.Data.Base;
-using GDNET.Domain.System;
+﻿using GDNET.Domain.System;
+using GDNET.Mapping.Base;
 using GDNET.NHibernate.Mapping;
 using NHibernate.Mapping.ByCode;
 

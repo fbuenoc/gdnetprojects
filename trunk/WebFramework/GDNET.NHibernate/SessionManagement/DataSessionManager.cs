@@ -61,6 +61,11 @@ namespace GDNET.Data.Base
                 base.Configuration.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), string.Empty);
             }
 
+            foreach (var interceptor in interceptors)
+            {
+                base.Configuration.SetInterceptor(interceptor);
+            }
+
             return base.Configuration.BuildSessionFactory();
         }
 
