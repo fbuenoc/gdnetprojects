@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CD582D2C-7AE0-4D4F-8A0B-0EB40A446AB7}</ProjectGuid>
+    <ProjectGuid>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>GDNET.NHibernate</RootNamespace>
-    <AssemblyName>GDNET.NHibernate</AssemblyName>
+    <RootNamespace>GDNET.FrameworkInfrastructure</RootNamespace>
+    <AssemblyName>GDNET.FrameworkInfrastructure</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -44,24 +44,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Interceptors\EntityWithModificationInterceptor.cs" />
-    <Compile Include="Mapping\IEntityMapping.cs" />
+    <Compile Include="NHibernateSessionPerRequestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\AbstractRepository.cs" />
-    <Compile Include="SessionManagement\AbstractSessionStrategy.cs" />
-    <Compile Include="SessionManagement\DataSessionManager.cs" />
-    <Compile Include="SessionManagement\ISessionStrategy.cs" />
-    <Compile Include="SessionManagement\AbstractSessionManager.cs" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\GDNET.Data\GDNET.Data.csproj">
+      <Project>{3BFF9CA5-483A-490A-A446-A8EA1D64FCC5}</Project>
+      <Name>GDNET.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDNET.Domain\GDNET.Domain.csproj">
       <Project>{5BCC7907-3BF7-4926-86E9-63B05C35E7E3}</Project>
       <Name>GDNET.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GDNET.Utils\GDNET.Utils.csproj">
-      <Project>{132BB8B1-1578-4FE8-8E8E-52CE06C464FE}</Project>
-      <Name>GDNET.Utils</Name>
+    <ProjectReference Include="..\GDNET.Mapping\GDNET.Mapping.csproj">
+      <Project>{A76D2DB0-0AF7-4AEE-8EC8-77D44DBAE90A}</Project>
+      <Name>GDNET.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.NHibernate\GDNET.NHibernate.csproj">
+      <Project>{CD582D2C-7AE0-4D4F-8A0B-0EB40A446AB7}</Project>
+      <Name>GDNET.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
