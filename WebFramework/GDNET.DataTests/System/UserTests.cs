@@ -55,5 +55,17 @@ namespace GDNET.DataTests.System
             DomainRepositories.User.Save(u1);
             DomainRepositories.User.Save(u2);
         }
+
+        [Test]
+        public void CanFindByEmail()
+        {
+            var u1 = User.Factory.Create("love1@gmail.com", "A1B2C3");
+            DomainRepositories.User.Save(u1);
+            DomainRepositories.RepositoryManager.FlushAndClear();
+
+            var u2 = DomainRepositories.User.FindByEmail(u1.Email);
+            Assert.IsNotNull(u2);
+            Assert.AreEqual(u1.Id, u2.Id);
+        }
     }
 }
