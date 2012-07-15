@@ -66,6 +66,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Data\MappingAssemblies.txt" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -134,12 +138,16 @@
     <Content Include="Views\Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Folder Include="Common\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.FrameworkInfrastructure.csproj">
+      <Project>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</Project>
+      <Name>GDNET.FrameworkInfrastructure</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDNET.Web\GDNET.Web.csproj">
       <Project>{1D25108D-7FBF-4077-84F8-0B2082C5CA4A}</Project>
       <Name>GDNET.Web</Name>

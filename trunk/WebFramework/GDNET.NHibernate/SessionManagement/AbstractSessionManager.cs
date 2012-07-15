@@ -9,6 +9,7 @@ namespace GDNET.NHibernate.SessionManagement
     {
         protected const string ContextSessionsKey = "ContextSessions";
         protected const string SessionKey = "SessionKey";
+        private static ISessionFactory _sessionFactory = null;
 
         /// <summary>
         /// Must be defined in sub-classes
@@ -37,8 +38,11 @@ namespace GDNET.NHibernate.SessionManagement
             ISession nhSession = this.ContextSessions[SessionKey] as ISession;
             if (nhSession == null)
             {
-                var sessionFactory = this.BuildSessionFactory(new EntityWithModificationInterceptor());
-                nhSession = sessionFactory.OpenSession();
+                if (_sessionFactory == null)
+                {
+                    _sessionFactory = this.BuildSessionFactory(new EntityWithModificationInterceptor());
+                }
+                nhSession = _sessionFactory.OpenSession();
                 this.ContextSessions[SessionKey] = nhSession;
             }
 
