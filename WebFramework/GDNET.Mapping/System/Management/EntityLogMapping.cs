@@ -1,10 +1,12 @@
 ﻿using System;
 using GDNET.Domain.Base.Management;
+using GDNET.Mapping.Base;
+using GDNET.Mapping.Common;
 using GDNET.NHibernate.Mapping;
 using GDNET.Utils;
 using NHibernate.Mapping.ByCode;
 
-namespace GDNET.Data.Base.Management
+namespace GDNET.Mapping.System.Management
 {
     public class EntityLogMapping : AbstractEntityTMapping<EntityLog, Guid>, IEntityMapping
     {
@@ -37,15 +39,8 @@ namespace GDNET.Data.Base.Management
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Access(Accessor.Field);
-                m.Column(this.GetColumnForEntityHistory());
+                m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntity.EntityHistory));
             });
-        }
-
-        private string GetColumnForEntityHistory()
-        {
-            string entityHistory = ExpressionAssistant.GetPropertyName(() => defaultEntity.EntityHistory);
-            string id = ExpressionAssistant.GetPropertyName(() => defaultEntity.Id);
-            return (entityHistory + id);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Runtime.Remoting.Messaging;
-using GDNET.Data.Base.Management;
+using GDNET.Mapping.System.Management;
 using GDNET.NHibernate.Mapping;
 using GDNET.NHibernate.SessionManagement;
 using GDNET.Utils;
@@ -39,7 +39,7 @@ namespace GDNET.DataTests.Base
             base.Configuration = new Configuration()
                      .SetProperty(Environment.Dialect, typeof(SQLiteDialect).AssemblyQualifiedName)
                      .SetProperty(Environment.ConnectionDriver, typeof(SQLite20Driver).AssemblyQualifiedName)
-                     .SetProperty(Environment.ConnectionString, "Data Source=test.db");
+                     .SetProperty(Environment.ConnectionString, "Data Source=test.db;new=True;UT8Encoding=True;");
 
             base.Configuration.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), string.Empty);
             foreach (var interceptor in interceptors)
@@ -60,6 +60,23 @@ namespace GDNET.DataTests.Base
                 }
 
                 return (Hashtable)CallContext.GetData(ContextSessionsKey);
+            }
+        }
+
+        public override void BeginTransaction()
+        {
+            base.BeginTransaction();
+        }
+
+        public override void CommitTransaction()
+        {
+            base.CommitTransaction();
+
+            if (_sessionFactory != null)
+            {
+                _sessionFactory.Close();
+                _sessionFactory.Dispose();
+                _sessionFactory = null;
             }
         }
     }

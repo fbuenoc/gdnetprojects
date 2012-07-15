@@ -2,6 +2,7 @@
 using System.Web;
 using GDNET.Data;
 using GDNET.Data.Base;
+using GDNET.Domain;
 using NHibernate;
 
 namespace GDNET.FrameworkInfrastructure
@@ -28,6 +29,9 @@ namespace GDNET.FrameworkInfrastructure
 
             var sessionStrategy = new DataSessionStrategy(currentSession);
             var repositories = new DataRepositories(sessionStrategy);
+
+            var currentUser = DomainRepositories.User.FindByEmail("guest@framework");
+            var sessionContext = new DataSessionContext(currentUser);
         }
 
         void context_EndRequest(object sender, EventArgs e)

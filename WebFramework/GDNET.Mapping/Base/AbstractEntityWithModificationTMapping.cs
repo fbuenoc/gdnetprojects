@@ -1,8 +1,9 @@
 ﻿using GDNET.Domain.Base;
 using GDNET.Utils;
 using NHibernate.Mapping.ByCode;
+using GDNET.Data.Base;
 
-namespace GDNET.Data.Base
+namespace GDNET.Mapping.Base
 {
     public abstract class AbstractEntityWithModificationTMapping<TObject, TId> : AbstractEntityTMapping<TObject, TId>
         where TObject : AbstractEntityWithModificationT<TId>

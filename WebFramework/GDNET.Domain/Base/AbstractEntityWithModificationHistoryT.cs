@@ -2,20 +2,20 @@
 
 namespace GDNET.Domain.Base
 {
-    public abstract class AbstractEntityWithModificationHistoryT<TId> : AbstractEntityWithModificationT<TId>, IEntityWithModificationHistoryT<TId>
+    public abstract class AbstractEntityWithModificationHistoryT<TId> : AbstractEntityT<TId>, IEntityWithModificationHistoryT<TId>
     {
-        private EntityHistory history = null;
+        private EntityHistory entityHistory = null;
 
-        public virtual EntityHistory History
+        public virtual EntityHistory EntityHistory
         {
-            get { return history; }
+            get { return entityHistory; }
         }
 
         public virtual void AssureCreationHistory()
         {
-            if (this.history == null)
+            if (this.entityHistory == null)
             {
-                this.history = new EntityHistory();
+                this.entityHistory = new EntityHistory();
             }
         }
     }

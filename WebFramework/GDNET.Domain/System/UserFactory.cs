@@ -16,11 +16,13 @@ namespace GDNET.Domain.System
                 ExceptionsManager.BusinessException.ThrowIfIsNullOrWhiteSpace(email);
                 ExceptionsManager.BusinessException.ThrowIfTooShort(password, 4);
 
-                return new User
+                var newUser = new User
                 {
                     Email = email,
                     Password = password,
                 };
+
+                return newUser;
             }
         }
     }
