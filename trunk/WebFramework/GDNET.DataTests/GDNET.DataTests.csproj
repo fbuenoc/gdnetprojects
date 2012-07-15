@@ -48,7 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\NUnitTestBase.cs" />
-    <Compile Include="Base\UnitTestSessionStrategy.cs" />
+    <Compile Include="Base\UnitTestSessionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\UserTests.cs" />
   </ItemGroup>
