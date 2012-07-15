@@ -19,11 +19,13 @@ namespace GDNET.Mapping.System.Management
             {
                 m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedAt));
                 m.Access(Accessor.Property);
+                m.NotNullable(true);
             });
             base.Property(e => e.CreatedBy, m =>
             {
                 m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedBy));
                 m.Access(Accessor.Property);
+                m.NotNullable(true);
             });
             base.Property(e => e.LogContentText, m =>
             {
@@ -34,6 +36,7 @@ namespace GDNET.Mapping.System.Management
             {
                 m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.LogMessage));
                 m.Access(Accessor.Property);
+                m.NotNullable(true);
             });
             base.ManyToOne(x => x.EntityHistory, m =>
             {

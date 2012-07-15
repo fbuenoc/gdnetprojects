@@ -53,8 +53,9 @@
     <Compile Include="Common\IRepositoryManager.cs" />
     <Compile Include="Base\SessionManagement\DomainSessionContext.cs" />
     <Compile Include="Base\SessionManagement\ISessionContext.cs" />
-    <Compile Include="Base\Management\EntityLog.cs" />
-    <Compile Include="Base\Management\EntityHistory.cs">
+    <Compile Include="System\EntityHistoryComplex.cs" />
+    <Compile Include="System\EntityLog.cs" />
+    <Compile Include="System\EntityHistory.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Base\Exceptions\BusinessException.cs" />

@@ -10,10 +10,19 @@ namespace GDNET.Data.System
         public UserMapping()
             : base(Generators.Native)
         {
-            base.Property(e => e.Email);
-            base.Property(e => e.Password);
+            base.Property(e => e.Email, m =>
+            {
+                m.Unique(true);
+            });
+            base.Property(e => e.Password, m =>
+            {
+                m.NotNullable(true);
+            });
             base.Property(e => e.DisplayName);
-            base.Property(e => e.IsActive);
+            base.Property(e => e.IsActive, m =>
+            {
+                m.NotNullable(true);
+            });
         }
     }
 }
