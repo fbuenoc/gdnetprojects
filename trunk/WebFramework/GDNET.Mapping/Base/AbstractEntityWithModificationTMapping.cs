@@ -1,7 +1,6 @@
 ﻿using GDNET.Domain.Base;
 using GDNET.Utils;
 using NHibernate.Mapping.ByCode;
-using GDNET.Data.Base;
 
 namespace GDNET.Mapping.Base
 {
@@ -24,11 +23,13 @@ namespace GDNET.Mapping.Base
             {
                 m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedAt));
                 m.Access(Accessor.Field);
+                m.NotNullable(true);
             });
             base.Property(e => e.CreatedBy, m =>
             {
                 m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedBy));
                 m.Access(Accessor.Field);
+                m.NotNullable(true);
             });
             base.Property(e => e.LastModifiedAt, m =>
             {

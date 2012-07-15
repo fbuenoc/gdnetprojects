@@ -5,13 +5,19 @@ using GDNET.Domain.Base.SessionManagement;
 
 namespace GDNET.Domain.Base.Management
 {
-    public partial class EntityHistory : AbstractEntityWithModificationT<Guid>
+    public partial class EntityHistoryComplex : AbstractEntityT<Guid>
     {
         private IList<EntityLog> logs = new List<EntityLog>();
 
         public virtual ReadOnlyCollection<EntityLog> Logs
         {
             get { return new ReadOnlyCollection<EntityLog>(this.logs); }
+        }
+
+        public virtual EntityLog FirstLog
+        {
+            get;
+            protected internal set;
         }
 
         public virtual EntityLog LastLog
@@ -33,7 +39,15 @@ namespace GDNET.Domain.Base.Management
                 EntityHistory = this
             };
 
-            this.LastLog = logEntry;
+            if (this.FirstLog == null)
+            {
+                this.FirstLog = logEntry;
+            }
+            else
+            {
+                this.LastLog = logEntry;
+            }
+
             this.logs.Add(logEntry);
         }
 

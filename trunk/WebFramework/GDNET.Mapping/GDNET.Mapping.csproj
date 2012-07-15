@@ -47,6 +47,7 @@
     <Compile Include="Base\AbstractEntityWithModificationTMapping.cs" />
     <Compile Include="Base\AbstractEntityWithModificationHistoryTMapping.cs" />
     <Compile Include="Common\MappingAssistant.cs" />
+    <Compile Include="System\Management\EntityHistoryComplexMapping.cs" />
     <Compile Include="System\Management\EntityHistoryMapping.cs" />
     <Compile Include="System\Management\EntityLogMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -5,7 +5,7 @@ namespace GDNET.Domain.Base.Management
 {
     public partial class EntityLog : AbstractEntityT<Guid>
     {
-        private EntityHistory entityHistory;
+        private EntityHistoryComplex entityHistory;
 
         public virtual DateTime CreatedAt
         {
@@ -31,7 +31,7 @@ namespace GDNET.Domain.Base.Management
             set;
         }
 
-        public virtual EntityHistory EntityHistory
+        public virtual EntityHistoryComplex EntityHistory
         {
             get { return entityHistory; }
             set
