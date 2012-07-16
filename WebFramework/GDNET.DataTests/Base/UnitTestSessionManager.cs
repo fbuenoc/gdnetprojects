@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.IO;
 using System.Runtime.Remoting.Messaging;
 using GDNET.Mapping.System.Management;
 using GDNET.NHibernate.Mapping;
@@ -78,6 +79,8 @@ namespace GDNET.DataTests.Base
                 _sessionFactory.Dispose();
                 _sessionFactory = null;
             }
+
+            File.Delete("test.db");
         }
     }
 }

@@ -12,37 +12,16 @@ namespace GDNET.NHibernate.Interceptors
     {
         public override bool OnSave(object entity, object id, object[] state, string[] propertyNames, IType[] types)
         {
-            this.UpdateEntity(entity, state, propertyNames);
-            return base.OnSave(entity, id, state, propertyNames, types);
+            return this.UpdateEntity(entity, ref state, ref propertyNames);
         }
 
         public override bool OnFlushDirty(object entity, object id, object[] currentState, object[] previousState, string[] propertyNames, IType[] types)
         {
-            this.UpdateEntity(entity, currentState, propertyNames);
-            return base.OnFlushDirty(entity, id, currentState, previousState, propertyNames, types);
+            return this.UpdateEntity(entity, ref currentState, ref propertyNames);
         }
 
-        private void UpdateEntity(object entity, object[] state, string[] propertyNames)
+        private bool UpdateEntity(object entity, ref object[] state, ref string[] propertyNames)
         {
-            if (entity is IEntityWithModificationHistory)
-            {
-                //var entityWithModificationHistory = (IEntityWithModificationHistory)entity;
-                //entityWithModificationHistory.AssureCreationHistory();
-
-                //if ((entityWithModificationHistory.EntityHistory.FirstLog == null) && (entityWithModificationHistory.EntityHistory.LastLog == null))
-                //{
-                //    entityWithModificationHistory.EntityHistory.AddLog("Interceptor", null);
-                //}
-                //else
-                //{
-                //    bool? isTransient = this.IsTransient(entityWithModificationHistory.EntityHistory.Logs.Last());
-                //    if (isTransient.HasValue && !isTransient.Value)
-                //    {
-                //        entityWithModificationHistory.EntityHistory.AddLog("Interceptor", null);
-                //    }
-                //}
-            }
-
             if (entity is IEntityWithModification)
             {
                 var defaultObject = default(IEntityWithModification);
@@ -70,6 +49,8 @@ namespace GDNET.NHibernate.Interceptors
                     state[propertyIndex] = DomainSessionContext.Instance.CurrentUser.Email;
                 }
             }
+
+            return true;
         }
     }
 }

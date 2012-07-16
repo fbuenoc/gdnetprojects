@@ -2,7 +2,7 @@
 
 namespace GDNET.Domain.Base.Management
 {
-    public partial class EntityHistory : AbstractEntityWithModificationT<Guid>
+    public class EntityHistory : AbstractEntityWithModificationT<Guid>
     {
     }
 }

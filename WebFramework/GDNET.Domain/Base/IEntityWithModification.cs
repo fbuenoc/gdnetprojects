@@ -8,7 +8,5 @@ namespace GDNET.Domain.Base
         DateTime LastModifiedAt { get; }
         string CreatedBy { get; }
         string LastModifiedBy { get; }
-
-        void InitializeModificationInfos();
     }
 }
