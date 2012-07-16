@@ -1,5 +1,4 @@
 ﻿using System;
-using GDNET.Domain.Base.SessionManagement;
 
 namespace GDNET.Domain.Base
 {
@@ -28,20 +27,6 @@ namespace GDNET.Domain.Base
         public virtual string LastModifiedBy
         {
             get { return lastModifiedBy; }
-        }
-
-        public virtual void InitializeModificationInfos()
-        {
-            if (string.IsNullOrEmpty(this.CreatedBy))
-            {
-                this.createdAt = DateTime.Now;
-                this.createdBy = DomainSessionContext.Instance.CurrentUser.Email;
-            }
-            else
-            {
-                this.lastModifiedAt = DateTime.Now;
-                this.lastModifiedBy = DomainSessionContext.Instance.CurrentUser.Email;
-            }
         }
     }
 }

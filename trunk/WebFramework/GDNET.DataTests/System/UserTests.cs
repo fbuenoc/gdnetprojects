@@ -24,15 +24,12 @@ namespace GDNET.DataTests.System
             Assert.AreEqual("A1B2C3", u2.Password);
             Assert.AreEqual("Love", u2.DisplayName);
             Assert.IsTrue(u2.IsActive);
-            Assert.AreNotEqual(DateTime.MinValue, u2.EntityHistory.CreatedAt);
-            Assert.IsFalse(string.IsNullOrEmpty(u2.EntityHistory.CreatedBy));
-            Assert.AreEqual(DateTime.MinValue, u2.EntityHistory.LastModifiedAt);
-            Assert.IsTrue(string.IsNullOrEmpty(u2.EntityHistory.LastModifiedBy));
 
             u2.DisplayName = "DN";
             DomainRepositories.RepositoryManager.Flush();
-            Assert.AreNotEqual(DateTime.MinValue, u2.EntityHistory.LastModifiedAt);
-            Assert.IsFalse(string.IsNullOrEmpty(u2.EntityHistory.LastModifiedBy));
+
+            Assert.AreNotEqual(DateTime.MinValue, u2.LastModifiedAt);
+            Assert.IsFalse(string.IsNullOrEmpty(u2.LastModifiedBy));
         }
 
         [Test]

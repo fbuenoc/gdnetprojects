@@ -5,7 +5,7 @@ using GDNET.Domain.Base.SessionManagement;
 
 namespace GDNET.Domain.Base.Management
 {
-    public partial class EntityHistoryComplex : AbstractEntityT<Guid>
+    public class EntityHistoryComplex : AbstractEntityWithModificationHistoryT<Guid>
     {
         private IList<EntityLog> logs = new List<EntityLog>();
 

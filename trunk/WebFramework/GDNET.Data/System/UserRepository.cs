@@ -1,11 +1,12 @@
-﻿using GDNET.Domain.System;
+﻿using System;
+using GDNET.Domain.System;
 using GDNET.Domain.System.Repositories;
 using GDNET.NHibernate.Repositories;
 using GDNET.Utils;
 
 namespace GDNET.Data.System
 {
-    public class UserRepository : AbstractRepository<User, long>, IUserRepository
+    public class UserRepository : AbstractRepository<User, Guid>, IUserRepository
     {
         public UserRepository(ISessionStrategy sessionStrategy)
             : base(sessionStrategy)

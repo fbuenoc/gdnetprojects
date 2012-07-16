@@ -3,7 +3,7 @@ using GDNET.Domain.Base.Exceptions;
 
 namespace GDNET.Domain.Base.Management
 {
-    public partial class EntityLog : AbstractEntityT<Guid>
+    public class EntityLog : AbstractEntityT<Guid>
     {
         private EntityHistoryComplex entityHistory;
 
