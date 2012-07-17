@@ -1,4 +1,5 @@
 ﻿using GDNET.Domain.Base.Exceptions;
+using GDNET.Domain.Services;
 
 namespace GDNET.Domain.System
 {
@@ -19,7 +20,7 @@ namespace GDNET.Domain.System
                 var newUser = new User
                 {
                     Email = email,
-                    Password = password,
+                    Password = DomainServices.Encryption.Encrypt(password),
                 };
 
                 return newUser;

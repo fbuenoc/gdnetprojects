@@ -42,6 +42,7 @@ namespace GDNET.Mapping.System.Management
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Access(Accessor.Field);
+                m.NotNullable(true);
                 m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntity.EntityHistory));
             });
         }
