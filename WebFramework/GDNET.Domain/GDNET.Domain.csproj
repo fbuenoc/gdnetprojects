@@ -53,6 +53,9 @@
     <Compile Include="Common\IRepositoryManager.cs" />
     <Compile Include="Base\SessionManagement\DomainSessionContext.cs" />
     <Compile Include="Base\SessionManagement\ISessionContext.cs" />
+    <Compile Include="Services\Security\EncryptionOption.cs" />
+    <Compile Include="Services\Security\IEncryptionService.cs" />
+    <Compile Include="Services\DomainServices.cs" />
     <Compile Include="System\EntityHistoryComplex.cs" />
     <Compile Include="System\EntityLog.cs" />
     <Compile Include="System\EntityHistory.cs">

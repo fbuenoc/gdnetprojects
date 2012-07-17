@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Security;
 using GDNET.Domain;
+using GDNET.Domain.Services;
 using GDNET.Domain.System;
 
 namespace GDNET.Web.Security
@@ -165,7 +166,8 @@ namespace GDNET.Web.Security
 
         public override bool ValidateUser(string username, string password)
         {
-            throw new NotImplementedException();
+            User user = DomainRepositories.User.FindByEmail(username);
+            return (user == null) ? false : (DomainServices.Encryption.Decrypt(user.Password) == password);
         }
     }
 }

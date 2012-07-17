@@ -53,6 +53,10 @@
     <Compile Include="System\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GDNET.Business\GDNET.Business.csproj">
+      <Project>{F28887AD-6D90-44D0-9DAD-83571CA49539}</Project>
+      <Name>GDNET.Business</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDNET.Data\GDNET.Data.csproj">
       <Project>{3BFF9CA5-483A-490A-A446-A8EA1D64FCC5}</Project>
       <Name>GDNET.Data</Name>

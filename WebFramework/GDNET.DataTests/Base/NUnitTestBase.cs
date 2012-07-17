@@ -1,4 +1,5 @@
-﻿using GDNET.Data;
+﻿using GDNET.Business.Services;
+using GDNET.Data;
 using GDNET.Data.Base;
 using GDNET.Domain;
 using GDNET.Domain.System;
@@ -27,6 +28,7 @@ namespace GDNET.DataTests.Base
 
             var sessionStrategy = new DataSessionStrategy(currentSession);
             var repositories = new DataRepositories(sessionStrategy);
+            var servicesManager = new ServicesManager();
 
             this.CurrentUser = User.Factory.Create("test@mail.com", "123456");
             var sessionContext = new DataSessionContext(this.CurrentUser);

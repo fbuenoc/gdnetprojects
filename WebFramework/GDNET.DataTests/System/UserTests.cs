@@ -21,7 +21,7 @@ namespace GDNET.DataTests.System
 
             var u2 = DomainRepositories.User.GetById(u1.Id);
             Assert.AreEqual("love@gmail.com", u2.Email);
-            Assert.AreEqual("A1B2C3", u2.Password);
+            Assert.AreNotEqual("A1B2C3", u2.Password);
             Assert.AreEqual("Love", u2.DisplayName);
             Assert.IsTrue(u2.IsActive);
 

@@ -2,7 +2,6 @@
 
 namespace GDNET.Domain.System
 {
-    //public partial class User : AbstractEntityWithModificationHistoryT<long>
     public partial class User : EntityHistory
     {
         public virtual string Email
