@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Web;
 using System.Web.Hosting;
+using GDNET.NHibernate.SessionManagement;
 
-namespace GDNET.NHibernate.SessionManagement
+namespace GDNET.FrameworkInfrastructure
 {
     public class WebNHibernateSessionManager : ApplicationNHibernateSessionManager
     {

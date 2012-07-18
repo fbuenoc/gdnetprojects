@@ -36,12 +36,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.XML" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interceptors\EntityWithModificationInterceptor.cs" />
@@ -50,7 +47,6 @@
     <Compile Include="Repositories\AbstractRepository.cs" />
     <Compile Include="SessionManagement\ApplicationNHibernateSessionManager.cs" />
     <Compile Include="SessionManagement\AbstractSessionStrategy.cs" />
-    <Compile Include="SessionManagement\WebNHibernateSessionManager.cs" />
     <Compile Include="SessionManagement\ISessionStrategy.cs" />
     <Compile Include="SessionManagement\AbstractNHibernateSessionManager.cs" />
   </ItemGroup>
