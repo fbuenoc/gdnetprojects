@@ -5,7 +5,7 @@ using NHibernate.Cfg;
 
 namespace GDNET.NHibernate.SessionManagement
 {
-    public abstract class AbstractSessionManager
+    public abstract class AbstractNHibernateSessionManager
     {
         protected const string ContextSessionsKey = "ContextSessions";
         protected const string SessionKey = "SessionKey";
@@ -14,7 +14,7 @@ namespace GDNET.NHibernate.SessionManagement
         /// <summary>
         /// Must be defined in sub-classes
         /// </summary>
-        public static AbstractSessionManager Instance
+        public static AbstractNHibernateSessionManager Instance
         {
             get { return null; }
         }
