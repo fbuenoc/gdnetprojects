@@ -38,7 +38,7 @@ namespace GDNET.NHibernate.Interceptors
                     state[propertyIndex] = DateTime.Now;
 
                     propertyIndex = propertyNames.ToList().IndexOf(propertyCreatedBy);
-                    state[propertyIndex] = DomainSessionContext.Instance.CurrentUser.Email;
+                    state[propertyIndex] = this.GetEmailCurrentUser();
                 }
                 else
                 {
@@ -46,11 +46,16 @@ namespace GDNET.NHibernate.Interceptors
                     state[propertyIndex] = DateTime.Now;
 
                     propertyIndex = propertyNames.ToList().IndexOf(propertyLastModifiedBy);
-                    state[propertyIndex] = DomainSessionContext.Instance.CurrentUser.Email;
+                    state[propertyIndex] = this.GetEmailCurrentUser();
                 }
             }
 
             return true;
+        }
+
+        protected virtual string GetEmailCurrentUser()
+        {
+            return DomainSessionContext.Instance.CurrentUser.Email;
         }
     }
 }

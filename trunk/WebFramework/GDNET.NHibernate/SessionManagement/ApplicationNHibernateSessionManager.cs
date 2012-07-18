@@ -20,8 +20,9 @@ namespace GDNET.NHibernate.SessionManagement
 
         protected ApplicationNHibernateSessionManager()
         {
-            HibernateConfiguration = Path.Combine(System.Environment.CurrentDirectory, "/App_Data/hibernate.cfg.xml");
-            MappingAssemblies = Path.Combine(System.Environment.CurrentDirectory, "/App_Data/MappingAssemblies.txt");
+            var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            HibernateConfiguration = Path.Combine(directory, "App_Data/hibernate.cfg.xml");
+            MappingAssemblies = Path.Combine(directory, "App_Data/MappingAssemblies.txt");
         }
 
         private class Nested
