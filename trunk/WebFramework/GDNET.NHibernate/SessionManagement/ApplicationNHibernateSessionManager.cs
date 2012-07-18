@@ -2,32 +2,34 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Web;
-using System.Web.Hosting;
+using System.Runtime.Remoting.Messaging;
 using GDNET.NHibernate.Mapping;
-using GDNET.NHibernate.SessionManagement;
 using GDNET.Utils;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Mapping.ByCode;
 
-namespace GDNET.Data.Base
+namespace GDNET.NHibernate.SessionManagement
 {
-    public class DataSessionManager : AbstractSessionManager
+    public class ApplicationNHibernateSessionManager : AbstractNHibernateSessionManager
     {
-        private static readonly string HibernateConfiguration = HostingEnvironment.MapPath("~/App_Data/hibernate.cfg.xml");
-        private static readonly string MappingAssemblies = HostingEnvironment.MapPath("~/App_Data/MappingAssemblies.txt");
+        protected static string HibernateConfiguration;
+        protected static string MappingAssemblies;
 
         #region Singleton
 
-        private DataSessionManager() { }
+        protected ApplicationNHibernateSessionManager()
+        {
+            HibernateConfiguration = Path.Combine(System.Environment.CurrentDirectory, "/App_Data/hibernate.cfg.xml");
+            MappingAssemblies = Path.Combine(System.Environment.CurrentDirectory, "/App_Data/MappingAssemblies.txt");
+        }
 
         private class Nested
         {
-            public static readonly DataSessionManager instance = new DataSessionManager();
+            public static readonly ApplicationNHibernateSessionManager instance = new ApplicationNHibernateSessionManager();
         }
 
-        public new static DataSessionManager Instance
+        public new static ApplicationNHibernateSessionManager Instance
         {
             get { return Nested.instance; }
         }
@@ -38,11 +40,12 @@ namespace GDNET.Data.Base
         {
             get
             {
-                if (HttpContext.Current.Items[ContextSessionsKey] == null)
+                if (CallContext.GetData(ContextSessionsKey) == null)
                 {
-                    HttpContext.Current.Items[ContextSessionsKey] = new Hashtable();
+                    CallContext.SetData(ContextSessionsKey, new Hashtable());
                 }
-                return (Hashtable)HttpContext.Current.Items[ContextSessionsKey];
+
+                return (Hashtable)CallContext.GetData(ContextSessionsKey);
             }
         }
 
@@ -89,5 +92,6 @@ namespace GDNET.Data.Base
         {
             return !(string.IsNullOrEmpty(line) || line.StartsWith("#"));
         }
+
     }
 }

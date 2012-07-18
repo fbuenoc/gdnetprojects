@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.IO;
-using System.Runtime.Remoting.Messaging;
+﻿using System.IO;
 using GDNET.Mapping.System.Management;
 using GDNET.NHibernate.Mapping;
 using GDNET.NHibernate.SessionManagement;
@@ -13,7 +11,7 @@ using NHibernate.Mapping.ByCode;
 
 namespace GDNET.DataTests.Base
 {
-    public class UnitTestSessionManager : AbstractSessionManager
+    public class UnitTestSessionManager : ApplicationNHibernateSessionManager
     {
         #region Singleton
 
@@ -51,27 +49,23 @@ namespace GDNET.DataTests.Base
             return base.Configuration.BuildSessionFactory();
         }
 
-        protected override Hashtable ContextSessions
-        {
-            get
-            {
-                if (CallContext.GetData(ContextSessionsKey) == null)
-                {
-                    CallContext.SetData(ContextSessionsKey, new Hashtable());
-                }
-
-                return (Hashtable)CallContext.GetData(ContextSessionsKey);
-            }
-        }
-
-        public override void BeginTransaction()
-        {
-            base.BeginTransaction();
-        }
-
         public override void CommitTransaction()
         {
             base.CommitTransaction();
+
+            if (_sessionFactory != null)
+            {
+                _sessionFactory.Close();
+                _sessionFactory.Dispose();
+                _sessionFactory = null;
+            }
+
+            File.Delete("test.db");
+        }
+
+        public override void RollbackTransaction()
+        {
+            base.RollbackTransaction();
 
             if (_sessionFactory != null)
             {
