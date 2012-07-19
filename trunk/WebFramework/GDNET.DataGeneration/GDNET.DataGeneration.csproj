@@ -77,9 +77,20 @@
       <Project>{CD582D2C-7AE0-4D4F-8A0B-0EB40A446AB7}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GDNET.Utils\GDNET.Utils.csproj">
+      <Project>{132BB8B1-1578-4FE8-8E8E-52CE06C464FE}</Project>
+      <Name>GDNET.Utils</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="App_Data\" />
+    <Content Include="App_Data\hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="App_Data\MappingAssemblies.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

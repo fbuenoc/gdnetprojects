@@ -42,12 +42,10 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
@@ -57,12 +55,15 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AbstractController.cs" />
+    <Compile Include="Common\Models\LogOnModel.cs" />
+    <Compile Include="Common\Models\Copy of AccountModels.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Common\Models\ChangePasswordModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,9 +138,7 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
@@ -147,6 +146,10 @@
     <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.FrameworkInfrastructure.csproj">
       <Project>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</Project>
       <Name>GDNET.FrameworkInfrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.Utils\GDNET.Utils.csproj">
+      <Project>{132BB8B1-1578-4FE8-8E8E-52CE06C464FE}</Project>
+      <Name>GDNET.Utils</Name>
     </ProjectReference>
     <ProjectReference Include="..\GDNET.Web\GDNET.Web.csproj">
       <Project>{1D25108D-7FBF-4077-84F8-0B2082C5CA4A}</Project>

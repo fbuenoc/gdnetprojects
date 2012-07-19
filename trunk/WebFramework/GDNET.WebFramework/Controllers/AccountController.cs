@@ -1,27 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.Routing;
 using System.Web.Security;
-using GDNET.WebFramework.Models;
+using GDNET.WebFramework.Common;
+using GDNET.WebFramework.Common.Models;
 
 namespace GDNET.WebFramework.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : AbstractController
     {
-
-        //
-        // GET: /Account/LogOn
-
         public ActionResult LogOn()
         {
             return View();
         }
-
-        //
-        // POST: /Account/LogOn
 
         [HttpPost]
         public ActionResult LogOn(LogOnModel model, string returnUrl)
@@ -51,9 +41,6 @@ namespace GDNET.WebFramework.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/LogOff
-
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
@@ -61,16 +48,10 @@ namespace GDNET.WebFramework.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //
-        // GET: /Account/Register
-
         public ActionResult Register()
         {
             return View();
         }
-
-        //
-        // POST: /Account/Register
 
         [HttpPost]
         public ActionResult Register(RegisterModel model)
@@ -79,11 +60,11 @@ namespace GDNET.WebFramework.Controllers
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
-                Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                Membership.CreateUser(model.Email, model.Password, model.Email, null, null, true, null, out createStatus);
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+                    FormsAuthentication.SetAuthCookie(model.Email, false);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -96,17 +77,11 @@ namespace GDNET.WebFramework.Controllers
             return View(model);
         }
 
-        //
-        // GET: /Account/ChangePassword
-
         [Authorize]
         public ActionResult ChangePassword()
         {
             return View();
         }
-
-        //
-        // POST: /Account/ChangePassword
 
         [Authorize]
         [HttpPost]
@@ -114,13 +89,12 @@ namespace GDNET.WebFramework.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 // ChangePassword will throw an exception rather
                 // than return false in certain failure scenarios.
                 bool changePasswordSucceeded;
                 try
                 {
-                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true /* userIsOnline */);
+                    MembershipUser currentUser = Membership.GetUser(User.Identity.Name, true);
                     changePasswordSucceeded = currentUser.ChangePassword(model.OldPassword, model.NewPassword);
                 }
                 catch (Exception)
@@ -141,9 +115,6 @@ namespace GDNET.WebFramework.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-
-        //
-        // GET: /Account/ChangePasswordSuccess
 
         public ActionResult ChangePasswordSuccess()
         {
