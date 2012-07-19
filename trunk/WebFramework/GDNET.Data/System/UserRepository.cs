@@ -1,6 +1,6 @@
 ﻿using System;
-using GDNET.Domain.System;
-using GDNET.Domain.System.Repositories;
+using GDNET.Domain.Entities.System;
+using GDNET.Domain.Repositories.System;
 using GDNET.NHibernate.Repositories;
 using GDNET.Utils;
 

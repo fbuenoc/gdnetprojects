@@ -3,8 +3,7 @@ using System.Web;
 using GDNET.Business.Services;
 using GDNET.Data;
 using GDNET.Data.Base;
-using GDNET.Domain;
-using GDNET.NHibernate.SessionManagement;
+using GDNET.Domain.Repositories;
 using NHibernate;
 
 namespace GDNET.FrameworkInfrastructure

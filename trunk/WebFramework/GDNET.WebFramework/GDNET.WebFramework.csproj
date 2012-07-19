@@ -57,7 +57,7 @@
   <ItemGroup>
     <Compile Include="Common\AbstractController.cs" />
     <Compile Include="Common\Models\LogOnModel.cs" />
-    <Compile Include="Common\Models\Copy of AccountModels.cs" />
+    <Compile Include="Common\Models\RegisterModel.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">

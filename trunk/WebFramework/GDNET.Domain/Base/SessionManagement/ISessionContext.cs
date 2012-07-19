@@ -1,4 +1,4 @@
-﻿using GDNET.Domain.System;
+﻿using GDNET.Domain.Entities.System;
 
 namespace GDNET.Domain.Base.SessionManagement
 {

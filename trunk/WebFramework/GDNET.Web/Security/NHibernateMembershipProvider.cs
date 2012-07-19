@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Security;
-using GDNET.Domain;
+using GDNET.Domain.Entities.System;
+using GDNET.Domain.Repositories;
 using GDNET.Domain.Services;
-using GDNET.Domain.System;
 
 namespace GDNET.Web.Security
 {

@@ -1,8 +1,10 @@
-﻿using GDNET.Data.System;
+﻿using GDNET.Data.Content;
+using GDNET.Data.System;
 using GDNET.Data.System.Repositories;
-using GDNET.Domain;
 using GDNET.Domain.Base;
-using GDNET.Domain.System.Repositories;
+using GDNET.Domain.Repositories;
+using GDNET.Domain.Repositories.Content;
+using GDNET.Domain.Repositories.System;
 using GDNET.NHibernate.Repositories;
 
 namespace GDNET.Data
@@ -23,6 +25,11 @@ namespace GDNET.Data
             userRepository.RepositoryGlass = new UserRepositoryGlass();
 
             return userRepository;
+        }
+
+        protected override IContentItemRepository GetContentItemRepository()
+        {
+            return new ContentItemRepository(this.sessionStrategy);
         }
 
         protected override IRepositoryManager GetRepositoryManager()

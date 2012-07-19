@@ -15,6 +15,11 @@ namespace GDNET.Mapping.System.Management
             var defaultEntityHistory = default(EntityHistoryComplex);
             var defaultEntityLog = default(EntityLog);
 
+            base.Property(x => x.IsActive, m =>
+            {
+                m.NotNullable(true);
+            });
+
             base.ManyToOne(x => x.FirstLog, m =>
             {
                 m.Cascade(Cascade.All);

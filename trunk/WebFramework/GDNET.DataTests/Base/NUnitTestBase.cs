@@ -1,8 +1,8 @@
 ﻿using GDNET.Business.Services;
 using GDNET.Data;
 using GDNET.Data.Base;
-using GDNET.Domain;
-using GDNET.Domain.System;
+using GDNET.Domain.Entities.System;
+using GDNET.Domain.Repositories;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;

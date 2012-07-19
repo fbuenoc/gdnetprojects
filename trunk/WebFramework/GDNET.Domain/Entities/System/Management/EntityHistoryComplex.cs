@@ -26,6 +26,12 @@ namespace GDNET.Domain.Base.Management
             protected internal set;
         }
 
+        public virtual bool IsActive
+        {
+            get;
+            set;
+        }
+
         #region Methods
 
         public virtual void AddLog(string message, string contentText)

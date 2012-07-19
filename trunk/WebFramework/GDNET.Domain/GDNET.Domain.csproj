@@ -53,12 +53,15 @@
     <Compile Include="Common\IRepositoryManager.cs" />
     <Compile Include="Base\SessionManagement\DomainSessionContext.cs" />
     <Compile Include="Base\SessionManagement\ISessionContext.cs" />
+    <Compile Include="Entities\Content\ContentItem.cs" />
+    <Compile Include="Entities\Content\ContentItemFactory.cs" />
+    <Compile Include="Repositories\Content\IContentItemRepository.cs" />
     <Compile Include="Services\Security\EncryptionOption.cs" />
     <Compile Include="Services\Security\IEncryptionService.cs" />
     <Compile Include="Services\DomainServices.cs" />
-    <Compile Include="System\EntityHistoryComplex.cs" />
-    <Compile Include="System\EntityLog.cs" />
-    <Compile Include="System\EntityHistory.cs">
+    <Compile Include="Entities\System\Management\EntityHistoryComplex.cs" />
+    <Compile Include="Entities\System\Management\EntityLog.cs" />
+    <Compile Include="Entities\System\Management\EntityHistory.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Base\Exceptions\BusinessException.cs" />
@@ -68,12 +71,11 @@
     <Compile Include="Base\IEntityWithModification.cs" />
     <Compile Include="Base\IEntityT.cs" />
     <Compile Include="Base\Validators\DomainValidator.cs" />
-    <Compile Include="Constants\EntityConstants.cs" />
-    <Compile Include="DomainRepositories.cs" />
+    <Compile Include="Repositories\DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System\Repositories\IUserRepository.cs" />
-    <Compile Include="System\UserFactory.cs" />
-    <Compile Include="System\User.cs" />
+    <Compile Include="Repositories\System\IUserRepository.cs" />
+    <Compile Include="Entities\System\UserFactory.cs" />
+    <Compile Include="Entities\System\User.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
