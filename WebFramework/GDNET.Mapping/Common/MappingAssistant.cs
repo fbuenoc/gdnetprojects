@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using GDNET.Domain.System;
+using GDNET.Domain.Entities.System;
 using GDNET.Utils;
 
 namespace GDNET.Mapping.Common

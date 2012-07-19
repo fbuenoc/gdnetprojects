@@ -1,7 +1,8 @@
 ﻿using GDNET.Domain.Base;
-using GDNET.Domain.System.Repositories;
+using GDNET.Domain.Repositories.Content;
+using GDNET.Domain.Repositories.System;
 
-namespace GDNET.Domain
+namespace GDNET.Domain.Repositories
 {
     public abstract class DomainRepositories
     {
@@ -17,12 +18,18 @@ namespace GDNET.Domain
             get { return _instance.GetUserRepository(); }
         }
 
+        public static IContentItemRepository ContentItem
+        {
+            get { return _instance.GetContentItemRepository(); }
+        }
+
         public static IRepositoryManager RepositoryManager
         {
             get { return _instance.GetRepositoryManager(); }
         }
 
         protected abstract IUserRepository GetUserRepository();
+        protected abstract IContentItemRepository GetContentItemRepository();
         protected abstract IRepositoryManager GetRepositoryManager();
     }
 }

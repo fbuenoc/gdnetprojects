@@ -1,8 +1,8 @@
 ﻿using System;
 using GDNET.DataTests.Base;
-using GDNET.Domain;
 using GDNET.Domain.Base.Exceptions;
-using GDNET.Domain.System;
+using GDNET.Domain.Entities.System;
+using GDNET.Domain.Repositories;
 using NUnit.Framework;
 
 namespace GDNET.DataTests.System

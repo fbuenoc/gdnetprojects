@@ -1,5 +1,5 @@
 ﻿using GDNET.Domain.Base.SessionManagement;
-using GDNET.Domain.System;
+using GDNET.Domain.Entities.System;
 
 namespace GDNET.Data.Base
 {

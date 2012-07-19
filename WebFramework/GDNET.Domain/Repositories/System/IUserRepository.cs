@@ -1,7 +1,8 @@
-﻿using GDNET.Domain.Common;
-using System;
+﻿using System;
+using GDNET.Domain.Common;
+using GDNET.Domain.Entities.System;
 
-namespace GDNET.Domain.System.Repositories
+namespace GDNET.Domain.Repositories.System
 {
     public interface IUserRepository : IRepositoryBase<User, Guid>
     {

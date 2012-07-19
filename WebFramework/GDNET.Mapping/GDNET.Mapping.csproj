@@ -48,6 +48,7 @@
     <Compile Include="Base\AbstractEntityWithModificationHistoryTMapping.cs" />
     <Compile Include="Base\AbstractJoinedSubclassMapping.cs" />
     <Compile Include="Common\MappingAssistant.cs" />
+    <Compile Include="Content\ContentItemMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\Management\EntityHistoryComplexMapping.cs">
       <SubType>Code</SubType>

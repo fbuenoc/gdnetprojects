@@ -1,6 +1,6 @@
 ﻿using GDNET.Domain.Base.Management;
 
-namespace GDNET.Domain.System
+namespace GDNET.Domain.Entities.System
 {
     public partial class User : EntityHistory
     {

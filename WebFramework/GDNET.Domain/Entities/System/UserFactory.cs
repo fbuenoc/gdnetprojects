@@ -1,7 +1,7 @@
 ﻿using GDNET.Domain.Base.Exceptions;
 using GDNET.Domain.Services;
 
-namespace GDNET.Domain.System
+namespace GDNET.Domain.Entities.System
 {
     public partial class User
     {
