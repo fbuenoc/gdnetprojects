@@ -38,6 +38,7 @@ namespace GDNET.DataTests.Base
             base.Configuration = new Configuration()
                      .SetProperty(Environment.Dialect, typeof(SQLiteDialect).AssemblyQualifiedName)
                      .SetProperty(Environment.ConnectionDriver, typeof(SQLite20Driver).AssemblyQualifiedName)
+                     .SetProperty(Environment.ShowSql, "true")
                      .SetProperty(Environment.ConnectionString, "Data Source=test.db;new=True;UT8Encoding=True;");
 
             base.Configuration.AddDeserializedMapping(mapper.CompileMappingForAllExplicitlyAddedEntities(), string.Empty);

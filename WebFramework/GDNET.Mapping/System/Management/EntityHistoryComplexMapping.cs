@@ -24,6 +24,7 @@ namespace GDNET.Mapping.System.Management
             {
                 m.Cascade(Cascade.All);
                 m.Lazy(LazyRelation.NoLazy);
+                m.Access(Accessor.Property);
                 m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntityHistory.FirstLog));
             });
 
@@ -31,11 +32,13 @@ namespace GDNET.Mapping.System.Management
             {
                 m.Cascade(Cascade.All);
                 m.Lazy(LazyRelation.NoLazy);
+                m.Access(Accessor.Property);
                 m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntityHistory.LastLog));
             });
 
             base.Bag(x => x.Logs, cm =>
             {
+                cm.Inverse(true);
                 cm.Access(Accessor.Field);
                 cm.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 cm.Lazy(CollectionLazy.Lazy);

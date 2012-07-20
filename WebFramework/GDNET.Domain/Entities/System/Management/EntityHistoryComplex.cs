@@ -7,23 +7,11 @@ namespace GDNET.Domain.Base.Management
 {
     public class EntityHistoryComplex : AbstractEntityWithModificationHistoryT<Guid>
     {
-        private IList<EntityLog> logs = new List<EntityLog>();
+        protected IList<EntityLog> logs = new List<EntityLog>();
 
         public virtual ReadOnlyCollection<EntityLog> Logs
         {
             get { return new ReadOnlyCollection<EntityLog>(this.logs); }
-        }
-
-        public virtual EntityLog FirstLog
-        {
-            get;
-            protected internal set;
-        }
-
-        public virtual EntityLog LastLog
-        {
-            get;
-            protected internal set;
         }
 
         public virtual bool IsActive
@@ -34,7 +22,7 @@ namespace GDNET.Domain.Base.Management
 
         #region Methods
 
-        public virtual void AddLog(string message, string contentText)
+        public override void AddLog(string message, string contentText)
         {
             EntityLog logEntry = new EntityLog
             {

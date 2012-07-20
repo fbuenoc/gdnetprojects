@@ -4,7 +4,9 @@ namespace GDNET.Domain.Base
 {
     public interface IEntityWithModificationHistory : IEntity
     {
-        EntityHistory EntityHistory { get; }
-        void AssureCreationHistory();
+        EntityLog FirstLog { get; }
+        EntityLog LastLog { get; }
+        void AddLogCreation();
+        void AddLog(string message, string contentText);
     }
 }

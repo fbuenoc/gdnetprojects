@@ -30,6 +30,25 @@ namespace GDNET.DataTests.Content
             Assert.AreEqual("D2", listOfContentItems[1].Description);
             Assert.AreEqual(null, listOfContentItems[0].Keywords);
             Assert.AreEqual("K2", listOfContentItems[1].Keywords);
+
+            listOfContentItems[0].Description = "D1";
+            DomainRepositories.RepositoryManager.FlushAndClear();
+
+            listOfContentItems = DomainRepositories.ContentItem.GetAll();
+            Assert.AreEqual("D1", listOfContentItems[0].Description);
+        }
+
+        [Test]
+        public void CanAddContentItemWithLog()
+        {
+            var c1 = ContentItem.Factory.Create("C1", true);
+            DomainRepositories.ContentItem.Save(c1);
+
+            c1.AddLogCreation();
+            DomainRepositories.RepositoryManager.FlushAndClear();
+
+            var listOfContentItems = DomainRepositories.ContentItem.GetAll();
+            Assert.AreEqual(1, listOfContentItems[0].Logs.Count);
         }
     }
 }

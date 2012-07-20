@@ -30,6 +30,9 @@ namespace GDNET.DataTests.System
 
             Assert.AreNotEqual(DateTime.MinValue, u2.LastModifiedAt);
             Assert.IsFalse(string.IsNullOrEmpty(u2.LastModifiedBy));
+
+            DomainRepositories.RepositoryManager.FlushAndClear();
+            u2 = DomainRepositories.User.GetById(u1.Id);
         }
 
         [Test]
