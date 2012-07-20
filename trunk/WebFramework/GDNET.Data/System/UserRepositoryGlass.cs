@@ -1,4 +1,5 @@
-﻿using GDNET.Domain.Base.Exceptions;
+﻿using System;
+using GDNET.Domain.Base.Exceptions;
 using GDNET.Domain.Common;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
@@ -6,7 +7,7 @@ using GDNET.Utils;
 
 namespace GDNET.Data.System.Repositories
 {
-    public class UserRepositoryGlass : AbstractRepositoryGlass<User, long>
+    public class UserRepositoryGlass : AbstractRepositoryGlass<User, Guid>
     {
         public override void ValidateOnCreation(User entity)
         {

@@ -4,19 +4,23 @@ namespace GDNET.Domain.Base
 {
     public abstract class AbstractEntityWithModificationHistoryT<TId> : AbstractEntityT<TId>, IEntityWithModificationHistoryT<TId>
     {
-        private EntityHistory entityHistory = null;
-
-        public virtual EntityHistory EntityHistory
+        public virtual EntityLog FirstLog
         {
-            get { return entityHistory; }
+            get;
+            protected internal set;
         }
 
-        public virtual void AssureCreationHistory()
+        public virtual EntityLog LastLog
         {
-            if (this.entityHistory == null)
-            {
-                this.entityHistory = new EntityHistory();
-            }
+            get;
+            protected internal set;
         }
+
+        public virtual void AddLogCreation()
+        {
+            this.AddLog("Creation", string.Empty);
+        }
+
+        public abstract void AddLog(string message, string contentText);
     }
 }

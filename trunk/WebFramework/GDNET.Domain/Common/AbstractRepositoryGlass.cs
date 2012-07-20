@@ -1,6 +1,8 @@
-﻿namespace GDNET.Domain.Common
+﻿using GDNET.Domain.Base;
+
+namespace GDNET.Domain.Common
 {
-    public class AbstractRepositoryGlass<TEntity, TId> : IRepositoryGlass<TEntity>
+    public class AbstractRepositoryGlass<TEntity, TId> : IRepositoryGlass<TEntity> where TEntity : IEntityT<TId>
     {
         public virtual void ValidateOnCreation(TEntity entity) { }
 

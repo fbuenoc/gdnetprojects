@@ -34,6 +34,9 @@ namespace GDNET.DataTests.Base
             var sessionContext = new DataSessionContext(this.CurrentUser);
 
             DomainRepositories.User.Save(this.CurrentUser);
+
+            Console.WriteLine();
+            Console.WriteLine("-------------");
         }
 
         [TearDown]

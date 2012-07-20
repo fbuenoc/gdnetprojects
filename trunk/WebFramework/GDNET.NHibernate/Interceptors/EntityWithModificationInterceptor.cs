@@ -24,6 +24,16 @@ namespace GDNET.NHibernate.Interceptors
         {
             if (entity is IEntityWithModification)
             {
+                this.UpdateEntityWithModification(entity, ref state, ref propertyNames);
+            }
+
+            return true;
+        }
+
+        protected virtual void UpdateEntityWithModification(object entity, ref object[] state, ref string[] propertyNames)
+        {
+            if (entity is IEntityWithModification)
+            {
                 var defaultObject = default(IEntityWithModification);
                 var entityWithModification = (IEntityWithModification)entity;
 
@@ -49,8 +59,6 @@ namespace GDNET.NHibernate.Interceptors
                     state[propertyIndex] = this.GetEmailCurrentUser();
                 }
             }
-
-            return true;
         }
 
         protected virtual string GetEmailCurrentUser()

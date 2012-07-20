@@ -5,7 +5,7 @@ namespace GDNET.Domain.Base.Management
 {
     public class EntityLog : AbstractEntityT<Guid>
     {
-        private EntityHistoryComplex entityHistory;
+        protected EntityHistoryComplex entityHistory;
 
         public virtual DateTime CreatedAt
         {
