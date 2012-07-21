@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using GDNET.Domain.Base.SessionManagement;
 
 namespace GDNET.Domain.Base.Management
 {
@@ -26,8 +25,6 @@ namespace GDNET.Domain.Base.Management
         {
             EntityLog logEntry = new EntityLog
             {
-                CreatedAt = DateTime.Now,
-                CreatedBy = DomainSessionContext.Instance.CurrentUser.Email,
                 LogMessage = message,
                 LogContentText = contentText,
                 EntityHistory = this

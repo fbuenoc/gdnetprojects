@@ -26,8 +26,30 @@ namespace GDNET.NHibernate.Interceptors
             {
                 this.UpdateEntityWithModification(entity, ref state, ref propertyNames);
             }
+            else if (entity is IEntityWithCreation)
+            {
+                this.UpdateEntityWithCreation(entity, ref state, ref propertyNames);
+            }
 
             return true;
+        }
+
+        protected virtual void UpdateEntityWithCreation(object entity, ref object[] state, ref string[] propertyNames)
+        {
+            if (entity is IEntityWithCreation)
+            {
+                var defaultObject = default(IEntityWithCreation);
+                var entityWithCreationInfo = (IEntityWithCreation)entity;
+
+                var propertyCreatedAt = ExpressionAssistant.GetPropertyName(() => defaultObject.CreatedAt);
+                var propertyCreatedBy = ExpressionAssistant.GetPropertyName(() => defaultObject.CreatedBy);
+
+                var propertyIndex = propertyNames.ToList().IndexOf(propertyCreatedAt);
+                state[propertyIndex] = DateTime.Now;
+
+                propertyIndex = propertyNames.ToList().IndexOf(propertyCreatedBy);
+                state[propertyIndex] = this.GetEmailCurrentUser();
+            }
         }
 
         protected virtual void UpdateEntityWithModification(object entity, ref object[] state, ref string[] propertyNames)
