@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
-using GDNET.WebFramework.Common;
-using GDNET.WebFramework.Common.Models;
+using GDNET.FrameworkInfrastructure.Common;
+using GDNET.FrameworkInfrastructure.Common.Models;
 
 namespace GDNET.WebFramework.Controllers
 {
