@@ -43,6 +43,7 @@
     <Compile Include="Base\AbstractEntityT.cs" />
     <Compile Include="Base\AbstractEntityWithModificationT.cs" />
     <Compile Include="Base\AbstractEntityWithModificationHistoryT.cs" />
+    <Compile Include="Base\IEntityWithCreation.cs" />
     <Compile Include="Base\Exceptions\DomainException.cs" />
     <Compile Include="Base\Exceptions\Managers\BusinessExceptionManager.cs" />
     <Compile Include="Base\IEntityWithModificationHistoryT.cs" />
