@@ -35,16 +35,23 @@
       <HintPath>..\..\Libs\NHibernate\NHibernate-3.3.1.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AbstractController.cs" />
+    <Compile Include="Common\Models\ChangePasswordModel.cs" />
+    <Compile Include="Common\Models\LogOnModel.cs" />
+    <Compile Include="Common\Models\RegisterModel.cs" />
     <Compile Include="NHibernateSessionPerRequestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\NHibernateMembershipProvider.cs" />
     <Compile Include="WebNHibernateSessionManager.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +75,9 @@
       <Project>{CD582D2C-7AE0-4D4F-8A0B-0EB40A446AB7}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,7 +4,7 @@ using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
 using GDNET.Domain.Services;
 
-namespace GDNET.Web.Security
+namespace GDNET.FrameworkInfrastructure.Security
 {
     public class NHibernateMembershipProvider : MembershipProvider
     {
@@ -16,7 +16,8 @@ namespace GDNET.Web.Security
 
         public override bool ChangePassword(string username, string oldPassword, string newPassword)
         {
-            throw new NotImplementedException();
+            User user = DomainRepositories.User.FindByEmail(username);
+            return (user == null) ? false : user.ChangePassword(oldPassword, newPassword);
         }
 
         public override bool ChangePasswordQuestionAndAnswer(string username, string password, string newPasswordQuestion, string newPasswordAnswer)
@@ -52,7 +53,7 @@ namespace GDNET.Web.Security
 
         public override bool EnablePasswordRetrieval
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public override MembershipUserCollection FindUsersByEmail(string emailToMatch, int pageIndex, int pageSize, out int totalRecords)
@@ -111,12 +112,12 @@ namespace GDNET.Web.Security
 
         public override int MaxInvalidPasswordAttempts
         {
-            get { throw new NotImplementedException(); }
+            get { return 10; }
         }
 
         public override int MinRequiredNonAlphanumericCharacters
         {
-            get { throw new NotImplementedException(); }
+            get { return 0; }
         }
 
         public override int MinRequiredPasswordLength
@@ -141,12 +142,12 @@ namespace GDNET.Web.Security
 
         public override bool RequiresQuestionAndAnswer
         {
-            get { throw new NotImplementedException(); }
+            get { return false; }
         }
 
         public override bool RequiresUniqueEmail
         {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         public override string ResetPassword(string username, string answer)

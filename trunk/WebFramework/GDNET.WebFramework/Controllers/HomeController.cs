@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using GDNET.WebFramework.Common;
+using GDNET.FrameworkInfrastructure.Common;
 
 namespace GDNET.WebFramework.Controllers
 {

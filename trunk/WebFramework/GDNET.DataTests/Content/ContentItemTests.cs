@@ -52,6 +52,23 @@ namespace GDNET.DataTests.Content
         }
 
         [Test]
+        public void CanAddContentItemWithManyLogs()
+        {
+            var c1 = ContentItem.Factory.Create("C1", true);
+            DomainRepositories.ContentItem.Save(c1);
+
+            int max = 1000;
+            for (int index = 1; index <= max; index++)
+            {
+                c1.AddLog("MSG " + index, string.Empty);
+            }
+            DomainRepositories.RepositoryManager.FlushAndClear();
+
+            var listOfContentItems = DomainRepositories.ContentItem.GetAll();
+            Assert.AreEqual(max, listOfContentItems[0].Logs.Count);
+        }
+
+        [Test]
         public void CanAddContentItemWithParts()
         {
             var c1 = ContentItem.Factory.Create("C1", true);

@@ -1,8 +1,9 @@
 ﻿using GDNET.Domain.Base.Management;
+using GDNET.Domain.Services;
 
 namespace GDNET.Domain.Entities.System
 {
-    public partial class User : EntityHistory
+    public partial class User : EntityHistoryComplex
     {
         public virtual string Email
         {
@@ -22,10 +23,16 @@ namespace GDNET.Domain.Entities.System
             protected set;
         }
 
-        public virtual bool IsActive
+        public virtual bool ChangePassword(string oldPassword, string newPassword)
         {
-            get;
-            set;
+            bool result = false;
+            if (this.Password == DomainServices.Encryption.Encrypt(oldPassword))
+            {
+                this.Password = DomainServices.Encryption.Encrypt(newPassword);
+                result = true;
+            }
+
+            return result;
         }
 
         internal protected User() { }

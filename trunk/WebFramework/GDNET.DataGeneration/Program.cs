@@ -46,8 +46,12 @@ namespace GDNET.DataGeneration
             for (int index = 0; index < 10; index++)
             {
                 var email = RandomAssistant.GenerateEmailAddress();
-                var user = User.Factory.Create(email, "@a1b2c3$");
-                DomainRepositories.User.Save(user);
+
+                if (DomainRepositories.User.FindByEmail(email) == null)
+                {
+                    var user = User.Factory.Create(email, "@a1b2c3$");
+                    DomainRepositories.User.Save(user);
+                }
             }
 
             Console.Write("done!");
