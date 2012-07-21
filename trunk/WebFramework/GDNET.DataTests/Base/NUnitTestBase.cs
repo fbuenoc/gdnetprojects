@@ -1,4 +1,5 @@
-﻿using GDNET.Business.Services;
+﻿using System;
+using GDNET.Business.Services;
 using GDNET.Data;
 using GDNET.Data.Base;
 using GDNET.Domain.Entities.System;
@@ -18,6 +19,8 @@ namespace GDNET.DataTests.Base
             private set;
         }
 
+        private DateTime startDate;
+
         [SetUp]
         public void SetUp()
         {
@@ -36,13 +39,17 @@ namespace GDNET.DataTests.Base
             DomainRepositories.User.Save(this.CurrentUser);
 
             Console.WriteLine();
-            Console.WriteLine("-------------");
+            Console.WriteLine("------------->>");
+            this.startDate = DateTime.Now;
         }
 
         [TearDown]
         public void TearDown()
         {
             UnitTestSessionManager.Instance.CommitTransaction();
+            Console.WriteLine();
+            Console.WriteLine("<<-------------");
+            Console.WriteLine(DateTime.Now - this.startDate);
         }
     }
 }

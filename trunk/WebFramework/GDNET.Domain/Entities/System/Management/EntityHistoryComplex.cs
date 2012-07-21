@@ -13,12 +13,6 @@ namespace GDNET.Domain.Base.Management
             get { return new ReadOnlyCollection<EntityLog>(this.logs); }
         }
 
-        public virtual bool IsActive
-        {
-            get;
-            set;
-        }
-
         #region Methods
 
         public override void AddLog(string message, string contentText)

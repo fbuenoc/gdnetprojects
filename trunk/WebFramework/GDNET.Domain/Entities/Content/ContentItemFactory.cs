@@ -11,15 +11,22 @@ namespace GDNET.Domain.Content
 
         public class ContentItemFactory
         {
+            public ContentItem Create(string name)
+            {
+                return this.Create(name, false);
+            }
+
             public ContentItem Create(string name, bool isActive)
             {
                 ExceptionsManager.BusinessException.ThrowIfIsNullOrWhiteSpace(name);
 
-                return new ContentItem
+                var contentItem = new ContentItem
                 {
                     Name = name,
                     IsActive = isActive
                 };
+
+                return contentItem;
             }
         }
     }
