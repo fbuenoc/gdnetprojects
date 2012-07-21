@@ -50,5 +50,25 @@ namespace GDNET.DataTests.Content
             var listOfContentItems = DomainRepositories.ContentItem.GetAll();
             Assert.AreEqual(1, listOfContentItems[0].Logs.Count);
         }
+
+        [Test]
+        public void CanAddContentItemWithParts()
+        {
+            var c1 = ContentItem.Factory.Create("C1", true);
+            DomainRepositories.ContentItem.Save(c1);
+
+            c1.AddPart(ContentPart.Factory.Create("P1", "D1", true));
+            c1.AddPart(ContentPart.Factory.Create("P2", "D2", false));
+            DomainRepositories.RepositoryManager.FlushAndClear();
+
+            var listOfContentItems = DomainRepositories.ContentItem.GetAll();
+            Assert.AreEqual(2, listOfContentItems[0].Parts.Count);
+            Assert.AreEqual("P1", listOfContentItems[0].Parts[0].Name);
+            Assert.AreEqual("P2", listOfContentItems[0].Parts[1].Name);
+            Assert.AreEqual("D1", listOfContentItems[0].Parts[0].Details);
+            Assert.AreEqual("D2", listOfContentItems[0].Parts[1].Details);
+            Assert.AreEqual(true, listOfContentItems[0].Parts[0].IsActive);
+            Assert.AreEqual(false, listOfContentItems[0].Parts[1].IsActive);
+        }
     }
 }

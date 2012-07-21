@@ -2,7 +2,7 @@
 
 namespace GDNET.Domain.Base
 {
-    public abstract class AbstractEntityWithModificationHistoryT<TId> : AbstractEntityT<TId>, IEntityWithModificationHistoryT<TId>
+    public abstract class AbstractEntityWithModificationHistoryT<TId> : AbstractEntityWithModificationT<TId>, IEntityWithModificationHistoryT<TId>
     {
         public virtual EntityLog FirstLog
         {
@@ -14,6 +14,12 @@ namespace GDNET.Domain.Base
         {
             get;
             protected internal set;
+        }
+
+        public virtual bool IsActive
+        {
+            get;
+            set;
         }
 
         public virtual void AddLogCreation()
