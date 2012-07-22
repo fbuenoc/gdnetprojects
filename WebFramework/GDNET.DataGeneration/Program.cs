@@ -38,8 +38,8 @@ namespace GDNET.DataGeneration
             Console.WriteLine();
             Console.Write("GenerateUsers...");
 
-            var guest = User.Factory.Create("guest@webframework", "123456");
-            var admin = User.Factory.Create("admin@webframework", "123456");
+            var guest = User.Factory.Create("guest@webframework", "123456", true);
+            var admin = User.Factory.Create("admin@webframework", "123456", true);
             DomainRepositories.User.Save(guest);
             DomainRepositories.User.Save(admin);
 

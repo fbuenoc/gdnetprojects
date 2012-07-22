@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AbstractController.cs" />
+    <Compile Include="Common\ControllerAssistant.cs" />
     <Compile Include="Common\Models\ChangePasswordModel.cs" />
     <Compile Include="Common\Models\UpdateDetailsModel.cs" />
     <Compile Include="Common\Models\LogOnModel.cs" />
@@ -82,6 +83,10 @@
     <ProjectReference Include="..\GDNET.NHibernate\GDNET.NHibernate.csproj">
       <Project>{CD582D2C-7AE0-4D4F-8A0B-0EB40A446AB7}</Project>
       <Name>GDNET.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.Utils\GDNET.Utils.csproj">
+      <Project>{132BB8B1-1578-4FE8-8E8E-52CE06C464FE}</Project>
+      <Name>GDNET.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

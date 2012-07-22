@@ -5,10 +5,18 @@ using GDNET.FrameworkInfrastructure.Common;
 using GDNET.FrameworkInfrastructure.Common.Models;
 using GDNET.FrameworkInfrastructure.Services;
 
-namespace GDNET.WebFramework.Controllers
+namespace GDNET.FrameworkInfrastructure.Controllers
 {
     public class AccountController : AbstractController
     {
+        private ActionResult RedirectToHomeIndex()
+        {
+            var homeController = default(HomeController);
+            var controllerName = ControllerAssistant.GetControllerName(typeof(HomeController));
+            var actionName = ControllerAssistant.GetActionName(() => homeController.Index());
+            return base.RedirectToAction(actionName, controllerName);
+        }
+
         #region LogOn
 
         public ActionResult LogOn()
@@ -31,7 +39,7 @@ namespace GDNET.WebFramework.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return this.RedirectToHomeIndex();
                     }
                 }
                 else
@@ -83,7 +91,8 @@ namespace GDNET.WebFramework.Controllers
                 bool result = WebFrameworkServices.AccountModels.UpdateUserFromModel(email, model);
                 if (result)
                 {
-                    return base.RedirectToAction("Account", "Details");
+                    var actionDetailsName = ControllerAssistant.GetActionName(() => this.Details());
+                    return base.RedirectToAction(actionDetailsName);
                 }
             }
 
@@ -109,7 +118,7 @@ namespace GDNET.WebFramework.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, false);
-                    return RedirectToAction("Index", "Home");
+                    return this.RedirectToHomeIndex();
                 }
                 else
                 {
@@ -152,7 +161,8 @@ namespace GDNET.WebFramework.Controllers
 
                 if (changePasswordSucceeded)
                 {
-                    return RedirectToAction("ChangePasswordSuccess");
+                    var actionName = ControllerAssistant.GetActionName(() => this.ChangePasswordSuccess());
+                    return RedirectToAction(actionName);
                 }
                 else
                 {
