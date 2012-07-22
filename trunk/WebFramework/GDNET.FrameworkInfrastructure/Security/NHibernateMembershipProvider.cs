@@ -168,7 +168,12 @@ namespace GDNET.FrameworkInfrastructure.Security
         public override bool ValidateUser(string username, string password)
         {
             User user = DomainRepositories.User.FindByEmail(username);
-            return (user == null) ? false : (DomainServices.Encryption.Decrypt(user.Password) == password);
+            if (user != null && user.IsActive)
+            {
+                return (DomainServices.Encryption.Decrypt(user.Password) == password);
+            }
+
+            return false;
         }
     }
 }

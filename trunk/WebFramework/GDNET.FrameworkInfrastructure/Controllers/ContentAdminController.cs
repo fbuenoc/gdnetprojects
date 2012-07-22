@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using GDNET.FrameworkInfrastructure.Common;
 
-namespace GDNET.WebFramework.Controllers
+namespace GDNET.FrameworkInfrastructure.Controllers
 {
     public class ContentAdminController : AbstractController
     {
