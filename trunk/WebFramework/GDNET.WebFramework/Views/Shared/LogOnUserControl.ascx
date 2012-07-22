@@ -4,7 +4,9 @@
     {
 %>
 Welcome <strong>
-    <%: base.Page.User.Identity.Name%></strong> [
+    <%: base.Page.User.Identity.Name%></strong>
+<br />
+[
 <%: Html.ActionLink("Details", "Details", "Account")%>
 <%: Html.ActionLink("Log Off", "LogOff", "Account") %>
 ]

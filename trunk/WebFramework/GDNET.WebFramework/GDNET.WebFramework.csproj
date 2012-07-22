@@ -34,7 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
@@ -51,12 +50,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\ContentAdminController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Global.asax.cs">
-      <DependentUpon>Global.asax</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +95,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Views\Account\UpdateDetails.aspx" />
+    <Content Include="Views\Account\Details.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -131,7 +126,6 @@
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

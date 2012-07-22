@@ -56,11 +56,17 @@ namespace GDNET.NHibernate.SessionManagement
             {
                 if (nhSession.Transaction != null)
                 {
-                    nhSession.Transaction.Commit();
+                    if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasCommitted)
+                    {
+                        nhSession.Transaction.Commit();
+                    }
                     nhSession.Transaction.Dispose();
                 }
 
-                nhSession.Close();
+                if (nhSession.IsOpen)
+                {
+                    nhSession.Close();
+                }
                 nhSession.Dispose();
 
                 this.ContextSessions.Remove(SessionKey);
@@ -74,11 +80,17 @@ namespace GDNET.NHibernate.SessionManagement
             {
                 if (nhSession.Transaction != null)
                 {
-                    nhSession.Transaction.Rollback();
+                    if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasRolledBack)
+                    {
+                        nhSession.Transaction.Rollback();
+                    }
                     nhSession.Transaction.Dispose();
                 }
 
-                nhSession.Close();
+                if (nhSession.IsOpen)
+                {
+                    nhSession.Close();
+                }
                 nhSession.Dispose();
 
                 this.ContextSessions.Remove(SessionKey);
