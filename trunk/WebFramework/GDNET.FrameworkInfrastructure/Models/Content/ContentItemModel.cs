@@ -6,16 +6,14 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
     public class ContentItemModel : AbstractModel
     {
         [Required]
-        [DataType(DataType.Text)]
         [Display(Name = "Name")]
-        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
+        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
         public string Name
         {
             get;
             set;
         }
 
-        [DataType(DataType.Text)]
         [Display(Name = "Description")]
         public string Description
         {
@@ -23,7 +21,6 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
             set;
         }
 
-        [DataType(DataType.Text)]
         [Display(Name = "Keywords")]
         public string Keywords
         {
