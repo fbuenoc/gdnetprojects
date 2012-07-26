@@ -14,6 +14,11 @@ namespace GDNET.Domain.Entities.System
         {
             public User Create(string email, string password)
             {
+                return this.Create(email, password, false);
+            }
+
+            public User Create(string email, string password, bool isActive)
+            {
                 ExceptionsManager.BusinessException.ThrowIfIsNullOrWhiteSpace(email);
                 ExceptionsManager.BusinessException.ThrowIfTooShort(password, 4);
 
@@ -21,6 +26,7 @@ namespace GDNET.Domain.Entities.System
                 {
                     Email = email,
                     Password = DomainServices.Encryption.Encrypt(password),
+                    IsActive = isActive
                 };
 
                 return newUser;

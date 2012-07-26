@@ -92,6 +92,15 @@ namespace GDNET.NHibernate.Repositories
             return query.ToList();
         }
 
+        public virtual IList<TEntity> GetTopByProperty(int limit, string orderByProperty)
+        {
+            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+            criteria.AddOrder(new Order(orderByProperty, true));
+            criteria.SetFirstResult(0).SetMaxResults(limit);
+
+            return criteria.List<TEntity>();
+        }
+
         #endregion
 
         #region FindByProperty Methods

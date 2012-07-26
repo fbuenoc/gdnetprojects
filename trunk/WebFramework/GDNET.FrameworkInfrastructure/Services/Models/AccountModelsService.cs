@@ -6,7 +6,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
 {
     public class AccountModelsService
     {
-        public UpdateDetailsModel CreateUpdateDetailsModel(string email)
+        public UpdateDetailsModel GetUpdateDetailsModelByEmail(string email)
         {
             UpdateDetailsModel model = null;
             User user = DomainRepositories.User.FindByEmail(email);
