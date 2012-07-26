@@ -8,5 +8,10 @@ namespace GDNET.FrameworkInfrastructure.Services
         {
             get { return new AccountModelsService(); }
         }
+
+        public static ContentModelsService ContentModels
+        {
+            get { return new ContentModelsService(); }
+        }
     }
 }

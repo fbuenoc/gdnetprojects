@@ -85,14 +85,13 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         [HttpPost]
         public ActionResult UpdateDetails(UpdateDetailsModel model)
         {
-            if (ModelState.IsValid)
+            if (base.ModelState.IsValid)
             {
                 var email = base.HttpContext.User.Identity.Name;
                 bool result = WebFrameworkServices.AccountModels.UpdateUserFromModel(email, model);
                 if (result)
                 {
-                    var actionDetailsName = ControllerAssistant.GetActionName(() => this.Details());
-                    return base.RedirectToAction(actionDetailsName);
+                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details()));
                 }
             }
 
