@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Common\AbstractController.cs" />
     <Compile Include="Common\ControllerAssistant.cs" />
+    <Compile Include="Common\AbstractModel.cs" />
     <Compile Include="Common\Models\ChangePasswordModel.cs" />
     <Compile Include="Common\Models\UpdateDetailsModel.cs" />
     <Compile Include="Common\Models\LogOnModel.cs" />
@@ -56,9 +57,12 @@
     <Compile Include="Controllers\ContentAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="GDNETHttpApplication.cs" />
+    <Compile Include="Models\Content\ContentItemModel.cs" />
+    <Compile Include="Models\Content\ContentPartModel.cs" />
     <Compile Include="NHibernateSessionPerRequestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\NHibernateMembershipProvider.cs" />
+    <Compile Include="Services\Models\ContentModelsService.cs" />
     <Compile Include="Services\WebFrameworkServices.cs" />
     <Compile Include="Services\Models\AccountModelsService.cs" />
     <Compile Include="WebNHibernateSessionManager.cs" />

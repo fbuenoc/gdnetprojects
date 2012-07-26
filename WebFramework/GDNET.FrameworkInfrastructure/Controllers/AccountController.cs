@@ -76,7 +76,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         public ActionResult UpdateDetails()
         {
             var email = base.HttpContext.User.Identity.Name;
-            UpdateDetailsModel model = WebFrameworkServices.AccountModels.CreateUpdateDetailsModel(email);
+            UpdateDetailsModel model = WebFrameworkServices.AccountModels.GetUpdateDetailsModelByEmail(email);
 
             return base.View(model);
         }
