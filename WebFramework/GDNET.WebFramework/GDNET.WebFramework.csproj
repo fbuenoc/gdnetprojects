@@ -97,6 +97,8 @@
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Views\Account\UpdateDetails.aspx" />
     <Content Include="Views\Account\Details.aspx" />
+    <Content Include="Views\ContentAdmin\CreateOrUpdatePart.aspx" />
+    <Content Include="Views\ContentAdmin\ManageParts.aspx" />
     <Content Include="Views\ContentAdmin\CreateOrUpdate.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
