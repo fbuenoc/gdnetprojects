@@ -43,5 +43,10 @@ namespace GDNET.FrameworkInfrastructure.Common
 
             return null;
         }
+
+        public static object BuildRouteValues(string idValue)
+        {
+            return new { id = idValue };
+        }
     }
 }

@@ -42,6 +42,16 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             };
         }
 
+        public ContentPart CreateContentPart(ContentPartModel partModel)
+        {
+            return new ContentPart()
+            {
+                Name = partModel.Name,
+                Details = partModel.Details,
+                IsActive = partModel.IsActive,
+            };
+        }
+
         #endregion
 
         #region
@@ -66,6 +76,14 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             }
 
             return contentParts;
+        }
+
+        public ContentItemPartsModel GetContentItemParts(ContentItem contentItem)
+        {
+            ContentItemPartsModel model = new ContentItemPartsModel(contentItem);
+            model.AddContentParts(this.GetAllContentParts(contentItem));
+
+            return model;
         }
 
         #endregion
