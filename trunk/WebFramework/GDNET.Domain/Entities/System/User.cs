@@ -5,6 +5,8 @@ namespace GDNET.Domain.Entities.System
 {
     public partial class User : EntityHistoryComplex
     {
+        #region Properties
+
         public virtual string Email
         {
             get;
@@ -23,6 +25,16 @@ namespace GDNET.Domain.Entities.System
             protected set;
         }
 
+        public virtual Employee Employee
+        {
+            get;
+            set;
+        }
+
+        #endregion
+
+        #region Methods
+
         public virtual bool ChangePassword(string oldPassword, string newPassword)
         {
             bool result = false;
@@ -34,6 +46,8 @@ namespace GDNET.Domain.Entities.System
 
             return result;
         }
+
+        #endregion
 
         internal protected User() { }
     }
