@@ -8,6 +8,7 @@ using NHibernate.Cfg;
 using NHibernate.Dialect;
 using NHibernate.Driver;
 using NHibernate.Mapping.ByCode;
+using Console = System.Console;
 
 namespace GDNET.DataTests.Base
 {
@@ -34,6 +35,9 @@ namespace GDNET.DataTests.Base
             var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(IEntityMapping), typeof(EntityHistoryMapping).Assembly);
             var mapper = new ModelMapper();
             mapper.AddMappings(listeMappingTypes);
+
+            Console.WriteLine("HbmMappings");
+            Console.WriteLine(mapper.CompileMappingForAllExplicitlyAddedEntities().AsString());
 
             base.Configuration = new Configuration()
                      .SetProperty(Environment.Dialect, typeof(SQLiteDialect).AssemblyQualifiedName)

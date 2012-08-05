@@ -67,5 +67,29 @@ namespace GDNET.DataTests.System
             Assert.IsNotNull(u2);
             Assert.AreEqual(u1.Id, u2.Id);
         }
+
+        [Test]
+        public void CanAddUserWithEmployee()
+        {
+            var u0 = User.Factory.Create("love0@gmail.com", "A1B2C3");
+            var u1 = User.Factory.Create("love1@gmail.com", "A1B2C3");
+
+            var e1 = new Employee()
+            {
+                StartDate = DateTime.Today
+            };
+            u1.Employee = e1;
+            e1.User = u1;
+
+            DomainRepositories.User.Save(u0);
+            DomainRepositories.User.Save(u1);
+
+            DomainRepositories.RepositoryManager.FlushAndClear();
+
+            var u2 = DomainRepositories.User.FindByEmail(u1.Email);
+            Assert.IsNotNull(u2.Employee);
+            Assert.IsNotNull(u2.Employee.User);
+            Assert.AreEqual("love1@gmail.com", u2.Employee.User.Email);
+        }
     }
 }

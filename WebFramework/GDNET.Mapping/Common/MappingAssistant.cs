@@ -10,8 +10,8 @@ namespace GDNET.Mapping.Common
     {
         public static string GetForeignKeyColumn<T>(Expression<Func<T>> property)
         {
-            User DefaultUser = default(User);
-            string propertyId = ExpressionAssistant.GetPropertyName(() => DefaultUser.Id);
+            User defaultUser = default(User);
+            string propertyId = ExpressionAssistant.GetPropertyName(() => defaultUser.Id);
             string propertyName = ExpressionAssistant.GetPropertyName(property);
             return (propertyName + propertyId);
         }
