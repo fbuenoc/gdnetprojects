@@ -11,8 +11,8 @@ namespace GDNET.Data.System
     {
         public UserMapping()
         {
-            var defaultUser = default(Employee);
-            var pis = typeof(Employee).GetMember(ExpressionAssistant.GetPropertyName(() => defaultUser.User));
+            var defaultEmployee = default(Employee);
+            var pis = typeof(Employee).GetMember(ExpressionAssistant.GetPropertyName(() => defaultEmployee.User));
 
             base.Property(e => e.Email, m =>
             {
@@ -33,7 +33,6 @@ namespace GDNET.Data.System
                 m.Lazy(LazyRelation.Proxy);
                 m.Access(Accessor.Property);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
-                //m.Constrained(true);
                 m.PropertyReference(pis[0]);
             });
         }

@@ -73,6 +73,7 @@ namespace GDNET.DataTests.System
         {
             var u0 = User.Factory.Create("love0@gmail.com", "A1B2C3");
             var u1 = User.Factory.Create("love1@gmail.com", "A1B2C3");
+            var u2 = User.Factory.Create("love2@gmail.com", "A1B2C3");
 
             var e1 = new Employee()
             {
@@ -83,10 +84,11 @@ namespace GDNET.DataTests.System
 
             DomainRepositories.User.Save(u0);
             DomainRepositories.User.Save(u1);
+            DomainRepositories.User.Save(u2);
 
             DomainRepositories.RepositoryManager.FlushAndClear();
 
-            var u2 = DomainRepositories.User.FindByEmail(u1.Email);
+            u2 = DomainRepositories.User.FindByEmail(u1.Email);
             Assert.IsNotNull(u2.Employee);
             Assert.IsNotNull(u2.Employee.User);
             Assert.AreEqual("love1@gmail.com", u2.Employee.User.Email);
