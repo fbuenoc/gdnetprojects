@@ -17,6 +17,6 @@ namespace GDNET.Domain.Entities.System
             set;
         }
 
-        public Employee() { }
+        protected internal Employee() { }
     }
 }

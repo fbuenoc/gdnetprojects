@@ -75,10 +75,7 @@ namespace GDNET.DataTests.System
             var u1 = User.Factory.Create("love1@gmail.com", "A1B2C3");
             var u2 = User.Factory.Create("love2@gmail.com", "A1B2C3");
 
-            var e1 = new Employee()
-            {
-                StartDate = DateTime.Today
-            };
+            var e1 = Employee.Factory.Create();
             u1.Employee = e1;
             e1.User = u1;
 
