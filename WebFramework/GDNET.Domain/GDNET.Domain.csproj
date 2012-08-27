@@ -55,6 +55,7 @@
     <Compile Include="Entities\Content\ContentItemFactory.cs" />
     <Compile Include="Entities\Content\ContentPart.cs" />
     <Compile Include="Entities\Content\ContentPartFactory.cs" />
+    <Compile Include="Entities\System\EmployeeFactory.cs" />
     <Compile Include="Entities\System\Employee.cs" />
     <Compile Include="Repositories\Content\IContentItemRepository.cs" />
     <Compile Include="Services\Security\EncryptionOption.cs" />
