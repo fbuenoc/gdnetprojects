@@ -1,7 +1,6 @@
-﻿using System.Collections;
-using GDNET.NHibernate.Interceptors;
-using NHibernate;
+﻿using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Context;
 
 namespace GDNET.NHibernate.SessionManagement
 {
@@ -25,75 +24,73 @@ namespace GDNET.NHibernate.SessionManagement
             protected set;
         }
 
-        protected abstract Hashtable ContextSessions { get; }
-        protected abstract ISessionFactory BuildSessionFactory(params IInterceptor[] interceptors);
-
         public virtual ISession GetSession()
         {
-            return (this.ContextSessions[SessionKey] as ISession);
+            if (CurrentSessionContext.HasBind(_sessionFactory))
+            {
+                return CurrentSessionContext.Unbind(_sessionFactory);
+            }
+            else
+            {
+                var nhSession = _sessionFactory.OpenSession();
+                CurrentSessionContext.Bind(nhSession);
+
+                return nhSession;
+            }
         }
 
-        public virtual void BeginTransaction()
+        public virtual ITransaction BeginTransaction()
         {
-            ISession nhSession = this.ContextSessions[SessionKey] as ISession;
-            if (nhSession == null)
+            var nhSession = this.GetSession();
+            if (nhSession != null)
             {
-                if (_sessionFactory == null)
-                {
-                    _sessionFactory = this.BuildSessionFactory(new EntityWithModificationInterceptor());
-                }
-                nhSession = _sessionFactory.OpenSession();
-                this.ContextSessions[SessionKey] = nhSession;
+                return nhSession.BeginTransaction();
             }
 
-            nhSession.BeginTransaction();
+            return null;
         }
 
         public virtual void CommitTransaction()
         {
-            ISession nhSession = this.ContextSessions[SessionKey] as ISession;
-            if (nhSession != null)
+            ISession nhSession = this.GetSession();
+            if (nhSession != null && nhSession.Transaction != null)
             {
-                if (nhSession.Transaction != null)
+                if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasCommitted)
                 {
-                    if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasCommitted)
-                    {
-                        nhSession.Transaction.Commit();
-                    }
-                    nhSession.Transaction.Dispose();
+                    nhSession.Transaction.Commit();
                 }
 
-                if (nhSession.IsOpen)
-                {
-                    nhSession.Close();
-                }
-                nhSession.Dispose();
-
-                this.ContextSessions.Remove(SessionKey);
+                nhSession.Transaction.Dispose();
             }
         }
 
         public virtual void RollbackTransaction()
         {
-            ISession nhSession = this.ContextSessions[SessionKey] as ISession;
-            if (nhSession != null)
+            ISession nhSession = this.GetSession();
+            if (nhSession != null && nhSession.Transaction != null)
             {
-                if (nhSession.Transaction != null)
+                if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasRolledBack)
                 {
-                    if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasRolledBack)
+                    nhSession.Transaction.Rollback();
+                }
+                nhSession.Transaction.Dispose();
+            }
+        }
+
+        public void CloseSession()
+        {
+            if (_sessionFactory != null)
+            {
+                if (CurrentSessionContext.HasBind(_sessionFactory))
+                {
+                    ISession session = CurrentSessionContext.Unbind(_sessionFactory);
+                    if (session.IsOpen)
                     {
-                        nhSession.Transaction.Rollback();
+                        session.Close();
                     }
-                    nhSession.Transaction.Dispose();
-                }
 
-                if (nhSession.IsOpen)
-                {
-                    nhSession.Close();
+                    session.Dispose();
                 }
-                nhSession.Dispose();
-
-                this.ContextSessions.Remove(SessionKey);
             }
         }
     }

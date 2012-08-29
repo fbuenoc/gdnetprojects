@@ -16,7 +16,10 @@ namespace GDNET.DataTests.Base
     {
         #region Singleton
 
-        private UnitTestSessionManager() { }
+        protected UnitTestSessionManager()
+            : base(string.Empty, string.Empty)
+        {
+        }
 
         private class Nested
         {
@@ -30,7 +33,7 @@ namespace GDNET.DataTests.Base
 
         #endregion
 
-        protected override ISessionFactory BuildSessionFactory(params IInterceptor[] interceptors)
+        protected override void BuildConfiguration(params IInterceptor[] interceptors)
         {
             var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(IEntityMapping), typeof(EntityHistoryMapping).Assembly);
             var mapper = new ModelMapper();
@@ -50,8 +53,6 @@ namespace GDNET.DataTests.Base
             {
                 base.Configuration.SetInterceptor(interceptor);
             }
-
-            return base.Configuration.BuildSessionFactory();
         }
 
         public override void CommitTransaction()

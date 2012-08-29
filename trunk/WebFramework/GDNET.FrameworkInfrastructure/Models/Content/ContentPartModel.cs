@@ -7,7 +7,7 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
     {
         [Required]
         [Display(Name = "Name")]
-        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 10)]
+        [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
         public string Name
         {
             get;

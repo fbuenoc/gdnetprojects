@@ -1,6 +1,4 @@
-﻿using GDNET.DataGeneration.Interceptors;
-using GDNET.NHibernate.SessionManagement;
-using NHibernate;
+﻿using GDNET.NHibernate.SessionManagement;
 
 namespace GDNET.DataGeneration.SessionManagement
 {
@@ -20,20 +18,9 @@ namespace GDNET.DataGeneration.SessionManagement
 
         #endregion
 
-        public override void BeginTransaction()
+        protected DataGenerationNHibernateSessionManager()
+            : base(string.Empty, string.Empty)
         {
-            ISession nhSession = this.ContextSessions[SessionKey] as ISession;
-            if (nhSession == null)
-            {
-                if (_sessionFactory == null)
-                {
-                    _sessionFactory = this.BuildSessionFactory(new DataGenerationModificationInterceptor());
-                }
-                nhSession = _sessionFactory.OpenSession();
-                this.ContextSessions[SessionKey] = nhSession;
-            }
-
-            nhSession.BeginTransaction();
         }
     }
 }
