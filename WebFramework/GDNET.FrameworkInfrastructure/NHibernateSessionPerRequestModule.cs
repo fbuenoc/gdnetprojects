@@ -39,6 +39,7 @@ namespace GDNET.FrameworkInfrastructure
         void context_EndRequest(object sender, EventArgs e)
         {
             WebNHibernateSessionManager.Instance.CommitTransaction();
+            WebNHibernateSessionManager.Instance.CloseSession();
         }
     }
 }

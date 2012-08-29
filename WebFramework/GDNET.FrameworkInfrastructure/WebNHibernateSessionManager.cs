@@ -1,19 +1,14 @@
-﻿using System.Collections;
-using System.Web;
-using System.Web.Hosting;
+﻿using System.Web.Hosting;
+using GDNET.NHibernate.Interceptors;
 using GDNET.NHibernate.SessionManagement;
+using NHibernate.Cfg;
+using NHibernate.Context;
 
 namespace GDNET.FrameworkInfrastructure
 {
     public class WebNHibernateSessionManager : ApplicationNHibernateSessionManager
     {
         #region Singleton
-
-        private WebNHibernateSessionManager()
-        {
-            HibernateConfiguration = HostingEnvironment.MapPath("~/App_Data/hibernate.cfg.xml");
-            MappingAssemblies = HostingEnvironment.MapPath("~/App_Data/MappingAssemblies.txt");
-        }
 
         private class Nested
         {
@@ -27,16 +22,18 @@ namespace GDNET.FrameworkInfrastructure
 
         #endregion
 
-        protected override Hashtable ContextSessions
+        private static readonly string WebMappingAssemblies = HostingEnvironment.MapPath("~/App_Data/MappingAssemblies.txt");
+        private static readonly string WebHibernateConfiguration = HostingEnvironment.MapPath("~/App_Data/hibernate.cfg.xml");
+
+        protected WebNHibernateSessionManager()
+            : base(WebHibernateConfiguration, WebMappingAssemblies)
         {
-            get
-            {
-                if (HttpContext.Current.Items[ContextSessionsKey] == null)
-                {
-                    HttpContext.Current.Items[ContextSessionsKey] = new Hashtable();
-                }
-                return (Hashtable)HttpContext.Current.Items[ContextSessionsKey];
-            }
+        }
+
+        protected override void BuildSessionFactory()
+        {
+            this.BuildConfiguration(new EntityWithModificationInterceptor());
+            _sessionFactory = base.Configuration.CurrentSessionContext<WebSessionContext>().BuildSessionFactory();
         }
     }
 }

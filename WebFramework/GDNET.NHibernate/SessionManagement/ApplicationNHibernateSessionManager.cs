@@ -1,29 +1,25 @@
-﻿using System.Collections;
-using System.IO;
+﻿using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Runtime.Remoting.Messaging;
+using GDNET.NHibernate.Interceptors;
 using GDNET.NHibernate.Mapping;
 using GDNET.Utils;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Context;
 using NHibernate.Mapping.ByCode;
 
 namespace GDNET.NHibernate.SessionManagement
 {
     public class ApplicationNHibernateSessionManager : AbstractNHibernateSessionManager
     {
-        protected static string HibernateConfiguration;
-        protected static string MappingAssemblies;
+        protected string hibernateConfiguration;
+        protected string mappingAssemblies;
+
+        private const string DefaultHibernateConfigurationFile = "App_Data/hibernate.cfg.xml";
+        private const string DefaultMappingAssembliesFile = "App_Data/MappingAssemblies.txt";
 
         #region Singleton
-
-        protected ApplicationNHibernateSessionManager()
-        {
-            var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            HibernateConfiguration = Path.Combine(directory, "App_Data/hibernate.cfg.xml");
-            MappingAssemblies = Path.Combine(directory, "App_Data/MappingAssemblies.txt");
-        }
 
         private class Nested
         {
@@ -37,27 +33,43 @@ namespace GDNET.NHibernate.SessionManagement
 
         #endregion
 
-        protected override Hashtable ContextSessions
+        private ApplicationNHibernateSessionManager()
+            : this(string.Empty, string.Empty)
         {
-            get
-            {
-                if (CallContext.GetData(ContextSessionsKey) == null)
-                {
-                    CallContext.SetData(ContextSessionsKey, new Hashtable());
-                }
-
-                return (Hashtable)CallContext.GetData(ContextSessionsKey);
-            }
         }
 
-        protected override ISessionFactory BuildSessionFactory(params IInterceptor[] interceptors)
+        protected ApplicationNHibernateSessionManager(string hibernateConfigurationFile, string mappingAssembliesFile)
         {
-            var mapper = this.BuildModelMapper(MappingAssemblies);
+            if (string.IsNullOrEmpty(hibernateConfigurationFile))
+            {
+                hibernateConfigurationFile = DefaultHibernateConfigurationFile;
+            }
+            if (string.IsNullOrEmpty(mappingAssembliesFile))
+            {
+                mappingAssembliesFile = DefaultMappingAssembliesFile;
+            }
+
+            var directory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            hibernateConfiguration = Path.Combine(directory, hibernateConfigurationFile);
+            mappingAssemblies = Path.Combine(directory, mappingAssembliesFile);
+
+            this.BuildSessionFactory();
+        }
+
+        protected virtual void BuildSessionFactory()
+        {
+            this.BuildConfiguration(new EntityWithModificationInterceptor());
+            _sessionFactory = base.Configuration.CurrentSessionContext<ThreadStaticSessionContext>().BuildSessionFactory();
+        }
+
+        protected virtual void BuildConfiguration(params IInterceptor[] interceptors)
+        {
+            var mapper = this.BuildModelMapper(mappingAssemblies);
             base.Configuration = new Configuration();
 
-            if (File.Exists(HibernateConfiguration))
+            if (File.Exists(hibernateConfiguration))
             {
-                base.Configuration.Configure(HibernateConfiguration);
+                base.Configuration.Configure(hibernateConfiguration);
             }
 
             if (mapper != null)
@@ -69,8 +81,6 @@ namespace GDNET.NHibernate.SessionManagement
             {
                 base.Configuration.SetInterceptor(interceptor);
             }
-
-            return base.Configuration.BuildSessionFactory();
         }
 
         private ModelMapper BuildModelMapper(string mappingAssembliesFile)
@@ -93,6 +103,5 @@ namespace GDNET.NHibernate.SessionManagement
         {
             return !(string.IsNullOrEmpty(line) || line.StartsWith("#"));
         }
-
     }
 }
