@@ -1,21 +1,20 @@
-﻿using GDNET.NHibernate.Repositories;
-using NHibernate;
+﻿using NHibernate;
 
 namespace GDNET.NHibernate.SessionManagement
 {
     public abstract class AbstractSessionStrategy : ISessionStrategy
     {
-        private ISession session;
+        private INHibernateSessionManager sessionManager;
         protected ITransaction transaction;
 
-        public AbstractSessionStrategy(ISession session)
+        public AbstractSessionStrategy(INHibernateSessionManager sessionManager)
         {
-            this.session = session;
+            this.sessionManager = sessionManager;
         }
 
         public ISession Session
         {
-            get { return this.session; }
+            get { return this.sessionManager.GetSession(); }
         }
 
         public void BeginTransaction()
@@ -26,7 +25,7 @@ namespace GDNET.NHibernate.SessionManagement
                 this.transaction.Dispose();
             }
 
-            this.transaction = this.session.BeginTransaction();
+            this.transaction = this.sessionManager.GetSession().BeginTransaction();
         }
 
         public void Commit()
@@ -43,12 +42,12 @@ namespace GDNET.NHibernate.SessionManagement
 
         public void Flush()
         {
-            this.session.Flush();
+            this.sessionManager.GetSession().Flush();
         }
 
         public void Clear()
         {
-            this.session.Clear();
+            this.sessionManager.GetSession().Clear();
         }
 
         public void FlushAndClear()

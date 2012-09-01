@@ -16,12 +16,12 @@ namespace GDNET.DataGeneration
     {
         static void Main(string[] args)
         {
-            DataGenerationNHibernateSessionManager.Instance.BeginTransaction();
-            ISession currentSession = DataGenerationNHibernateSessionManager.Instance.GetSession();
-
-            var sessionStrategy = new DataSessionStrategy(currentSession);
+            var sessionStrategy = new DataSessionStrategy(DataGenerationNHibernateSessionManager.Instance);
             var repositories = new DataRepositories(sessionStrategy);
             var servicesManager = new ServicesManager();
+
+            DataGenerationNHibernateSessionManager.Instance.BeginTransaction();
+            ISession currentSession = DataGenerationNHibernateSessionManager.Instance.GetSession();
 
             #region Users
 

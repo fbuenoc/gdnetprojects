@@ -24,14 +24,13 @@ namespace GDNET.DataTests.Base
         [SetUp]
         public void SetUp()
         {
-            UnitTestSessionManager.Instance.BeginTransaction();
-            ISession currentSession = UnitTestSessionManager.Instance.GetSession();
-
-            (new SchemaExport(UnitTestSessionManager.Instance.Configuration)).Execute(true, true, false, currentSession.Connection, Console.Out);
-
-            var sessionStrategy = new DataSessionStrategy(currentSession);
+            var sessionStrategy = new DataSessionStrategy(UnitTestSessionManager.Instance);
             var repositories = new DataRepositories(sessionStrategy);
             var servicesManager = new ServicesManager();
+
+            UnitTestSessionManager.Instance.BeginTransaction();
+            ISession currentSession = UnitTestSessionManager.Instance.GetSession();
+            (new SchemaExport(UnitTestSessionManager.Instance.Configuration)).Execute(true, true, false, currentSession.Connection, Console.Out);
 
             this.CurrentUser = User.Factory.Create("test@mail.com", "123456");
             var sessionContext = new DataSessionContext(this.CurrentUser);

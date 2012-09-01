@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using System;
+using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
 
@@ -6,8 +7,6 @@ namespace GDNET.NHibernate.SessionManagement
 {
     public abstract class AbstractNHibernateSessionManager
     {
-        protected const string ContextSessionsKey = "ContextSessions";
-        protected const string SessionKey = "SessionKey";
         protected static ISessionFactory _sessionFactory = null;
 
         /// <summary>
@@ -15,7 +14,7 @@ namespace GDNET.NHibernate.SessionManagement
         /// </summary>
         public static AbstractNHibernateSessionManager Instance
         {
-            get { return null; }
+            get { throw new NotImplementedException("Must be implemented in concrete implementation."); }
         }
 
         public Configuration Configuration
