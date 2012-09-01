@@ -1,6 +1,9 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using GDNET.Business.Services;
+using GDNET.Data;
+using GDNET.Data.Base;
 
 namespace GDNET.FrameworkInfrastructure
 {
@@ -29,6 +32,10 @@ namespace GDNET.FrameworkInfrastructure
 
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
+
+            var sessionStrategy = new DataSessionStrategy(WebNHibernateSessionManager.Instance);
+            var repositories = new DataRepositories(sessionStrategy);
+            var servicesManager = new ServicesManager();
         }
     }
 }

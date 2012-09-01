@@ -1,11 +1,11 @@
 ﻿using GDNET.Data.Content;
 using GDNET.Data.System;
 using GDNET.Data.System.Repositories;
-using GDNET.Domain.Base;
+using GDNET.Domain.Common;
 using GDNET.Domain.Repositories;
 using GDNET.Domain.Repositories.Content;
 using GDNET.Domain.Repositories.System;
-using GDNET.NHibernate.Repositories;
+using GDNET.NHibernate.SessionManagement;
 
 namespace GDNET.Data
 {

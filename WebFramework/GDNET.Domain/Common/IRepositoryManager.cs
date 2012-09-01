@@ -1,4 +1,4 @@
-﻿namespace GDNET.Domain.Base
+﻿namespace GDNET.Domain.Common
 {
     public interface IRepositoryManager
     {

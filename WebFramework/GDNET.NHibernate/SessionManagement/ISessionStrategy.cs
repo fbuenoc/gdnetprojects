@@ -1,7 +1,7 @@
-﻿using GDNET.Domain.Base;
+﻿using GDNET.Domain.Common;
 using NHibernate;
 
-namespace GDNET.NHibernate.Repositories
+namespace GDNET.NHibernate.SessionManagement
 {
     public interface ISessionStrategy : IRepositoryManager
     {

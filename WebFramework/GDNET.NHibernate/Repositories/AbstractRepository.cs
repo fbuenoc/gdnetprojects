@@ -4,6 +4,7 @@ using System.Linq;
 using GDNET.Domain.Base;
 using GDNET.Domain.Base.Validators;
 using GDNET.Domain.Common;
+using GDNET.NHibernate.SessionManagement;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Linq;

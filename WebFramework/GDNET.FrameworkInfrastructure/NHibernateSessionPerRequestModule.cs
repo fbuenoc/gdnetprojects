@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Web;
-using GDNET.Business.Services;
-using GDNET.Data;
 using GDNET.Data.Base;
 using GDNET.Domain.Repositories;
 using NHibernate;
@@ -27,10 +25,6 @@ namespace GDNET.FrameworkInfrastructure
         {
             WebNHibernateSessionManager.Instance.BeginTransaction();
             ISession currentSession = WebNHibernateSessionManager.Instance.GetSession();
-
-            var sessionStrategy = new DataSessionStrategy(currentSession);
-            var repositories = new DataRepositories(sessionStrategy);
-            var servicesManager = new ServicesManager();
 
             var currentUser = DomainRepositories.User.FindByEmail("guest@webframework");
             var sessionContext = new DataSessionContext(currentUser);
