@@ -23,13 +23,13 @@ namespace GDNET.Domain.Repositories
             get { return _instance.GetContentItemRepository(); }
         }
 
-        public static IRepositoryManager RepositoryManager
+        public static IRepositoryStrategy RepositoryManager
         {
-            get { return _instance.GetRepositoryManager(); }
+            get { return _instance.GetRepositoryStrategy(); }
         }
 
         protected abstract IUserRepository GetUserRepository();
         protected abstract IContentItemRepository GetContentItemRepository();
-        protected abstract IRepositoryManager GetRepositoryManager();
+        protected abstract IRepositoryStrategy GetRepositoryStrategy();
     }
 }

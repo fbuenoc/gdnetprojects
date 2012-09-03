@@ -11,7 +11,7 @@ using NHibernate.Mapping.ByCode;
 
 namespace GDNET.NHibernate.SessionManagement
 {
-    public class ApplicationNHibernateSessionManager : AbstractNHibernateSessionManager, INHibernateSessionManager
+    public class ApplicationNHibernateSessionManager : AbstractNHibernateSessionManager
     {
         protected string hibernateConfiguration;
         protected string mappingAssemblies;

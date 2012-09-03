@@ -8,8 +8,8 @@ namespace GDNET.Data.Content
 {
     public class ContentItemRepository : AbstractRepository<ContentItem, Guid>, IContentItemRepository
     {
-        public ContentItemRepository(ISessionStrategy sessionStrategy)
-            : base(sessionStrategy)
+        public ContentItemRepository(INHibernateRepositoryStrategy strategy)
+            : base(strategy)
         {
         }
     }

@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AbstractRepository.cs" />
     <Compile Include="SessionManagement\ApplicationNHibernateSessionManager.cs" />
-    <Compile Include="SessionManagement\AbstractSessionStrategy.cs" />
+    <Compile Include="SessionManagement\AbstractNHibernateRepositoryStrategy.cs" />
     <Compile Include="SessionManagement\INHibernateSessionManager.cs" />
-    <Compile Include="SessionManagement\ISessionStrategy.cs" />
+    <Compile Include="SessionManagement\INHibernateRepositoryStrategy.cs" />
     <Compile Include="SessionManagement\AbstractNHibernateSessionManager.cs" />
   </ItemGroup>
   <ItemGroup />

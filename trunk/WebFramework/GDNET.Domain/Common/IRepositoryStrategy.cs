@@ -1,6 +1,6 @@
-﻿namespace GDNET.Domain.Common
+namespace GDNET.Domain.Common
 {
-    public interface IRepositoryManager
+    public interface IRepositoryStrategy
     {
         void BeginTransaction();
         void Commit();

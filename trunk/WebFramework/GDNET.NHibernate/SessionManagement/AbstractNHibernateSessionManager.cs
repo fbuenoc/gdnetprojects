@@ -5,7 +5,7 @@ using NHibernate.Context;
 
 namespace GDNET.NHibernate.SessionManagement
 {
-    public abstract class AbstractNHibernateSessionManager
+    public abstract class AbstractNHibernateSessionManager : INHibernateSessionManager
     {
         protected static ISessionFactory _sessionFactory = null;
 

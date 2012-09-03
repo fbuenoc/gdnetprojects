@@ -16,7 +16,7 @@ namespace GDNET.DataGeneration
     {
         static void Main(string[] args)
         {
-            var sessionStrategy = new DataSessionStrategy(DataGenerationNHibernateSessionManager.Instance);
+            var sessionStrategy = new DataRepositoryStrategy(DataGenerationNHibernateSessionManager.Instance);
             var repositories = new DataRepositories(sessionStrategy);
             var servicesManager = new ServicesManager();
 

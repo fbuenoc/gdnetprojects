@@ -33,9 +33,9 @@ namespace GDNET.FrameworkInfrastructure
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            var sessionStrategy = new DataSessionStrategy(WebNHibernateSessionManager.Instance);
-            var repositories = new DataRepositories(sessionStrategy);
             var servicesManager = new ServicesManager();
+            var repositoryStrategy = new DataRepositoryStrategy(WebNHibernateSessionManager.Instance);
+            var repositories = new DataRepositories(repositoryStrategy);
         }
     }
 }

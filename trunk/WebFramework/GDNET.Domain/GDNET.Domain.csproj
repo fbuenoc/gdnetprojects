@@ -48,7 +48,7 @@
     <Compile Include="Common\AbstractRepositoryGlass.cs" />
     <Compile Include="Common\IRepositoryBase.cs" />
     <Compile Include="Common\IRepositoryGlass.cs" />
-    <Compile Include="Common\IRepositoryManager.cs" />
+    <Compile Include="Common\IRepositoryStrategy.cs" />
     <Compile Include="Base\SessionManagement\DomainSessionContext.cs" />
     <Compile Include="Base\SessionManagement\ISessionContext.cs" />
     <Compile Include="Entities\Content\ContentItem.cs" />
