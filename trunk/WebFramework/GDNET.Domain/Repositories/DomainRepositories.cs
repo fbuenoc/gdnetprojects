@@ -23,7 +23,7 @@ namespace GDNET.Domain.Repositories
             get { return _instance.GetContentItemRepository(); }
         }
 
-        public static IRepositoryStrategy RepositoryManager
+        public static IRepositoryStrategy RepositoryStrategy
         {
             get { return _instance.GetRepositoryStrategy(); }
         }

@@ -48,7 +48,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 var partItem = WebFrameworkServices.ContentModels.CreateContentPart(partModel);
                 contentItem.AddPart(partItem);
 
-                DomainRepositories.RepositoryManager.Flush();
+                DomainRepositories.RepositoryStrategy.Flush();
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.ManageParts(id)), ControllerAssistant.BuildRouteValues(id));
             }
 

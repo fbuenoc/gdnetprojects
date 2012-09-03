@@ -18,7 +18,7 @@ namespace GDNET.DataTests.Content
 
             DomainRepositories.ContentItem.Save(c1);
             DomainRepositories.ContentItem.Save(c2);
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             var listOfContentItems = DomainRepositories.ContentItem.GetAll();
             Assert.AreEqual(2, listOfContentItems.Count);
@@ -32,7 +32,7 @@ namespace GDNET.DataTests.Content
             Assert.AreEqual("K2", listOfContentItems[1].Keywords);
 
             listOfContentItems[0].Description = "D1";
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             listOfContentItems = DomainRepositories.ContentItem.GetAll();
             Assert.AreEqual("D1", listOfContentItems[0].Description);
@@ -45,7 +45,7 @@ namespace GDNET.DataTests.Content
             DomainRepositories.ContentItem.Save(c1);
 
             c1.AddLogCreation();
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             var listOfContentItems = DomainRepositories.ContentItem.GetAll();
             Assert.AreEqual(1, listOfContentItems[0].Logs.Count);
@@ -62,7 +62,7 @@ namespace GDNET.DataTests.Content
             {
                 c1.AddLog("MSG " + index, string.Empty);
             }
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             var listOfContentItems = DomainRepositories.ContentItem.GetAll();
             Assert.AreEqual(max, listOfContentItems[0].Logs.Count);
@@ -76,7 +76,7 @@ namespace GDNET.DataTests.Content
 
             c1.AddPart(ContentPart.Factory.Create("P1", "D1", true));
             c1.AddPart(ContentPart.Factory.Create("P2", "D2", false));
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             var listOfContentItems = DomainRepositories.ContentItem.GetAll();
             Assert.AreEqual(2, listOfContentItems[0].Parts.Count);

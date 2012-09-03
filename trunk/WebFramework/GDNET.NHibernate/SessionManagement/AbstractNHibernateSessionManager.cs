@@ -27,7 +27,7 @@ namespace GDNET.NHibernate.SessionManagement
         {
             if (CurrentSessionContext.HasBind(_sessionFactory))
             {
-                return CurrentSessionContext.Unbind(_sessionFactory);
+                return _sessionFactory.GetCurrentSession();
             }
             else
             {
@@ -40,56 +40,50 @@ namespace GDNET.NHibernate.SessionManagement
 
         public virtual ITransaction BeginTransaction()
         {
-            var nhSession = this.GetSession();
-            if (nhSession != null)
-            {
-                return nhSession.BeginTransaction();
-            }
-
-            return null;
+            this.RollbackTransaction();
+            return this.GetSession().BeginTransaction();
         }
 
         public virtual void CommitTransaction()
         {
-            ISession nhSession = this.GetSession();
-            if (nhSession != null && nhSession.Transaction != null)
+            var transaction = this.GetSession().Transaction;
+            if (transaction != null && transaction.IsActive && !transaction.WasCommitted)
             {
-                if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasCommitted)
-                {
-                    nhSession.Transaction.Commit();
-                }
-
-                nhSession.Transaction.Dispose();
+                transaction.Commit();
             }
         }
 
         public virtual void RollbackTransaction()
         {
-            ISession nhSession = this.GetSession();
-            if (nhSession != null && nhSession.Transaction != null)
+            var transaction = this.GetSession().Transaction;
+            if (transaction != null && transaction.IsActive && !transaction.WasRolledBack)
             {
-                if (nhSession.Transaction.IsActive && !nhSession.Transaction.WasRolledBack)
-                {
-                    nhSession.Transaction.Rollback();
-                }
-                nhSession.Transaction.Dispose();
+                transaction.Rollback();
             }
         }
 
         public void CloseSession()
         {
-            if (_sessionFactory != null)
+            if (CurrentSessionContext.HasBind(_sessionFactory))
             {
-                if (CurrentSessionContext.HasBind(_sessionFactory))
+                ISession session = CurrentSessionContext.Unbind(_sessionFactory);
+
+                if (session.Transaction != null)
                 {
-                    ISession session = CurrentSessionContext.Unbind(_sessionFactory);
-                    if (session.IsOpen)
+                    if (session.Transaction.IsActive && !session.Transaction.WasCommitted && !session.Transaction.WasRolledBack)
                     {
-                        session.Close();
+                        session.Transaction.Rollback();
                     }
 
-                    session.Dispose();
+                    session.Transaction.Dispose();
                 }
+
+                if (session.IsOpen)
+                {
+                    session.Close();
+                }
+
+                session.Dispose();
             }
         }
     }
