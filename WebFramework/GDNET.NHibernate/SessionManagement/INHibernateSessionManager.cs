@@ -5,10 +5,11 @@ namespace GDNET.NHibernate.SessionManagement
     public interface INHibernateSessionManager
     {
         ISession GetSession();
-        ITransaction BeginTransaction();
 
+        ITransaction BeginTransaction();
         void CommitTransaction();
         void RollbackTransaction();
+
         void CloseSession();
     }
 }

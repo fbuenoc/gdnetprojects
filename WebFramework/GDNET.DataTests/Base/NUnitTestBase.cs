@@ -24,7 +24,7 @@ namespace GDNET.DataTests.Base
         [SetUp]
         public void SetUp()
         {
-            var sessionStrategy = new DataSessionStrategy(UnitTestSessionManager.Instance);
+            var sessionStrategy = new DataRepositoryStrategy(UnitTestSessionManager.Instance);
             var repositories = new DataRepositories(sessionStrategy);
             var servicesManager = new ServicesManager();
 

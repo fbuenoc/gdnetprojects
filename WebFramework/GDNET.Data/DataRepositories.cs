@@ -11,17 +11,17 @@ namespace GDNET.Data
 {
     public sealed class DataRepositories : DomainRepositories
     {
-        private ISessionStrategy sessionStrategy = null;
+        private INHibernateRepositoryStrategy repositoryStrategy = null;
 
-        public DataRepositories(ISessionStrategy sessionStrategy)
+        public DataRepositories(INHibernateRepositoryStrategy strategy)
         {
-            this.sessionStrategy = sessionStrategy;
+            this.repositoryStrategy = strategy;
             base.Initialize(this);
         }
 
         protected override IUserRepository GetUserRepository()
         {
-            var userRepository = new UserRepository(this.sessionStrategy);
+            var userRepository = new UserRepository(this.repositoryStrategy);
             userRepository.RepositoryGlass = new UserRepositoryGlass();
 
             return userRepository;
@@ -29,12 +29,12 @@ namespace GDNET.Data
 
         protected override IContentItemRepository GetContentItemRepository()
         {
-            return new ContentItemRepository(this.sessionStrategy);
+            return new ContentItemRepository(this.repositoryStrategy);
         }
 
-        protected override IRepositoryManager GetRepositoryManager()
+        protected override IRepositoryStrategy GetRepositoryStrategy()
         {
-            return this.sessionStrategy;
+            return this.repositoryStrategy;
         }
     }
 }

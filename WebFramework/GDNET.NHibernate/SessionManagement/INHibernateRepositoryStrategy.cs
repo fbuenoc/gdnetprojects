@@ -1,9 +1,9 @@
-﻿using GDNET.Domain.Common;
+using GDNET.Domain.Common;
 using NHibernate;
 
 namespace GDNET.NHibernate.SessionManagement
 {
-    public interface ISessionStrategy : IRepositoryManager
+    public interface INHibernateRepositoryStrategy : IRepositoryStrategy
     {
         ISession Session { get; }
     }

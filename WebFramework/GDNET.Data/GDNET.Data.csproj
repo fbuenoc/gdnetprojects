@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Base\DataSessionContext.cs" />
-    <Compile Include="Base\DataSessionStrategy.cs" />
+    <Compile Include="Base\DataRepositoryStrategy.cs" />
     <Compile Include="Content\ContentItemRepository.cs" />
     <Compile Include="DataRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

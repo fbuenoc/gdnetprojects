@@ -9,8 +9,8 @@ namespace GDNET.Data.System
 {
     public class UserRepository : AbstractRepository<User, Guid>, IUserRepository
     {
-        public UserRepository(ISessionStrategy sessionStrategy)
-            : base(sessionStrategy)
+        public UserRepository(INHibernateRepositoryStrategy strategy)
+            : base(strategy)
         {
         }
 

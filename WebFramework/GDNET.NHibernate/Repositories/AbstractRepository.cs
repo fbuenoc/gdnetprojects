@@ -13,13 +13,13 @@ namespace GDNET.NHibernate.Repositories
 {
     public abstract class AbstractRepository<TEntity, TId> : IRepositoryBase<TEntity, TId> where TEntity : IEntityT<TId>
     {
-        protected ISessionStrategy sessionStrategy = null;
+        protected INHibernateRepositoryStrategy repositoryStrategy = null;
 
         #region Ctors
 
-        public AbstractRepository(ISessionStrategy sessionStrategy)
+        public AbstractRepository(INHibernateRepositoryStrategy strategy)
         {
-            this.sessionStrategy = sessionStrategy;
+            this.repositoryStrategy = strategy;
         }
 
         #endregion
@@ -32,12 +32,12 @@ namespace GDNET.NHibernate.Repositories
 
         protected IQuery CreateQuery(string hqlQuery)
         {
-            return this.sessionStrategy.Session.CreateQuery(hqlQuery);
+            return this.repositoryStrategy.Session.CreateQuery(hqlQuery);
         }
 
         protected IList<TEntity> GetAll(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
         {
-            var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
+            var query = this.repositoryStrategy.Session.Query<TEntity>().Cacheable();
             query = query.Where(predicate);
             return query.ToList();
         }
@@ -48,12 +48,12 @@ namespace GDNET.NHibernate.Repositories
 
         public TEntity LoadById(TId id)
         {
-            return this.sessionStrategy.Session.Load<TEntity>(id);
+            return this.repositoryStrategy.Session.Load<TEntity>(id);
         }
 
         public virtual TEntity GetById(TId id)
         {
-            TEntity result = this.sessionStrategy.Session.Get<TEntity>(id);
+            TEntity result = this.repositoryStrategy.Session.Get<TEntity>(id);
             return result;
         }
 
@@ -73,7 +73,7 @@ namespace GDNET.NHibernate.Repositories
         /// <param name="pageSize">Number of item per each page</param>
         public virtual IList<TEntity> GetAll(int page, int pageSize)
         {
-            var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
+            var query = this.repositoryStrategy.Session.Query<TEntity>().Cacheable();
             if (!(page == 0 && pageSize == 0))
             {
                 query = query.Skip(page * pageSize).Take(pageSize);
@@ -83,7 +83,7 @@ namespace GDNET.NHibernate.Repositories
 
         public virtual IList<TEntity> GetAll(int page, int pageSize, out int totalRows)
         {
-            var query = this.sessionStrategy.Session.Query<TEntity>().Cacheable();
+            var query = this.repositoryStrategy.Session.Query<TEntity>().Cacheable();
             totalRows = query.Count();
 
             if (!(page == 0 && pageSize == 0))
@@ -95,7 +95,7 @@ namespace GDNET.NHibernate.Repositories
 
         public virtual IList<TEntity> GetTopByProperty(int limit, string orderByProperty)
         {
-            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
             criteria.AddOrder(new Order(orderByProperty, true));
             criteria.SetFirstResult(0).SetMaxResults(limit);
 
@@ -108,7 +108,7 @@ namespace GDNET.NHibernate.Repositories
 
         public virtual IList<TEntity> FindByProperties(string[] properties, object[] values)
         {
-            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
             for (int counter = 0; counter < properties.Length; counter++)
             {
                 criteria.Add(Expression.Eq(properties[counter], values[counter]));
@@ -119,7 +119,7 @@ namespace GDNET.NHibernate.Repositories
 
         public virtual IList<TEntity> FindByProperties(string[] properties, object[] values, int page, int pageSize)
         {
-            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
             for (int counter = 0; counter < properties.Length; counter++)
             {
                 criteria.Add(Expression.Eq(properties[counter], values[counter]));
@@ -154,7 +154,7 @@ namespace GDNET.NHibernate.Repositories
         {
             DomainValidator.Instance.NullOrEmptyException(property);
 
-            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.In(property, values)).SetCacheable(true);
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.In(property, values)).SetCacheable(true);
             return criteria.List<TEntity>();
         }
 
@@ -171,7 +171,7 @@ namespace GDNET.NHibernate.Repositories
         {
             DomainValidator.Instance.NullOrEmptyException(property);
 
-            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
             if (!(page == 0 && pageSize == 0))
             {
                 criteria = criteria.SetFirstResult(page * pageSize).SetMaxResults(pageSize);
@@ -228,7 +228,7 @@ namespace GDNET.NHibernate.Repositories
         public virtual IList<TEntity> FindByProperty(string property, object value, string orderByProperty, bool isAsc, int page, int pageSize)
         {
             var orderBy = new Order(orderByProperty, isAsc);
-            var criteria = this.sessionStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).Add(Expression.Eq(property, value));
             criteria = criteria.AddOrder(orderBy);
 
             if ((page != 0) || (pageSize != 0))
@@ -253,7 +253,7 @@ namespace GDNET.NHibernate.Repositories
             }
 
             // Saving entity
-            this.sessionStrategy.Session.SaveOrUpdate(entity);
+            this.repositoryStrategy.Session.SaveOrUpdate(entity);
 
             return true;
         }
@@ -277,7 +277,7 @@ namespace GDNET.NHibernate.Repositories
         {
             DomainValidator.Instance.NullException(entity);
 
-            this.sessionStrategy.Session.SaveOrUpdate(entity);
+            this.repositoryStrategy.Session.SaveOrUpdate(entity);
 
             return true;
         }
@@ -310,7 +310,7 @@ namespace GDNET.NHibernate.Repositories
         public bool Delete(TEntity entity)
         {
             DomainValidator.Instance.NullException(entity);
-            this.sessionStrategy.Session.Delete(entity);
+            this.repositoryStrategy.Session.Delete(entity);
 
             return true;
         }
