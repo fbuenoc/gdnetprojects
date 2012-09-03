@@ -24,7 +24,6 @@ namespace GDNET.FrameworkInfrastructure
         void context_BeginRequest(object sender, EventArgs e)
         {
             WebNHibernateSessionManager.Instance.BeginTransaction();
-            ISession currentSession = WebNHibernateSessionManager.Instance.GetSession();
 
             var currentUser = DomainRepositories.User.FindByEmail("guest@webframework");
             var sessionContext = new DataSessionContext(currentUser);

@@ -17,7 +17,7 @@ namespace GDNET.DataTests.System
             u1.DisplayName = "Love";
             u1.IsActive = true;
             DomainRepositories.User.Save(u1);
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             var u2 = DomainRepositories.User.GetById(u1.Id);
             Assert.AreEqual("love@gmail.com", u2.Email);
@@ -26,12 +26,12 @@ namespace GDNET.DataTests.System
             Assert.IsTrue(u2.IsActive);
 
             u2.DisplayName = "DN";
-            DomainRepositories.RepositoryManager.Flush();
+            DomainRepositories.RepositoryStrategy.Flush();
 
             Assert.AreNotEqual(DateTime.MinValue, u2.LastModifiedAt);
             Assert.IsFalse(string.IsNullOrEmpty(u2.LastModifiedBy));
 
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
             u2 = DomainRepositories.User.GetById(u1.Id);
         }
 
@@ -61,7 +61,7 @@ namespace GDNET.DataTests.System
         {
             var u1 = User.Factory.Create("love1@gmail.com", "A1B2C3");
             DomainRepositories.User.Save(u1);
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             var u2 = DomainRepositories.User.FindByEmail(u1.Email);
             Assert.IsNotNull(u2);
@@ -83,7 +83,7 @@ namespace GDNET.DataTests.System
             DomainRepositories.User.Save(u1);
             DomainRepositories.User.Save(u2);
 
-            DomainRepositories.RepositoryManager.FlushAndClear();
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
 
             u2 = DomainRepositories.User.FindByEmail(u1.Email);
             Assert.IsNotNull(u2.Employee);
