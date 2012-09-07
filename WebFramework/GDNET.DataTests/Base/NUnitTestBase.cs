@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using GDNET.Business.Services;
 using GDNET.Data;
 using GDNET.Data.Base;
@@ -24,9 +25,9 @@ namespace GDNET.DataTests.Base
         [SetUp]
         public void SetUp()
         {
+            var servicesManager = new ServicesManager();
             var sessionStrategy = new DataRepositoryStrategy(UnitTestSessionManager.Instance);
             var repositories = new DataRepositories(sessionStrategy);
-            var servicesManager = new ServicesManager();
 
             UnitTestSessionManager.Instance.BeginTransaction();
             ISession currentSession = UnitTestSessionManager.Instance.GetSession();
@@ -49,6 +50,9 @@ namespace GDNET.DataTests.Base
             Console.WriteLine();
             Console.WriteLine("<<-------------");
             Console.WriteLine(DateTime.Now - this.startDate);
+
+            UnitTestSessionManager.Instance.CloseSession();
+            File.Delete("test.db");
         }
     }
 }

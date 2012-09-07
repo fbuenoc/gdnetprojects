@@ -59,7 +59,7 @@ namespace GDNET.NHibernate.SessionManagement
         protected virtual void BuildSessionFactory()
         {
             this.BuildConfiguration(new EntityWithModificationInterceptor());
-            _sessionFactory = base.Configuration.CurrentSessionContext<ThreadStaticSessionContext>().BuildSessionFactory();
+            _sessionFactory = base.Configuration.CurrentSessionContext<CallSessionContext>().BuildSessionFactory();
         }
 
         protected virtual void BuildConfiguration(params IInterceptor[] interceptors)

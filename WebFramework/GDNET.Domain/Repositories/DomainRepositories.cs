@@ -28,8 +28,15 @@ namespace GDNET.Domain.Repositories
             get { return _instance.GetRepositoryStrategy(); }
         }
 
+        public static ITranslationRepository Translation
+        {
+            get { return _instance.GetTranslationRepository(); }
+        }
+
         protected abstract IUserRepository GetUserRepository();
         protected abstract IContentItemRepository GetContentItemRepository();
+        protected abstract ITranslationRepository GetTranslationRepository();
+
         protected abstract IRepositoryStrategy GetRepositoryStrategy();
     }
 }
