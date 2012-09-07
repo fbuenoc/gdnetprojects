@@ -55,9 +55,12 @@
     <Compile Include="Entities\Content\ContentItemFactory.cs" />
     <Compile Include="Entities\Content\ContentPart.cs" />
     <Compile Include="Entities\Content\ContentPartFactory.cs" />
+    <Compile Include="Entities\System\TranslationFactory.cs" />
+    <Compile Include="Entities\System\Translation.cs" />
     <Compile Include="Entities\System\EmployeeFactory.cs" />
     <Compile Include="Entities\System\Employee.cs" />
     <Compile Include="Repositories\Content\IContentItemRepository.cs" />
+    <Compile Include="Repositories\System\ITranslationRepository.cs" />
     <Compile Include="Services\Security\EncryptionOption.cs" />
     <Compile Include="Services\Security\IEncryptionService.cs" />
     <Compile Include="Services\DomainServices.cs" />

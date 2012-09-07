@@ -5,7 +5,7 @@ using GDNET.NHibernate.Mapping;
 using GDNET.Utils;
 using NHibernate.Mapping.ByCode;
 
-namespace GDNET.Data.System
+namespace GDNET.Mapping.System
 {
     public class UserMapping : AbstractJoinedSubclassMapping<User, Guid>, IEntityMapping
     {
@@ -23,10 +23,6 @@ namespace GDNET.Data.System
                 m.NotNullable(true);
             });
             base.Property(e => e.DisplayName);
-            base.Property(e => e.IsActive, m =>
-            {
-                m.NotNullable(true);
-            });
 
             base.OneToOne(e => e.Employee, m =>
             {

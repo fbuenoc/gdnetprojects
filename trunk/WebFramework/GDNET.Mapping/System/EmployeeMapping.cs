@@ -5,7 +5,7 @@ using GDNET.Mapping.Common;
 using GDNET.NHibernate.Mapping;
 using NHibernate.Mapping.ByCode;
 
-namespace GDNET.Data.System
+namespace GDNET.Mapping.System
 {
     public class EmployeeMapping : AbstractJoinedSubclassMapping<Employee, Guid>, IEntityMapping
     {
@@ -14,10 +14,6 @@ namespace GDNET.Data.System
             var defaultEmployee = default(Employee);
 
             base.Property(e => e.StartDate);
-            base.Property(e => e.IsActive, m =>
-            {
-                m.NotNullable(true);
-            });
 
             base.ManyToOne(e => e.User, m =>
             {

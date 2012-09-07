@@ -32,9 +32,15 @@ namespace GDNET.Data
             return new ContentItemRepository(this.repositoryStrategy);
         }
 
+        protected override ITranslationRepository GetTranslationRepository()
+        {
+            return new TranslationRepository(this.repositoryStrategy);
+        }
+
         protected override IRepositoryStrategy GetRepositoryStrategy()
         {
             return this.repositoryStrategy;
         }
+
     }
 }

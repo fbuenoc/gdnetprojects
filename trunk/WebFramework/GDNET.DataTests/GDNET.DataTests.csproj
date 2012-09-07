@@ -51,6 +51,7 @@
     <Compile Include="Base\UnitTestSessionManager.cs" />
     <Compile Include="Content\ContentItemTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\DictionaryTests.cs" />
     <Compile Include="System\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,4 @@
-﻿using System.IO;
-using GDNET.Mapping.System.Management;
+﻿using GDNET.Mapping.System.Management;
 using GDNET.NHibernate.Mapping;
 using GDNET.NHibernate.SessionManagement;
 using GDNET.Utils;
@@ -53,34 +52,6 @@ namespace GDNET.DataTests.Base
             {
                 base.Configuration.SetInterceptor(interceptor);
             }
-        }
-
-        public override void CommitTransaction()
-        {
-            base.CommitTransaction();
-
-            if (_sessionFactory != null)
-            {
-                _sessionFactory.Close();
-                _sessionFactory.Dispose();
-                _sessionFactory = null;
-            }
-
-            File.Delete("test.db");
-        }
-
-        public override void RollbackTransaction()
-        {
-            base.RollbackTransaction();
-
-            if (_sessionFactory != null)
-            {
-                _sessionFactory.Close();
-                _sessionFactory.Dispose();
-                _sessionFactory = null;
-            }
-
-            File.Delete("test.db");
         }
     }
 }
