@@ -3,7 +3,7 @@ using System.Web.Routing;
 
 namespace GDNET.FrameworkInfrastructure.Common
 {
-    public class AbstractController : Controller
+    public abstract class AbstractController : Controller
     {
         protected override void Initialize(RequestContext requestContext)
         {

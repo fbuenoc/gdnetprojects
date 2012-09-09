@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GDNET.Domain.Content;
 using GDNET.FrameworkInfrastructure.Common;
 
 namespace GDNET.FrameworkInfrastructure.Models.Content
 {
-    public class ContentPartModel : AbstractModel
+    public class ContentPartModel : AbstractModel<ContentPart>
     {
         [Required]
         [Display(Name = "Name")]
@@ -20,6 +21,15 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
         {
             get;
             set;
+        }
+
+        public override void Initialize(ContentPart entity)
+        {
+            if (entity != null)
+            {
+                this.Name = entity.Name;
+                this.Details = entity.Details;
+            }
         }
     }
 }

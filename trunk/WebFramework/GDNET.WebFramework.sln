@@ -27,6 +27,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{5F2167
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDNET.DataGeneration", "GDNET.DataGeneration\GDNET.DataGeneration.csproj", "{583D60DF-0CBA-48AE-AF01-991D8217DAB9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDNET.Web", "GDNET.Web\GDNET.Web.csproj", "{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -147,6 +149,16 @@ Global
 		{583D60DF-0CBA-48AE-AF01-991D8217DAB9}.Release|Mixed Platforms.Build.0 = Release|x86
 		{583D60DF-0CBA-48AE-AF01-991D8217DAB9}.Release|x86.ActiveCfg = Release|x86
 		{583D60DF-0CBA-48AE-AF01-991D8217DAB9}.Release|x86.Build.0 = Release|x86
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
