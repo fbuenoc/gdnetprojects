@@ -97,6 +97,7 @@
     <Content Include="Scripts\modernizr-1.7.min.js" />
     <Content Include="Views\Account\UpdateDetails.aspx" />
     <Content Include="Views\Account\Details.aspx" />
+    <Content Include="Views\ContentAdmin\List.aspx" />
     <Content Include="Views\ContentAdmin\CreateOrUpdatePart.aspx" />
     <Content Include="Views\ContentAdmin\ManageParts.aspx" />
     <Content Include="Views\ContentAdmin\CreateOrUpdate.aspx" />
@@ -140,6 +141,10 @@
     <ProjectReference Include="..\GDNET.Utils\GDNET.Utils.csproj">
       <Project>{132BB8B1-1578-4FE8-8E8E-52CE06C464FE}</Project>
       <Name>GDNET.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.Web\GDNET.Web.csproj">
+      <Project>{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}</Project>
+      <Name>GDNET.Web</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

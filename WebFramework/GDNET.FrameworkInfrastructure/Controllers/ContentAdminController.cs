@@ -3,17 +3,21 @@ using System.Web.Mvc;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common;
+using GDNET.FrameworkInfrastructure.Common.Extensions;
 using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
     [Authorize]
-    public class ContentAdminController : AbstractController
+    public class ContentAdminController : AbstractListController
     {
-        public ActionResult Index()
+        public override ActionResult List()
         {
-            return View();
+            var listItems = DomainRepositories.ContentItem.GetAll();
+            var listeModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(listItems);
+
+            return base.View(listeModels);
         }
 
         public ActionResult Details(int id)
@@ -32,6 +36,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
             return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Index()));
         }
+
+        #region CreatePart methods
 
         public ActionResult CreatePart(string id)
         {
@@ -55,6 +61,10 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.View("CreateOrUpdatePart", partModel);
         }
 
+        #endregion
+
+        #region Create methods
+
         public ActionResult Create()
         {
             ContentItemModel itemModel = new ContentItemModel() { };
@@ -77,6 +87,10 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.View("CreateOrUpdate", itemModel);
         }
 
+        #endregion
+
+        #region Edit methods
+
         public ActionResult Edit(int id)
         {
             return base.View();
@@ -94,6 +108,10 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 return base.View();
             }
         }
+
+        #endregion
+
+        #region Delete methods
 
         public ActionResult Delete(int id)
         {
@@ -114,5 +132,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 return View();
             }
         }
+
+        #endregion
     }
 }

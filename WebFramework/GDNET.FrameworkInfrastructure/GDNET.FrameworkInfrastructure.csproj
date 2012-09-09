@@ -49,6 +49,8 @@
     <Compile Include="Common\AbstractController.cs" />
     <Compile Include="Common\ControllerAssistant.cs" />
     <Compile Include="Common\AbstractModel.cs" />
+    <Compile Include="Common\AbstractListController.cs" />
+    <Compile Include="Common\Extensions\FrameworkExtensions.cs" />
     <Compile Include="Common\Extensions\HtmlExtensions.cs" />
     <Compile Include="Common\Models\ChangePasswordModel.cs" />
     <Compile Include="Common\Models\UpdateDetailsModel.cs" />

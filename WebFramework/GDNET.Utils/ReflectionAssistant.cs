@@ -98,5 +98,22 @@ namespace GDNET.Utils
             }
             return listOfTypes;
         }
+
+        public static object GetPropertyValue(object objet, string propertyName)
+        {
+            return ReflectionAssistant.GetPropertyValue(objet, propertyName, objet.GetType());
+        }
+
+        public static object GetPropertyValue(object objet, string propertyName, Type targetType)
+        {
+            Type baseType = objet.GetType();
+            while (!baseType.Equals(targetType))
+            {
+                baseType = baseType.BaseType;
+            }
+
+            var propertyInfo = baseType.GetProperty(propertyName);
+            return (propertyInfo == null) ? null : propertyInfo.GetValue(objet, null);
+        }
     }
 }
