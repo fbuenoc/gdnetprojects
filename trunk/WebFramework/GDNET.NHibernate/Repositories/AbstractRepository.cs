@@ -96,7 +96,7 @@ namespace GDNET.NHibernate.Repositories
         public virtual IList<TEntity> GetTopByProperty(int limit, string orderByProperty)
         {
             var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
-            criteria.AddOrder(new Order(orderByProperty, true));
+            criteria.AddOrder(new Order(orderByProperty, false));
             criteria.SetFirstResult(0).SetMaxResults(limit);
 
             return criteria.List<TEntity>();

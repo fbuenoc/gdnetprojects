@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Web.Mvc;
 using GDNET.Utils;
@@ -8,20 +10,38 @@ namespace GDNET.Web.Extensions
 {
     public static class MvcRepeater
     {
-        public static string Repeater(this HtmlHelper html, IList entities, IList<string> properties)
+        public static string Repeater(this HtmlHelper html, string name, IList entities, params string[] properties)
+        {
+            return html.Repeater(name, false, entities, properties.ToList());
+        }
+
+        public static string Repeater(this HtmlHelper html, string name, bool enableHeader, IList entities, params string[] properties)
+        {
+            return html.Repeater(name, enableHeader, entities, properties.ToList());
+        }
+
+        public static string Repeater(this HtmlHelper html, string name, IList entities, IList<string> properties)
+        {
+            return html.Repeater(name, false, entities, properties);
+        }
+
+        public static string Repeater(this HtmlHelper html, string name, bool enableHeader, IList entities, IList<string> properties)
         {
             List<string> repeaterHeader = new List<string>();
             List<string> repeaterBody = new List<string>();
 
-            if ((properties != null) && (properties.Count > 0))
+            if (enableHeader)
             {
-                foreach (string aProperty in properties)
+                if ((properties != null) && (properties.Count > 0))
                 {
-                    TagBuilder aTag = new TagBuilder("div");
-                    aTag.Attributes.Add("name", aProperty);
-                    aTag.SetInnerText(aProperty);
+                    foreach (string aProperty in properties)
+                    {
+                        TagBuilder aTag = new TagBuilder(HtmlTags.Div);
+                        aTag.Attributes.Add(HtmlAttributes.Name, aProperty);
+                        aTag.SetInnerText(aProperty);
 
-                    repeaterHeader.Add(aTag.ToString());
+                        repeaterHeader.Add(aTag.ToString());
+                    }
                 }
             }
 
@@ -32,8 +52,8 @@ namespace GDNET.Web.Extensions
                     StringBuilder entityHtml = new StringBuilder();
                     foreach (string aProperty in properties)
                     {
-                        TagBuilder aTag = new TagBuilder("div");
-                        aTag.Attributes.Add("name", aProperty);
+                        TagBuilder aTag = new TagBuilder(HtmlTags.Div);
+                        aTag.Attributes.Add(HtmlAttributes.Name, aProperty);
 
                         var fieldValue = ReflectionAssistant.GetPropertyValue(anEntity, aProperty);
                         if (fieldValue != null)
@@ -44,19 +64,37 @@ namespace GDNET.Web.Extensions
                         entityHtml.Append(aTag.ToString());
                     }
 
-                    repeaterBody.Add(entityHtml.ToString());
+                    TagBuilder entityTag = new TagBuilder(HtmlTags.Div);
+                    entityTag.Attributes.Add(HtmlAttributes.Name, "line");
+                    entityTag.InnerHtml = entityHtml.ToString();
+
+                    repeaterBody.Add(entityTag.ToString());
                 }
             }
 
-            TagBuilder header = new TagBuilder("div");
-            header.MergeAttribute("name", "header");
-            header.InnerHtml = string.Join(string.Empty, repeaterHeader.ToArray());
+            StringBuilder repeaterContent = new StringBuilder();
 
-            TagBuilder body = new TagBuilder("div");
-            body.MergeAttribute("name", "body");
-            body.InnerHtml = string.Join(string.Empty, repeaterBody.ToArray());
+            if (repeaterHeader.Count > 0)
+            {
+                TagBuilder header = new TagBuilder(HtmlTags.Div);
+                header.MergeAttribute(HtmlAttributes.Name, "header");
+                header.InnerHtml = string.Join(string.Empty, repeaterHeader.ToArray());
+                repeaterContent.Append(header.ToString());
+            }
 
-            return string.Concat(header.ToString(), body.ToString());
+            if (repeaterBody.Count > 0)
+            {
+                TagBuilder body = new TagBuilder(HtmlTags.Div);
+                body.MergeAttribute(HtmlAttributes.Name, "body");
+                body.InnerHtml = string.Join(Environment.NewLine, repeaterBody.ToArray());
+                repeaterContent.Append(body.ToString());
+            }
+
+            TagBuilder repeater = new TagBuilder(HtmlTags.Div);
+            repeater.MergeAttribute(HtmlAttributes.Name, name);
+            repeater.InnerHtml = string.Concat(repeaterContent.ToString());
+
+            return repeater.ToString();
         }
     }
 }
