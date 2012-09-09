@@ -1,4 +1,4 @@
-﻿namespace GDNET.Web.Extensions
+﻿namespace GDNET.Web.Common
 {
     public class HtmlAttributes
     {
