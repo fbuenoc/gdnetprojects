@@ -2,14 +2,19 @@
 
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    Home Page
+    <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.HomePage.Title %>" />
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
-    <%
-        List<string> columns = new List<string>() { "Name", "Description" };
-        string repeaterHtml = base.Html.Repeater("home_content_items", base.Model.ToList(), columns);
+    <%  
+        Func<ContentItemModel, string> GenerateNameLink = x =>
+        {
+            return string.Format("<a href=\"Home/Details?id={0}\">{1}</a>", x.Id, x.Name);
+        };
+
+        var repeater = RepeaterAssistant.Create<ContentItemModel>("home_content_items").AddEntities(base.Model.ToList());
+        repeater.AddColumns("Name", "Description").EnableHeader(false).AddGenerator("Name", GenerateNameLink);
     %>
-    <%= repeaterHtml %>
+    <%= repeater.GenerateHtml() %>
     <div style="clear: both;">
     </div>
     <style type="text/css">

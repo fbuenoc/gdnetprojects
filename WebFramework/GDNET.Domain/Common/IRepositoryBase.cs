@@ -22,6 +22,14 @@ namespace GDNET.Domain.Common
         TEntity GetById(TId id);
 
         /// <summary>
+        /// Gets entity from data store by a property.
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        TEntity GetByProperty(string propertyName, object value);
+
+        /// <summary>
         /// Gets all entities (of TEntity type) from data store.
         /// </summary>
         IList<TEntity> GetAll();

@@ -57,6 +57,12 @@ namespace GDNET.NHibernate.Repositories
             return result;
         }
 
+        public TEntity GetByProperty(string propertyName, object value)
+        {
+            var entities = this.FindByProperty(propertyName, value, 0, 1);
+            return (entities.Count == 1) ? entities[0] : default(TEntity);
+        }
+
         #endregion
 
         #region GetAll Methods

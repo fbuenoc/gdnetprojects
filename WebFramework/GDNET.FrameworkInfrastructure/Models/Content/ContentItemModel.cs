@@ -33,6 +33,7 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
         {
             if (entity != null)
             {
+                base.Id = entity.Id.ToString();
                 this.Name = entity.Name;
                 this.Description = entity.Description;
                 this.Keywords = entity.Keywords;

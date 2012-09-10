@@ -9,10 +9,15 @@
         List
     </h2>
     <%
-        List<string> columns = new List<string>() { "Name", "Keywords" };
-        string repeaterHtml = base.Html.Repeater("content_items", true, base.Model.ToList(), columns);        
+        Func<ContentItemModel, string> GenerateNameLink = x =>
+        {
+            return string.Format("<a href=\"Home/Details?id={0}\" title=\"{1}\">{2}</a>", x.Id, x.Description, x.Name);
+        };
+
+        var repeater = RepeaterAssistant.Create<ContentItemModel>("content_items").EnableHeader(true).AddEntities(base.Model.ToList());
+        repeater.AddColumns("Name", "Keywords").AddGenerator("Name", GenerateNameLink);
     %>
-    <%= repeaterHtml %>
+    <%= repeater.GenerateHtml() %>
     <div style="clear: both;">
     </div>
     <script type="text/javascript">
