@@ -56,6 +56,7 @@
     <Compile Include="Common\Models\UpdateDetailsModel.cs" />
     <Compile Include="Common\Models\LogOnModel.cs" />
     <Compile Include="Common\Models\RegisterModel.cs" />
+    <Compile Include="Common\TranslationBuilder.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ContentAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />

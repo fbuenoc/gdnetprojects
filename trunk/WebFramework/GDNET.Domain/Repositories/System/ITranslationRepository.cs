@@ -6,5 +6,6 @@ namespace GDNET.Domain.Repositories.System
 {
     public interface ITranslationRepository : IRepositoryBase<Translation, Guid>
     {
+        Translation GetByKeyword(string keyword);
     }
 }

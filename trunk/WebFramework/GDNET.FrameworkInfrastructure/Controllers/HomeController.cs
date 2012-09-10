@@ -22,6 +22,11 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.View(listItems);
         }
 
+        public ActionResult Details(string id)
+        {
+            return base.View();
+        }
+
         public ActionResult About()
         {
             return View();
