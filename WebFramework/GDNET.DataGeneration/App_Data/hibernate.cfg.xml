@@ -3,7 +3,7 @@
   <session-factory name="NHibernate.Test">
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
     <property name="connection.connection_string">
-      Server=.\SQLEXPRESS;Initial Catalog=WebFramework;User ID=gdnet;Password=gdnet;
+      Server=.\SQLEXPRESS;Initial Catalog=WebFramework;User ID=gdnet;Password=123456;
     </property>
     <property name="show_sql">false</property>
     <property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>

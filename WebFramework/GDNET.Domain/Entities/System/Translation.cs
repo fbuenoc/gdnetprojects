@@ -12,7 +12,7 @@ namespace GDNET.Domain.Entities.System
             protected set;
         }
 
-        public virtual string Culture
+        public virtual string Language
         {
             get;
             protected set;

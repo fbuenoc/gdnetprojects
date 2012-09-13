@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using GDNET.Domain.Common;
 using GDNET.Domain.Entities.System;
 
@@ -6,6 +7,7 @@ namespace GDNET.Domain.Repositories.System
 {
     public interface ITranslationRepository : IRepositoryBase<Translation, Guid>
     {
-        Translation GetByKeyword(string keyword);
+        Translation GetByKeyword(string keyword, CultureInfo culture);
+        string GetValueByKeyword(string keyword, CultureInfo culture);
     }
 }

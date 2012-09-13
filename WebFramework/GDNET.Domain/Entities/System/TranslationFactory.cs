@@ -14,7 +14,7 @@
                 return new Translation()
                 {
                     Keyword = keyword,
-                    Culture = culture,
+                    Language = culture,
                     Value = value,
                 };
             }

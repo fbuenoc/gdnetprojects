@@ -23,6 +23,8 @@ namespace GDNET.Mapping.System
                 m.NotNullable(true);
             });
             base.Property(e => e.DisplayName);
+            base.Property(e => e.IsGuest);
+            base.Property(e => e.IsRoot);
 
             base.OneToOne(e => e.Employee, m =>
             {
