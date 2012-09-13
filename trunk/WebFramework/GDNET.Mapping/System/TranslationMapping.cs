@@ -10,7 +10,7 @@ namespace GDNET.Mapping.System
         public TranslationMapping()
         {
             base.Property(e => e.Keyword);
-            base.Property(e => e.Culture);
+            base.Property(e => e.Language);
             base.Property(e => e.Value);
         }
     }

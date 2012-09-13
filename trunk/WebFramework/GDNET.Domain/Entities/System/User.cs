@@ -25,6 +25,18 @@ namespace GDNET.Domain.Entities.System
             protected set;
         }
 
+        public virtual bool IsGuest
+        {
+            get;
+            protected set;
+        }
+
+        public virtual bool IsRoot
+        {
+            get;
+            protected set;
+        }
+
         public virtual Employee Employee
         {
             get;
@@ -45,6 +57,20 @@ namespace GDNET.Domain.Entities.System
             }
 
             return result;
+        }
+
+        public virtual User ToGuest()
+        {
+            this.IsGuest = true;
+            this.IsRoot = false;
+            return this;
+        }
+
+        public virtual User ToRoot()
+        {
+            this.IsGuest = false;
+            this.IsRoot = true;
+            return this;
         }
 
         #endregion

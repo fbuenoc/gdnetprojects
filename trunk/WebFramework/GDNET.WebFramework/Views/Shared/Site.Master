@@ -17,7 +17,7 @@
                 <nav>
                     <ul id="menu">
                         <li>
-                            <%: Html.ActionLink("Home", "Index", "Home")%>
+                            <%: base.Html.ActionLinkTrans("GUI.Menu.Home", "Index", "Home") %>
                         </li>
                     </ul>
                 </nav>

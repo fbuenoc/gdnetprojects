@@ -2,6 +2,7 @@
 using System.Web.Compilation;
 using System.Web.UI;
 using GDNET.Domain.Repositories;
+using System.Threading;
 
 namespace GDNET.FrameworkInfrastructure.Common
 {
@@ -17,7 +18,7 @@ namespace GDNET.FrameworkInfrastructure.Common
 
         public static string GetTranslation(string expression)
         {
-            var translation = DomainRepositories.Translation.GetByKeyword(expression);
+            var translation = DomainRepositories.Translation.GetByKeyword(expression, Thread.CurrentThread.CurrentUICulture);
             return (translation == null) ? string.Format("! {0} !", expression) : translation.Value;
         }
 
