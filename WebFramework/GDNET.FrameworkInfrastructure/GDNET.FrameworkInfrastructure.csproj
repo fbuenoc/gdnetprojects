@@ -50,6 +50,8 @@
     <Compile Include="Common\ControllerAssistant.cs" />
     <Compile Include="Common\AbstractModel.cs" />
     <Compile Include="Common\AbstractListController.cs" />
+    <Compile Include="Common\DataAnnotations\DisplayNameMLAttribute.cs" />
+    <Compile Include="Common\DataAnnotations\RequiredMLAttribute.cs" />
     <Compile Include="Common\Extensions\FrameworkExtensions.cs" />
     <Compile Include="Common\Extensions\HtmlExtensions.cs" />
     <Compile Include="Common\Models\ChangePasswordModel.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="NHibernateSessionPerRequestModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\NHibernateMembershipProvider.cs" />
+    <Compile Include="Services\General\TranslationService.cs" />
     <Compile Include="Services\Models\ContentModelsService.cs" />
     <Compile Include="Services\WebFrameworkServices.cs" />
     <Compile Include="Services\Models\AccountModelsService.cs" />

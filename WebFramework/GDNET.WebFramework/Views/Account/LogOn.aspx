@@ -1,24 +1,27 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LogOnModel>" %>
 
-<asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Log On
+<asp:Content ID="LT" ContentPlaceHolderID="TitleContent" runat="server">
+    <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.LogOnPage.Title %>" />
 </asp:Content>
-<asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="LC" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Log On</h2>
+        <asp:Literal ID="L2" runat="server" Text="<%$ Trans:GUI.LogOnPage.Header %>" />
+    </h2>
     <p>
-        Please enter your user name and password.
-        <%: Html.ActionLink("Register", "Register") %>
-        if you don't have an account.
+        <asp:Literal ID="L3" runat="server" Text="<%$ Trans:GUI.LogOnPage.Description1 %>" />
+        <%: base.Html.ActionLinkTrans("GUI.LogOnPage.RegisterText", "Register", "Account", "GUI.LogOnPage.RegisterTooltip")%>
+        <asp:Literal ID="L4" runat="server" Text="<%$ Trans:GUI.LogOnPage.Description2 %>" />
     </p>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"
         type="text/javascript"></script>
     <% Html.BeginForm(); %>
-    <%: Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
+    <%: Html.ValidationSummaryTrans(true, "GUI.LogOnPage.LoginError")%>
     <div>
         <fieldset>
-            <legend>Account Information</legend>
+            <legend>
+                <asp:Literal ID="LA" runat="server" Text="<%$ Trans:GUI.LogOnPage.AccountInformation %>" />
+            </legend>
             <div class="editor-label">
                 <%: Html.LabelFor(m => m.UserName) %>
             </div>
@@ -38,7 +41,7 @@
                 <%: Html.LabelFor(m => m.RememberMe) %>
             </div>
             <p>
-                <input type="submit" value="Log On" />
+                <input type="submit" value='<%: base.Html.Translate("GUI.LogOnPage.SubmitButton") %>' />
             </p>
         </fieldset>
     </div>

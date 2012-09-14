@@ -1,19 +1,20 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
 namespace GDNET.FrameworkInfrastructure.Common.Models
 {
     public class LogOnModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [DisplayNameML("GUI.LogOnModel.UserNameName")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [DisplayNameML("GUI.LogOnModel.PasswordName")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [DisplayNameML("GUI.LogOnModel.RememberMeName")]
         public bool RememberMe { get; set; }
     }
 }

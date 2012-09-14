@@ -32,6 +32,19 @@ namespace GDNET.Utils
             return sb.ToString();
         }
 
+        public static string GenerateAParagraph()
+        {
+            string result = string.Empty;
+
+            for (int counter = 0; counter < 3; counter++)
+            {
+                result += GenerateASentence();
+                result += ". ";
+            }
+
+            return result.Trim();
+        }
+
         public static string GenerateEmailAddress()
         {
             StringBuilder sb = new StringBuilder();
