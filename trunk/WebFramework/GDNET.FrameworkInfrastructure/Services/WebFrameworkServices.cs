@@ -1,4 +1,5 @@
-﻿using GDNET.FrameworkInfrastructure.Services.Models;
+﻿using GDNET.FrameworkInfrastructure.Services.General;
+using GDNET.FrameworkInfrastructure.Services.Models;
 
 namespace GDNET.FrameworkInfrastructure.Services
 {
@@ -12,6 +13,11 @@ namespace GDNET.FrameworkInfrastructure.Services
         public static ContentModelsService ContentModels
         {
             get { return new ContentModelsService(); }
+        }
+
+        public static TranslationService Translation
+        {
+            get { return new TranslationService(); }
         }
     }
 }

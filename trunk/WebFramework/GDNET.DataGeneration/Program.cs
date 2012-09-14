@@ -20,6 +20,9 @@ namespace GDNET.DataGeneration
             var repositories = new DataRepositories(sessionStrategy);
             var servicesManager = new ServicesManager();
 
+            var currentUser = User.Factory.Create("data@gdnet", "123456");
+            var sessionContext = new DataSessionContext(currentUser);
+
             DataGenerationNHibernateSessionManager.Instance.BeginTransaction();
             ISession currentSession = DataGenerationNHibernateSessionManager.Instance.GetSession();
 
@@ -51,6 +54,8 @@ namespace GDNET.DataGeneration
             {
                 string name = "Content item #" + (index + 1);
                 var ci = ContentItem.Factory.Create(name, true);
+                ci.Description = RandomAssistant.GenerateAParagraph();
+
                 DomainRepositories.ContentItem.Save(ci);
 
                 for (int partCounter = 0; partCounter < 10; partCounter++)
@@ -68,8 +73,8 @@ namespace GDNET.DataGeneration
             Console.WriteLine();
             Console.Write(MethodBase.GetCurrentMethod().Name + "...");
 
-            var guest = User.Factory.Create("guest@webframework", "123456", true);
-            var admin = User.Factory.Create("admin@webframework", "123456", true);
+            var guest = User.Factory.Create("guest@webframework", "123456", true).ToGuest();
+            var admin = User.Factory.Create("admin@webframework", "123456", true).ToRoot();
             DomainRepositories.User.Save(guest);
             DomainRepositories.User.Save(admin);
 
