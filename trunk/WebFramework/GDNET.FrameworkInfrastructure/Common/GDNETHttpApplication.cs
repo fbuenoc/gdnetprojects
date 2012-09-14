@@ -4,6 +4,8 @@ using System.Web.Routing;
 using GDNET.Business.Services;
 using GDNET.Data;
 using GDNET.Data.Base;
+using GDNET.FrameworkInfrastructure.Common.Base;
+using GDNET.FrameworkInfrastructure.Common.Handlers;
 
 namespace GDNET.FrameworkInfrastructure
 {
@@ -24,6 +26,26 @@ namespace GDNET.FrameworkInfrastructure
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional } // Parameter defaults
             );
 
+            foreach (Route aRoute in routes)
+            {
+                if (!(aRoute.RouteHandler is NormalMvcRouteHandler))
+                {
+                    aRoute.RouteHandler = new MultilingualMvcRouteHandler();
+                    aRoute.Url = "{language}/" + aRoute.Url;
+
+                    if (aRoute.Defaults == null)
+                    {
+                        aRoute.Defaults = new RouteValueDictionary();
+                    }
+                    aRoute.Defaults.Add("language", "vi");
+
+                    if (aRoute.Constraints == null)
+                    {
+                        aRoute.Constraints = new RouteValueDictionary();
+                    }
+                    aRoute.Constraints.Add("language", new LanguageConstraint());
+                }
+            }
         }
 
         protected void Application_Start()
