@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using GDNET.Domain.Base;
+using GDNET.FrameworkInfrastructure.Common.Base;
 
 namespace GDNET.FrameworkInfrastructure.Common.Extensions
 {

@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.Domain.Base;
 
-namespace GDNET.FrameworkInfrastructure.Common
+namespace GDNET.FrameworkInfrastructure.Common.Base
 {
     public abstract class AbstractModel<T> where T : IEntity
     {

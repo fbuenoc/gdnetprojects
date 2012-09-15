@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.Domain.Entities.System;
+using GDNET.FrameworkInfrastructure.Common.Base;
 
 namespace GDNET.FrameworkInfrastructure.Common.Models
 {

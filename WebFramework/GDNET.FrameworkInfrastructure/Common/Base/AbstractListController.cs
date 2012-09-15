@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace GDNET.FrameworkInfrastructure.Common
+namespace GDNET.FrameworkInfrastructure.Common.Base
 {
     public abstract class AbstractListController : AbstractController
     {

@@ -4,7 +4,7 @@ using GDNET.NHibernate.SessionManagement;
 using NHibernate.Cfg;
 using NHibernate.Context;
 
-namespace GDNET.FrameworkInfrastructure
+namespace GDNET.FrameworkInfrastructure.Common.Base
 {
     public class WebNHibernateSessionManager : ApplicationNHibernateSessionManager
     {
