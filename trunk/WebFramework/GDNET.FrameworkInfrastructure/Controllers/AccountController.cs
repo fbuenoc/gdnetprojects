@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using GDNET.FrameworkInfrastructure.Common;
+using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.Models;
 using GDNET.FrameworkInfrastructure.Services;
 

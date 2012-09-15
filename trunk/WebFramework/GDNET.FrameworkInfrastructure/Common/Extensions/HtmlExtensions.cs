@@ -40,14 +40,16 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
         #endregion
 
-        public static string Translate(this HtmlHelper htmlHelper, string keyword)
+        public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword)
         {
-            return DomainRepositories.Translation.GetValueByKeyword(keyword, Thread.CurrentThread.CurrentUICulture);
+            string value = DomainRepositories.Translation.GetValueByKeyword(keyword, Thread.CurrentThread.CurrentUICulture);
+            return MvcHtmlString.Create(value);
         }
 
-        public static string Translate(this HtmlHelper htmlHelper, string keyword, params object[] objects)
+        public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword, params object[] objects)
         {
-            return string.Format(DomainRepositories.Translation.GetValueByKeyword(keyword, Thread.CurrentThread.CurrentUICulture), objects);
+            string value = string.Format(DomainRepositories.Translation.GetValueByKeyword(keyword, Thread.CurrentThread.CurrentUICulture), objects);
+            return MvcHtmlString.Create(value);
         }
     }
 }

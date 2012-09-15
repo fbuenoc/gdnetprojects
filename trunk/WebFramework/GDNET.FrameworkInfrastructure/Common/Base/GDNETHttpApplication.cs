@@ -7,7 +7,7 @@ using GDNET.Data.Base;
 using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.Handlers;
 
-namespace GDNET.FrameworkInfrastructure
+namespace GDNET.FrameworkInfrastructure.Common.Base
 {
     public class GDNETHttpApplication : HttpApplication
     {

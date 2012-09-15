@@ -8,7 +8,7 @@
     <%  
         Func<ContentItemModel, string> GenerateNameLink = x =>
         {
-            return string.Format("<a href=\"Home/Details?id={0}\">{1}</a>", x.Id, x.Name);
+            return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, null).ToHtmlString();
         };
 
         var repeater = RepeaterAssistant.Create<ContentItemModel>("home_content_items").AddEntities(base.Model.ToList());

@@ -3,12 +3,10 @@
     if (base.Request.IsAuthenticated)
     {
 %>
-Welcome <strong>
-    <%: base.Page.User.Identity.Name%></strong>
-<br />
+<%: base.Html.Translate("GUI.LogOn.Welcome", base.Page.User.Identity.Name) %>
 [
-<%: Html.ActionLink("Details", "Details", "Account")%>
-<%: Html.ActionLink("Log Off", "LogOff", "Account") %>
+<%: Html.ActionLinkTrans("GUI.LogOn.Details", "Details", "Account") %>
+<%: Html.ActionLinkTrans("GUI.LogOn.LogOff", "LogOff", "Account") %>
 ]
 <%
     }
@@ -16,7 +14,7 @@ Welcome <strong>
     {
 %>
 [
-<%: Html.ActionLink("Log On", "LogOn", "Account") %>
+<%: Html.ActionLinkTrans("GUI.LogOn.LogOn", "LogOn", "Account")%>
 ]
 <%
     }

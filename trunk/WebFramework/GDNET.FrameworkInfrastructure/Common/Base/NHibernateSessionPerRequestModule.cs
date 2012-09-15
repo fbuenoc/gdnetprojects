@@ -2,14 +2,12 @@
 using System.Web;
 using GDNET.Data.Base;
 using GDNET.Domain.Repositories;
-using NHibernate;
 
-namespace GDNET.FrameworkInfrastructure
+namespace GDNET.FrameworkInfrastructure.Common.Base
 {
     public class NHibernateSessionPerRequestModule : IHttpModule
     {
-        private const string ContextSessionsKey = "ContextSessions";
-        private const string SessionKey = "SessionKey";
+        private HttpApplication context;
 
         public void Dispose()
         {
@@ -19,6 +17,8 @@ namespace GDNET.FrameworkInfrastructure
         {
             context.BeginRequest += context_BeginRequest;
             context.EndRequest += context_EndRequest;
+
+            this.context = context;
         }
 
         void context_BeginRequest(object sender, EventArgs e)
