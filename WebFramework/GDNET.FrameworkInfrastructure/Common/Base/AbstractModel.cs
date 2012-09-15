@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.Domain.Base;
+using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
 namespace GDNET.FrameworkInfrastructure.Common.Base
 {
@@ -13,7 +14,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
         }
 
         [Required]
-        [Display(Name = "Is active?")]
+        [DisplayNameML("GUI.Entity.IsActive")]
         public bool IsActive
         {
             get;

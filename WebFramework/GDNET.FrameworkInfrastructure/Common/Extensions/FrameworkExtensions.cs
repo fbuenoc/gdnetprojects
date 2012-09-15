@@ -11,7 +11,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             where TModel : AbstractModel<TEntity>
             where TEntity : IEntity
         {
-            List<TModel> listModels = new List<TModel>();
+            IList<TModel> listModels = new List<TModel>();
 
             if (listEntities != null)
             {

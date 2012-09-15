@@ -21,9 +21,15 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.View(listeModels);
         }
 
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
-            return base.View();
+            ContentItemModel contentModel = WebFrameworkServices.ContentModels.GetContentItemModel(id);
+            if (contentModel == null)
+            {
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
+            }
+
+            return base.View(contentModel);
         }
 
         public ActionResult ManageParts(string id)
@@ -92,22 +98,21 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         #region Edit methods
 
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
+            ContentItemModel contentModel = WebFrameworkServices.ContentModels.GetContentItemModel(id);
+            if (contentModel == null)
+            {
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
+            }
+
             return base.View();
         }
 
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
-            {
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return base.View();
-            }
+            return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
         }
 
         #endregion

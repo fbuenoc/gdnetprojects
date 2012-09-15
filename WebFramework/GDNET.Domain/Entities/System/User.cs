@@ -1,10 +1,15 @@
-﻿using GDNET.Domain.Base.Management;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Linq;
+using GDNET.Domain.Base.Management;
 using GDNET.Domain.Services;
 
 namespace GDNET.Domain.Entities.System
 {
     public partial class User : EntityHistoryComplex
     {
+        private List<User> connections = new List<User>();
+
         #region Properties
 
         public virtual string Email
@@ -20,6 +25,12 @@ namespace GDNET.Domain.Entities.System
         }
 
         public virtual string Password
+        {
+            get;
+            protected set;
+        }
+
+        public virtual long? TotalPoints
         {
             get;
             protected set;
@@ -41,6 +52,11 @@ namespace GDNET.Domain.Entities.System
         {
             get;
             set;
+        }
+
+        public virtual ReadOnlyCollection<User> Connections
+        {
+            get { return new ReadOnlyCollection<User>(this.connections); }
         }
 
         #endregion
@@ -70,6 +86,41 @@ namespace GDNET.Domain.Entities.System
         {
             this.IsGuest = false;
             this.IsRoot = true;
+            return this;
+        }
+
+        public virtual User AddConnection(User aConnection)
+        {
+            if (!this.connections.Contains(aConnection))
+            {
+                this.connections.Add(aConnection);
+            }
+
+            return this;
+        }
+
+        public virtual User AddConnections(IList<User> listOfConnections)
+        {
+            foreach (var aConnection in listOfConnections)
+            {
+                this.AddConnection(aConnection);
+            }
+
+            return this;
+        }
+
+        public virtual User AddConnections(params User[] listOfConnections)
+        {
+            return this.AddConnections(listOfConnections.ToList());
+        }
+
+        public virtual User RemoveConnection(User aConnection)
+        {
+            if (this.connections.Contains(aConnection))
+            {
+                this.connections.Remove(aConnection);
+            }
+
             return this;
         }
 

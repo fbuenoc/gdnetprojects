@@ -9,16 +9,19 @@
         <asp:Literal ID="L2" runat="server" Text="<%$ Trans:GUI.ContentAdmin.List.Heading %>" />
     </h2>
     <%
-        Func<ContentItemModel, string> GenerateNameLink = x =>
+        Func<ContentItemModel, string> GenerateNameLink = (x =>
         {
             return string.Format("<a href=\"Details?id={0}\" title=\"{1}\">{2}</a>", x.Id, x.Description, x.Name);
-        };
+        });
 
         var repeater = RepeaterAssistant.Create<ContentItemModel>("content_items").EnableHeader(true).AddEntities(base.Model.ToList());
-        repeater.AddColumns("Name", "Keywords").AddGenerator("Name", GenerateNameLink);
+        repeater.AddGenerator("Name", GenerateNameLink);
+        repeater.AddColumnWithText("Name", "GUI.ContentAdmin.List.ColumnName").AddColumnWithText("Keywords", "GUI.ContentAdmin.List.ColumnKeywords");
     %>
-    <%= repeater.GenerateHtml() %>
-    <div style="clear: both;">
+    <div>
+        <%= repeater.GenerateHtml() %>
+        <div style="clear: both;">
+        </div>
     </div>
     <script type="text/javascript">
         $(document).ready(function () {

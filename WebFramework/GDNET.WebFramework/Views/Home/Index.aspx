@@ -21,16 +21,20 @@
         .rpt_body_cell_home_name
         {
             float: none;
-            width: 400px;
+            width: 500px;
             padding-right: 5px;
             font-weight: bold;
+            font-size: 120%;
+            line-height: 25px;
         }
         .rpt_body_cell_home_desc
         {
             float: none;
-            width: 400px;
+            width: 500px;
             padding-right: 5px;
             font-style: italic;
+            font-size: 110%;
+            line-height: 20px;
         }
     </style>
     <script type="text/javascript">

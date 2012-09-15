@@ -1,12 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<UpdateDetailsModel>" %>
 
-<asp:Content ID="changePasswordTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Update membership information
+<asp:Content ID="UDT" ContentPlaceHolderID="TitleContent" runat="server">
+    <%: base.Html.Translate("GUI.Account.UpdateDetailPage.Title") %>
 </asp:Content>
-<asp:Content ID="changePasswordSuccessContent" ContentPlaceHolderID="MainContent"
-    runat="server">
+<asp:Content ID="UDC" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Update membership information
+        <%: base.Html.Translate("GUI.Account.UpdateDetailPage.Focus") %>
     </h2>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"
@@ -15,7 +14,9 @@
     <%: Html.ValidationSummary(true, "Account modification was unsuccessful. Please correct the errors and try again.") %>
     <div>
         <fieldset>
-            <legend>Account Information</legend>
+            <legend>
+                <%: base.Html.Translate("GUI.Account.General.FieldSet.Legend") %>
+            </legend>
             <div class="editor-label">
                 <%: Html.LabelFor(m => m.DisplayName) %>
             </div>
@@ -29,7 +30,7 @@
             </div>
         </fieldset>
         <p>
-            <input type="submit" value="Submit Changes" />
+            <input type="submit" value='<%: base.Html.Translate("GUI.Common.SubmitButton") %>' />
         </p>
     </div>
     <% Html.EndForm(); %>

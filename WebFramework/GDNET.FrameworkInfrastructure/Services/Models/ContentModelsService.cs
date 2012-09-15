@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
@@ -11,15 +12,29 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
     {
         #region ContentItem
 
+        public ContentItemModel GetContentItemModel(string id)
+        {
+            Guid guid = Guid.Empty;
+            ContentItemModel model = null;
+
+            if (Guid.TryParse(id, out guid))
+            {
+                ContentItem ci = DomainRepositories.ContentItem.GetById(guid);
+                if (ci != null)
+                {
+                    model = this.GetContentItemModel(ci);
+                }
+            }
+
+            return model;
+        }
+
         public ContentItemModel GetContentItemModel(ContentItem contentItem)
         {
-            return new ContentItemModel()
-            {
-                Description = contentItem.Description,
-                IsActive = contentItem.IsActive,
-                Keywords = contentItem.Keywords,
-                Name = contentItem.Name
-            };
+            var model = new ContentItemModel();
+            model.Initialize(contentItem);
+
+            return model;
         }
 
         public IList<ContentItemModel> GetTopContentItemModels(int maxResults)
