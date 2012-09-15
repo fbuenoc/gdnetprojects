@@ -1,27 +1,25 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ChangePasswordModel>" %>
 
-<asp:Content ID="changePasswordTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Change Password
+<asp:Content ID="CPT" ContentPlaceHolderID="TitleContent" runat="server">
+    <%: base.Html.Translate("GUI.Account.ChangePassword.Title")%>
 </asp:Content>
-<asp:Content ID="changePasswordContent" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="CPC" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
-        Change Password</h2>
+        <%: base.Html.Translate("GUI.Account.ChangePassword.Focus")%>
+    </h2>
     <p>
-        Use the form below to change your password.
-    </p>
-    <p>
-        New passwords are required to be a minimum of
-        <%: Membership.MinRequiredPasswordLength %>
-        characters in length.
+        <%: base.Html.Translate("GUI.Account.ChangePassword.Description",Membership.MinRequiredPasswordLength) %>
     </p>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"
         type="text/javascript"></script>
     <% Html.BeginForm(); %>
-    <%: Html.ValidationSummary(true, "Password change was unsuccessful. Please correct the errors and try again.") %>
+    <%: Html.ValidationSummaryTrans(true, "GUI.Account.ChangePassword.Error")%>
     <div>
         <fieldset>
-            <legend>Account Information</legend>
+            <legend>
+                <asp:Literal ID="LA" runat="server" Text="<%$ Trans:GUI.Account.ChangePassword.AccountInformation %>" />
+            </legend>
             <div class="editor-label">
                 <%: Html.LabelFor(m => m.OldPassword) %>
             </div>
@@ -44,7 +42,7 @@
                 <%: Html.ValidationMessageFor(m => m.ConfirmPassword) %>
             </div>
             <p>
-                <input type="submit" value="Change Password" />
+                <input type="submit" value='<%: base.Html.Translate("GUI.Common.SubmitButton") %>' />
             </p>
         </fieldset>
     </div>

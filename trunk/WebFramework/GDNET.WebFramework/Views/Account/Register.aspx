@@ -42,7 +42,7 @@
                 <%: Html.ValidationMessageFor(m => m.ConfirmPassword) %>
             </div>
             <p>
-                <input type="submit" value='<%: base.Html.Translate("GUI.LogOnPage.SubmitButton") %>' />
+                <input type="submit" value='<%: base.Html.Translate("GUI.Common.SubmitButton") %>' />
             </p>
         </fieldset>
     </div>

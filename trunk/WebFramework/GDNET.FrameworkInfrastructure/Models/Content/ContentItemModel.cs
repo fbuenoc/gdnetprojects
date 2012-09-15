@@ -1,11 +1,16 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.ComponentModel.DataAnnotations;
 using GDNET.Domain.Content;
 using GDNET.FrameworkInfrastructure.Common.Base;
+using GDNET.FrameworkInfrastructure.Common.Extensions;
 
 namespace GDNET.FrameworkInfrastructure.Models.Content
 {
     public class ContentItemModel : AbstractModel<ContentItem>
     {
+        private IList<ContentPartModel> parts = new List<ContentPartModel>();
+
         [Required]
         [Display(Name = "Name")]
         [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
@@ -29,15 +34,19 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
             set;
         }
 
+        public ReadOnlyCollection<ContentPartModel> Parts
+        {
+            get { return new ReadOnlyCollection<ContentPartModel>(this.parts); }
+        }
+
         public override void Initialize(ContentItem entity)
         {
-            if (entity != null)
-            {
-                base.Id = entity.Id.ToString();
-                this.Name = entity.Name;
-                this.Description = entity.Description;
-                this.Keywords = entity.Keywords;
-            }
+            base.Id = entity.Id.ToString();
+            this.Name = entity.Name;
+            this.Description = entity.Description;
+            this.Keywords = entity.Keywords;
+
+            this.parts = FrameworkExtensions.ConvertAll<ContentPartModel, ContentPart>(entity.Parts);
         }
     }
 }

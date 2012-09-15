@@ -1,9 +1,11 @@
 ﻿using System.Web.Mvc;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
+using GDNET.FrameworkInfrastructure.Common;
 using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
 using GDNET.FrameworkInfrastructure.Models.Content;
+using GDNET.FrameworkInfrastructure.Services;
 using GDNET.Utils;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
@@ -24,12 +26,18 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         public ActionResult Details(string id)
         {
-            return base.View();
+            ContentItemModel contentModel = WebFrameworkServices.ContentModels.GetContentItemModel(id);
+            if (contentModel == null)
+            {
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Index()));
+            }
+
+            return base.View(contentModel);
         }
 
         public ActionResult About()
         {
-            return View();
+            return base.View();
         }
     }
 }
