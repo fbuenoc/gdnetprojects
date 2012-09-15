@@ -5,9 +5,19 @@ namespace GDNET.FrameworkInfrastructure.Common.DataAnnotations
 {
     public class DisplayNameMLAttribute : DisplayNameAttribute
     {
+        private string keyword;
+
         public DisplayNameMLAttribute(string keyword)
         {
-            base.DisplayNameValue = WebFrameworkServices.Translation.GetByKeyword(keyword);
+            this.keyword = keyword;
+        }
+
+        public override string DisplayName
+        {
+            get
+            {
+                return WebFrameworkServices.Translation.GetByKeyword(keyword);
+            }
         }
     }
 }

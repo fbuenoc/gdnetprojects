@@ -7,12 +7,12 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
     {
         [DataType(DataType.EmailAddress)]
         [Required]
-        [Email(ErrorKeyword = "GUI.Common.InvalidFormat")]
+        [Email("GUI.Common.InvalidFormat")]
         [DisplayNameML("GUI.RegisterModel.Email")]
         public string Email { get; set; }
 
-        [Required]
         [DataType(DataType.Password)]
+        [Required]
         [StringLength(100, MinimumLength = 6)]
         [DisplayNameML("GUI.AccountInformation.Password")]
         public string Password { get; set; }
