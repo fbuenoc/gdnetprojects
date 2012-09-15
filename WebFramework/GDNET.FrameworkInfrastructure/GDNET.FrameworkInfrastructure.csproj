@@ -51,7 +51,10 @@
     <Compile Include="Common\ControllerAssistant.cs" />
     <Compile Include="Common\Base\AbstractModel.cs" />
     <Compile Include="Common\Base\AbstractListController.cs" />
+    <Compile Include="Common\DataAnnotations\CompareMLAttribute.cs" />
+    <Compile Include="Common\DataAnnotations\StringLengthMLAttribute.cs" />
     <Compile Include="Common\DataAnnotations\DisplayNameMLAttribute.cs" />
+    <Compile Include="Common\DataAnnotations\EmailAttribute.cs" />
     <Compile Include="Common\DataAnnotations\RequiredMLAttribute.cs" />
     <Compile Include="Common\Extensions\FrameworkExtensions.cs" />
     <Compile Include="Common\Extensions\HtmlExtensions.cs" />
