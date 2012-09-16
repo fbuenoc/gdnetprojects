@@ -7,9 +7,9 @@ using GDNET.FrameworkInfrastructure.Common.Extensions;
 
 namespace GDNET.FrameworkInfrastructure.Models.Content
 {
-    public class ContentItemModel : AbstractModel<ContentItem>
+    public class ContentItemModel : AbstractViewModel<ContentItem>
     {
-        private IList<ContentPartModel> parts = new List<ContentPartModel>();
+        private List<ContentPartModel> parts = new List<ContentPartModel>();
 
         [Required]
         [Display(Name = "Name")]
@@ -45,8 +45,12 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
             this.Name = entity.Name;
             this.Description = entity.Description;
             this.Keywords = entity.Keywords;
+            this.IsActive = entity.IsActive;
 
-            this.parts = FrameworkExtensions.ConvertAll<ContentPartModel, ContentPart>(entity.Parts);
+            this.parts.Clear();
+            this.parts.AddRange(FrameworkExtensions.ConvertAll<ContentPartModel, ContentPart>(entity.Parts));
+
+            base.InitializeCommon(entity);
         }
     }
 }

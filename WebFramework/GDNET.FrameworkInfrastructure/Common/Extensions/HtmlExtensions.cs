@@ -1,4 +1,6 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Linq.Expressions;
+using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using GDNET.FrameworkInfrastructure.Services;
 
@@ -44,6 +46,16 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
         }
 
         #endregion
+
+        public static MvcHtmlString TextBoxFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string className)
+        {
+            return htmlHelper.TextBoxFor(expression, new { @class = className });
+        }
+
+        public static MvcHtmlString TextAreaFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string className)
+        {
+            return htmlHelper.TextAreaFor(expression, new { @class = className });
+        }
 
         public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword)
         {

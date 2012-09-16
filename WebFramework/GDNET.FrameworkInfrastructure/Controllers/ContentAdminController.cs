@@ -44,11 +44,46 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Index()));
         }
 
-        #region CreatePart methods
+        #region Part methods
+
+        public ActionResult EditPart(string id, string cid)
+        {
+            ContentPartModel partModel = WebFrameworkServices.ContentModels.GetContentPartModel(id, cid);
+            if (partModel == null)
+            {
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
+            }
+            else
+            {
+                partModel.Mode = ViewModelMode.Modification;
+            }
+
+            return base.View("CreateOrUpdatePart", partModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditPart(string id, string cid, ContentPartModel partModel, FormCollection collection)
+        {
+            if (base.ModelState.IsValid)
+            {
+                var contentPart = WebFrameworkServices.ContentModels.GetContentPart(id, cid);
+                if (contentPart != null)
+                {
+                    WebFrameworkServices.ContentModels.UpdateContentPart(contentPart, partModel);
+                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
+                }
+            }
+
+            return base.View("CreateOrUpdatePart", partModel);
+        }
 
         public ActionResult CreatePart(string id)
         {
-            ContentPartModel partModel = new ContentPartModel() { };
+            ContentPartModel partModel = new ContentPartModel()
+            {
+                Mode = ViewModelMode.Creation
+            };
+
             return base.View("CreateOrUpdatePart", partModel);
         }
 
@@ -58,11 +93,13 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             if (base.ModelState.IsValid)
             {
                 var contentItem = DomainRepositories.ContentItem.GetById(new Guid(id));
-                var partItem = WebFrameworkServices.ContentModels.CreateContentPart(partModel);
-                contentItem.AddPart(partItem);
+                if (contentItem != null)
+                {
+                    var partItem = WebFrameworkServices.ContentModels.CreateContentPart(partModel);
+                    contentItem.AddPart(partItem);
 
-                DomainRepositories.RepositoryStrategy.Flush();
-                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.ManageParts(id)), ControllerAssistant.BuildRouteValues(id));
+                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.ManageParts(id)), ControllerAssistant.BuildRouteValues(id));
+                }
             }
 
             return base.View("CreateOrUpdatePart", partModel);
@@ -106,26 +143,36 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
             }
 
-            return base.View();
+            return base.View("CreateOrUpdate", contentModel);
         }
 
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(string id, ContentItemModel contentModel, FormCollection collection)
         {
-            return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
+            if (base.ModelState.IsValid)
+            {
+                var contentItem = DomainRepositories.ContentItem.GetById(new Guid(id));
+                if (contentItem != null)
+                {
+                    WebFrameworkServices.ContentModels.UpdateContentItem(contentItem, contentModel);
+                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(id)), new { id = id });
+                }
+            }
+
+            return base.View("CreateOrUpdate", contentModel);
         }
 
         #endregion
 
         #region Delete methods
 
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
-            return View();
+            return base.View();
         }
 
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id, FormCollection collection)
         {
             try
             {

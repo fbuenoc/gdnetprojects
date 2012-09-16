@@ -3,9 +3,10 @@ using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
 namespace GDNET.FrameworkInfrastructure.Common.Models
 {
-    public class LogOnModel
+    public sealed class LogOnModel
     {
         [Required]
+        [Email("GUI.Common.InvalidFormat.Email")]
         [DisplayNameML("GUI.LogOnModel.UserName")]
         public string UserName { get; set; }
 

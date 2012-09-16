@@ -1,14 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.Domain.Content;
 using GDNET.FrameworkInfrastructure.Common.Base;
+using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
 namespace GDNET.FrameworkInfrastructure.Models.Content
 {
-    public class ContentPartModel : AbstractModel<ContentPart>
+    public class ContentPartModel : AbstractViewModel<ContentPart>
     {
         [Required]
-        [Display(Name = "Name")]
         [StringLength(256, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 3)]
+        [DisplayNameML("GUI.ContentPartModel.Name")]
         public string Name
         {
             get;
@@ -16,7 +17,7 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
         }
 
         [Required]
-        [Display(Name = "Details")]
+        [DisplayNameML("GUI.ContentPartModel.Details")]
         public string Details
         {
             get;
@@ -25,11 +26,12 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
 
         public override void Initialize(ContentPart entity)
         {
-            if (entity != null)
-            {
-                this.Name = entity.Name;
-                this.Details = entity.Details;
-            }
+            this.Id = entity.Id.ToString();
+            this.Name = entity.Name;
+            this.Details = entity.Details;
+            this.IsActive = entity.IsActive;
+
+            base.InitializeCommon(entity);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
         {
             WebNHibernateSessionManager.Instance.BeginTransaction();
 
-            var currentUser = DomainRepositories.User.FindByEmail("guest@webframework");
+            var currentUser = DomainRepositories.User.FindByEmail("guest@webframework.com");
             var sessionContext = new DataSessionContext(currentUser);
         }
 

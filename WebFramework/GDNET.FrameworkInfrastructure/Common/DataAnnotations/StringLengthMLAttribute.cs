@@ -3,6 +3,9 @@ using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Common.DataAnnotations
 {
+    /// <summary>
+    /// Doesn't work : JS validation is not worked
+    /// </summary>
     public class StringLengthMLAttribute : StringLengthAttribute
     {
         public string ErrorKeyword
@@ -22,16 +25,17 @@ namespace GDNET.FrameworkInfrastructure.Common.DataAnnotations
             base.MinimumLength = minimumLength;
         }
 
-        public override bool IsValid(object value)
-        {
-            return base.IsValid(value);
-        }
-
         public override string FormatErrorMessage(string name)
         {
-            var format = WebFrameworkServices.Translation.GetByKeyword(this.ErrorKeyword);
-            base.ErrorMessage = string.Format(format, name, base.MinimumLength, base.MaximumLength);
-            return base.FormatErrorMessage(name);
+            if (!string.IsNullOrEmpty(this.ErrorKeyword))
+            {
+                var format = WebFrameworkServices.Translation.GetByKeyword(this.ErrorKeyword);
+                return string.Format(format, name, base.MinimumLength, base.MaximumLength);
+            }
+            else
+            {
+                return base.FormatErrorMessage(name);
+            }
         }
     }
 }
