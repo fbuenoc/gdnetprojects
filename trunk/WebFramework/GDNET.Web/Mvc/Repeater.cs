@@ -11,9 +11,9 @@ namespace GDNET.Web.Mvc
 {
     public class Repeater<T>
     {
-        private List<string> columns = new List<string>();
         private List<T> entities = new List<T>();
         private Dictionary<string, Func<T, string>> generators = new Dictionary<string, Func<T, string>>();
+        private Dictionary<string, string> columns = new Dictionary<string, string>();
 
         public Repeater()
         {
@@ -28,7 +28,7 @@ namespace GDNET.Web.Mvc
 
         public ReadOnlyCollection<string> Columns
         {
-            get { return new ReadOnlyCollection<string>(this.columns); }
+            get { return new ReadOnlyCollection<string>(this.columns.Keys.ToList()); }
         }
 
         public ReadOnlyCollection<T> Entities
@@ -42,10 +42,21 @@ namespace GDNET.Web.Mvc
 
         public Repeater<T> AddColumn(string aColumn)
         {
-            if (!this.columns.Contains(aColumn))
+            if (!this.columns.ContainsKey(aColumn))
             {
-                this.columns.Add(aColumn);
+                this.columns.Add(aColumn, aColumn);
             }
+
+            return this;
+        }
+
+        public Repeater<T> AddColumn(string aColumn, string columnText)
+        {
+            if (!this.columns.ContainsKey(aColumn))
+            {
+                this.columns.Add(aColumn, columnText);
+            }
+
             return this;
         }
 
@@ -107,7 +118,8 @@ namespace GDNET.Web.Mvc
                 {
                     TagBuilder aTag = new TagBuilder(HtmlTags.Div);
                     aTag.Attributes.Add(HtmlAttributes.Name, aColumn);
-                    aTag.SetInnerText(aColumn);
+                    string columnText = this.columns.ContainsKey(aColumn) ? this.columns[aColumn] : aColumn;
+                    aTag.SetInnerText(columnText);
 
                     repeaterHeader.Add(aTag.ToString());
                 }
@@ -135,10 +147,7 @@ namespace GDNET.Web.Mvc
                     else
                     {
                         var fieldValue = ReflectionAssistant.GetPropertyValue(anEntity, aProperty);
-                        if (fieldValue != null)
-                        {
-                            aTag.SetInnerText(fieldValue.ToString());
-                        }
+                        aTag.InnerHtml = (fieldValue == null) ? "&nbsp;" : fieldValue.ToString();
                     }
                     entityHtml.Append(aTag.ToString());
                 }
