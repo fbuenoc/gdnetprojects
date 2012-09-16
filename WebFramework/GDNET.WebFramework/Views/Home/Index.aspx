@@ -5,37 +5,21 @@
     <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.HomePage.Title %>" />
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
-    <%  
-        Func<ContentItemModel, string> GenerateNameLink = x =>
-        {
-            return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, null).ToHtmlString();
-        };
+    <div class="block block-left">
+        <%  
+            Func<ContentItemModel, string> GenerateNameLink = x =>
+            {
+                return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, null).ToHtmlString();
+            };
 
-        var repeater = RepeaterAssistant.Create<ContentItemModel>("home_content_items").AddEntities(base.Model.ToList());
-        repeater.AddColumns("Name", "Description").EnableHeader(false).AddGenerator("Name", GenerateNameLink);
-    %>
-    <%= repeater.GenerateHtml() %>
-    <div style="clear: both;">
+            var repeater = RepeaterAssistant.Create<ContentItemModel>("home_content_items").AddEntities(base.Model.ToList());
+            repeater.AddColumns("Name", "Description").EnableHeader(false).AddGenerator("Name", GenerateNameLink);
+        %>
+        <%= repeater.GenerateHtml() %>
+        <div style="clear: both;">
+        </div>
     </div>
     <style type="text/css">
-        .rpt_body_cell_home_name
-        {
-            float: none;
-            width: 500px;
-            padding-right: 5px;
-            font-weight: bold;
-            font-size: 120%;
-            line-height: 25px;
-        }
-        .rpt_body_cell_home_desc
-        {
-            float: none;
-            width: 500px;
-            padding-right: 5px;
-            font-style: italic;
-            font-size: 110%;
-            line-height: 20px;
-        }
     </style>
     <script type="text/javascript">
         $(document).ready(function () {
