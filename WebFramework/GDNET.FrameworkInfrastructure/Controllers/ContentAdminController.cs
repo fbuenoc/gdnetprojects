@@ -46,6 +46,48 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         #region Part methods
 
+        public ActionResult MoveUpPart(string id, string cid)
+        {
+            var contentItem = DomainRepositories.ContentItem.GetById(new Guid(cid));
+            if (contentItem != null)
+            {
+                contentItem.MoveUpPartById(new Guid(id));
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
+            }
+            else
+            {
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
+            }
+        }
+
+        public ActionResult MoveDownPart(string id, string cid)
+        {
+            var contentItem = DomainRepositories.ContentItem.GetById(new Guid(cid));
+            if (contentItem != null)
+            {
+                contentItem.MoveDownPartById(new Guid(id));
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
+            }
+            else
+            {
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
+            }
+        }
+
+        public ActionResult DeletePart(string id, string cid)
+        {
+            var contentItem = DomainRepositories.ContentItem.GetById(new Guid(cid));
+            if (contentItem != null)
+            {
+                contentItem.RemovePartById(new Guid(id));
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
+            }
+            else
+            {
+                return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
+            }
+        }
+
         public ActionResult EditPart(string id, string cid)
         {
             ContentPartModel partModel = WebFrameworkServices.ContentModels.GetContentPartModel(id, cid);
