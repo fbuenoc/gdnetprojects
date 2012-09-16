@@ -10,7 +10,8 @@
             <%= base.Model.Name %>
         </div>
         <div class="actions-container">
-            <%: base.Html.ActionLink("Edit", "Edit", new { id = base.Model.Id })%>
+            <%: base.Html.ActionLinkTrans("GUI.Common.Actions.Edit", "Edit", new { id = base.Model.Id })%>
+            <%: base.Html.ActionLinkTrans("GUI.ContentAdmin.Details.CreatePart", "CreatePart", new { id = base.Model.Id })%>
         </div>
     </div>
     <div class="block">
@@ -20,7 +21,7 @@
         <%
             Func<ContentPartModel, string> GenerateActions = (x =>
             {
-                string editPart = base.Html.ActionLink("Edit", "EditPart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
+                string editPart = base.Html.ActionLinkTrans("GUI.Common.Actions.Edit", "EditPart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
                 string upPart = base.Html.ActionLink("Up", "MoveUpPart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
                 string downPart = base.Html.ActionLink("Down", "MoveDownPart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
                 return string.Concat(editPart, " ", upPart, " ", downPart);

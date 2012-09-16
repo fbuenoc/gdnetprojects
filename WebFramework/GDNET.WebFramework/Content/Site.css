@@ -213,6 +213,7 @@ legend
 textarea
 {
     min-height: 75px;
+    font-size: 1.2em;
 }
 
 input[type="text"], input[type="password"]
@@ -417,3 +418,119 @@ div#title
 /**********************************
 --- Repeater default classes
 **********************************/
+
+
+
+/**********************************
+--- CSS for content
+**********************************/
+.input_name
+{
+    width: 300px !important;
+}
+.textarea_tiny, .textarea_content
+{
+    width: 800px;
+    height: 100px;
+    padding: 5px;
+    line-height: 20px;
+}
+.textarea_content
+{
+    height: 300px !important;
+}
+
+.editor-line
+{
+    float: none;
+    clear: both;
+    padding-top: 10px;
+}
+.editor-label-admin
+{
+    float: left;
+    width: 100px;
+    padding: 2px;
+    line-height: 20px;
+}
+.editor-field-admin
+{
+    float: left;
+    position: relative;
+}
+.block
+{
+    clear: both;
+    float: none;
+}
+.block-left
+{
+    width: 680px;
+}
+.actions-container
+{
+    float: left;
+    position: relative;
+    margin-left: 10px;
+}
+.block-content
+{
+    float: left;
+    position: relative;
+}
+
+/****************
+** Home
+****************/
+.rpt_body_cell_home_name
+{
+    float: none;
+    padding-right: 5px;
+    font-weight: bold;
+    font-size: 120%;
+    line-height: 25px;
+}
+.rpt_body_cell_home_desc
+{
+    float: none;
+    padding-right: 5px;
+    font-style: italic;
+    font-size: 110%;
+    line-height: 20px;
+}
+
+/****************
+** Home/Details
+****************/
+.home-details-title
+{
+    font-weight: bold;
+    font-size: 120%;
+    line-height: 25px;
+    color: #034af3;
+}
+.home-details-description
+{
+    line-height: 20px;
+    font-size: 110%;
+    padding: 5px;
+    font-style: italic;
+    background-color: #EFEFEF;
+}
+.home-details-sub-title
+{
+    float: none;
+    font-size: 110%;
+    font-weight: bold;
+    line-height: 22px;
+}
+.home-details-sub-content
+{
+    float: none;
+    line-height: 20px;
+    padding-left: 2px;
+}
+.rpt_body_line_home_details:hover
+{
+    background-color: #EFFFFF;
+}

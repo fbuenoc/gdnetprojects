@@ -23,6 +23,7 @@ namespace GDNET.Mapping.System
                 m.NotNullable(true);
             });
             base.Property(e => e.DisplayName);
+            base.Property(e => e.TotalPoints);
             base.Property(e => e.IsGuest);
             base.Property(e => e.IsRoot);
 

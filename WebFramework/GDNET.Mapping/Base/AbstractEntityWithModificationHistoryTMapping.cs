@@ -7,22 +7,19 @@ namespace GDNET.Mapping.Base
     public abstract class AbstractEntityWithModificationHistoryTMapping<TObject, TId> : AbstractEntityWithModificationTMapping<TObject, TId>
         where TObject : AbstractEntityWithModificationHistoryT<TId>
     {
+        private static readonly AbstractEntityWithModificationHistoryT<TId> _defaultEntity = default(AbstractEntityWithModificationHistoryT<TId>);
+
         public AbstractEntityWithModificationHistoryTMapping(IGeneratorDef generator)
             : base(generator)
         {
-            var defaultEntityHistory = default(AbstractEntityWithModificationHistoryT<TId>);
-
-            base.Property(x => x.IsActive, m =>
-            {
-                m.NotNullable(true);
-            });
+            base.Property(x => x.IsActive);
 
             base.ManyToOne(x => x.FirstLog, m =>
             {
                 m.Cascade(Cascade.All);
                 m.Lazy(LazyRelation.NoLazy);
                 m.Access(Accessor.Property);
-                m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntityHistory.FirstLog));
+                m.Column(MappingAssistant.GetForeignKeyColumn(() => _defaultEntity.FirstLog));
             });
 
             base.ManyToOne(x => x.LastLog, m =>
@@ -30,7 +27,7 @@ namespace GDNET.Mapping.Base
                 m.Cascade(Cascade.All);
                 m.Lazy(LazyRelation.NoLazy);
                 m.Access(Accessor.Property);
-                m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntityHistory.LastLog));
+                m.Column(MappingAssistant.GetForeignKeyColumn(() => _defaultEntity.LastLog));
             });
         }
     }

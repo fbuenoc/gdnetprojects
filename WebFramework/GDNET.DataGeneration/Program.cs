@@ -73,8 +73,8 @@ namespace GDNET.DataGeneration
             Console.WriteLine();
             Console.Write(MethodBase.GetCurrentMethod().Name + "...");
 
-            var guest = User.Factory.Create("guest@webframework", "123456", true).ToGuest();
-            var admin = User.Factory.Create("admin@webframework", "123456", true).ToRoot();
+            var guest = User.Factory.Create("guest@webframework.com", "123456", true).ToGuest();
+            var admin = User.Factory.Create("admin@webframework.com", "123456", true).ToRoot();
             DomainRepositories.User.Save(guest);
             DomainRepositories.User.Save(admin);
 
