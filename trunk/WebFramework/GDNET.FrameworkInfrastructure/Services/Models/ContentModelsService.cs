@@ -69,16 +69,48 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
 
         #endregion
 
-        #region
+        #region ContentPart
+
+        public ContentPart GetContentPart(string contentPartId, string contentItemId)
+        {
+            ContentPart cp = null;
+            Guid guid = new Guid(contentItemId);
+
+            ContentItem ci = DomainRepositories.ContentItem.GetById(guid);
+            if (ci != null)
+            {
+                cp = ci.GetPart(new Guid(contentPartId));
+            }
+
+            return cp;
+        }
+
+        public void UpdateContentPart(ContentPart contentPart, ContentPartModel partModel)
+        {
+            contentPart.Name = partModel.Name;
+            contentPart.Details = partModel.Details;
+            contentPart.IsActive = partModel.IsActive;
+        }
+
+        public ContentPartModel GetContentPartModel(string contentPartId, string contentItemId)
+        {
+            ContentPartModel model = null;
+            ContentPart cp = this.GetContentPart(contentPartId, contentItemId);
+
+            if (cp != null)
+            {
+                model = this.GetContentPartModel(cp);
+            }
+
+            return model;
+        }
 
         public ContentPartModel GetContentPartModel(ContentPart contentPart)
         {
-            return new ContentPartModel()
-            {
-                Details = contentPart.Details,
-                IsActive = contentPart.IsActive,
-                Name = contentPart.Name
-            };
+            var model = new ContentPartModel();
+            model.Initialize(contentPart);
+
+            return model;
         }
 
         public IList<ContentPartModel> GetAllContentParts(ContentItem contentItem)
@@ -99,6 +131,14 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             model.AddContentParts(this.GetAllContentParts(contentItem));
 
             return model;
+        }
+
+        public void UpdateContentItem(ContentItem contentItem, ContentItemModel contentModel)
+        {
+            contentItem.Name = contentModel.Name;
+            contentItem.Description = contentModel.Description;
+            contentItem.Keywords = contentModel.Keywords;
+            contentItem.IsActive = contentModel.IsActive;
         }
 
         #endregion

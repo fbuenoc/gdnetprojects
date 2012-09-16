@@ -39,17 +39,20 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Base\AbstractController.cs" />
     <Compile Include="Common\Base\LanguageConstraint.cs" />
+    <Compile Include="Common\Base\ViewModelMode.cs" />
     <Compile Include="Common\ControllerAssistant.cs" />
-    <Compile Include="Common\Base\AbstractModel.cs" />
+    <Compile Include="Common\Base\AbstractViewModelT.cs" />
     <Compile Include="Common\Base\AbstractListController.cs" />
     <Compile Include="Common\DataAnnotations\CompareMLAttribute.cs" />
     <Compile Include="Common\DataAnnotations\StringLengthMLAttribute.cs" />

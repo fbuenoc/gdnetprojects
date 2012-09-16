@@ -5,7 +5,7 @@ using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
 namespace GDNET.FrameworkInfrastructure.Common.Models
 {
-    public class UpdateDetailsModel : AbstractModel<User>
+    public class UpdateDetailsModel : AbstractViewModel<User>
     {
         [Required]
         [DataType(DataType.Text)]

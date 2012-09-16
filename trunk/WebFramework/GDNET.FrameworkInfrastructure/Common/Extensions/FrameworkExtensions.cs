@@ -8,7 +8,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
     public static class FrameworkExtensions
     {
         public static IList<TModel> ConvertAll<TModel, TEntity>(IList<TEntity> listEntities)
-            where TModel : AbstractModel<TEntity>
+            where TModel : AbstractViewModel<TEntity>
             where TEntity : IEntity
         {
             IList<TModel> listModels = new List<TModel>();
