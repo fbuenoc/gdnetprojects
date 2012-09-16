@@ -9,14 +9,22 @@
         <asp:Literal ID="L2" runat="server" Text="<%$ Trans:GUI.ContentAdmin.List.Heading %>" />
     </h2>
     <%
-        Func<ContentItemModel, string> GenerateNameLink = (x =>
+        Func<ContentItemModel, string> NameGenerator = (x =>
         {
-            return string.Format("<a href=\"Details?id={0}\" title=\"{1}\">{2}</a>", x.Id, x.Description, x.Name);
+            return base.Html.ActionLink(x.Name, "Details", new { id = x.Id }, new { title = x.Description }).ToHtmlString();
+        });
+        Func<ContentItemModel, string> ActionsGenerator = (x =>
+        {
+            string editLink = base.Html.ActionLink("Edit", "Edit", new { id = x.Id }).ToHtmlString();
+            string viewLink = base.Html.ActionLink("Details", "Details", new { id = x.Id }).ToHtmlString();
+            return string.Concat(editLink, " ", viewLink);
         });
 
         var repeater = RepeaterAssistant.Create<ContentItemModel>("content_items").EnableHeader(true).AddEntities(base.Model.ToList());
-        repeater.AddGenerator("Name", GenerateNameLink);
-        repeater.AddColumnWithText("Name", "GUI.ContentAdmin.List.ColumnName").AddColumnWithText("Keywords", "GUI.ContentAdmin.List.ColumnKeywords");
+        repeater.AddColumnWithText("Name", "GUI.ContentAdmin.List.ColumnName")
+                .AddColumnWithText("Keywords", "GUI.ContentAdmin.List.ColumnKeywords")
+                .AddColumn("Actions");
+        repeater.AddGenerator("Name", NameGenerator).AddGenerator("Actions", ActionsGenerator);
     %>
     <div>
         <%= repeater.GenerateHtml() %>
