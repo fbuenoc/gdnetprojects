@@ -7,7 +7,9 @@
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="block">
         <div class="block-content">
-            <%= base.Model.Name %>
+            <h2>
+                <%= base.Model.Name %>
+            </h2>
         </div>
         <div class="actions-container">
             <%: base.Html.ActionLinkTrans("GUI.Common.Actions.Edit", "Edit", new { id = base.Model.Id })%>
@@ -24,7 +26,8 @@
                 string editPart = base.Html.ActionLinkTrans("GUI.Common.Actions.Edit", "EditPart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
                 string upPart = base.Html.ActionLink("Up", "MoveUpPart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
                 string downPart = base.Html.ActionLink("Down", "MoveDownPart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
-                return string.Concat(editPart, " ", upPart, " ", downPart);
+                string deletePart = base.Html.ActionLinkConfirmation("GUI.Common.Actions.Delete", "GUI.Common.Actions.Delete.Confirmation", "DeletePart", new { id = x.Id, cid = base.Model.Id }).ToHtmlString();
+                return string.Concat(editPart, " ", upPart, " ", downPart, " ", deletePart);
             });
 
             var repeater = RepeaterAssistant.Create<ContentPartModel>("item_parts").EnableHeader(true).AddEntities(base.Model.Parts);

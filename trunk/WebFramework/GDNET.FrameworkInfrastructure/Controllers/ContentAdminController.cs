@@ -123,6 +123,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         {
             ContentPartModel partModel = new ContentPartModel()
             {
+                IsActive = true,
                 Mode = ViewModelMode.Creation
             };
 
@@ -140,7 +141,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                     var partItem = WebFrameworkServices.ContentModels.CreateContentPart(partModel);
                     contentItem.AddPart(partItem);
 
-                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.ManageParts(id)), ControllerAssistant.BuildRouteValues(id));
+                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(id)), ControllerAssistant.BuildRouteValues(id));
                 }
             }
 
@@ -153,7 +154,12 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         public ActionResult Create()
         {
-            ContentItemModel itemModel = new ContentItemModel() { };
+            ContentItemModel itemModel = new ContentItemModel()
+            {
+                IsActive = true,
+                Mode = ViewModelMode.Creation
+            };
+
             return base.View("CreateOrUpdate", itemModel);
         }
 
@@ -166,7 +172,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 bool result = DomainRepositories.ContentItem.Save(contentItem);
                 if (result)
                 {
-                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.ManageParts(contentItem.Id.ToString())), ControllerAssistant.BuildRouteValues(contentItem.Id.ToString()));
+                    string id = contentItem.Id.ToString();
+                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(id)), ControllerAssistant.BuildRouteValues(id));
                 }
             }
 
@@ -210,22 +217,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         public ActionResult Delete(string id)
         {
-            return base.View();
-        }
-
-        [HttpPost]
-        public ActionResult Delete(string id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            DomainRepositories.ContentItem.Delete(new Guid(id));
+            return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
         }
 
         #endregion

@@ -5,9 +5,16 @@
     <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.ContentAdmin.List.Title %>" />
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>
-        <asp:Literal ID="L2" runat="server" Text="<%$ Trans:GUI.ContentAdmin.List.Heading %>" />
-    </h2>
+    <div class="block">
+        <div class="block-content">
+            <h2>
+                <asp:Literal ID="L2" runat="server" Text="<%$ Trans:GUI.ContentAdmin.List.Heading %>" />
+            </h2>
+        </div>
+        <div class="actions-container">
+            <%: base.Html.ActionLinkTrans("GUI.Account.Details.AddContent", "Create", "ContentAdmin")%>
+        </div>
+    </div>
     <%
         Func<ContentItemModel, string> NameGenerator = (x =>
         {
@@ -17,7 +24,8 @@
         {
             string editLink = base.Html.ActionLink("Edit", "Edit", new { id = x.Id }).ToHtmlString();
             string viewLink = base.Html.ActionLink("Details", "Details", new { id = x.Id }).ToHtmlString();
-            return string.Concat(editLink, " ", viewLink);
+            string deleteLink = base.Html.ActionLinkConfirmation("GUI.Common.Actions.Delete", "GUI.Common.Actions.Delete.Confirmation", "Delete", new { id = x.Id }).ToHtmlString();
+            return string.Concat(editLink, " ", viewLink, " ", deleteLink);
         });
 
         var repeater = RepeaterAssistant.Create<ContentItemModel>("content_items").EnableHeader(true).AddEntities(base.Model.ToList());
@@ -26,7 +34,7 @@
                 .AddColumn("Actions");
         repeater.AddGenerator("Name", NameGenerator).AddGenerator("Actions", ActionsGenerator);
     %>
-    <div>
+    <div class="block">
         <%= repeater.GenerateHtml() %>
         <div style="clear: both;">
         </div>
