@@ -25,6 +25,15 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             return htmlHelper.ActionLink(linkText, actionName, routeValues);
         }
 
+        public static MvcHtmlString ActionLinkConfirmation(this HtmlHelper htmlHelper, string textKeyword, string messageKeyword, string actionName, object routeValues)
+        {
+            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            string messageText = WebFrameworkServices.Translation.GetByKeyword(messageKeyword);
+            string javascript = string.Format("return confirm(\"{0}\");", messageText);
+
+            return htmlHelper.ActionLink(linkText, actionName, routeValues, new { onclick = javascript });
+        }
+
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, string controllerName)
         {
             string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);

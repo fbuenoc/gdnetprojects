@@ -25,8 +25,8 @@
         $(document).ready(function () {
             $('div[name=home_content_items] div[name=body]').addClass('rpt_body');
             $('div[name=home_content_items] div[name=body] div[name=line]').addClass('rpt_body_line');
-            $('div[name=home_content_items] div[name=body] div[name=line]:even').addClass('rpt_body_line_even');
-            $('div[name=home_content_items] div[name=body] div[name=line]:odd').addClass('rpt_body_line_odd');
+            $('div[name=home_content_items] div[name=body] div[name=line]:even').addClass('rpt_body_line_even_none');
+            $('div[name=home_content_items] div[name=body] div[name=line]:odd').addClass('rpt_body_line_odd_none');
             $('div[name=home_content_items] div[name=body] div[name=line] div[name=Name]').addClass('rpt_body_cell_home_name');
             $('div[name=home_content_items] div[name=body] div[name=line] div[name=Description]').addClass('rpt_body_cell_home_desc');
         });

@@ -401,11 +401,17 @@ div#title
 .rpt_body_line_even
 {
     float: left;
-    background-color: #EFEFEF;
 }
 .rpt_body_line_odd
 {
     float: left;
+}
+.rpt_body_line_even, .rpt_body_line_even_none
+{
+    background-color: #EFEFEF;
+}
+.rpt_body_line_odd, .rpt_body_line_odd_none
+{
     background-color: #DDDFFF;
 }
 .rpt_body_cell
@@ -472,11 +478,31 @@ div#title
     float: left;
     position: relative;
     margin-left: 10px;
+    height: 100%;
+    vertical-align: middle;
 }
 .block-content
 {
     float: left;
+    height: 100%;
     position: relative;
+}
+.block-content h1, h2, h3
+{
+    margin: 0px;
+    padding: 0 0 20px 0;
+}
+.block-content h1
+{
+    font-size: 120%;
+}
+.block-content h2
+{
+    font-size: 115%;
+}
+.block-content h3
+{
+    font-size: 115%;
 }
 
 /****************

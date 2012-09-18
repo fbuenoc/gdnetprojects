@@ -10,7 +10,15 @@
     <p>
         <%: base.Html.ActionLinkTrans("GUI.Account.Details.UpdateDetails", "UpdateDetails") %>
     </p>
-    <p>
-        <%: base.Html.ActionLinkTrans("GUI.Account.Details.AddContent", "Create", "ContentAdmin")%>
-    </p>
+    <fieldset>
+        <legend>
+            <%: base.Html.Translate("GUI.Account.Details.ContentAdmin.Legend")%>
+        </legend>
+        <p>
+            <%: base.Html.ActionLinkTrans("GUI.Account.Details.ContentAdmin.ListeContent", "List", "ContentAdmin")%>
+        </p>
+        <p>
+            <%: base.Html.ActionLinkTrans("GUI.Account.Details.AddContent", "Create", "ContentAdmin")%>
+        </p>
+    </fieldset>
 </asp:Content>
