@@ -13,12 +13,9 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
         [DisplayNameML("GUI.UpdateDetailsModel.DisplayName")]
         public string DisplayName { get; set; }
 
-        public override void Initialize(User entity)
+        public override void Initialize(User entity, bool filterActiveOnly)
         {
-            if (entity != null)
-            {
-                this.DisplayName = entity.DisplayName;
-            }
+            this.DisplayName = entity.DisplayName;
         }
     }
 }

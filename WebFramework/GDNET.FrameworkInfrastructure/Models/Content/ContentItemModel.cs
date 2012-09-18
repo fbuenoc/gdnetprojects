@@ -39,16 +39,15 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
             get { return new ReadOnlyCollection<ContentPartModel>(this.parts); }
         }
 
-        public override void Initialize(ContentItem entity)
+        public override void Initialize(ContentItem entity, bool filterActiveOnly)
         {
             base.Id = entity.Id.ToString();
             this.Name = entity.Name;
             this.Description = entity.Description;
             this.Keywords = entity.Keywords;
-            this.IsActive = entity.IsActive;
 
             this.parts.Clear();
-            this.parts.AddRange(FrameworkExtensions.ConvertAll<ContentPartModel, ContentPart>(entity.Parts));
+            this.parts.AddRange(FrameworkExtensions.ConvertAll<ContentPartModel, ContentPart>(entity.Parts, filterActiveOnly));
 
             base.InitializeCommon(entity);
         }

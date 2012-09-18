@@ -15,15 +15,15 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         public ActionResult Index()
         {
-            var listContentItems = DomainRepositories.ContentItem.GetTopActive(DefaultPageSize);
-            var listItems = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(listContentItems);
+            var listContentItems = DomainRepositories.ContentItem.GetTopWithActive(DefaultPageSize);
+            var listItems = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(listContentItems, true);
 
             return base.View(listItems);
         }
 
         public ActionResult Details(string id)
         {
-            ContentItemModel contentModel = WebFrameworkServices.ContentModels.GetContentItemModel(id);
+            ContentItemModel contentModel = WebFrameworkServices.ContentModels.GetContentItemModel(id, true);
             if (contentModel == null)
             {
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Index()));

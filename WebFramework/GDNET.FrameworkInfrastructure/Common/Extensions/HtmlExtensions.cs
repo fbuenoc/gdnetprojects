@@ -40,6 +40,12 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             return htmlHelper.ActionLink(linkText, actionName, controllerName);
         }
 
+        public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, string controllerName, object routeValues)
+        {
+            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            return htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, null);
+        }
+
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, string controllerName, string tooltipKeyword)
         {
             string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
