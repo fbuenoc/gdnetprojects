@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Models.Content;
-using GDNET.Utils;
 
 namespace GDNET.FrameworkInfrastructure.Services.Models
 {
@@ -14,6 +12,11 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
 
         public ContentItemModel GetContentItemModel(string id)
         {
+            return this.GetContentItemModel(id, false);
+        }
+
+        public ContentItemModel GetContentItemModel(string id, bool filterActiveOnly)
+        {
             Guid guid = Guid.Empty;
             ContentItemModel model = null;
 
@@ -22,7 +25,10 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
                 ContentItem ci = DomainRepositories.ContentItem.GetById(guid);
                 if (ci != null)
                 {
-                    model = this.GetContentItemModel(ci);
+                    if ((filterActiveOnly == false) || ci.IsActive)
+                    {
+                        model = this.GetContentItemModel(ci, filterActiveOnly);
+                    }
                 }
             }
 
@@ -31,19 +37,15 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
 
         public ContentItemModel GetContentItemModel(ContentItem contentItem)
         {
-            var model = new ContentItemModel();
-            model.Initialize(contentItem);
-
-            return model;
+            return this.GetContentItemModel(contentItem, false);
         }
 
-        public IList<ContentItemModel> GetTopContentItemModels(int maxResults)
+        public ContentItemModel GetContentItemModel(ContentItem contentItem, bool filterActiveOnly)
         {
-            var defaultContentItem = default(ContentItem);
-            var propertyCreatedAt = ExpressionAssistant.GetPropertyName(() => defaultContentItem.CreatedAt);
-            var listContentItems = DomainRepositories.ContentItem.GetTopByProperty(maxResults, propertyCreatedAt);
+            var model = new ContentItemModel();
+            model.Initialize(contentItem, filterActiveOnly);
 
-            return listContentItems.Select(x => this.GetContentItemModel(x)).ToList();
+            return model;
         }
 
         public ContentItem CreateContentItem(ContentItemModel itemModel)

@@ -24,12 +24,11 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
             set;
         }
 
-        public override void Initialize(ContentPart entity)
+        public override void Initialize(ContentPart entity, bool filterActiveOnly)
         {
             this.Id = entity.Id.ToString();
             this.Name = entity.Name;
             this.Details = entity.Details;
-            this.IsActive = entity.IsActive;
 
             base.InitializeCommon(entity);
         }
