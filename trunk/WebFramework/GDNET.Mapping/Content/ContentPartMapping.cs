@@ -10,6 +10,7 @@ namespace GDNET.Mapping.Content
     public class ContentPartMapping : AbstractJoinedSubclassMapping<ContentPart, Guid>, IEntityMapping
     {
         public ContentPartMapping()
+            : base()
         {
             var defaultContentPart = default(ContentPart);
 
@@ -20,7 +21,6 @@ namespace GDNET.Mapping.Content
             {
                 m.Lazy(LazyRelation.Proxy);
                 m.Access(Accessor.Property);
-                m.NotNullable(true);
                 m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultContentPart.ContentItem));
             });
         }

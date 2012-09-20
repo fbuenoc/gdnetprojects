@@ -10,6 +10,8 @@ namespace GDNET.Domain.Content
     {
         private IList<ContentPart> parts = new List<ContentPart>();
 
+        #region Properties
+
         public virtual string Name
         {
             get;
@@ -32,6 +34,10 @@ namespace GDNET.Domain.Content
         {
             get { return new ReadOnlyCollection<ContentPart>(this.parts); }
         }
+
+        #endregion
+
+        #region Methods
 
         public virtual ContentPart GetPart(Guid partId)
         {
@@ -58,5 +64,51 @@ namespace GDNET.Domain.Content
 
             return this;
         }
+
+        public virtual ContentItem RemovePartById(Guid partId)
+        {
+            var contentPart = this.GetPart(partId);
+            return this.RemovePart(contentPart);
+        }
+
+        public virtual ContentItem MoveUpPartById(Guid partId)
+        {
+            this.MovePartById(partId, true);
+            return this;
+        }
+
+        public virtual ContentItem MoveDownPartById(Guid partId)
+        {
+            this.MovePartById(partId, false);
+            return this;
+        }
+
+        private bool MovePartById(Guid partId, bool isUp)
+        {
+            if (this.parts.Count > 1)
+            {
+                var contentPart = this.GetPart(partId);
+                if (contentPart != null)
+                {
+                    var index = this.parts.IndexOf(contentPart);
+                    if (isUp && index > 0)
+                    {
+                        this.parts.Remove(contentPart);
+                        this.parts.Insert(index - 1, contentPart);
+                        return true;
+                    }
+                    else if (index < this.parts.Count - 1)
+                    {
+                        this.parts.Remove(contentPart);
+                        this.parts.Insert(index + 1, contentPart);
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        #endregion
     }
 }

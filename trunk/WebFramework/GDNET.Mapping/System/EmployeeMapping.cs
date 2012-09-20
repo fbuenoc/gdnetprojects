@@ -10,6 +10,7 @@ namespace GDNET.Mapping.System
     public class EmployeeMapping : AbstractJoinedSubclassMapping<Employee, Guid>, IEntityMapping
     {
         public EmployeeMapping()
+            : base()
         {
             var defaultEmployee = default(Employee);
 

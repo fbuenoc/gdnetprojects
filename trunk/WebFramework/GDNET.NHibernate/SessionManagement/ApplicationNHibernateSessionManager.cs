@@ -4,6 +4,7 @@ using System.Reflection;
 using GDNET.NHibernate.Interceptors;
 using GDNET.NHibernate.Mapping;
 using GDNET.Utils;
+using log4net;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
@@ -18,6 +19,8 @@ namespace GDNET.NHibernate.SessionManagement
 
         private const string DefaultHibernateConfigurationFile = "App_Data/hibernate.cfg.xml";
         private const string DefaultMappingAssembliesFile = "App_Data/MappingAssemblies.txt";
+
+        private static readonly ILog logger = LogManager.GetLogger(typeof(ApplicationNHibernateSessionManager));
 
         #region Singleton
 
@@ -62,6 +65,11 @@ namespace GDNET.NHibernate.SessionManagement
             _sessionFactory = base.Configuration.CurrentSessionContext<CallSessionContext>().BuildSessionFactory();
         }
 
+        protected virtual string ApplicationDirectory
+        {
+            get { return Directory.GetCurrentDirectory(); }
+        }
+
         protected virtual void BuildConfiguration(params IInterceptor[] interceptors)
         {
             var mapper = this.BuildModelMapper(mappingAssemblies);
@@ -85,12 +93,20 @@ namespace GDNET.NHibernate.SessionManagement
 
         private ModelMapper BuildModelMapper(string mappingAssembliesFile)
         {
+            #region Debug
+#if DEBUG
+            logger.InfoFormat("The file is {0}", mappingAssembliesFile);
+#endif
+            #endregion
+
             var mapper = new ModelMapper();
+
             if (File.Exists(mappingAssembliesFile))
             {
                 foreach (string line in File.ReadAllLines(mappingAssembliesFile).Where(x => this.ValidatedLine(x)))
                 {
-                    var asm = Assembly.Load(line);
+                    string assemblyFullPath = Path.Combine(this.ApplicationDirectory, line);
+                    var asm = Assembly.LoadFile(assemblyFullPath);
                     var listeMappingTypes = ReflectionAssistant.GetTypesImplementedInterfaceOnAssembly(typeof(IEntityMapping), asm);
                     mapper.AddMappings(listeMappingTypes);
                 }

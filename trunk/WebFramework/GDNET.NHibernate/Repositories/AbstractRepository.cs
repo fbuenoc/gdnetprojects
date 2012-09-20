@@ -108,6 +108,21 @@ namespace GDNET.NHibernate.Repositories
             return criteria.List<TEntity>();
         }
 
+        public virtual IList<TEntity> GetTopByProperty(int limit, string orderByProperty, IList<string> filterProperties, IList<object> filterValues)
+        {
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+
+            for (int counter = 0; counter < filterProperties.Count; counter++)
+            {
+                criteria.Add(Expression.Eq(filterProperties[counter], filterValues[counter]));
+            }
+
+            criteria.AddOrder(new Order(orderByProperty, false));
+            criteria.SetFirstResult(0).SetMaxResults(limit);
+
+            return criteria.List<TEntity>();
+        }
+
         #endregion
 
         #region FindByProperty Methods
@@ -324,5 +339,6 @@ namespace GDNET.NHibernate.Repositories
         #endregion
 
         #endregion
+
     }
 }

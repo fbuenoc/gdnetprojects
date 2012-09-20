@@ -144,10 +144,6 @@
       <Project>{132BB8B1-1578-4FE8-8E8E-52CE06C464FE}</Project>
       <Name>GDNET.Utils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GDNET.Web\GDNET.Web.csproj">
-      <Project>{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}</Project>
-      <Name>GDNET.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Config\AppSettings.config">

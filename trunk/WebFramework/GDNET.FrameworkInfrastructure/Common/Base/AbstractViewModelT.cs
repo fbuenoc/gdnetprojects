@@ -70,7 +70,12 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
 
         #region Methods
 
-        public abstract void Initialize(T entity);
+        public void Initialize(T entity)
+        {
+            this.Initialize(entity, false);
+        }
+
+        public abstract void Initialize(T entity, bool filterActiveOnly);
 
         protected void InitializeCommon(T entity)
         {
@@ -80,6 +85,11 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
                 this.CreatedBy = ((IEntityWithModification)entity).CreatedBy;
                 this.LastModifiedAt = ((IEntityWithModification)entity).LastModifiedAt;
                 this.LastModifiedBy = ((IEntityWithModification)entity).LastModifiedBy;
+            }
+
+            if (entity is IEntityWithModificationHistory)
+            {
+                this.IsActive = ((IEntityWithModificationHistory)entity).IsActive;
             }
         }
 

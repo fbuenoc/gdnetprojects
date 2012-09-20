@@ -18,13 +18,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
                 TModel model = Activator.CreateInstance<TModel>();
                 model.Initialize(anEntity, filterActiveOnly);
 
-                bool isOK = true;
-                if (filterActiveOnly && (anEntity is IEntityWithModificationHistory) && !((IEntityWithModificationHistory)anEntity).IsActive)
-                {
-                    isOK = false;
-                }
-
-                if (isOK)
+                if (!filterActiveOnly || ((anEntity is IEntityWithModificationHistory) && ((IEntityWithModificationHistory)anEntity).IsActive))
                 {
                     listModels.Add(model);
                 }

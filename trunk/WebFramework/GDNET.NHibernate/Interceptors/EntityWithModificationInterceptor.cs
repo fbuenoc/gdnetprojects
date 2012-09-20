@@ -85,7 +85,14 @@ namespace GDNET.NHibernate.Interceptors
 
         protected virtual string GetEmailCurrentUser()
         {
-            return DomainSessionContext.Instance.CurrentUser.Email;
+            if (DomainSessionContext.Instance.CurrentUser == null)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return DomainSessionContext.Instance.CurrentUser.Email;
+            }
         }
     }
 }
