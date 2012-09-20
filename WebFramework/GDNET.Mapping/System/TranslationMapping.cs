@@ -8,6 +8,7 @@ namespace GDNET.Mapping.System
     public class TranslationMapping : AbstractJoinedSubclassMapping<Translation, Guid>, IEntityMapping
     {
         public TranslationMapping()
+            : base()
         {
             base.Property(e => e.Keyword);
             base.Property(e => e.Language);

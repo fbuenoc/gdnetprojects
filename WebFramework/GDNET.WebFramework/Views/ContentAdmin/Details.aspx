@@ -12,6 +12,7 @@
             </h2>
         </div>
         <div class="actions-container">
+            <%: base.Html.ActionLinkTrans("GUI.Common.Actions.View", "Details", "Home", new { id = base.Model.Id })%>
             <%: base.Html.ActionLinkTrans("GUI.Common.Actions.Edit", "Edit", new { id = base.Model.Id })%>
             <%: base.Html.ActionLinkTrans("GUI.ContentAdmin.Details.CreatePart", "CreatePart", new { id = base.Model.Id })%>
         </div>

@@ -1,4 +1,5 @@
-﻿using System.Web.Hosting;
+﻿using System.IO;
+using System.Web.Hosting;
 using GDNET.NHibernate.Interceptors;
 using GDNET.NHibernate.SessionManagement;
 using NHibernate.Cfg;
@@ -34,6 +35,11 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
         {
             this.BuildConfiguration(new EntityWithModificationInterceptor());
             _sessionFactory = base.Configuration.CurrentSessionContext<WebSessionContext>().BuildSessionFactory();
+        }
+
+        protected override string ApplicationDirectory
+        {
+            get { return Path.Combine(HostingEnvironment.MapPath("~/"), "bin"); }
         }
     }
 }

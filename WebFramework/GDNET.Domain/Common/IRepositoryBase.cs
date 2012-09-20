@@ -44,6 +44,7 @@ namespace GDNET.Domain.Common
         IList<TEntity> GetAll(int page, int pageSize, out int totalRows);
 
         IList<TEntity> GetTopByProperty(int limit, string orderByProperty);
+        IList<TEntity> GetTopByProperty(int limit, string orderByProperty, IList<string> filterProperties, IList<object> filterValues);
 
         IList<TEntity> FindByProperties(string[] properties, object[] values);
         IList<TEntity> FindByProperties(string[] properties, object[] values, int page, int pageSize);

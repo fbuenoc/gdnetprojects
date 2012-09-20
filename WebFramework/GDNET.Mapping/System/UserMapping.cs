@@ -10,6 +10,7 @@ namespace GDNET.Mapping.System
     public class UserMapping : AbstractJoinedSubclassMapping<User, Guid>, IEntityMapping
     {
         public UserMapping()
+            : base()
         {
             var defaultEmployee = default(Employee);
             var pis = typeof(Employee).GetMember(ExpressionAssistant.GetPropertyName(() => defaultEmployee.User));

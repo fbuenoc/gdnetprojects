@@ -4,10 +4,10 @@ namespace GDNET.Domain.Base
 {
     public abstract class AbstractEntityWithModificationT<TId> : AbstractEntityT<TId>, IEntityWithModificationT<TId>
     {
-        private DateTime createdAt;
-        private DateTime? lastModifiedAt;
-        private string createdBy;
-        private string lastModifiedBy;
+        private DateTime createdAt = DateTime.MinValue;
+        private DateTime? lastModifiedAt = null;
+        private string createdBy = string.Empty;
+        private string lastModifiedBy = string.Empty;
 
         public virtual DateTime CreatedAt
         {

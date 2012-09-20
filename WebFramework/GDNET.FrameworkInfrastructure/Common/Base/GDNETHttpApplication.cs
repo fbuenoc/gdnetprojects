@@ -4,13 +4,16 @@ using System.Web.Routing;
 using GDNET.Business.Services;
 using GDNET.Data;
 using GDNET.Data.Base;
-using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.Handlers;
+using log4net;
+using log4net.Config;
 
 namespace GDNET.FrameworkInfrastructure.Common.Base
 {
     public class GDNETHttpApplication : HttpApplication
     {
+        private static readonly ILog logger = LogManager.GetLogger(typeof(GDNETHttpApplication));
+
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
@@ -58,6 +61,10 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
             var servicesManager = new ServicesManager();
             var repositoryStrategy = new DataRepositoryStrategy(WebNHibernateSessionManager.Instance);
             var repositories = new DataRepositories(repositoryStrategy);
+
+            // Configu Log4Net
+            XmlConfigurator.Configure();
+            logger.Info("Application starting...");
         }
     }
 }

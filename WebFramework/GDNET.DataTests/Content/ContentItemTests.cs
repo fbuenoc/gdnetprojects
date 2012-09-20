@@ -87,5 +87,35 @@ namespace GDNET.DataTests.Content
             Assert.AreEqual(true, listOfContentItems[0].Parts[0].IsActive);
             Assert.AreEqual(false, listOfContentItems[0].Parts[1].IsActive);
         }
+
+        [Test]
+        public void CanMoveParts()
+        {
+            var c1 = ContentItem.Factory.Create("C1", true);
+            DomainRepositories.ContentItem.Save(c1);
+
+            c1.AddPart(ContentPart.Factory.Create("P1", "D1", true));
+            c1.AddPart(ContentPart.Factory.Create("P2", "D2", false));
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
+
+            var listOfContentItems = DomainRepositories.ContentItem.GetAll();
+            Assert.AreEqual(2, listOfContentItems[0].Parts.Count);
+            Assert.AreEqual("P1", listOfContentItems[0].Parts[0].Name);
+            Assert.AreEqual("P2", listOfContentItems[0].Parts[1].Name);
+
+            listOfContentItems[0].MoveUpPartById(listOfContentItems[0].Parts[1].Id);
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
+
+            listOfContentItems = DomainRepositories.ContentItem.GetAll();
+            Assert.AreEqual("P2", listOfContentItems[0].Parts[0].Name);
+            Assert.AreEqual("P1", listOfContentItems[0].Parts[1].Name);
+
+            listOfContentItems[0].MoveDownPartById(listOfContentItems[0].Parts[0].Id);
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
+
+            listOfContentItems = DomainRepositories.ContentItem.GetAll();
+            Assert.AreEqual("P1", listOfContentItems[0].Parts[0].Name);
+            Assert.AreEqual("P2", listOfContentItems[0].Parts[1].Name);
+        }
     }
 }

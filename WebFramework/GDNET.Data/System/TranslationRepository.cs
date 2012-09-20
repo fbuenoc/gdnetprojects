@@ -31,7 +31,7 @@ namespace GDNET.Data.System
         public string GetValueByKeyword(string keyword, CultureInfo culture)
         {
             var translation = this.GetByKeyword(keyword, culture);
-            return (translation == null) ? string.Format("! {0} !", keyword) : translation.Value;
+            return (translation == null) ? string.Empty : translation.Value;
         }
     }
 }

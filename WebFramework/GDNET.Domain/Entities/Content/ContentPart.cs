@@ -16,6 +16,12 @@ namespace GDNET.Domain.Content
             set;
         }
 
+        public virtual int? Position
+        {
+            get;
+            protected set;
+        }
+
         public virtual ContentItem ContentItem
         {
             get;
