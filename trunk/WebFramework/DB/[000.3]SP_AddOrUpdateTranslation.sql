@@ -16,8 +16,8 @@ begin
 		begin
 			set @newid = newid();
 
-			insert into EntityHistoryComplex ([Id], [IsActive], [CreatedAt], [CreatedBy]) values
-			(@newid, 1, getdate(), 'data@gdnet');
+			insert into EntityHistoryComplex ([Id], [IsActive], [Views], [CreatedAt], [CreatedBy]) values
+			(@newid, 1, 0, getdate(), 'data@gdnet');
 
 			insert into Translation ([Id], [Keyword], [Language], [Value]) values
 			(@newid, @keyword, @language, @value);
