@@ -8,6 +8,7 @@ using GDNET.NHibernate.SessionManagement;
 using NHibernate;
 using NHibernate.Criterion;
 using NHibernate.Linq;
+using Expressions = System.Linq.Expressions;
 
 namespace GDNET.NHibernate.Repositories
 {
@@ -35,11 +36,34 @@ namespace GDNET.NHibernate.Repositories
             return this.repositoryStrategy.Session.CreateQuery(hqlQuery);
         }
 
-        protected IList<TEntity> GetAll(System.Linq.Expressions.Expression<Func<TEntity, bool>> predicate)
+        protected IList<TEntity> GetAll(int limit, Expressions.Expression<Func<TEntity, bool>> predicate)
         {
             var query = this.repositoryStrategy.Session.Query<TEntity>().Cacheable();
-            query = query.Where(predicate);
+            query = query.Where(predicate).Take(limit);
+
             return query.ToList();
+        }
+
+        protected IList<TEntity> GetAll(int limit, ICriterion criterion, Order order)
+        {
+            return this.GetAll(limit, new List<ICriterion> { criterion }, new List<Order> { order });
+        }
+
+        protected IList<TEntity> GetAll(int limit, IList<ICriterion> criterions, IList<Order> orders)
+        {
+            var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
+            criteria.SetMaxResults(limit);
+
+            if (criterions != null)
+            {
+                criterions.ForEach(x => { criteria.Add(x); });
+            }
+            if (orders != null)
+            {
+                orders.ForEach(y => { criteria.AddOrder(y); });
+            }
+
+            return criteria.List<TEntity>();
         }
 
         #region IRepositoryBase<TEntity,TId> Members

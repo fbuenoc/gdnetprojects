@@ -13,6 +13,7 @@ namespace GDNET.Mapping.Base
             : base(generator)
         {
             base.Property(x => x.IsActive);
+            base.Property(x => x.Views);
 
             base.ManyToOne(x => x.FirstLog, m =>
             {
