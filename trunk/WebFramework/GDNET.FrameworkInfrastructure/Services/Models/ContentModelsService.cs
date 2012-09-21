@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Models.Content;
@@ -17,6 +18,11 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
 
         public ContentItemModel GetContentItemModel(string id, bool filterActiveOnly)
         {
+            return this.GetContentItemModel(id, filterActiveOnly, false);
+        }
+
+        public ContentItemModel GetContentItemModel(string id, bool filterActiveOnly, bool promotingOnView)
+        {
             Guid guid = Guid.Empty;
             ContentItemModel model = null;
 
@@ -28,6 +34,18 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
                     if ((filterActiveOnly == false) || ci.IsActive)
                     {
                         model = this.GetContentItemModel(ci, filterActiveOnly);
+
+                        if (promotingOnView)
+                        {
+                            ci.Views += 1;
+                            ci.Parts.ToList().ForEach(part =>
+                            {
+                                if ((filterActiveOnly == false) || part.IsActive)
+                                {
+                                    part.Views += 1;
+                                }
+                            });
+                        }
                     }
                 }
             }

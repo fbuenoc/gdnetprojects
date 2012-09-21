@@ -3,4 +3,4 @@
 ##############################################################################
 
 # For system framework
-GDNET.Mapping
+GDNET.Mapping.dll

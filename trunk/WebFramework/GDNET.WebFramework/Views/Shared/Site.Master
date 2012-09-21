@@ -28,6 +28,8 @@
         </header>
         <section id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+            <div class="clear">
+            </div>
             <footer>
             </footer>
         </section>

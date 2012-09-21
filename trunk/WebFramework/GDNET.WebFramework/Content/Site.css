@@ -471,7 +471,14 @@ div#title
 }
 .block-left
 {
+    float: left;
     width: 680px;
+}
+.block-right
+{
+    float: right;
+    position: relative;
+    width: 350px;
 }
 .actions-container
 {
@@ -525,6 +532,22 @@ div#title
     line-height: 20px;
 }
 
+.rpt_body_line_even_none_focus
+{
+    background-color: #FFFFEE;
+}
+.rpt_body_line_odd_none_focus
+{
+    background-color: #FFFFFE;
+}
+.rpt_body_cell_focus_name_focus
+{
+    float: none;
+    padding-right: 5px;
+    line-height: 25px;
+}
+
+
 /****************
 ** Home/Details
 ****************/
@@ -533,7 +556,14 @@ div#title
     font-weight: bold;
     font-size: 120%;
     line-height: 25px;
+}
+a .home-details-title
+{
     color: #034af3;
+}
+div .home-details-title
+{
+    font-size: 125%;
 }
 .home-details-description
 {

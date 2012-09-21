@@ -1,4 +1,5 @@
-﻿using GDNET.Domain.Base.Management;
+﻿using System;
+using GDNET.Domain.Base.Management;
 
 namespace GDNET.Domain.Base
 {
@@ -17,6 +18,12 @@ namespace GDNET.Domain.Base
         }
 
         public virtual bool IsActive
+        {
+            get;
+            set;
+        }
+
+        public virtual Int64 Views
         {
             get;
             set;

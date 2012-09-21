@@ -93,12 +93,6 @@ namespace GDNET.NHibernate.SessionManagement
 
         private ModelMapper BuildModelMapper(string mappingAssembliesFile)
         {
-            #region Debug
-#if DEBUG
-            logger.InfoFormat("The file is {0}", mappingAssembliesFile);
-#endif
-            #endregion
-
             var mapper = new ModelMapper();
 
             if (File.Exists(mappingAssembliesFile))
