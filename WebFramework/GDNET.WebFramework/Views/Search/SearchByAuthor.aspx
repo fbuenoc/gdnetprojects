@@ -1,26 +1,21 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DetailModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SearchByAuthorModel>" %>
 
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.HomeModels" %>
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.SearchModels" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
-    <%: base.Html.Translate("GUI.DetailsPage.Title", base.Model.ItemModel.Name) %>
+    <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.Search.ByAuthor.Title %>" />
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
     <div class="block">
         <div class="block-left">
-            <div class="home-details-title">
-                <%= base.Model.ItemModel.Name %>
-            </div>
-            <div class="home-details-description">
-                <%= base.Model.ItemModel.Description%>
-            </div>
-            <p>
-                <%= base.Model.ItemModel.Keywords%>
-            </p>
-            <%
-                var repeater = RepeaterAssistant.Create<ContentPartModel>("item_parts").AddEntities(base.Model.ItemModel.Parts);
-                repeater.AddColumns("Name", "Details").EnableHeader(false);
+            <%  
+                Func<ContentItemModel, string> GenerateNameLink = x =>
+                {
+                    return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, null).ToHtmlString();
+                };
+
+                var repeater = RepeaterAssistant.Create<ContentItemModel>("home_content_items").AddEntities(base.Model.NewItems.ToList());
+                repeater.AddColumns("Name", "Description").EnableHeader(false).AddGenerator("Name", GenerateNameLink);
             %>
             <%= repeater.GenerateHtml() %>
         </div>
@@ -34,7 +29,15 @@
                         <%: base.Html.Translate("GUI.User.DisplayName")%>
                     </div>
                     <div class="info_value">
-                        <%: base.Html.ActionLink(base.Model.AuthorModel.DisplayName, "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.AuthorModel.Id }, null)%>
+                        <%: base.Model.AuthorModel.DisplayName %>
+                    </div>
+                </div>
+                <div class="clear">
+                    <div class="info_label">
+                        <%: base.Html.Translate("GUI.User.CreatedDate")%>
+                    </div>
+                    <div class="info_value">
+                        <%: base.Model.AuthorModel.CreatedAt.ToShortDateString() %>
                     </div>
                 </div>
                 <div class="clear">
@@ -66,12 +69,12 @@
     </div>
     <script type="text/javascript">
         $(document).ready(function () {
-            $('div[name=item_parts]').addClass('rpt');
-            $('div[name=item_parts] div[name=body]').addClass('rpt_body');
-            $('div[name=item_parts] div[name=body] div[name=line]').addClass('rpt_body_line');
-            $('div[name=item_parts] div[name=body] div[name=line]').addClass('rpt_body_line_home_details');
-            $('div[name=item_parts] div[name=body] div[name=line] div[name=Name]').addClass('home-details-sub-title');
-            $('div[name=item_parts] div[name=body] div[name=line] div[name=Details]').addClass('home-details-sub-content');
+            $('div[name=home_content_items] div[name=body]').addClass('rpt_body');
+            $('div[name=home_content_items] div[name=body] div[name=line]').addClass('rpt_body_line');
+            $('div[name=home_content_items] div[name=body] div[name=line]:even').addClass('rpt_body_line_even_none');
+            $('div[name=home_content_items] div[name=body] div[name=line]:odd').addClass('rpt_body_line_odd_none');
+            $('div[name=home_content_items] div[name=body] div[name=line] div[name=Name]').addClass('rpt_body_cell_home_name');
+            $('div[name=home_content_items] div[name=body] div[name=line] div[name=Description]').addClass('rpt_body_cell_home_desc');
 
             $('div[name=focus_items] div[name=body]').addClass('rpt_body');
             $('div[name=focus_items] div[name=body] div[name=line]').addClass('rpt_body_line');

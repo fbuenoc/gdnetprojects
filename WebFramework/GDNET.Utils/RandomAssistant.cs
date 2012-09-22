@@ -5,10 +5,9 @@ namespace GDNET.Utils
 {
     public sealed class RandomAssistant
     {
-        public static string GenerateASentence()
+        public static string GenerateASentence(Random aRandom)
         {
             StringBuilder sb = new StringBuilder();
-            Random aRandom = new Random();
 
             int length = aRandom.Next(100, 1000);
             for (int index = 0; index < length; index++)
@@ -32,23 +31,22 @@ namespace GDNET.Utils
             return sb.ToString();
         }
 
-        public static string GenerateAParagraph()
+        public static string GenerateAParagraph(Random aRandom)
         {
             string result = string.Empty;
 
             for (int counter = 0; counter < 3; counter++)
             {
-                result += GenerateASentence();
+                result += GenerateASentence(aRandom);
                 result += ". ";
             }
 
             return result.Trim();
         }
 
-        public static string GenerateEmailAddress()
+        public static string GenerateEmailAddress(Random aRandom)
         {
             StringBuilder sb = new StringBuilder();
-            Random aRandom = new Random();
 
             int length1 = aRandom.Next(3, 20);
             int length2 = aRandom.Next(3, 10);

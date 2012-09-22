@@ -24,6 +24,12 @@ namespace GDNET.Domain.Entities.System
             set;
         }
 
+        public virtual string Introduction
+        {
+            get;
+            set;
+        }
+
         public virtual string Password
         {
             get;

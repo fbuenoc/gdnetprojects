@@ -52,5 +52,26 @@ namespace GDNET.Data.Content
 
             return base.GetAll(limit, criterions, orders);
         }
+
+        public IList<ContentItem> GetTopWithActiveByAuthor(int limit, string authorEmail)
+        {
+            var propertyCreatedBy = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.CreatedBy);
+            var propertyIsActive = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.IsActive);
+            var propertyCreatedAt = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.CreatedAt);
+            var propertyLastModifiedAt = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.LastModifiedAt);
+
+            var criterions = new List<ICriterion>()
+            { 
+                Expression.Eq(propertyIsActive, true),
+                Expression.Eq(propertyCreatedBy, authorEmail),
+            };
+            var orders = new List<Order>() 
+            {
+                new Order(propertyCreatedBy, false),
+                new Order(propertyLastModifiedAt, false)
+            };
+
+            return base.GetAll(limit, criterions, orders);
+        }
     }
 }

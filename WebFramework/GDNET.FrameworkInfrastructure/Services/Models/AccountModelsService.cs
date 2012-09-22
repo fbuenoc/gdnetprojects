@@ -13,12 +13,16 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
 
             if (user != null)
             {
-                model = new UpdateDetailsModel
-                {
-                    DisplayName = user.DisplayName,
-                    IsActive = user.IsActive
-                };
+                model = this.GetUpdateDetailsModel(user);
             }
+
+            return model;
+        }
+
+        public UpdateDetailsModel GetUpdateDetailsModel(User user)
+        {
+            var model = new UpdateDetailsModel();
+            model.Initialize(user, false);
 
             return model;
         }
@@ -31,6 +35,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             if (user != null)
             {
                 user.DisplayName = model.DisplayName;
+                user.Introduction = model.Introduction;
                 user.IsActive = model.IsActive;
                 result = true;
             }
