@@ -452,17 +452,20 @@ div#title
     clear: both;
     padding-top: 10px;
 }
-.editor-label-admin
+.editor-label-admin, .info_label
 {
     float: left;
-    width: 100px;
     padding: 2px;
     line-height: 20px;
+    width: 100px;
 }
-.editor-field-admin
+
+.editor-field-admin, .info_value
 {
     float: left;
     position: relative;
+    padding: 2px;
+    line-height: 20px;
 }
 .block
 {

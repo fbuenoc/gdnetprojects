@@ -1,4 +1,5 @@
-﻿using GDNET.Utils;
+﻿using System;
+using GDNET.Utils;
 using NUnit.Framework;
 
 namespace GDNET.Tests.UtilsTests
@@ -9,7 +10,7 @@ namespace GDNET.Tests.UtilsTests
         [Test]
         public void CanGenerateEmailAddress()
         {
-            var s = RandomAssistant.GenerateEmailAddress();
+            var s = RandomAssistant.GenerateEmailAddress(new Random());
             Assert.IsNotEmpty(s);
             Assert.IsTrue(s.Contains("@"));
             Assert.IsTrue(s.Contains("."));

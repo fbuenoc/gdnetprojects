@@ -17,16 +17,29 @@
             <legend>
                 <%: base.Html.Translate("GUI.Account.General.FieldSet.Legend") %>
             </legend>
-            <div class="editor-label">
-                <%: Html.LabelFor(m => m.DisplayName) %>
+            <div class="editor-line">
+                <div class="editor-label-admin">
+                    <%: Html.LabelFor(m => m.DisplayName) %>
+                </div>
+                <div class="editor-field-admin">
+                    <%: Html.TextBoxFor(m => m.DisplayName, "input_name")%>
+                    <%: Html.ValidationMessageFor(m => m.DisplayName)%>
+                </div>
             </div>
-            <div class="editor-field">
-                <%: Html.TextBoxFor(m => m.DisplayName)%>
-                <%: Html.ValidationMessageFor(m => m.DisplayName)%>
+            <div class="editor-line">
+                <div class="editor-label-admin">
+                    <%: Html.LabelFor(m => m.Introduction) %>
+                </div>
+                <div class="editor-field-admin">
+                    <%: Html.TextAreaFor(m => m.Introduction, "textarea_content")%>
+                    <%: Html.ValidationMessageFor(m => m.Introduction)%>
+                </div>
             </div>
-            <div class="editor-field">
-                <%: Html.CheckBoxFor(m => m.IsActive)%>
-                <%: Html.LabelFor(m => m.IsActive) %>
+            <div class="editor-line">
+                <div class="editor-field">
+                    <%: Html.CheckBoxFor(m => m.IsActive)%>
+                    <%: Html.LabelFor(m => m.IsActive) %>
+                </div>
             </div>
         </fieldset>
         <p>
