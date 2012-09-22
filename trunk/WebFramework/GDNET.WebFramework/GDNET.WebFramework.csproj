@@ -146,7 +146,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Config\AppSettings.config">
+    <Content Include="App_Data\Config\AppSettings.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

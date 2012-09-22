@@ -31,6 +31,7 @@ namespace GDNET.FrameworkInfrastructure.Security
 
             MembershipUser membershipUser = null;
             User newUser = User.Factory.Create(email, password);
+            newUser.IsActive = true;
 
             if (DomainRepositories.User.Save(newUser))
             {

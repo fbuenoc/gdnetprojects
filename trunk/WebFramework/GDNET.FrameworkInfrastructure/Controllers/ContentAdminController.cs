@@ -4,13 +4,14 @@ using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common;
 using GDNET.FrameworkInfrastructure.Common.Base;
+using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
 using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
-    [Authorize]
+    [RootAuthorize]
     public class ContentAdminController : AbstractListController
     {
         public override ActionResult List()
