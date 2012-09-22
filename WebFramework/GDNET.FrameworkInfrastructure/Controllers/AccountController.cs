@@ -110,7 +110,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
-            if (ModelState.IsValid)
+            if (base.ModelState.IsValid)
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
@@ -123,12 +123,12 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", ErrorCodeToString(createStatus));
+                    base.ModelState.AddModelError("", ErrorCodeToString(createStatus));
                 }
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return base.View(model);
         }
 
         #endregion
