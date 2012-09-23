@@ -6,7 +6,10 @@
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.DetailsPage.Title", base.Model.ItemModel.Name) %>
 </asp:Content>
-<asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="C2" ContentPlaceHolderID="MetaContent" runat="server">
+    <% base.Html.RenderPartial("PageMetaUserControl", base.Model.PageMeta); %>
+</asp:Content>
+<asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
     <div class="block">
         <div class="block-left">
             <div class="home-details-title">
@@ -34,7 +37,7 @@
                         <%: base.Html.Translate("GUI.User.DisplayName")%>
                     </div>
                     <div class="info_value">
-                        <%: base.Html.ActionLink(base.Model.AuthorModel.DisplayName, "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.AuthorModel.Id }, null)%>
+                        <%: base.Html.ActionLinkTrans(base.Model.AuthorModel.DisplayName, "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.AuthorModel.Id }, "GUI.DetailsPage.AuthorInfo.SearchTooltip")%>
                     </div>
                 </div>
                 <div class="clear">

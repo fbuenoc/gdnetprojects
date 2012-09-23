@@ -5,7 +5,10 @@
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.HomePage.Title %>" />
 </asp:Content>
-<asp:Content ID="C2" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="C2" ContentPlaceHolderID="MetaContent" runat="server">
+    <% base.Html.RenderPartial("PageMetaUserControl", base.Model.PageMeta); %>
+</asp:Content>
+<asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
     <div class="block">
         <div class="block-left">
             <%  
