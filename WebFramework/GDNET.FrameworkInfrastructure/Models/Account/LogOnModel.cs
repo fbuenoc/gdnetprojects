@@ -7,12 +7,12 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
     {
         [Required]
         [Email("GUI.Common.InvalidFormat.Email")]
-        [DisplayNameML("GUI.LogOnModel.UserName")]
+        [DisplayNameML("GUI.User.UserName")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [DisplayNameML("GUI.AccountInformation.Password")]
+        [DisplayNameML("GUI.User.Password")]
         public string Password { get; set; }
 
         [DisplayNameML("GUI.LogOnModel.RememberMe")]

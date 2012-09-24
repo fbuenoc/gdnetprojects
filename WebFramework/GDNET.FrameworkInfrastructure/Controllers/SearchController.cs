@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
-using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
+using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Models.SearchModels;
 using GDNET.FrameworkInfrastructure.Services;
@@ -49,6 +49,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 FocusItems = focusModels,
                 AuthorModel = authorModel,
             };
+            model.PageMeta.Description = string.Format(WebFrameworkServices.Translation.GetByKeyword("GUI.Search.ByAuthor.Description"), authorModel.DisplayName);
+            model.PageMeta.Author = authorModel.DisplayName;
 
             return base.View("SearchByAuthor", model);
         }

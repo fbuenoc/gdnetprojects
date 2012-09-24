@@ -51,12 +51,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Base\AbstractController.cs" />
+    <Compile Include="Controllers\Base\AbstractController.cs" />
     <Compile Include="Common\Base\LanguageConstraint.cs" />
     <Compile Include="Common\Base\ViewModelMode.cs" />
-    <Compile Include="Common\ControllerAssistant.cs" />
+    <Compile Include="Controllers\ControllerAssistant.cs" />
     <Compile Include="Common\Base\AbstractViewModelT.cs" />
-    <Compile Include="Common\Base\AbstractListController.cs" />
+    <Compile Include="Controllers\Base\AbstractListController.cs" />
     <Compile Include="Common\DataAnnotations\CompareMLAttribute.cs" />
     <Compile Include="Common\DataAnnotations\RootAuthorizeAttribute.cs" />
     <Compile Include="Common\DataAnnotations\StringLengthMLAttribute.cs" />
@@ -70,6 +70,7 @@
     <Compile Include="Common\Handlers\MultilingualMvcRouteHandler.cs" />
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Models\Account\ChangePasswordModel.cs" />
+    <Compile Include="Models\Account\UserDetailsModel.cs" />
     <Compile Include="Models\Account\UpdateDetailsModel.cs" />
     <Compile Include="Models\Account\LogOnModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
@@ -78,6 +79,8 @@
     <Compile Include="Controllers\ContentAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Common\Base\GDNETHttpApplication.cs" />
+    <Compile Include="Models\Base\AbstractPageModel.cs" />
+    <Compile Include="Models\Base\PageMetaModel.cs" />
     <Compile Include="Models\Content\ContentItemModel.cs" />
     <Compile Include="Models\Content\ContentPartModel.cs" />
     <Compile Include="Models\Content\ContentItemPartsModel.cs" />
