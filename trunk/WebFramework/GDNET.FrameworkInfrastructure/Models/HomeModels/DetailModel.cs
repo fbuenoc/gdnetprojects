@@ -1,18 +1,12 @@
 ﻿using System.Collections.Generic;
 using GDNET.FrameworkInfrastructure.Common.Models;
+using GDNET.FrameworkInfrastructure.Models.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
 
 namespace GDNET.FrameworkInfrastructure.Models.HomeModels
 {
-    public class DetailModel
+    public class DetailModel : AbstractPageModel
     {
-        public DetailModel()
-        {
-            this.ItemModel = new ContentItemModel();
-            this.FocusItems = new List<ContentItemModel>();
-            this.AuthorModel = new UpdateDetailsModel();
-        }
-
         public ContentItemModel ItemModel
         {
             get;
@@ -29,6 +23,14 @@ namespace GDNET.FrameworkInfrastructure.Models.HomeModels
         {
             get;
             set;
+        }
+
+        public DetailModel()
+            : base()
+        {
+            this.ItemModel = new ContentItemModel();
+            this.FocusItems = new List<ContentItemModel>();
+            this.AuthorModel = new UpdateDetailsModel();
         }
     }
 }

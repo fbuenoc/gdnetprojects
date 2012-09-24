@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
-using GDNET.FrameworkInfrastructure.Common;
-using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.Models;
+using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
@@ -22,7 +21,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         public ActionResult LogOn()
         {
-            return View();
+            return base.View();
         }
 
         [HttpPost]

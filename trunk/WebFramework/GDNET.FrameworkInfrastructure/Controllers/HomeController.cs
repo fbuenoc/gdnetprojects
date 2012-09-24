@@ -2,13 +2,11 @@
 using System.Web.Mvc;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
-using GDNET.FrameworkInfrastructure.Common;
-using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
+using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Models.HomeModels;
 using GDNET.FrameworkInfrastructure.Services;
-using GDNET.FrameworkInfrastructure.Common.Models;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
@@ -28,8 +26,11 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             IndexModel model = new IndexModel()
             {
                 NewItems = listItems,
-                FocusItems = focusModels
+                FocusItems = focusModels,
             };
+            model.PageMeta.Description = "";
+            model.PageMeta.Author = "";
+            model.PageMeta.Keywords = "Learn ASP.NET, Learn ASP.NET MVC, Learn JavaScript, Learn JQuery, Design Pattern best practice";
 
             return base.View(model);
         }
@@ -53,6 +54,9 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 FocusItems = focusModels,
                 AuthorModel = authorModel
             };
+            model.PageMeta.Keywords = contentModel.Keywords;
+            model.PageMeta.Description = contentModel.Description;
+            model.PageMeta.Author = authorModel.DisplayName;
 
             return base.View(model);
         }

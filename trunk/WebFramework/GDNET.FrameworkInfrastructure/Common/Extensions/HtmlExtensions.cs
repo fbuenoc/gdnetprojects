@@ -8,9 +8,12 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 {
     public static class HtmlExtensions
     {
-        public static MvcHtmlString ActionLinkWithId(this HtmlHelper htmlHelper, string linkText, string actionName, string idValue)
+        #region ActionLinkTrans
+
+        public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, string titleKeyword)
         {
-            return htmlHelper.ActionLink(linkText, actionName, new { id = idValue });
+            string titleText = WebFrameworkServices.Translation.GetByKeyword(titleKeyword);
+            return htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, new { title = titleText });
         }
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName)
@@ -23,15 +26,6 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
         {
             string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
             return htmlHelper.ActionLink(linkText, actionName, routeValues);
-        }
-
-        public static MvcHtmlString ActionLinkConfirmation(this HtmlHelper htmlHelper, string textKeyword, string messageKeyword, string actionName, object routeValues)
-        {
-            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
-            string messageText = WebFrameworkServices.Translation.GetByKeyword(messageKeyword);
-            string javascript = string.Format("return confirm(\"{0}\");", messageText);
-
-            return htmlHelper.ActionLink(linkText, actionName, routeValues, new { onclick = javascript });
         }
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, string controllerName)
@@ -57,13 +51,30 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             return htmlHelper.ActionLink(linkText, actionName, controllerName, null, htmlAttributes);
         }
 
+        #endregion
 
-        #region ValidationSummary methods
+        #region ValidationSummary
 
         public static MvcHtmlString ValidationSummaryTrans(this HtmlHelper htmlHelper, bool excludePropertyErrors, string messageKeyword)
         {
             string message = WebFrameworkServices.Translation.GetByKeyword(messageKeyword);
             return htmlHelper.ValidationSummary(excludePropertyErrors, message);
+        }
+
+        #endregion
+
+        #region Translate
+
+        public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword)
+        {
+            string value = WebFrameworkServices.Translation.GetByKeyword(keyword);
+            return MvcHtmlString.Create(value);
+        }
+
+        public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword, params object[] objects)
+        {
+            string value = string.Format(WebFrameworkServices.Translation.GetByKeyword(keyword), objects);
+            return MvcHtmlString.Create(value);
         }
 
         #endregion
@@ -78,16 +89,18 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             return htmlHelper.TextAreaFor(expression, new { @class = className });
         }
 
-        public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword)
+        public static MvcHtmlString ActionLinkWithId(this HtmlHelper htmlHelper, string linkText, string actionName, string idValue)
         {
-            string value = WebFrameworkServices.Translation.GetByKeyword(keyword);
-            return MvcHtmlString.Create(value);
+            return htmlHelper.ActionLink(linkText, actionName, new { id = idValue });
         }
 
-        public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword, params object[] objects)
+        public static MvcHtmlString ActionLinkConfirmation(this HtmlHelper htmlHelper, string textKeyword, string messageKeyword, string actionName, object routeValues)
         {
-            string value = string.Format(WebFrameworkServices.Translation.GetByKeyword(keyword), objects);
-            return MvcHtmlString.Create(value);
+            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            string messageText = WebFrameworkServices.Translation.GetByKeyword(messageKeyword);
+            string javascript = string.Format("return confirm(\"{0}\");", messageText);
+
+            return htmlHelper.ActionLink(linkText, actionName, routeValues, new { onclick = javascript });
         }
     }
 }

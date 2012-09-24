@@ -8,18 +8,18 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
         [DataType(DataType.EmailAddress)]
         [Required]
         [Email("GUI.Common.InvalidFormat")]
-        [DisplayNameML("GUI.RegisterModel.Email")]
+        [DisplayNameML("GUI.User.Email")]
         public string Email { get; set; }
 
         [DataType(DataType.Password)]
         [Required]
         [StringLength(100, MinimumLength = 6)]
-        [DisplayNameML("GUI.AccountInformation.Password")]
+        [DisplayNameML("GUI.User.Password")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [DisplayNameML("GUI.RegisterModel.ConfirmPassword")]
-        [CompareML("Password", "GUI.Account.ConfirmPassword.Error")]
+        [DisplayNameML("GUI.User.ConfirmPassword")]
+        [CompareML("Password", "GUI.User.ConfirmPassword.Error")]
         public string ConfirmPassword { get; set; }
     }
 }
