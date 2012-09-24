@@ -384,7 +384,7 @@ div#title
     float: left;
     position: relative;
     font-weight: bold;
-    width: 200px;
+    width: 300px;
     padding-right: 5px;
 }
 .rpt_body
@@ -418,7 +418,7 @@ div#title
 {
     float: left;
     position: relative;
-    width: 200px;
+    width: 300px;
     padding-right: 5px;
 }
 /**********************************
@@ -437,13 +437,13 @@ div#title
 .textarea_tiny, .textarea_content
 {
     width: 800px;
-    height: 100px;
+    height: 80px;
     padding: 5px;
     line-height: 20px;
 }
 .textarea_content
 {
-    height: 300px !important;
+    height: 200px !important;
 }
 
 .editor-line

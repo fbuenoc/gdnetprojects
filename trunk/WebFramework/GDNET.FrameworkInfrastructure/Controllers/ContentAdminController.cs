@@ -174,7 +174,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 if (result)
                 {
                     string id = contentItem.Id.ToString();
-                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(id)), ControllerAssistant.BuildRouteValues(id));
+                    return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.CreatePart(id)), ControllerAssistant.BuildRouteValues(id));
                 }
             }
 
