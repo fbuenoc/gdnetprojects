@@ -19,7 +19,7 @@ namespace GDNET.FrameworkInfrastructure.Models.HomeModels
             set;
         }
 
-        public UpdateDetailsModel AuthorModel
+        public UserDetailsModel AuthorModel
         {
             get;
             set;
@@ -30,7 +30,7 @@ namespace GDNET.FrameworkInfrastructure.Models.HomeModels
         {
             this.ItemModel = new ContentItemModel();
             this.FocusItems = new List<ContentItemModel>();
-            this.AuthorModel = new UpdateDetailsModel();
+            this.AuthorModel = new UserDetailsModel();
         }
     }
 }

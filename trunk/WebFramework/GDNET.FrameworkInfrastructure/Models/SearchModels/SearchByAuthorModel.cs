@@ -9,7 +9,7 @@ namespace GDNET.FrameworkInfrastructure.Models.SearchModels
             : base()
         {
             this.Mode = mode;
-            this.AuthorModel = new UpdateDetailsModel();
+            this.AuthorModel = new UserDetailsModel();
         }
 
         public SearchMode Mode
@@ -18,7 +18,7 @@ namespace GDNET.FrameworkInfrastructure.Models.SearchModels
             set;
         }
 
-        public UpdateDetailsModel AuthorModel
+        public UserDetailsModel AuthorModel
         {
             get;
             set;

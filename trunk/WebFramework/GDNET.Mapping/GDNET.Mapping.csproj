@@ -48,6 +48,8 @@
     <Compile Include="Content\ContentItemMapping.cs" />
     <Compile Include="Content\ContentPartMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\CatalogMapping.cs" />
+    <Compile Include="System\DataLineMapping.cs" />
     <Compile Include="System\TranslationMapping.cs" />
     <Compile Include="System\EmployeeMapping.cs" />
     <Compile Include="System\Management\EntityHistoryComplexMapping.cs">

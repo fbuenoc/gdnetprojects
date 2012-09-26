@@ -8,12 +8,19 @@ namespace GDNET.Mapping.Common
 {
     public static class MappingAssistant
     {
+        private static readonly User DefaultUser = default(User);
+
         public static string GetForeignKeyColumn<T>(Expression<Func<T>> property)
         {
-            User defaultUser = default(User);
-            string propertyId = ExpressionAssistant.GetPropertyName(() => defaultUser.Id);
+            string propertyId = ExpressionAssistant.GetPropertyName(() => DefaultUser.Id);
             string propertyName = ExpressionAssistant.GetPropertyName(property);
             return (propertyName + propertyId);
+        }
+
+        public static string GetForeignKeyColumn<T>()
+        {
+            string propertyId = ExpressionAssistant.GetPropertyName(() => DefaultUser.Id);
+            return (typeof(T).Name + propertyId);
         }
 
         public static string GetStrongTableByType(Type type)
