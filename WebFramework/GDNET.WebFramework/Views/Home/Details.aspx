@@ -33,21 +33,9 @@
                     <%: base.Html.Translate("GUI.DetailsPage.AuthorInfo.Title")%>
                 </div>
                 <div class="clear">
-                    <div class="info_label">
-                        <%: base.Html.Translate("GUI.User.DisplayName")%>
-                    </div>
-                    <div class="info_value">
-                        <%: base.Html.ActionLinkTrans(base.Model.AuthorModel.DisplayName, "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.AuthorModel.Id }, "GUI.DetailsPage.AuthorInfo.SearchTooltip")%>
-                    </div>
+                    <%: base.Html.ActionLinkTrans("GUI.DetailsPage.AuthorInfo.SearchTooltip", "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.AuthorModel.Id })%>
                 </div>
-                <div class="clear">
-                    <div class="info_label">
-                        <%: base.Html.Translate("GUI.User.Introduction")%>
-                    </div>
-                    <div class="info_value">
-                        <%= base.Model.AuthorModel.Introduction %>
-                    </div>
-                </div>
+                <% base.Html.RenderPartial("UserDetailUserControl", base.Model.AuthorModel); %>
             </div>
             <div class="block">
                 <div class="home-details-title">

@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
+using GDNET.FrameworkInfrastructure.Common.Models;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Models.HomeModels;
@@ -46,7 +47,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(FocusItemSize, new Guid(id));
             var focusModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(focusItems, true);
 
-            var authorModel = WebFrameworkServices.AccountModels.GetUpdateDetailsModelByEmail(contentModel.CreatedBy);
+            var authorModel = WebFrameworkServices.AccountModels.GetUserModelByEmail<UserDetailsModel>(contentModel.CreatedBy);
 
             DetailModel model = new DetailModel()
             {

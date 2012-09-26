@@ -27,30 +27,7 @@
                 <div class="home-details-title">
                     <%: base.Html.Translate("GUI.DetailsPage.AuthorInfo.Title")%>
                 </div>
-                <div class="clear">
-                    <div class="info_label">
-                        <%: base.Html.Translate("GUI.User.DisplayName")%>
-                    </div>
-                    <div class="info_value">
-                        <%: base.Model.AuthorModel.DisplayName %>
-                    </div>
-                </div>
-                <div class="clear">
-                    <div class="info_label">
-                        <%: base.Html.Translate("GUI.User.CreatedDate")%>
-                    </div>
-                    <div class="info_value">
-                        <%: base.Model.AuthorModel.CreatedAt.ToShortDateString() %>
-                    </div>
-                </div>
-                <div class="clear">
-                    <div class="info_label">
-                        <%: base.Html.Translate("GUI.User.Introduction")%>
-                    </div>
-                    <div class="info_value">
-                        <%= base.Model.AuthorModel.Introduction %>
-                    </div>
-                </div>
+                <% base.Html.RenderPartial("UserDetailUserControl", base.Model.AuthorModel); %>
             </div>
             <div class="block">
                 <div class="home-details-title">

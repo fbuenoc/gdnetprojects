@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
+using GDNET.FrameworkInfrastructure.Common.Models;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Models.SearchModels;
@@ -35,7 +36,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         {
             string authorId = base.Request.Params[SearchValue];
             var author = DomainRepositories.User.GetById(new Guid(authorId));
-            var authorModel = WebFrameworkServices.AccountModels.GetUpdateDetailsModel(author);
+            var authorModel = WebFrameworkServices.AccountModels.GetUserModel<UserDetailsModel>(author);
+            authorModel.DisplayMode = UserDetailsMode.Medium;
 
             var topItems = DomainRepositories.ContentItem.GetTopWithActiveByAuthor(DefaultPageSize, author.Email);
             var topModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(topItems, true);
