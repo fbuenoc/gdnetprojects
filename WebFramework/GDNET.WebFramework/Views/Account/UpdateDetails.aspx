@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<UpdateDetailsModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<UserDetailsModel>" %>
 
 <asp:Content ID="UDT" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.Account.UpdateDetailPage.Title") %>
@@ -24,6 +24,14 @@
                 <div class="editor-field-admin">
                     <%: Html.TextBoxFor(m => m.DisplayName, "input_name")%>
                     <%: Html.ValidationMessageFor(m => m.DisplayName)%>
+                </div>
+            </div>
+            <div class="editor-line">
+                <div class="editor-label-admin">
+                    <%: base.Html.LabelFor(m => m.Language)%>
+                </div>
+                <div class="editor-field-admin">
+                    <%: base.Html.DropDownListFor(m => m.Language, "c.Languages") %>
                 </div>
             </div>
             <div class="editor-line">

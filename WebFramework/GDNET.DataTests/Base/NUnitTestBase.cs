@@ -4,7 +4,6 @@ using GDNET.Business.Services;
 using GDNET.Data;
 using GDNET.Data.Base;
 using GDNET.Domain.Entities.System;
-using GDNET.Domain.Repositories;
 using NHibernate;
 using NHibernate.Tool.hbm2ddl;
 using NUnit.Framework;
@@ -14,12 +13,6 @@ namespace GDNET.DataTests.Base
 {
     public class NUnitTestBase
     {
-        protected User CurrentUser
-        {
-            get;
-            private set;
-        }
-
         private DateTime startDate;
 
         [SetUp]
@@ -33,10 +26,8 @@ namespace GDNET.DataTests.Base
             ISession currentSession = UnitTestSessionManager.Instance.GetSession();
             (new SchemaExport(UnitTestSessionManager.Instance.Configuration)).Execute(true, true, false, currentSession.Connection, Console.Out);
 
-            this.CurrentUser = User.Factory.Create("test@mail.com", "123456");
-            var sessionContext = new DataSessionContext(this.CurrentUser);
-
-            DomainRepositories.User.Save(this.CurrentUser);
+            User currentUser = User.Factory.Create("test@mail.com", "123456");
+            var sessionContext = new DataSessionContext(currentUser);
 
             Console.WriteLine();
             Console.WriteLine("------------->>");

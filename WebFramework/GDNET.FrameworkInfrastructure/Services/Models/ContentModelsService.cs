@@ -68,12 +68,15 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
 
         public ContentItem CreateContentItem(ContentItemModel itemModel)
         {
+            var catalog = DomainRepositories.Catalog.FindByCode("c.languages");
+
             return new ContentItem()
             {
                 Description = itemModel.Description,
                 Keywords = itemModel.Keywords,
                 IsActive = itemModel.IsActive,
-                Name = itemModel.Name
+                Name = itemModel.Name,
+                Language = catalog.GetLineByCode(itemModel.Language),
             };
         }
 

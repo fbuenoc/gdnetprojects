@@ -33,9 +33,10 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             return (T)model;
         }
 
-        public bool UpdateUserFromModel(string email, UpdateDetailsModel model)
+        public bool UpdateUserFromModel(string email, UserDetailsModel model)
         {
             bool result = false;
+            var catalog = DomainRepositories.Catalog.FindByCode("c.languages");
             User user = DomainRepositories.User.FindByEmail(email);
 
             if (user != null)
@@ -43,6 +44,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
                 user.DisplayName = model.DisplayName;
                 user.Introduction = model.Introduction;
                 user.IsActive = model.IsActive;
+                user.Language = catalog.GetLineByCode(model.Language);
                 result = true;
             }
 

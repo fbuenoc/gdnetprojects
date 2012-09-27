@@ -33,9 +33,15 @@ namespace GDNET.Domain.Repositories
             get { return _instance.GetTranslationRepository(); }
         }
 
+        public static ICatalogRepository Catalog
+        {
+            get { return _instance.GetCatalogRepository(); }
+        }
+
         protected abstract IUserRepository GetUserRepository();
         protected abstract IContentItemRepository GetContentItemRepository();
         protected abstract ITranslationRepository GetTranslationRepository();
+        protected abstract ICatalogRepository GetCatalogRepository();
 
         protected abstract IRepositoryStrategy GetRepositoryStrategy();
     }

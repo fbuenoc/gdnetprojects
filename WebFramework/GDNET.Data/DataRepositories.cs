@@ -37,6 +37,11 @@ namespace GDNET.Data
             return new TranslationRepository(this.repositoryStrategy);
         }
 
+        protected override ICatalogRepository GetCatalogRepository()
+        {
+            return new CatalogRepository(this.repositoryStrategy);
+        }
+
         protected override IRepositoryStrategy GetRepositoryStrategy()
         {
             return this.repositoryStrategy;

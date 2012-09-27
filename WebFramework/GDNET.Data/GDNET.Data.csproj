@@ -46,6 +46,7 @@
     <Compile Include="Content\ContentItemRepository.cs" />
     <Compile Include="DataRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="System\CatalogRepository.cs" />
     <Compile Include="System\TranslationRepository.cs" />
     <Compile Include="System\UserRepository.cs" />
     <Compile Include="System\UserRepositoryGlass.cs" />

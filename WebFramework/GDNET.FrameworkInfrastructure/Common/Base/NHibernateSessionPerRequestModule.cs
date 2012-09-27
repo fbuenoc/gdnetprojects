@@ -17,16 +17,26 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
         {
             context.BeginRequest += context_BeginRequest;
             context.EndRequest += context_EndRequest;
+            context.AuthenticateRequest += new EventHandler(context_AuthenticateRequest);
 
             this.context = context;
+        }
+
+        void context_AuthenticateRequest(object sender, EventArgs e)
+        {
+            string currentUserEmail = "guest@webframework.com";
+            if ((this.context.User != null) && this.context.User.Identity.IsAuthenticated)
+            {
+                currentUserEmail = this.context.User.Identity.Name;
+            }
+
+            var currentUser = DomainRepositories.User.FindByEmail(currentUserEmail);
+            var sessionContext = new DataSessionContext(currentUser);
         }
 
         void context_BeginRequest(object sender, EventArgs e)
         {
             WebNHibernateSessionManager.Instance.BeginTransaction();
-
-            var currentUser = DomainRepositories.User.FindByEmail("guest@webframework.com");
-            var sessionContext = new DataSessionContext(currentUser);
         }
 
         void context_EndRequest(object sender, EventArgs e)

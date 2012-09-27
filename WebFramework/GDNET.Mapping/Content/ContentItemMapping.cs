@@ -14,10 +14,19 @@ namespace GDNET.Mapping.Content
             : base()
         {
             var defaultContentPart = default(ContentPart);
+            var defaultContentItem = default(ContentItem);
 
             base.Property(e => e.Name, m => m.NotNullable(true));
             base.Property(e => e.Description);
             base.Property(e => e.Keywords);
+
+            base.ManyToOne(e => e.Language, m =>
+            {
+                m.Lazy(LazyRelation.Proxy);
+                m.Access(Accessor.Property);
+                m.Cascade(Cascade.None);
+                m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultContentItem.Language));
+            });
 
             base.List(e => e.Parts, cm =>
             {
