@@ -8,7 +8,7 @@ namespace GDNET.Domain.Entities.System
 {
     public partial class User : EntityHistoryComplex
     {
-        private List<User> connections = new List<User>();
+        private IList<User> connections = new List<User>();
 
         #region Properties
 
@@ -55,6 +55,12 @@ namespace GDNET.Domain.Entities.System
         }
 
         public virtual Employee Employee
+        {
+            get;
+            set;
+        }
+
+        public virtual DataLine Language
         {
             get;
             set;

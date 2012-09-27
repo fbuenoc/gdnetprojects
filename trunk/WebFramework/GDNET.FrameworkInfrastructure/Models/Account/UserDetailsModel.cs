@@ -17,6 +17,9 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
         [DisplayNameML("GUI.User.Email")]
         public string Email { get; set; }
 
+        [DisplayNameML("GUI.User.Language")]
+        public string Language { get; set; }
+
         public UserDetailsMode DisplayMode
         {
             get;

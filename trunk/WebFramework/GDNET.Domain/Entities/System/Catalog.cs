@@ -7,7 +7,7 @@ namespace GDNET.Domain.Entities.System
 {
     public partial class Catalog : EntityHistoryComplex
     {
-        private List<DataLine> lines = new List<DataLine>();
+        private IList<DataLine> lines = new List<DataLine>();
 
         #region Properties
 
@@ -77,6 +77,11 @@ namespace GDNET.Domain.Entities.System
             }
 
             return this;
+        }
+
+        public virtual DataLine GetLineByCode(string code)
+        {
+            return this.Lines.FirstOrDefault(x => x.Code == code);
         }
 
         #endregion

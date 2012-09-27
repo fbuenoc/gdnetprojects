@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using GDNET.Domain.Base.Management;
+using GDNET.Domain.Entities.System;
 
 namespace GDNET.Domain.Content
 {
@@ -25,6 +26,12 @@ namespace GDNET.Domain.Content
         }
 
         public virtual string Keywords
+        {
+            get;
+            set;
+        }
+
+        public virtual DataLine Language
         {
             get;
             set;

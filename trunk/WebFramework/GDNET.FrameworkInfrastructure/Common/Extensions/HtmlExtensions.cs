@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
+using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Common.Extensions
@@ -87,6 +90,19 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
         public static MvcHtmlString TextAreaFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string className)
         {
             return htmlHelper.TextAreaFor(expression, new { @class = className });
+        }
+
+        public static MvcHtmlString DropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string catalogCode)
+        {
+            List<SelectListItem> listItems = new List<SelectListItem>();
+
+            var catalog = DomainRepositories.Catalog.FindByCode(catalogCode);
+            if (catalog != null)
+            {
+                listItems.AddRange(catalog.Lines.Select(x => new SelectListItem() { Value = x.Code, Text = x.Name }));
+            }
+
+            return htmlHelper.DropDownListFor(expression, listItems);
         }
 
         public static MvcHtmlString ActionLinkWithId(this HtmlHelper htmlHelper, string linkText, string actionName, string idValue)

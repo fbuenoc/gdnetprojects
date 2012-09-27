@@ -20,8 +20,8 @@ namespace GDNET.DataGeneration
             var repositories = new DataRepositories(sessionStrategy);
             var servicesManager = new ServicesManager();
 
-            var currentUser = User.Factory.Create("admin@webframework.com", "123456");
-            var sessionContext = new DataSessionContext(currentUser);
+            var user = DomainRepositories.User.FindByEmail("admin@webframework.com");
+            var sessionContext = new DataSessionContext(user);
 
             DataGenerationNHibernateSessionManager.Instance.BeginTransaction();
             ISession currentSession = DataGenerationNHibernateSessionManager.Instance.GetSession();

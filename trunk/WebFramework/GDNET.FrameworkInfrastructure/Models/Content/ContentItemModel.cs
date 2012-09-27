@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using GDNET.Domain.Content;
 using GDNET.FrameworkInfrastructure.Common.Base;
+using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
 
 namespace GDNET.FrameworkInfrastructure.Models.Content
@@ -34,6 +35,13 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
             set;
         }
 
+        [DisplayNameML("GUI.ContentItem.Language")]
+        public string Language
+        {
+            get;
+            set;
+        }
+
         public ReadOnlyCollection<ContentPartModel> Parts
         {
             get { return new ReadOnlyCollection<ContentPartModel>(this.parts); }
@@ -45,6 +53,7 @@ namespace GDNET.FrameworkInfrastructure.Models.Content
             this.Name = entity.Name;
             this.Description = entity.Description;
             this.Keywords = entity.Keywords;
+            this.Language = entity.Language.Code;
 
             this.parts.Clear();
             this.parts.AddRange(FrameworkExtensions.ConvertAll<ContentPartModel, ContentPart>(entity.Parts, filterActiveOnly));
