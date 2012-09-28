@@ -1,25 +1,34 @@
 ﻿using System.Web;
 using GDNET.Domain.Base.SessionManagement;
+using GDNET.FrameworkInfrastructure.Common;
+using GDNET.FrameworkInfrastructure.Models.System;
 
 namespace GDNET.FrameworkInfrastructure.Services.Storage
 {
     public sealed class DataStoredService
     {
-        private static readonly string _userInfoKey = "myinfo";
-
-        public UserCustomizedInformation GetSectionInfo()
+        public UserCustomizedInformationModel GetUserCustomizedInfo()
         {
-            if (HttpContext.Current.Request.Cookies[_userInfoKey] == null)
+            if (HttpContext.Current.Request.Cookies[FrameworkConstants.UserInfoKey] == null)
             {
                 var language = DomainSessionContext.Instance.CurrentUser.Language.Code;
-                UserCustomizedInformation sectionInfo = new UserCustomizedInformation(language, false);
+                UserCustomizedInformationModel userCustomized = new UserCustomizedInformationModel(language, false);
 
-                HttpCookie cookie = new HttpCookie(_userInfoKey, sectionInfo.Serialize());
-                HttpContext.Current.Request.Cookies.Add(cookie);
+                this.SetUserCustomizedInfo(userCustomized);
             }
 
-            UserCustomizedInformation info = new UserCustomizedInformation(HttpContext.Current.Request.Cookies[_userInfoKey].ToString());
+            var userInfo = HttpContext.Current.Request.Cookies[FrameworkConstants.UserInfoKey];
+            UserCustomizedInformationModel info = new UserCustomizedInformationModel(userInfo.Value);
+
             return info;
+        }
+
+        public void SetUserCustomizedInfo(UserCustomizedInformationModel model)
+        {
+            HttpContext.Current.Request.Cookies.Remove(FrameworkConstants.UserInfoKey);
+
+            HttpCookie cookie = new HttpCookie(FrameworkConstants.UserInfoKey, model.Serialize());
+            HttpContext.Current.Response.Cookies.Add(cookie);
         }
     }
 }

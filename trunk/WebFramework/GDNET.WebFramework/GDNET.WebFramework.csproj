@@ -103,6 +103,7 @@
     <Content Include="Views\ContentAdmin\ManageParts.aspx" />
     <Content Include="Views\ContentAdmin\CreateOrUpdate.aspx" />
     <Content Include="Views\Home\Details.aspx" />
+    <Content Include="Views\My\ChangeLanguage.aspx" />
     <Content Include="Views\Search\SearchByAuthor.aspx" />
     <Content Include="Views\Shared\PageMetaUserControl.ascx" />
     <Content Include="Views\Shared\UserDetailUserControl.ascx" />

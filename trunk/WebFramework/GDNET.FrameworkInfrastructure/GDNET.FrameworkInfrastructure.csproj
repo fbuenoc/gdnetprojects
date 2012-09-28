@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Extensions\HtmlCookieExtensions.cs" />
+    <Compile Include="Common\FrameworkConstants.cs" />
     <Compile Include="Controllers\Base\AbstractController.cs" />
     <Compile Include="Common\Base\LanguageConstraint.cs" />
     <Compile Include="Common\Base\ViewModelMode.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="Common\Base\NHibernateSessionPerRequestModule.cs" />
     <Compile Include="Models\HomeModels\IndexModel.cs" />
     <Compile Include="Models\HomeModels\DetailModel.cs" />
+    <Compile Include="Models\My\ChangeLanguageModel.cs" />
     <Compile Include="Models\SearchModels\SearchMode.cs" />
     <Compile Include="Models\SearchModels\SearchByAuthorModel.cs" />
     <Compile Include="Models\System\UserCustomizedInformationModel.cs" />
@@ -96,7 +99,6 @@
     <Compile Include="Services\General\TranslationService.cs" />
     <Compile Include="Services\Models\ContentModelsService.cs" />
     <Compile Include="Services\Storage\DataStoredService.cs" />
-    <Compile Include="Services\Storage\UserCustomizedInformation.cs" />
     <Compile Include="Services\WebFrameworkServices.cs" />
     <Compile Include="Services\Models\AccountModelsService.cs" />
     <Compile Include="Common\Base\WebNHibernateSessionManager.cs" />
