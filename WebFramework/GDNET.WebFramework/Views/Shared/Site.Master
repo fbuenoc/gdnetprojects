@@ -27,7 +27,7 @@
                 </nav>
             </div>
             <div id="logindisplay">
-                <% base.Html.RenderPartial("LogOnUserControl"); %>
+                <% base.Html.RenderPartial("UserCustomizedInformationControl"); %>
             </div>
         </header>
         <section id="main">

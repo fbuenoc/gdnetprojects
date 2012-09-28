@@ -1,5 +1,6 @@
 ﻿using GDNET.FrameworkInfrastructure.Services.General;
 using GDNET.FrameworkInfrastructure.Services.Models;
+using GDNET.FrameworkInfrastructure.Services.Storage;
 
 namespace GDNET.FrameworkInfrastructure.Services
 {
@@ -19,5 +20,11 @@ namespace GDNET.FrameworkInfrastructure.Services
         {
             get { return new TranslationService(); }
         }
+
+        public static DataStoredService DataStored
+        {
+            get { return new DataStoredService(); }
+        }
+
     }
 }

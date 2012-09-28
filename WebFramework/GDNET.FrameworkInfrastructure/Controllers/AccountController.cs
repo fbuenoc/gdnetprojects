@@ -77,14 +77,14 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         public ActionResult UpdateDetails()
         {
             var email = base.HttpContext.User.Identity.Name;
-            UserDetailsModel model = WebFrameworkServices.AccountModels.GetUserModelByEmail<UserDetailsModel>(email);
+            UpdateDetailsModel model = WebFrameworkServices.AccountModels.GetUserModelByEmail<UpdateDetailsModel>(email);
 
             return base.View(model);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateDetails(UserDetailsModel model)
+        public ActionResult UpdateDetails(UpdateDetailsModel model)
         {
             if (base.ModelState.IsValid)
             {

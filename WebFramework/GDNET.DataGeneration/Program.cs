@@ -6,6 +6,7 @@ using GDNET.Data.Base;
 using GDNET.DataGeneration.SessionManagement;
 using GDNET.Domain.Content;
 using GDNET.Domain.Entities.System;
+using GDNET.Domain.Entities.System.ReferenceData;
 using GDNET.Domain.Repositories;
 using GDNET.Utils;
 using NHibernate;
@@ -49,12 +50,16 @@ namespace GDNET.DataGeneration
             Console.WriteLine();
             Console.Write(MethodBase.GetCurrentMethod().Name + "...");
             Random aRandom = new Random();
+            Catalog catalogLanguage = DomainRepositories.Catalog.FindByCode(SystemCatalogs.Languages);
 
             int nbContentItems = aRandom.Next(10, 20);
             for (int index = 0; index < nbContentItems; index++)
             {
                 string name = "Content item #" + (index + 1);
                 var ci = ContentItem.Factory.Create(name, true);
+                int languageIndex = aRandom.Next(0, catalogLanguage.Lines.Count - 1);
+
+                ci.Language = catalogLanguage.Lines[languageIndex];
                 ci.Description = RandomAssistant.GenerateAParagraph(aRandom);
 
                 DomainRepositories.ContentItem.Save(ci);

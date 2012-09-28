@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using GDNET.Domain.Entities.System;
+using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
 namespace GDNET.FrameworkInfrastructure.Common.Models
@@ -9,16 +10,16 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
         Medium,
     }
 
-    public class UserDetailsModel : UpdateDetailsModel
+    public class UserDetailsModel : AbstractViewModel<User>
     {
-        [DataType(DataType.EmailAddress)]
-        [Required]
-        [Email("GUI.Common.InvalidFormat")]
         [DisplayNameML("GUI.User.Email")]
         public string Email { get; set; }
 
-        [DisplayNameML("GUI.User.Language")]
-        public string Language { get; set; }
+        [DisplayNameML("GUI.User.DisplayName")]
+        public string DisplayName { get; set; }
+
+        [DisplayNameML("GUI.User.Introduction")]
+        public string Introduction { get; set; }
 
         public UserDetailsMode DisplayMode
         {
@@ -30,6 +31,15 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
             : base()
         {
             this.DisplayMode = UserDetailsMode.Basic;
+        }
+
+        public override void Initialize(User entity, bool filterActiveOnly)
+        {
+            base.Id = entity.Id.ToString();
+            this.DisplayName = entity.DisplayName;
+            this.Introduction = entity.Introduction;
+
+            base.InitializeCommon(entity);
         }
     }
 }

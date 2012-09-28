@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<UserDetailsModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<UpdateDetailsModel>" %>
 
 <asp:Content ID="UDT" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.Account.UpdateDetailPage.Title") %>

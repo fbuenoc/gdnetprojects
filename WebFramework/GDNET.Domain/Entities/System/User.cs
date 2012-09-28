@@ -36,7 +36,7 @@ namespace GDNET.Domain.Entities.System
             protected set;
         }
 
-        public virtual long? TotalPoints
+        public virtual double TotalPoints
         {
             get;
             protected set;

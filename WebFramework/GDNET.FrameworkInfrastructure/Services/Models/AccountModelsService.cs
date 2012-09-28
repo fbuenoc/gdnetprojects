@@ -33,7 +33,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             return (T)model;
         }
 
-        public bool UpdateUserFromModel(string email, UserDetailsModel model)
+        public bool UpdateUserFromModel(string email, UpdateDetailsModel model)
         {
             bool result = false;
             var catalog = DomainRepositories.Catalog.FindByCode("c.languages");
