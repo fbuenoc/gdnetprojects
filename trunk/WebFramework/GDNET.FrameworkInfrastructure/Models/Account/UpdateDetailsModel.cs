@@ -16,11 +16,16 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
         [DisplayNameML("GUI.User.Introduction")]
         public string Introduction { get; set; }
 
+        [Required]
+        [DisplayNameML("GUI.User.Language")]
+        public string Language { get; set; }
+
         public override void Initialize(User entity, bool filterActiveOnly)
         {
             base.Id = entity.Id.ToString();
             this.DisplayName = entity.DisplayName;
             this.Introduction = entity.Introduction;
+            this.Language = (entity.Language == null) ? string.Empty : entity.Language.Code;
 
             base.InitializeCommon(entity);
         }
