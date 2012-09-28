@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<UserCustomizedInformationModel>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
 <div>
     <div style="float: right;">
         <%
@@ -23,7 +23,9 @@
         %>
     </div>
     <div style="float: right; margin-right: 10px;">
-        <%: base.Model.LanguageName %>
+        <%: base.Html.GetUserCustomizedLanguageName() %>
+        [
         <%: base.Html.ActionLinkTrans("GUI.UserCustomizedInformation.ChangeLanguage", "ChangeLanguage", "My")%>
+        ]
     </div>
 </div>
