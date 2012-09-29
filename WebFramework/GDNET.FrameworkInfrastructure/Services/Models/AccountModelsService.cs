@@ -2,7 +2,7 @@
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common.Base;
-using GDNET.FrameworkInfrastructure.Common.Models;
+using GDNET.FrameworkInfrastructure.Models.System;
 
 namespace GDNET.FrameworkInfrastructure.Services.Models
 {

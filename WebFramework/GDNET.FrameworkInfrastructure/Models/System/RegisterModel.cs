@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
-namespace GDNET.FrameworkInfrastructure.Common.Models
+namespace GDNET.FrameworkInfrastructure.Models.System
 {
     public class RegisterModel
     {

@@ -11,9 +11,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Storage
         {
             if (HttpContext.Current.Request.Cookies[FrameworkConstants.UserInfoKey] == null)
             {
-                var language = DomainSessionContext.Instance.CurrentUser.Language.Code;
-                UserCustomizedInformationModel userCustomized = new UserCustomizedInformationModel(language, false);
-
+                UserCustomizedInformationModel userCustomized = new UserCustomizedInformationModel(string.Empty, string.Empty);
                 this.SetUserCustomizedInfo(userCustomized);
             }
 

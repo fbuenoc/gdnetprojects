@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
-using GDNET.FrameworkInfrastructure.Common.Models;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
+using GDNET.FrameworkInfrastructure.Models.System;
 using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
@@ -144,7 +144,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         [HttpPost]
         public ActionResult ChangePassword(ChangePasswordModel model)
         {
-            if (ModelState.IsValid)
+            if (base.ModelState.IsValid)
             {
                 // ChangePassword will throw an exception rather
                 // than return false in certain failure scenarios.
@@ -166,7 +166,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                    base.ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
                 }
             }
 

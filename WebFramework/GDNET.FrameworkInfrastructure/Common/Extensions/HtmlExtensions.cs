@@ -105,6 +105,24 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             return htmlHelper.DropDownListFor(expression, listItems);
         }
 
+        public static MvcHtmlString DropDownListFor<TModel, TProperty>(this HtmlHelper<TModel> htmlHelper, Expression<Func<TModel, TProperty>> expression, string catalogCode, bool allowNull, bool nullAsAll)
+        {
+            List<SelectListItem> listItems = new List<SelectListItem>();
+            if (allowNull)
+            {
+                string nullTextCode = nullAsAll ? "GUI.Common.DropDownList.NullAsAll" : "GUI.Common.DropDownList.NullAsNone";
+                listItems.Add(new SelectListItem() { Value = string.Empty, Text = WebFrameworkServices.Translation.GetByKeyword(nullTextCode) });
+            }
+
+            var catalog = DomainRepositories.Catalog.FindByCode(catalogCode);
+            if (catalog != null)
+            {
+                listItems.AddRange(catalog.Lines.Select(x => new SelectListItem() { Value = x.Code, Text = x.Name }));
+            }
+
+            return htmlHelper.DropDownListFor(expression, listItems);
+        }
+
         public static MvcHtmlString ActionLinkWithId(this HtmlHelper htmlHelper, string linkText, string actionName, string idValue)
         {
             return htmlHelper.ActionLink(linkText, actionName, new { id = idValue });

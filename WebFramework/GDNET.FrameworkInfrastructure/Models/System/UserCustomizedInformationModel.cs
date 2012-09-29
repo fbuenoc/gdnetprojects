@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using GDNET.Domain.Entities.System.ReferenceData;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Services;
@@ -8,13 +7,15 @@ namespace GDNET.FrameworkInfrastructure.Models.System
 {
     public class UserCustomizedInformationModel
     {
-        public bool ApplyForUI
+        #region Properties
+
+        public string Language
         {
             get;
             set;
         }
 
-        public string Language
+        public string LanguageUI
         {
             get;
             set;
@@ -27,7 +28,7 @@ namespace GDNET.FrameworkInfrastructure.Models.System
                 var catalogLanguages = DomainRepositories.Catalog.FindByCode(SystemCatalogs.Languages);
                 if (catalogLanguages != null)
                 {
-                    var languageEntity = catalogLanguages.Lines.FirstOrDefault(x => x.Code == this.Language);
+                    var languageEntity = catalogLanguages.Lines.FirstOrDefault(x => x.Code == this.LanguageUI);
                     if (languageEntity != null)
                     {
                         return languageEntity.Name;
@@ -37,6 +38,10 @@ namespace GDNET.FrameworkInfrastructure.Models.System
                 return WebFrameworkServices.Translation.GetByKeyword("GUI.UserCustomizedInformation.LanguageNotSelected");
             }
         }
+
+        #endregion
+
+        #region Methods
 
         public UserCustomizedInformationModel()
         {
@@ -48,19 +53,21 @@ namespace GDNET.FrameworkInfrastructure.Models.System
             {
                 var infos = serialized.Split('|');
                 this.Language = infos[0];
-                this.ApplyForUI = Convert.ToBoolean(infos[1]);
+                this.LanguageUI = infos[1];
             }
         }
 
-        public UserCustomizedInformationModel(string language, bool applyForUI)
+        public UserCustomizedInformationModel(string language, string languageUI)
         {
             this.Language = language;
-            this.ApplyForUI = applyForUI;
+            this.LanguageUI = languageUI;
         }
 
         public string Serialize()
         {
-            return string.Format("{0}|{1}|{2}", this.Language, this.ApplyForUI, this.LanguageName);
+            return string.Format("{0}|{1}|{2}", this.Language, this.LanguageUI, this.LanguageName);
         }
+
+        #endregion
     }
 }
