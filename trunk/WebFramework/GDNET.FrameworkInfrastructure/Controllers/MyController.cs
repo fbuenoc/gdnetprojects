@@ -24,10 +24,10 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         {
             if (base.ModelState.IsValid)
             {
-                UserCustomizedInformationModel customizedModel = new UserCustomizedInformationModel(model.UserCustomizedInformation.Language, model.UserCustomizedInformation.ApplyForUI);
+                UserCustomizedInformationModel customizedModel = new UserCustomizedInformationModel(model.UserCustomizedInformation.Language, model.UserCustomizedInformation.LanguageUI);
                 WebFrameworkServices.DataStored.SetUserCustomizedInfo(customizedModel);
 
-                return base.RedirectToAction("Index", "Home", new { language = model.UserCustomizedInformation.Language });
+                return base.RedirectToAction("Index", ListControllers.Home, new { language = model.UserCustomizedInformation.LanguageUI });
             }
 
             return base.View(model);

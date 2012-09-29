@@ -17,16 +17,18 @@
             </legend>
             <div class="editor-line">
                 <div class="editor-label-admin">
-                    <%: base.Html.Translate("GUI.My.ChangeLanguage.Language")%>
+                    <%: base.Html.Translate("GUI.My.ChangeLanguage.LanguageUI")%>
                 </div>
                 <div class="editor-field-admin">
-                    <%: base.Html.DropDownListFor(m => m.UserCustomizedInformation.Language, SystemCatalogs.Languages)%>
+                    <%: base.Html.DropDownListFor(m => m.UserCustomizedInformation.LanguageUI, SystemCatalogs.Languages)%>
                 </div>
             </div>
             <div class="editor-line">
-                <div class="editor-field">
-                    <%: base.Html.CheckBoxFor(m => m.UserCustomizedInformation.ApplyForUI) %>
-                    <%: base.Html.Translate("GUI.My.ChangeLanguage.ApplyForUI")%>
+                <div class="editor-label-admin">
+                    <%: base.Html.Translate("GUI.My.ChangeLanguage.Language")%>
+                </div>
+                <div class="editor-field-admin">
+                    <%: base.Html.DropDownListFor(m => m.UserCustomizedInformation.Language, SystemCatalogs.Languages, true, true)%>
                 </div>
             </div>
             <div class="editor-line">

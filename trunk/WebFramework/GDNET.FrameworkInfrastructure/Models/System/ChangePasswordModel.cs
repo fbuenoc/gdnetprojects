@@ -2,7 +2,7 @@
 using System.Web.Mvc;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
-namespace GDNET.FrameworkInfrastructure.Common.Models
+namespace GDNET.FrameworkInfrastructure.Models.System
 {
     public class ChangePasswordModel
     {
