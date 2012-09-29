@@ -105,6 +105,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult EditPart(string id, string cid, ContentPartModel partModel, FormCollection collection)
         {
             if (base.ModelState.IsValid)
@@ -132,6 +133,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         }
 
         [HttpPost]
+        [ValidateInput(false)]
         public ActionResult CreatePart(string id, ContentPartModel partModel, FormCollection collection)
         {
             if (base.ModelState.IsValid)
