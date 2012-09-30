@@ -5,7 +5,7 @@
     <%: base.Html.Translate(base.Model.IsCreation ? "GUI.ContentAdmin.ContentPart.Title.Creation" : "GUI.ContentAdmin.ContentPart.Title.Modification")%>
 </asp:Content>
 <asp:Content ID="C2" ContentPlaceHolderID="MetaContent" runat="server">
-    <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="/Content/ckeditor/ckeditor.js"></script>
 </asp:Content>
 <asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
