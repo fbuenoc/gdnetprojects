@@ -66,7 +66,8 @@ namespace GDNET.DataGeneration
 
                 for (int partCounter = 0; partCounter < 10; partCounter++)
                 {
-                    var cp = ContentPart.Factory.Create("Part " + (partCounter + 1), RandomAssistant.GenerateASentence(aRandom), true);
+                    string details = string.Format("<p>{0}</p>", RandomAssistant.GenerateASentence(aRandom));
+                    var cp = ContentPart.Factory.Create("Part " + (partCounter + 1), details, true);
                     ci.AddPart(cp);
                 }
             }

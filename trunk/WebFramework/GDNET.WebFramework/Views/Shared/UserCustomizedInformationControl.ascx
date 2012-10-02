@@ -1,31 +1,27 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
-<div>
-    <div style="float: right;">
-        <%
-            if (base.Request.IsAuthenticated)
-            {
-        %>
-        <%: base.Html.Translate("GUI.LogOn.Welcome", base.Page.User.Identity.Name) %>
-        [
+<ul>
+    <%
+        if (base.Request.IsAuthenticated)
+        {
+    %>
+    <li>
         <%: Html.ActionLinkTrans("GUI.LogOn.Details", "Details", "Account") %>
+    </li>
+    <li>
         <%: Html.ActionLinkTrans("GUI.LogOn.LogOff", "LogOff", "Account") %>
-        ]
-        <%
-            }
-            else
-            {
-        %>
-        [
+    </li>
+    <%
+        }
+        else
+        {
+    %>
+    <li>
         <%: Html.ActionLinkTrans("GUI.LogOn.LogOn", "LogOn", "Account")%>
-        ]
-        <%
-            }
-        %>
-    </div>
-    <div style="float: right; margin-right: 10px;">
-        <%: base.Html.GetUserCustomizedLanguageName() %>
-        [
+    </li>
+    <%
+        }
+    %>
+    <li>
         <%: base.Html.ActionLinkTrans("GUI.UserCustomizedInformation.ChangeLanguage", "ChangeLanguage", "My")%>
-        ]
-    </div>
-</div>
+    </li>
+</ul>

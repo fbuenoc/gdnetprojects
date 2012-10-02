@@ -9,7 +9,7 @@ namespace GDNET.Utils
         {
             StringBuilder sb = new StringBuilder();
 
-            int length = aRandom.Next(100, 1000);
+            int length = aRandom.Next(100, 200);
             for (int index = 0; index < length; index++)
             {
                 int wordLength = aRandom.Next(2, 20);
