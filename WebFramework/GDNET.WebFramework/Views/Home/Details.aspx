@@ -10,37 +10,57 @@
     <% base.Html.RenderPartial("PageMetaUserControl", base.Model.PageMeta); %>
 </asp:Content>
 <asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="block">
-        <div class="block-left">
-            <div class="home-details-title">
-                <%= base.Model.ItemModel.Name %>
-            </div>
-            <div class="home-details-description">
-                <%= base.Model.ItemModel.Description%>
-            </div>
-            <p>
-                <%= base.Model.ItemModel.Keywords%>
-            </p>
-            <%
-                var repeater = RepeaterAssistant.Create<ContentPartModel>("item_parts").AddEntities(base.Model.ItemModel.Parts);
-                repeater.AddColumns("Name", "Details").EnableHeader(false);
-            %>
-            <%= repeater.GenerateHtml() %>
-        </div>
-        <div class="block-right">
-            <div class="block">
-                <div class="home-details-title">
-                    <%: base.Html.Translate("GUI.DetailsPage.AuthorInfo.Title")%>
+    <div class="ym-col1">
+        <div class="ym-cbox">
+            <section class="box">
+                <h4>
+                    <%= base.Model.ItemModel.Name %>
+                </h4>
+                <div>
+                    <p>
+                        <%= base.Model.ItemModel.Description%>
+                    </p>
                 </div>
-                <div class="clear">
+                <p>
+                    <%= base.Model.ItemModel.Keywords%>
+                </p>
+            </section>
+            <section class="ym-grid linearize-level-2">
+                <%
+                    Func<ContentPartModel, string> NameColumnGenerator = (x =>
+                    {
+                        return string.Format("<h4>{0}</h4>", x.Name);
+                    });
+                    Func<ContentPartModel, string> DetailsColumnGenerator = (x =>
+                    {
+                        return string.Format("{0}", x.Details);
+                    });
+                %>
+                <%= RepeaterAssistant.Create<ContentPartModel>("item_parts").AddEntities(base.Model.ItemModel.Parts)
+                        .AddColumns("Name", "Details").EnableHeader(false)
+                        .AddGenerator("Name", NameColumnGenerator)
+                        .AddGenerator("Details", DetailsColumnGenerator)
+                        .GenerateHtml() %>
+            </section>
+        </div>
+    </div>
+    <aside class="ym-col3">
+        <div class="ym-cbox">
+            <h4>
+                <%: base.Html.Translate("GUI.DetailsPage.AuthorInfo.Title")%>
+            </h4>
+            <div class="ym-contain-dt site-nbg">
+                <div>
                     <%: base.Html.ActionLinkTrans("GUI.DetailsPage.AuthorInfo.SearchTooltip", "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.AuthorModel.Id })%>
                 </div>
-                <% base.Html.RenderPartial("UserDetailUserControl", base.Model.AuthorModel); %>
-            </div>
-            <div class="block">
-                <div class="home-details-title">
-                    <%: base.Html.Translate("GUI.DetailsPage.FocusTitle")%>
+                <div>
+                    <% base.Html.RenderPartial("UserDetailUserControl", base.Model.AuthorModel); %>
                 </div>
+            </div>
+            <h4>
+                <%: base.Html.Translate("GUI.DetailsPage.FocusTitle")%>
+            </h4>
+            <div class="ym-contain-dt site-nbg">
                 <%
                     Func<ContentItemModel, string> NameGenerator = x =>
                     {
@@ -54,7 +74,7 @@
                 <%= repeaterFocus.GenerateHtml()%>
             </div>
         </div>
-    </div>
+    </aside>
     <script type="text/javascript">
         $(document).ready(function () {
             $('div[name=item_parts]').addClass('rpt');

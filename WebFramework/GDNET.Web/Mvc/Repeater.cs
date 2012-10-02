@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Web.Mvc;
 using GDNET.Utils;
@@ -13,6 +14,7 @@ namespace GDNET.Web.Mvc
     {
         private List<T> entities = new List<T>();
         private Dictionary<string, Func<T, string>> generators = new Dictionary<string, Func<T, string>>();
+        private Dictionary<string, Expression<Func<T, string>>> expGenerators = new Dictionary<string, Expression<Func<T, string>>>();
         private Dictionary<string, string> columns = new Dictionary<string, string>();
 
         public Repeater()
@@ -74,6 +76,15 @@ namespace GDNET.Web.Mvc
             if (!this.generators.ContainsKey(column))
             {
                 this.generators.Add(column, generator);
+            }
+            return this;
+        }
+
+        public Repeater<T> AddGeneratorExpression(string column, Expression<Func<T, string>> expGenerator)
+        {
+            if (!this.expGenerators.ContainsKey(column))
+            {
+                this.expGenerators.Add(column, expGenerator);
             }
             return this;
         }
