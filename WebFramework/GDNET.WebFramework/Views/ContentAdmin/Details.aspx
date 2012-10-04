@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/SiteAdmin.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
 
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">

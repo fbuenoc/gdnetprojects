@@ -56,6 +56,76 @@ to use a different color start by replacing all instances of
 }
 
 
+/* MISC  
+----------------------------------------------------------*/
+.clear
+{
+    clear: both;
+}
+
+.error
+{
+    color: Red;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error
+{
+    color: #ff0000;
+}
+
+.field-validation-valid
+{
+    display: none;
+}
+
+.input-validation-error
+{
+    border: 1px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors
+{
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid
+{
+    display: none;
+}
+
+
+
+/**********************************
+--- CSS for content
+**********************************/
+.editor-line
+{
+    float: none;
+    clear: both;
+    padding-top: 10px;
+}
+.input_name
+{
+    width: 300px !important;
+}
+.textarea_tiny, .textarea_content
+{
+    width: 800px;
+    height: 80px;
+    padding: 5px;
+    line-height: 20px;
+}
+.textarea_content
+{
+    height: 200px !important;
+}
+
+
 /**********************************
 --- Repeater default classes
 **********************************/

@@ -8,36 +8,34 @@
     <h2>
         <%: base.Html.Translate(base.Model.IsCreation ? "GUI.ContentAdmin.ContentItem.Focus.Creation" : "GUI.ContentAdmin.ContentItem.Focus.Modification")%>
     </h2>
-    <% Html.BeginForm(); %>
-    <%: base.Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
     <div>
+        <% Html.BeginForm(); %>
+        <%: base.Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
         <fieldset>
-            <legend>
-                <%: base.Html.Translate("GUI.ContentAdmin.ContentItem.Info")%>
-            </legend>
+            <legend></legend>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: base.Html.LabelFor(m => m.Name) %>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: base.Html.TextBoxFor(m => m.Name, "input_name")%>
                     <%: base.Html.ValidationMessageFor(m => m.Name)%>
                 </div>
             </div>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: base.Html.LabelFor(m => m.Description)%>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: base.Html.TextAreaFor(m => m.Description, "textarea_content")%>
                     <%: base.Html.ValidationMessageFor(m => m.Description)%>
                 </div>
             </div>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: base.Html.LabelFor(m => m.Keywords)%>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: base.Html.TextAreaFor(m => m.Keywords, "textarea_tiny")%>
                 </div>
             </div>
@@ -45,10 +43,10 @@
                 <%: base.Html.ValidationMessageFor(m => m.Keywords)%>
             </div>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: base.Html.LabelFor(m => m.Language)%>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: base.Html.DropDownListFor(m => m.Language, "c.Languages") %>
                 </div>
             </div>
@@ -64,6 +62,6 @@
                 </p>
             </div>
         </fieldset>
+        <% Html.EndForm(); %>
     </div>
-    <% Html.EndForm(); %>
 </asp:Content>
