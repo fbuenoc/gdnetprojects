@@ -1,44 +1,42 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<UpdateDetailsModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/SiteAdmin.Master" Inherits="System.Web.Mvc.ViewPage<UpdateDetailsModel>" %>
 
 <asp:Content ID="UDT" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.Account.UpdateDetailPage.Title") %>
 </asp:Content>
 <asp:Content ID="UDC" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>
-        <%: base.Html.Translate("GUI.Account.UpdateDetailPage.Focus") %>
-    </h2>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"
         type="text/javascript"></script>
-    <% Html.BeginForm(); %>
-    <%: Html.ValidationSummary(true, "Account modification was unsuccessful. Please correct the errors and try again.") %>
+    <h2>
+        <%: base.Html.Translate("GUI.Account.UpdateDetailPage.Focus") %>
+    </h2>
     <div>
+        <% Html.BeginForm(); %>
+        <%: Html.ValidationSummary(true, "Account modification was unsuccessful. Please correct the errors and try again.") %>
         <fieldset>
-            <legend>
-                <%: base.Html.Translate("GUI.Account.General.FieldSet.Legend") %>
-            </legend>
+            <legend></legend>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: Html.LabelFor(m => m.DisplayName) %>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: Html.TextBoxFor(m => m.DisplayName, "input_name")%>
                     <%: Html.ValidationMessageFor(m => m.DisplayName)%>
                 </div>
             </div>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: base.Html.LabelFor(m => m.Language)%>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: base.Html.DropDownListFor(m => m.Language, "c.Languages") %>
                 </div>
             </div>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: Html.LabelFor(m => m.Introduction) %>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: Html.TextAreaFor(m => m.Introduction, "textarea_content")%>
                     <%: Html.ValidationMessageFor(m => m.Introduction)%>
                 </div>
@@ -53,6 +51,6 @@
         <p>
             <input type="submit" value='<%: base.Html.Translate("GUI.Common.SubmitButton") %>' />
         </p>
+        <% Html.EndForm(); %>
     </div>
-    <% Html.EndForm(); %>
 </asp:Content>

@@ -1,4 +1,5 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentPartModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/SiteAdmin.Master"
+    Inherits="System.Web.Mvc.ViewPage<ContentPartModel>" %>
 
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -11,33 +12,31 @@
     <h2>
         <%: base.Html.Translate(base.Model.IsCreation ? "GUI.ContentAdmin.ContentPart.Focus.Creation" : "GUI.ContentAdmin.ContentPart.Focus.Modification")%>
     </h2>
-    <% Html.BeginForm(); %>
-    <%: Html.ValidationSummaryTrans(true, "GUI.ContentAdmin.ContentPart.ValidationSummary")%>
     <div>
+        <% Html.BeginForm(); %>
+        <%: Html.ValidationSummaryTrans(true, "GUI.ContentAdmin.ContentPart.ValidationSummary")%>
         <fieldset>
-            <legend>
-                <%: base.Html.Translate("GUI.ContentAdmin.ContentPart.Info")%>
-            </legend>
+            <legend></legend>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: Html.LabelFor(m => m.Name) %>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: Html.TextBoxFor(m => m.Name, "input_name")%>
                     <%: Html.ValidationMessageFor(m => m.Name)%>
                 </div>
             </div>
             <div class="editor-line">
-                <div class="editor-label-admin">
+                <div class="editor-label">
                     <%: Html.LabelFor(m => m.Details)%>
                 </div>
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: Html.TextAreaFor(m => m.Details, "ckeditor textarea_content")%>
                     <%: Html.ValidationMessageFor(m => m.Details)%>
                 </div>
             </div>
             <div class="editor-line">
-                <div class="editor-field-admin">
+                <div class="editor-field">
                     <%: Html.CheckBoxFor(m => m.IsActive)%>
                     <%: Html.LabelFor(m => m.IsActive) %>
                 </div>
@@ -48,6 +47,6 @@
                 </p>
             </div>
         </fieldset>
+        <% Html.EndForm(); %>
     </div>
-    <% Html.EndForm(); %>
 </asp:Content>
