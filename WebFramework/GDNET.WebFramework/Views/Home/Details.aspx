@@ -49,13 +49,8 @@
             <h4>
                 <%: base.Html.Translate("GUI.DetailsPage.AuthorInfo.Title")%>
             </h4>
-            <div class="ym-contain-dt site-nbg">
-                <div>
-                    <%: base.Html.ActionLinkTrans("GUI.DetailsPage.AuthorInfo.SearchTooltip", "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.AuthorModel.Id })%>
-                </div>
-                <div>
-                    <% base.Html.RenderPartial("UserDetailUserControl", base.Model.AuthorModel); %>
-                </div>
+            <div>
+                <% base.Html.RenderPartial("UserDetailUserControl", base.Model.AuthorModel); %>
             </div>
             <h4>
                 <%: base.Html.Translate("GUI.DetailsPage.FocusTitle")%>
