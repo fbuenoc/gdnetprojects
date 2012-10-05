@@ -1,4 +1,9 @@
-﻿/*********************
+﻿h6
+{
+    margin-top: 5px;
+}
+
+/*********************
 aaaaaaaaaaaaaaaaaaaaaa
 *********************/
 a:link
@@ -21,6 +26,15 @@ a:hover
 a:active
 {
     color: #12eb87;
+}
+
+/****************
+*** DIV *********
+****************/
+
+div.normal
+{
+    line-height: 20px;
 }
 
 
