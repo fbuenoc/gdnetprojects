@@ -3,16 +3,16 @@
     public enum UserDetailsMode
     {
         /// <summary>
+        /// Display in other pages
+        /// </summary>
+        Default = 0,
+        /// <summary>
         /// Display in search page (/Search/Index)
         /// </summary>
         Search,
         /// <summary>
-        /// Display in account page (/Account/View)
+        /// Display in account page (/Account/Watch)
         /// </summary>
-        AccountView,
-        /// <summary>
-        /// Display in other pages
-        /// </summary>
-        Others
+        AccountWatch,
     }
 }

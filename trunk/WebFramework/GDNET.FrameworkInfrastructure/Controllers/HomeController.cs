@@ -49,6 +49,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             var focusModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(focusItems, true);
 
             var authorModel = WebFrameworkServices.AccountModels.GetUserModelByEmail<UserDetailsModel>(contentModel.CreatedBy);
+            authorModel.DisplayMode = UserDetailsMode.Default;
 
             HomeDetailModel model = new HomeDetailModel()
             {
