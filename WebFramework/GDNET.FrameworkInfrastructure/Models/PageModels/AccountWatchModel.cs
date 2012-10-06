@@ -5,7 +5,7 @@ using GDNET.FrameworkInfrastructure.Models.System;
 
 namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public sealed class AccountViewModel : AbstractPageModel
+    public sealed class AccountWatchModel : AbstractPageModel
     {
         public UserDetailsModel UserDetails
         {
@@ -19,7 +19,7 @@ namespace GDNET.FrameworkInfrastructure.Models.PageModels
             set;
         }
 
-        public AccountViewModel()
+        public AccountWatchModel()
             : base()
         {
             this.UserDetails = new UserDetailsModel();

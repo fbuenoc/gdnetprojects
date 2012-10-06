@@ -37,7 +37,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             string authorId = base.Request.Params[SearchValue];
             var author = DomainRepositories.User.GetById(new Guid(authorId));
             var authorModel = WebFrameworkServices.AccountModels.GetUserModel<UserDetailsModel>(author);
-            authorModel.DisplayMode = UserDetailsMode.AccountView;
+            authorModel.DisplayMode = UserDetailsMode.Search;
 
             var topItems = DomainRepositories.ContentItem.GetTopWithActiveByAuthor(DefaultPageSize, author.Email);
             var topModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(topItems, true);

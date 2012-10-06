@@ -18,11 +18,12 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.RedirectToAction(actionName, ListControllers.Home);
         }
 
-        public ActionResult View(string id)
+        public ActionResult Watch(string id)
         {
-            var userModel = WebFrameworkServices.AccountModels.GetUserModelByEmail<UserDetailsModel>(id);
+            var userModel = WebFrameworkServices.AccountModels.GetUserModelById<UserDetailsModel>(id);
+            userModel.DisplayMode = UserDetailsMode.AccountWatch;
 
-            AccountViewModel model = new AccountViewModel()
+            AccountWatchModel model = new AccountWatchModel()
             {
                 UserDetails = userModel,
             };

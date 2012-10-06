@@ -73,7 +73,7 @@
     <Compile Include="Controllers\Extensions\ListControllers.cs" />
     <Compile Include="Controllers\MyController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Models\PageModels\AccountViewModel.cs" />
+    <Compile Include="Models\PageModels\AccountWatchModel.cs" />
     <Compile Include="Models\PageModels\AccountChangePasswordModel.cs" />
     <Compile Include="Models\System\UserDetailsMode.cs" />
     <Compile Include="Models\System\UserDetailsModel.cs" />
