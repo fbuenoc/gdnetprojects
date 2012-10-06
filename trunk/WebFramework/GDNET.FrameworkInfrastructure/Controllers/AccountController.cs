@@ -2,6 +2,8 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
+using GDNET.FrameworkInfrastructure.Controllers.Extensions;
+using GDNET.FrameworkInfrastructure.Models.PageModels;
 using GDNET.FrameworkInfrastructure.Models.System;
 using GDNET.FrameworkInfrastructure.Services;
 
@@ -12,9 +14,20 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         private ActionResult RedirectToHomeIndex()
         {
             var homeController = default(HomeController);
-            var controllerName = ControllerAssistant.GetControllerName(typeof(HomeController));
             var actionName = ControllerAssistant.GetActionName(() => homeController.Index());
-            return base.RedirectToAction(actionName, controllerName);
+            return base.RedirectToAction(actionName, ListControllers.Home);
+        }
+
+        public ActionResult View(string id)
+        {
+            var userModel = WebFrameworkServices.AccountModels.GetUserModelByEmail<UserDetailsModel>(id);
+
+            AccountViewModel model = new AccountViewModel()
+            {
+                UserDetails = userModel,
+            };
+
+            return base.View(model);
         }
 
         #region LogOn
@@ -25,7 +38,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         }
 
         [HttpPost]
-        public ActionResult LogOn(LogOnModel model, string returnUrl)
+        public ActionResult LogOn(AccountLogOnModel model, string returnUrl)
         {
             if (base.ModelState.IsValid)
             {
@@ -99,7 +112,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.View(model);
         }
 
-        #region Register
+        #region Registration
 
         public ActionResult Register()
         {
@@ -107,7 +120,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(RegisterModel model)
+        public ActionResult Register(AccountRegisterModel model)
         {
             if (base.ModelState.IsValid)
             {
@@ -142,7 +155,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         [Authorize]
         [HttpPost]
-        public ActionResult ChangePassword(ChangePasswordModel model)
+        public ActionResult ChangePassword(AccountChangePasswordModel model)
         {
             if (base.ModelState.IsValid)
             {

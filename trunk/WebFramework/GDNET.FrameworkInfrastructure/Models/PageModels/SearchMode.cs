@@ -1,4 +1,4 @@
-﻿namespace GDNET.FrameworkInfrastructure.Models.SearchModels
+﻿namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
     public enum SearchMode
     {

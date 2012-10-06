@@ -2,9 +2,9 @@
 using System.Web.Mvc;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
-namespace GDNET.FrameworkInfrastructure.Models.System
+namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public class ChangePasswordModel
+    public class AccountChangePasswordModel
     {
         [Required]
         [DataType(DataType.Password)]

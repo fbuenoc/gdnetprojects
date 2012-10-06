@@ -4,7 +4,7 @@ using GDNET.FrameworkInfrastructure.Services.Storage;
 
 namespace GDNET.FrameworkInfrastructure.Services
 {
-    public class WebFrameworkServices
+    public sealed class WebFrameworkServices
     {
         public static AccountModelsService AccountModels
         {
@@ -25,6 +25,5 @@ namespace GDNET.FrameworkInfrastructure.Services
         {
             get { return new DataStoredService(); }
         }
-
     }
 }

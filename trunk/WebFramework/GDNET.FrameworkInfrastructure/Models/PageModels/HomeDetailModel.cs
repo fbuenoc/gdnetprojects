@@ -3,9 +3,9 @@ using GDNET.FrameworkInfrastructure.Models.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Models.System;
 
-namespace GDNET.FrameworkInfrastructure.Models.HomeModels
+namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public class DetailModel : AbstractPageModel
+    public class HomeDetailModel : AbstractPageModel
     {
         public ContentItemModel ItemModel
         {
@@ -25,7 +25,7 @@ namespace GDNET.FrameworkInfrastructure.Models.HomeModels
             set;
         }
 
-        public DetailModel()
+        public HomeDetailModel()
             : base()
         {
             this.ItemModel = new ContentItemModel();

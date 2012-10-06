@@ -2,11 +2,11 @@
 using GDNET.FrameworkInfrastructure.Models.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
 
-namespace GDNET.FrameworkInfrastructure.Models.HomeModels
+namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public class IndexModel : AbstractPageModel
+    public class HomeIndexModel : AbstractPageModel
     {
-        public IndexModel()
+        public HomeIndexModel()
             : base()
         {
             this.NewItems = new List<ContentItemModel>();

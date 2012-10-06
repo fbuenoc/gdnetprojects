@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using GDNET.FrameworkInfrastructure.Controllers.Extensions;
 
 namespace GDNET.FrameworkInfrastructure.Controllers.Base
 {

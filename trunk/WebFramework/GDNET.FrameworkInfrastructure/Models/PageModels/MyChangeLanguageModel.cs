@@ -1,9 +1,9 @@
 ﻿using GDNET.FrameworkInfrastructure.Models.Base;
 using GDNET.FrameworkInfrastructure.Models.System;
 
-namespace GDNET.FrameworkInfrastructure.Models.My
+namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public class ChangeLanguageModel : AbstractPageModel
+    public class MyChangeLanguageModel : AbstractPageModel
     {
         public UserCustomizedInformationModel UserCustomizedInformation
         {
@@ -11,7 +11,7 @@ namespace GDNET.FrameworkInfrastructure.Models.My
             set;
         }
 
-        public ChangeLanguageModel()
+        public MyChangeLanguageModel()
             : base()
         {
         }

@@ -14,6 +14,22 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             return (user == null) ? null : this.GetUserModel<T>(user);
         }
 
+        public T GetUserModelById<T>(string id) where T : AbstractViewModel<User>
+        {
+            Guid guid = Guid.Empty;
+
+            if (Guid.TryParse(id, out guid))
+            {
+                User user = DomainRepositories.User.GetById(guid);
+                if (user != null)
+                {
+                    return this.GetUserModel<T>(user);
+                }
+            }
+
+            return null;
+        }
+
         public UpdateDetailsModel GetUpdateDetailsModelByEmail(string email)
         {
             User user = DomainRepositories.User.FindByEmail(email);
