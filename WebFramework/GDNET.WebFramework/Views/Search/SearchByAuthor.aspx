@@ -1,7 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SearchByAuthorModel>" %>
 
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.SearchModels" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.Search.ByAuthor.Title %>" />
 </asp:Content>
