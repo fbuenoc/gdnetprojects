@@ -1,9 +1,8 @@
-﻿using GDNET.FrameworkInfrastructure.Models.HomeModels;
-using GDNET.FrameworkInfrastructure.Models.System;
+﻿using GDNET.FrameworkInfrastructure.Models.System;
 
-namespace GDNET.FrameworkInfrastructure.Models.SearchModels
+namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public class SearchByAuthorModel : IndexModel
+    public class SearchByAuthorModel : HomeIndexModel
     {
         public SearchByAuthorModel(SearchMode mode)
             : base()

@@ -4,8 +4,9 @@ using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
+using GDNET.FrameworkInfrastructure.Controllers.Extensions;
 using GDNET.FrameworkInfrastructure.Models.Content;
-using GDNET.FrameworkInfrastructure.Models.HomeModels;
+using GDNET.FrameworkInfrastructure.Models.PageModels;
 using GDNET.FrameworkInfrastructure.Models.System;
 using GDNET.FrameworkInfrastructure.Services;
 
@@ -24,7 +25,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(FocusItemSize);
             var focusModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(focusItems, true);
 
-            IndexModel model = new IndexModel()
+            HomeIndexModel model = new HomeIndexModel()
             {
                 NewItems = listItems,
                 FocusItems = focusModels,
@@ -49,7 +50,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
             var authorModel = WebFrameworkServices.AccountModels.GetUserModelByEmail<UserDetailsModel>(contentModel.CreatedBy);
 
-            DetailModel model = new DetailModel()
+            HomeDetailModel model = new HomeDetailModel()
             {
                 ItemModel = contentModel,
                 FocusItems = focusModels,

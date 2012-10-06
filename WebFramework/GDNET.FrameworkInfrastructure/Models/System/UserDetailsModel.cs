@@ -2,14 +2,8 @@
 using GDNET.FrameworkInfrastructure.Common.Base;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
-namespace GDNET.FrameworkInfrastructure.Common.Models
+namespace GDNET.FrameworkInfrastructure.Models.System
 {
-    public enum UserDetailsMode
-    {
-        Basic,
-        Medium,
-    }
-
     public class UserDetailsModel : AbstractViewModel<User>
     {
         [DisplayNameML("GUI.User.Email")]
@@ -30,7 +24,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Models
         public UserDetailsModel()
             : base()
         {
-            this.DisplayMode = UserDetailsMode.Basic;
+            this.DisplayMode = UserDetailsMode.Search;
         }
 
         public override void Initialize(User entity, bool filterActiveOnly)

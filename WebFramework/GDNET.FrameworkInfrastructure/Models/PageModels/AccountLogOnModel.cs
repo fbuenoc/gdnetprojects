@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
-namespace GDNET.FrameworkInfrastructure.Models.System
+namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public sealed class LogOnModel
+    public sealed class AccountLogOnModel
     {
         [Required]
         [Email("GUI.Common.InvalidFormat.Email")]

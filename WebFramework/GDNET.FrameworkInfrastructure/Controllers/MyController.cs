@@ -1,6 +1,7 @@
 ﻿using System.Web.Mvc;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
-using GDNET.FrameworkInfrastructure.Models.My;
+using GDNET.FrameworkInfrastructure.Controllers.Extensions;
+using GDNET.FrameworkInfrastructure.Models.PageModels;
 using GDNET.FrameworkInfrastructure.Models.System;
 using GDNET.FrameworkInfrastructure.Services;
 
@@ -10,7 +11,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
     {
         public ActionResult ChangeLanguage()
         {
-            ChangeLanguageModel model = new ChangeLanguageModel();
+            MyChangeLanguageModel model = new MyChangeLanguageModel();
             model.UserCustomizedInformation = WebFrameworkServices.DataStored.GetUserCustomizedInfo();
             model.PageMeta.Keywords = "";
             model.PageMeta.Description = "";
@@ -20,7 +21,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         }
 
         [HttpPost]
-        public ActionResult ChangeLanguage(ChangeLanguageModel model)
+        public ActionResult ChangeLanguage(MyChangeLanguageModel model)
         {
             if (base.ModelState.IsValid)
             {
