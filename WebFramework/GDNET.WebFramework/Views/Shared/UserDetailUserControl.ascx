@@ -1,5 +1,4 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<UserDetailsModel>" %>
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Common.Models" %>
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.SearchModels" %>
 <div class="ym-contain-dt site-nbg">
     <div>
@@ -15,6 +14,7 @@
             <%
                 if (base.Model.DisplayMode == UserDetailsMode.Medium)
                 {
+                }
             %>
             <h6>
                 <%: base.Html.Translate("GUI.User.CreatedDate")%>
@@ -22,9 +22,6 @@
             <div class="normal">
                 <%: base.Model.CreatedAt.ToShortDateString() %>
             </div>
-            <%
-            }
-            %>
             <h6>
                 <%: base.Html.Translate("GUI.User.Introduction")%>
             </h6>

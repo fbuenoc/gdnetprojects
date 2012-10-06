@@ -7,9 +7,14 @@ namespace GDNET.Utils
     {
         public static string GenerateASentence(Random aRandom)
         {
+            int length = aRandom.Next(100, 200);
+            return RandomAssistant.GenerateASentence(aRandom, length);
+        }
+
+        public static string GenerateASentence(Random aRandom, int length)
+        {
             StringBuilder sb = new StringBuilder();
 
-            int length = aRandom.Next(100, 200);
             for (int index = 0; index < length; index++)
             {
                 int wordLength = aRandom.Next(2, 20);

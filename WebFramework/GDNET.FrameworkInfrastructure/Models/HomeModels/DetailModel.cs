@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using GDNET.FrameworkInfrastructure.Common.Models;
 using GDNET.FrameworkInfrastructure.Models.Base;
 using GDNET.FrameworkInfrastructure.Models.Content;
+using GDNET.FrameworkInfrastructure.Models.System;
 
 namespace GDNET.FrameworkInfrastructure.Models.HomeModels
 {

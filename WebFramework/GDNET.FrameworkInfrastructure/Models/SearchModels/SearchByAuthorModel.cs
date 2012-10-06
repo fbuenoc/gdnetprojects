@@ -1,5 +1,5 @@
-﻿using GDNET.FrameworkInfrastructure.Common.Models;
-using GDNET.FrameworkInfrastructure.Models.HomeModels;
+﻿using GDNET.FrameworkInfrastructure.Models.HomeModels;
+using GDNET.FrameworkInfrastructure.Models.System;
 
 namespace GDNET.FrameworkInfrastructure.Models.SearchModels
 {
