@@ -1,6 +1,5 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ChangeLanguageModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<MyChangeLanguageModel>" %>
 
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.My" %>
 <%@ Import Namespace="GDNET.Domain.Entities.System.ReferenceData" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.My.ChangeLanguage.Title %>" />

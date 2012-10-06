@@ -1,8 +1,6 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DetailModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<HomeDetailModel>" %>
 
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.HomeModels" %>
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.SearchModels" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.DetailsPage.Title", base.Model.ItemModel.Name) %>
 </asp:Content>
@@ -61,12 +59,12 @@
                     {
                         return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, new { title = x.Description }).ToHtmlString();
                     };
-
-                    var repeaterFocus = RepeaterAssistant.Create<ContentItemModel>("focus_items").AddEntities(base.Model.FocusItems);
-                    repeaterFocus.AddColumns("Name").EnableHeader(false);
-                    repeaterFocus.AddGenerator("Name", NameGenerator);
                 %>
-                <%= repeaterFocus.GenerateHtml()%>
+                <%= RepeaterAssistant.Create<ContentItemModel>("focus_items").AddEntities(base.Model.FocusItems)
+                                    .EnableHeader(false)
+                                    .AddColumns("Name")
+                                    .AddGenerator("Name", NameGenerator)
+                                    .GenerateHtml()%>
             </div>
         </div>
     </aside>

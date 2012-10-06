@@ -154,6 +154,7 @@
     <Content Include="Views\Account\LogOn.aspx" />
     <Content Include="Views\Account\Register.aspx" />
     <Content Include="Views\Account\UpdateDetails.aspx" />
+    <Content Include="Views\Account\Watch.aspx" />
     <Content Include="Views\ContentAdmin\Details.aspx" />
     <Content Include="Views\ContentAdmin\List.aspx" />
     <Content Include="Views\ContentAdmin\CreateOrUpdatePart.aspx" />

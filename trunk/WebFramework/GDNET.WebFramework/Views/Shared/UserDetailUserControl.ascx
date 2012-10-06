@@ -1,21 +1,31 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<UserDetailsModel>" %>
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.SearchModels" %>
+<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.System" %>
 <div class="ym-contain-dt site-nbg">
     <div>
         <div class="normal">
             <%: base.Model.DisplayName %>
         </div>
         <div class="normal">
-            <%: base.Html.ActionLinkTrans("GUI.UserDetails.SearchContent", "Index", "Search", new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.Id })%>
+            <%
+                if (base.Model.DisplayMode != UserDetailsMode.Search)
+                {
+            %>
+            <%: base.Html.ActionLinkTrans("GUI.UserDetails.SearchContent", "Index", ListControllers.Search, new { by = SearchMode.Author.ToString().ToLower(), value = base.Model.Id })%>
+            <%
+                }
+            %>
+            <%
+                if (base.Model.DisplayMode != UserDetailsMode.AccountWatch)
+                {
+            %>
+            <%: base.Html.ActionLinkTrans("GUI.UserDetails.ViewAccount", "Watch", ListControllers.Account, new { id = base.Model.Id })%>
+            <%
+                }
+            %>
         </div>
     </div>
     <div>
         <section class="box">
-            <%
-                if (base.Model.DisplayMode == UserDetailsMode.Medium)
-                {
-                }
-            %>
             <h6>
                 <%: base.Html.Translate("GUI.User.CreatedDate")%>
             </h6>
