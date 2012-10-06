@@ -1,8 +1,9 @@
 ﻿using System;
 using GDNET.Domain.Entities.System;
+using GDNET.Domain.Entities.System.ReferenceData;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common.Base;
-using GDNET.FrameworkInfrastructure.Models.System;
+using GDNET.FrameworkInfrastructure.Models.PageModels;
 
 namespace GDNET.FrameworkInfrastructure.Services.Models
 {
@@ -30,15 +31,15 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             return null;
         }
 
-        public UpdateDetailsModel GetUpdateDetailsModelByEmail(string email)
+        public AccountUpdateDetailsModel GetUpdateDetailsModelByEmail(string email)
         {
             User user = DomainRepositories.User.FindByEmail(email);
-            return (user == null) ? null : this.GetUserModel<UpdateDetailsModel>(user);
+            return (user == null) ? null : this.GetUserModel<AccountUpdateDetailsModel>(user);
         }
 
-        public UpdateDetailsModel GetUpdateDetailsModel(User user)
+        public AccountUpdateDetailsModel GetUpdateDetailsModel(User user)
         {
-            return this.GetUserModel<UpdateDetailsModel>(user);
+            return this.GetUserModel<AccountUpdateDetailsModel>(user);
         }
 
         public T GetUserModel<T>(User user) where T : AbstractViewModel<User>
@@ -49,10 +50,10 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             return (T)model;
         }
 
-        public bool UpdateUserFromModel(string email, UpdateDetailsModel model)
+        public bool UpdateUserFromModel(string email, AccountUpdateDetailsModel model)
         {
             bool result = false;
-            var catalog = DomainRepositories.Catalog.FindByCode("c.languages");
+            var catalog = DomainRepositories.Catalog.FindByCode(SystemCatalogs.Languages);
             User user = DomainRepositories.User.FindByEmail(email);
 
             if (user != null)

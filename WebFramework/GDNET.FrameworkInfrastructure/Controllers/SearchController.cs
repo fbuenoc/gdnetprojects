@@ -35,24 +35,27 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         private ActionResult SearchByAuthor()
         {
             string authorId = base.Request.Params[SearchValue];
-            var author = DomainRepositories.User.GetById(new Guid(authorId));
-            var authorModel = WebFrameworkServices.AccountModels.GetUserModel<UserDetailsModel>(author);
-            authorModel.DisplayMode = UserDetailsMode.Search;
+            Guid guid = Guid.Empty;
+            SearchByAuthorModel model = new SearchByAuthorModel(SearchMode.Author);
 
-            var topItems = DomainRepositories.ContentItem.GetTopWithActiveByAuthor(DefaultPageSize, author.Email);
-            var topModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(topItems, true);
-
-            var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(FocusItemSize);
-            var focusModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(focusItems, true);
-
-            SearchByAuthorModel model = new SearchByAuthorModel(SearchMode.Author)
+            if (Guid.TryParse(authorId, out guid))
             {
-                NewItems = topModels,
-                FocusItems = focusModels,
-                AuthorModel = authorModel,
-            };
-            model.PageMeta.Description = string.Format(WebFrameworkServices.Translation.GetByKeyword("GUI.Search.ByAuthor.Description"), authorModel.DisplayName);
-            model.PageMeta.Author = authorModel.DisplayName;
+                var author = DomainRepositories.User.GetById(guid);
+                var authorModel = WebFrameworkServices.AccountModels.GetUserModel<UserDetailsModel>(author);
+                authorModel.DisplayMode = UserDetailsMode.Search;
+
+                var topItems = DomainRepositories.ContentItem.GetTopWithActiveByAuthor(DefaultPageSize, author.Email);
+                var topModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(topItems, true);
+
+                var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(FocusItemSize);
+                var focusModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(focusItems, true);
+
+                model.NewItems = topModels;
+                model.FocusItems = focusModels;
+                model.AuthorModel = authorModel;
+                model.PageMeta.Description = string.Format(WebFrameworkServices.Translation.GetByKeyword("GUI.Search.ByAuthor.Description"), authorModel.DisplayName);
+                model.PageMeta.Author = authorModel.DisplayName;
+            }
 
             return base.View("SearchByAuthor", model);
         }

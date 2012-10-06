@@ -6,6 +6,8 @@ namespace GDNET.FrameworkInfrastructure.Models.System
 {
     public class UserDetailsModel : AbstractViewModel<User>
     {
+        #region Properties
+
         [DisplayNameML("GUI.User.Email")]
         public string Email { get; set; }
 
@@ -15,16 +17,26 @@ namespace GDNET.FrameworkInfrastructure.Models.System
         [DisplayNameML("GUI.User.Introduction")]
         public string Introduction { get; set; }
 
+        [DisplayNameML("GUI.User.TotalPoints")]
+        public double TotalPoints
+        {
+            get;
+            private set;
+        }
+
         public UserDetailsMode DisplayMode
         {
             get;
             set;
         }
 
+        #endregion
+
+        #region Methods
+
         public UserDetailsModel()
             : base()
         {
-            this.DisplayMode = UserDetailsMode.Search;
         }
 
         public override void Initialize(User entity, bool filterActiveOnly)
@@ -32,8 +44,12 @@ namespace GDNET.FrameworkInfrastructure.Models.System
             base.Id = entity.Id.ToString();
             this.DisplayName = entity.DisplayName;
             this.Introduction = entity.Introduction;
+            this.Email = entity.Email;
+            this.TotalPoints = entity.TotalPoints;
 
             base.InitializeCommon(entity);
         }
+
+        #endregion
     }
 }
