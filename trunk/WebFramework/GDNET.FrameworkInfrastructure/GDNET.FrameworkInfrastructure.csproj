@@ -42,17 +42,17 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Extensions\NumberExtensions.cs" />
     <Compile Include="Common\Extensions\HtmlCookieExtensions.cs" />
     <Compile Include="Common\FrameworkConstants.cs" />
+    <Compile Include="Common\GlobalSettings.cs" />
     <Compile Include="Controllers\Base\AbstractController.cs" />
     <Compile Include="Common\Base\LanguageConstraint.cs" />
     <Compile Include="Common\Base\ViewModelMode.cs" />
@@ -77,7 +77,7 @@
     <Compile Include="Models\PageModels\AccountChangePasswordModel.cs" />
     <Compile Include="Models\System\UserDetailsMode.cs" />
     <Compile Include="Models\System\UserDetailsModel.cs" />
-    <Compile Include="Models\System\UpdateDetailsModel.cs" />
+    <Compile Include="Models\PageModels\AccountUpdateDetailsModel.cs" />
     <Compile Include="Models\PageModels\AccountLogOnModel.cs" />
     <Compile Include="Models\PageModels\AccountRegisterModel.cs" />
     <Compile Include="Common\TranslationBuilder.cs" />

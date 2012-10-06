@@ -1,9 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
+using GDNET.FrameworkInfrastructure.Models.Base;
 
 namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {
-    public sealed class AccountRegisterModel
+    public sealed class AccountRegisterModel : AbstractPageModel
     {
         [DataType(DataType.EmailAddress)]
         [Required]
@@ -21,5 +22,10 @@ namespace GDNET.FrameworkInfrastructure.Models.PageModels
         [DisplayNameML("GUI.User.ConfirmPassword")]
         [CompareML("Password", "GUI.User.ConfirmPassword.Error")]
         public string ConfirmPassword { get; set; }
+
+        public AccountRegisterModel()
+            : base()
+        {
+        }
     }
 }

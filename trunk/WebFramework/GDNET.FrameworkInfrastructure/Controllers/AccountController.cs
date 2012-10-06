@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
+using GDNET.Domain.Content;
+using GDNET.Domain.Repositories;
+using GDNET.FrameworkInfrastructure.Common;
+using GDNET.FrameworkInfrastructure.Common.Extensions;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Controllers.Extensions;
+using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Models.PageModels;
 using GDNET.FrameworkInfrastructure.Models.System;
 using GDNET.FrameworkInfrastructure.Services;
@@ -20,15 +25,21 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 
         public ActionResult Watch(string id)
         {
+            AccountWatchModel pageModel = new AccountWatchModel();
             var userModel = WebFrameworkServices.AccountModels.GetUserModelById<UserDetailsModel>(id);
-            userModel.DisplayMode = UserDetailsMode.AccountWatch;
 
-            AccountWatchModel model = new AccountWatchModel()
+            if (userModel != null)
             {
-                UserDetails = userModel,
-            };
+                userModel.DisplayMode = UserDetailsMode.AccountWatch;
 
-            return base.View(model);
+                var topContents = DomainRepositories.ContentItem.GetTopWithActiveByAuthor(GlobalSettings.DefaultPageSize, userModel.Email);
+                var topModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(topContents, true);
+
+                pageModel.UserDetails = userModel;
+                pageModel.FocusItems = topModels;
+            }
+
+            return base.View(pageModel);
         }
 
         #region LogOn
@@ -91,14 +102,14 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         public ActionResult UpdateDetails()
         {
             var email = base.HttpContext.User.Identity.Name;
-            UpdateDetailsModel model = WebFrameworkServices.AccountModels.GetUserModelByEmail<UpdateDetailsModel>(email);
+            AccountUpdateDetailsModel model = WebFrameworkServices.AccountModels.GetUserModelByEmail<AccountUpdateDetailsModel>(email);
 
             return base.View(model);
         }
 
         [Authorize]
         [HttpPost]
-        public ActionResult UpdateDetails(UpdateDetailsModel model)
+        public ActionResult UpdateDetails(AccountUpdateDetailsModel model)
         {
             if (base.ModelState.IsValid)
             {

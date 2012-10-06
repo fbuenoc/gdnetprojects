@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
+using GDNET.FrameworkInfrastructure.Common;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Controllers.Extensions;
@@ -14,15 +15,12 @@ namespace GDNET.FrameworkInfrastructure.Controllers
 {
     public class HomeController : AbstractController
     {
-        private const int DefaultPageSize = 10;
-        private const int FocusItemSize = 10;
-
         public ActionResult Index()
         {
-            var listContentItems = DomainRepositories.ContentItem.GetTopWithActive(DefaultPageSize);
+            var listContentItems = DomainRepositories.ContentItem.GetTopWithActive(GlobalSettings.DefaultPageSize);
             var listItems = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(listContentItems, true);
 
-            var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(FocusItemSize);
+            var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(GlobalSettings.FocusItemSize);
             var focusModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(focusItems, true);
 
             HomeIndexModel model = new HomeIndexModel()
@@ -31,8 +29,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 FocusItems = focusModels,
             };
             model.PageMeta.Description = "";
-            model.PageMeta.Author = "";
-            model.PageMeta.Keywords = "Learn ASP.NET, Learn ASP.NET MVC, Learn JavaScript, Learn JQuery, Design Pattern best practice";
+            model.PageMeta.Author = WebFrameworkServices.Translation.GetByKeyword("GUI.Common.SiteAuthor");
+            model.PageMeta.Keywords = WebFrameworkServices.Translation.GetByKeyword("GUI.Page.Home.Keywords");
 
             return base.View(model);
         }
@@ -45,7 +43,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Index()));
             }
 
-            var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(FocusItemSize, new Guid(id));
+            var focusItems = DomainRepositories.ContentItem.GetTopWithActiveByViews(GlobalSettings.FocusItemSize, new Guid(id));
             var focusModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(focusItems, true);
 
             var authorModel = WebFrameworkServices.AccountModels.GetUserModelByEmail<UserDetailsModel>(contentModel.CreatedBy);
