@@ -5,7 +5,9 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using GDNET.Domain.Repositories;
+using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Services;
+using GDNET.Utils;
 
 namespace GDNET.FrameworkInfrastructure.Common.Extensions
 {
@@ -135,6 +137,25 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             string javascript = string.Format("return confirm(\"{0}\");", messageText);
 
             return htmlHelper.ActionLink(linkText, actionName, routeValues, new { onclick = javascript });
+        }
+
+        public static MvcHtmlString DateModification(this HtmlHelper htmlHelper, ContentItemModel model)
+        {
+            string result = string.Empty;
+            string format = "<div class=\"site-add-info\">{0}: <span itemprop=\"{1}\" class=\"site-add-info pretty_date\">{2}</span></div>";
+
+            if (model.LastModifiedAt.HasValue)
+            {
+                string prefix = WebFrameworkServices.Translation.GetByKeyword("GUI.Entity.LastModifiedAt");
+                result = string.Format(format, prefix, FormatterAssistant.FormatPretty(model.LastModifiedAt), FormatterAssistant.Format(model.LastModifiedAt));
+            }
+            else
+            {
+                string prefix = WebFrameworkServices.Translation.GetByKeyword("GUI.Entity.CreatedAt");
+                result = string.Format(format, prefix, FormatterAssistant.FormatPretty(model.CreatedAt), FormatterAssistant.Format(model.CreatedAt));
+            }
+
+            return MvcHtmlString.Create(result);
         }
     }
 }

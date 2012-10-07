@@ -8,7 +8,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
     {
         public static string Format(this HtmlHelper htmlHelper, int? value)
         {
-            return NumberAssistant.Format(value);
+            return FormatterAssistant.Format(value);
         }
 
         public static string Format(this HtmlHelper htmlHelper, int? value, string keywordOnZero)
@@ -18,12 +18,12 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
                 return WebFrameworkServices.Translation.GetByKeyword(keywordOnZero);
             }
 
-            return NumberAssistant.Format(value);
+            return FormatterAssistant.Format(value);
         }
 
         public static string Format(this HtmlHelper htmlHelper, double? value)
         {
-            return NumberAssistant.Format(value);
+            return FormatterAssistant.Format(value);
         }
 
         public static string Format(this HtmlHelper htmlHelper, double? value, string keywordOnZero)
@@ -33,7 +33,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
                 return WebFrameworkServices.Translation.GetByKeyword(keywordOnZero);
             }
 
-            return NumberAssistant.Format(value);
+            return FormatterAssistant.Format(value);
         }
     }
 }

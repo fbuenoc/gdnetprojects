@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web;
+using System.Web.Mvc;
 using GDNET.Domain.Base;
 using GDNET.FrameworkInfrastructure.Common.Base;
 
@@ -32,6 +34,11 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             where TEntity : IEntity
         {
             return FrameworkExtensions.ConvertAll<TModel, TEntity>(listEntities, false);
+        }
+
+        public static string GetLanguageRoute(this HtmlHelper htmlHelper)
+        {
+            return HttpContext.Current.Request.RequestContext.RouteData.Values[FrameworkConstants.LanguageRouteKey].ToString();
         }
     }
 }
