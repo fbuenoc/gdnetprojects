@@ -34,19 +34,19 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
                 if (!(aRoute.RouteHandler is NormalMvcRouteHandler))
                 {
                     aRoute.RouteHandler = new MultilingualMvcRouteHandler();
-                    aRoute.Url = "{language}/" + aRoute.Url;
+                    aRoute.Url = "{" + FrameworkConstants.LanguageRouteKey + "}/" + aRoute.Url;
 
                     if (aRoute.Defaults == null)
                     {
                         aRoute.Defaults = new RouteValueDictionary();
                     }
-                    aRoute.Defaults.Add("language", "vi");
+                    aRoute.Defaults.Add(FrameworkConstants.LanguageRouteKey, "vi");
 
                     if (aRoute.Constraints == null)
                     {
                         aRoute.Constraints = new RouteValueDictionary();
                     }
-                    aRoute.Constraints.Add("language", new LanguageConstraint());
+                    aRoute.Constraints.Add(FrameworkConstants.LanguageRouteKey, new LanguageRouteConstraint());
                 }
             }
         }

@@ -10,7 +10,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Handlers
     {
         protected override IHttpHandler GetHttpHandler(RequestContext requestContext)
         {
-            var language = requestContext.RouteData.Values["language"].ToString();
+            var language = requestContext.RouteData.Values[FrameworkConstants.LanguageRouteKey].ToString();
             var ci = new CultureInfo(language);
             Thread.CurrentThread.CurrentUICulture = ci;
 

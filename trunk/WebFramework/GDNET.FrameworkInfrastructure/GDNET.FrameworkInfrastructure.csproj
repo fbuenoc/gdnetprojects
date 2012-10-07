@@ -54,7 +54,7 @@
     <Compile Include="Common\FrameworkConstants.cs" />
     <Compile Include="Common\GlobalSettings.cs" />
     <Compile Include="Controllers\Base\AbstractController.cs" />
-    <Compile Include="Common\Base\LanguageConstraint.cs" />
+    <Compile Include="Common\Base\LanguageRouteConstraint.cs" />
     <Compile Include="Common\Base\ViewModelMode.cs" />
     <Compile Include="Controllers\Extensions\ControllerAssistant.cs" />
     <Compile Include="Common\Base\AbstractViewModelT.cs" />
