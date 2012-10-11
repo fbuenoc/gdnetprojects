@@ -1,4 +1,4 @@
-﻿using GDNET.Domain.Base;
+﻿using GDNET.Domain.Entities.System.Management;
 using GDNET.Mapping.Common;
 using NHibernate.Mapping.ByCode;
 

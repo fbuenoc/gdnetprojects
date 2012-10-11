@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace GDNET.Domain.Base.Management
+namespace GDNET.Domain.Entities.System.Management
 {
     public class EntityHistoryComplex : AbstractEntityWithModificationHistoryT<Guid>
     {

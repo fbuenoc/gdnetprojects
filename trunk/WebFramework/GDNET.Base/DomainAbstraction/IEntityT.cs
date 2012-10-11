@@ -1,4 +1,4 @@
-﻿namespace GDNET.Domain.Base
+﻿namespace GDNET.Base.DomainAbstraction
 {
     public interface IEntityT<TId> : IEntity
     {

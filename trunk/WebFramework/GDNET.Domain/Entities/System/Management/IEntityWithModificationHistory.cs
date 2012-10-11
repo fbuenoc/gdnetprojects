@@ -1,7 +1,7 @@
 ﻿using System;
-using GDNET.Domain.Base.Management;
+using GDNET.Base.DomainAbstraction;
 
-namespace GDNET.Domain.Base
+namespace GDNET.Domain.Entities.System.Management
 {
     public interface IEntityWithModificationHistory : IEntityWithModification
     {

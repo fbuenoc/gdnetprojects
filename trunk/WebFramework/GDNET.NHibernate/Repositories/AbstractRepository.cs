@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using GDNET.Domain.Base;
+using GDNET.Base.DomainAbstraction;
 using GDNET.Domain.Base.Validators;
 using GDNET.Domain.Common;
 using GDNET.NHibernate.SessionManagement;

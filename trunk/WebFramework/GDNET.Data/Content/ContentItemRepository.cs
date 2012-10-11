@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using GDNET.Base;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories.Content;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagement;
-using GDNET.Utils;
 using NHibernate.Criterion;
 
 namespace GDNET.Data.Content

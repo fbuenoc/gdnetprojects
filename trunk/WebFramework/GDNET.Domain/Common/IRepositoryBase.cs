@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using GDNET.Domain.Base;
+using GDNET.Base.DomainAbstraction;
 
 namespace GDNET.Domain.Common
 {

@@ -14,11 +14,12 @@
                 <h4>
                     <%= base.Model.ItemModel.Name %>
                 </h4>
-                <div>
-                    <p>
-                        <%= base.Model.ItemModel.Description%>
-                    </p>
+                <div style="margin-top: 5px;">
+                    <%= base.Html.DateModification(this.Model.ItemModel) %>
                 </div>
+                <p>
+                    <%= base.Model.ItemModel.Description%>
+                </p>
                 <p>
                     <%= base.Model.ItemModel.Keywords%>
                 </p>

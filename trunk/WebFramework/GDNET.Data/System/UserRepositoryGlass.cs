@@ -1,9 +1,9 @@
 ﻿using System;
+using GDNET.Base;
 using GDNET.Domain.Base.Exceptions;
 using GDNET.Domain.Common;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
-using GDNET.Utils;
 
 namespace GDNET.Data.System.Repositories
 {

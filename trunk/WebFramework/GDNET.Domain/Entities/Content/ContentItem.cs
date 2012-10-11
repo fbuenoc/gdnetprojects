@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using GDNET.Domain.Base.Management;
 using GDNET.Domain.Entities.System;
+using GDNET.Domain.Entities.System.Management;
 
 namespace GDNET.Domain.Content
 {

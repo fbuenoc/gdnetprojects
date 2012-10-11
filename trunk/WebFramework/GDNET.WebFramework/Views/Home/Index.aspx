@@ -8,21 +8,29 @@
     <% base.Html.RenderPartial("PageMetaUserControl", base.Model.PageMeta); %>
 </asp:Content>
 <asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
+    <%  
+        Func<ContentItemModel, string> NameColumnGenerator = (x =>
+        {
+            return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, null).ToHtmlString();
+        });
+        Func<ContentItemModel, string> NameColumnGeneratorWithTitle = (x =>
+        {
+            return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, new { title = x.Description }).ToHtmlString();
+        });
+        Func<ContentItemModel, string> DateColumnGenerator = (x =>
+        {
+            return base.Html.DateModification(x).ToHtmlString();
+        });
+    %>
     <div class="ym-col1">
         <div class="ym-cbox">
             <section class="ym-grid linearize-level-2">
-                <%  
-                    Func<ContentItemModel, string> NameColumnGenerator = (x =>
-                    {
-                        return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, null).ToHtmlString();
-                    });
-                %>
-                <%= RepeaterAssistant.Create<ContentItemModel>("home_content_items")
-                                                        .AddEntities(base.Model.NewItems.ToList())
-                                                        .EnableHeader(false)
-                                                        .AddColumns("Name", "Description")
-                                                        .AddGenerator("Name", NameColumnGenerator)
-                                                        .GenerateHtml()
+                <%= RepeaterAssistant.Create<ContentItemModel>("home_content_items").EnableHeader(false)
+                                .AddEntities(base.Model.NewItems.ToList())
+                                .AddColumns("Name").AddGenerator("Name", NameColumnGenerator)
+                                .AddColumns("Date").AddGenerator("Date", DateColumnGenerator)
+                                .AddColumns("Description")
+                                .GenerateHtml()
                 %>
             </section>
         </div>
@@ -33,16 +41,11 @@
                 <%: base.Html.Translate("GUI.DetailsPage.FocusTitle")%>
             </h4>
             <div class="ym-contain-dt site-nbg">
-                <%
-                    Func<ContentItemModel, string> NameGenerator = x =>
-                    {
-                        return base.Html.ActionLink(x.Name, "Details", "Home", new { id = x.Id.ToString() }, new { title = x.Description }).ToHtmlString();
-                    };
-
-                    var repeaterFocus = RepeaterAssistant.Create<ContentItemModel>("focus_items").AddEntities(base.Model.FocusItems).EnableHeader(false);
-                    repeaterFocus.AddColumns("Name").AddGenerator("Name", NameGenerator);
+                <%= RepeaterAssistant.Create<ContentItemModel>("focus_items").AddEntities(base.Model.FocusItems).EnableHeader(false)
+                        .AddColumns("Name").AddGenerator("Name", NameColumnGeneratorWithTitle)
+                        .AddColumns("Date").AddGenerator("Date", DateColumnGenerator)
+                        .GenerateHtml()
                 %>
-                <%= repeaterFocus.GenerateHtml()%>
             </div>
         </div>
     </aside>

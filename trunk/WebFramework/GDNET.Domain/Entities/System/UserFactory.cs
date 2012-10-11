@@ -22,7 +22,7 @@ namespace GDNET.Domain.Entities.System
                 ExceptionsManager.BusinessException.ThrowIfIsNullOrWhiteSpace(email);
                 ExceptionsManager.BusinessException.ThrowIfTooShort(password, 4);
 
-                var newUser = new User
+                var newUser = new User()
                 {
                     Email = email,
                     Password = DomainServices.Encryption.Encrypt(password),

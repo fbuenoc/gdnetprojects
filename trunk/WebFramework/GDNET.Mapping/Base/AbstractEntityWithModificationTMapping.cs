@@ -1,5 +1,5 @@
-﻿using GDNET.Domain.Base;
-using GDNET.Utils;
+﻿using GDNET.Base;
+using GDNET.Base.DomainAbstraction;
 using NHibernate.Mapping.ByCode;
 
 namespace GDNET.Mapping.Base

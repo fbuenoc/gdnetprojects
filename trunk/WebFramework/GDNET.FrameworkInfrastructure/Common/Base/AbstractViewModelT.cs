@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using GDNET.Domain.Base;
+using GDNET.Base.DomainAbstraction;
+using GDNET.Domain.Entities.System.Management;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
 namespace GDNET.FrameworkInfrastructure.Common.Base

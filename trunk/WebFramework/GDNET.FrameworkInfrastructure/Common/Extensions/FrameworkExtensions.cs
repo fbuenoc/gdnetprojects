@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.Mvc;
-using GDNET.Domain.Base;
+using GDNET.Base.DomainAbstraction;
+using GDNET.Domain.Entities.System.Management;
 using GDNET.FrameworkInfrastructure.Common.Base;
 
 namespace GDNET.FrameworkInfrastructure.Common.Extensions
