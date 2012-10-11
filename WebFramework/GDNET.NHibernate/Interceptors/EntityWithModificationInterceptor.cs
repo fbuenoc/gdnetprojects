@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using GDNET.Domain.Base;
+using GDNET.Base;
+using GDNET.Base.DomainAbstraction;
 using GDNET.Domain.Base.SessionManagement;
-using GDNET.Utils;
 using NHibernate;
 using NHibernate.Type;
 
@@ -56,6 +56,11 @@ namespace GDNET.NHibernate.Interceptors
         {
             if (entity is IEntityWithModification)
             {
+                if (propertyNames.Length == 1 && propertyNames[0] == "")
+                {
+                    return;
+                }
+
                 var defaultObject = default(IEntityWithModification);
                 var entityWithModification = (IEntityWithModification)entity;
 

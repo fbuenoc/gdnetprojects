@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Globalization;
+using GDNET.Base;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories.System;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagement;
-using GDNET.Utils;
 
 namespace GDNET.Data.System
 {

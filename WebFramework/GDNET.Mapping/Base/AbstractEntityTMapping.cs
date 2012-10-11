@@ -1,6 +1,6 @@
-﻿using GDNET.Domain.Base;
+﻿using GDNET.Base;
+using GDNET.Base.DomainAbstraction;
 using GDNET.Mapping.Common;
-using GDNET.Utils;
 using NHibernate.Mapping.ByCode;
 using NHibernate.Mapping.ByCode.Conformist;
 

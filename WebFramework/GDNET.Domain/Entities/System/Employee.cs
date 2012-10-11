@@ -1,5 +1,5 @@
 ﻿using System;
-using GDNET.Domain.Base.Management;
+using GDNET.Domain.Entities.System.Management;
 
 namespace GDNET.Domain.Entities.System
 {

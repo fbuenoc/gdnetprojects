@@ -1,9 +1,9 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<LogOnModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AccountLogOnModel>" %>
 
-<asp:Content ID="LT" ContentPlaceHolderID="TitleContent" runat="server">
+<asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <asp:Literal ID="L1" runat="server" Text="<%$ Trans:GUI.LogOnPage.Title %>" />
 </asp:Content>
-<asp:Content ID="LC" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
     <div class="ym-col1">
         <div class="ym-cbox">
             <h4>

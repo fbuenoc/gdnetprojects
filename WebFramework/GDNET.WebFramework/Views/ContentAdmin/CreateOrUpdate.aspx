@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
 
+<%@ Import Namespace="GDNET.Domain.Entities.System.ReferenceData" %>
 <%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate(base.Model.IsCreation ? "GUI.ContentAdmin.ContentItem.Title.Creation" : "GUI.ContentAdmin.ContentItem.Title.Modification")%>
@@ -47,7 +48,7 @@
                     <%: base.Html.LabelFor(m => m.Language)%>
                 </div>
                 <div class="editor-field">
-                    <%: base.Html.DropDownListFor(m => m.Language, "c.Languages") %>
+                    <%: base.Html.DropDownListFor(m => m.Language, SystemCatalogs.Languages)%>
                 </div>
             </div>
             <div class="editor-line">

@@ -33,6 +33,12 @@
                 <%: base.Model.CreatedAt.ToShortDateString() %>
             </div>
             <h6>
+                <%: base.Html.LabelFor(m => m.TotalPoints) %>
+            </h6>
+            <div class="normal">
+                <%: base.Html.Format(base.Model.TotalPoints, "GUI.User.TotalPoints.NoPoint")%>
+            </div>
+            <h6>
                 <%: base.Html.Translate("GUI.User.Introduction")%>
             </h6>
             <%= base.Model.Introduction %>

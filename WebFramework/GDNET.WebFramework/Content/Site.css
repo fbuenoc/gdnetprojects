@@ -23,7 +23,12 @@ to use a different color start by replacing all instances of
 {
     background-color: White !important;
 }
-
+.site-add-info
+{
+    color: #696969;
+    font-style: italic;
+    margin-bottom: 5px;
+}
 
 /* Styles for editor and display helpers
 ----------------------------------------------------------*/

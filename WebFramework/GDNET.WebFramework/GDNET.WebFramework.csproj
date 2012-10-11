@@ -138,11 +138,26 @@
     <Content Include="Content\yaml\screen\typography.css" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\html5.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-vi.js" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
     <Content Include="Scripts\jquery-1.5.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.js" />
     <Content Include="Scripts\jquery-ui-1.8.11.min.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-cn.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-da.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-de.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-es.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-fr.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-id.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-lv.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-nl.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-pl.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-pt-BR.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-sv.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-th.js" />
+    <Content Include="Scripts\i18n\jquery.prettydate-tr.js" />
+    <Content Include="Scripts\jquery.prettydate.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -193,6 +208,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GDNET.Domain\GDNET.Domain.csproj">
+      <Project>{5BCC7907-3BF7-4926-86E9-63B05C35E7E3}</Project>
+      <Name>GDNET.Domain</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.FrameworkInfrastructure.csproj">
       <Project>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</Project>
       <Name>GDNET.FrameworkInfrastructure</Name>

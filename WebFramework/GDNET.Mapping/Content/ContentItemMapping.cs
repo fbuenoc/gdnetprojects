@@ -1,9 +1,9 @@
 ﻿using System;
+using GDNET.Base;
 using GDNET.Domain.Content;
 using GDNET.Mapping.Base;
 using GDNET.Mapping.Common;
 using GDNET.NHibernate.Mapping;
-using GDNET.Utils;
 using NHibernate.Mapping.ByCode;
 
 namespace GDNET.Mapping.Content

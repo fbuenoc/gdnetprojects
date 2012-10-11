@@ -1,12 +1,14 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<ChangePasswordModel>" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AccountChangePasswordModel>" %>
 
-<asp:Content ID="CPT" ContentPlaceHolderID="TitleContent" runat="server">
+<asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.Account.ChangePassword.Title")%>
 </asp:Content>
-<asp:Content ID="CPC" ContentPlaceHolderID="MainContent" runat="server">
+<asp:Content ID="C2" ContentPlaceHolderID="MetaContent" runat="server">
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>"
         type="text/javascript"></script>
+</asp:Content>
+<asp:Content ID="C3" ContentPlaceHolderID="MainContent" runat="server">
     <h2>
         <%: base.Html.Translate("GUI.Account.ChangePassword.Focus")%>
     </h2>

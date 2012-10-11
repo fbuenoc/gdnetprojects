@@ -70,7 +70,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
         {
             var catalog = DomainRepositories.Catalog.FindByCode("c.languages");
 
-            return new ContentItem()
+            var ci = new ContentItem()
             {
                 Description = itemModel.Description,
                 Keywords = itemModel.Keywords,
@@ -78,16 +78,20 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
                 Name = itemModel.Name,
                 Language = catalog.GetLineByCode(itemModel.Language),
             };
+
+            return ci;
         }
 
         public ContentPart CreateContentPart(ContentPartModel partModel)
         {
-            return new ContentPart()
+            var cp = new ContentPart()
             {
                 Name = partModel.Name,
                 Details = partModel.Details,
                 IsActive = partModel.IsActive,
             };
+
+            return cp;
         }
 
         #endregion

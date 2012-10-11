@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq.Expressions;
 
-namespace GDNET.Utils
+namespace GDNET.Base
 {
-    public static class ExpressionAssistant
+    public class ExpressionAssistant
     {
         public static string GetPropertyName<T>(Expression<Func<T>> property)
         {

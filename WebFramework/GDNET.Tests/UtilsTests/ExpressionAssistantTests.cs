@@ -1,4 +1,4 @@
-﻿using GDNET.Utils;
+﻿using GDNET.Base;
 using NUnit.Framework;
 
 namespace GDNET.Tests.UtilsTests
