@@ -44,6 +44,11 @@
     <Compile Include="DomainAbstraction\IEntityWithCreation.cs" />
     <Compile Include="DomainAbstraction\IEntityWithModification.cs" />
     <Compile Include="DomainAbstraction\IEntityWithModificationT.cs" />
+    <Compile Include="DomainRepository\AbstractRepositoryGlass.cs" />
+    <Compile Include="DomainRepository\IRepositoryBase.cs" />
+    <Compile Include="DomainRepository\IRepositoryGlass.cs" />
+    <Compile Include="DomainRepository\IRepositoryStrategy.cs" />
+    <Compile Include="EntityWithModificationMeta.cs" />
     <Compile Include="ExpressionAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

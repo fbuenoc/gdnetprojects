@@ -38,16 +38,10 @@ namespace GDNET.NHibernate.Interceptors
         {
             if (entity is IEntityWithCreation)
             {
-                var defaultObject = default(IEntityWithCreation);
-                var entityWithCreationInfo = (IEntityWithCreation)entity;
-
-                var propertyCreatedAt = ExpressionAssistant.GetPropertyName(() => defaultObject.CreatedAt);
-                var propertyCreatedBy = ExpressionAssistant.GetPropertyName(() => defaultObject.CreatedBy);
-
-                var propertyIndex = propertyNames.ToList().IndexOf(propertyCreatedAt);
+                var propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedAt);
                 state[propertyIndex] = DateTime.Now;
 
-                propertyIndex = propertyNames.ToList().IndexOf(propertyCreatedBy);
+                propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedBy);
                 state[propertyIndex] = this.GetEmailCurrentUser();
             }
         }
@@ -56,33 +50,22 @@ namespace GDNET.NHibernate.Interceptors
         {
             if (entity is IEntityWithModification)
             {
-                if (propertyNames.Length == 1 && propertyNames[0] == "")
-                {
-                    return;
-                }
-
-                var defaultObject = default(IEntityWithModification);
                 var entityWithModification = (IEntityWithModification)entity;
-
-                var propertyCreatedAt = ExpressionAssistant.GetPropertyName(() => defaultObject.CreatedAt);
-                var propertyCreatedBy = ExpressionAssistant.GetPropertyName(() => defaultObject.CreatedBy);
-                var propertyLastModifiedAt = ExpressionAssistant.GetPropertyName(() => defaultObject.LastModifiedAt);
-                var propertyLastModifiedBy = ExpressionAssistant.GetPropertyName(() => defaultObject.LastModifiedBy);
 
                 if (string.IsNullOrEmpty(entityWithModification.CreatedBy))
                 {
-                    var propertyIndex = propertyNames.ToList().IndexOf(propertyCreatedAt);
+                    var propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedAt);
                     state[propertyIndex] = DateTime.Now;
 
-                    propertyIndex = propertyNames.ToList().IndexOf(propertyCreatedBy);
+                    propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedBy);
                     state[propertyIndex] = this.GetEmailCurrentUser();
                 }
                 else
                 {
-                    var propertyIndex = propertyNames.ToList().IndexOf(propertyLastModifiedAt);
+                    var propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.LastModifiedAt);
                     state[propertyIndex] = DateTime.Now;
 
-                    propertyIndex = propertyNames.ToList().IndexOf(propertyLastModifiedBy);
+                    propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.LastModifiedBy);
                     state[propertyIndex] = this.GetEmailCurrentUser();
                 }
             }

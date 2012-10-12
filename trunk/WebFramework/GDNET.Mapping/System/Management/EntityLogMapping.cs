@@ -17,13 +17,13 @@ namespace GDNET.Mapping.System.Management
         {
             base.Property(e => e.CreatedAt, m =>
             {
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedAt));
+                m.Column(EntityWithModificationMeta.CreatedAt);
                 m.Access(Accessor.Property);
                 m.NotNullable(true);
             });
             base.Property(e => e.CreatedBy, m =>
             {
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedBy));
+                m.Column(EntityWithModificationMeta.CreatedBy);
                 m.Access(Accessor.Property);
                 m.NotNullable(true);
             });

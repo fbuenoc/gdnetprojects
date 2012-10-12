@@ -1,5 +1,5 @@
 ﻿using System;
-using GDNET.Domain.Common;
+using GDNET.Base.DomainRepository;
 using GDNET.Domain.Entities.System;
 
 namespace GDNET.Domain.Repositories.System

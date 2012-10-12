@@ -10,9 +10,8 @@ namespace GDNET.Mapping.Base
     {
         public AbstractJoinedSubclassMapping()
         {
-            var defaultObject = default(AbstractEntityT<TId>);
             base.Table(MappingAssistant.GetStrongTableByType(typeof(TObject)));
-            base.Key(km => km.Column(ExpressionAssistant.GetPropertyName(() => defaultObject.Id)));
+            base.Key(km => km.Column(EntityWithModificationMeta.Id));
         }
     }
 }

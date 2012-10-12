@@ -1,4 +1,4 @@
-using GDNET.Domain.Common;
+using GDNET.Base.DomainRepository;
 using NHibernate;
 
 namespace GDNET.NHibernate.SessionManagement

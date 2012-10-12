@@ -10,35 +10,33 @@ namespace GDNET.Mapping.Base
         public AbstractEntityWithModificationTMapping(IGeneratorDef generator)
             : base(generator)
         {
-            var defaultEntity = default(AbstractEntityWithModificationT<TId>);
-
             base.Id<TId>(e => e.Id, m =>
             {
                 m.Generator(generator);
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.Id));
+                m.Column(EntityWithModificationMeta.Id);
                 m.Access(Accessor.Field);
             });
 
             base.Property(e => e.CreatedAt, m =>
             {
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedAt));
+                m.Column(EntityWithModificationMeta.CreatedAt);
                 m.Access(Accessor.Field);
                 m.NotNullable(true);
             });
             base.Property(e => e.CreatedBy, m =>
             {
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.CreatedBy));
+                m.Column(EntityWithModificationMeta.CreatedBy);
                 m.Access(Accessor.Field);
                 m.NotNullable(true);
             });
             base.Property(e => e.LastModifiedAt, m =>
             {
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.LastModifiedAt));
+                m.Column(EntityWithModificationMeta.LastModifiedAt);
                 m.Access(Accessor.Field);
             });
             base.Property(e => e.LastModifiedBy, m =>
             {
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.LastModifiedBy));
+                m.Column(EntityWithModificationMeta.LastModifiedBy);
                 m.Access(Accessor.Field);
             });
         }
