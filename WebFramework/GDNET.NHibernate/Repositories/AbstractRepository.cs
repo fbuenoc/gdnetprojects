@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using GDNET.Base.DomainAbstraction;
+using GDNET.Base.DomainRepository;
 using GDNET.Domain.Base.Validators;
-using GDNET.Domain.Common;
 using GDNET.NHibernate.SessionManagement;
 using NHibernate;
 using NHibernate.Criterion;

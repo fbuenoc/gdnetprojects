@@ -40,12 +40,9 @@
     <Compile Include="Entities\System\Management\AbstractEntityWithModificationHistoryT.cs" />
     <Compile Include="Base\Exceptions\DomainException.cs" />
     <Compile Include="Base\Exceptions\Managers\BusinessExceptionManager.cs" />
+    <Compile Include="Entities\System\Management\EntityWithModificationHistoryMeta.cs" />
     <Compile Include="Entities\System\Management\IEntityWithModificationHistory.cs" />
     <Compile Include="Entities\System\Management\IEntityWithModificationHistoryT.cs" />
-    <Compile Include="Common\AbstractRepositoryGlass.cs" />
-    <Compile Include="Common\IRepositoryBase.cs" />
-    <Compile Include="Common\IRepositoryGlass.cs" />
-    <Compile Include="Common\IRepositoryStrategy.cs" />
     <Compile Include="Base\SessionManagement\DomainSessionContext.cs" />
     <Compile Include="Base\SessionManagement\ISessionContext.cs" />
     <Compile Include="Entities\Content\ContentItem.cs" />
@@ -87,6 +84,7 @@
       <Name>GDNET.Base</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,7 +1,7 @@
 ﻿using System;
 using GDNET.Base;
+using GDNET.Base.DomainRepository;
 using GDNET.Domain.Base.Exceptions;
-using GDNET.Domain.Common;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
 

@@ -11,15 +11,13 @@ namespace GDNET.Mapping.Base
     {
         public AbstractEntityTMapping(IGeneratorDef generator)
         {
-            var defaultEntity = default(AbstractEntityT<TId>);
-
             base.Lazy(true);
             base.Table(MappingAssistant.GetStrongTableByType(typeof(TObject)));
 
             base.Id<TId>(e => e.Id, m =>
             {
                 m.Generator(generator);
-                m.Column(ExpressionAssistant.GetPropertyName(() => defaultEntity.Id));
+                m.Column(EntityWithModificationMeta.Id);
                 m.Access(Accessor.Field);
             });
         }

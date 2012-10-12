@@ -1,4 +1,4 @@
-﻿using GDNET.Domain.Common;
+﻿using GDNET.Base.DomainRepository;
 using GDNET.Domain.Repositories.Content;
 using GDNET.Domain.Repositories.System;
 
