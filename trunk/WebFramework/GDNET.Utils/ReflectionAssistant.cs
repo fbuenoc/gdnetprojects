@@ -1,12 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Text;
 
 namespace GDNET.Utils
 {
     public static class ReflectionAssistant
     {
+        /// <summary>
+        /// Read file content using BigEndianUnicode encoding
+        /// </summary>
+        public static string ReadFileContent(Assembly asm, string fileName)
+        {
+            Stream s = asm.GetManifestResourceStream(fileName);
+            if (s == null)
+            {
+                return string.Empty;
+            }
+
+            byte[] buffer = new byte[s.Length];
+            s.Read(buffer, 0, (int)s.Length);
+
+            return Encoding.BigEndianUnicode.GetString(buffer);
+        }
+
         public static IDictionary<string, Type> GetProperties(Type type)
         {
             Dictionary<string, Type> infos = new Dictionary<string, Type>();
