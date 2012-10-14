@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\HtmlTags.cs" />
+    <Compile Include="Extensions\HttpMethod.cs" />
+    <Compile Include="Extensions\JQueryAjaxAssistant.cs" />
+    <Compile Include="Extensions\JQueryAutoCompleteAssistant.cs" />
+    <Compile Include="Extensions\JQueryConstants.cs" />
     <Compile Include="Mvc\Repeater.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -50,9 +54,16 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Extensions\" />
+    <EmbeddedResource Include="Extensions\ScriptTemplates\ajax.js" />
+    <EmbeddedResource Include="Extensions\ScriptTemplates\ready.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Extensions\ScriptTemplates\ajaxWSString.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)BuildOutput\" /y/s</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
