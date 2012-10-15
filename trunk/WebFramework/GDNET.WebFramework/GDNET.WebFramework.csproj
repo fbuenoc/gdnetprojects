@@ -51,6 +51,7 @@
     <Content Include="Content\SiteTags.css" />
     <Content Include="Content\GoogleFont.css" />
     <Content Include="Content\SiteYaml.css" />
+    <Content Include="Content\themes\base\ext\images\ui-anim_basic_16x16.gif" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -78,6 +79,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\ext\jquery.ui.ext.css" />
     <Content Include="Content\yaml\add-ons\accessible-tabs\jquery.tabs.js" />
     <Content Include="Content\yaml\add-ons\accessible-tabs\tabs.css" />
     <Content Include="Content\yaml\add-ons\microformats\icons\external_link.png" />

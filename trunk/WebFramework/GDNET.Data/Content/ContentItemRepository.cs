@@ -55,23 +55,42 @@ namespace GDNET.Data.Content
 
         public IList<ContentItem> GetTopWithActiveByAuthor(int limit, string authorEmail)
         {
-            var propertyCreatedBy = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.CreatedBy);
             var propertyIsActive = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.IsActive);
-            var propertyCreatedAt = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.CreatedAt);
-            var propertyLastModifiedAt = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.LastModifiedAt);
 
             var criterions = new List<ICriterion>()
             { 
                 Expression.Eq(propertyIsActive, true),
-                Expression.Eq(propertyCreatedBy, authorEmail),
+                Expression.Eq(EntityWithModificationMeta.CreatedBy, authorEmail),
             };
             var orders = new List<Order>() 
             {
-                new Order(propertyCreatedBy, false),
-                new Order(propertyLastModifiedAt, false)
+                new Order(EntityWithModificationMeta.CreatedBy, false),
+                new Order(EntityWithModificationMeta.LastModifiedAt, false)
             };
 
             return base.GetAll(limit, criterions, orders);
+        }
+
+        public IList<ContentItem> SearchTopWithActive(int limit, string query)
+        {
+            string propertyName = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.Name);
+            string propertyDescription = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.Description);
+
+            var criterionName = Expression.Like(propertyName, query, MatchMode.Anywhere);
+            var criterionDescription = Expression.Like(propertyDescription, query, MatchMode.Anywhere);
+            var criterions = new List<ICriterion>()
+            {
+                criterionName,
+                criterionDescription
+            };
+
+            var orders = new List<Order>() 
+            {
+                new Order(EntityWithModificationMeta.CreatedBy, false),
+                new Order(EntityWithModificationMeta.LastModifiedAt, false)
+            };
+
+            return base.GetAll(limit, criterions, false, orders);
         }
     }
 }

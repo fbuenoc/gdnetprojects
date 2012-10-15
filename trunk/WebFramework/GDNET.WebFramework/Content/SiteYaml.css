@@ -15,5 +15,7 @@
 @import url(./yaml/print/print.css);
 
 /* custom stylesheets */
-@import url(Site.css);
-@import url(SiteTags.css);
+@import url(./Site.css);
+@import url(./SiteTags.css);
+@import url(./themes/base/jquery.ui.all.css);
+@import url(./themes/base/ext/jquery.ui.ext.css);

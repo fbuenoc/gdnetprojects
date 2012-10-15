@@ -11,5 +11,7 @@ namespace GDNET.Domain.Repositories.Content
         IList<ContentItem> GetTopWithActiveByViews(int limit);
         IList<ContentItem> GetTopWithActiveByViews(int limit, Guid itemIdExclude);
         IList<ContentItem> GetTopWithActiveByAuthor(int limit, string authorEmail);
+
+        IList<ContentItem> SearchTopWithActive(int limit, string query);
     }
 }

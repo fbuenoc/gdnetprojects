@@ -23,7 +23,6 @@
         });
     %>
     <div class="ym-col1">
-        <%= base.Html.AutoCompleteSearchContent() %>
         <div class="ym-cbox">
             <section class="ym-grid linearize-level-2">
                 <%= RepeaterAssistant.Create<ContentItemModel>("home_content_items").EnableHeader(false)
