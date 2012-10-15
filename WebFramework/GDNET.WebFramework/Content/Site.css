@@ -29,6 +29,10 @@ to use a different color start by replacing all instances of
     font-style: italic;
     margin-bottom: 5px;
 }
+.site-l10
+{
+    margin-left: 10px;
+}
 
 /* Styles for editor and display helpers
 ----------------------------------------------------------*/
@@ -221,11 +225,4 @@ to use a different color start by replacing all instances of
     padding-right: 5px;
     line-height: 25px;
 }
-
-
-
-
-
-
-
 

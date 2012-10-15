@@ -51,13 +51,32 @@ namespace GDNET.NHibernate.Repositories
 
         protected IList<TEntity> GetAll(int limit, IList<ICriterion> criterions, IList<Order> orders)
         {
+            return this.GetAll(limit, criterions, true, orders);
+        }
+
+        protected IList<TEntity> GetAll(int limit, IList<ICriterion> criterions, bool andConditions, IList<Order> orders)
+        {
             var criteria = this.repositoryStrategy.Session.CreateCriteria(typeof(TEntity)).SetCacheable(true);
             criteria.SetMaxResults(limit);
 
             if (criterions != null)
             {
-                criterions.ForEach(x => { criteria.Add(x); });
+                if (andConditions)
+                {
+                    criterions.ForEach(x => { criteria.Add(x); });
+                }
+                else if (criterions.Count > 0)
+                {
+                    var criterionFinal = criterions[0];
+                    for (int count = 1; count < criterions.Count; count++)
+                    {
+                        criterionFinal = Expression.Or(criterionFinal, criterions[count]);
+                    }
+
+                    criteria.Add(criterionFinal);
+                }
             }
+
             if (orders != null)
             {
                 orders.ForEach(y => { criteria.AddOrder(y); });

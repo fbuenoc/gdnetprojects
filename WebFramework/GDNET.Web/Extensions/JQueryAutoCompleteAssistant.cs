@@ -7,13 +7,23 @@ namespace GDNET.Web.Extensions
 {
     public static class JQueryAutoCompleteAssistant
     {
-        public static MvcHtmlString AutoComplete(HtmlHelper htmlHelper, string targetUrl, string parameters)
+        public static MvcHtmlString AutoComplete(this HtmlHelper htmlHelper, string targetUrl, string parameters)
         {
-            string logContainerId = GuidAssistant.NewId("log_");
-            string logContainer = string.Format("<div id=\"{0}\"></div>", logContainerId);
+            return htmlHelper.AutoComplete(targetUrl, parameters, false);
+        }
 
-            string containerId = GuidAssistant.NewId("autoc_");
-            string textBox = htmlHelper.TextBox(containerId).ToString();
+        public static MvcHtmlString AutoComplete(this HtmlHelper htmlHelper, string targetUrl, string parameters, bool withLog)
+        {
+            return htmlHelper.AutoComplete(targetUrl, parameters, withLog, null);
+        }
+
+        public static MvcHtmlString AutoComplete(this HtmlHelper htmlHelper, string targetUrl, string parameters, bool withLog, object htmlAttributes)
+        {
+            string newId = GuidAssistant.NewId();
+            string containerId = string.Format("autoc_{0}", newId);
+            string logContainerId = string.Format("log_", newId);
+
+            string textBox = htmlHelper.TextBox(containerId, null, htmlAttributes).ToString();
 
             string ajax = ReflectionAssistant.ReadFileContent(Assembly.GetExecutingAssembly(), "GDNET.Web.Extensions.ScriptTemplates.autoComplete.js");
             ajax = ajax.Replace(JQueryAssistant.GetPattern(JQueryConstants.Cache), JQueryConstants.DefaultCache.ToString().ToLower());
@@ -31,7 +41,18 @@ namespace GDNET.Web.Extensions
             string documentReady = ReflectionAssistant.ReadFileContent(Assembly.GetExecutingAssembly(), "GDNET.Web.Extensions.ScriptTemplates.ready.js");
             documentReady = documentReady.Replace(JQueryAssistant.GetPattern(JQueryConstants.Body), ajax);
 
-            return MvcHtmlString.Create(string.Concat(logContainer, textBox, documentReady));
+            string autoComplete = string.Empty;
+            if (withLog)
+            {
+                string logContainer = string.Format("<div id=\"{0}\"></div>", logContainerId);
+                autoComplete = string.Concat(logContainer, textBox, documentReady);
+            }
+            else
+            {
+                autoComplete = string.Concat(textBox, documentReady);
+            }
+
+            return MvcHtmlString.Create(autoComplete);
         }
     }
 }

@@ -36,6 +36,14 @@
 <body class="site-ctn">
     <div class="ym-wrapper">
         <header>
+            <div class="site-fl">
+                <%: base.Html.Translate("GUI.Common.Header.SearchContent") %>
+            </div>
+            <div class="site-fl site-l10">
+                <%= base.Html.AutoCompleteSearchContent() %>
+            </div>
+            <div class="ym-clearfix">
+            </div>
         </header>
         <nav id="nav">
             <div class="ym-hlist">
