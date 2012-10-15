@@ -34,7 +34,6 @@
     <Reference Include="log4net">
       <HintPath>..\..\Libs\Logging\Log4Net\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="NHibernate">
       <HintPath>..\..\Libs\NHibernate\NHibernate-3.3.1.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
@@ -45,10 +44,12 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Data" />
     <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Extensions\FrameworkJQueryAssistant.cs" />
     <Compile Include="Common\Extensions\NumberExtensions.cs" />
     <Compile Include="Common\Extensions\HtmlCookieExtensions.cs" />
     <Compile Include="Common\FrameworkConstants.cs" />
@@ -105,6 +106,14 @@
     <Compile Include="Services\WebFrameworkServices.cs" />
     <Compile Include="Services\Models\AccountModelsService.cs" />
     <Compile Include="Common\Base\WebNHibernateSessionManager.cs" />
+    <Compile Include="WebServices\AppServiceAssistant.cs" />
+    <Compile Include="WebServices\AppServiceConstant.cs" />
+    <Compile Include="WebServices\AppServiceImpl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WebServices\AppServiceOperator.cs" />
+    <Compile Include="WebServices\AppServiceRequestInfo.cs" />
+    <Compile Include="WebServices\DataItemDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GDNET.Base\GDNET.Base.csproj">
@@ -123,10 +132,6 @@
       <Project>{5BCC7907-3BF7-4926-86E9-63B05C35E7E3}</Project>
       <Name>GDNET.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GDNET.Mapping\GDNET.Mapping.csproj">
-      <Project>{A76D2DB0-0AF7-4AEE-8EC8-77D44DBAE90A}</Project>
-      <Name>GDNET.Mapping</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GDNET.NHibernate\GDNET.NHibernate.csproj">
       <Project>{CD582D2C-7AE0-4D4F-8A0B-0EB40A446AB7}</Project>
       <Name>GDNET.NHibernate</Name>
@@ -142,6 +147,10 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

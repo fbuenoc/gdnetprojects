@@ -2,6 +2,12 @@
 {
     public sealed class JQueryConstants
     {
+        public const int DefaultTimeout = 10000;
+        public const int DefaultMinLength = 1;
+        public const HttpMethod DefaultMethod = HttpMethod.POST;
+        public const bool DefaultCache = false;
+        public const string ContentTypeJson = "application/json";
+
         public const string Source = "source";
         public const string Cache = "cache";
         public const string Timeout = "timeout";
@@ -11,6 +17,8 @@
         public const string BeforeSend = "beforeSend";
         public const string Success = "success";
         public const string Error = "error";
+        public const string MinLength = "minLength";
+        public const string ContentType = "contentType";
 
         /// <summary>
         /// The id of container element
@@ -21,5 +29,10 @@
         /// The body of document.ready function
         /// </summary>
         public const string Body = "body";
+
+        /// <summary>
+        /// The id of container which contains information message
+        /// </summary>
+        public const string Log = "log";
     }
 }
