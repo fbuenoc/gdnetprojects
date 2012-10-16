@@ -19,8 +19,9 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
             string targetUrl = "/AppServices.asmx/GetJsonResults";
             string parameters = string.Join("&", listParams.ToArray());
+            string onSelectBody = string.Format("window.location.href = '/{0}/Home/Details/' + ui.item.id; return false;", FrameworkExtensions.GetLanguageRoute());
 
-            return htmlHelper.AutoComplete(targetUrl, parameters, false, htmlAttributes);
+            return htmlHelper.AutoComplete(targetUrl, parameters, false, htmlAttributes, onSelectBody);
         }
     }
 }
