@@ -39,6 +39,11 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
         public static string GetLanguageRoute(this HtmlHelper htmlHelper)
         {
+            return FrameworkExtensions.GetLanguageRoute();
+        }
+
+        public static string GetLanguageRoute()
+        {
             return HttpContext.Current.Request.RequestContext.RouteData.Values[FrameworkConstants.LanguageRouteKey].ToString();
         }
     }

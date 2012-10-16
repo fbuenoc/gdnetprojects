@@ -9,15 +9,20 @@ namespace GDNET.Web.Extensions
     {
         public static MvcHtmlString AutoComplete(this HtmlHelper htmlHelper, string targetUrl, string parameters)
         {
-            return htmlHelper.AutoComplete(targetUrl, parameters, false);
+            return htmlHelper.AutoComplete(targetUrl, parameters, false, null, string.Empty);
         }
 
         public static MvcHtmlString AutoComplete(this HtmlHelper htmlHelper, string targetUrl, string parameters, bool withLog)
         {
-            return htmlHelper.AutoComplete(targetUrl, parameters, withLog, null);
+            return htmlHelper.AutoComplete(targetUrl, parameters, withLog, null, string.Empty);
         }
 
         public static MvcHtmlString AutoComplete(this HtmlHelper htmlHelper, string targetUrl, string parameters, bool withLog, object htmlAttributes)
+        {
+            return htmlHelper.AutoComplete(targetUrl, parameters, withLog, null, string.Empty);
+        }
+
+        public static MvcHtmlString AutoComplete(this HtmlHelper htmlHelper, string targetUrl, string parameters, bool withLog, object htmlAttributes, string onSelectBody)
         {
             string newId = GuidAssistant.NewId();
             string containerId = string.Format("autoc_{0}", newId);
@@ -34,6 +39,7 @@ namespace GDNET.Web.Extensions
             ajax = ajax.Replace(JQueryAssistant.GetPattern(JQueryConstants.Url), targetUrl);
             ajax = ajax.Replace(JQueryAssistant.GetPattern(JQueryConstants.Id), containerId);
             ajax = ajax.Replace(JQueryAssistant.GetPattern(JQueryConstants.Log), logContainerId);
+            ajax = ajax.Replace(JQueryAssistant.GetPattern(JQueryConstants.Select), onSelectBody);
 
             string data = "JSON.stringify({ params: '" + parameters + "', query: request.term })";
             ajax = ajax.Replace(JQueryAssistant.GetPattern(JQueryConstants.Data), data);

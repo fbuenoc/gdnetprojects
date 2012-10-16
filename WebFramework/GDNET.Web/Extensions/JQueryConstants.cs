@@ -19,6 +19,7 @@
         public const string Error = "error";
         public const string MinLength = "minLength";
         public const string ContentType = "contentType";
+        public const string Select = "select";
 
         /// <summary>
         /// The id of container element
