@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using GDNET.AOP.ExceptionHandling;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
@@ -11,6 +12,7 @@ using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
+    [CaptureException]
     public class SearchController : AbstractController
     {
         private const int DefaultPageSize = 10;

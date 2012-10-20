@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
+using GDNET.AOP.ExceptionHandling;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common;
@@ -13,6 +14,7 @@ using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
+    [CaptureException]
     public class HomeController : AbstractController
     {
         public ActionResult Index()

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using System.Web.Security;
+using GDNET.AOP.ExceptionHandling;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common;
@@ -14,6 +15,7 @@ using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
+    [CaptureException]
     public class AccountController : AbstractController
     {
         private ActionResult RedirectToHomeIndex()
