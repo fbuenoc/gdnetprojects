@@ -37,6 +37,9 @@
     <Reference Include="NHibernate">
       <HintPath>..\..\Libs\NHibernate\NHibernate-3.3.1.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="PostSharp">
+      <HintPath>..\..\Libs\AOP\PostShart-v2.1.7\PostSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
@@ -116,6 +119,10 @@
     <Compile Include="WebServices\DataItemDTO.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GDNET.AOP\GDNET.AOP.csproj">
+      <Project>{F7052436-13B0-41EA-BB29-795A776B746E}</Project>
+      <Name>GDNET.AOP</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDNET.Base\GDNET.Base.csproj">
       <Project>{BFDFA81D-B84D-4C5C-97D0-F62FE74B13C2}</Project>
       <Name>GDNET.Base</Name>

@@ -1,4 +1,5 @@
 ﻿using System.Web.Mvc;
+using GDNET.AOP.ExceptionHandling;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Controllers.Extensions;
 using GDNET.FrameworkInfrastructure.Models.PageModels;
@@ -7,6 +8,7 @@ using GDNET.FrameworkInfrastructure.Services;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
+    [CaptureException]
     public class MyController : AbstractController
     {
         public ActionResult ChangeLanguage()
