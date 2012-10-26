@@ -136,6 +136,13 @@ namespace GDNET.Domain.Entities.System
             return this;
         }
 
+        public virtual User AddNewPoints(double newPoints)
+        {
+            this.TotalPoints += newPoints;
+
+            return this;
+        }
+
         #endregion
 
         internal protected User() { }

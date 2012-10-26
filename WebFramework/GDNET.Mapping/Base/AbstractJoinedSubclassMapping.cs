@@ -10,11 +10,11 @@ namespace GDNET.Mapping.Base
     {
         public AbstractJoinedSubclassMapping()
         {
-            base.Table(MappingAssistant.GetStrongTableByType(typeof(TObject)));
-            base.Key(km => km.Column(EntityWithModificationMeta.Id));
-
             base.DynamicUpdate(true);
             base.DynamicInsert(true);
+
+            base.Table(MappingAssistant.GetStrongTableByType(typeof(TObject)));
+            base.Key(km => km.Column(EntityWithModificationMeta.Id));
         }
     }
 }

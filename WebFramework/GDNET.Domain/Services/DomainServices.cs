@@ -1,4 +1,5 @@
 ﻿using GDNET.Domain.Services.Security;
+using GDNET.Domain.Services.System;
 
 namespace GDNET.Domain.Services
 {
@@ -20,6 +21,12 @@ namespace GDNET.Domain.Services
             get { return _instance.GetEncryptionService(); }
         }
 
+        public static IContentBonusService ContentBonus
+        {
+            get { return _instance.GetContentBonusService(); }
+        }
+
         protected abstract IEncryptionService GetEncryptionService();
+        protected abstract IContentBonusService GetContentBonusService();
     }
 }

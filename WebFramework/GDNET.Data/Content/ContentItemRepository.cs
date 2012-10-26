@@ -18,12 +18,15 @@ namespace GDNET.Data.Content
         {
         }
 
+        public IList<ContentItem> GetAllByAuthor(string createdByEmail)
+        {
+            return base.FindByProperty(EntityWithModificationMeta.CreatedBy, createdByEmail);
+        }
+
         public IList<ContentItem> GetTopWithActive(int limit)
         {
-            var propertyCreatedAt = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.CreatedAt);
             var propertyIsActive = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.IsActive);
-
-            return base.GetTopByProperty(limit, propertyCreatedAt, new List<string> { propertyIsActive }, new List<object> { true });
+            return base.GetTopByProperty(limit, EntityWithModificationMeta.CreatedAt, new List<string> { propertyIsActive }, new List<object> { true });
         }
 
         public IList<ContentItem> GetTopWithActiveByViews(int limit)
@@ -37,13 +40,12 @@ namespace GDNET.Data.Content
         public IList<ContentItem> GetTopWithActiveByViews(int limit, Guid itemIdExclude)
         {
             var propertyViews = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.Views);
-            var propertyId = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.Id);
             var propertyIsActive = ExpressionAssistant.GetPropertyName(() => DefaultContentItem.IsActive);
 
             var criterions = new List<ICriterion>()
             { 
                 Expression.Eq(propertyIsActive, true),
-                Expression.Not(Expression.Eq(propertyId, itemIdExclude)),
+                Expression.Not(Expression.Eq(EntityWithModificationMeta.Id, itemIdExclude)),
             };
             var orders = new List<Order>() 
             {
