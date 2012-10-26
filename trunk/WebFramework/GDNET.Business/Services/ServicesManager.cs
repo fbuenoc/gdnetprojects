@@ -1,6 +1,8 @@
 ﻿using GDNET.Business.Services.Impl.Security;
+using GDNET.Business.Services.System;
 using GDNET.Domain.Services;
 using GDNET.Domain.Services.Security;
+using GDNET.Domain.Services.System;
 
 namespace GDNET.Business.Services
 {
@@ -15,6 +17,11 @@ namespace GDNET.Business.Services
         protected override IEncryptionService GetEncryptionService()
         {
             return new EncryptionService(EncryptionOption.AES);
+        }
+
+        protected override IContentBonusService GetContentBonusService()
+        {
+            return new ContentBonusService();
         }
     }
 }

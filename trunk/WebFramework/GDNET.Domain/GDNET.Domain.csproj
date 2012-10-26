@@ -77,6 +77,7 @@
     <Compile Include="Repositories\System\IUserRepository.cs" />
     <Compile Include="Entities\System\UserFactory.cs" />
     <Compile Include="Entities\System\User.cs" />
+    <Compile Include="Services\System\IContentBonusService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GDNET.Base\GDNET.Base.csproj">

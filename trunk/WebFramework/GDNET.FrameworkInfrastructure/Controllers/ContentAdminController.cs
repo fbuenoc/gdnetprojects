@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Web.Mvc;
 using GDNET.AOP.ExceptionHandling;
+using GDNET.Business.Services;
+using GDNET.Domain.Base.SessionManagement;
 using GDNET.Domain.Content;
 using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common.Base;
@@ -117,6 +119,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 if (contentPart != null)
                 {
                     WebFrameworkServices.ContentModels.UpdateContentPart(contentPart, partModel);
+                    ServicesManager.ContentBonus.CalculateTotalPoints(DomainSessionContext.Instance.CurrentUser);
+
                     return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
                 }
             }
@@ -147,6 +151,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                     var partItem = WebFrameworkServices.ContentModels.CreateContentPart(partModel);
                     contentItem.AddPart(partItem);
 
+                    ServicesManager.ContentBonus.CalculateTotalPoints(DomainSessionContext.Instance.CurrentUser);
                     return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(id)), ControllerAssistant.BuildRouteValues(id));
                 }
             }
@@ -178,6 +183,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 bool result = DomainRepositories.ContentItem.Save(contentItem);
                 if (result)
                 {
+                    ServicesManager.ContentBonus.CalculateTotalPoints(DomainSessionContext.Instance.CurrentUser);
+
                     string id = contentItem.Id.ToString();
                     return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.CreatePart(id)), ControllerAssistant.BuildRouteValues(id));
                 }
@@ -210,6 +217,8 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 if (contentItem != null)
                 {
                     WebFrameworkServices.ContentModels.UpdateContentItem(contentItem, contentModel);
+                    ServicesManager.ContentBonus.CalculateTotalPoints(DomainSessionContext.Instance.CurrentUser);
+
                     return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(id)), new { id = id });
                 }
             }

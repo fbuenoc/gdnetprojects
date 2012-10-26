@@ -17,7 +17,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
         {
             context.BeginRequest += context_BeginRequest;
             context.EndRequest += context_EndRequest;
-            context.AuthenticateRequest += new EventHandler(context_AuthenticateRequest);
+            context.AuthenticateRequest += context_AuthenticateRequest;
 
             this.context = context;
         }

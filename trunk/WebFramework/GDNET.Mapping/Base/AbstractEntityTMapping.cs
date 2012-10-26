@@ -12,6 +12,9 @@ namespace GDNET.Mapping.Base
         public AbstractEntityTMapping(IGeneratorDef generator)
         {
             base.Lazy(true);
+            base.DynamicUpdate(true);
+            base.DynamicInsert(true);
+
             base.Table(MappingAssistant.GetStrongTableByType(typeof(TObject)));
 
             base.Id<TId>(e => e.Id, m =>
