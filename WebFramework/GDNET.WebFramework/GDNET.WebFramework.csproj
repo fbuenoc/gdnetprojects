@@ -213,6 +213,14 @@
       <Project>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</Project>
       <Name>GDNET.FrameworkInfrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GDNET.Mapping\GDNET.Mapping.csproj">
+      <Project>{A76D2DB0-0AF7-4AEE-8EC8-77D44DBAE90A}</Project>
+      <Name>GDNET.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\GDNET.Web\GDNET.Web.csproj">
+      <Project>{68AEDCB6-A54D-4591-9787-0372ACCC0FA1}</Project>
+      <Name>GDNET.Web</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -245,6 +253,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(SolutionDir)BuildOutput\*.*" "$(TargetDir)" /y/s</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>

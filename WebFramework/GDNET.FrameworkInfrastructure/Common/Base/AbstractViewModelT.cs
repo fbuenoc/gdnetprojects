@@ -88,9 +88,9 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
                 this.LastModifiedBy = ((IEntityWithModification)entity).LastModifiedBy;
             }
 
-            if (entity is IEntityWithModificationHistory)
+            if (entity is IEntityHistoryComplex)
             {
-                this.IsActive = ((IEntityWithModificationHistory)entity).IsActive;
+                this.IsActive = ((IEntityHistoryComplex)entity).IsActive;
             }
         }
 

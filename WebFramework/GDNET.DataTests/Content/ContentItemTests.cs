@@ -117,5 +117,19 @@ namespace GDNET.DataTests.Content
             Assert.AreEqual("P1", listOfContentItems[0].Parts[0].Name);
             Assert.AreEqual("P2", listOfContentItems[0].Parts[1].Name);
         }
+
+        [Test]
+        public void CanAddLog()
+        {
+            var content0 = ContentItem.Factory.Create("The content 1", true);
+            content0.AddLogCreation();
+
+            DomainRepositories.ContentItem.Save(content0);
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
+
+            var content1 = DomainRepositories.ContentItem.GetById(content0.Id);
+            Assert.IsNotNull(content1.LastLog);
+            Assert.AreEqual(1, content1.Logs.Count);
+        }
     }
 }
