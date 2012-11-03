@@ -5,7 +5,7 @@ using GDNET.Domain.Repositories.System;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagement;
 
-namespace GDNET.Data.System
+namespace GDNET.Data.Repositories.System
 {
     public class UserRepository : AbstractRepository<User, Guid>, IUserRepository
     {

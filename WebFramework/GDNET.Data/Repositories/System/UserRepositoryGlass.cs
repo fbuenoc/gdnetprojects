@@ -5,7 +5,7 @@ using GDNET.Domain.Base.Exceptions;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
 
-namespace GDNET.Data.System.Repositories
+namespace GDNET.Data.Repositories.System
 {
     public class UserRepositoryGlass : AbstractRepositoryGlass<User, Guid>
     {

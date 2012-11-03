@@ -48,6 +48,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helpers\ContentAssistant.cs" />
+    <Compile Include="Helpers\SystemAssistant.cs" />
     <Compile Include="Interceptors\DataGenerationModificationInterceptor.cs">
       <SubType>Code</SubType>
     </Compile>
