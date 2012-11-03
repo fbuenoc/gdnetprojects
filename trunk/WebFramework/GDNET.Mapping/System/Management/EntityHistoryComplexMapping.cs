@@ -7,12 +7,23 @@ using NHibernate.Mapping.ByCode;
 
 namespace GDNET.Mapping.System.Management
 {
-    public class EntityHistoryComplexMapping : AbstractEntityWithModificationHistoryTMapping<EntityHistoryComplex, Guid>, IEntityMapping
+    public class EntityHistoryComplexMapping : AbstractEntityWithCreationTMapping<EntityHistoryComplex, Guid>, IEntityMapping
     {
         public EntityHistoryComplexMapping()
             : base(Generators.Guid)
         {
+            var defaultEntity = default(EntityHistoryComplex);
             var defaultEntityLog = default(EntityLog);
+
+            base.Property(x => x.IsActive);
+            base.Property(x => x.Views);
+
+            base.ManyToOne(x => x.LastLog, m =>
+            {
+                m.Cascade(Cascade.All | Cascade.DeleteOrphans);
+                m.Lazy(LazyRelation.NoLazy);
+                m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntity.LastLog));
+            });
 
             base.Bag(x => x.Logs, cm =>
             {

@@ -1,5 +1,4 @@
-﻿using System;
-using GDNET.DataTests.Base;
+﻿using GDNET.DataTests.Base;
 using GDNET.Domain.Base.Exceptions;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
@@ -27,12 +26,6 @@ namespace GDNET.DataTests.System
 
             u2.DisplayName = "DN";
             DomainRepositories.RepositoryStrategy.Flush();
-
-            Assert.AreNotEqual(DateTime.MinValue, u2.LastModifiedAt);
-            Assert.IsFalse(string.IsNullOrEmpty(u2.LastModifiedBy));
-
-            DomainRepositories.RepositoryStrategy.FlushAndClear();
-            u2 = DomainRepositories.User.GetById(u1.Id);
         }
 
         [Test]
@@ -66,6 +59,20 @@ namespace GDNET.DataTests.System
             var u2 = DomainRepositories.User.FindByEmail(u1.Email);
             Assert.IsNotNull(u2);
             Assert.AreEqual(u1.Id, u2.Id);
+        }
+
+        [Test]
+        public void CanAddLog()
+        {
+            var u0 = User.Factory.Create("love0@gmail.com", "A1B2C3");
+            u0.AddLogCreation();
+
+            DomainRepositories.User.Save(u0);
+            DomainRepositories.RepositoryStrategy.FlushAndClear();
+
+            var u1 = DomainRepositories.User.FindByEmail(u0.Email);
+            Assert.IsNotNull(u1.LastLog);
+            Assert.AreEqual(1, u1.Logs.Count);
         }
 
         [Test]

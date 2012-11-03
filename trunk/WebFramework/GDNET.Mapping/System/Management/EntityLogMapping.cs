@@ -40,9 +40,8 @@ namespace GDNET.Mapping.System.Management
             });
             base.ManyToOne(x => x.EntityHistory, m =>
             {
-                m.Lazy(LazyRelation.Proxy);
+                m.Cascade(Cascade.All);
                 m.Access(Accessor.Field);
-                m.NotNullable(true);
                 m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntity.EntityHistory));
             });
         }

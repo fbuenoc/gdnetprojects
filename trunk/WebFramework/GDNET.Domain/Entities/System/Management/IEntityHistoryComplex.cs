@@ -3,9 +3,8 @@ using GDNET.Base.DomainAbstraction;
 
 namespace GDNET.Domain.Entities.System.Management
 {
-    public interface IEntityWithModificationHistory : IEntityWithModification
+    public interface IEntityHistoryComplex : IEntityWithCreation
     {
-        EntityLog FirstLog { get; }
         EntityLog LastLog { get; }
 
         bool IsActive { get; set; }

@@ -117,6 +117,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             {
                 var email = base.HttpContext.User.Identity.Name;
                 bool result = WebFrameworkServices.AccountModels.UpdateUserFromModel(email, model);
+
                 if (result)
                 {
                     return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details()));

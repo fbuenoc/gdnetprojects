@@ -42,8 +42,8 @@
   <ItemGroup>
     <Compile Include="Base\AbstractEntityTMapping.cs" />
     <Compile Include="Base\AbstractEntityWithModificationTMapping.cs" />
-    <Compile Include="Base\AbstractEntityWithModificationHistoryTMapping.cs" />
     <Compile Include="Base\AbstractJoinedSubclassMapping.cs" />
+    <Compile Include="Base\AbstractEntityWithCreationTMapping.cs" />
     <Compile Include="Common\MappingAssistant.cs" />
     <Compile Include="Content\ContentItemMapping.cs" />
     <Compile Include="Content\ContentPartMapping.cs" />
@@ -80,7 +80,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(TargetDir)*.*" "$(SolutionDir)BuildOutput\" /y/s</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

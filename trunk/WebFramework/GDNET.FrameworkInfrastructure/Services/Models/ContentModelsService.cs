@@ -78,6 +78,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
                 Name = itemModel.Name,
                 Language = catalog.GetLineByCode(itemModel.Language),
             };
+            ci.AddLogCreation();
 
             return ci;
         }
@@ -166,6 +167,8 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             contentItem.Description = contentModel.Description;
             contentItem.Keywords = contentModel.Keywords;
             contentItem.IsActive = contentModel.IsActive;
+
+            contentItem.AddLog("Update content", string.Empty);
         }
 
         #endregion

@@ -62,6 +62,8 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
                 user.Introduction = model.Introduction;
                 user.IsActive = model.IsActive;
                 user.Language = catalog.GetLineByCode(model.Language);
+                user.AddLog("UpdateDetails", string.Empty);
+
                 result = true;
             }
 

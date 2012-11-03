@@ -1,12 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using GDNET.Base.DomainAbstraction;
 
 namespace GDNET.Domain.Entities.System.Management
 {
-    public class EntityHistoryComplex : AbstractEntityWithModificationHistoryT<Guid>
+    public class EntityHistoryComplex : AbstractEntityWithCreationT<Guid>, IEntityHistoryComplex
     {
         protected IList<EntityLog> logs = new List<EntityLog>();
+
+        public virtual EntityLog LastLog
+        {
+            get;
+            protected internal set;
+        }
+
+        public virtual bool IsActive
+        {
+            get;
+            set;
+        }
+
+        public virtual Int64 Views
+        {
+            get;
+            set;
+        }
 
         public virtual ReadOnlyCollection<EntityLog> Logs
         {
@@ -15,25 +34,22 @@ namespace GDNET.Domain.Entities.System.Management
 
         #region Methods
 
-        public override void AddLog(string message, string contentText)
+        public virtual void AddLogCreation()
         {
-            EntityLog logEntry = new EntityLog
+            this.AddLog("Creation", string.Empty);
+        }
+
+        public virtual void AddLog(string message, string contentText)
+        {
+            EntityLog logEntry = new EntityLog()
             {
                 LogMessage = message,
                 LogContentText = contentText,
-                EntityHistory = this
             };
-
-            if (this.FirstLog == null)
-            {
-                this.FirstLog = logEntry;
-            }
-            else
-            {
-                this.LastLog = logEntry;
-            }
+            logEntry.EntityHistory = this;
 
             this.logs.Add(logEntry);
+            this.LastLog = logEntry;
         }
 
         #endregion
