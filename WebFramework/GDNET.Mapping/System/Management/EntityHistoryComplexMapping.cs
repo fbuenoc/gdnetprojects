@@ -20,6 +20,7 @@ namespace GDNET.Mapping.System.Management
 
             base.ManyToOne(x => x.LastLog, m =>
             {
+                m.Fetch(FetchKind.Join);
                 m.Cascade(Cascade.All | Cascade.DeleteOrphans);
                 m.Lazy(LazyRelation.NoLazy);
                 m.Column(MappingAssistant.GetForeignKeyColumn(() => defaultEntity.LastLog));

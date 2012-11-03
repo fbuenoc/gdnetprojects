@@ -91,6 +91,7 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
                 Details = partModel.Details,
                 IsActive = partModel.IsActive,
             };
+            cp.AddLogCreation();
 
             return cp;
         }
@@ -118,6 +119,9 @@ namespace GDNET.FrameworkInfrastructure.Services.Models
             contentPart.Name = partModel.Name;
             contentPart.Details = partModel.Details;
             contentPart.IsActive = partModel.IsActive;
+
+            contentPart.AddLog("Update Content part", string.Empty);
+            contentPart.ContentItem.AddLog("Update Content part", string.Empty);
         }
 
         public ContentPartModel GetContentPartModel(string contentPartId, string contentItemId)

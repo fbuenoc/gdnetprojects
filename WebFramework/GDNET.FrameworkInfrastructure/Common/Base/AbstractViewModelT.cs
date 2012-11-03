@@ -80,10 +80,14 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
 
         protected void InitializeCommon(T entity)
         {
+            if (entity is IEntityWithCreation)
+            {
+                this.CreatedAt = ((IEntityWithCreation)entity).CreatedAt;
+                this.CreatedBy = ((IEntityWithCreation)entity).CreatedBy;
+            }
+
             if (entity is IEntityWithModification)
             {
-                this.CreatedAt = ((IEntityWithModification)entity).CreatedAt;
-                this.CreatedBy = ((IEntityWithModification)entity).CreatedBy;
                 this.LastModifiedAt = ((IEntityWithModification)entity).LastModifiedAt;
                 this.LastModifiedBy = ((IEntityWithModification)entity).LastModifiedBy;
             }
@@ -91,6 +95,13 @@ namespace GDNET.FrameworkInfrastructure.Common.Base
             if (entity is IEntityHistoryComplex)
             {
                 this.IsActive = ((IEntityHistoryComplex)entity).IsActive;
+
+                var lastLog = ((IEntityHistoryComplex)entity).LastLog;
+                if (lastLog != null)
+                {
+                    this.LastModifiedAt = lastLog.CreatedAt;
+                    this.LastModifiedBy = lastLog.CreatedBy;
+                }
             }
         }
 
