@@ -6,7 +6,7 @@ using GDNET.Domain.Repositories.System;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagement;
 
-namespace GDNET.Data.System
+namespace GDNET.Data.Repositories.System
 {
     public class TranslationRepository : AbstractRepository<Translation, Guid>, ITranslationRepository
     {

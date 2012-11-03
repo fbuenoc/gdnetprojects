@@ -7,7 +7,7 @@ using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagement;
 using NHibernate.Criterion;
 
-namespace GDNET.Data.Content
+namespace GDNET.Data.Repositories.Content
 {
     public class ContentItemRepository : AbstractRepository<ContentItem, Guid>, IContentItemRepository
     {

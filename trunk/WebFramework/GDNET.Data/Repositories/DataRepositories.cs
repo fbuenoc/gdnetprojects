@@ -1,7 +1,6 @@
 ﻿using GDNET.Base.DomainRepository;
-using GDNET.Data.Content;
-using GDNET.Data.System;
-using GDNET.Data.System.Repositories;
+using GDNET.Data.Repositories.Content;
+using GDNET.Data.Repositories.System;
 using GDNET.Domain.Repositories;
 using GDNET.Domain.Repositories.Content;
 using GDNET.Domain.Repositories.System;
