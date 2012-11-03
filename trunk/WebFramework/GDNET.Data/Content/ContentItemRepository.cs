@@ -67,7 +67,8 @@ namespace GDNET.Data.Content
             var orders = new List<Order>() 
             {
                 new Order(EntityWithModificationMeta.CreatedBy, false),
-                new Order(EntityWithModificationMeta.LastModifiedAt, false)
+                //TODO: Need to order by CreatedAt of LastLog
+                //new Order(EntityWithModificationMeta.LastModifiedAt, false)
             };
 
             return base.GetAll(limit, criterions, orders);
@@ -89,7 +90,8 @@ namespace GDNET.Data.Content
             var orders = new List<Order>() 
             {
                 new Order(EntityWithModificationMeta.CreatedBy, false),
-                new Order(EntityWithModificationMeta.LastModifiedAt, false)
+                //TODO: Need to order by CreatedAt of LastLog
+                //new Order(EntityWithModificationMeta.LastModifiedAt, false)
             };
 
             return base.GetAll(limit, criterions, false, orders);

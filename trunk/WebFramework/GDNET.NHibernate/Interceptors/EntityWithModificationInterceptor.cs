@@ -22,14 +22,8 @@ namespace GDNET.NHibernate.Interceptors
 
         private bool UpdateEntity(object entity, ref object[] state, ref string[] propertyNames)
         {
-            if (entity is IEntityWithModification)
-            {
-                this.UpdateEntityWithModification(entity, ref state, ref propertyNames);
-            }
-            else if (entity is IEntityWithCreation)
-            {
-                this.UpdateEntityWithCreation(entity, ref state, ref propertyNames);
-            }
+            this.UpdateEntityWithCreation(entity, ref state, ref propertyNames);
+            this.UpdateEntityWithModification(entity, ref state, ref propertyNames);
 
             return true;
         }
@@ -38,11 +32,14 @@ namespace GDNET.NHibernate.Interceptors
         {
             if (entity is IEntityWithCreation)
             {
-                var propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedAt);
-                state[propertyIndex] = DateTime.Now;
+                var propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedBy);
+                if (string.IsNullOrEmpty((string)state[propertyIndex]))
+                {
+                    state[propertyIndex] = this.GetEmailCurrentUser();
 
-                propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedBy);
-                state[propertyIndex] = this.GetEmailCurrentUser();
+                    propertyIndex = propertyNames.ToList().IndexOf(EntityWithModificationMeta.CreatedAt);
+                    state[propertyIndex] = DateTime.Now;
+                }
             }
         }
 

@@ -38,18 +38,6 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             return base.View(contentModel);
         }
 
-        public ActionResult ManageParts(string id)
-        {
-            ContentItem contentItem = DomainRepositories.ContentItem.GetById(new Guid(id));
-            if (contentItem != null)
-            {
-                var model = WebFrameworkServices.ContentModels.GetContentItemParts(contentItem);
-                return base.View(model);
-            }
-
-            return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Index()));
-        }
-
         #region Part methods
 
         public ActionResult MoveUpPart(string id, string cid)
