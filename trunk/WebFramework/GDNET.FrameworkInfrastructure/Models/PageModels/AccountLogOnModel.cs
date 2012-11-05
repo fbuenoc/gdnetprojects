@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using GDNET.Framework.Models;
 using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
-using GDNET.FrameworkInfrastructure.Models.Base;
 
 namespace GDNET.FrameworkInfrastructure.Models.PageModels
 {

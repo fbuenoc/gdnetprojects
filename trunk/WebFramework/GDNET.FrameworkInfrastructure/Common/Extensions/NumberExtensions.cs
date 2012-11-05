@@ -15,7 +15,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
         {
             if (!value.HasValue || value.Value == 0)
             {
-                return WebFrameworkServices.Translation.GetByKeyword(keywordOnZero);
+                return FrameworkServices.Translation.GetByKeyword(keywordOnZero);
             }
 
             return FormatterAssistant.Format(value);
@@ -30,7 +30,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
         {
             if (!value.HasValue || value.Value == 0)
             {
-                return WebFrameworkServices.Translation.GetByKeyword(keywordOnZero);
+                return FrameworkServices.Translation.GetByKeyword(keywordOnZero);
             }
 
             return FormatterAssistant.Format(value);

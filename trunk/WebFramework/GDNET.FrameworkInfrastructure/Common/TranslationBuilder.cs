@@ -17,7 +17,7 @@ namespace GDNET.FrameworkInfrastructure.Common
 
         public static string GetTranslation(string expression)
         {
-            return WebFrameworkServices.Translation.GetByKeyword(expression);
+            return FrameworkServices.Translation.GetByKeyword(expression);
         }
 
         public override bool SupportsEvaluate

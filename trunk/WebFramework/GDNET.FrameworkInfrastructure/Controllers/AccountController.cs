@@ -2,16 +2,16 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using GDNET.AOP.ExceptionHandling;
-using GDNET.Domain.Content;
-using GDNET.Domain.Repositories;
 using GDNET.FrameworkInfrastructure.Common;
 using GDNET.FrameworkInfrastructure.Common.Extensions;
 using GDNET.FrameworkInfrastructure.Controllers.Base;
 using GDNET.FrameworkInfrastructure.Controllers.Extensions;
-using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Models.PageModels;
 using GDNET.FrameworkInfrastructure.Models.System;
 using GDNET.FrameworkInfrastructure.Services;
+using GreatApp.Infrastructure.Models;
+using KnowledgeSharing.Domain;
+using KnowledgeSharing.Domain.Entities;
 
 namespace GDNET.FrameworkInfrastructure.Controllers
 {
@@ -28,13 +28,13 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         public ActionResult Watch(string id)
         {
             AccountWatchModel pageModel = new AccountWatchModel();
-            var userModel = WebFrameworkServices.AccountModels.GetUserModelById<UserDetailsModel>(id);
+            var userModel = InfrastructureServices.AccountModels.GetUserModelById<UserDetailsModel>(id);
 
             if (userModel != null)
             {
                 userModel.DisplayMode = UserDetailsMode.AccountWatch;
 
-                var topContents = DomainRepositories.ContentItem.GetTopWithActiveByAuthor(GlobalSettings.DefaultPageSize, userModel.Email);
+                var topContents = AppDomainRepositories.ContentItem.GetTopWithActiveByAuthor(GlobalSettings.DefaultPageSize, userModel.Email);
                 var topModels = FrameworkExtensions.ConvertAll<ContentItemModel, ContentItem>(topContents, true);
 
                 pageModel.UserDetails = userModel;
@@ -71,7 +71,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
                 }
                 else
                 {
-                    string errorMessage = WebFrameworkServices.Translation.GetByKeyword("GUI.Account.LogOn.ValidateUserError");
+                    string errorMessage = FrameworkServices.Translation.GetByKeyword("GUI.Account.LogOn.ValidateUserError");
                     base.ModelState.AddModelError("", errorMessage);
                 }
             }
@@ -104,7 +104,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         public ActionResult UpdateDetails()
         {
             var email = base.HttpContext.User.Identity.Name;
-            AccountUpdateDetailsModel model = WebFrameworkServices.AccountModels.GetUserModelByEmail<AccountUpdateDetailsModel>(email);
+            AccountUpdateDetailsModel model = InfrastructureServices.AccountModels.GetUserModelByEmail<AccountUpdateDetailsModel>(email);
 
             return base.View(model);
         }
@@ -116,7 +116,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             if (base.ModelState.IsValid)
             {
                 var email = base.HttpContext.User.Identity.Name;
-                bool result = WebFrameworkServices.AccountModels.UpdateUserFromModel(email, model);
+                bool result = InfrastructureServices.AccountModels.UpdateUserFromModel(email, model);
 
                 if (result)
                 {
