@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
-using GDNET.Domain.Repositories;
+using KnowledgeSharing.Domain;
 
 namespace GDNET.FrameworkInfrastructure.WebServices
 {
@@ -34,7 +34,7 @@ namespace GDNET.FrameworkInfrastructure.WebServices
             switch (requestInfo.Operator)
             {
                 case AppServiceOperator.SearchContent:
-                    var listContentItems = DomainRepositories.ContentItem.SearchTopWithActive(requestInfo.MaxRows, requestInfo.Query);
+                    var listContentItems = AppDomainRepositories.ContentItem.SearchTopWithActive(requestInfo.MaxRows, requestInfo.Query);
                     foreach (var contentItem in listContentItems)
                     {
                         var dto = new DataItemDTO()

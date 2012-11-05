@@ -29,7 +29,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
         public static Repeater<T> AddColumnWithText<T>(this Repeater<T> repeater, string columnName, string columnTextKeyword)
         {
-            string columnText = WebFrameworkServices.Translation.GetByKeyword(columnTextKeyword);
+            string columnText = FrameworkServices.Translation.GetByKeyword(columnTextKeyword);
             return repeater.AddColumn(columnName, columnText);
         }
 

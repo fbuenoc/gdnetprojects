@@ -7,7 +7,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
     {
         public static string GetUserCustomizedLanguageName(this HtmlHelper htmlHelper)
         {
-            var userInfo = WebFrameworkServices.DataStored.GetUserCustomizedInfo();
+            var userInfo = InfrastructureServices.DataStored.GetUserCustomizedInfo();
             return userInfo.LanguageName;
         }
     }

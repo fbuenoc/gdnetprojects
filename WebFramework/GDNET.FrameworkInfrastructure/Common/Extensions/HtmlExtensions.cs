@@ -5,9 +5,9 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using GDNET.Domain.Repositories;
-using GDNET.FrameworkInfrastructure.Models.Content;
 using GDNET.FrameworkInfrastructure.Services;
 using GDNET.Utils;
+using GreatApp.Infrastructure.Models;
 
 namespace GDNET.FrameworkInfrastructure.Common.Extensions
 {
@@ -17,40 +17,40 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string linkText, string actionName, string controllerName, object routeValues, string titleKeyword)
         {
-            string titleText = WebFrameworkServices.Translation.GetByKeyword(titleKeyword);
+            string titleText = FrameworkServices.Translation.GetByKeyword(titleKeyword);
             return htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, new { title = titleText });
         }
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName)
         {
-            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            string linkText = FrameworkServices.Translation.GetByKeyword(textKeyword);
             return htmlHelper.ActionLink(linkText, actionName);
         }
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, object routeValues)
         {
-            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            string linkText = FrameworkServices.Translation.GetByKeyword(textKeyword);
             return htmlHelper.ActionLink(linkText, actionName, routeValues);
         }
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, string controllerName)
         {
-            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            string linkText = FrameworkServices.Translation.GetByKeyword(textKeyword);
             return htmlHelper.ActionLink(linkText, actionName, controllerName);
         }
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, string controllerName, object routeValues)
         {
-            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            string linkText = FrameworkServices.Translation.GetByKeyword(textKeyword);
             return htmlHelper.ActionLink(linkText, actionName, controllerName, routeValues, null);
         }
 
         public static MvcHtmlString ActionLinkTrans(this HtmlHelper htmlHelper, string textKeyword, string actionName, string controllerName, string tooltipKeyword)
         {
-            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
+            string linkText = FrameworkServices.Translation.GetByKeyword(textKeyword);
             object htmlAttributes = new
             {
-                title = WebFrameworkServices.Translation.GetByKeyword(tooltipKeyword)
+                title = FrameworkServices.Translation.GetByKeyword(tooltipKeyword)
             };
 
             return htmlHelper.ActionLink(linkText, actionName, controllerName, null, htmlAttributes);
@@ -62,7 +62,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
         public static MvcHtmlString ValidationSummaryTrans(this HtmlHelper htmlHelper, bool excludePropertyErrors, string messageKeyword)
         {
-            string message = WebFrameworkServices.Translation.GetByKeyword(messageKeyword);
+            string message = FrameworkServices.Translation.GetByKeyword(messageKeyword);
             return htmlHelper.ValidationSummary(excludePropertyErrors, message);
         }
 
@@ -72,13 +72,13 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
         public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword)
         {
-            string value = WebFrameworkServices.Translation.GetByKeyword(keyword);
+            string value = FrameworkServices.Translation.GetByKeyword(keyword);
             return MvcHtmlString.Create(value);
         }
 
         public static MvcHtmlString Translate(this HtmlHelper htmlHelper, string keyword, params object[] objects)
         {
-            string value = string.Format(WebFrameworkServices.Translation.GetByKeyword(keyword), objects);
+            string value = string.Format(FrameworkServices.Translation.GetByKeyword(keyword), objects);
             return MvcHtmlString.Create(value);
         }
 
@@ -113,7 +113,7 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
             if (allowNull)
             {
                 string nullTextCode = nullAsAll ? "GUI.Common.DropDownList.NullAsAll" : "GUI.Common.DropDownList.NullAsNone";
-                listItems.Add(new SelectListItem() { Value = string.Empty, Text = WebFrameworkServices.Translation.GetByKeyword(nullTextCode) });
+                listItems.Add(new SelectListItem() { Value = string.Empty, Text = FrameworkServices.Translation.GetByKeyword(nullTextCode) });
             }
 
             var catalog = DomainRepositories.Catalog.FindByCode(catalogCode);
@@ -132,8 +132,8 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
         public static MvcHtmlString ActionLinkConfirmation(this HtmlHelper htmlHelper, string textKeyword, string messageKeyword, string actionName, object routeValues)
         {
-            string linkText = WebFrameworkServices.Translation.GetByKeyword(textKeyword);
-            string messageText = WebFrameworkServices.Translation.GetByKeyword(messageKeyword);
+            string linkText = FrameworkServices.Translation.GetByKeyword(textKeyword);
+            string messageText = FrameworkServices.Translation.GetByKeyword(messageKeyword);
             string javascript = string.Format("return confirm(\"{0}\");", messageText);
 
             return htmlHelper.ActionLink(linkText, actionName, routeValues, new { onclick = javascript });
@@ -146,12 +146,12 @@ namespace GDNET.FrameworkInfrastructure.Common.Extensions
 
             if (model.LastModifiedAt.HasValue)
             {
-                string prefix = WebFrameworkServices.Translation.GetByKeyword("GUI.Entity.LastModifiedAt");
+                string prefix = FrameworkServices.Translation.GetByKeyword("GUI.Entity.LastModifiedAt");
                 result = string.Format(format, prefix, FormatterAssistant.FormatPretty(model.LastModifiedAt), FormatterAssistant.Format(model.LastModifiedAt));
             }
             else
             {
-                string prefix = WebFrameworkServices.Translation.GetByKeyword("GUI.Entity.CreatedAt");
+                string prefix = FrameworkServices.Translation.GetByKeyword("GUI.Entity.CreatedAt");
                 result = string.Format(format, prefix, FormatterAssistant.FormatPretty(model.CreatedAt), FormatterAssistant.Format(model.CreatedAt));
             }
 

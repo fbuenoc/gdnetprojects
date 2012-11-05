@@ -14,7 +14,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
         public ActionResult ChangeLanguage()
         {
             MyChangeLanguageModel model = new MyChangeLanguageModel();
-            model.UserCustomizedInformation = WebFrameworkServices.DataStored.GetUserCustomizedInfo();
+            model.UserCustomizedInformation = InfrastructureServices.DataStored.GetUserCustomizedInfo();
             model.PageMeta.Keywords = "";
             model.PageMeta.Description = "";
             model.PageMeta.Author = "";
@@ -28,7 +28,7 @@ namespace GDNET.FrameworkInfrastructure.Controllers
             if (base.ModelState.IsValid)
             {
                 UserCustomizedInformationModel customizedModel = new UserCustomizedInformationModel(model.UserCustomizedInformation.Language, model.UserCustomizedInformation.LanguageUI);
-                WebFrameworkServices.DataStored.SetUserCustomizedInfo(customizedModel);
+                InfrastructureServices.DataStored.SetUserCustomizedInfo(customizedModel);
 
                 return base.RedirectToAction("Index", ListControllers.Home, new { language = model.UserCustomizedInformation.LanguageUI });
             }
