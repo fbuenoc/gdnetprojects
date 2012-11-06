@@ -1,6 +1,6 @@
-﻿using KnowledgeSharing.Domain.Repositories;
+﻿using GreatApp.Domain.Repositories;
 
-namespace KnowledgeSharing.Domain
+namespace GreatApp.Domain
 {
     public abstract class AppDomainRepositories
     {

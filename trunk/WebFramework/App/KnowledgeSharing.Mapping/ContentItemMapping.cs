@@ -3,10 +3,10 @@ using GDNET.Base;
 using GDNET.Mapping.Base;
 using GDNET.Mapping.Common;
 using GDNET.NHibernate.Mapping;
-using KnowledgeSharing.Domain.Entities;
+using GreatApp.Domain.Entities;
 using NHibernate.Mapping.ByCode;
 
-namespace KnowledgeSharing.Mapping
+namespace GreatApp.Mapping
 {
     public class ContentItemMapping : AbstractJoinedSubclassMapping<ContentItem, Guid>, IEntityMapping
     {

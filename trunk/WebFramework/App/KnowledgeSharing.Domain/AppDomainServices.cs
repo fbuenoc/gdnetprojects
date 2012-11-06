@@ -1,10 +1,10 @@
-﻿using KnowledgeSharing.Domain.Services;
+﻿using GreatApp.Domain.Services;
 
-namespace KnowledgeSharing.Domain
+namespace GreatApp.Domain
 {
     public abstract class AppDomainServices
     {
-        public static AppDomainServices _instance = null;
+        private static AppDomainServices _instance = null;
 
         public AppDomainServices()
         {

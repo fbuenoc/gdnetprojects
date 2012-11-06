@@ -1,9 +1,9 @@
 ﻿using GDNET.Domain.Entities.System;
-using KnowledgeSharing.Domain;
-using KnowledgeSharing.Domain.Entities;
-using KnowledgeSharing.Domain.Services;
+using GreatApp.Domain;
+using GreatApp.Domain.Entities;
+using GreatApp.Domain.Services;
 
-namespace KnowledgeSharing.Business.Services
+namespace GreatApp.Business.Services
 {
     public class ContentBonusService : IContentBonusService
     {

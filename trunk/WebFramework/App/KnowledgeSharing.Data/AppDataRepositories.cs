@@ -1,9 +1,9 @@
 ﻿using GDNET.NHibernate.SessionManagement;
-using KnowledgeSharing.Data.Repositories;
-using KnowledgeSharing.Domain;
-using KnowledgeSharing.Domain.Repositories;
+using GreatApp.Data.Repositories;
+using GreatApp.Domain;
+using GreatApp.Domain.Repositories;
 
-namespace KnowledgeSharing.Data
+namespace GreatApp.Data
 {
     public sealed class AppDataRepositories : AppDomainRepositories
     {

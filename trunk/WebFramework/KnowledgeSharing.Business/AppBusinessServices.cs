@@ -1,8 +1,8 @@
-﻿using KnowledgeSharing.Business.Services;
-using KnowledgeSharing.Domain;
-using KnowledgeSharing.Domain.Services;
+﻿using GreatApp.Business.Services;
+using GreatApp.Domain;
+using GreatApp.Domain.Services;
 
-namespace KnowledgeSharing.Business
+namespace GreatApp.Business
 {
     public sealed class AppBusinessServices : AppDomainServices
     {

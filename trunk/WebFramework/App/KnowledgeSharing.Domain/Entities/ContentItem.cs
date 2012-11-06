@@ -5,7 +5,7 @@ using System.Linq;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Entities.System.Management;
 
-namespace KnowledgeSharing.Domain.Entities
+namespace GreatApp.Domain.Entities
 {
     public partial class ContentItem : EntityHistoryComplex
     {

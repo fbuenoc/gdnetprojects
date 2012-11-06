@@ -1,6 +1,6 @@
 ﻿using GDNET.Domain.Base.Exceptions;
 
-namespace KnowledgeSharing.Domain.Entities
+namespace GreatApp.Domain.Entities
 {
     public partial class ContentPart
     {
