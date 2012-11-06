@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<AccountWatchModel>" %>
 
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
+<%@ Import Namespace="GDNET.WebInfrastructure.Models.Content" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.Page.AccountView.Title")%>
     -

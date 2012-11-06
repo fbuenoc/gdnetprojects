@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Web.Mvc;
-using GDNET.FrameworkInfrastructure.Controllers.Extensions;
+using GDNET.WebInfrastructure.Controllers.Extensions;
 using NUnit.Framework;
 
 namespace GDNET.Tests.UtilsTests.Web

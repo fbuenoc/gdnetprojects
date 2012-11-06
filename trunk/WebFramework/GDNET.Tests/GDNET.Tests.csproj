@@ -54,9 +54,9 @@
       <Project>{BFDFA81D-B84D-4C5C-97D0-F62FE74B13C2}</Project>
       <Name>GDNET.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.FrameworkInfrastructure.csproj">
+    <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.WebInfrastructure.csproj">
       <Project>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</Project>
-      <Name>GDNET.FrameworkInfrastructure</Name>
+      <Name>GDNET.WebInfrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\GDNET.Utils\GDNET.Utils.csproj">
       <Project>{132BB8B1-1578-4FE8-8E8E-52CE06C464FE}</Project>

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Reflection;
-using GDNET.Domain.Content;
 using GDNET.Domain.Entities.System;
 using GDNET.Domain.Entities.System.ReferenceData;
 using GDNET.Domain.Repositories;
 using GDNET.Utils;
+using GreatApp.Domain;
+using GreatApp.Domain.Entities;
 
 namespace GDNET.DataGeneration.Helpers
 {
@@ -29,7 +30,7 @@ namespace GDNET.DataGeneration.Helpers
 
                 ci.Description = RandomAssistant.GenerateAParagraph(aRandom);
 
-                DomainRepositories.ContentItem.Save(ci);
+                AppDomainRepositories.ContentItem.Save(ci);
 
                 for (int partCounter = 0; partCounter < 10; partCounter++)
                 {

@@ -213,9 +213,9 @@
       <Project>{5C76779D-2F46-4789-9C98-3B68A75DD720}</Project>
       <Name>GreatApp.Mapping</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.FrameworkInfrastructure.csproj">
+    <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.WebInfrastructure.csproj">
       <Project>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</Project>
-      <Name>GDNET.FrameworkInfrastructure</Name>
+      <Name>GDNET.WebInfrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\GDNET.Mapping\GDNET.Mapping.csproj">
       <Project>{A76D2DB0-0AF7-4AEE-8EC8-77D44DBAE90A}</Project>
