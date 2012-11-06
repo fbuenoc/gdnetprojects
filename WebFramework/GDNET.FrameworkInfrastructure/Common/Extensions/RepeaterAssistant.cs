@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using GDNET.FrameworkInfrastructure.Services;
+using GDNET.Framework.Services;
 using GDNET.Web.Mvc;
 
-namespace GDNET.FrameworkInfrastructure.Common.Extensions
+namespace GDNET.WebInfrastructure.Common.Extensions
 {
     public static class RepeaterAssistant
     {

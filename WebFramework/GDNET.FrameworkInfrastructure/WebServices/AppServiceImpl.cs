@@ -4,9 +4,9 @@ using System.ComponentModel;
 using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
-using KnowledgeSharing.Domain;
+using GreatApp.Domain;
 
-namespace GDNET.FrameworkInfrastructure.WebServices
+namespace GDNET.WebInfrastructure.WebServices
 {
     [WebService(Namespace = "http://tempuri.org/")]
     [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]

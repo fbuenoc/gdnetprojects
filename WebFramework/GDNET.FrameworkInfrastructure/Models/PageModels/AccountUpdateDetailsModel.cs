@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using GDNET.Domain.Entities.System;
-using GDNET.FrameworkInfrastructure.Common.Base;
-using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
+using GDNET.Framework.Base;
+using GDNET.Framework.DataAnnotations;
 
-namespace GDNET.FrameworkInfrastructure.Models.PageModels
+namespace GDNET.WebInfrastructure.Models.PageModels
 {
     public class AccountUpdateDetailsModel : AbstractViewModel<User>
     {

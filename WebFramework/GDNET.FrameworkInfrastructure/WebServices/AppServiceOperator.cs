@@ -1,4 +1,4 @@
-﻿namespace GDNET.FrameworkInfrastructure.WebServices
+﻿namespace GDNET.WebInfrastructure.WebServices
 {
     public enum AppServiceOperator
     {

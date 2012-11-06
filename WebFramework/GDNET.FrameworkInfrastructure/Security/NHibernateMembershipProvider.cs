@@ -4,7 +4,7 @@ using GDNET.Domain.Entities.System;
 using GDNET.Domain.Repositories;
 using GDNET.Domain.Services;
 
-namespace GDNET.FrameworkInfrastructure.Security
+namespace GDNET.WebInfrastructure.Security
 {
     public class NHibernateMembershipProvider : MembershipProvider
     {

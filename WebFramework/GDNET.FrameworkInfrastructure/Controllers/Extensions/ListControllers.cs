@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace GDNET.FrameworkInfrastructure.Controllers.Extensions
+namespace GDNET.WebInfrastructure.Controllers.Extensions
 {
     public sealed class ListControllers
     {

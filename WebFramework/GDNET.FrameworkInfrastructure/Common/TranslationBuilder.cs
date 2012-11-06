@@ -1,9 +1,9 @@
 ﻿using System.CodeDom;
 using System.Web.Compilation;
 using System.Web.UI;
-using GDNET.FrameworkInfrastructure.Services;
+using GDNET.Framework.Services;
 
-namespace GDNET.FrameworkInfrastructure.Common
+namespace GDNET.WebInfrastructure.Common
 {
     public class TranslationBuilder : ExpressionBuilder
     {

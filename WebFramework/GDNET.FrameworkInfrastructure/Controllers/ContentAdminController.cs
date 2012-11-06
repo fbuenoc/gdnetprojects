@@ -2,17 +2,17 @@
 using System.Web.Mvc;
 using GDNET.AOP.ExceptionHandling;
 using GDNET.Domain.Base.SessionManagement;
-using GDNET.FrameworkInfrastructure.Common.Base;
-using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
-using GDNET.FrameworkInfrastructure.Common.Extensions;
-using GDNET.FrameworkInfrastructure.Controllers.Base;
-using GDNET.FrameworkInfrastructure.Controllers.Extensions;
+using GDNET.Framework.Base;
+using GDNET.Framework.DataAnnotations;
+using GDNET.Framework.Extensions;
+using GDNET.WebInfrastructure.Controllers.Base;
+using GDNET.WebInfrastructure.Controllers.Extensions;
 using GreatApp.Infrastructure;
 using GreatApp.Infrastructure.Models;
-using KnowledgeSharing.Domain;
-using KnowledgeSharing.Domain.Entities;
+using GreatApp.Domain;
+using GreatApp.Domain.Entities;
 
-namespace GDNET.FrameworkInfrastructure.Controllers
+namespace GDNET.WebInfrastructure.Controllers
 {
     [RootAuthorize]
     [CaptureException]

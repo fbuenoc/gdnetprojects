@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 using System.Web.Mvc;
 using System.Web.Mvc.Html;
 using GDNET.Domain.Repositories;
-using GDNET.FrameworkInfrastructure.Services;
+using GDNET.Framework.Services;
 using GDNET.Utils;
 using GreatApp.Infrastructure.Models;
 
-namespace GDNET.FrameworkInfrastructure.Common.Extensions
+namespace GDNET.WebInfrastructure.Common.Extensions
 {
     public static class HtmlExtensions
     {

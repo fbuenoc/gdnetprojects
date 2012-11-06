@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
+using GDNET.Framework.DataAnnotations;
 using GDNET.Framework.Models;
-using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
 
-namespace GDNET.FrameworkInfrastructure.Models.PageModels
+namespace GDNET.WebInfrastructure.Models.PageModels
 {
     public class AccountChangePasswordModel : AbstractPageModel
     {
