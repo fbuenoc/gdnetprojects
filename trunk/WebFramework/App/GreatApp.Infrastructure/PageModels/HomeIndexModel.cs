@@ -2,7 +2,7 @@
 using GDNET.Framework.Models;
 using GreatApp.Infrastructure.Models;
 
-namespace GDNET.FrameworkInfrastructure.Models.PageModels
+namespace GDNET.WebInfrastructure.Models.PageModels
 {
     public class HomeIndexModel : AbstractPageModel
     {

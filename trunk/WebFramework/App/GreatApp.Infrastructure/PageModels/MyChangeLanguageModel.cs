@@ -1,7 +1,7 @@
 ﻿using GDNET.Framework.Models;
-using GDNET.FrameworkInfrastructure.Models.System;
+using GDNET.WebInfrastructure.Models.System;
 
-namespace GDNET.FrameworkInfrastructure.Models.PageModels
+namespace GDNET.WebInfrastructure.Models.PageModels
 {
     public class MyChangeLanguageModel : AbstractPageModel
     {

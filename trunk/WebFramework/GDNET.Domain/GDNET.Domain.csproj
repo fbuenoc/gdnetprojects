@@ -39,42 +39,36 @@
   <ItemGroup>
     <Compile Include="Base\Exceptions\DomainException.cs" />
     <Compile Include="Base\Exceptions\Managers\BusinessExceptionManager.cs" />
-    <Compile Include="Entities\System\Management\IEntityHistoryComplex.cs" />
+    <Compile Include="Entities\Management\IEntityHistoryComplex.cs" />
     <Compile Include="Base\SessionManagement\DomainSessionContext.cs" />
     <Compile Include="Base\SessionManagement\ISessionContext.cs" />
-    <Compile Include="Entities\Content\ContentItem.cs" />
-    <Compile Include="Entities\Content\ContentItemFactory.cs" />
-    <Compile Include="Entities\Content\ContentPart.cs" />
-    <Compile Include="Entities\Content\ContentPartFactory.cs" />
-    <Compile Include="Entities\System\ReferenceData\Catalog.cs" />
-    <Compile Include="Entities\System\ReferenceData\CatalogFactory.cs" />
-    <Compile Include="Entities\System\ReferenceData\DataLineFactory.cs" />
-    <Compile Include="Entities\System\ReferenceData\DataLine.cs" />
-    <Compile Include="Entities\System\ReferenceData\SystemCatalogs.cs" />
+    <Compile Include="Entities\ReferenceData\Catalog.cs" />
+    <Compile Include="Entities\ReferenceData\CatalogFactory.cs" />
+    <Compile Include="Entities\ReferenceData\DataLineFactory.cs" />
+    <Compile Include="Entities\ReferenceData\DataLine.cs" />
+    <Compile Include="Entities\ReferenceData\SystemCatalogs.cs" />
     <Compile Include="Entities\System\TranslationFactory.cs" />
     <Compile Include="Entities\System\Translation.cs" />
     <Compile Include="Entities\System\EmployeeFactory.cs" />
     <Compile Include="Entities\System\Employee.cs" />
-    <Compile Include="Repositories\Content\IContentItemRepository.cs" />
-    <Compile Include="Repositories\System\ICatalogRepository.cs" />
+    <Compile Include="Repositories\ReferenceData\ICatalogRepository.cs" />
     <Compile Include="Repositories\System\ITranslationRepository.cs" />
     <Compile Include="Services\Security\EncryptionOption.cs" />
     <Compile Include="Services\Security\IEncryptionService.cs" />
-    <Compile Include="Services\DomainServices.cs" />
-    <Compile Include="Entities\System\Management\EntityHistoryComplex.cs" />
-    <Compile Include="Entities\System\Management\EntityLog.cs" />
-    <Compile Include="Entities\System\Management\EntityHistory.cs">
+    <Compile Include="DomainServices.cs" />
+    <Compile Include="Entities\Management\EntityHistoryComplex.cs" />
+    <Compile Include="Entities\Management\EntityLog.cs" />
+    <Compile Include="Entities\Management\EntityHistory.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Base\Exceptions\BusinessException.cs" />
     <Compile Include="Base\Exceptions\ExceptionsManager.cs" />
     <Compile Include="Base\Validators\DomainValidator.cs" />
-    <Compile Include="Repositories\DomainRepositories.cs" />
+    <Compile Include="DomainRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\System\IUserRepository.cs" />
     <Compile Include="Entities\System\UserFactory.cs" />
     <Compile Include="Entities\System\User.cs" />
-    <Compile Include="Services\System\IContentBonusService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GDNET.Base\GDNET.Base.csproj">

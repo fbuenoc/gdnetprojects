@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
 using GDNET.Framework.Models;
-using GDNET.FrameworkInfrastructure.Models.System;
+using GDNET.WebInfrastructure.Models.System;
 using GreatApp.Infrastructure.Models;
 
-namespace GDNET.FrameworkInfrastructure.Models.PageModels
+namespace GDNET.WebInfrastructure.Models.PageModels
 {
     public class HomeDetailModel : AbstractPageModel
     {
