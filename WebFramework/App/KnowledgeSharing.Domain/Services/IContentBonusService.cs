@@ -1,6 +1,6 @@
 ﻿using GDNET.Domain.Entities.System;
 
-namespace KnowledgeSharing.Domain.Services
+namespace GreatApp.Domain.Services
 {
     public interface IContentBonusService
     {

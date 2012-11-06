@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using GDNET.Base.DomainRepository;
-using KnowledgeSharing.Domain.Entities;
+using GreatApp.Domain.Entities;
 
-namespace KnowledgeSharing.Domain.Repositories
+namespace GreatApp.Domain.Repositories
 {
     public interface IContentItemRepository : IRepositoryBase<ContentItem, Guid>
     {

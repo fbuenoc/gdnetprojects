@@ -1,6 +1,6 @@
 ﻿using GDNET.Domain.Entities.System.Management;
 
-namespace KnowledgeSharing.Domain.Entities
+namespace GreatApp.Domain.Entities
 {
     public partial class ContentPart : EntityHistoryComplex
     {

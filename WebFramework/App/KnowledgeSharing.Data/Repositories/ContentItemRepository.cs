@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using GDNET.Base;
 using GDNET.NHibernate.Repositories;
 using GDNET.NHibernate.SessionManagement;
-using KnowledgeSharing.Domain.Entities;
-using KnowledgeSharing.Domain.Repositories;
+using GreatApp.Domain.Entities;
+using GreatApp.Domain.Repositories;
 using NHibernate.Criterion;
 
-namespace KnowledgeSharing.Data.Repositories
+namespace GreatApp.Data.Repositories
 {
     public class ContentItemRepository : AbstractRepository<ContentItem, Guid>, IContentItemRepository
     {
