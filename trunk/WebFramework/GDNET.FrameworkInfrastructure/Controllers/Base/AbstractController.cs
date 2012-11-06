@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
 using System.Web.Routing;
 
-namespace GDNET.FrameworkInfrastructure.Controllers.Base
+namespace GDNET.WebInfrastructure.Controllers.Base
 {
     public abstract class AbstractController : Controller
     {

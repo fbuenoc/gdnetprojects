@@ -1,7 +1,7 @@
 ﻿using System;
 using GDNET.Utils;
 
-namespace GDNET.FrameworkInfrastructure.WebServices
+namespace GDNET.WebInfrastructure.WebServices
 {
     public static class AppServiceAssistant
     {

@@ -1,12 +1,12 @@
 ﻿using System.Web.Mvc;
 using GDNET.AOP.ExceptionHandling;
-using GDNET.FrameworkInfrastructure.Controllers.Base;
-using GDNET.FrameworkInfrastructure.Controllers.Extensions;
-using GDNET.FrameworkInfrastructure.Models.PageModels;
-using GDNET.FrameworkInfrastructure.Models.System;
-using GDNET.FrameworkInfrastructure.Services;
+using GDNET.WebInfrastructure.Controllers.Base;
+using GDNET.WebInfrastructure.Controllers.Extensions;
+using GDNET.WebInfrastructure.Models.PageModels;
+using GDNET.WebInfrastructure.Models.System;
+using GDNET.WebInfrastructure.Services;
 
-namespace GDNET.FrameworkInfrastructure.Controllers
+namespace GDNET.WebInfrastructure.Controllers
 {
     [CaptureException]
     public class MyController : AbstractController

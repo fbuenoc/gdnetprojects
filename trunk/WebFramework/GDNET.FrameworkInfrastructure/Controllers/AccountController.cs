@@ -2,18 +2,19 @@
 using System.Web.Mvc;
 using System.Web.Security;
 using GDNET.AOP.ExceptionHandling;
-using GDNET.FrameworkInfrastructure.Common;
-using GDNET.FrameworkInfrastructure.Common.Extensions;
-using GDNET.FrameworkInfrastructure.Controllers.Base;
-using GDNET.FrameworkInfrastructure.Controllers.Extensions;
-using GDNET.FrameworkInfrastructure.Models.PageModels;
-using GDNET.FrameworkInfrastructure.Models.System;
-using GDNET.FrameworkInfrastructure.Services;
+using GDNET.Framework.Extensions;
+using GDNET.Framework.Services;
+using GDNET.WebInfrastructure.Common;
+using GDNET.WebInfrastructure.Controllers.Base;
+using GDNET.WebInfrastructure.Controllers.Extensions;
+using GDNET.WebInfrastructure.Models.PageModels;
+using GDNET.WebInfrastructure.Models.System;
+using GDNET.WebInfrastructure.Services;
+using GreatApp.Domain;
+using GreatApp.Domain.Entities;
 using GreatApp.Infrastructure.Models;
-using KnowledgeSharing.Domain;
-using KnowledgeSharing.Domain.Entities;
 
-namespace GDNET.FrameworkInfrastructure.Controllers
+namespace GDNET.WebInfrastructure.Controllers
 {
     [CaptureException]
     public class AccountController : AbstractController

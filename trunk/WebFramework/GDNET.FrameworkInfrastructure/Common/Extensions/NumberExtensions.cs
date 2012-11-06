@@ -1,8 +1,8 @@
 ﻿using System.Web.Mvc;
-using GDNET.FrameworkInfrastructure.Services;
+using GDNET.Framework.Services;
 using GDNET.Utils;
 
-namespace GDNET.FrameworkInfrastructure.Common.Extensions
+namespace GDNET.WebInfrastructure.Common.Extensions
 {
     public static class NumberExtensions
     {

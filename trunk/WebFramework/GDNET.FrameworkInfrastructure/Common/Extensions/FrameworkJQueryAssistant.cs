@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Web.Mvc;
-using GDNET.FrameworkInfrastructure.WebServices;
+using GDNET.Framework.Extensions;
 using GDNET.Web.Extensions;
+using GDNET.WebInfrastructure.WebServices;
 
-namespace GDNET.FrameworkInfrastructure.Common.Extensions
+namespace GDNET.WebInfrastructure.Common.Extensions
 {
     public static class FrameworkJQueryAssistant
     {

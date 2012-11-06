@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace GDNET.FrameworkInfrastructure.Common.Handlers
+namespace GDNET.WebInfrastructure.Common.Handlers
 {
     public class NormalMvcRouteHandler : MvcRouteHandler
     {

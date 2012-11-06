@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace GDNET.FrameworkInfrastructure.WebServices
+namespace GDNET.WebInfrastructure.WebServices
 {
     [Serializable]
     public class DataItemDTO

@@ -1,4 +1,4 @@
-﻿namespace GDNET.FrameworkInfrastructure.Common
+﻿namespace GDNET.WebInfrastructure.Common
 {
     public sealed class GlobalSettings
     {

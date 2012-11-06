@@ -3,8 +3,9 @@ using System.Threading;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using GDNET.Framework.Extensions;
 
-namespace GDNET.FrameworkInfrastructure.Common.Handlers
+namespace GDNET.WebInfrastructure.Common.Handlers
 {
     public class MultilingualMvcRouteHandler : MvcRouteHandler
     {

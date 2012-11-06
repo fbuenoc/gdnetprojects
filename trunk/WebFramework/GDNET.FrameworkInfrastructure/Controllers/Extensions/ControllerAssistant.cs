@@ -2,7 +2,7 @@
 using System.Linq.Expressions;
 using System.Web.Mvc;
 
-namespace GDNET.FrameworkInfrastructure.Controllers.Extensions
+namespace GDNET.WebInfrastructure.Controllers.Extensions
 {
     public static class ControllerAssistant
     {
