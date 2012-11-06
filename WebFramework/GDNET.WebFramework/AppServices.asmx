@@ -1,1 +1,1 @@
-﻿<%@ WebService Language="C#" Class="GDNET.FrameworkInfrastructure.WebServices.AppServiceImpl" %>
+﻿<%@ WebService Language="C#" Class="GDNET.WebInfrastructure.WebServices.AppServiceImpl" %>

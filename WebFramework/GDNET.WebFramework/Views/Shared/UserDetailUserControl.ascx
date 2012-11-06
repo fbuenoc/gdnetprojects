@@ -1,5 +1,5 @@
 ﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<UserDetailsModel>" %>
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.System" %>
+<%@ Import Namespace="GDNET.WebInfrastructure.Models.System" %>
 <div class="ym-contain-dt site-nbg">
     <div>
         <div class="normal">

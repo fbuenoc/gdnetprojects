@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/SiteAdmin.Master" Inherits="System.Web.Mvc.ViewPage<ContentItemModel>" %>
 
-<%@ Import Namespace="GDNET.FrameworkInfrastructure.Models.Content" %>
+<%@ Import Namespace="GDNET.WebInfrastructure.Models.Content" %>
 <asp:Content ID="C1" ContentPlaceHolderID="TitleContent" runat="server">
     <%: base.Html.Translate("GUI.ContentAdmin.DetailsPage.Title", base.Model.Name) %>
 </asp:Content>
