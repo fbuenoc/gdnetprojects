@@ -1,7 +1,7 @@
 ﻿using GDNET.DataTests.Base;
 using GDNET.Domain.Repositories;
-using KnowledgeSharing.Domain;
-using KnowledgeSharing.Domain.Entities;
+using GreatApp.Domain;
+using GreatApp.Domain.Entities;
 using NUnit.Framework;
 
 namespace KnowledgeSharing.Tests.Entities

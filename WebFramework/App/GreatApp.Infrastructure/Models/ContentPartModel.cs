@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using GDNET.FrameworkInfrastructure.Common.Base;
-using GDNET.FrameworkInfrastructure.Common.DataAnnotations;
-using KnowledgeSharing.Domain.Entities;
+using GDNET.Framework.Base;
+using GDNET.Framework.DataAnnotations;
+using GreatApp.Domain.Entities;
 
 namespace GreatApp.Infrastructure.Models
 {

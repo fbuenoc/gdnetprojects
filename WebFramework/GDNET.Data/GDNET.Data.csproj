@@ -43,7 +43,6 @@
   <ItemGroup>
     <Compile Include="Base\DataSessionContext.cs" />
     <Compile Include="Base\DataRepositoryStrategy.cs" />
-    <Compile Include="Repositories\Content\ContentItemRepository.cs" />
     <Compile Include="Repositories\DataRepositories.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\System\CatalogRepository.cs" />
@@ -65,7 +64,9 @@
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Repositories\Content\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>

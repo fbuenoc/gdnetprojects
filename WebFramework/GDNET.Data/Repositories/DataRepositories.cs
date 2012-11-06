@@ -1,8 +1,7 @@
 ﻿using GDNET.Base.DomainRepository;
-using GDNET.Data.Repositories.Content;
 using GDNET.Data.Repositories.System;
 using GDNET.Domain.Repositories;
-using GDNET.Domain.Repositories.Content;
+using GDNET.Domain.Repositories.ReferenceData;
 using GDNET.Domain.Repositories.System;
 using GDNET.NHibernate.SessionManagement;
 
@@ -26,11 +25,6 @@ namespace GDNET.Data
             return userRepository;
         }
 
-        protected override IContentItemRepository GetContentItemRepository()
-        {
-            return new ContentItemRepository(this.repositoryStrategy);
-        }
-
         protected override ITranslationRepository GetTranslationRepository()
         {
             return new TranslationRepository(this.repositoryStrategy);
@@ -45,6 +39,5 @@ namespace GDNET.Data
         {
             return this.repositoryStrategy;
         }
-
     }
 }

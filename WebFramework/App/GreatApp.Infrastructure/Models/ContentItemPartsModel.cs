@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using KnowledgeSharing.Domain.Entities;
+using GreatApp.Domain.Entities;
 
 namespace GreatApp.Infrastructure.Models
 {

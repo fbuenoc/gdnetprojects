@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using GDNET.Domain.Repositories;
 using GreatApp.Infrastructure.Models;
-using KnowledgeSharing.Domain;
-using KnowledgeSharing.Domain.Entities;
+using GreatApp.Domain;
+using GreatApp.Domain.Entities;
 
 namespace GreatApp.Infrastructure.Services
 {

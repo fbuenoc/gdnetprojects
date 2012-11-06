@@ -45,8 +45,6 @@
     <Compile Include="Base\AbstractJoinedSubclassMapping.cs" />
     <Compile Include="Base\AbstractEntityWithCreationTMapping.cs" />
     <Compile Include="Common\MappingAssistant.cs" />
-    <Compile Include="Content\ContentItemMapping.cs" />
-    <Compile Include="Content\ContentPartMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="System\CatalogMapping.cs" />
     <Compile Include="System\DataLineMapping.cs" />
