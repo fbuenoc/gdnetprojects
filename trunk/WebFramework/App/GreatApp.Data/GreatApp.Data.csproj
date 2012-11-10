@@ -56,7 +56,7 @@
       <Project>{CD582D2C-7AE0-4D4F-8A0B-0EB40A446AB7}</Project>
       <Name>GDNET.NHibernate</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KnowledgeSharing.Domain\GreatApp.Domain.csproj">
+    <ProjectReference Include="..\GreatApp.Domain\GreatApp.Domain.csproj">
       <Project>{985334C9-FAFD-4735-AC1A-57DB51777670}</Project>
       <Name>GreatApp.Domain</Name>
     </ProjectReference>

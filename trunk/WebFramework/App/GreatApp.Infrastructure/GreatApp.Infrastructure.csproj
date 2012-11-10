@@ -64,6 +64,10 @@
       <Project>{BF7096F3-9BB0-4CE7-B211-94F6AC675758}</Project>
       <Name>GDNET.Framework</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GreatApp.Domain\GreatApp.Domain.csproj">
+      <Project>{985334C9-FAFD-4735-AC1A-57DB51777670}</Project>
+      <Name>GreatApp.Domain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
