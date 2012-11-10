@@ -4,7 +4,6 @@ using System.Reflection;
 using GDNET.NHibernate.Interceptors;
 using GDNET.NHibernate.Mapping;
 using GDNET.Utils;
-using log4net;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Context;
@@ -19,8 +18,6 @@ namespace GDNET.NHibernate.SessionManagement
 
         private const string DefaultHibernateConfigurationFile = "App_Data/hibernate.cfg.xml";
         private const string DefaultMappingAssembliesFile = "App_Data/MappingAssemblies.txt";
-
-        private static readonly ILog logger = LogManager.GetLogger(typeof(ApplicationNHibernateSessionManager));
 
         #region Singleton
 

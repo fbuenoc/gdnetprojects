@@ -32,10 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>..\..\Libs\Logging\Log4Net\log4net.dll</HintPath>
+      <HintPath>..\..\..\Libs\Logging\Log4Net\log4net.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp">
-      <HintPath>..\..\Libs\AOP\PostShart-v2.1.7\PostSharp.dll</HintPath>
+      <HintPath>..\..\..\Libs\AOP\PostShart-v2.1.7\PostSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
