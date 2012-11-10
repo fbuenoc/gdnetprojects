@@ -209,6 +209,10 @@
     <Content Include="Views\Shared\SiteAdmin.Master" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\App\GreatApp.Mapping\GreatApp.Mapping.csproj">
+      <Project>{5C76779D-2F46-4789-9C98-3B68A75DD720}</Project>
+      <Name>GreatApp.Mapping</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GDNET.FrameworkInfrastructure\GDNET.WebInfrastructure.csproj">
       <Project>{8DD4ABCD-BF2F-459C-8D12-01A89750E7F2}</Project>
       <Name>GDNET.WebInfrastructure</Name>
