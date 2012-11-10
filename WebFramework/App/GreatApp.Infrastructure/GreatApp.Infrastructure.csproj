@@ -48,7 +48,7 @@
     <Compile Include="PageModels\SearchMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\ContentModelsService.cs" />
-    <Compile Include="WebAppServices.cs" />
+    <Compile Include="AppInfrastructureServices.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

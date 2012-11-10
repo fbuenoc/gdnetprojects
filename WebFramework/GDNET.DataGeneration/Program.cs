@@ -1,5 +1,5 @@
 ﻿using System;
-using GDNET.Business.Services;
+using GDNET.Business;
 using GDNET.Data;
 using GDNET.Data.Base;
 using GDNET.DataGeneration.Helpers;
@@ -15,7 +15,7 @@ namespace GDNET.DataGeneration
         {
             var sessionStrategy = new DataRepositoryStrategy(DataGenerationNHibernateSessionManager.Instance);
             var repositories = new DataRepositories(sessionStrategy);
-            var servicesManager = new ServicesManager();
+            var servicesManager = new BusinessServices();
 
             var user = DomainRepositories.User.FindByEmail("admin@webframework.com");
             var sessionContext = new DataSessionContext(user);

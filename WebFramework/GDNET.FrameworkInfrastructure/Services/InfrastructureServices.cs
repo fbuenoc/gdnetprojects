@@ -1,4 +1,4 @@
-﻿using GDNET.WebInfrastructure.Services.Models;
+﻿using GDNET.WebInfrastructure.Services.AccountModels;
 using GDNET.WebInfrastructure.Services.Storage;
 
 namespace GDNET.WebInfrastructure.Services

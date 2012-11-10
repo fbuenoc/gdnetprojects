@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
-using GDNET.Business.Services;
+using GDNET.Business;
 using GDNET.Data;
 using GDNET.Data.Base;
 using GDNET.Framework.Extensions;
@@ -57,7 +57,7 @@ namespace GDNET.WebInfrastructure.Common.Base
             RegisterGlobalFilters(GlobalFilters.Filters);
             RegisterRoutes(RouteTable.Routes);
 
-            var servicesManager = new ServicesManager();
+            var servicesManager = new BusinessServices();
             var repositoryStrategy = new DataRepositoryStrategy(WebNHibernateSessionManager.Instance);
             var repositories = new DataRepositories(repositoryStrategy);
             var appRepositories = new AppDataRepositories(repositoryStrategy);
