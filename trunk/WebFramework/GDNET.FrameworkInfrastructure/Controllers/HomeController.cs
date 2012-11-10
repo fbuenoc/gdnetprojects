@@ -41,7 +41,7 @@ namespace GDNET.WebInfrastructure.Controllers
 
         public ActionResult Details(string id)
         {
-            ContentItemModel contentModel = WebAppServices.ContentModels.GetContentItemModel(id, true, true);
+            ContentItemModel contentModel = AppInfrastructureServices.ContentModels.GetContentItemModel(id, true, true);
             if (contentModel == null)
             {
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Index()));

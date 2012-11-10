@@ -80,7 +80,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\NHibernateMembershipProvider.cs" />
-    <Compile Include="Services\AccountModelsService.cs" />
+    <Compile Include="Services\AccountModels\AccountModelsService.cs" />
     <Compile Include="Services\InfrastructureServices.cs" />
     <Compile Include="Services\Storage\DataStoredService.cs" />
     <Compile Include="WebServices\AppServiceAssistant.cs" />

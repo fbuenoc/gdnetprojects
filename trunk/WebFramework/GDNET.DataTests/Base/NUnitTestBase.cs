@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using GDNET.Business.Services;
+using GDNET.Business;
 using GDNET.Data;
 using GDNET.Data.Base;
 using GDNET.Domain.Entities.System;
@@ -18,7 +18,7 @@ namespace GDNET.DataTests.Base
         [SetUp]
         public void SetUp()
         {
-            var servicesManager = new ServicesManager();
+            var servicesManager = new BusinessServices();
             var sessionStrategy = new DataRepositoryStrategy(UnitTestSessionManager.Instance);
             var repositories = new DataRepositories(sessionStrategy);
 

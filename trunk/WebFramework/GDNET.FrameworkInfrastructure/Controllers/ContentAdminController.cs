@@ -28,7 +28,7 @@ namespace GDNET.WebInfrastructure.Controllers
 
         public ActionResult Details(string id)
         {
-            ContentItemModel contentModel = WebAppServices.ContentModels.GetContentItemModel(id);
+            ContentItemModel contentModel = AppInfrastructureServices.ContentModels.GetContentItemModel(id);
             if (contentModel == null)
             {
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
@@ -83,7 +83,7 @@ namespace GDNET.WebInfrastructure.Controllers
 
         public ActionResult EditPart(string id, string cid)
         {
-            ContentPartModel partModel = WebAppServices.ContentModels.GetContentPartModel(id, cid);
+            ContentPartModel partModel = AppInfrastructureServices.ContentModels.GetContentPartModel(id, cid);
             if (partModel == null)
             {
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
@@ -102,10 +102,10 @@ namespace GDNET.WebInfrastructure.Controllers
         {
             if (base.ModelState.IsValid)
             {
-                var contentPart = WebAppServices.ContentModels.GetContentPart(id, cid);
+                var contentPart = AppInfrastructureServices.ContentModels.GetContentPart(id, cid);
                 if (contentPart != null)
                 {
-                    WebAppServices.ContentModels.UpdateContentPart(contentPart, partModel);
+                    AppInfrastructureServices.ContentModels.UpdateContentPart(contentPart, partModel);
                     AppDomainServices.ContentBonus.CalculateTotalPoints(DomainSessionContext.Instance.CurrentUser);
 
                     return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(cid)), new { id = cid });
@@ -135,7 +135,7 @@ namespace GDNET.WebInfrastructure.Controllers
                 var contentItem = AppDomainRepositories.ContentItem.GetById(new Guid(id));
                 if (contentItem != null)
                 {
-                    var partItem = WebAppServices.ContentModels.CreateContentPart(partModel);
+                    var partItem = AppInfrastructureServices.ContentModels.CreateContentPart(partModel);
                     contentItem.AddPart(partItem);
 
                     AppDomainServices.ContentBonus.CalculateTotalPoints(DomainSessionContext.Instance.CurrentUser);
@@ -166,7 +166,7 @@ namespace GDNET.WebInfrastructure.Controllers
         {
             if (base.ModelState.IsValid)
             {
-                var contentItem = WebAppServices.ContentModels.CreateContentItem(itemModel);
+                var contentItem = AppInfrastructureServices.ContentModels.CreateContentItem(itemModel);
                 bool result = AppDomainRepositories.ContentItem.Save(contentItem);
                 if (result)
                 {
@@ -186,7 +186,7 @@ namespace GDNET.WebInfrastructure.Controllers
 
         public ActionResult Edit(string id)
         {
-            ContentItemModel contentModel = WebAppServices.ContentModels.GetContentItemModel(id);
+            ContentItemModel contentModel = AppInfrastructureServices.ContentModels.GetContentItemModel(id);
             if (contentModel == null)
             {
                 return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.List()));
@@ -203,7 +203,7 @@ namespace GDNET.WebInfrastructure.Controllers
                 var contentItem = AppDomainRepositories.ContentItem.GetById(new Guid(id));
                 if (contentItem != null)
                 {
-                    WebAppServices.ContentModels.UpdateContentItem(contentItem, contentModel);
+                    AppInfrastructureServices.ContentModels.UpdateContentItem(contentItem, contentModel);
                     AppDomainServices.ContentBonus.CalculateTotalPoints(DomainSessionContext.Instance.CurrentUser);
 
                     return base.RedirectToAction(ControllerAssistant.GetActionName(() => this.Details(id)), new { id = id });
