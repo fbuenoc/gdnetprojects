@@ -35,9 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NHibernate, Version=3.3.1.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Libs\NHibernate\NHibernate-3.3.1.GA-bin\Required_Bins\NHibernate.dll</HintPath>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\..\Libs\NHibernate\NHibernate-3.3.1.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -60,7 +59,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\App\KnowledgeSharing.Domain\GreatApp.Domain.csproj">
+    <ProjectReference Include="..\..\App\GreatApp.Domain\GreatApp.Domain.csproj">
       <Project>{985334C9-FAFD-4735-AC1A-57DB51777670}</Project>
       <Name>GreatApp.Domain</Name>
     </ProjectReference>
