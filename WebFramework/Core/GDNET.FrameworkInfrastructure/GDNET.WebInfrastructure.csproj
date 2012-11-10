@@ -32,13 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net">
-      <HintPath>..\..\Libs\Logging\Log4Net\log4net.dll</HintPath>
+      <HintPath>..\..\..\Libs\Logging\Log4Net\log4net.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
-      <HintPath>..\..\Libs\NHibernate\NHibernate-3.3.1.GA-bin\Required_Bins\NHibernate.dll</HintPath>
+      <HintPath>..\..\..\Libs\NHibernate\NHibernate-3.3.1.GA-bin\Required_Bins\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="PostSharp">
-      <HintPath>..\..\Libs\AOP\PostShart-v2.1.7\PostSharp.dll</HintPath>
+      <HintPath>..\..\..\Libs\AOP\PostShart-v2.1.7\PostSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -93,17 +93,17 @@
     <Compile Include="WebServices\DataItemDTO.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\App\GreatApp.Infrastructure\GreatApp.Infrastructure.csproj">
-      <Project>{FA6FF009-E5A8-4ACD-8DC2-6CAC58AC4ACA}</Project>
-      <Name>GreatApp.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\App\KnowledgeSharing.Data\GreatApp.Data.csproj">
+    <ProjectReference Include="..\..\App\GreatApp.Data\GreatApp.Data.csproj">
       <Project>{C1801154-23B8-4D93-B797-5F3BD0B719B1}</Project>
       <Name>GreatApp.Data</Name>
     </ProjectReference>
-    <ProjectReference Include="..\App\KnowledgeSharing.Domain\GreatApp.Domain.csproj">
+    <ProjectReference Include="..\..\App\GreatApp.Domain\GreatApp.Domain.csproj">
       <Project>{985334C9-FAFD-4735-AC1A-57DB51777670}</Project>
       <Name>GreatApp.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\App\GreatApp.Infrastructure\GreatApp.Infrastructure.csproj">
+      <Project>{FA6FF009-E5A8-4ACD-8DC2-6CAC58AC4ACA}</Project>
+      <Name>GreatApp.Infrastructure</Name>
     </ProjectReference>
     <ProjectReference Include="..\GDNET.AOP\GDNET.AOP.csproj">
       <Project>{F7052436-13B0-41EA-BB29-795A776B746E}</Project>

@@ -60,7 +60,7 @@
       <Project>{5BCC7907-3BF7-4926-86E9-63B05C35E7E3}</Project>
       <Name>GDNET.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\GDNET.Framework\GDNET.Framework.csproj">
+    <ProjectReference Include="..\..\Core\GDNET.Framework\GDNET.Framework.csproj">
       <Project>{BF7096F3-9BB0-4CE7-B211-94F6AC675758}</Project>
       <Name>GDNET.Framework</Name>
     </ProjectReference>
